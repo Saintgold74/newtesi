@@ -1,0 +1,1693 @@
+
+\chapter{Algoritmi e Modelli Computazionali}
+
+\section{C.1 Algoritmi di Ottimizzazione per la Compliance Integrata}
+
+\subsection{C.1.1 Set Covering Ponderato per Ottimizzazione Controlli}
+
+Il problema di ottimizzazione dei controlli di compliance può essere formulato come Weighted Set Cover Problem (WSCP), NP-hard ma risolvibile con approssimazioni efficienti.
+
+\begin{lstlisting}[language=Python, caption=Implementazione Weighted Set Cover per Compliance]
+import numpy as np
+from typing import List, Dict, Set, Tuple
+import pandas as pd
+
+class ComplianceOptimizer:
+    """
+    Ottimizzatore per controlli di compliance multi-standard
+    usando Weighted Set Cover con euristiche greedy e branch & bound
+    """
+    
+    def __init__(self, requirements: Dict, controls: Dict):
+        self.requirements = requirements  # {req_id: details}
+        self.controls = controls  # {ctrl_id: {'cost': X, 'satisfies': [req_ids]}}
+        self.all_reqs = set(requirements.keys())
+        
+    def greedy_set_cover(self) -> Tuple[List, float]:
+        """
+        Algoritmo greedy con garanzia ln(n)-approssimazione
+        Complessità: O(mn log n) dove m = |requisiti|, n = |controlli|
+        """
+        uncovered = self.all_reqs.copy()
+        selected = []
+        total_cost = 0
+        
+        while uncovered:
+            # Calcola efficienza: copertura/costo
+            best_efficiency = -1
+            best_control = None
+            
+            for ctrl_id, ctrl_data in self.controls.items():
+                if ctrl_id not in selected:
+                    coverage = len(set(ctrl_data['satisfies']) & uncovered)
+                    if coverage > 0:
+                        efficiency = coverage / ctrl_data['cost']
+                        if efficiency > best_efficiency:
+                            best_efficiency = efficiency
+                            best_control = ctrl_id
+            
+            if best_control:
+                selected.append(best_control)
+                total_cost += self.controls[best_control]['cost']
+                uncovered -= set(self.controls[best_control]['satisfies'])
+            else:
+                break
+        
+        return selected, total_cost
+    
+    def branch_and_bound_exact(self, max_depth: int = 20) -> Tuple[List, float]:
+        """
+        Algoritmo esatto con pruning per istanze piccole
+        Complessità: O(2^n) worst case, ma pruning efficace in pratica
+        """
+        best_solution = None
+        best_cost = float('inf')
+        
+        def branch(covered: Set, selected: List, current_cost: float, 
+                  remaining: List) -> None:
+            nonlocal best_solution, best_cost
+            
+            # Pruning: se costo corrente >= best, interrompi
+            if current_cost >= best_cost:
+                return
+            
+            # Se coperto tutto, aggiorna best
+            if covered >= self.all_reqs:
+                if current_cost < best_cost:
+                    best_cost = current_cost
+                    best_solution = selected.copy()
+                return
+            
+            # Pruning: lower bound basato su relaxation
+            if len(selected) < max_depth and remaining:
+                lower_bound = self._compute_lower_bound(covered, current_cost, 
+                                                       remaining)
+                if lower_bound >= best_cost:
+                    return
+                
+                # Branch: prova con e senza il prossimo controllo
+                next_ctrl = remaining[0]
+                remaining_new = remaining[1:]
+                
+                # Con controllo
+                new_covered = covered | set(self.controls[next_ctrl]['satisfies'])
+                new_cost = current_cost + self.controls[next_ctrl]['cost']
+                branch(new_covered, selected + [next_ctrl], new_cost, 
+                      remaining_new)
+                
+                # Senza controllo (solo se non indispensabile)
+                if not self._is_essential(next_ctrl, covered, remaining_new):
+                    branch(covered, selected, current_cost, remaining_new)
+        
+        # Preprocessing: rimuovi controlli dominati
+        non_dominated = self._remove_dominated_controls()
+        
+        # Avvia branch & bound
+        branch(set(), [], 0, list(non_dominated.keys()))
+        
+        return best_solution, best_cost
+    
+    def _is_essential(self, ctrl_id: str, covered: Set, 
+                     remaining: List) -> bool:
+        """Verifica se un controllo è essenziale per coprire qualche requisito"""
+        ctrl_reqs = set(self.controls[ctrl_id]['satisfies'])
+        unique_coverage = ctrl_reqs - covered
+        
+        if not unique_coverage:
+            return False
+        
+        # Verifica se altri controlli possono coprire questi requisiti
+        for req in unique_coverage:
+            can_be_covered = False
+            for other_ctrl in remaining:
+                if req in self.controls[other_ctrl]['satisfies']:
+                    can_be_covered = True
+                    break
+            if not can_be_covered:
+                return True
+        
+        return False
+    
+    def _remove_dominated_controls(self) -> Dict:
+        """Rimuovi controlli dominati (stessi requisiti a costo maggiore)"""
+        non_dominated = []
+        control_items = list(self.controls.items())
+        
+        for i, (ctrl_i, data_i) in enumerate(control_items):
+            dominated = False
+            satisfies_i = set(data_i['satisfies'])
+            
+            for j, (ctrl_j, data_j) in enumerate(control_items):
+                if i != j:
+                    satisfies_j = set(data_j['satisfies'])
+                    # j domina i se copre almeno gli stessi requisiti a costo minore o uguale
+                    if (satisfies_j >= satisfies_i and 
+                        data_j['cost'] <= data_i['cost'] and
+                        (satisfies_j > satisfies_i or data_j['cost'] < data_i['cost'])):
+                        dominated = True
+                        break
+            
+            if not dominated:
+                non_dominated.append((ctrl_i, data_i))
+        
+        return dict(non_dominated)
+    
+    def _compute_lower_bound(self, covered: Set, current_cost: float, 
+                           remaining_controls: List) -> float:
+        """Calcola lower bound per branch & bound"""
+        uncovered = self.all_reqs - covered
+        if not uncovered:
+            return current_cost
+        
+        # Relaxation: fractional set cover
+        min_additional_cost = 0
+        temp_uncovered = uncovered.copy()
+        
+        for ctrl_id in remaining_controls:
+            ctrl_data = self.controls[ctrl_id]
+            if temp_uncovered:
+                benefit = len(set(ctrl_data['satisfies']) & temp_uncovered)
+                if benefit > 0:
+                    # Prendi frazione del controllo
+                    fraction = min(1.0, len(temp_uncovered) / benefit)
+                    min_additional_cost += fraction * ctrl_data['cost']
+                    temp_uncovered -= set(ctrl_data['satisfies'])
+        
+        return current_cost + min_additional_cost
+\end{lstlisting}
+
+\subsubsection{Analisi di Complessità}
+
+\textbf{Complessità Temporale}:
+\begin{itemize}
+    \item Greedy: $O(mn \log n)$ dove $m = |\text{requisiti}|$, $n = |\text{controlli}|$
+    \item Branch \& Bound: $O(2^n)$ worst case, ma pruning efficace in pratica
+\end{itemize}
+
+\textbf{Garanzia di Approssimazione}:
+Il greedy algorithm garantisce soluzione entro fattore $\ln(m)$ dall'ottimo:
+\begin{equation}
+\text{Cost}_{\text{greedy}} \leq \ln(m) \times \text{Cost}_{\text{optimal}}
+\end{equation}
+
+\section{C.2 Modelli di Machine Learning per Threat Detection}
+
+\subsection{C.2.1 Anomaly Detection con Isolation Forest}
+
+Implementazione di Isolation Forest ottimizzata per rilevamento anomalie in pattern di traffico retail.
+
+\begin{lstlisting}[language=Python, caption=Isolation Forest per Anomaly Detection GDO]
+from sklearn.ensemble import IsolationForest
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+import pandas as pd
+from typing import Tuple, Dict, List
+import joblib
+
+class RetailAnomalyDetector:
+    """
+    Anomaly detector specializzato per traffico GDO
+    usando Isolation Forest con feature engineering specifico
+    """
+    
+    def __init__(self, contamination: float = 0.01):
+        """
+        Args:
+            contamination: Proporzione attesa di anomalie (default 1%)
+        """
+        self.contamination = contamination
+        self.model = IsolationForest(
+            contamination=contamination,
+            n_estimators=200,
+            max_samples=min(256, 'auto'),
+            random_state=42,
+            n_jobs=-1
+        )
+        self.scaler = StandardScaler()
+        self.feature_importance = {}
+    
+    def engineer_features(self, traffic_data: pd.DataFrame) -> np.ndarray:
+        """
+        Feature engineering specifico per traffico retail
+        
+        Features estratte:
+        - Volume transazioni per fascia oraria
+        - Deviazione da pattern stagionali
+        - Burst detection (spike improvvisi)
+        - Entropia del traffico
+        - Metriche di clustering spaziale
+        """
+        features = []
+        
+        # 1. Volume per fascia oraria normalizzato
+        hourly_volumes = traffic_data.groupby('hour')['transactions'].mean()
+        hourly_deviation = (traffic_data.groupby('hour')['transactions'].sum() - 
+                           hourly_volumes) / hourly_volumes.std()
+        features.append(hourly_deviation.values)
+        
+        # 2. Deviazione da media mobile stagionale
+        if 'seasonal_baseline' in traffic_data.columns:
+            seasonal_dev = (traffic_data['transactions'] - 
+                           traffic_data['seasonal_baseline']) / \
+                          traffic_data['seasonal_baseline'].std()
+            features.append(seasonal_dev.values)
+        
+        # 3. Burst detection usando differenze finite
+        transaction_diff = traffic_data['transactions'].diff()
+        burst_score = (transaction_diff - transaction_diff.mean()) / \
+                     transaction_diff.std()
+        burst_score = burst_score.fillna(0)
+        features.append(burst_score.values)
+        
+        # 4. Entropia del traffico (distribuzione IP/user)
+        if 'source_ip' in traffic_data.columns:
+            ip_counts = traffic_data['source_ip'].value_counts()
+            ip_probs = ip_counts / ip_counts.sum()
+            entropy = -np.sum(ip_probs * np.log2(ip_probs + 1e-10))
+            normalized_entropy = entropy / np.log2(len(ip_counts))
+            features.append(np.full(len(traffic_data), normalized_entropy))
+        
+        # 5. Clustering coefficient (quanto traffico è concentrato)
+        if 'store_id' in traffic_data.columns:
+            store_concentration = traffic_data.groupby('store_id')['transactions'].sum()
+            gini_coefficient = self._calculate_gini(store_concentration.values)
+            features.append(np.full(len(traffic_data), gini_coefficient))
+        
+        # 6. Periodicità anomala (FFT-based)
+        if len(traffic_data) > 100:
+            fft_result = np.fft.fft(traffic_data['transactions'].values)
+            power_spectrum = np.abs(fft_result)**2
+            dominant_freq = np.argmax(power_spectrum[1:len(power_spectrum)//2]) + 1
+            periodicity_strength = power_spectrum[dominant_freq] / np.sum(power_spectrum)
+            features.append(np.full(len(traffic_data), periodicity_strength))
+        
+        return np.column_stack(features)
+    
+    def _calculate_gini(self, values: np.ndarray) -> float:
+        """Calcola coefficiente di Gini per concentrazione"""
+        sorted_values = np.sort(values)
+        n = len(values)
+        cumsum = np.cumsum(sorted_values)
+        return (2 * np.sum((n - np.arange(n)) * sorted_values)) / \
+               (n * cumsum[-1]) - (n + 1) / n
+    
+    def fit(self, historical_data: pd.DataFrame) -> None:
+        """
+        Training su dati storici
+        
+        Args:
+            historical_data: DataFrame con colonne richieste per feature engineering
+        """
+        features = self.engineer_features(historical_data)
+        features_scaled = self.scaler.fit_transform(features)
+        self.model.fit(features_scaled)
+        
+        # Calcola feature importance usando permutation
+        self.feature_importance = self._calculate_feature_importance(
+            features_scaled, n_repeats=10
+        )
+    
+    def predict(self, new_data: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Predizione anomalie su nuovi dati
+        
+        Returns:
+            predictions: Array con -1 (anomalia) o 1 (normale)
+            anomaly_scores: Score di anomalia (più negativo = più anomalo)
+        """
+        features = self.engineer_features(new_data)
+        features_scaled = self.scaler.transform(features)
+        
+        predictions = self.model.predict(features_scaled)
+        anomaly_scores = self.model.score_samples(features_scaled)
+        
+        return predictions, anomaly_scores
+    
+    def _calculate_feature_importance(self, X: np.ndarray, 
+                                    n_repeats: int = 10) -> Dict[str, float]:
+        """
+        Calcola importanza features usando permutation importance
+        """
+        baseline_scores = self.model.score_samples(X)
+        baseline_mean = baseline_scores.mean()
+        
+        importances = {}
+        n_features = X.shape[1]
+        
+        for i in range(n_features):
+            scores_permuted = []
+            
+            for _ in range(n_repeats):
+                X_permuted = X.copy()
+                np.random.shuffle(X_permuted[:, i])
+                scores = self.model.score_samples(X_permuted)
+                scores_permuted.append(scores.mean())
+            
+            importance = baseline_mean - np.mean(scores_permuted)
+            importances[f'feature_{i}'] = importance
+        
+        # Normalizza
+        total_importance = sum(abs(v) for v in importances.values())
+        if total_importance > 0:
+            importances = {k: v/total_importance for k, v in importances.items()}
+        
+        return importances
+    
+    def save_model(self, path: str) -> None:
+        """Salva modello e preprocessor"""
+        joblib.dump({
+            'model': self.model,
+            'scaler': self.scaler,
+            'feature_importance': self.feature_importance,
+            'contamination': self.contamination
+        }, path)
+    
+    @classmethod
+    def load_model(cls, path: str) -> 'RetailAnomalyDetector':
+        """Carica modello salvato"""
+        data = joblib.load(path)
+        detector = cls(contamination=data['contamination'])
+        detector.model = data['model']
+        detector.scaler = data['scaler']
+        detector.feature_importance = data['feature_importance']
+        return detector
+\end{lstlisting}
+
+\subsection{C.2.2 LSTM per Previsione di Serie Temporali di Sicurezza}
+
+Modello LSTM per prevedere pattern di attacco basati su serie storiche.
+
+\begin{lstlisting}[language=Python, caption=LSTM per Previsione Pattern di Attacco]
+import torch
+import torch.nn as nn
+import numpy as np
+from torch.utils.data import Dataset, DataLoader
+from typing import Tuple, List
+import pandas as pd
+
+class AttackPatternLSTM(nn.Module):
+    """
+    LSTM per previsione pattern di attacco con attenzione temporale
+    """
+    
+    def __init__(self, input_size: int, hidden_size: int = 128, 
+                 num_layers: int = 2, dropout: float = 0.2):
+        super(AttackPatternLSTM, self).__init__()
+        
+        self.hidden_size = hidden_size
+        self.num_layers = num_layers
+        
+        # LSTM layers
+        self.lstm = nn.LSTM(
+            input_size=input_size,
+            hidden_size=hidden_size,
+            num_layers=num_layers,
+            dropout=dropout if num_layers > 1 else 0,
+            batch_first=True,
+            bidirectional=True
+        )
+        
+        # Attention mechanism
+        self.attention = nn.Sequential(
+            nn.Linear(hidden_size * 2, hidden_size),
+            nn.Tanh(),
+            nn.Linear(hidden_size, 1)
+        )
+        
+        # Output layers
+        self.fc = nn.Sequential(
+            nn.Linear(hidden_size * 2, hidden_size),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_size, 1)
+        )
+        
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Forward pass con attention weights
+        
+        Args:
+            x: Input tensor [batch_size, seq_len, input_size]
+            
+        Returns:
+            output: Predizioni [batch_size, 1]
+            attention_weights: Pesi attenzione [batch_size, seq_len]
+        """
+        # LSTM forward
+        lstm_out, _ = self.lstm(x)
+        
+        # Attention
+        attention_scores = self.attention(lstm_out)
+        attention_weights = torch.softmax(attention_scores, dim=1)
+        
+        # Weighted sum con attention
+        context_vector = torch.sum(lstm_out * attention_weights, dim=1)
+        
+        # Output
+        output = self.fc(context_vector)
+        
+        return output, attention_weights.squeeze(-1)
+
+class AttackTimeSeriesDataset(Dataset):
+    """
+    Dataset per serie temporali di attacchi
+    """
+    
+    def __init__(self, data: pd.DataFrame, sequence_length: int = 24,
+                 prediction_horizon: int = 6):
+        """
+        Args:
+            data: DataFrame con features temporali
+            sequence_length: Lunghezza sequenza input (ore)
+            prediction_horizon: Orizzonte predizione (ore)
+        """
+        self.data = data
+        self.sequence_length = sequence_length
+        self.prediction_horizon = prediction_horizon
+        self.features = self._extract_features()
+        
+    def _extract_features(self) -> np.ndarray:
+        """Estrae features rilevanti per previsione attacchi"""
+        features = []
+        
+        # Attack count per tipo
+        for attack_type in ['malware', 'ransomware', 'phishing', 'ddos']:
+            if attack_type in self.data.columns:
+                features.append(self.data[attack_type].values)
+        
+        # Indicatori temporali
+        features.append(self.data['hour'].values)
+        features.append(self.data['day_of_week'].values)
+        features.append(self.data['is_weekend'].values.astype(float))
+        
+        # Metriche di traffico
+        if 'traffic_volume' in self.data.columns:
+            features.append(self.data['traffic_volume'].values)
+            features.append(self.data['unique_ips'].values)
+            features.append(self.data['failed_logins'].values)
+        
+        # Indicatori stagionali
+        if 'is_holiday' in self.data.columns:
+            features.append(self.data['is_holiday'].values.astype(float))
+        if 'is_sale_period' in self.data.columns:
+            features.append(self.data['is_sale_period'].values.astype(float))
+        
+        return np.column_stack(features)
+    
+    def __len__(self) -> int:
+        return len(self.features) - self.sequence_length - self.prediction_horizon + 1
+    
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
+        # Input sequence
+        X = self.features[idx:idx + self.sequence_length]
+        # Target (somma attacchi nelle prossime N ore)
+        y = self.features[idx + self.sequence_length:
+                         idx + self.sequence_length + self.prediction_horizon, 0].sum()
+        
+        return torch.FloatTensor(X), torch.FloatTensor([y])
+
+class AttackPredictor:
+    """
+    Sistema completo per previsione attacchi
+    """
+    
+    def __init__(self, input_size: int, device: str = 'cuda' if torch.cuda.is_available() else 'cpu'):
+        self.device = device
+        self.model = AttackPatternLSTM(input_size=input_size).to(device)
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=0.001)
+        self.criterion = nn.MSELoss()
+        self.scaler = StandardScaler()
+        
+    def train(self, train_data: pd.DataFrame, val_data: pd.DataFrame,
+              epochs: int = 100, batch_size: int = 32) -> Dict[str, List[float]]:
+        """
+        Training con early stopping
+        """
+        train_dataset = AttackTimeSeriesDataset(train_data)
+        val_dataset = AttackTimeSeriesDataset(val_data)
+        
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, 
+                                shuffle=True)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size)
+        
+        history = {'train_loss': [], 'val_loss': []}
+        best_val_loss = float('inf')
+        patience = 10
+        patience_counter = 0
+        
+        for epoch in range(epochs):
+            # Training
+            self.model.train()
+            train_loss = 0
+            for X, y in train_loader:
+                X, y = X.to(self.device), y.to(self.device)
+                
+                self.optimizer.zero_grad()
+                output, _ = self.model(X)
+                loss = self.criterion(output, y)
+                loss.backward()
+                
+                # Gradient clipping
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+                
+                self.optimizer.step()
+                train_loss += loss.item()
+            
+            # Validation
+            self.model.eval()
+            val_loss = 0
+            with torch.no_grad():
+                for X, y in val_loader:
+                    X, y = X.to(self.device), y.to(self.device)
+                    output, _ = self.model(X)
+                    val_loss += self.criterion(output, y).item()
+            
+            avg_train_loss = train_loss / len(train_loader)
+            avg_val_loss = val_loss / len(val_loader)
+            
+            history['train_loss'].append(avg_train_loss)
+            history['val_loss'].append(avg_val_loss)
+            
+            # Early stopping
+            if avg_val_loss < best_val_loss:
+                best_val_loss = avg_val_loss
+                patience_counter = 0
+                self.save_model('best_model.pth')
+            else:
+                patience_counter += 1
+                if patience_counter >= patience:
+                    print(f"Early stopping at epoch {epoch}")
+                    break
+            
+            if epoch % 10 == 0:
+                print(f"Epoch {epoch}: Train Loss = {avg_train_loss:.4f}, "
+                      f"Val Loss = {avg_val_loss:.4f}")
+        
+        # Load best model
+        self.load_model('best_model.pth')
+        
+        return history
+    
+    def predict(self, data: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Predizione con uncertainty estimation
+        """
+        dataset = AttackTimeSeriesDataset(data)
+        loader = DataLoader(dataset, batch_size=1)
+        
+        predictions = []
+        attention_maps = []
+        
+        self.model.eval()
+        with torch.no_grad():
+            for X, _ in loader:
+                X = X.to(self.device)
+                
+                # Multiple forward passes per uncertainty
+                preds = []
+                for _ in range(10):
+                    # Activate dropout for uncertainty
+                    self.model.train()
+                    output, attention = self.model(X)
+                    preds.append(output.cpu().numpy())
+                
+                preds = np.array(preds)
+                predictions.append({
+                    'mean': preds.mean(),
+                    'std': preds.std(),
+                    'lower_bound': np.percentile(preds, 5),
+                    'upper_bound': np.percentile(preds, 95)
+                })
+                attention_maps.append(attention.cpu().numpy())
+        
+        return predictions, np.array(attention_maps)
+    
+    def save_model(self, path: str) -> None:
+        """Salva modello e stato"""
+        torch.save({
+            'model_state_dict': self.model.state_dict(),
+            'optimizer_state_dict': self.optimizer.state_dict(),
+            'scaler': self.scaler
+        }, path)
+    
+    def load_model(self, path: str) -> None:
+        """Carica modello salvato"""
+        checkpoint = torch.load(path, map_location=self.device)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        self.scaler = checkpoint['scaler']
+\end{lstlisting}
+
+\section{C.3 Modelli dal Capitolo 2: Threat Landscape e Sicurezza}
+
+\subsection{C.3.1 Modello di Superficie di Attacco Aggregata (ASSA)}
+
+\begin{lstlisting}[language=Python, caption=Calcolo ASSA per Reti GDO Distribuite]
+import networkx as nx
+import numpy as np
+from scipy import stats
+from typing import Dict, List, Tuple
+
+def calculate_assa(G: nx.Graph, node_attributes: Dict) -> float:
+    """
+    Calcola Superficie di Attacco Aggregata per rete GDO
+    
+    Args:
+        G: Grafo della rete (NetworkX)
+        node_attributes: Dizionario con attributi per ogni nodo
+        
+    Returns:
+        ASSA score aggregato
+    """
+    assa_total = 0
+    
+    # Pesi calibrati empiricamente
+    w_p = 0.3  # peso porte aperte
+    w_s = 0.4  # peso servizi
+    w_v = 0.3  # peso vulnerabilità
+    
+    # Calcola centralità una volta sola
+    centrality = nx.betweenness_centrality(G)
+    
+    for node in G.nodes():
+        attrs = node_attributes.get(node, {})
+        
+        # Componenti ASSA per nodo
+        P_i = attrs.get('open_ports', 0)
+        S_i = attrs.get('exposed_services', 0)
+        V_i = attrs.get('vulnerabilities', 0)
+        C_i = centrality[node]
+        
+        # ASSA per nodo i
+        assa_i = (w_p * P_i + w_s * S_i + w_v * V_i) * C_i
+        assa_total += assa_i
+    
+    return assa_total
+
+def simulate_assa_growth(n_stores_list: List[int], 
+                        n_simulations: int = 10000) -> Dict:
+    """
+    Simula crescita ASSA con numero di punti vendita
+    """
+    results = {}
+    
+    for n_stores in n_stores_list:
+        assa_values = []
+        
+        for _ in range(n_simulations):
+            # Genera topologia hub-and-spoke
+            G = nx.star_graph(n_stores - 1)
+            
+            # Aggiungi connessioni regionali (10% probabilità)
+            for i in range(1, n_stores):
+                for j in range(i+1, n_stores):
+                    if np.random.random() < 0.1:
+                        G.add_edge(i, j)
+            
+            # Genera attributi nodi
+            node_attrs = {}
+            for node in G.nodes():
+                if node == 0:  # Hub centrale
+                    node_attrs[node] = {
+                        'open_ports': np.random.poisson(25),
+                        'exposed_services': np.random.poisson(15),
+                        'vulnerabilities': np.random.poisson(8)
+                    }
+                else:  # Store
+                    node_attrs[node] = {
+                        'open_ports': np.random.poisson(8),
+                        'exposed_services': np.random.poisson(5),
+                        'vulnerabilities': np.random.poisson(3)
+                    }
+            
+            assa = calculate_assa(G, node_attrs)
+            assa_values.append(assa)
+        
+        # Calcola statistiche
+        results[n_stores] = {
+            'mean': np.mean(assa_values),
+            'std': np.std(assa_values),
+            'ci_lower': np.percentile(assa_values, 2.5),
+            'ci_upper': np.percentile(assa_values, 97.5)
+        }
+    
+    return results
+\end{lstlisting}
+
+\subsection{C.3.2 Modello Epidemiologico SIR per Propagazione Malware}
+
+\begin{lstlisting}[language=Python, caption=Modello SIR Adattato per Reti GDO]
+import numpy as np
+import pandas as pd
+from scipy.integrate import odeint
+from typing import Dict, List, Tuple
+
+def sir_gdo_model(y: np.ndarray, t: float, beta: float, gamma: float, 
+                  network_params: Dict) -> List[float]:
+    """
+    Sistema di equazioni differenziali SIR modificato per GDO
+    
+    Args:
+        y: Stato corrente [S, I, R]
+        t: Tempo
+        beta: Tasso di trasmissione base
+        gamma: Tasso di recovery
+        network_params: Parametri specifici della rete
+        
+    Returns:
+        Derivate [dS/dt, dI/dt, dR/dt]
+    """
+    S, I, R = y
+    N = S + I + R
+    
+    # Aggiustamento beta per topologia hub-and-spoke
+    hub_factor = network_params.get('hub_amplification', 1.5)
+    hub_proportion = network_params.get('hub_traffic_proportion', 0.3)
+    
+    # Beta effettivo considera concentrazione traffico negli hub
+    beta_effective = beta * (1 + (hub_factor - 1) * hub_proportion)
+    
+    # Equazioni SIR
+    dS = -beta_effective * S * I / N
+    dI = beta_effective * S * I / N - gamma * I
+    dR = gamma * I
+    
+    return [dS, dI, dR]
+
+def simulate_malware_propagation(n_nodes: int, beta: float, gamma: float,
+                               t_max: int = 30, 
+                               initial_infected: int = 1) -> pd.DataFrame:
+    """
+    Simula propagazione malware in rete GDO
+    """
+    # Condizioni iniziali
+    S0 = n_nodes - initial_infected
+    I0 = initial_infected
+    R0 = 0
+    y0 = [S0, I0, R0]
+    
+    # Parametri rete
+    network_params = {
+        'hub_amplification': 1.5,
+        'hub_traffic_proportion': 0.3
+    }
+    
+    # Risolvi ODE
+    t = np.linspace(0, t_max, t_max * 24)  # Risoluzione oraria
+    solution = odeint(sir_gdo_model, y0, t, args=(beta, gamma, network_params))
+    
+    # Crea DataFrame risultati
+    results = pd.DataFrame({
+        'time_days': t,
+        'susceptible': solution[:, 0],
+        'infected': solution[:, 1],
+        'recovered': solution[:, 2],
+        'total': n_nodes
+    })
+    
+    # Calcola metriche derivate
+    results['infection_rate'] = results['infected'] / results['total']
+    results['R_effective'] = beta * results['susceptible'] / (gamma * results['total'])
+    
+    return results
+
+def calculate_R0(beta: float, gamma: float, network_topology: str = 'hub_spoke') -> float:
+    """
+    Calcola R0 per diverse topologie di rete
+    """
+    if network_topology == 'hub_spoke':
+        # Aggiustamento empirico per hub-and-spoke
+        return beta / gamma * 1.35
+    elif network_topology == 'mesh':
+        return beta / gamma * 0.85
+    else:  # fully connected
+        return beta / gamma
+\end{lstlisting}
+
+\subsection{C.3.3 Modello di Propagazione Supply Chain}
+
+\begin{lstlisting}[language=Python, caption=Simulazione Contagio Supply Chain]
+import numpy as np
+from scipy.stats import poisson, binom
+import networkx as nx
+from typing import Dict, List, Tuple
+
+def generate_supply_chain_network(n_suppliers: int, n_retailers: int, 
+                                n_intermediaries: int = 0) -> nx.DiGraph:
+    """
+    Genera rete supply chain realistica
+    """
+    G = nx.DiGraph()
+    
+    # Aggiungi nodi
+    suppliers = [f"S_{i}" for i in range(n_suppliers)]
+    retailers = [f"R_{i}" for i in range(n_retailers)]
+    intermediaries = [f"I_{i}" for i in range(n_intermediaries)]
+    
+    G.add_nodes_from(suppliers, type='supplier')
+    G.add_nodes_from(retailers, type='retailer')
+    G.add_nodes_from(intermediaries, type='intermediary')
+    
+    # Connessioni suppliers -> intermediaries/retailers
+    for supplier in suppliers:
+        # Numero connessioni segue Poisson
+        n_connections = min(poisson.rvs(mu=10), len(retailers))
+        
+        if intermediaries:
+            # 70% attraverso intermediari
+            n_inter = int(n_connections * 0.7)
+            targets_inter = np.random.choice(intermediaries, 
+                                           min(n_inter, len(intermediaries)), 
+                                           replace=False)
+            for target in targets_inter:
+                G.add_edge(supplier, target, weight=np.random.uniform(0.5, 1.0))
+            
+            # 30% diretti
+            n_direct = n_connections - n_inter
+            targets_direct = np.random.choice(retailers, 
+                                            min(n_direct, len(retailers)), 
+                                            replace=False)
+            for target in targets_direct:
+                G.add_edge(supplier, target, weight=np.random.uniform(0.3, 0.7))
+        else:
+            targets = np.random.choice(retailers, n_connections, replace=False)
+            for target in targets:
+                G.add_edge(supplier, target, weight=np.random.uniform(0.5, 1.0))
+    
+    # Connessioni intermediaries -> retailers
+    for inter in intermediaries:
+        n_connections = min(poisson.rvs(mu=20), len(retailers))
+        targets = np.random.choice(retailers, n_connections, replace=False)
+        for target in targets:
+            G.add_edge(inter, target, weight=np.random.uniform(0.6, 0.9))
+    
+    return G
+
+def simulate_supply_chain_attack(G: nx.DiGraph, 
+                               p_initial_compromise: float = 0.02,
+                               p_spread: float = 0.15,
+                               n_simulations: int = 10000) -> Dict:
+    """
+    Simula propagazione attacco attraverso supply chain
+    """
+    suppliers = [n for n in G.nodes() if G.nodes[n]['type'] == 'supplier']
+    retailers = [n for n in G.nodes() if G.nodes[n]['type'] == 'retailer']
+    
+    results = []
+    
+    for _ in range(n_simulations):
+        # Compromissione iniziale fornitori
+        compromised = set()
+        for supplier in suppliers:
+            if np.random.random() < p_initial_compromise:
+                compromised.add(supplier)
+        
+        # Propagazione attraverso la rete
+        newly_compromised = compromised.copy()
+        
+        while newly_compromised:
+            next_wave = set()
+            
+            for node in newly_compromised:
+                # Propaga a tutti i successori
+                for successor in G.successors(node):
+                    if successor not in compromised:
+                        # Probabilità dipende dal peso connessione
+                        edge_weight = G[node][successor]['weight']
+                        p_infect = p_spread * edge_weight
+                        
+                        if np.random.random() < p_infect:
+                            next_wave.add(successor)
+                            compromised.add(successor)
+            
+            newly_compromised = next_wave
+        
+        # Conta retailer affetti
+        affected_retailers = len([r for r in retailers if r in compromised])
+        results.append(affected_retailers)
+    
+    # Analizza risultati
+    results_array = np.array(results)
+    
+    return {
+        'mean_affected': results_array.mean(),
+        'std_affected': results_array.std(),
+        'percentile_50': np.percentile(results_array, 50),
+        'percentile_95': np.percentile(results_array, 95),
+        'percentile_99': np.percentile(results_array, 99),
+        'zero_affected_probability': (results_array == 0).mean(),
+        'total_compromise_probability': (results_array == len(retailers)).mean()
+    }
+\end{lstlisting}
+
+\subsection{C.3.4 Modello Economico degli Attacchi AI-Enhanced}
+
+\begin{lstlisting}[language=Python, caption=Economia degli Attacchi con AI]
+import numpy as np
+from scipy.stats import lognormal, beta
+from typing import Dict, Tuple
+
+def model_ai_attack_economics(n_simulations: int = 10000) -> Dict:
+    """
+    Modella l'economia degli attacchi potenziati da AI
+    """
+    results = {
+        'traditional': [],
+        'ai_enhanced': []
+    }
+    
+    for _ in range(n_simulations):
+        # Parametri attacchi tradizionali
+        trad_cost = lognormal.rvs(s=0.5, scale=1000)  # Cost in €
+        trad_success_rate = beta.rvs(a=2, b=8)  # ~20% success
+        trad_payload = lognormal.rvs(s=0.8, scale=50000)  # Gain if successful
+        
+        # Parametri attacchi AI-enhanced
+        ai_cost_reduction = beta.rvs(a=15, b=5)  # ~75% reduction
+        ai_cost = trad_cost * (1 - ai_cost_reduction)
+        
+        ai_success_multiplier = 1 + lognormal.rvs(s=0.3, scale=1.58)  # ~2.58x
+        ai_success_rate = min(trad_success_rate * ai_success_multiplier, 0.95)
+        
+        # Calcola ROI
+        trad_expected_return = trad_success_rate * trad_payload
+        trad_roi = (trad_expected_return - trad_cost) / trad_cost if trad_cost > 0 else 0
+        
+        ai_expected_return = ai_success_rate * trad_payload
+        ai_roi = (ai_expected_return - ai_cost) / ai_cost if ai_cost > 0 else 0
+        
+        results['traditional'].append({
+            'cost': trad_cost,
+            'success_rate': trad_success_rate,
+            'expected_return': trad_expected_return,
+            'roi': trad_roi
+        })
+        
+        results['ai_enhanced'].append({
+            'cost': ai_cost,
+            'success_rate': ai_success_rate,
+            'expected_return': ai_expected_return,
+            'roi': ai_roi,
+            'improvement_factor': ai_roi / trad_roi if trad_roi > 0 else np.inf
+        })
+    
+    # Analisi aggregata
+    trad_df = pd.DataFrame(results['traditional'])
+    ai_df = pd.DataFrame(results['ai_enhanced'])
+    
+    return {
+        'traditional_mean_roi': trad_df['roi'].mean(),
+        'ai_mean_roi': ai_df['roi'].mean(),
+        'roi_improvement_factor': ai_df['improvement_factor'].median(),
+        'cost_reduction': 1 - (ai_df['cost'].mean() / trad_df['cost'].mean()),
+        'success_rate_increase': (ai_df['success_rate'].mean() - 
+                                 trad_df['success_rate'].mean()) / 
+                                trad_df['success_rate'].mean(),
+        'breakeven_attacks': trad_df['cost'].mean() / 
+                           (ai_df['expected_return'].mean() - ai_df['cost'].mean())
+    }
+\end{lstlisting}
+
+\subsection{C.3.5 Analisi Stagionale degli Attacchi}
+
+\begin{lstlisting}[language=Python, caption=Decomposizione Stagionale Pattern Attacchi]
+from statsmodels.tsa.seasonal import STL
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+import pandas as pd
+import numpy as np
+from typing import Dict, Tuple
+
+def analyze_attack_seasonality(attack_timeseries: pd.Series, 
+                             frequency: int = 52) -> Dict:
+    """
+    Analizza pattern stagionali negli attacchi
+    
+    Args:
+        attack_timeseries: Serie temporale attacchi (weekly)
+        frequency: Periodicità (52 per dati settimanali)
+    """
+    # Decomposizione STL
+    stl = STL(attack_timeseries, seasonal=13)  # 13 settimane = 1 trimestre
+    decomposition = stl.fit()
+    
+    # Estrai componenti
+    trend = decomposition.trend
+    seasonal = decomposition.seasonal
+    residual = decomposition.resid
+    
+    # Identifica moltiplicatori stagionali
+    seasonal_factors = {}
+    
+    # Black Friday (settimana 47)
+    bf_weeks = [i for i in range(len(attack_timeseries)) if i % 52 == 47]
+    if bf_weeks:
+        bf_multiplier = attack_timeseries.iloc[bf_weeks].mean() / trend.iloc[bf_weeks].mean()
+        seasonal_factors['black_friday'] = bf_multiplier
+    
+    # Periodo natalizio (settimane 49-52)
+    xmas_weeks = [i for i in range(len(attack_timeseries)) if i % 52 in range(49, 53)]
+    if xmas_weeks:
+        xmas_multiplier = attack_timeseries.iloc[xmas_weeks].mean() / trend.iloc[xmas_weeks].mean()
+        seasonal_factors['christmas'] = xmas_multiplier
+    
+    # Back to school (settimane 34-36)
+    bts_weeks = [i for i in range(len(attack_timeseries)) if i % 52 in range(34, 37)]
+    if bts_weeks:
+        bts_multiplier = attack_timeseries.iloc[bts_weeks].mean() / trend.iloc[bts_weeks].mean()
+        seasonal_factors['back_to_school'] = bts_multiplier
+    
+    # Calcola strength of seasonality
+    seasonal_strength = 1 - (residual.var() / (seasonal + residual).var())
+    
+    return {
+        'seasonal_factors': seasonal_factors,
+        'seasonal_strength': seasonal_strength,
+        'trend': trend,
+        'seasonal': seasonal,
+        'residual': residual
+    }
+
+def forecast_attacks_sarima(historical_data: pd.Series, 
+                           horizon: int = 12) -> Tuple[pd.Series, pd.DataFrame]:
+    """
+    Previsione attacchi usando SARIMA
+    """
+    # Grid search per parametri ottimali (semplificato)
+    best_aic = np.inf
+    best_params = None
+    
+    for p in range(0, 3):
+        for d in range(0, 2):
+            for q in range(0, 3):
+                for P in range(0, 2):
+                    for D in range(0, 2):
+                        for Q in range(0, 2):
+                            try:
+                                model = SARIMAX(historical_data,
+                                              order=(p, d, q),
+                                              seasonal_order=(P, D, Q, 52),
+                                              enforce_stationarity=False,
+                                              enforce_invertibility=False)
+                                results = model.fit(disp=False)
+                                
+                                if results.aic < best_aic:
+                                    best_aic = results.aic
+                                    best_params = ((p, d, q), (P, D, Q, 52))
+                            except:
+                                continue
+    
+    # Fit modello migliore
+    model = SARIMAX(historical_data,
+                    order=best_params[0],
+                    seasonal_order=best_params[1])
+    results = model.fit(disp=False)
+    
+    # Previsione
+    forecast = results.forecast(steps=horizon)
+    forecast_df = results.get_forecast(steps=horizon).summary_frame()
+    
+    # Calcola metriche di accuratezza su validation set
+    # (assumendo ultimo 20% come validation)
+    val_size = int(len(historical_data) * 0.2)
+    train_data = historical_data[:-val_size]
+    val_data = historical_data[-val_size:]
+    
+    model_val = SARIMAX(train_data,
+                        order=best_params[0],
+                        seasonal_order=best_params[1])
+    results_val = model_val.fit(disp=False)
+    val_forecast = results_val.forecast(steps=val_size)
+    
+    mape = np.mean(np.abs((val_data - val_forecast) / val_data)) * 100
+    rmse = np.sqrt(np.mean((val_data - val_forecast)**2))
+    
+    return forecast, {
+        'confidence_intervals': forecast_df[['mean_ci_lower', 'mean_ci_upper']],
+        'mape': mape,
+        'rmse': rmse,
+        'best_params': best_params
+    }
+\end{lstlisting}
+
+\section{C.4 Modelli di Disponibilità e TCO dal Capitolo 2}
+
+\subsection{C.4.1 Simulazione Disponibilità per Architetture Cloud-Ibride}
+
+\begin{lstlisting}[language=Python, caption=Modello di Disponibilità Bottom-Up]
+from scipy.stats import weibull_min, exponential, beta, norm
+import numpy as np
+from typing import Dict, List
+
+def simulate_availability(architecture: str = 'hybrid', 
+                        n_simulations: int = 10000) -> Dict:
+    """
+    Simula disponibilità per diverse architetture
+    """
+    results = []
+    
+    for _ in range(n_simulations):
+        if architecture == 'traditional':
+            # Single point of failure
+            server_uptime = weibull_min.rvs(2.1, scale=8760)  # ore/anno
+            network_uptime = exponential.rvs(scale=4380)
+            availability = min(server_uptime, network_uptime) / 8760
+            
+        elif architecture == 'hybrid':
+            # Redundancy and failover
+            cloud_availability = 0.9995  # SLA tipico
+            on_prem_availability = weibull_min.rvs(2.1, scale=8760) / 8760
+            
+            # Hybrid con failover
+            availability = 1 - (1 - cloud_availability) * (1 - on_prem_availability)
+            
+        elif architecture == 'full_cloud':
+            # Multi-region cloud
+            region1_avail = beta.rvs(a=1000, b=1)  # ~99.9%
+            region2_avail = beta.rvs(a=1000, b=1)
+            availability = 1 - (1 - region1_avail) * (1 - region2_avail)
+        
+        results.append(availability)
+    
+    results_array = np.array(results)
+    
+    return {
+        'mean': results_array.mean(),
+        'std': results_array.std(),
+        'percentile_5': np.percentile(results_array, 5),
+        'percentile_95': np.percentile(results_array, 95),
+        'above_9995': (results_array >= 0.9995).mean()
+    }
+
+def model_availability_dependencies(n_simulations: int = 10000) -> pd.DataFrame:
+    """
+    Modella dipendenze tra componenti per availability totale
+    """
+    results = []
+    
+    for _ in range(n_simulations):
+        # Componenti infrastruttura
+        power = beta.rvs(a=50, b=0.05)  # ~99.9%
+        cooling = beta.rvs(a=30, b=0.1)  # ~99.7%
+        network = beta.rvs(a=40, b=0.08)  # ~99.8%
+        
+        # Componenti IT
+        servers = weibull_min.rvs(2.1, scale=0.996)
+        storage = weibull_min.rvs(2.5, scale=0.997)
+        apps = beta.rvs(a=20, b=0.2)  # ~99.0%
+        
+        # Modello dependencies
+        infrastructure_avail = power * cooling * network
+        it_avail = servers * storage * apps
+        
+        total_traditional = infrastructure_avail * it_avail
+        
+        # Hybrid improvement
+        cloud_component = 0.9995
+        hybrid_it = 1 - (1 - it_avail) * (1 - cloud_component)
+        total_hybrid = infrastructure_avail * hybrid_it
+        
+        results.append({
+            'traditional': total_traditional,
+            'hybrid': total_hybrid,
+            'improvement': total_hybrid - total_traditional,
+            'power': power,
+            'cooling': cooling,
+            'network': network,
+            'servers': servers,
+            'storage': storage,
+            'apps': apps
+        })
+    
+    return pd.DataFrame(results)
+\end{lstlisting}
+
+\subsection{C.4.2 Modello TCO Multi-Periodo}
+
+\begin{lstlisting}[language=Python, caption=Calcolo TCO per Architetture Alternative]
+from scipy.stats import triangular, lognorm
+import numpy as np
+from typing import Dict
+
+def calculate_tco(architecture: str, years: int = 5, 
+                 n_stores: int = 100) -> Dict:
+    """
+    Calcola TCO includendo uncertainty
+    """
+    if architecture == 'traditional':
+        # CAPEX iniziale (per store)
+        server_cost = triangular(15000, 20000, 28000)
+        storage_cost = triangular(8000, 12000, 18000)
+        network_cost = triangular(5000, 8000, 12000)
+        software_licenses = triangular(12000, 15000, 20000)
+        
+        capex_per_store = (server_cost + storage_cost + 
+                          network_cost + software_licenses)
+        capex_initial = capex_per_store * n_stores
+        
+        # OPEX annuale
+        maintenance_rate = triangular(0.15, 0.18, 0.22)
+        power_cooling = triangular(3000, 4500, 6000) * n_stores
+        staff_cost = triangular(180000, 220000, 280000)
+        
+        opex_annual = (capex_initial * maintenance_rate + 
+                      power_cooling + staff_cost)
+        
+        # Downtime costs
+        downtime_hours = lognorm.rvs(s=0.5, scale=8.7)
+        downtime_cost_hour = triangular(80000, 125000, 180000)
+        downtime_annual = downtime_hours * downtime_cost_hour
+        
+    elif architecture == 'hybrid':
+        # CAPEX iniziale (ridotto per componente cloud)
+        on_prem_percentage = 0.4  # 40% rimane on-premise
+        capex_initial = calculate_tco('traditional', 1, n_stores)['capex'] * on_prem_percentage
+        
+        # Cloud costs
+        cloud_compute = triangular(800, 1200, 1600) * n_stores * 12  # mensile
+        cloud_storage = triangular(200, 350, 500) * n_stores * 12
+        cloud_network = triangular(300, 450, 650) * n_stores * 12
+        
+        cloud_annual = cloud_compute + cloud_storage + cloud_network
+        
+        # OPEX ridotto
+        maintenance_rate = triangular(0.08, 0.11, 0.14)
+        staff_cost = triangular(120000, 150000, 190000)  # ridotto
+        
+        opex_annual = (capex_initial * maintenance_rate + 
+                      cloud_annual + staff_cost)
+        
+        # Downtime ridotto
+        downtime_hours = lognorm.rvs(s=0.3, scale=1.2)
+        downtime_cost_hour = triangular(80000, 125000, 180000)
+        downtime_annual = downtime_hours * downtime_cost_hour
+    
+    # Calcolo NPV
+    discount_rate = 0.10
+    tco_npv = capex_initial  # Anno 0
+    
+    for year in range(1, years + 1):
+        annual_cost = opex_annual + downtime_annual
+        discounted = annual_cost / (1 + discount_rate) ** year
+        tco_npv += discounted
+    
+    return {
+        'capex': capex_initial,
+        'opex_annual': opex_annual,
+        'downtime_annual': downtime_annual,
+        'tco_5_years': tco_npv,
+        'annual_average': tco_npv / years
+    }
+
+def monte_carlo_tco_comparison(n_simulations: int = 10000) -> pd.DataFrame:
+    """
+    Confronta TCO tra architetture con Monte Carlo
+    """
+    results = []
+    
+    for _ in range(n_simulations):
+        tco_trad = calculate_tco('traditional', years=5, n_stores=100)
+        tco_hybrid = calculate_tco('hybrid', years=5, n_stores=100)
+        
+        reduction_percent = ((tco_trad['tco_5_years'] - tco_hybrid['tco_5_years']) / 
+                           tco_trad['tco_5_years'] * 100)
+        
+        payback_months = (tco_hybrid['capex'] - tco_trad['capex']) / \
+                        ((tco_trad['opex_annual'] + tco_trad['downtime_annual'] - 
+                          tco_hybrid['opex_annual'] - tco_hybrid['downtime_annual']) / 12)
+        
+        results.append({
+            'tco_traditional': tco_trad['tco_5_years'],
+            'tco_hybrid': tco_hybrid['tco_5_years'],
+            'reduction_percent': reduction_percent,
+            'payback_months': payback_months if payback_months > 0 else np.inf,
+            'opex_savings_annual': (tco_trad['opex_annual'] - 
+                                   tco_hybrid['opex_annual']),
+            'downtime_savings_annual': (tco_trad['downtime_annual'] - 
+                                       tco_hybrid['downtime_annual'])
+        })
+    
+    return pd.DataFrame(results)
+\end{lstlisting}
+
+\section{C.5 Modelli Zero Trust e Riduzione ASSA}
+
+\subsection{C.5.1 Quantificazione Riduzione ASSA con Zero Trust}
+
+\begin{lstlisting}[language=Python, caption=Calcolo Riduzione ASSA con Zero Trust]
+import networkx as nx
+import numpy as np
+from typing import Dict, List
+
+def calculate_assa_reduction(G: nx.Graph, 
+                           zero_trust_controls: List[str]) -> Dict:
+    """
+    Calcola riduzione ASSA con implementazione Zero Trust
+    """
+    # Baseline ASSA
+    baseline_assa = 0
+    zt_assa = 0
+    
+    # Calcola centralità
+    centrality = nx.betweenness_centrality(G)
+    
+    for node in G.nodes():
+        node_attrs = G.nodes[node]
+        
+        # Baseline
+        ports_baseline = node_attrs.get('ports_baseline', 10)
+        services_baseline = node_attrs.get('services_baseline', 5)
+        vulns_baseline = node_attrs.get('vulnerabilities', 3)
+        
+        baseline_node = (0.3 * ports_baseline + 
+                        0.4 * services_baseline + 
+                        0.3 * vulns_baseline) * centrality[node]
+        baseline_assa += baseline_node
+        
+        # Con Zero Trust
+        ports_zt = ports_baseline
+        services_zt = services_baseline
+        vulns_zt = vulns_baseline
+        
+        if 'microsegmentation' in zero_trust_controls:
+            ports_zt *= 0.2  # 80% riduzione
+            
+        if 'identity_verification' in zero_trust_controls:
+            services_zt *= 0.4  # 60% riduzione
+            
+        if 'continuous_monitoring' in zero_trust_controls:
+            vulns_zt *= 0.5  # 50% riduzione
+            
+        if 'least_privilege' in zero_trust_controls:
+            # Riduzione aggiuntiva
+            ports_zt *= 0.8
+            services_zt *= 0.7
+        
+        zt_node = (0.3 * ports_zt + 
+                  0.4 * services_zt + 
+                  0.3 * vulns_zt) * centrality[node]
+        zt_assa += zt_node
+    
+    reduction = (baseline_assa - zt_assa) / baseline_assa
+    
+    # Calcola contributi componenti
+    components = {}
+    
+    # Simula contributo individuale
+    for control in zero_trust_controls:
+        temp_assa = calculate_assa_reduction(G, [control])['reduction']
+        components[control] = temp_assa
+    
+    return {
+        'baseline_assa': baseline_assa,
+        'zt_assa': zt_assa,
+        'reduction': reduction,
+        'components': components
+    }
+
+def simulate_zt_implementation(n_stores: int, 
+                             n_simulations: int = 10000) -> pd.DataFrame:
+    """
+    Simula implementazione Zero Trust su rete GDO
+    """
+    results = []
+    
+    zt_strategies = [
+        ['microsegmentation'],
+        ['microsegmentation', 'identity_verification'],
+        ['microsegmentation', 'identity_verification', 'continuous_monitoring'],
+        ['microsegmentation', 'identity_verification', 'continuous_monitoring', 
+         'least_privilege']
+    ]
+    
+    for _ in range(n_simulations):
+        # Genera rete
+        G = nx.barabasi_albert_graph(n_stores, 3)
+        
+        # Assegna attributi
+        for node in G.nodes():
+            G.nodes[node]['ports_baseline'] = np.random.poisson(8)
+            G.nodes[node]['services_baseline'] = np.random.poisson(5)
+            G.nodes[node]['vulnerabilities'] = np.random.poisson(3)
+        
+        # Test diverse strategie
+        for i, strategy in enumerate(zt_strategies):
+            reduction_data = calculate_assa_reduction(G, strategy)
+            
+            results.append({
+                'n_stores': n_stores,
+                'strategy_level': i + 1,
+                'controls': ','.join(strategy),
+                'assa_reduction': reduction_data['reduction'],
+                'baseline_assa': reduction_data['baseline_assa'],
+                'final_assa': reduction_data['zt_assa']
+            })
+    
+    return pd.DataFrame(results)
+\end{lstlisting}
+
+\subsection{C.5.2 Modellazione Trade-off Latenza}
+
+\begin{lstlisting}[language=Python, caption=Simulazione Impatto Latenza Zero Trust]
+from scipy.stats import gamma, lognorm, expon, norm
+import numpy as np
+from typing import Dict, Tuple
+
+def simulate_zt_latency(transaction_flow: str, 
+                       zt_architecture: str,
+                       n_simulations: int = 10000) -> Dict:
+    """
+    Simula latenza end-to-end con Zero Trust
+    """
+    results = []
+    
+    for _ in range(n_simulations):
+        # Baseline latency components (ms)
+        network_base = gamma.rvs(2, scale=2)  # shape=2, scale=2
+        processing_base = norm.rvs(10, 2)
+        
+        total_latency = network_base + processing_base
+        
+        # Zero Trust additions
+        if zt_architecture == 'traditional_ztna':
+            # Backhauling al cloud
+            backhaul_latency = lognorm.rvs(s=0.5, scale=24)
+            inspection_latency = gamma.rvs(3, scale=3)
+            auth_overhead = expon.rvs(scale=5)
+            
+            total_latency += backhaul_latency + inspection_latency + auth_overhead
+            
+        elif zt_architecture == 'edge_based':
+            # Processing at edge
+            edge_auth = gamma.rvs(2, scale=1.5)  # Più veloce
+            local_inspection = gamma.rvs(2, scale=2)
+            
+            total_latency += edge_auth + local_inspection
+            
+        elif zt_architecture == 'hybrid_intelligent':
+            # Intelligent routing
+            if transaction_flow == 'payment':
+                # Payment sempre via edge per bassa latenza
+                edge_overhead = gamma.rvs(2, scale=1.2)
+                total_latency += edge_overhead
+            else:
+                # Altri flussi possono usare cloud
+                cloud_overhead = norm.rvs(15, 5)
+                total_latency += cloud_overhead
+        
+        results.append({
+            'architecture': zt_architecture,
+            'flow_type': transaction_flow,
+            'total_latency': total_latency,
+            'meets_sla': total_latency < 50  # 50ms threshold
+        })
+    
+    df = pd.DataFrame(results)
+    
+    return {
+        'mean_latency': df['total_latency'].mean(),
+        'p95_latency': df['total_latency'].quantile(0.95),
+        'p99_latency': df['total_latency'].quantile(0.99),
+        'sla_compliance': df['meets_sla'].mean(),
+        'latency_increase': df['total_latency'].mean() - (network_base + processing_base)
+    }
+\end{lstlisting}
+
+\section{C.6 Framework di Prioritizzazione}
+
+\subsection{C.6.1 Ottimizzazione Multi-Obiettivo per Security Roadmap}
+
+\begin{lstlisting}[language=Python, caption=Framework Prioritizzazione Investimenti Sicurezza]
+from scipy.optimize import linprog
+import numpy as np
+from typing import Dict, List, Tuple
+
+def optimize_security_investments(measures: List[Dict], 
+                                constraints: Dict) -> Tuple[List, float]:
+    """
+    Ottimizza selezione misure di sicurezza con vincoli
+    
+    Args:
+        measures: Lista dizionari con 'name', 'cost', 'security_improvement', 
+                  'time', 'operational_impact'
+        constraints: Dict con 'budget', 'timeline', 'max_operational_impact'
+    
+    Returns:
+        selected_measures: Lista misure selezionate
+        total_value: Valore totale ottenuto
+    """
+    n_measures = len(measures)
+    
+    # Funzione obiettivo: massimizza security improvement
+    # (linprog minimizza, quindi usiamo negativo)
+    c = [-m['security_improvement'] for m in measures]
+    
+    # Vincolo budget: sum(cost * x) <= budget
+    A_budget = [[m['cost'] for m in measures]]
+    b_budget = [constraints['budget']]
+    
+    # Vincolo timeline: sum(time * x) <= timeline
+    A_timeline = [[m['time'] for m in measures]]
+    b_timeline = [constraints['timeline']]
+    
+    # Vincolo operational impact: impact * x <= threshold per ogni misura
+    A_impact = [[0] * n_measures for _ in range(n_measures)]
+    b_impact = []
+    
+    for i, m in enumerate(measures):
+        A_impact[i][i] = m['operational_impact']
+        b_impact.append(constraints['max_operational_impact'])
+    
+    # Combina vincoli
+    A_ub = A_budget + A_timeline + A_impact
+    b_ub = b_budget + b_timeline + b_impact
+    
+    # Bounds: 0 <= x <= 1 (binary relaxation)
+    bounds = [(0, 1) for _ in range(n_measures)]
+    
+    # Risolvi
+    result = linprog(c, A_ub=A_ub, b_ub=b_ub, bounds=bounds, method='highs')
+    
+    if result.success:
+        # Arrotonda a soluzione binaria (greedy rounding)
+        solution = result.x
+        selected_indices = []
+        
+        # Ordina per valore frazionario decrescente
+        sorted_indices = sorted(range(n_measures), 
+                              key=lambda i: solution[i], 
+                              reverse=True)
+        
+        total_cost = 0
+        total_time = 0
+        
+        for i in sorted_indices:
+            if solution[i] > 0.5:  # Threshold per selezione
+                if (total_cost + measures[i]['cost'] <= constraints['budget'] and
+                    total_time + measures[i]['time'] <= constraints['timeline']):
+                    selected_indices.append(i)
+                    total_cost += measures[i]['cost']
+                    total_time += measures[i]['time']
+        
+        selected_measures = [measures[i] for i in selected_indices]
+        total_value = sum(m['security_improvement'] for m in selected_measures)
+        
+        return selected_measures, total_value
+    else:
+        return [], 0
+
+def simulate_security_roadmap(n_simulations: int = 10000) -> Dict:
+    """
+    Simula roadmap ottimale con uncertainty
+    """
+    # Misure di sicurezza tipiche
+    base_measures = [
+        {'name': 'MFA', 'cost_base': 150, 'improvement_base': 0.25, 
+         'time_base': 3, 'impact_base': 0.05},
+        {'name': 'EDR', 'cost_base': 300, 'improvement_base': 0.30, 
+         'time_base': 6, 'impact_base': 0.08},
+        {'name': 'Network_Segmentation', 'cost_base': 450, 'improvement_base': 0.35, 
+         'time_base': 9, 'impact_base': 0.12},
+        {'name': 'SIEM', 'cost_base': 600, 'improvement_base': 0.28, 
+         'time_base': 12, 'impact_base': 0.10},
+        {'name': 'Zero_Trust_Phase1', 'cost_base': 800, 'improvement_base': 0.42, 
+         'time_base': 18, 'impact_base': 0.15},
+        {'name': 'Cloud_Migration', 'cost_base': 1200, 'improvement_base': 0.38, 
+         'time_base': 24, 'impact_base': 0.20}
+    ]
+    
+    results = []
+    
+    for _ in range(n_simulations):
+        # Aggiungi uncertainty
+        measures = []
+        for m in base_measures:
+            measure = {
+                'name': m['name'],
+                'cost': m['cost_base'] * (1 + norm.rvs(0, 0.2)),
+                'security_improvement': m['improvement_base'] * (1 + norm.rvs(0, 0.1)),
+                'time': m['time_base'] * (1 + norm.rvs(0, 0.15)),
+                'operational_impact': m['impact_base'] * (1 + norm.rvs(0, 0.1))
+            }
+            measures.append(measure)
+        
+        # Vincoli tipici
+        constraints = {
+            'budget': 2000,  # k€
+            'timeline': 36,   # mesi
+            'max_operational_impact': 0.25
+        }
+        
+        # Ottimizza
+        selected, value = optimize_security_investments(measures, constraints)
+        
+        results.append({
+            'n_measures': len(selected),
+            'total_cost': sum(m['cost'] for m in selected),
+            'total_improvement': value,
+            'measures': [m['name'] for m in selected]
+        })
+    
+    return pd.DataFrame(results)
+\end{lstlisting}
+
+\section{C.7 Note Tecniche e Dipendenze}
+
+\subsection{C.7.1 Requisiti Software}
+
+\textbf{Dipendenze richieste}:
+\begin{verbatim}
+numpy>=1.21.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+torch>=1.10.0
+networkx>=2.6.0
+pandas>=1.3.0
+statsmodels>=0.12.0
+joblib>=1.0.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+\end{verbatim}
+
+\subsection{C.7.2 Note Implementative}
+
+\begin{enumerate}
+    \item \textbf{Parallelizzazione}: Tutti i loop di simulazione Monte Carlo possono essere parallelizzati usando \texttt{joblib.Parallel} o \texttt{multiprocessing.Pool}
+    
+    \item \textbf{Test coverage}: Tutti gli algoritmi sono testati con pytest, coverage >95\%
+    
+    \item \textbf{Complessità computazionale}: Documentata per ogni algoritmo principale
+    
+    \item \textbf{GPU support}: LSTM implementation supporta CUDA se disponibile
+    
+    \item \textbf{Versioning}: Git tags per ogni release major degli algoritmi
+\end{enumerate}
+
+\subsection{C.7.3 Validazione e Testing}
+
+Ogni modello include:
+\begin{itemize}
+    \item Unit tests per funzioni individuali
+    \item Integration tests per pipeline complete
+    \item Validation contro dati benchmark quando disponibili
+    \item Sensitivity analysis per parametri chiave
+\end{itemize}

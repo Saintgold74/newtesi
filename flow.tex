@@ -1,0 +1,59 @@
+
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage{pgfplots}
+\begin{document}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=2cm,
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    data/.style={trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30},
+    arrow/.style={thick,->,>=stealth}
+]
+
+% Nodi principali
+\node (start) [startstop] {Input: Dati Organizzazione};
+\node (comp) [process, below of=start, align=center] {Calcolo Componenti\\P, A, S, C};
+\node (mode) [decision, below of=comp, align=center, yshift=-0.5cm] {Assessment\\Mode?};
+\node (balanced) [process, below left of=mode, align=center, xshift=-2cm] {Modello\\Aggregato\\$\sum w_i \cdot C_i$};
+\node (critical) [process, below right of=mode, align=center, xshift=2cm] {Modello\\Restrittivo\\$\prod C_i^{w_i}$};
+\node (kgdo) [process, below of=mode, align=center, yshift=-2.5cm] {Calcolo $K_{GDO}$\\e Fattore I};
+\node (score) [process, below of=kgdo, align=center] {GIST Score\\$[0, 100]$};
+\node (analysis) [data, below of=score, align=center] {Analisi Sinergie\\+52\% amplificazione};
+\node (output) [startstop, below of=analysis, align=center] {Output: Score +\\Raccomandazioni};
+
+% Connessioni
+\draw [arrow] (start) -- (comp);
+\draw [arrow] (comp) -- (mode);
+\draw [arrow] (mode) -- node[anchor=east] {balanced} (balanced);
+\draw [arrow] (mode) -- node[anchor=west] {critical} (critical);
+\draw [arrow] (balanced) |- (kgdo);
+\draw [arrow] (critical) |- (kgdo);
+\draw [arrow] (kgdo) -- (score);
+\draw [arrow] (score) -- (analysis);
+\draw [arrow] (analysis) -- (output);
+
+% Box laterali per componenti
+\node (pbox) [data, left of=comp, xshift=-4cm, fill=yellow!20, align=center] {Physical\\(peso: 0.18)};
+\node (abox) [data, left of=pbox, xshift=-2.5cm, fill=yellow!20, align=center] {Architectural\\(peso: 0.32)};
+\node (sbox) [data, right of=comp, xshift=4cm, fill=yellow!20, align=center] {Security\\(peso: 0.28)};
+\node (cbox) [data, right of=sbox, xshift=2.5cm, fill=yellow!20, align=center] {Compliance\\(peso: 0.22)};
+
+% Connessioni componenti
+\draw [arrow, dashed] (pbox) -- (comp);
+\draw [arrow, dashed] (abox) -- (comp);
+\draw [arrow, dashed] (sbox) -- (comp);
+\draw [arrow, dashed] (cbox) -- (comp);
+
+\end{tikzpicture}
+\caption{Diagramma di flusso del Framework GIST: dalla raccolta dati al calcolo dello score finale con identificazione delle sinergie}
+\label{fig:gist-flowchart}
+\end{figure}
+\end{document}

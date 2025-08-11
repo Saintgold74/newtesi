@@ -1,0 +1,438 @@
+% Figure per il Capitolo 1 - Codice XeLaTeX
+% Da inserire nel documento principale o in file separati
+
+% Preambolo necessario
+% \usepackage{tikz}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.18}
+% \usepackage{pgfplotstable}
+% \usetikzlibrary{shapes,arrows,positioning,patterns,shadows,backgrounds}
+
+% % Definizione colori tema
+% \definecolor{primary}{HTML}{2E86AB}
+% \definecolor{secondary}{HTML}{A23B72}
+% \definecolor{success}{HTML}{73AB84}
+% \definecolor{warning}{HTML}{F18F01}
+% \definecolor{danger}{HTML}{C73E1D}
+% \definecolor{neutral}{HTML}{7A7A7A}
+
+% ===== FIGURA 1.1: FRAMEWORK GIST =====
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    component/.style={
+        rectangle, 
+        rounded corners=10pt,
+        draw,
+        text width=3.5cm,
+        minimum height=2.8cm,
+        text centered,
+        font=\small\sffamily,
+        line width=2pt,
+        drop shadow
+    },
+    centralnode/.style={
+        circle,
+        draw=secondary,
+        fill=secondary!90,
+        text width=2.8cm,
+        minimum height=2.8cm,
+        text centered,
+        font=\footnotesize\bfseries\sffamily,
+        line width=2.5pt,
+        text=white,
+        drop shadow
+    },
+    arrow/.style={
+        ->,
+        >=stealth,
+        line width=2pt,
+        color=gray!60
+    },
+    doublearrow/.style={
+        <->,
+        >=stealth,
+        line width=1.5pt,
+        color=gray!40,
+        dashed
+    },
+    label/.style={
+        font=\scriptsize\sffamily,
+        fill=white,
+        inner sep=2pt,
+        rounded corners=3pt
+    }
+]
+
+% Nodo centrale
+\node[centralnode] (gist) at (0,0) {GIST\\Framework\\Integrato};
+
+% Quattro componenti principali
+\node[component, fill=primary!90, text=white, draw=primary] (governance) at (-4.5,3.5) {
+    \textbf{Governance}\\[5pt]
+    \footnotesize
+    • Politiche\\
+    • Processi\\
+    • Risk Management\\
+    • KPI e Metriche
+};
+
+\node[component, fill=success!90, text=white, draw=success] (infrastructure) at (4.5,3.5) {
+    \textbf{Infrastructure}\\[5pt]
+    \footnotesize
+    • Fondamenta Fisiche\\
+    • Reti SD-WAN\\
+    • Cloud Ibrido\\
+    • Edge Computing
+};
+
+\node[component, fill=danger!90, text=white, draw=danger] (security) at (-4.5,-3.5) {
+    \textbf{Security}\\[5pt]
+    \footnotesize
+    • Zero Trust\\
+    • Threat Detection\\
+    • Incident Response\\
+    • Data Protection
+};
+
+\node[component, fill=warning!90, text=white, draw=warning] (transformation) at (4.5,-3.5) {
+    \textbf{Transformation}\\[5pt]
+    \footnotesize
+    • Change Management\\
+    • Migration Path\\
+    • Training\\
+    • Innovation
+};
+
+% Connessioni con il centro
+\draw[arrow] (governance) -- node[label,above,sloped] {Direttive} (gist);
+\draw[arrow] (gist) -- node[label,above,sloped] {Requisiti} (infrastructure);
+\draw[arrow] (security) -- node[label,below,sloped] {Controlli} (gist);
+\draw[arrow] (gist) -- node[label,below,sloped] {Evoluzione} (transformation);
+
+% Interconnessioni tra componenti
+\draw[doublearrow] (governance) -- node[label,left] {Compliance} (security);
+\draw[doublearrow] (infrastructure) -- node[label,right] {Resilienza} (transformation);
+\draw[doublearrow] (governance.east) -- node[label,above] {Standards} (infrastructure.west);
+\draw[doublearrow] (security.east) -- node[label,below] {Sicurezza} (transformation.west);
+
+% Metriche esterne con sfondo
+\begin{scope}[on background layer]
+    \node[fill=gray!10, rounded corners=8pt, inner sep=10pt] at (0,-5.5) {
+        \phantom{\textbf{Metriche Chiave:} Availability $\geq$99.95\% | TCO -38\% | ASSA -42\% | ROI 287\%}
+    };
+\end{scope}
+\node[font=\footnotesize\sffamily\bfseries] at (0,-5.5) {
+    Metriche Chiave: Availability $\geq$99.95\% | TCO -38\% | ASSA -42\% | ROI 287\%
+};
+
+\end{tikzpicture}
+\caption{Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della GDO. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
+\label{fig:gist_framework}
+\end{figure}
+
+% ===== FIGURA 1.2: EVOLUZIONE ATTACCHI CYBER =====
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=7cm,
+    xlabel={Anno},
+    ylabel={Numero di Incidenti},
+    y2 label={Impatto Economico (M€)},
+    xmin=2019.5, xmax=2025.5,
+    ymin=0, ymax=900,
+    y2min=0, y2max=250,
+    xtick={2020,2021,2022,2023,2024,2025},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    grid alpha=0.3,
+    axis y line*=left,
+    axis x line*=bottom,
+    y2 axis,
+    y2 axis line style={blue!70!black},
+    y2 tick label style={blue!70!black},
+    y2 label style={blue!70!black},
+    ylabel style={danger},
+    y tick label style={danger},
+]
+
+% Area sotto la curva incidenti
+\addplot[
+    color=danger,
+    fill=danger,
+    fill opacity=0.2,
+    draw=none,
+    area legend,
+    ]
+    coordinates {
+    (2020,0) (2020,142)
+    (2021,187)
+    (2022,312)
+    (2023,584)
+    (2024,721)
+    (2025,847)
+    (2025,0)
+    } \closedcycle;
+
+% Prima serie: Numero di incidenti
+\addplot[
+    color=danger,
+    mark=*,
+    line width=2pt,
+    mark size=3pt,
+    ]
+    coordinates {
+    (2020,142)
+    (2021,187)
+    (2022,312)
+    (2023,584)
+    (2024,721)
+    (2025,847)
+    };
+    \addlegendentry{Numero Incidenti}
+
+% Proiezione 2025 (tratteggiata)
+\addplot[
+    color=danger,
+    dashed,
+    line width=2pt,
+    mark=none,
+    forget plot,
+    ]
+    coordinates {
+    (2024,721)
+    (2025,847)
+    };
+
+% Seconda serie: Impatto economico (asse y2)
+\addplot[
+    color=primary,
+    mark=square*,
+    line width=2pt,
+    mark size=3pt,
+    y axis=right,
+    ]
+    coordinates {
+    (2020,23)
+    (2021,34)
+    (2022,67)
+    (2023,124)
+    (2024,189)
+    (2025,234)
+    };
+    \addlegendentry{Impatto (M€)}
+
+% Proiezione 2025 impatto (tratteggiata)
+\addplot[
+    color=primary,
+    dashed,
+    line width=2pt,
+    mark=none,
+    y axis=right,
+    forget plot,
+    ]
+    coordinates {
+    (2024,189)
+    (2025,234)
+    };
+
+% Annotazione per evidenziare il picco
+\node[
+    anchor=south west, 
+    draw=danger, 
+    fill=white, 
+    rounded corners,
+    line width=1.5pt,
+    font=\footnotesize\bfseries
+] at (axis cs:2022.3,400) {+312\%\\(2021-2023)};
+\draw[->,danger,line width=2pt] (axis cs:2023,430) -- (axis cs:2023,560);
+
+% Annotazione proiezione
+\node[
+    font=\scriptsize,
+    color=danger
+] at (axis cs:2025,870) {(Proiez.)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Evoluzione degli attacchi cyber al settore retail italiano (2020-2025). L'incremento esponenziale del 312\% nel periodo 2021-2023 evidenzia l'urgenza di strategie di sicurezza avanzate. Dati 2025 proiettati. Fonte: aggregazione da CERT nazionali ed ENISA (2024).}
+\label{fig:cyber_evolution}
+\end{figure}
+
+% ===== FIGURA 1.5: CONFRONTO TCO =====
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=7cm,
+    xlabel={Anni dall'Implementazione},
+    ylabel={TCO Cumulativo (Indice base=100)},
+    xmin=-0.5, xmax=5.5,
+    ymin=0, ymax=600,
+    xtick={0,1,2,3,4,5},
+    legend pos=north west,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid style={dashed, gray!30},
+]
+
+% Area di risparmio (dal punto 2 in poi)
+\addplot[
+    color=success,
+    fill=success!30,
+    draw=none,
+    area legend,
+    forget plot,
+] coordinates {
+    (2,265) (3,355) (4,450) (5,550)
+    (5,390) (4,330) (3,275) (2,220)
+} \closedcycle;
+
+% TCO Tradizionale
+\addplot[
+    color=danger,
+    mark=triangle*,
+    line width=2pt,
+    mark size=3pt,
+    dashed,
+    ]
+    coordinates {
+    (0,100) (1,180) (2,265) (3,355) (4,450) (5,550)
+    };
+    \addlegendentry{TCO On-Premise}
+
+% TCO Cloud-Ibrido
+\addplot[
+    color=primary,
+    mark=*,
+    line width=2pt,
+    mark size=3pt,
+    ]
+    coordinates {
+    (0,120) (1,170) (2,220) (3,275) (4,330) (5,390)
+    };
+    \addlegendentry{TCO Cloud-Ibrido}
+
+% Break-even point
+\addplot[
+    color=warning,
+    mark=star,
+    mark size=6pt,
+    only marks,
+    line width=2pt,
+    ]
+    coordinates {(1.31,198)};
+    \addlegendentry{Break-even Point}
+    
+\node[
+    anchor=south, 
+    draw=warning, 
+    fill=white, 
+    rounded corners,
+    line width=1.5pt,
+    font=\footnotesize\bfseries
+] at (axis cs:1.31,240) {Break-even\\15.7 mesi};
+\draw[->,warning,line width=2pt] (axis cs:1.31,225) -- (axis cs:1.31,208);
+
+% Annotazione risparmio
+\node[
+    anchor=west, 
+    draw=success!80!black, 
+    fill=white, 
+    rounded corners,
+    line width=1.5pt,
+    font=\footnotesize\bfseries
+] at (axis cs:3.5,400) {Risparmio\\38.2\%};
+
+% Valori di risparmio annuali
+\foreach \i in {2,3,4,5} {
+    \pgfmathsetmacro{\tradval}{100 + 80*\i + 5*\i*\i}
+    \pgfmathsetmacro{\cloudval}{120 + 50*\i}
+    \pgfmathsetmacro{\saving}{\tradval - \cloudval}
+    \node[
+        font=\scriptsize\bfseries,
+        color=success!80!black
+    ] at (axis cs:\i,\cloudval-20) {+\pgfmathprintnumber{\saving}};
+}
+
+\end{axis}
+\end{tikzpicture}
+\caption{Analisi comparativa del Total Cost of Ownership (TCO) tra architetture tradizionali on-premise e soluzioni cloud-ibride su orizzonte quinquennale. Il break-even si raggiunge a 15.7 mesi con un risparmio cumulativo del 38.2\% al quinto anno.}
+\label{fig:tco_comparison}
+\end{figure}
+
+% ===== FIGURA 1.7: PROGRESSIONE ROI =====
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.9\textwidth,
+    height=7cm,
+    bar width=0.7cm,
+    xlabel={Trimestri},
+    ylabel={ROI Cumulativo (\%)},
+    ymin=-60, ymax=320,
+    xtick=data,
+    symbolic x coords={Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8},
+    ymajorgrids=true,
+    grid style={dashed, gray!30},
+    nodes near coords,
+    nodes near coords style={font=\scriptsize\bfseries},
+    every node near coord/.append style={
+        /pgf/number format/fixed,
+        /pgf/number format/precision=0
+    },
+]
+
+% Barre ROI
+\addplot[
+    fill=danger!80,
+    draw=black,
+    line width=1pt,
+] coordinates {
+    (Q1,-15)
+    (Q2,8)
+};
+
+\addplot[
+    fill=success!80,
+    draw=black,
+    line width=1pt,
+] coordinates {
+    (Q3,34)
+    (Q4,67)
+    (Q5,112)
+    (Q6,178)
+    (Q7,234)
+    (Q8,287)
+};
+
+% Linea zero
+\draw[black, line width=1pt] (axis cs:Q1,0) -- (axis cs:Q8,0);
+
+% Linea target
+\draw[warning, dashed, line width=2pt] (axis cs:Q1,287) -- (axis cs:Q8,287);
+\node[
+    anchor=west,
+    font=\footnotesize\bfseries,
+    color=warning
+] at (axis cs:Q7,287) {Target: 287\%};
+
+% Break-even point
+\node[
+    circle,
+    fill=danger,
+    inner sep=3pt,
+    label={[font=\scriptsize\bfseries]above:Break-even}
+] at (axis cs:Q2,0) {};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Progressione del Return on Investment (ROI) nell'implementazione del framework GIST su 24 mesi. Il break-even viene raggiunto nel secondo trimestre con accelerazione progressiva fino al target del 287\%.}
+\label{fig:roi_progression}
+\end{figure}

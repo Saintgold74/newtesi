@@ -1,0 +1,114 @@
+% Figura 1.1: Framework GIST
+% Da inserire nel documento LaTeX principale o in un file separato
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=3cm,
+    component/.style={
+        rectangle, 
+        rounded corners=8pt,
+        draw=blue!50!black,
+        fill=blue!10,
+        text width=3.5cm,
+        minimum height=2.5cm,
+        text centered,
+        font=\small\sffamily,
+        line width=1.5pt
+    },
+    centralnode/.style={
+        circle,
+        draw=red!60!black,
+        fill=red!10,
+        text width=2.5cm,
+        minimum height=2.5cm,
+        text centered,
+        font=\footnotesize\bfseries\sffamily,
+        line width=2pt
+    },
+    arrow/.style={
+        ->,
+        >=stealth,
+        line width=1.5pt,
+        color=gray!70!black
+    },
+    doublearrow/.style={
+        <->,
+        >=stealth,
+        line width=1.5pt,
+        color=gray!70!black
+    },
+    label/.style={
+        font=\tiny\sffamily,
+        color=gray!70!black
+    }
+]
+
+% Nodo centrale
+\node[centralnode] (gist) at (0,0) {GIST\\Framework\\Integrato};
+
+% Quattro componenti principali
+\node[component] (governance) at (-4,3) {
+    \textbf{Governance}\\[5pt]
+    \small
+    • Politiche\\
+    • Processi\\
+    • Risk Management\\
+    • KPI e Metriche
+};
+
+\node[component] (infrastructure) at (4,3) {
+    \textbf{Infrastructure}\\[5pt]
+    \small
+    • Fondamenta Fisiche\\
+    • Reti SD-WAN\\
+    • Cloud Ibrido\\
+    • Edge Computing
+};
+
+\node[component] (security) at (-4,-3) {
+    \textbf{Security}\\[5pt]
+    \small
+    • Zero Trust\\
+    • Threat Detection\\
+    • Incident Response\\
+    • Data Protection
+};
+
+\node[component] (transformation) at (4,-3) {
+    \textbf{Transformation}\\[5pt]
+    \small
+    • Change Management\\
+    • Migration Path\\
+    • Training\\
+    • Innovation
+};
+
+% Connessioni con il centro
+\draw[arrow] (governance) -- node[label,above,sloped] {Direttive} (gist);
+\draw[arrow] (gist) -- node[label,above,sloped] {Requisiti} (infrastructure);
+\draw[arrow] (security) -- node[label,below,sloped] {Controlli} (gist);
+\draw[arrow] (gist) -- node[label,below,sloped] {Evoluzione} (transformation);
+
+% Interconnessioni tra componenti
+\draw[doublearrow,dashed] (governance) -- node[label,left] {Compliance} (security);
+\draw[doublearrow,dashed] (infrastructure) -- node[label,right] {Resilienza} (transformation);
+\draw[doublearrow,dashed] (governance) -- node[label,above] {Standards} (infrastructure);
+\draw[doublearrow,dashed] (security) -- node[label,below] {Sicurezza} (transformation);
+
+% Metriche esterne
+\node[below=4.5cm of gist, font=\footnotesize\sffamily] {
+    \textbf{Metriche Chiave:} Availability $\geq$99.95\% | TCO -38\% | ASSA -42\% | ROI 287\%
+};
+
+% Legenda
+\begin{scope}[shift={(7,-1)}]
+    \node[font=\tiny\sffamily] at (0,0) {\textbf{Legenda:}};
+    \draw[arrow,gray] (0,-0.3) -- (0.8,-0.3) node[right,font=\tiny] {Flusso primario};
+    \draw[doublearrow,dashed,gray] (0,-0.6) -- (0.8,-0.6) node[right,font=\tiny] {Interdipendenza};
+\end{scope}
+
+\end{tikzpicture}
+\caption{Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della GDO. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
+\label{fig:gist_framework}
+\end{figure}

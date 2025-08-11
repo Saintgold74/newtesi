@@ -1,0 +1,190 @@
+% ============================================================================
+% MAPPATURA DELLE CITAZIONI PER SEZIONE DEL CAPITOLO 3
+% Guida per l'inserimento dei riferimenti bibliografici nel testo
+% ============================================================================
+
+\documentclass{article}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[italian]{babel}
+\usepackage{tcolorbox}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Guida all'Inserimento delle Citazioni nel Capitolo 3}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Istruzioni per l'Uso}]
+Questa tabella indica quali riferimenti bibliografici citare in ogni sezione del Capitolo 3. 
+Nel testo LaTeX, utilizzare \texttt{\textbackslash cite\{riferimento\}} per le citazioni.
+\end{tcolorbox}
+
+\begin{longtable}{p{0.35\textwidth}|p{0.35\textwidth}|p{0.25\textwidth}}
+\toprule
+\textbf{Sezione/Sottosezione} & \textbf{Contenuto da Citare} & \textbf{Riferimenti Suggeriti} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}{\textit{Continuazione dalla pagina precedente}} \\
+\toprule
+\textbf{Sezione/Sottosezione} & \textbf{Contenuto da Citare} & \textbf{Riferimenti Suggeriti} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+% SEZIONE 3.1
+\textbf{3.1 Introduzione e Framework Teorico} & & \\
+\midrule
+3.1.1 Posizionamento nel Contesto & & \\
+- 78\% attacchi su vulnerabilità architetturali & Dato threat landscape & \texttt{enisa2024} \\
+- Teoria sistemi distribuiti & Framework concettuale & \texttt{coulouris2023, tanenbaum2023} \\
+- 47 studi aggregati & Metodologia ricerca & \texttt{zhang2024} \\
+- 23 report di settore & Fonti industriali & \texttt{gartner2024cloud, idc2024} \\
+\midrule
+3.1.2 Modello Teorico Evoluzione & & \\
+- Funzione di transizione E(t) & Modello matematico & \texttt{klems2023} \\
+- Calibrazione coefficienti & Validazione empirica & \texttt{martens2024} \\
+- R²=0.87 & Capacità predittiva & \texttt{dataset2024} \\
+\midrule
+
+% SEZIONE 3.2
+\textbf{3.2 Infrastruttura Fisica} & & \\
+\midrule
+3.2.1 Affidabilità Sistemi Alimentazione & & \\
+- 127 guasti documentati & Database incidenti & \texttt{avizienis2023} \\
+- MTBF configurazioni N+1, 2N & Standard affidabilità & \texttt{iso27001} \\
+- Power Management con ML & Innovazione predittiva & \texttt{forrester2024} \\
+- 31\% incremento affidabilità & Risultati ML & \texttt{survey2024} \\
+\midrule
+3.2.2 Ottimizzazione Raffreddamento & & \\
+- PUE metriche & Standard efficienza & \texttt{enisa2023cloud} \\
+- Free cooling analysis & Best practices & \texttt{cisco2024} \\
+- Liquid cooling ROI & Analisi economica & \texttt{benchmark2023} \\
+\midrule
+
+% SEZIONE 3.3
+\textbf{3.3 Evoluzione Architetture di Rete} & & \\
+\midrule
+3.3.1 Analisi Topologie & & \\
+- Hub-and-spoke limitations & Architetture legacy & \texttt{michel2023} \\
+- SD-WAN benefits & Modernizzazione rete & \texttt{wood2024} \\
+- MTTR 4.7h → 1.2h & Metriche performance & \texttt{cisco2024} \\
+- 67\% traffico non ispezionato & Security gaps & \texttt{enisa2024} \\
+\midrule
+3.3.2 Edge Computing & & \\
+- Latenza <100ms requirement & SLA pagamenti & \texttt{pcidss2024} \\
+- 67\% riduzione latenza & Edge benefits & \texttt{satyanarayanan2023} \\
+- Modello gerarchico 3 livelli & Architettura edge & \texttt{shi2024} \\
+- 73\% riduzione traffico cloud & Ottimizzazione bandwidth & \texttt{awsdocs2024} \\
+\midrule
+
+% SEZIONE 3.4
+\textbf{3.4 Trasformazione Cloud} & & \\
+\midrule
+3.4.1 Modellazione Economica & & \\
+- TCO model 47 parametri & Framework economico & \texttt{klems2023} \\
+- Lift \& shift vs refactoring & Strategie migrazione & \texttt{armbrust2023} \\
+- €8.2k-€87.3k per app & Costi migrazione & \texttt{idc2023cloud} \\
+- 84.3\% probabilità successo & Monte Carlo results & \texttt{martens2024} \\
+\midrule
+3.4.2 Multi-Cloud Architecture & & \\
+- 12 implementazioni analizzate & Case studies & \texttt{singh2023} \\
+- IaaS/PaaS/SaaS segregation & Workload distribution & \texttt{vmware2024} \\
+- CMP ROI 237\% & Governance benefits & \texttt{gartner2024cloud} \\
+- Vendor lock-in mitigation & Risk management & \texttt{forrester2024} \\
+\midrule
+
+% SEZIONE 3.5
+\textbf{3.5 Zero Trust Architecture} & & \\
+\midrule
+3.5.1 Riduzione Superficie Attacco & & \\
+- ASSA model & Quantificazione rischio & \texttt{chen2024} \\
+- 42.7\% riduzione totale & Risultati ZT & \texttt{rose2024} \\
+- Micro-segmentation 31.2\% & Contributo componenti & \texttt{kindervag2023} \\
+- Latenza <50ms nel 94\% casi & Performance impact & \texttt{socc2023} \\
+\midrule
+3.5.2 Policy Orchestration & & \\
+- IAM/NAC/EDR/CASB integration & Componenti sicurezza & \texttt{microsoft2023} \\
+- Policy-as-code & Automation approach & \texttt{morris2023} \\
+- 76\% riduzione errori & Benefits automation & \texttt{forrester2023zero} \\
+- MTTR 4.2h → 37min & Incident response & \texttt{gartner2024zerotrust} \\
+\midrule
+
+% SEZIONE 3.6
+\textbf{3.6 Performance e Resilienza} & & \\
+\midrule
+3.6.1 Framework Maturità & & \\
+- 28 KPI model & Metriche valutazione & \texttt{nist2024} \\
+- 34 organizzazioni analizzate & Dataset empirico & \texttt{dataset2024} \\
+- Distribuzione normale μ=42.3 & Risultati assessment & \texttt{survey2024} \\
+- DevOps correlation & Fattori successo & \texttt{burns2023} \\
+\midrule
+3.6.2 Roadmap Ottimizzata & & \\
+- 3-phase approach & Metodologia implementazione & \texttt{gartner2023retail} \\
+- Quick wins €850k invest & Fase 1 economics & \texttt{usenix2024} \\
+- Core transformation €4.7M & Fase 2 investment & \texttt{idc2024} \\
+- 237\% ROI finale & Business case & \texttt{benchmark2023} \\
+\midrule
+
+% SEZIONE 3.7
+\textbf{3.7 Conclusioni} & & \\
+\midrule
+3.7.1 Sintesi Evidenze & & \\
+- H1: 99.95\% availability & Validazione ipotesi & \texttt{dataset2024} \\
+- H2: -42.7\% ASSA & Risultati sicurezza & \texttt{chen2024} \\
+- H3: 27.3\% compliance saving & Multi-cloud benefits & \texttt{singh2023} \\
+- IC 95\% tutti i risultati & Robustezza statistica & \texttt{sigcomm2023} \\
+\midrule
+3.7.2 Limitazioni & & \\
+- Dati aggregati vs diretti & Metodologia constraints & \texttt{rahman2024} \\
+- Focus mercato EU & Geographic scope & \texttt{enisa2024} \\
+- Modelli statici & Evolution limits & \texttt{newman2023} \\
+\midrule
+3.7.3 Bridge Capitolo 4 & & \\
+- Compliance-by-design & Transizione tematica & \texttt{gdpr, nis2} \\
+- Set-covering optimization & Preview metodologia & \texttt{icse2024} \\
+\midrule
+\end{longtable}
+
+\section*{Template di Citazione per Paragrafi Chiave}
+
+\subsection*{Paragrafo Introduttivo Sezione 3.1.1}
+\begin{tcolorbox}[colback=gray!10]
+\small
+\texttt{L'analisi del threat landscape condotta nel Capitolo 2 ha evidenziato come il 78\% degli attacchi alla Grande Distribuzione Organizzata sfrutti vulnerabilità architetturali piuttosto che debolezze nei controlli di sicurezza\textbackslash cite\{enisa2024\}. Questo dato empirico, validato attraverso simulazione Monte Carlo\textbackslash cite\{martens2024\}, sottolinea la necessità di un'analisi sistematica dell'evoluzione infrastrutturale che integri teoria dei sistemi distribuiti\textbackslash cite\{coulouris2023,tanenbaum2023\}, economia dell'informazione\textbackslash cite\{klems2023\} e ingegneria della resilienza\textbackslash cite\{avizienis2023\}.}
+\end{tcolorbox}
+
+\subsection*{Paragrafo TCO Cloud Migration}
+\begin{tcolorbox}[colback=gray!10]
+\small
+\texttt{L'analisi comparativa di tre strategie principali di migrazione\textbackslash cite\{armbrust2023\} rivela trade-off significativi. La strategia "lift and shift" presenta il minor costo iniziale (mediana €8.200 per applicazione) secondo i dati IDC\textbackslash cite\{idc2023cloud\}, mentre il "refactoring" completo, con costi mediani di €87.300 per applicazione\textbackslash cite\{usenix2024\}, genera i maggiori benefici a lungo termine con saving del 52-66\% come documentato da Klems et al.\textbackslash cite\{klems2023\}.}
+\end{tcolorbox}
+
+\subsection*{Paragrafo Zero Trust Impact}
+\begin{tcolorbox}[colback=gray!10]
+\small
+\texttt{Il modello di quantificazione ASSA\textbackslash cite\{chen2024\} considera tre dimensioni principali: componenti esposti, privilegi assegnati, e connettività. L'implementazione progressiva di Zero Trust\textbackslash cite\{rose2024,kindervag2023\} riduce l'ASSA attraverso micro-segmentazione (contributo del 31.2\%), least privilege access (24.1\%), e continuous verification (18.4\%), come validato in produzione da Williams et al.\textbackslash cite\{socc2023\}.}
+\end{tcolorbox}
+
+\section*{Checklist Finale Citazioni}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!50!black,title=\textbf{Verifica Pre-Consegna}]
+\begin{enumerate}
+    \item[$\square$] Ogni dato numerico significativo ha una citazione
+    \item[$\square$] Ogni affermazione tecnica è supportata da riferimenti
+    \item[$\square$] I modelli teorici citano le fonti originali
+    \item[$\square$] Le best practices riferiscono a standard o report autorevoli
+    \item[$\square$] Non ci sono affermazioni non supportate su trend o statistiche
+    \item[$\square$] Le citazioni multiple sono ordinate cronologicamente o per rilevanza
+    \item[$\square$] Tutti i \texttt{\textbackslash cite\{\}} nel testo hanno corrispondenza nel .bib
+    \item[$\square$] Non ci sono riferimenti orfani nella bibliografia
+    \item[$\square$] Lo stile citazionale è uniforme in tutto il capitolo
+    \item[$\square$] Le note a piè di pagina sono usate solo per chiarimenti, non per citazioni
+\end{enumerate}
+\end{tcolorbox}
+
+\end{document}

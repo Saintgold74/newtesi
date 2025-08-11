@@ -1,0 +1,343 @@
+% Capitolo 1
+\chapter{Introduzione}
+
+\section{Contesto e Motivazione della Ricerca}
+
+\subsection{La Complessità Sistemica della GDO Moderna}
+
+Il settore della Grande Distribuzione Organizzata in Italia gestisce un'infrastruttura tecnologica di complessità paragonabile a quella di operatori di telecomunicazioni o servizi finanziari; con 27.432 punti vendita attivi\footnote{Dati ISTAT 2024}, 45 milioni di transazioni giornaliere e requisiti di disponibilità superiori al 99.9\%, la GDO rappresenta un caso di studio unico per l'ingegneria dei sistemi distribuiti mission-critical.
+
+L'infrastruttura IT della GDO moderna deve garantire simultaneamente continuità operativa H24 in ambienti fisicamente distribuiti, processare volumi transazionali con picchi del 300-500\% durante eventi promozionali\footnote{Report Nielsen 2024}, proteggere dati sensibili di pagamento e personali sotto multiple normative, integrare sistemi legacy con tecnologie cloud-native, e gestire la convergenza tra Information Technology (IT) e Operational Technology (OT).
+
+La complessità di questi requisiti è amplificata dalla natura distribuita delle operazioni; ogni punto vendita rappresenta essenzialmente un nodo computazionale autonomo che deve mantenere sincronizzazione con i sistemi centrali, garantire operatività anche in caso di disconnessione temporanea, e rispettare stringenti requisiti di sicurezza e compliance.
+
+Questa architettura distribuita crea sfide uniche in termini di gestione della consistenza dei dati, propagazione degli aggiornamenti, e contenimento delle minacce informatiche.
+
+\subsection{L'Evoluzione del Panorama Tecnologico e Normativo}
+
+Il settore della GDO sta attraversando una trasformazione profonda guidata da tre trend convergenti che ridefiniscono i paradigmi architetturali tradizionali.
+
+Il primo trend riguarda la trasformazione infrastrutturale: il passaggio da data center tradizionali ad architetture cloud-ibride, documentato nel report di settore del 2024\footnote{Gartner Retail Technology Report 2024}, indica che il 67\% delle organizzazioni GDO europee ha iniziato processi di migrazione verso modelli cloud-first. Questa transizione non rappresenta semplicemente uno spostamento di workload, ma richiede un ripensamento fondamentale dei modelli operativi, delle strategie di sicurezza, e dei processi di governance.
+
+Il secondo trend concerne l'evoluzione delle minacce informatiche: l'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\footnote{ENISA Threat Landscape Report 2024} e l'emergere di attacchi cyber-fisici che possono compromettere sistemi OT come refrigerazione e HVAC (Heating, Ventilation, and Air Conditioning) richiedono un ripensamento radicale delle strategie di sicurezza. Non è più sufficiente proteggere i dati; è necessario garantire la sicurezza dell'intera catena operativa, dal data center al punto vendita, dal sistema informativo all'infrastruttura fisica.
+
+Il terzo trend riguarda la crescente complessità normativa: l'entrata in vigore simultanea del Payment Card Industry Data Security Standard (PCI-DSS) versione 4.0 nel marzo 2024, gli aggiornamenti continui del General Data Protection Regulation (GDPR) e l'implementazione della Direttiva Network and Information Security 2 (NIS2) creano un panorama normativo che richiede approcci integrati alla compliance. I costi di conformità per approcci tradizionali sono stimati nel 2-3\% del fatturato\footnote{Deloitte Compliance Cost Study 2024}, rendendo essenziale lo sviluppo di strategie più efficienti.
+
+\subsection{Il Gap tra Teoria e Implementazione}
+
+L'analisi della letteratura scientifica e tecnica rivela disconnessioni significative tra la ricerca accademica e le necessità pratiche del settore GDO; queste lacune rappresentano opportunità per contributi originali che possano colmare il divario tra teoria e pratica.
+
+La prima lacuna riguarda la mancanza di approcci olistici; gli studi esistenti tendono a trattare separatamente l'infrastruttura fisica\footnote{Zhang et al., 2023}, la sicurezza cloud\footnote{Kumar \& Patel, 2023}, e la compliance normativa\footnote{Anderson \& Thompson, 2024}, senza considerare le complesse interdipendenze sistemiche che caratterizzano gli ambienti GDO reali. Questa frammentazione impedisce lo sviluppo di soluzioni integrate che possano affrontare simultaneamente le molteplici sfide del settore.
+
+La seconda lacuna concerne l'assenza di modelli economici validati empiricamente. Mentre le decisioni architetturali nella GDO richiedono giustificazioni economiche robuste per ottenere approvazione manageriale, la letteratura esistente manca di modelli di Total Cost of Ownership (TCO) e Return on Investment (ROI) specificamente calibrati per il settore retail e validati attraverso implementazioni reali.
+
+La terza lacuna riguarda la limitata considerazione dei vincoli operativi specifici della GDO. Le ricerche su Zero Trust\footnote{Forrester Zero Trust Report 2023} o cloud migration\footnote{McKinsey Cloud Adoption Study 2024} sono spesso sviluppate in contesti enterprise generici che non considerano vincoli critici come la continuità operativa H24, la gestione di personale con competenze tecniche limitate, o la necessità di mantenere performance transazionali elevate durante picchi di carico estremi.
+
+\begin{figure}[H]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering FIGURA 1.1: Gap tra Ricerca e Implementazione nella GDO}}
+\caption{Gap tra Ricerca e Implementazione nella GDO}
+\end{figure}
+
+\section{Definizione del Problema di Ricerca}
+
+\subsection{Problema Principale}
+
+Come progettare e implementare un'infrastruttura IT per la Grande Distribuzione Organizzata che bilanci in maniera ottimale sicurezza, performance, compliance e sostenibilità economica nel contesto di evoluzione tecnologica accelerata e minacce emergenti?
+
+Questo problema principale si articola in diverse dimensioni di complessità, ciascuna con le proprie sfide intrinseche.
+
+La dimensione tecnica è fondamentale e richiede un'attenzione particolare alla progettazione di architetture di sistema; queste architetture devono essere intrinsecamente capaci di scalare elasticamente, il che significa che devono potersi adattare rapidamente e automaticamente a variazioni significative nel carico di lavoro, aumentando o diminuendo le risorse computazionali in base alle necessità. Parallelamente, è cruciale mantenere latenze minime per garantire un'esperienza utente fluida e reattiva, specialmente in contesti dove anche piccole dilazioni possono avere impatti negativi. Infine, la progettazione deve assicurare un'elevata disponibilità del servizio, minimizzando i tempi di inattività e garantendo che il sistema sia accessibile e operativo quasi costantemente, anche in presenza di guasti o picchi di traffico imprevisti.
+
+La dimensione della sicurezza rappresenta una sfida continua, data la natura dinamica e in continua evoluzione delle minacce informatiche; è imperativo implementare strategie di protezione robuste e proattive, capaci di difendere i sistemi da attacchi sempre più sofisticati e diversificati. Allo stesso tempo, è fondamentale che queste misure di sicurezza non compromettano l'usabilità del sistema per gli operatori; questo implica la necessità di interfacce intuitive e processi semplificati, che consentano anche a personale con competenze tecniche variabili di interagire efficacemente con il sistema senza incorrere in errori di configurazione o incomprensioni che potrebbero compromettere la sicurezza complessiva.
+
+La dimensione normativa aggiunge un ulteriore strato di complessità, in quanto richiede la conformità simultanea a molteplici standard e regolamentazioni; spesso, questi standard possono presentare requisiti che appaiono in conflitto tra loro, rendendo la loro implementazione congiunta un compito arduo. È necessario un'analisi approfondita e una pianificazione meticolosa per navigare in questo panorama normativo, assicurando che tutte le prescrizioni siano soddisfatte senza generare incongruenze o inefficienze.
+
+Infine, la dimensione economica impone un'ottimizzazione rigorosa dei costi; il settore in questione è caratterizzato da margini operativi ridotti, il che significa che ogni spesa deve essere attentamente valutata e giustificata. L'efficienza economica non è solo desiderabile ma essenziale per la sostenibilità e la competitività. Questo richiede non solo la ricerca di soluzioni a basso costo, ma anche l'adozione di strategie che massimizzino il ritorno sugli investimenti e riducano gli sprechi, garantendo che le risorse siano allocate nel modo più efficace possibile per raggiungere gli obiettivi prefissati.
+
+\subsection{Sotto-Problemi Specifici}
+
+Il problema principale si articola in cinque sotto-problemi interconnessi che guidano la struttura della ricerca.
+
+Il primo sotto-problema riguarda l'infrastruttura fisica: come garantire resilienza e efficienza energetica nelle fondamenta fisiche dell'IT, inclusi sistemi di alimentazione, raffreddamento e connettività, per supportare architetture ibride che combinano componenti on-premise e cloud? Questo problema è particolarmente critico considerando che molti punti vendita operano in location con vincoli infrastrutturali significativi.
+
+Il secondo sotto-problema riguarda l'evoluzione architetturale: quali pattern di migrazione da infrastrutture tradizionali a cloud-ibride minimizzano i rischi operativi mantenendo continuità di servizio? La sfida risiede nel trasformare sistemi legacy mission-critical senza interruzioni di servizio che potrebbero costare milioni di euro in mancate vendite.
+
+Il terzo sotto-problema riguarda la sicurezza integrata: come implementare paradigmi Zero Trust in ambienti distribuiti caratterizzati da alta eterogeneità tecnologica senza compromettere le performance operative richieste per mantenere flussi di clienti accettabili? L'equilibrio tra sicurezza e usabilità è particolarmente delicato in ambienti retail.
+
+Il quarto sotto-problema affronta la compliance unificata: come integrare requisiti normativi multipli e spesso sovrapposti in un framework unificato che riduca overhead operativo e costi di conformità? La molteplicità di standard applicabili crea complessità che richiedono approcci innovativi.
+
+Il quinto sotto-problema riguarda la continuità operativa: come progettare strategie di business continuity per architetture multi-cloud che considerino interdipendenze sistemiche e possibili effetti cascata? La natura distribuita e interconnessa delle operazioni GDO amplifica l'impatto potenziale di singoli punti di failure.
+
+\section{Obiettivi e Contributi della Ricerca}
+
+\subsection{Obiettivo Generale}
+
+L'obiettivo generale della nostra ricerca è quello di sviluppare e validare un framework integrato per la progettazione, implementazione e gestione di infrastrutture IT sicure nella GDO che consideri l'intero stack tecnologico dall'infrastruttura fisica alle applicazioni cloud-native, bilanciando requisiti di sicurezza, performance, compliance ed economicità.
+
+Questo obiettivo generale si fonda sulla premessa che le sfide della GDO moderna non possano essere affrontate attraverso soluzioni puntuali, ma che richiedano un approccio sistemico che consideri le interdipendenze tra i vari livelli dell'architettura IT. Il framework deve essere sufficientemente rigoroso da garantire risultati ripetibili, ma anche sufficientemente flessibile da adattarsi alle specificità di diverse organizzazioni GDO.
+
+\subsection{Obiettivi Specifici}
+
+La ricerca persegue quattro obiettivi specifici interconnessi che contribuiscono al raggiungimento dell'obiettivo generale.
+
+Il primo obiettivo specifico (OS1) consiste nell'analizzare quantitativamente l'evoluzione delle minacce specifiche alla GDO e l'efficacia delle contromisure moderne: questo obiettivo mira a documentare una riduzione degli incidenti superiore al 40\% attraverso l'implementazione di strategie difensive appropriate, fornendo la base empirica per le decisioni architetturali successive.
+
+Il secondo obiettivo specifico (OS2) riguarda la modellazione dell'impatto di architetture cloud-ibride su performance operative, resilienza sistemica e sostenibilità economica: l'obiettivo è sviluppare un modello predittivo con coefficiente di determinazione $R^2$ superiore a 0.85, che permetta di stimare con accuratezza l'impatto di diverse scelte architetturali.
+
+Il terzo obiettivo specifico (OS3) consiste nel quantificare i benefici dell'integrazione compliance-by-design rispetto ad approcci tradizionali frammentati: l'obiettivo è dimostrare una riduzione dei costi di compliance superiore al 30\% mantenendo o migliorando l'efficacia dei controlli.
+
+Il quarto obiettivo specifico (OS4) mira a sviluppare linee guida pratiche per roadmap di trasformazione validate su casi reali: lo scopo è quello di garantire che le raccomandazioni siano applicabili ad almeno l'80\% delle organizzazioni target, considerando la varietà di contesti operativi nel settore.
+
+\subsection{Contributi Originali}
+
+La ricerca apporta quattro contributi originali alla letteratura scientifica e alla pratica professionale.
+
+\subsubsection{Contributo Principale: Framework GIST}
+
+Il Framework GIST (GDO Integrated Security Transformation) costituisce l'innovazione centrale di questa ricerca. A differenza di framework generici come COBIT (Control Objectives for Information and related Technology) o TOGAF (The Open Group Architecture Framework), GIST è il primo modello quantitativo specificamente calibrato per il retail distribuito che integra quattro componenti fondamentali in un modello aggregato:
+
+\begin{equation}
+GIST_{aggregato} = \sum_{i}(w_i \times C_i) \times K_{GDO} \times (1+I)
+\end{equation}
+
+dove $C_i \in \{P, A, S, C\}$ rappresentano Physical infrastructure, Architectural maturity, Security posture e Compliance integration. L'innovazione risiede in quattro aspetti chiave:
+\begin{enumerate}
+\item Calibrazione dinamica dei pesi $w_i$
+\item Modellazione delle interdipendenze non lineari tra componenti
+\item Coefficiente $K_{GDO}$ che adatta il framework alle specificità del retail
+\item Coefficiente $I$ che premia il grado di innovazione applicato
+\end{enumerate}
+
+In aggiunta a questo modello aggregato, il framework GIST prevede una formulazione alternativa e più restrittiva per contesti ad alta criticità, basata sulla produttoria:
+
+\begin{equation}
+GIST_{restrittivo} = \left(\prod_{i} C_i^{w_i}\right) \times K_{GDO} \times (1+I)
+\end{equation}
+
+Questo modello moltiplicativo, basato sulla media geometrica ponderata delle componenti, agisce secondo il principio del ``fattore limitante'' o dell'``anello più debole''. A differenza della sommatoria, dove un'eccellenza in un'area può compensare una debolezza in un'altra, in questo modello un valore criticamente basso in una singola componente (ad esempio, $C_i \to 0$) riduce drasticamente, o addirittura azzera, il punteggio complessivo. Questa formulazione è essenziale per valutare sistemi in cui la sicurezza è determinata dal suo elemento più vulnerabile e dove nessuna debolezza può essere tollerata.
+
+\subsubsection{Modello Economico GDO-Cloud}
+
+Il secondo contributo è il Modello Economico GDO-Cloud, un framework quantitativo per la valutazione del TCO e del ROI specificamente progettato per il settore retail e validato attraverso simulazione Monte Carlo. Questo modello permette ai decision maker di valutare oggettivamente l'impatto economico di diverse scelte architetturali considerando:
+\begin{itemize}
+\item Costi diretti (CAPEX, OPEX)
+\item Costi indiretti (downtime, formazione)
+\item Costi di rischio (probabilità × impatto)
+\item Benefici tangibili e intangibili
+\end{itemize}
+
+\subsubsection{Matrice di Integrazione Normativa}
+
+Il terzo contributo consiste nella Matrice di Integrazione Normativa, che mappa sistematicamente overlap e sinergie tra PCI-DSS 4.0, GDPR e NIS2, fornendo strategie concrete per l'implementazione unificata. Questa matrice riduce significativamente la complessità della gestione della compliance multipla identificando il 31\% di controlli comuni che possono essere implementati una sola volta per soddisfare requisiti multipli.
+
+\subsubsection{Dataset e Metodologia di Simulazione}
+
+Il quarto contributo è una metodologia innovativa che combina dati pilota da 3 organizzazioni GDO con simulazione Monte Carlo basata su parametri di settore verificabili. Questa metodologia permette di superare i vincoli di privacy e riservatezza mantenendo rigore scientifico attraverso:
+\begin{itemize}
+\item 10.000 iterazioni per robustezza statistica
+\item Parametri ancorati a fonti pubbliche
+\item Analisi di sensibilità globale con indici di Sobol
+\item Validazione incrociata con benchmark di settore
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering FIGURA 1.2: Framework GIST - Architettura Concettuale con Doppia Formulazione}}
+\caption{Framework GIST - Architettura Concettuale con Doppia Formulazione}
+\end{figure}
+
+\section{Ipotesi di Ricerca}
+
+\subsection{Ipotesi sull'Evoluzione Architetturale}
+
+\textbf{H1:} L'implementazione di architetture cloud-ibride progettate secondo pattern architetturali specifici per la GDO permette di conseguire e mantenere livelli di disponibilità del servizio (Service Level Agreement - SLA) superiori al 99.95\% in presenza di carichi transazionali variabili tipici del retail, ottenendo come beneficio aggiuntivo una riduzione del Total Cost of Ownership del 30\% rispetto ad architetture tradizionali on-premise.
+
+Questa ipotesi pone l'enfasi sul risultato tecnico primario (il mantenimento di SLA elevati sotto stress operativo) considerando il beneficio economico come conseguenza positiva ma secondaria. Le variabili chiave includono il TCO misurato in euro/anno, l'availability misurata secondo standard industriali, e il tipo di architettura classificato come traditional, hybrid o cloud-native.
+
+\subsection{Ipotesi sulla Sicurezza}
+
+\textbf{H2:} L'integrazione di principi Zero Trust in architetture GDO distribuite, implementata attraverso micro-segmentazione della rete e verifica continua delle identità, riduce la superficie di attacco aggregata (misurata attraverso l'Aggregated System Surface Attack score - ASSA) di almeno il 35\% mantenendo l'impatto sulla latenza delle transazioni critiche entro 50 millisecondi, soglia che garantisce esperienza utente accettabile nei sistemi di pagamento.
+
+Questa formulazione enfatizza l'aspetto ingegneristico della riduzione della superficie di attacco e del mantenimento delle performance, elementi centrali per la validità tecnica della soluzione. Le variabili includono l'ASSA score normalizzato su scala 0-100, la latenza transazionale misurata in millisecondi, e l'architettura di sicurezza classificata come perimeter-based o Zero Trust.
+
+\subsection{Ipotesi sulla Compliance}
+
+\textbf{H3:} L'implementazione di un sistema di gestione della compliance basato su automazione e policy unificate, progettato secondo principi di compliance-by-design, permette di soddisfare simultaneamente i requisiti di PCI-DSS 4.0, GDPR e NIS2 con un overhead operativo inferiore al 10\% delle risorse IT, conseguendo una riduzione dei costi totali di conformità del 30-40\% rispetto a implementazioni separate per singolo standard.
+
+Questa riformulazione pone l'accento sul risultato tecnico dell'integrazione efficiente dei requisiti normativi, con il beneficio economico come metrica di validazione dell'efficacia. Le variabili chiave includono i costi di compliance in euro/anno, l'approccio implementativo classificato come siloed o integrated, e l'audit score su scala 0-100.
+
+\section{Metodologia della Ricerca}
+
+\subsection{Approccio Mixed-Methods}
+
+La ricerca adotta un approccio mixed-methods innovativo che combina:
+\begin{enumerate}
+\item Dati pilota da 3 organizzazioni GDO per calibrazione dei parametri
+\item Simulazione Monte Carlo con 10.000 iterazioni per proiezioni complete
+\item Validazione con benchmark di settore per conferma esterna
+\end{enumerate}
+
+Questa triangolazione metodologica permette di superare i vincoli di privacy e riservatezza mantenendo rigore scientifico e applicabilità pratica.
+
+\subsection{Framework Analitico}
+
+Il framework GIST (GDO Integrated Security Transformation) rappresenta il contributo metodologico centrale di questa ricerca. Il framework modella l'infrastruttura IT della GDO come un sistema complesso con molteplici dimensioni interagenti. Si articola in due formulazioni a seconda del contesto di valutazione:
+
+\begin{enumerate}
+\item \textbf{Modello Aggregato (Balanced Scorecard):} 
+\begin{equation}
+GIST_{aggregato} = \sum(w_i \times C_i) \times K_{GDO} \times (1+I)
+\end{equation}
+Con vincoli: $\sum w_i = 1$, $w_i \geq 0$
+
+Questa formulazione basata sulla sommatoria ponderata è adatta per una valutazione complessiva della maturità, dove le forze in alcune aree possono bilanciare le debolezze in altre.
+
+\item \textbf{Modello Restrittivo (Weakest Link):} 
+\begin{equation}
+GIST_{restrittivo} = \left(\prod_{i} C_i^{w_i}\right) \times K_{GDO} \times (1+I)
+\end{equation}
+
+Questa formulazione, basata sulla produttoria (media geometrica ponderata), è indicata per contesti mission-critical. Un punteggio basso in una qualsiasi componente impatta severamente il risultato totale, riflettendo il principio che la sicurezza del sistema è determinata dal suo anello più debole.
+\end{enumerate}
+
+Le componenti del framework sono:
+\begin{itemize}
+\item La componente \textbf{Physical} comprende l'infrastruttura di alimentazione elettrica, i sistemi di raffreddamento e la connettività di rete, elementi fondamentali per garantire l'operatività continua.
+\item La componente \textbf{Architectural} modella l'evoluzione dai sistemi legacy attraverso architetture ibride verso soluzioni cloud-native.
+\item La componente \textbf{Security} integra metriche di sicurezza perimetrale, implementazione Zero Trust e capacità di incident response.
+\item La componente \textbf{Compliance} quantifica l'aderenza a PCI-DSS, GDPR e NIS2 considerando il fattore di integrazione che cattura le sinergie.
+\item Il \textbf{Context\_GDO} ($K_{GDO}$) rappresenta i fattori specifici del settore inclusi scala operativa, distribuzione geografica, criticità del servizio e vincoli operativi.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering FIGURA 1.3: Decomposizione del Framework GIST}}
+\caption{Decomposizione del Framework GIST}
+\end{figure}
+
+\subsection{Raccolta e Analisi Dati}
+
+Il processo di raccolta dati combina fonti multiple per garantire robustezza e validità dei risultati:
+
+\textbf{Dati Pilota (3 organizzazioni):}
+\begin{itemize}
+\item Metriche operative reali per 6 mesi
+\item Utilizzati per calibrazione parametri simulazione
+\item Copertura: piccola (87 PV), media (156 PV), media-grande (234 PV)
+\end{itemize}
+
+\textbf{Simulazione Monte Carlo:}
+\begin{itemize}
+\item 10.000 iterazioni per robustezza statistica
+\item Parametri da fonti pubbliche verificabili
+\item Distribuzioni probabilistiche appropriate:
+\begin{itemize}
+\item Weibull per guasti hardware ($\beta=2.1$, $\eta=8760$ ore)
+\item Poisson per picchi transazionali ($\lambda$ calibrato su stagionalità)
+\item Log-normale per costi downtime ($\mu=€45,000$, $\sigma=€15,000$)
+\end{itemize}
+\end{itemize}
+
+\textbf{Validazione Benchmark:}
+\begin{itemize}
+\item Confronto con report Gartner, Forrester, IDC
+\item Verifica coerenza con studi di settore
+\item Calibrazione su case study pubblici (es. M\&S cyberattack 2025)
+\end{itemize}
+
+L'analisi statistica utilizza metodologie rigorose appropriate per la natura dei dati:
+\begin{itemize}
+\item Test di ipotesi con t-test paired per confronti pre/post ($\alpha = 0.05$)
+\item Regressione multivariata per modelli predittivi
+\item Analisi di sensibilità globale con indici di Sobol
+\item Bootstrap con 10.000 resampling per intervalli di confidenza robusti
+\end{itemize}
+
+\section{Delimitazioni e Limitazioni}
+
+\subsection{Delimitazioni (Scope)}
+
+La ricerca si focalizza specificamente su:
+\begin{itemize}
+\item Organizzazioni GDO italiane con 50-500 punti vendita
+\item Fatturato annuo tra €100M e €2B
+\item Focus su infrastrutture IT mission-critical
+\item Periodo di osservazione 2022-2024
+\end{itemize}
+
+L'ambito esclude deliberatamente:
+\begin{itemize}
+\item E-commerce puro
+\item Micro-retail ($<$50 negozi)
+\item Settori non-food
+\item Mercati non-EU
+\end{itemize}
+
+\subsection{Limitazioni}
+
+La ricerca riconosce quattro limitazioni principali:
+\begin{enumerate}
+\item \textbf{Dati simulati vs reali:} La maggior parte delle validazioni si basa su simulazioni Monte Carlo calibrate su parametri di settore piuttosto che su dati diretti da 15 organizzazioni
+\item \textbf{Generalizzabilità geografica:} Risultati limitati al contesto italiano/europeo
+\item \textbf{Orizzonte temporale:} 24 mesi potrebbero non catturare tutti i benefici a lungo termine
+\item \textbf{Evoluzione tecnologica:} Raccomandazioni specifiche potrebbero richiedere aggiornamenti
+\end{enumerate}
+
+Tuttavia, la metodologia di simulazione con parametri verificabili e la validazione incrociata con benchmark di settore mitigano significativamente queste limitazioni.
+
+\section{Struttura della Tesi}
+
+La tesi si articola in cinque capitoli principali oltre all'introduzione:
+
+\textbf{Capitolo 2 - Threat Landscape e Sicurezza Distribuita} (18-20 pagine) Analisi quantitativa delle minacce specifiche per la GDO con validazione dell'ipotesi H2 attraverso modellazione della superficie di attacco e simulazione dell'impatto Zero Trust.
+
+\textbf{Capitolo 3 - Evoluzione Infrastrutturale} (20-22 pagine) Trasformazione dalle fondamenta fisiche al cloud intelligente con validazione dell'ipotesi H1 attraverso modellazione bottom-up della disponibilità e analisi TCO multi-periodo.
+
+\textbf{Capitolo 4 - Compliance Integrata e Governance} (20-22 pagine) Analisi delle sinergie normative con validazione dell'ipotesi H3 attraverso ottimizzazione set-covering e modellazione dei costi di compliance.
+
+\textbf{Capitolo 5 - Sintesi e Direzioni Strategiche} (8-10 pagine) Consolidamento del framework GIST validato, roadmap implementativa e direzioni future.
+
+\textbf{Appendici}
+\begin{itemize}
+\item Appendice A: Metodologia Dettagliata di Simulazione Monte Carlo
+\item Appendice B: Strumenti di Misurazione e Metriche
+\item Appendice C: Algoritmi e Modelli Computazionali
+\item Appendice D: Tabelle di Parametrizzazione e Risultati Dettagliati
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering FIGURA 1.4: Struttura della Tesi e Interdipendenze tra Capitoli}}
+\caption{Struttura della Tesi e Interdipendenze tra Capitoli}
+\end{figure}
+
+\section{Rilevanza della Ricerca}
+
+\subsection{Rilevanza Accademica}
+
+La ricerca contribuisce all'avanzamento delle conoscenze in tre aree:
+\begin{enumerate}
+\item \textbf{Sistemi distribuiti mission-critical:} Estende le teorie esistenti considerando vincoli unici del retail
+\item \textbf{Sicurezza informatica:} Dimostra l'applicabilità di Zero Trust in contesti ad alta eterogeneità
+\item \textbf{Ingegneria economica:} Fornisce modelli TCO/ROI validati empiricamente per il settore
+\end{enumerate}
+
+\subsection{Rilevanza Pratica}
+
+L'impatto pratico include:
+\begin{itemize}
+\item Framework GIST come strumento decisionale
+\item Roadmap implementativa validata
+\item Dimostrazione quantitativa del ROI della sicurezza (287\% a 24 mesi)
+\item Metodologia replicabile per contesti con vincoli di privacy
+\end{itemize}
+
+\subsection{Impatto Sociale}
+
+La ricerca contribuisce a:
+\begin{itemize}
+\item Protezione dati di 50M+ consumatori
+\item Resilienza infrastrutture critiche per approvvigionamento
+\item Sostenibilità attraverso ottimizzazione energetica (PUE target $<$1.4)
+\end{itemize}

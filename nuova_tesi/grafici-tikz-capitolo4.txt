@@ -1,0 +1,265 @@
+% ===============================================
+% Figura 6: Architettura Piattaforma GRC
+% ===============================================
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    layer/.style={rectangle, draw=black!50, fill=blue!20, thick, minimum width=12cm, minimum height=1.5cm},
+    component/.style={rectangle, draw=black!70, fill=white, thick, minimum width=2.8cm, minimum height=1cm},
+    arrow/.style={-stealth, thick},
+    label/.style={font=\small\bfseries}
+]
+
+% Layers
+\node[layer, fill=blue!40] (presentation) at (0,6) {Presentation Layer};
+\node[layer, fill=blue!30] (analytics) at (0,4) {Analytics Layer};
+\node[layer, fill=blue!20] (process) at (0,2) {Process Layer};
+\node[layer, fill=blue!10] (data) at (0,0) {Data Layer};
+
+% Components - Presentation Layer
+\node[component] (exec) at (-4,6) {Executive\\Dashboard};
+\node[component] (ops) at (0,6) {Operational\\Workspace};
+\node[component] (portal) at (4,6) {Self-Service\\Portal};
+
+% Components - Analytics Layer
+\node[component] (risk) at (-4,4) {Risk\\Scoring};
+\node[component] (predict) at (0,4) {Predictive\\Analytics};
+\node[component] (report) at (4,4) {Automated\\Reporting};
+
+% Components - Process Layer
+\node[component] (workflow) at (-4,2) {Workflow\\Engine};
+\node[component] (control) at (0,2) {Control\\Testing};
+\node[component] (incident) at (4,2) {Incident\\Management};
+
+% Components - Data Layer
+\node[component] (connect) at (-4,0) {API\\Connectors};
+\node[component] (store) at (0,0) {Data\\Repository};
+\node[component] (audit) at (4,0) {Audit\\Trail};
+
+% Vertical connections
+\draw[arrow, blue!60] (exec) -- (risk);
+\draw[arrow, blue!60] (ops) -- (predict);
+\draw[arrow, blue!60] (portal) -- (report);
+\draw[arrow, blue!60] (risk) -- (workflow);
+\draw[arrow, blue!60] (predict) -- (control);
+\draw[arrow, blue!60] (report) -- (incident);
+\draw[arrow, blue!60] (workflow) -- (connect);
+\draw[arrow, blue!60] (control) -- (store);
+\draw[arrow, blue!60] (incident) -- (audit);
+
+% External systems
+\node[label] at (-6,0) {Sistemi\\Esterni};
+\draw[arrow, red!60] (-6.5,0) -- (connect);
+
+% Layer labels
+\node[label, anchor=west] at (6.5,6) {Interfacce Role-Based};
+\node[label, anchor=west] at (6.5,4) {Intelligence \& Insights};
+\node[label, anchor=west] at (6.5,2) {Orchestrazione};
+\node[label, anchor=west] at (6.5,0) {Integrazione};
+
+\end{tikzpicture}
+\caption{Architettura a Layer delle Piattaforme GRC Moderne}
+\label{fig:grc_architecture}
+\end{figure}
+
+% ===============================================
+% Figura 7: Framework GIST Integrato
+% ===============================================
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    pillar/.style={cylinder, draw=black!70, fill=blue!30, minimum width=2.5cm, minimum height=4cm, cylinder uses custom fill, cylinder body fill=blue!30, cylinder end fill=blue!40},
+    framework/.style={rectangle, draw=black!90, fill=orange!20, thick, minimum width=10cm, minimum height=1.5cm},
+    connection/.style={-stealth, thick, orange!60},
+    label/.style={font=\footnotesize\bfseries},
+    score/.style={circle, draw=black!70, fill=yellow!30, minimum size=1cm}
+]
+
+% Pillars
+\node[pillar] (physical) at (-4.5,0) {};
+\node[label] at (-4.5,0) {Physical\\Infrastructure\\(P)};
+
+\node[pillar] (arch) at (-1.5,0) {};
+\node[label] at (-1.5,0) {Architectural\\Maturity\\(A)};
+
+\node[pillar] (security) at (1.5,0) {};
+\node[label] at (1.5,0) {Security\\Posture\\(S)};
+
+\node[pillar] (compliance) at (4.5,0) {};
+\node[label] at (4.5,0) {Compliance\\Integration\\(C)};
+
+% GIST Framework box
+\node[framework] (gist) at (0,3.5) {Framework GIST};
+\node[label] at (0,3.5) {GDO Integrated Security Transformation};
+
+% Connections
+\draw[connection] (physical.north) -- (gist.south);
+\draw[connection] (arch.north) -- (gist.south);
+\draw[connection] (security.north) -- (gist.south);
+\draw[connection] (compliance.north) -- (gist.south);
+
+% Weights
+\node[score] at (-4.5,2.2) {0.20};
+\node[score] at (-1.5,2.2) {0.35};
+\node[score] at (1.5,2.2) {0.30};
+\node[score] at (4.5,2.2) {0.15};
+
+% Formula
+\node[rectangle, draw=black!70, fill=gray!10, minimum width=8cm, minimum height=1cm] at (0,-2.5) {
+    $GIST_{score} = \sum_{i}(w_i \times C_i) \times K_{GDO} \times (1+I)$
+};
+
+% Legend
+\node[label, anchor=west] at (-5,-3.5) {$w_i$ = peso componente};
+\node[label, anchor=west] at (-5,-4) {$C_i$ = score componente};
+\node[label, anchor=west] at (0,-3.5) {$K_{GDO}$ = coefficiente settoriale};
+\node[label, anchor=west] at (0,-4) {$I$ = indice innovazione};
+
+% Result box
+\node[rectangle, draw=green!70, fill=green!20, thick, minimum width=4cm, minimum height=1cm] at (0,5.5) {
+    \textbf{Output: Transformation Readiness Score}
+};
+
+\end{tikzpicture}
+\caption{Framework GIST: Integrazione dei Quattro Pilastri}
+\label{fig:gist_framework}
+\end{figure}
+
+% ===============================================
+% Figura 8: Matrice di Integrazione Normativa
+% ===============================================
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    cell/.style={rectangle, draw=gray!50, minimum width=1.5cm, minimum height=1cm},
+    header/.style={rectangle, draw=black!70, fill=gray!20, minimum width=1.5cm, minimum height=1cm, font=\footnotesize\bfseries},
+    overlap/.style={fill=orange!30},
+    strong/.style={fill=orange!60},
+    weak/.style={fill=orange!10}
+]
+
+% Headers
+\node[header] at (0,0) {Requisito};
+\node[header] at (2,0) {PCI-DSS};
+\node[header] at (3.5,0) {GDPR};
+\node[header] at (5,0) {NIS2};
+
+% Row headers
+\node[header, text width=3cm, align=left] at (-1.5,-1) {Crittografia Dati};
+\node[header, text width=3cm, align=left] at (-1.5,-2) {Access Control};
+\node[header, text width=3cm, align=left] at (-1.5,-3) {Incident Response};
+\node[header, text width=3cm, align=left] at (-1.5,-4) {Risk Assessment};
+\node[header, text width=3cm, align=left] at (-1.5,-5) {Vendor Management};
+\node[header, text width=3cm, align=left] at (-1.5,-6) {Business Continuity};
+
+% Matrix cells
+% Crittografia
+\node[cell, strong] at (2,-1) {●●●};
+\node[cell, overlap] at (3.5,-1) {●●};
+\node[cell, strong] at (5,-1) {●●●};
+
+% Access Control
+\node[cell, strong] at (2,-2) {●●●};
+\node[cell, strong] at (3.5,-2) {●●●};
+\node[cell, overlap] at (5,-2) {●●};
+
+% Incident Response
+\node[cell, overlap] at (2,-3) {●●};
+\node[cell, strong] at (3.5,-3) {●●●};
+\node[cell, strong] at (5,-3) {●●●};
+
+% Risk Assessment
+\node[cell, overlap] at (2,-4) {●●};
+\node[cell, strong] at (3.5,-4) {●●●};
+\node[cell, overlap] at (5,-4) {●●};
+
+% Vendor Management
+\node[cell, strong] at (2,-5) {●●●};
+\node[cell, weak] at (3.5,-5) {●};
+\node[cell, overlap] at (5,-5) {●●};
+
+% Business Continuity
+\node[cell, weak] at (2,-6) {●};
+\node[cell, overlap] at (3.5,-6) {●●};
+\node[cell, strong] at (5,-6) {●●●};
+
+% Legend
+\node[rectangle, draw=black!70, minimum width=8cm, minimum height=1cm] at (2,-7.5) {
+    \begin{tabular}{l l l}
+    ●●● Requisito Forte & ●● Requisito Medio & ● Requisito Debole
+    \end{tabular}
+};
+
+% Summary box
+\node[rectangle, draw=green!70, fill=green!20, minimum width=6cm, minimum height=1cm] at (5,-8.5) {
+    \textbf{Potenziale di Integrazione: 43\%}
+};
+
+\end{tikzpicture}
+\caption{Matrice di Integrazione dei Requisiti Normativi}
+\label{fig:integration_matrix}
+\end{figure}
+
+% ===============================================
+% Figura 9: Pattern Event-Driven Compliance
+% ===============================================
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    system/.style={rectangle, draw=black!70, fill=blue!20, thick, minimum width=2.5cm, minimum height=1.5cm},
+    event/.style={rectangle, draw=orange!70, fill=orange!20, thick, minimum width=2cm, minimum height=1cm},
+    queue/.style={cylinder, draw=black!70, fill=gray!20, minimum width=1.5cm, minimum height=2cm, cylinder uses custom fill, cylinder body fill=gray!20, cylinder end fill=gray!30},
+    arrow/.style={-stealth, thick},
+    label/.style={font=\small}
+]
+
+% Source systems
+\node[system] (pos) at (-6,2) {POS\\Systems};
+\node[system] (erp) at (-6,0) {ERP};
+\node[system] (iam) at (-6,-2) {IAM};
+
+% Event bus
+\node[queue, minimum width=8cm, minimum height=1cm] (bus) at (0,0) {Event Bus (Kafka/RabbitMQ)};
+
+% Event processors
+\node[event] (filter) at (0,2.5) {Event\\Filter};
+\node[event] (enrich) at (2,2.5) {Event\\Enrichment};
+\node[event] (correlate) at (4,2.5) {Event\\Correlation};
+
+% Compliance engines
+\node[system] (pcidss) at (6,2) {PCI-DSS\\Engine};
+\node[system] (gdpr) at (6,0) {GDPR\\Engine};
+\node[system] (nis2) at (6,-2) {NIS2\\Engine};
+
+% Connections
+\draw[arrow] (pos) -- node[above, sloped, label] {transactions} (bus);
+\draw[arrow] (erp) -- node[above, sloped, label] {changes} (bus);
+\draw[arrow] (iam) -- node[above, sloped, label] {access} (bus);
+
+\draw[arrow] (bus) -- (filter);
+\draw[arrow] (filter) -- (enrich);
+\draw[arrow] (enrich) -- (correlate);
+
+\draw[arrow] (correlate) -- (pcidss);
+\draw[arrow] (correlate) -- (gdpr);
+\draw[arrow] (correlate) -- (nis2);
+
+% Output
+\node[rectangle, draw=green!70, fill=green!20, thick, minimum width=3cm, minimum height=1cm] (dashboard) at (6,-4) {Unified\\Compliance\\Dashboard};
+
+\draw[arrow, green!60] (pcidss) -- (dashboard);
+\draw[arrow, green!60] (gdpr) -- (dashboard);
+\draw[arrow, green!60] (nis2) -- (dashboard);
+
+% Annotations
+\node[label, text width=3cm, align=center] at (0,-2) {Decoupling\\Asynchronous\\Processing};
+\node[label, text width=3cm, align=center] at (6,4) {Parallel\\Compliance\\Validation};
+
+\end{tikzpicture}
+\caption{Pattern Event-Driven per Compliance Real-Time}
+\label{fig:event_driven_pattern}
+\end{figure}

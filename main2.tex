@@ -1,0 +1,449 @@
+% !TEX program = xelatex
+% --- PREAMBOLO ---
+% Definisce il tipo di documento. 'report' è adatto per una tesi.
+\documentclass[12pt,a4paper,oneside]{book}
+
+% Fix for undefined \tightlist (inserted by Pandoc/Markdown)
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
+% PACCHETTI NECESSARI
+% Per la gestione della lingua italiana (sillabazione, nomi dei capitoli, ecc.)
+\usepackage[italian]{babel} 
+
+\usepackage[utf8]{inputenc} % Codifica UTF-8
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}    
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption} 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor} % Per i colori
+\usepackage{standalone}
+\usepackage[most]{tcolorbox} % Add this line to the preamble of your main.tex file
+\usepackage{stackengine}
+
+\usepackage{fancyhdr}
+\usepackage[toc,nopostdot,nonumberlist]{glossaries}
+\makeglossaries
+
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+%\usepackage[backend=biber, style=numeric, citestyle=numeric-comp]{biblatex}
+
+
+% Configurazione biblatex per formato università
+\usepackage[backend=biber, style=numeric, citestyle=numeric-comp, sorting=none, refsection=chapter]{biblatex}
+%\usepackage[backend=biber, style=numeric, citestyle=numeric-comp, sorting=none]{biblatex}
+\addbibresource{bibliografia.bib}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{shapes,arrows,positioning,calc,patterns,decorations.pathreplacing,shadows}
+\usetikzlibrary{shapes.geometric,shapes.symbols,shapes.misc}
+\usetikzlibrary{matrix,chains,scopes,fit,backgrounds}
+\usetikzlibrary{arrows.meta, positioning, shapes, calc}
+
+% ==========================================
+% PERSONALIZZAZIONE FORMATO BIBLIOGRAFIA
+% ==========================================
+
+% Formato per libri (@book)
+\DeclareBibliographyDriver{book}{%
+  % Autore in maiuscoletto
+  \printnames[family-given]{author}%
+  \newunit\newblock
+  % Titolo in corsivo
+  \printfield[italic]{title}%
+  \newunit\newblock
+  % Luogo di pubblicazione (gestisce sia location che address)
+  \printlist{location}%
+  \newunit\newblock
+  % Casa editrice
+  \printlist{publisher}%
+  \newunit\newblock
+  % Anno
+  \printfield{year}%
+  \finentry
+}
+
+% Formato per articoli (@article)
+\DeclareBibliographyDriver{article}{%
+  % Autore in maiuscoletto
+  \printnames[family-given]{author}%
+  \newunit\newblock
+  % Titolo articolo
+  \printfield[quotes]{title}%
+  \newunit\newblock
+  % Rivista in corsivo
+  \printfield[italic]{journaltitle}%
+  \newunit\newblock
+  % Volume e numero
+  \printfield{volume}%
+  \iffieldundef{number}{}{\mkbibparens{\printfield{number}}}%
+  \newunit\newblock
+  % Anno
+  \printfield{year}%
+  \newunit\newblock
+  % Pagine
+  \printfield{pages}%
+  \finentry
+}
+
+% Formato per report tecnici (@techreport)
+\DeclareBibliographyDriver{techreport}{%
+  % Autore in maiuscoletto
+  \printnames[family-given]{author}%
+  \newunit\newblock
+  % Titolo in corsivo
+  \printfield[italic]{title}%
+  \newunit\newblock
+  % Istituzione
+  \printlist{institution}%
+  \newunit\newblock
+  % Luogo
+  \printlist{location}%
+  \newunit\newblock
+  % Anno
+  \printfield{year}%
+  \finentry
+}
+
+% Formato per documenti vari (@misc)
+\DeclareBibliographyDriver{misc}{%
+  % Autore in maiuscoletto
+  \printnames[family-given]{author}%
+  \newunit\newblock
+  % Titolo in corsivo
+  \printfield[italic]{title}%
+  \newunit\newblock
+  % Come pubblicato
+  \printfield{howpublished}%
+  \newunit\newblock
+  % Anno
+  \printfield{year}%
+  \finentry
+}
+
+% Personalizzazione formato nomi (cognome in maiuscoletto)
+\DeclareNameFormat{family-given}{%
+  \ifgiveninits
+    {\usebibmacro{name:family-given}
+      {\namepartfamily}
+      {\namepartgiveni}
+      {\namepartprefix}
+      {\namepartsuffix}}
+    {\usebibmacro{name:family-given}
+      {\textsc{\namepartfamily}}  % Cognome in maiuscoletto
+      {\namepartgiven}
+      {\namepartprefix}
+      {\namepartsuffix}}%
+  \usebibmacro{name:andothers}
+}
+
+% Formato per titoli in corsivo
+\DeclareFieldFormat[book,techreport,misc]{title}{\textit{#1}}
+
+% Formato per titoli di articoli tra virgolette
+\DeclareFieldFormat[article]{title}{``#1''}
+
+% Formato per riviste in corsivo
+\DeclareFieldFormat{journaltitle}{\textit{#1}}
+
+% Rimuove alcuni elementi non necessari
+\AtEveryBibitem{%
+  \clearfield{url}%
+  \clearfield{doi}%
+  \clearfield{isbn}%
+  \clearfield{issn}%
+}
+\addbibresource{bibliografia.bib} % Dice a LaTeX dove trovare le fonti
+
+
+% ==========================================
+% BIBLIOGRAFIA PER CAPITOLO
+% ==========================================
+
+% Personalizza l'aspetto della bibliografia per capitolo
+\defbibheading{subbibliography}[\bibname]{%
+    \section*{Bibliografia del Capitolo \thechapter}%
+    \addcontentsline{toc}{section}{Bibliografia del Capitolo \thechapter}%
+}
+
+
+% filepath: main.tex
+% --- PREAMBOLO ---
+\usepackage{bookmark}  % Migliora la gestione dei segnalibri
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1
+}
+
+\graphicspath{{figure/}}
+% Imposta la profondità di numerazione fino a subsection (livello 2)
+\setcounter{secnumdepth}{3}
+% Imposta la profondità del TOC (Table of Contents) per includere le subsubsection
+
+
+\bibliography{bibliografia}
+
+% ==========================================
+% PACCHETTI ESSENZIALI PER XeLaTeX
+% ==========================================
+\usepackage{fontspec}
+\usepackage[italian]{babel}
+
+% Font Arial nativo dal sistema (REGOLA UNIVERSITÀ)
+\setmainfont{Arial}[
+    Ligatures=TeX,
+    BoldFont=Arial Bold,
+    ItalicFont=Arial Italic,
+    BoldItalicFont=Arial Bold Italic,
+]
+
+% MARGINI ESATTI SECONDO REGOLAMENTO UNIVERSITÀ
+\usepackage[
+    top=3.5cm,        % Superiore: 3,5 cm
+    bottom=3.5cm,     % Inferiore: 3,5 cm  
+    left=4.5cm,       % Sinistro: 4,5 cm
+    right=3cm         % Destro: 3 cm
+]{geometry}
+
+% INTERLINEA 1,5 RIGHE (REGOLA UNIVERSITÀ)
+\usepackage{setspace}
+\onehalfspacing
+
+% GESTIONE PARAGRAFI - RIENTRO PRIMA RIGA 1,25 CM
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% ==========================================
+% SISTEMA DOPPIO SEPARATO: CITAZIONI [1] + NOTE (1) - CORREZIONE FINALE
+% ==========================================
+
+% 1) PERSONALIZZAZIONE FOOTCITE PER FORMATO [n] - RESTA UGUALE
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {[\printfield{labelnumber}]\space
+   \printnames{labelname}%
+   \setunit{\labelnamepunct}%
+   \printfield[citetitle]{labeltitle}%
+   \newunit%
+   \printlist{publisher}%
+   \newunit%
+   \printfield{year}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% 2) SISTEMA SEPARATO PER NOTE ESPLICATIVE - NUMERAZIONE CORRETTA
+\usepackage{bigfoot}
+\DeclareNewFootnote{exp}[arabic]
+
+% CORREZIONE: Formato senza numero capitolo - SOLO (1), (2), (3)...
+\renewcommand{\thefootnoteexp}{(\arabic{footnoteexp})}
+
+% CORREZIONE: Reset esplicito per capitolo SENZA includere il numero capitolo
+\makeatletter
+\@addtoreset{footnoteexp}{chapter}
+\makeatother
+
+% Comando per note esplicative
+\newcommand{\nota}[1]{\footnoteexp{#1}}
+
+% 3) CONFIGURAZIONE LAYOUT - SPAZIATURA RIDOTTA
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont}
+\renewcommand{\footnoterule}{\kern-3pt\hrule width 0.4\columnwidth \kern 2.6pt}
+\setlength{\footnotesep}{0.2cm}     % RIDOTTO: spaziatura tra note
+\setlength{\skip\footins}{0.5cm}    % RIDOTTO: spazio sopra le note
+
+% GESTIONE INDICE - TITOLI A SINISTRA, NUMERI A DESTRA
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont}
+\renewcommand{\cftsecfont}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont}
+\renewcommand{\cftsubsecfont}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont}
+
+% TITOLI: 11PT GRASSETTO (REGOLA UNIVERSITÀ)
+\usepackage{titlesec}
+
+% Capitoli: 11pt grassetto
+\titleformat{\chapter}[display]
+    {\normalfont\fontsize{11pt}{13pt}\bfseries}
+    {\chaptertitlename\ \thechapter}
+    {10pt}
+    {}
+
+% Sezioni: 11pt grassetto  
+\titleformat{\section}
+    {\normalfont\fontsize{11pt}{13pt}\bfseries}
+    {\thesection}
+    {1em}
+    {}
+
+% Sottosezioni: 11pt grassetto
+\titleformat{\subsection}
+    {\normalfont\fontsize{11pt}{13pt}\bfseries}
+    {\thesubsection}
+    {1em}
+    {}
+
+% Sotto-sottosezioni: 11pt grassetto
+\titleformat{\subsubsection}
+    {\normalfont\fontsize{11pt}{13pt}\bfseries}
+    {\thesubsubsection}
+    {1em}
+    {}
+
+% HYPERLINKS (devono essere dopo altri pacchetti)
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    pdftitle={"Dall'Alimentazione alla Cybersecurity: Fondamenti di un'Infrastruttura IT Sicura nella Grande Distribuzione"},
+    pdfauthor={Marco Santoro},
+    pdfsubject={Tesi di Laurea in Ingegneria Informatica},
+    pdfkeywords={ingegneria informatica, tesi, università},
+}
+% ==========================================
+% COMANDI PERSONALIZZATI PER CITAZIONI
+% ==========================================
+% Comando per autori in maiuscoletto (REGOLA UNIVERSITÀ)
+\newcommand{\autore}[1]{\textsc{#1}}
+% Comando per citazione libro secondo formato università
+% Uso: \citlibro{F. FORTUNA}{Corporate Governance}{Milano}{F.Angeli}{2001}{16-20}
+\newcommand{\citlibro}[6]{%
+    \autore{#1}, \textit{#2}, #3, #4, #5, pagg. #6%
+}
+
+% Comando per citazione articolo secondo formato università  
+% Uso: \citarticolo{G. ZURZOLO}{Collegio sindacale e internal auditors}{Quaderni di finanza}{14}{Consob}{1996}{46}
+\newcommand{\citarticolo}[7]{%
+    \autore{#1}, #2, in «#3», n. #4, #5, #6, pag. #7%
+}
+
+% Ambiente per prefazione in corsivo (REGOLA UNIVERSITÀ)
+\newenvironment{prefazione}
+    {\chapter*{Prefazione}
+     \addcontentsline{toc}{chapter}{Prefazione}
+     \itshape}  % Tutto il testo in corsivo
+    {\normalfont\clearpage}
+
+% Ambiente per bibliografia manuale secondo regole università
+\newenvironment{bibliografiauniv}
+    {\chapter*{Bibliografia}
+     \addcontentsline{toc}{chapter}{Bibliografia}
+     \begin{list}{}{\setlength{\leftmargin}{0pt}\setlength{\itemindent}{-\leftmargin}}
+     \raggedright}
+    {\end{list}}
+
+% ==========================================
+% METADATI DOCUMENTO
+% ==========================================
+\setcounter{tocdepth}{2}
+% Configurazioni PGFPlots
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{pgfplots.polar}
+\usetikzlibrary{positioning, arrows.meta, shapes, calc}
+\usetikzlibrary{positioning,shapes,arrows,calc,patterns,decorations.pathreplacing,fit,backgrounds}
+
+% Definizione colori tema GDO
+\definecolor{gdoblu}{RGB}{25,118,188}
+\definecolor{gdorosso}{RGB}{220,38,58}
+\definecolor{gdoverde}{RGB}{0,150,108}
+\definecolor{gdoarancio}{RGB}{255,165,0}
+\definecolor{gdogrigio}{RGB}{128,128,128}
+\definecolor{gdovioletto}{RGB}{128,0,128}
+%\geometry{margin=2cm}
+%Definizione stile caption
+\numberwithin{figure}{chapter} % Numera le figure per capitolo
+\numberwithin{table}{chapter}  % Numera le tabelle per capitolo
+\captionsetup{font=small}
+
+% Stile personalizzato per il codice Python
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{black!5},
+    commentstyle=\color{green!40!black},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+% Importa configurazioni
+%\input{config/packages}
+
+%input{glossario}
+
+
+% ==========================================
+% INIZIO DOCUMENTO
+% ==========================================
+\begin{document}
+
+
+% COMPILAZIONE SELETTIVA - Decommentare solo il capitolo su cui si lavora
+%\includeonly{chapters/01_introduzione}
+%\includeonly{chapters/02_stato_arte}
+%\includeonly{chapters/03_metodologia}
+%\includeonly{chapters/04_implementazione}
+%\includeonly{chapters/05_risultati}
+%\includeonly{chapters/06_conclusioni}
+
+
+
+% Frontespizio e indici
+\input{frontespizio.tex}
+\tableofcontents
+\listoffigures
+\listoftables
+
+% ==========================================
+% CAPITOLI
+% ==========================================
+
+\include{new1}
+\include{new2}
+\include{new3}
+%\include{new4}
+\include{new4-2}
+\include{new5}
+% Appendici
+\appendix
+\include{new_app}
+%\include{topologia}
+
+
+
+
+
+% Bibliografia generale di tutta la tesi
+\printbibliography[title=Bibliografia Generale]
+% Dopo la bibliografia
+\clearpage
+\printglossary[title=Glossario dei Termini,toctitle=Glossario]
+
+\end{document}

@@ -1,0 +1,20 @@
+\chapter{Metodologia Dettagliata di Simulazione Monte Carlo}
+
+\section{Parametrizzazione dei Modelli}
+
+La simulazione Monte Carlo utilizzata in questa ricerca si basa su parametri derivati da fonti verificabili:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parametro} & \textbf{Distribuzione} & \textbf{Fonte} \\
+\midrule
+MTBF Hardware & Weibull($\beta=2.1$, $\eta=8760h$) & IEEE Reliability Data \\
+Costi Downtime & Log-normale($\mu=€45k$, $\sigma=€15k$) & Gartner TCO Study \\
+Picchi Transazionali & Poisson($\lambda$ variabile) & Dati POS aggregati \\
+Turnover Personale & Beta($\alpha=7.5$, $\beta=2.5$) & NRF HR Report \\
+\bottomrule
+\end{tabular}
+\caption{Parametri chiave per simulazione Monte Carlo}
+\end{table}
