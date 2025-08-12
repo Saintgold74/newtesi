@@ -1,21 +1,12 @@
-\documentclass[12pt,a4paper,oneside]{book}
+\documentclass[12pt,a4paper,oneside]{report}
 
 % ===== XELATEX: FONT ARIAL WINDOWS =====
 \usepackage{fontspec}
-
-% Windows 11: Arial è in C:\Windows\Fonts\
 \setmainfont{Arial}[
     BoldFont = {Arial Bold},
     ItalicFont = {Arial Italic},
     BoldItalicFont = {Arial Bold Italic}
 ]
-
-% In caso di problemi, path esplicito Windows:
-% \setmainfont{C:/Windows/Fonts/arial.ttf}[
-%     BoldFont = {C:/Windows/Fonts/arialbd.ttf},
-%     ItalicFont = {C:/Windows/Fonts/ariali.ttf},
-%     BoldItalicFont = {C:/Windows/Fonts/arialbi.ttf}
-% ]
 
 % ===== LINGUA ITALIANA =====
 \usepackage{polyglossia}
@@ -37,9 +28,66 @@
 % ===== RIENTRO PRIMA RIGA =====
 \setlength{\parindent}{1.25cm}
 
-% ===== GESTIONE BIBLIOGRAFIA MODULARE =====
-\usepackage{bibunits}
-\usepackage{cite}
+% ===== BIBLATEX - CONFIGURAZIONE AVANZATA =====
+\usepackage[
+    backend=biber,              % Backend moderno
+    style=numeric,              % Stile numerico [1], [2]
+    sorting=nyt,                % Ordinamento nome-anno-titolo
+    refsection=chapter,         % Bibliografia per capitolo
+    maxbibnames=99,             % Mostra tutti gli autori
+    giveninits=true,            % Usa iniziali per i nomi
+    autolang=other,             % Gestione multilingua
+    hyperref=true,              % Link cliccabili
+    backref=false,              % No back-references
+    url=true,                   % Mostra URL
+    doi=true,                   % Mostra DOI
+    isbn=false,                 % Non mostrare ISBN
+    eprint=false                % Non mostrare eprint
+]{biblatex}
+
+% ===== FORMATTAZIONE BIBLIOGRAFIA SECONDO REGOLAMENTO =====
+
+% Autori in MAIUSCOLETTO
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamegiven}[1]{#1}
+\renewcommand{\mkbibnameprefix}[1]{#1}
+\renewcommand{\mkbibnamesuffix}[1]{#1}
+
+% Separatori e punteggiatura italiana
+\renewcommand{\multinamedelim}{\addcomma\space}
+\renewcommand{\finalnamedelim}{\addcomma\space}
+\renewcommand{\labelnamepunct}{\addcomma\space}
+
+% Formato titoli in corsivo per libri
+\DeclareFieldFormat[book,thesis,report]{title}{\emph{#1}}
+\DeclareFieldFormat[article]{title}{«#1»}
+
+% Formato pagine
+\DeclareFieldFormat{pages}{pp\adddot\space#1}
+\DeclareFieldFormat{page}{p\adddot\space#1}
+
+% Rimuovi "In:" prima del journal
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+% Formato volume e numero per articoli
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{n\adddot\space#1}
+
+% URL in font normale (non typewriter)
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{doi}{DOI\addcolon\space\url{https://doi.org/#1}}
+
+% ===== CARICA FILE BIBLIOGRAFIA =====
+% Opzione 1: File separati per capitolo
+\addbibresource{bibliografia/capitolo1.bib}
+\addbibresource{bibliografia/capitolo2.bib}
+\addbibresource{bibliografia/capitolo3.bib}
+\addbibresource{bibliografia/capitolo4.bib}
+\addbibresource{bibliografia/generale.bib}
+
+% Opzione 2: Un unico file (decommentare se preferito)
+% \addbibresource{bibliografia/completa.bib}
 
 % ===== NOTE A PIÈ DI PAGINA =====
 \usepackage[bottom,hang]{footmisc}
@@ -62,32 +110,52 @@
     \kern 2pt
 }
 
+% ===== COMANDI PER CITAZIONI =====
+% Citazione normale nel testo: [1]
+% \cite{chiave}
+
+% Citazione in nota a piè pagina: (1)
+% \footcite{chiave}
+
+% Citazione con pagina specifica
+% \cite[p.~45]{chiave}
+
 % ===== PACCHETTI UTILI =====
-\usepackage{lipsum} % Per testo segnaposto
-\usepackage{fancyvrb}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath,amssymb}
 \usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
-\usepackage{amsfonts}
+\usepackage{algorithmic}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{url}
 \usepackage{fancyhdr}
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{csquotes}
+\usepackage[utf8]{inputenc} % Codifica UTF-8
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}    
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption} 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor} % Per i colori
 \usepackage{standalone}
 \usepackage[most]{tcolorbox} % Add this line to the preamble of your main.tex file
 \usepackage{stackengine}
-
-\usepackage[toc,nopostdot,nonumberlist]{glossaries}
-\makeglossaries
+\usepackage{csquotes} % Importante per BibLaTeX
+\usepackage{biblatex}
+\usepackage{tocloft} % Per personalizzare l'indice
+% ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====
+\usepackage{titlesec}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -96,19 +164,6 @@
 \usetikzlibrary{shapes.geometric,shapes.symbols,shapes.misc}
 \usetikzlibrary{matrix,chains,scopes,fit,backgrounds}
 \usetikzlibrary{arrows.meta, positioning, shapes, calc}
-
-\graphicspath{{figure/}}
-% Imposta la profondità di numerazione fino a subsection (livello 2)
-\setcounter{secnumdepth}{3}
-% Imposta la profondità del TOC (Table of Contents) per includere le subsubsection
-\setcounter{tocdepth}{3}
-
-% ===== MAIUSCOLETTO =====
-\usepackage{textcase}
-\newcommand{\autore}[1]{\textsc{#1}}
-
-% ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====
-\usepackage{titlesec}
 
 % Formato capitoli
 \titleformat{\chapter}[display]
@@ -181,10 +236,6 @@
 }
 \lstset{style=mystyle}
 
-% ===== CONFIGURAZIONE BIBLIOGRAFIA =====
-\defaultbibliography{bibliografia/generale}
-\defaultbibliographystyle{plain}
-
 % ===== INDICE GENERALE - Formattazione =====
 \usepackage{tocloft}
 \renewcommand{\cftdot}{.}
@@ -220,11 +271,11 @@
 \tableofcontents
 \clearpage
 
-% Indice delle figure (se presente)
+% Indice delle figure
 \listoffigures
 \clearpage
 
-% Indice delle tabelle (se presente)
+% Indice delle tabelle
 \listoftables
 \clearpage
 
@@ -235,10 +286,11 @@
 \include{capitoli/new3}
 \include{capitoli/new4-2}
 \include{capitoli/new5}
-\include{capitoli/new_app}
 
-% Bibliografia generale finale (opzionale)
-\bibliographystyle{plain}
-\bibliography{bibliografia/generale}
+% Bibliografia generale finale (tutto il documento)
+\printbibliography[
+    heading=bibintoc,
+    title={Bibliografia Generale}
+]
 
 \end{document}
