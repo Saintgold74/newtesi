@@ -2369,11 +2369,6 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
@@ -2382,11 +2377,6 @@
   </bcf:section>
   <!-- SECTION 1 -->
   <bcf:bibdata section="1">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
@@ -2398,27 +2388,28 @@
   </bcf:section>
   <!-- SECTION 2 -->
   <bcf:bibdata section="2">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="2">
+    <bcf:citekey order="1" intorder="1">istat2024</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">capgemini2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">IDC</bcf:citekey>
+    <bcf:citekey order="3" intorder="2">\textit {European Retail IT Transformation Benchmark 2024}</bcf:citekey>
+    <bcf:citekey order="3" intorder="3">Framingham</bcf:citekey>
+    <bcf:citekey order="3" intorder="4">International Data Corporation Report \#EUR148923</bcf:citekey>
+    <bcf:citekey order="3" intorder="5">2024.</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">enisa2024</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">forrester2024</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">ponemon2024</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">mckinsey2023</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
   <!-- SECTION 3 -->
   <bcf:bibdata section="3">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
@@ -2430,11 +2421,6 @@
   </bcf:section>
   <!-- SECTION 4 -->
   <bcf:bibdata section="4">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
@@ -2446,41 +2432,10 @@
   </bcf:section>
   <!-- SECTION 5 -->
   <bcf:bibdata section="5">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap1_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap3_references.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/cap5_references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="5">
     <bcf:citekey order="1" intorder="1">enisa2024</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">colouris2023</bcf:citekey>
-    <bcf:citekey order="2" intorder="2">tanenbaum2023</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">zhang2024</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">gartner2024</bcf:citekey>
-    <bcf:citekey order="4" intorder="2">idc2024</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">klems2023</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">martens2024</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">dataset2024</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">avizienis2023</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">iso27001</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">forrester2024</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">survey2024</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">enisa2023cloud</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">benchmark2023</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">cisco2024</bcf:citekey>
-  </bcf:section>
-  <!-- SECTION 0 (cont.) -->
-  <bcf:section number="0">
-  </bcf:section>
-  <!-- SECTION 6 -->
-  <bcf:bibdata section="6">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo1.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo2.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo3.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/capitolo4.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/generale.bib</bcf:datasource>
-    <bcf:datasource type="file"
+    <bcf
