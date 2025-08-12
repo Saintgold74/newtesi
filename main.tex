@@ -1,5 +1,8 @@
 \documentclass[12pt,a4paper,oneside]{report}
 
+\usepackage[utf8]{inputenc} % Codifica UTF-8
+\usepackage[T1]{fontenc}
+
 % ===== XELATEX: FONT ARIAL WINDOWS =====
 \usepackage{fontspec}
 \setmainfont{Arial}[
@@ -121,27 +124,20 @@
 % \cite[p.~45]{chiave}
 
 % ===== PACCHETTI UTILI =====
+
+
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath,amssymb}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{listings}
-\usepackage{xcolor}
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
 \usepackage{fancyhdr}
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage[utf8]{inputenc} % Codifica UTF-8
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}    
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption} 
-\usepackage{tikz}
+
 \usepackage{pgfplots}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -156,6 +152,15 @@
 \usepackage{tocloft} % Per personalizzare l'indice
 % ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====
 \usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{standalone}
+\usepackage[most]{tcolorbox} % Add this line to the preamble of your main.tex file
+\usepackage{stackengine}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\graphicspath{{figure/}}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -254,6 +259,13 @@
     unicode=true
 ]{hyperref}
 
+
+\addbibresource{bibliografia/cap1_references.bib}
+%\addbibresource{bibliografia/cap2_references.bib}
+\addbibresource{bibliografia/cap3_references.bib}
+%\addbibresource{bibliografia/cap4_references.bib}
+\addbibresource{bibliografia/cap5_references.bib}
+
 % ===== INIZIO DOCUMENTO =====
 \begin{document}
 
@@ -286,6 +298,8 @@
 \include{capitoli/new3}
 \include{capitoli/new4-2}
 \include{capitoli/new5}
+\include{capitoli/new_app}
+\include{capitoli/nuova_C}
 
 % Bibliografia generale finale (tutto il documento)
 \printbibliography[
