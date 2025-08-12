@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>main.bcf</file>
+      <file>test_minimo.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>main.bbl</file>
+      <file>test_minimo.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -58,31 +58,29 @@
       <file>numeric.bbx</file>
       <file>numeric.cbx</file>
       <file>biblatex.cfg</file>
-      <file>italian.lbx</file>
+      <file>english.lbx</file>
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="1">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>main</infile>
+      <infile>test_minimo</infile>
     </cmdline>
     <input>
-      <file>main.bcf</file>
+      <file>test_minimo.bcf</file>
     </input>
     <output>
-      <file>main.bbl</file>
+      <file>test_minimo.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>main.bbl</file>
+      <file>test_minimo.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>main.bcf</file>
+      <file>test_minimo.bcf</file>
     </requires>
     <requires type="editable">
-      <file>bibliografia/cap1_references.bib</file>
-      <file>bibliografia/cap3_references.bib</file>
-      <file>bibliografia/cap5_references.bib</file>
+      <file>test.bib</file>
     </requires>
   </external>
 </requests>

@@ -36,7 +36,7 @@
     backend=biber,              % Backend moderno
     style=numeric,              % Stile numerico [1], [2]
     sorting=nyt,                % Ordinamento nome-anno-titolo
-    refsection=chapter,         % Bibliografia per capitolo
+    %refsection=chapter,         % Bibliografia per capitolo
     maxbibnames=99,             % Mostra tutti gli autori
     giveninits=true,            % Usa iniziali per i nomi
     autolang=other,             % Gestione multilingua
@@ -81,7 +81,12 @@
 \DeclareFieldFormat{url}{\url{#1}}
 \DeclareFieldFormat{doi}{DOI\addcolon\space\url{https://doi.org/#1}}
 
+
+% DOPO: csquotes (NECESSARIO per BibLaTeX)
+\usepackage{csquotes}  % ← IMPORTANTE!
+
 % ===== CARICA FILE BIBLIOGRAFIA =====
+\usepackage[backend=biber,style=numeric]{biblatex}
 % Opzione 1: File separati per capitolo
 \addbibresource{bibliografia/cap1_references.bib}
 %\addbibresource{bibliografia/cap2_references.bib}
@@ -239,6 +244,10 @@
     tabsize=2
 }
 \lstset{style=mystyle}
+
+
+
+
 
 % ===== INDICE GENERALE - Formattazione =====
 \usepackage{tocloft}
