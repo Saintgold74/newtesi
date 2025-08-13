@@ -34,9 +34,10 @@
 % ===== BIBLATEX - CONFIGURAZIONE AVANZATA =====
 \usepackage[
     backend=biber,              % Backend moderno
-    style=numeric,              % Stile numerico [1], [2]
+    %style=numeric,              % Stile numerico [1], [2]
+    style=verbose,
     sorting=nyt,                % Ordinamento nome-anno-titolo
-    %refsection=chapter,         % Bibliografia per capitolo
+    refsection=chapter,         % Bibliografia per capitolo
     maxbibnames=99,             % Mostra tutti gli autori
     giveninits=true,            % Usa iniziali per i nomi
     autolang=other,             % Gestione multilingua
@@ -86,10 +87,10 @@
 \usepackage{csquotes}  % ← IMPORTANTE!
 
 % ===== CARICA FILE BIBLIOGRAFIA =====
-\usepackage[backend=biber,style=numeric]{biblatex}
+%\usepackage[backend=biber,style=numeric]{biblatex}
 % Opzione 1: File separati per capitolo
 \addbibresource{bibliografia/cap1_references.bib}
-%\addbibresource{bibliografia/cap2_references.bib}
+\addbibresource{bibliografia/cap2_references.bib}
 \addbibresource{bibliografia/cap3_references.bib}
 %\addbibresource{bibliografia/cap4_references.bib}
 \addbibresource{bibliografia/cap5_references.bib}
@@ -151,7 +152,7 @@
 \usepackage{standalone}
 \usepackage[most]{tcolorbox} % Add this line to the preamble of your main.tex file
 \usepackage{stackengine}
-\usepackage{csquotes} % Importante per BibLaTeX
+%\usepackage{csquotes} % Importante per BibLaTeX
 \usepackage{biblatex}
 \usepackage{tocloft} % Per personalizzare l'indice
 % ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====

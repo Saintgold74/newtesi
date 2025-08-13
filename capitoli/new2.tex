@@ -15,7 +15,7 @@ L'analisi si basa sull'aggregazione di dati da molteplici fonti: report CERT naz
 
 La natura distribuita delle operazioni GDO introduce complessità sistemiche che amplificano la superficie di attacco rispetto ad architetture centralizzate equivalenti. Un'organizzazione tipica con 200 punti vendita gestisce effettivamente 200 perimetri di sicurezza distinti, ciascuno con proprie vulnerabilità e vettori di attacco potenziali.
 
-La ricerca di Chen e Zhang\footnote{CHEN L., ZHANG W., ``Graph-theoretic Analysis of Distributed Retail Network Vulnerabilities'', \textit{IEEE Transactions on Network and Service Management}, Vol. 21, No. 3, 2024, pp. 234-247.} ha sviluppato un modello matematico per quantificare questa amplificazione, dimostrando che la superficie di attacco distribuita (SAD) cresce in modo non lineare con il numero di nodi nella rete. Per una catena con 100 punti vendita, la superficie di attacco effettiva risulta essere 147 volte superiore a quella di un singolo punto vendita, a causa degli effetti di rete e delle interdipendenze sistemiche.
+La ricerca di Chen e Zhang\autocite{chen2024} ha sviluppato un modello matematico per quantificare questa amplificazione, dimostrando che la superficie di attacco distribuita (SAD) cresce in modo non lineare con il numero di nodi nella rete. Per una catena con 100 punti vendita, la superficie di attacco effettiva risulta essere 147 volte superiore a quella di un singolo punto vendita, a causa degli effetti di rete e delle interdipendenze sistemiche.
 
 Questo fenomeno di amplificazione deriva da tre fattori principali che caratterizzano in modo univoco il settore GDO:
 
@@ -45,11 +45,11 @@ Come evidenziato nella Figura \ref{fig:cyber_evolution}, l'evoluzione temporale 
 \label{fig:attack_types}
 \end{figure}
 
-Il 31\% degli incidenti analizzati ha coinvolto \textbf{ransomware}, con un incremento del 149\% nel primo trimestre del 2025 rispetto all'anno precedente\footnote{CHECK POINT RESEARCH, \textit{The State of Ransomware in the First Quarter of 2025: Record-Breaking 149\% Spike}, Tel Aviv, Check Point Software Technologies, 2025.}. La peculiarità nel settore GDO riguarda la modalità di propagazione: mentre in altri settori il ransomware tipicamente si diffonde attraverso email di phishing, nella GDO il 67\% delle infezioni sfrutta vulnerabilità nei sistemi di gestione remota utilizzati per la manutenzione dei POS.
+Il 31\% degli incidenti analizzati ha coinvolto \textbf{ransomware}, con un incremento del 149\% nel primo trimestre del 2025 rispetto all'anno precedente\autocite{checkpoint2025}. La peculiarità nel settore GDO riguarda la modalità di propagazione: mentre in altri settori il ransomware tipicamente si diffonde attraverso email di phishing, nella GDO il 67\% delle infezioni sfrutta vulnerabilità nei sistemi di gestione remota utilizzati per la manutenzione dei POS.
 
 Il 24\% degli incidenti è classificato come \textbf{data breach}, con una concentrazione particolare sui dati di pagamento. L'analisi temporale mostra picchi significativi durante i periodi di maggiore attività commerciale: il Black Friday e il periodo natalizio registrano incrementi del 340\% negli tentativi di compromissione. Questo pattern suggerisce che gli attaccanti calibrano le loro campagne per massimizzare il volume di dati esfiltrabili.
 
-Gli \textbf{attacchi supply chain}, rappresentanti il 18\% del totale, mostrano una sofisticazione crescente. L'analisi di Europol\footnote{EUROPOL, \textit{European Cybercrime Report 2024: Supply Chain Attacks Analysis}, The Hague, European Cybercrime Centre, 2024.} documenta casi dove la compromissione di un singolo fornitore di software per la gestione degli inventari ha impattato simultaneamente 47 catene retail in 12 paesi europei. La natura interconnessa della supply chain GDO crea effetti domino dove una singola vulnerabilità può propagarsi attraverso l'intero ecosistema.
+Gli \textbf{attacchi supply chain}, rappresentanti il 18\% del totale, mostrano una sofisticazione crescente. L'analisi di Europol\autocite{europol2024} documenta casi dove la compromissione di un singolo fornitore di software per la gestione degli inventari ha impattato simultaneamente 47 catene retail in 12 paesi europei. La natura interconnessa della supply chain GDO crea effetti domino dove una singola vulnerabilità può propagarsi attraverso l'intero ecosistema.
 
 \begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
 title=Algoritmo 2.1: ASSA Calculation for Distributed GDO Networks]
@@ -190,9 +190,9 @@ Identity Verification & 15.6\% & +5ms \\
 \end{tcolorbox}
 L'implementazione di Zero Trust nel contesto GDO presenta sfide uniche che richiedono adattamenti significativi del modello standard:
 
-\textbf{Scalabilità delle verifiche}: Con milioni di transazioni giornaliere distribuite su centinaia di punti vendita, i meccanismi di verifica devono operare con latenze minime. L'analisi delle performance condotta su implementazioni pilota mostra che l'overhead medio introdotto dalle verifiche Zero Trust è di 12ms per transazione\footnote{PALO ALTO NETWORKS, \textit{Zero Trust Network Architecture Performance Analysis 2024}, Santa Clara, Palo Alto Networks Unit 42, 2024.}. Questo incremento, apparentemente modesto, può tradursi in ritardi cumulativi significativi durante i picchi di traffico.
+\textbf{Scalabilità delle verifiche}: Con milioni di transazioni giornaliere distribuite su centinaia di punti vendita, i meccanismi di verifica devono operare con latenze minime. L'analisi delle performance condotta su implementazioni pilota mostra che l'overhead medio introdotto dalle verifiche Zero Trust è di 12ms per transazione\autocite{paloalto2024}. Questo incremento, apparentemente modesto, può tradursi in ritardi cumulativi significativi durante i picchi di traffico.
 
-\textbf{Gestione delle identità eterogenee}: Un punto vendita tipico gestisce identità multiple: dipendenti fissi, lavoratori temporanei, fornitori esterni, sistemi automatizzati e dispositivi IoT. Ciascuna categoria richiede politiche di accesso differenziate e meccanismi di autenticazione appropriati. La complessità aumenta considerando che il turnover del personale nel retail raggiunge il 75\% annuo\footnote{NATIONAL RETAIL FEDERATION, \textit{2024 Retail Workforce Turnover and Security Impact Report}, Washington DC, NRF Research Center, 2024.}, richiedendo processi di provisioning e de-provisioning estremamente efficienti.
+\textbf{Gestione delle identità eterogenee}: Un punto vendita tipico gestisce identità multiple: dipendenti fissi, lavoratori temporanei, fornitori esterni, sistemi automatizzati e dispositivi IoT. Ciascuna categoria richiede politiche di accesso differenziate e meccanismi di autenticazione appropriati. La complessità aumenta considerando che il turnover del personale nel retail raggiunge il 75\% annuo\autocite{nrf2024}, richiedendo processi di provisioning e de-provisioning estremamente efficienti.
 
 \textbf{Continuità operativa in modalità degradata}: I principi Zero Trust possono entrare in conflitto con i requisiti di business continuity. Durante un'interruzione della connettività con i sistemi centrali di autenticazione, i punti vendita devono poter continuare a operare. La soluzione richiede meccanismi di caching sicuro delle credenziali e politiche di fallback che bilancino sicurezza e operatività.
 
@@ -307,17 +307,21 @@ Physical Security & 23.7\% & [20.2\%, 27.2\%] \\
 \end{tabular}
 \end{table}
 
-L'analisi di decomposizione mostra che il 31.2\% della riduzione è attribuibile alla micro-segmentazione, il 24.1\% all'isolamento edge, il 18.4\% al traffic inspection avanzato e il rimanente 26.3\% alle altre componenti del framework.
+L'analisi di decomposizione mostra che il 31.2\% della riduzione è attribuibile alla micro-segmentazione, il 24.1\% all'isolamento edge, 
+il 18.4\% al traffic inspection avanzato e il rimanente 26.3\% alle altre componenti del framework.
 
 \subsubsection{Miglioramento dei Tempi di Detection e Response}
 
 Le architetture Zero Trust mostrano miglioramenti significativi nelle metriche temporali critiche per la gestione degli incidenti:
+\begin{itemize}
+    \item \textbf{Mean Time to Detect (MTTD)}: Riduzione da 127 ore a 24 ore (-81.1\%)
+    \item \textbf{Mean Time to Respond (MTTR)}: Riduzione da 43 ore a 8 ore (-81.4\%)
+    \item \textbf{Mean Time to Recover (MTTR)}: Riduzione da 72 ore a 18 ore (-75.0\%)
+\end{itemize}
 
-- \textbf{Mean Time to Detect (MTTD)}: Riduzione da 127 ore a 24 ore (-81.1\%)
-- \textbf{Mean Time to Respond (MTTR)}: Riduzione da 43 ore a 8 ore (-81.4\%)
-- \textbf{Mean Time to Recover (MTTR)}: Riduzione da 72 ore a 18 ore (-75.0\%)
-
-L'impatto di questi miglioramenti sulla propagazione delle minacce è drammatico: la simulazione mostra che riducendo il MTTD sotto le 24 ore si previene il 77\% della propagazione laterale tipicamente osservata negli incidenti GDO.
+L'impatto di questi miglioramenti sulla propagazione delle minacce è drammatico: 
+la simulazione mostra che riducendo il MTTD sotto le 24 ore si previene 
+il 77\% della propagazione laterale tipicamente osservata negli incidenti GDO.
 
 \subsubsection{Return on Investment della Sicurezza}
 
@@ -344,31 +348,40 @@ La complessità e i costi associati all'implementazione di architetture Zero Tru
 
 La prima fase si concentra su interventi ad alto impatto e bassa complessità che generano valore immediato:
 
-\textbf{Implementazione Multi-Factor Authentication (MFA)}: Deployment di MFA per tutti gli accessi amministrativi e le operazioni critiche. L'analisi mostra un ROI del 312\% in 4 mesi con riduzione del 73\% degli accessi non autorizzati.
+\textbf{Implementazione Multi-Factor Authentication (MFA)}: Deployment di MFA per tutti gli accessi amministrativi 
+e le operazioni critiche. L'analisi mostra un ROI del 312\% in 4 mesi con riduzione del 73\% degli accessi non autorizzati.
 
-\textbf{Segmentazione di Base}: Separazione logica tra rete POS, rete corporate e rete guest. Questa segmentazione basilare riduce la superficie di attacco del 24\% con effort implementativo minimo.
+\textbf{Segmentazione di Base}: Separazione logica tra rete POS, rete corporate e rete guest. 
+Questa segmentazione basilare riduce la superficie di attacco del 24\% con effort implementativo minimo.
 
-\textbf{Compliance Mapping}: Mappatura dei controlli esistenti verso i requisiti Zero Trust per identificare gap e priorità. Questo esercizio riduce l'effort delle fasi successive del 43\% attraverso l'eliminazione di duplicazioni.
+\textbf{Compliance Mapping}: Mappatura dei controlli esistenti verso i requisiti Zero Trust per identificare gap e priorità. 
+Questo esercizio riduce l'effort delle fasi successive del 43\% attraverso l'eliminazione di duplicazioni.
 
 \subsubsection{Wave 2: Core Transformation (6-18 mesi)}
 
 La seconda fase implementa le componenti core dell'architettura Zero Trust:
 
-\textbf{SD-WAN Deployment}: Implementazione di Software-Defined WAN per tutti i collegamenti inter-sito con policy di routing basate su application awareness. Improvement della disponibilità dello 0.47\% e riduzione dei costi di connettività del 31\%.
+\textbf{SD-WAN Deployment}: Implementazione di Software-Defined WAN per tutti i collegamenti inter-sito con policy 
+di routing basate su application awareness. Improvement della disponibilità dello 0.47\% e riduzione dei costi di connettività del 31\%.
 
-\textbf{Identity Governance}: Deployment di sistema IAM centralizzato con provisioning automatico e governance delle identità privilegiate. Riduzione del 67\% negli incidenti legati a credenziali compromesse.
+\textbf{Identity Governance}: Deployment di sistema IAM centralizzato con provisioning automatico e 
+governance delle identità privilegiate. Riduzione del 67\% negli incidenti legati a credenziali compromesse.
 
-\textbf{Micro-segmentazione Avanzata}: Implementazione di segmentazione granulare basata su identità e contesto. Riduzione ASSA addizionale del 28\% rispetto alla segmentazione base.
+\textbf{Micro-segmentazione Avanzata}: Implementazione di segmentazione granulare basata su identità e contesto. 
+Riduzione ASSA addizionale del 28\% rispetto alla segmentazione base.
 
 \subsubsection{Wave 3: Advanced Optimization (18-36 mesi)}
 
 La fase finale ottimizza e automatizza l'architettura:
 
-\textbf{AI-Driven Security Operations}: Implementazione di SOAR (Security Orchestration, Automation and Response) con machine learning per detection e response automatizzate. Riduzione MTTR del 67\% e diminuzione dei falsi positivi del 78\%.
+\textbf{AI-Driven Security Operations}: Implementazione di SOAR (Security Orchestration, Automation and Response) 
+con machine learning per detection e response automatizzate. Riduzione MTTR del 67\% e diminuzione dei falsi positivi del 78\%.
 
-\textbf{Zero Trust Network Access (ZTNA) Completo}: Eliminazione del concetto di perimetro con accesso basato esclusivamente su verifica continua. Achievement del target di latenza <50ms per il 99° percentile delle transazioni.
+\textbf{Zero Trust Network Access (ZTNA) Completo}: Eliminazione del concetto di perimetro con accesso basato 
+esclusivamente su verifica continua. Achievement del target di latenza <50ms per il 99° percentile delle transazioni.
 
-\textbf{Compliance Automation}: Implementazione di continuous compliance monitoring con remediation automatica. Riduzione dei costi di audit del 39\% e miglioramento della compliance posture del 44\%.
+\textbf{Compliance Automation}: Implementazione di continuous compliance monitoring con remediation automatica. 
+Riduzione dei costi di audit del 39\% e miglioramento della compliance posture del 44\%.
 
 \subsection{Gestione del Cambiamento e Fattori di Successo}
 
@@ -429,35 +442,9 @@ Il prossimo capitolo tradurrà questi principi in scelte architetturali concrete
 
 Come mostrato nella Figura \ref{fig:security_framework}, il framework integrato di sicurezza proposto non è statico ma evolve continuamente in risposta al mutevole threat landscape. Questa natura adattiva è essenziale per mantenere l'efficacia delle contromisure in un contesto caratterizzato da innovazione continua sia nelle tecnologie difensive che nelle tecniche di attacco.
 
-% Bibliografia del Capitolo 2
-\begin{thebibliography}{99}
-\bibitem{chen2024} CHEN L., ZHANG W., ``Graph-theoretic Analysis of Distributed Retail Network Vulnerabilities'', \textit{IEEE Transactions on Network and Service Management}, Vol. 21, No. 3, 2024, pp. 234-247.
-
-\bibitem{nrf2024} NATIONAL RETAIL FEDERATION, \textit{2024 Retail Workforce Turnover and Security Impact Report}, Washington DC, NRF Research Center, 2024.
-
-\bibitem{verizon2024} VERIZON COMMUNICATIONS, \textit{2024 Data Breach Investigations Report}, New York, Verizon Business Security, 2024.
-
-\bibitem{checkpoint2025} CHECK POINT RESEARCH, \textit{The State of Ransomware in the First Quarter of 2025: Record-Breaking 149\% Spike}, Tel Aviv, Check Point Software Technologies, 2025.
-
-\bibitem{europol2024} EUROPOL, \textit{European Cybercrime Report 2024: Supply Chain Attacks Analysis}, The Hague, European Cybercrime Centre, 2024.
-
-\bibitem{paloalto2024} PALO ALTO NETWORKS, \textit{Zero Trust Network Architecture Performance Analysis 2024}, Santa Clara, Palo Alto Networks Unit 42, 2024.
-
-\bibitem{gartner2024} GARTNER, \textit{Cloud Migration Impact in Retail 2024}, Stamford, Gartner Research Report G00798234, 2024.
-
-\bibitem{forrester2024} FORRESTER RESEARCH, \textit{The Total Economic Impact of Hybrid Cloud in Retail}, Cambridge, Forrester Consulting TEI Study, 2024.
-
-\bibitem{idc2024} IDC, \textit{European Retail IT Transformation Benchmark 2024}, Framingham, International Data Corporation Report \#EUR148923, 2024.
-
-\bibitem{microsoft2024} MICROSOFT SECURITY, \textit{Zero Trust Deployment Report 2024}, Redmond, Microsoft Corporation Security Division, 2024.
-
-\bibitem{isaca2024} ISACA, \textit{State of Compliance 2024: Multi-Standard Integration Benefits}, Schaumburg, Information Systems Audit and Control Association, 2024.
-
-\bibitem{ponemon2024} PONEMON INSTITUTE, \textit{Cost of Compliance Report 2024: Retail Sector Deep Dive}, Traverse City, Ponemon Institute LLC, 2024.
-
-\bibitem{pwc2024} PWC, \textit{Integrated GRC in Retail: ROI Analysis and Implementation Strategies}, London, PricewaterhouseCoopers LLP, 2024.
-
-\bibitem{mckinsey2024} MCKINSEY \& COMPANY, \textit{Retail Technology Investment Optimization Framework}, New York, McKinsey Global Institute, 2024.
-
-\bibitem{sans2024} SANS INSTITUTE, \textit{Retail Cyber Incident Case Studies: Lessons from Major Breaches 2020-2023}, Bethesda, SANS Digital Forensics and Incident Response, 2024.
-\end{thebibliography}
+% % Bibliografia del Capitolo 2
+% 
+\printbibliography[
+    heading=subbibintoc,
+    title={Riferimenti Bibliografici}
+]
