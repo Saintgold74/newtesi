@@ -6,37 +6,32 @@
 
 \subsection{La Complessità Sistemica della Grande Distribuzione Organizzata}
 
-La Grande Distribuzione Organizzata (GDO) rappresenta uno dei settori più complessi e critici dell'economia italiana, caratterizzato da un'in\-fra\-strut\-tu\-ra tecnologica la cui sofisticazione è spesso sottovalutata. Con oltre 27.000 punti vendita distribuiti sul territorio nazionale\autocite{istat2024} e un volume di transazioni giornaliere che supera i 45 milioni di operazioni, il settore gestisce una complessità paragonabile a quella dei servizi finanziari o delle telecomunicazioni, ma con vincoli operativi unici che ne amplificano le sfide ingegneristiche.
+Il settore della Grande Distribuzione Organizzata (GDO) in Italia gestisce un'infrastruttura tecnologica la cui complessità è paragonabile a quella di operatori di telecomunicazioni o servizi finanziari. Con 27.432 punti vendita attivi\autocite{istat2024} 45 milioni di transazioni elettroniche giornaliere e requisiti di disponibilità superiori al 99.9\%, la GDO rappresenta un caso di studio unico per l'ingegneria dei sistemi distribuiti\textit{ mission-critical}.
 
-La peculiarità del settore GDO risiede nella sua natura intrinsecamente distribuita e nella criticità delle sue operazioni. Ogni punto vendita rappresenta non solo un luogo di commercio, ma un nodo computazionale che deve garantire continuità operativa ventiquattro ore su ventiquattro, processare transazioni in tempo reale, gestire sistemi di inventario complessi e, sempre più frequentemente, integrare tecnologie emergenti come l'Internet of Things (IoT) per il monitoraggio della catena del freddo o sistemi di intelligenza artificiale per l'ottimizzazione degli approvvigionamenti.
-
-Questa complessità tecnologica si intreccia con requisiti di business stringenti. Durante eventi promozionali o periodi di picco stagionale, i sistemi devono gestire incrementi di carico che possono raggiungere il 300-500\% rispetto ai volumi standard\autocite{capgemini2024}, mantenendo al contempo tempi di risposta inferiori ai 100 millisecondi per le transazioni critiche. La sfida non è semplicemente tecnica ma sistemica: come garantire performance, sicurezza e conformità normativa in un ambiente così dinamico e distribuito?
+L'infrastruttura IT della GDO moderna deve garantire simultaneamente continuità operativa H24 in ambienti fisicamente distribuiti, processare volumi transazionali con picchi del 300-500\% durante eventi promozionali\autocite{Osservatorio2024}, proteggere dati sensibili di pagamento e personali sotto multiple normative, integrare sistemi legacy con tecnologie cloud-native, e gestire la convergenza tra Information Technology (IT) e Operational Technology (OT). Ogni punto vendita, infatti, non è solo un terminale commerciale ma un nodo computazionale autonomo che deve mantenere sincronizzazione con i sistemi centrali, garantire operatività anche in caso di disconnessione temporanea e rispettare stringenti requisiti di sicurezza e compliance. Questa architettura distribuita crea sfide uniche in termini di gestione della consistenza dei dati, propagazione degli aggiornamenti e contenimento delle minacce informatiche.
 
 \subsection{L'Evoluzione del Panorama Tecnologico e delle Minacce}
 
-Il settore della GDO sta attraversando una trasformazione profonda, guidata da tre forze convergenti che ridefiniscono i paradigmi operativi tradizionali.
+Il settore sta attraversando una trasformazione profonda, guidata da tre forze convergenti. La 
 
-La prima forza è rappresentata dalla \textbf{trasformazione digitale accelerata}. La migrazione verso architetture cloud-native non è più una scelta strategica ma una necessità operativa. Secondo i dati aggregati del settore, il 67\% delle organizzazioni GDO europee ha avviato processi di migrazione verso modelli cloud-first\autocite{idc2024}. Questa transizione, tuttavia, non si limita a un semplice spostamento di carichi di lavoro da data center on-premise a infrastrutture cloud. Richiede un ripensamento fondamentale delle architetture applicative, dei modelli di sicurezza e dei processi operativi.
+prima è la trasformazione infrastrutturale: il 67\% delle organizzazioni GDO europee ha iniziato processi di migrazione da data center tradizionali verso modelli cloud-ibridi\autocite{gartner2024cloud}, una transizione che richiede un ripensamento fondamentale dei modelli operativi e di sicurezza.
 
-La seconda forza è costituita dall'\textbf{evoluzione del panorama delle minacce cyber}. L'incremento degli attacchi informatici diretti al settore retail ha raggiunto proporzioni allarmanti, con un aumento del 312\% nel periodo 2021-2023\autocite{enisa2024}. Particolarmente preoccupante è l'emergere di attacchi cyber-fisici che non si limitano a compromettere i sistemi informativi, ma possono impattare direttamente le operazioni fisiche dei punti vendita. Un attacco ai sistemi di controllo HVAC (Heating, Ventilation, and Air Conditioning), ad esempio, può compromettere la catena del freddo causando perdite economiche significative e rischi per la salute pubblica.
+La seconda è l'evoluzione delle minacce informatiche: l'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\autocite{enisa2024retail}e l'emergere di attacchi cyber-fisici (es. compromissione di sistemi di refrigerazione HVAC - Heating, Ventilation, and Air Conditioning) impongono un radicale cambio di strategia difensiva. 
 
-La terza forza è la \textbf{pressione normativa crescente}. L'entrata in vigore di regolamenti come il GDPR (General Data Protection Regulation), la direttiva NIS2 (Network and Information Security) e lo standard PCI-DSS (Payment Card Industry Data Security Standard) ha creato un panorama normativo complesso e interconnesso. Le organizzazioni devono non solo garantire la conformità a ciascuno standard individualmente, ma gestire le interazioni e le potenziali contraddizioni tra requisiti diversi, il tutto mantenendo l'agilità operativa necessaria per competere nel mercato.
+La terza forza è la crescente complessità normativa: l'entrata in vigore simultanea del Payment Card Industry Data Security Standard (PCI-DSS) v4.0, gli aggiornamenti del General Data Protection Regulation (GDPR) e l'implementazione della Direttiva Network and Information Security 2 (NIS2) creano un panorama che, se affrontato con metodi tradizionali, può costare fino al 2-3\% del fatturato \autocite{ponemon2024compliance}.
 
-\section{Problema di Ricerca e Obiettivi}
+\section{Problema di Ricerca e Gap Scientifico}
 
-\subsection{Definizione del Problema}
-
-La convergenza delle sfide tecnologiche, di sicurezza e normative crea un problema di ottimizzazione multi-obiettivo di complessità significativa. Le organizzazioni GDO devono simultaneamente:
-
+L'analisi della letteratura scientifica e tecnica rivela una significativa disconnessione tra la ricerca accademica e le necessità pratiche del settore GDO. Questo gap rappresenta l'opportunità per un contributo originale e si manifesta in tre aree principali:
 \begin{itemize}
-\item Modernizzare l'infrastruttura IT per supportare nuovi modelli di business digitali
-\item Garantire livelli di sicurezza adeguati contro minacce in continua evoluzione
-\item Mantenere la conformità a un panorama normativo frammentato e in evoluzione
-\item Ottimizzare i costi operativi in un settore caratterizzato da margini ridotti
-\item Preservare la continuità operativa in ambienti mission-critical
-\end{itemize}
+\item \textbf{Mancanza di approcci olistici:} Gli studi esistenti tendono a trattare separatamente l'infrastruttura, la sicurezza cloud e la compliance normativa, ignorando le complesse interdipendenze sistemiche che caratterizzano gli ambienti reali della GDO.
+\item \textbf{Assenza di modelli economici validati:} La letteratura accademica manca di modelli di TCO (Total Cost of Ownership) e ROI (Return on Investment) specificamente calibrati per il settore retail e validati empiricamente, strumenti indispensabili per giustificare le decisioni architetturali al management.
+\item \textbf{Limitata considerazione dei vincoli operativi: }Le ricerche su paradigmi come Zero Trust o cloud migration sono spesso sviluppate in contesti generici e non considerano vincoli critici della GDO quali la continuità H24, la gestione di personale con limitate competenze tecniche o la necessità di performance transazionali estreme.
 
+\end{itemize}
 La letteratura esistente affronta tipicamente questi aspetti in modo isolato. Gli studi sulla trasformazione cloud si concentrano sugli aspetti architetturali e economici\autocite{forrester2024}, quelli sulla sicurezza analizzano specifiche categorie di minacce\autocite{ponemon2024}, mentre la ricerca sulla compliance tende a focalizzarsi su singoli framework normativi. Manca un approccio integrato che consideri le interdipendenze sistemiche tra questi elementi e fornisca un framework operativo unificato.
+Alla luce di ciò, il problema di ricerca principale può essere formulato come segue:
+\textbf{Come progettare e implementare un'infrastruttura IT per la Grande Distribuzione Organizzata che bilanci in maniera ottimale sicurezza, performance, compliance e sostenibilità economica nel contesto di evoluzione tecnologica accelerata e minacce emergenti? }
 
 \subsection{Obiettivi della Ricerca}
 
