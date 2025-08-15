@@ -170,9 +170,9 @@ def create_validation_table():
                     cellLoc='center', loc='center',
                     colWidths=[0.15, 0.15, 0.15, 0.25, 0.15])
     
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1.2, 2)
+    table.auto_set_font_size(True)
+    table.set_fontsize(14)
+    table.scale(2.4, 4)
     
     # Colora le celle
     for i in range(len(headers)):
@@ -417,18 +417,18 @@ def create_change_management_structure():
         
         # Titolo
         ax.text(x, y+0.7, name, ha='center', va='center',
-                fontsize=12, fontweight='bold')
+                fontsize=14, fontweight='bold')
         
         # Concerns - versione semplificata
         concerns_text = ' • '.join(props['concerns'])
         ax.text(x, y, concerns_text, ha='center', va='center',
-                fontsize=9)
-        
+                fontsize=12)
+
         # Info sotto il box
         info_text = f"{props['engagement']} | {props['frequency']}"
         ax.text(x, y-0.7, info_text, ha='center', va='center',
-                fontsize=8, style='italic')
-    
+                fontsize=12, style='italic')
+
     # Metriche al centro
     center_box = FancyBboxPatch((3.5, 4), 3, 1.5,
                                 boxstyle="round,pad=0.05",
