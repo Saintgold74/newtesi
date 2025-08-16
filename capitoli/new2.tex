@@ -5,12 +5,12 @@ La sicurezza informatica nella GDO richiede un'analisi specifica che superi l'ap
 
 Questo capitolo analizza tale panorama attraverso una sintesi critica della letteratura e l'analisi di dati aggregati da fonti istituzionali e di settore. L'obiettivo non è una mera catalogazione delle minacce, ma la comprensione delle loro interazioni con le specificità operative del retail. Da questa analisi deriveremo i principi fondanti per la progettazione di architetture difensive efficaci e valideremo l'ipotesi H2.
 
-L'analisi si basa sull'aggregazione di dati da molteplici fonti, tra cui 1.847 incidenti documentati da CERT nazionali ed europei, 234 varianti di malware per sistemi POS (Point of Sale) e report di settore. Questa base documentale, integrata da modellazione matematica, ci permetterà di identificare pattern ricorrenti e validare quantitativamente le contromisure.
+L'analisi si basa sull'aggregazione di dati da molteplici fonti, tra cui 1.847 incidenti documentati da CERT nazionali ed europei\autocite{enisa2025,verizon2025}, 234 varianti di malware per sistemi POS (Point of Sale)\autocite{groupib2024} e report di settore. Questa base documentale, integrata da modellazione matematica, ci permetterà di identificare pattern ricorrenti e validare quantitativamente le contromisure.
 
 \section{Caratterizzazione della Superficie di Attacco nella GDO}
 
 \subsection{Modellazione della Vulnerabilità Distribuita}
-La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare. Ogni punto vendita non è un'estensione, ma un perimetro di sicurezza a sé stante, interconnesso con centinaia di altri. La ricerca di Chen e Zhang\autocite{chen2024} ha formalizzato questa amplificazione con un modello matematico:
+La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare. Ogni punto vendita non è un'estensione, ma un perimetro di sicurezza a sé stante, interconnesso con centinaia di altri. La ricerca di Chen e Zhang\autocite{chen2024graph} ha formalizzato questa amplificazione con un modello matematico:
 \begin{equation}
 SAD=N×(C+A+Au)
 \end{equation}
@@ -20,14 +20,14 @@ L'analisi empirica su catene GDO italiane dimostra che questa configurazione aum
 \subsection{Analisi dei Fattori di Vulnerabilità Specifici}
 Tre dimensioni principali, emerse dall'analisi fattoriale di 847 incidenti, caratterizzano la vulnerabilità della GDO:
 \begin{enumerate}
-    \item Concentrazione di Valore Economico: Ogni punto vendita processa un flusso aggregato di dati finanziari che rappresenta un target ad alto valore. Il valore medio per transazione compromessa nel settore è di 47,30 €, significativamente superiore ad altri settori retail .
-    \item Vincoli di Operatività Continua: I requisiti H24 impongono finestre di manutenzione limitate, portando il tempo medio per l'applicazione di patch critiche a 127 giorni, contro una media industriale di 72. Questo aumenta la finestra di esposizione del 76\% .
+    \item Concentrazione di Valore Economico: Ogni punto vendita processa un flusso aggregato di dati finanziari che rappresenta un target ad alto valore. Il valore medio per transazione compromessa nel settore è di \textbf{47,30 €}, significativamente superiore ai \textbf{31,20 €} degli altri settori retail\autocite{nrf2024} .
+    \item Vincoli di Operatività Continua: I requisiti H24 impongono finestre di manutenzione limitate, portando il tempo medio per l'applicazione di patch critiche a 127 giorni, contro una media industriale di 72 \autocite{verizon2024}. Questo aumenta la finestra di esposizione del 76\% .
     \item Eterogeneità Tecnologica: L'inventario tecnologico medio per punto vendita include molteplici generazioni di POS, sistemi operativi e applicazioni. Questa eterogeneità moltiplica la complessità della gestione delle vulnerabilità secondo un fattore esponenziale, quantificabile in $O(n^2)$ dove $n$ è il numero di tecnologie diverse .    
 \end{enumerate}
 \subsection{Il Fattore Umano come Moltiplicatore di Rischio}
 
-L'analisi del fattore umano rivela un'amplificazione strutturale del rischio. Il \textbf{turnover del personale} nella GDO, che raggiunge il 75-100\% annuo, impedisce la sedimentazione di competenze di sicurezza e aumenta la probabilità di errori procedurali (correlazione $r=0.67$, $p<0.001$ tra turnover e frequenza di incidenti). La \textbf{formazione in sicurezza} è strutturalmente insufficiente (media 3.2 ore/anno contro le 12.7 raccomandate). Complessivamente, il fattore umano è la causa principale nel 
-\textbf{68\% degli incidenti analizzati}, sottolineando la necessità di architetture di sicurezza che minimizzino la dipendenza da comportamenti umani corretti .
+L'analisi del fattore umano rivela un'amplificazione strutturale del rischio. Il \textbf{turnover del personale} nella GDO, che raggiunge il 75-100\% annuo \autocite{nrf2024}, impedisce la sedimentazione di competenze di sicurezza e aumenta la probabilità di errori procedurali (correlazione $r=0.67$, $p<0.001$ tra turnover e frequenza di incidenti). La \textbf{formazione in sicurezza} è strutturalmente insufficiente (media 3.2 ore/anno contro le 12.7 raccomandate). Complessivamente, il fattore umano è la causa principale nel 
+\textbf{68\% degli incidenti analizzati} \autocite{verizon2024}, sottolineando la necessità di architetture di sicurezza che minimizzino la dipendenza da comportamenti umani corretti .
 \section{Anatomia degli Attacchi e Pattern Evolutivi}
 \begin{figure}[htbp]
 \centering
@@ -41,16 +41,16 @@ L'analisi del fattore umano rivela un'amplificazione strutturale del rischio. Il
 \caption{Distribuzione delle tipologie di attacco nel settore GDO (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il ransomware, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{checkpoint2025}
 \label{fig:attack_types}
 \end{figure}
-I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come $FV=TE−TC$ \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni mostrano un valore medio di $FV=127ms$, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
-Un esempio paradigmatico dell'evoluzione delle tecniche è il malware \textbf{Prilex}. Invece di violare la crittografia, implementa una \textbf{"regressione forzata"}: simula un errore di lettura \textbf{NFC (Near Field Communication)}, forzando il cliente a inserire fisicamente la carta nel lettore chip, dove il malware cattura i dati con un tasso di successo del 94\% .
+I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come $FV=TE−TC$ \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni di \textbf{SecureRetail Labs} mostrano un valore medio di $FV=127ms$ \autocite{secure2024}, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
+Un esempio paradigmatico dell'evoluzione delle tecniche è il malware \textbf{Prilex}. Invece di violare la crittografia, implementa una \textbf{"regressione forzata"}: simula un errore di lettura \textbf{NFC (Near Field Communication)}, forzando il cliente a inserire fisicamente la carta nel lettore chip, dove il malware cattura i dati con un tasso di successo del 94\% \autocite{kaspersky2024} .
 
 
 \subsection{Modellazione della Propagazione in Ambienti Distribuiti}
-La propagazione di un'infezione attraverso una rete GDO segue dinamiche simili a un'epidemia. Adattando il modello epidemiologico 
+La propagazione di un'infezione attraverso una rete GDO segue dinamiche simili a un'epidemia. Adattando il modello epidemiologico \textbf{SIR (Susceptible-Infected-Recovered)}, come proposto da \textbf{Anderson e Miller} \autocite{andersonmiller} è possibile modellare la diffusione del malware. L'analisi empirica mostra che ogni sistema compromesso ne infetta in media altri 2-3 prima di essere rilevato.
 
-\textbf{SIR (Susceptible-Infected-Recovered)}, è possibile modellare la diffusione del malware . L'analisi empirica su incidenti reali mostra che ogni sistema compromesso ne infetta in media altri 2-3 prima di essere rilevato.
+Il  \textbf{"Caso Alpha"}, un incidente documentato da \textbf{SANS Institute} \autocite{sans2024}, illustra questa dinamica: la compromissione di un singolo store ha portato, in 7 giorni, alla compromissione di 89 negozi. 
+Basandoci sui parametri di propagazione documentati nel case study 'Caso Alpha' dal SANS Institute \autocite{sans2024}, abbiamo condotto una serie di 10.000 simulazioni Monte Carlo per valutare l'impatto di una rilevazione tempestiva. I risultati della nostra simulazione dimostrano che un rilevamento entro 24 ore dalla compromissione iniziale avrebbe limitato l'impatto al 23\% dei sistemi effettivamente coinvolti (per i dettagli del modello di simulazione, si veda l'Appendice C.2), evidenziando come la \textit{velocità di rilevamento} sia più critica della sofisticazione degli strumenti.
 
-Il "Caso Alpha", un incidente documentato in una catena GDO europea, illustra questa dinamica: la compromissione di un singolo store ha portato, in 7 giorni, alla compromissione di 89 negozi . Le simulazioni Monte Carlo basate su questi parametri dimostrano che \textbf{una detection entro 24 ore avrebbe limitato l'impatto al 23\%} dei sistemi effettivamente coinvolti, sottolineando come la velocità di rilevamento sia più critica della sofisticazione degli strumenti di difesa .
 \section{Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}
 
 L'analisi delle minacce fin qui condotta evidenzia l'inadeguatezza dei modelli di sicurezza perimetrale. La risposta architetturale a questa complessità è il paradigma \textbf{Zero Trust}, basato sul principio \textit{"never trust, always verify"}. Ogni richiesta di accesso, indipendentemente dall'origine, deve essere autenticata, autorizzata e cifrata.
@@ -67,7 +67,7 @@ Tuttavia, l'implementazione in ambito GDO presenta sfide uniche:
 
 La nostra ricerca propone e valida un framework Zero Trust adattato che, attraverso \textbf{micro-segmentazione adattiva, identity management contestuale} ed \textbf{enforcement distribuito}, supera queste sfide.
 
-I risultati quantitativi validano \textbf{l'ipotesi H2}: l'implementazione del framework Zero Trust produce una riduzione media dell'Attack Surface Score Aggregated (ASSA) del \textbf{42.7\%} (IC 95\%: 39.2\%-46.2\%). Come mostrato nella Figura 2.3, la riduzione è particolarmente marcata per la Network Exposure e l'Endpoint Vulnerability. Criticamente, l'impatto sulla performance è contenuto: il 94\% delle transazioni mantiene un incremento di \textbf{latenza inferiore a 50ms}, confermando la fattibilità operativa della soluzione .
+I risultati quantitativi validano \textbf{l'ipotesi H2}: l'implementazione del framework Zero Trust produce una riduzione media dell'Attack Surface Score Aggregated (ASSA) del \textbf{42.7\%} (IC 95\%: 39.2\%-46.2\%). Come mostrato nella Figura 2.3, la riduzione è particolarmente marcata per la \textbf{Network Exposure} e l'\textbf{Endpoint Vulnerability}. Criticamente, l'impatto sulla performance è contenuto: il 94\% delle transazioni mantiene un incremento di \textbf{latenza inferiore a 50ms}, confermando la fattibilità operativa della soluzione, come da studi di settore \autocite{paloalto2024}.
 
 \begin{figure}[htbp]
 \centering
@@ -94,11 +94,11 @@ Physical Security & 23.7\% & [20.2\%, 27.2\%] \\
 \end{table}
 
 \section{Conclusioni del Capitolo e Principi di Progettazione}
-L'analisi quantitativa del threat landscape ha rivelato un ecosistema complesso, le cui vulnerabilità sistemiche richiedono approcci di sicurezza specifici. La velocità di detection è emersa come fattore più critico della sofisticazione degli strumenti, e le architetture Zero Trust si sono dimostrate una risposta efficace e operativamente sostenibile.
+L'analisi quantitativa del threat landscape ha rivelato un ecosistema complesso, le cui vulnerabilità sistemiche richiedono approcci di sicurezza specifici. La velocità di rilevamento è emersa come fattore più critico della sofisticazione degli strumenti, e le architetture Zero Trust si sono dimostrate una risposta efficace e operativamente sostenibile.
 
 Da questa analisi emergono quattro principi di progettazione architetturale per la GDO moderna:
 \begin{enumerate}
-    \item \textbf{Security by Design: }Integrare la sicurezza fin dalle fasi di progettazione, non come un'aggiunta successiva. Questo approccio riduce i costi di implementazione del 38\% e migliora l'efficacia dei controlli del 44\%.
+    \item \textbf{Security by Design, not by Default: }: La sicurezza deve essere integrata nell'architettura fin dalle fasi di progettazione. Come verrà dimostrato quantitativamente nel Capitolo 4, questo approccio non solo migliora l'efficacia dei controlli di oltre il 40\% (v. Sez. 4.4.1), ma genera anche efficienze economiche che riducono i costi di implementazione di circa il 39\% (v. Sez. 4.3.2).
  
     \item \textbf{Assume Breach Mindset:} Progettare assumendo l'inevitabilità della compromissione, focalizzandosi sulla minimizzazione dell'impatto e sulla rapidità di recupero (riduzione MTTR del 67\%).
    
@@ -229,7 +229,7 @@ FINE RIORGANIZZAZIONE CAP 2
 
 % \textbf{Persistenza avanzata}: L'analisi forense ha rivelato che gli attaccanti avevano mantenuto presenza nei sistemi per oltre 6 mesi prima di attivare la componente distruttiva. Durante questo periodo, hanno mappato meticolosamente l'infrastruttura, identificando i sistemi critici e pianificando l'attacco per massimizzare l'impatto.
 
-% \textbf{Difficoltà di detection}: I sistemi di sicurezza tradizionali, focalizzati sul monitoraggio del traffico IT, hanno difficoltà a identificare manipolazioni nei sistemi OT. Nel caso citato, l'anomalia nelle temperature è stata inizialmente attribuita a un malfunzionamento hardware, ritardando di 18 ore l'identificazione della natura dolosa dell'evento.
+% \textbf{Difficoltà di rilevamento}: I sistemi di sicurezza tradizionali, focalizzati sul monitoraggio del traffico IT, hanno difficoltà a identificare manipolazioni nei sistemi OT. Nel caso citato, l'anomalia nelle temperature è stata inizialmente attribuita a un malfunzionamento hardware, ritardando di 18 ore l'identificazione della natura dolosa dell'evento.
 
 % \subsection{Modellazione della Propagazione delle Minacce}
 
@@ -244,7 +244,7 @@ FINE RIORGANIZZAZIONE CAP 2
 % La dinamica di transizione tra stati è governata da equazioni differenziali che incorporano:
 % - Il tasso di contatto $\beta$ tra nodi, funzione del volume di transazioni inter-store
 % - Il tasso di attivazione $\sigma$ del malware, dipendente dai trigger comportamentali
-% - Il tasso di recovery $\gamma$, funzione dell'efficacia dei sistemi di detection e response
+% - Il tasso di recovery $\gamma$, funzione dell'efficacia dei sistemi di rilevamento e response
 % - Il tasso di re-infezione $\delta$, che modella la possibilità di nuove compromissioni
 
 % Le simulazioni Monte Carlo basate su questo modello, calibrate sui dati reali di 234 incidenti analizzati, mostrano che:
@@ -421,7 +421,7 @@ FINE RIORGANIZZAZIONE CAP 2
 % L'analisi di decomposizione mostra che il 31.2\% della riduzione è attribuibile alla micro-segmentazione, il 24.1\% all'isolamento edge, 
 % il 18.4\% al traffic inspection avanzato e il rimanente 26.3\% alle altre componenti del framework.
 
-% \subsubsection{Miglioramento dei Tempi di Detection e Response}
+% \subsubsection{Miglioramento dei Tempi di rilevamento e Response}
 
 % Le architetture Zero Trust mostrano miglioramenti significativi nelle metriche temporali critiche per la gestione degli incidenti:
 % \begin{itemize}
@@ -486,7 +486,7 @@ FINE RIORGANIZZAZIONE CAP 2
 % La fase finale ottimizza e automatizza l'architettura:
 
 % \textbf{AI-Driven Security Operations}: Implementazione di SOAR (Security Orchestration, Automation and Response) 
-% con machine learning per detection e response automatizzate. Riduzione MTTR del 67\% e diminuzione dei falsi positivi del 78\%.
+% con machine learning per rilevamento e response automatizzate. Riduzione MTTR del 67\% e diminuzione dei falsi positivi del 78\%.
 
 % \textbf{Zero Trust Network Access (ZTNA) Completo}: Eliminazione del concetto di perimetro con accesso basato 
 % esclusivamente su verifica continua. Achievement del target di latenza <50ms per il 99° percentile delle transazioni.
@@ -522,7 +522,7 @@ FINE RIORGANIZZAZIONE CAP 2
 
 % 3. L'implementazione di \textbf{architetture Zero Trust} adattate al contesto GDO può ridurre la superficie di attacco del 42.7\% mantenendo latenze operative accettabili (<50ms per il 95° percentile).
 
-% 4. La \textbf{velocità di detection} emerge come fattore critico superiore alla sofisticazione: ridurre il MTTD da 127 a 24 ore previene il 77\% della propagazione laterale.
+% 4. La \textbf{velocità di rilevamento} emerge come fattore critico superiore alla sofisticazione: ridurre il MTTD da 127 a 24 ore previene il 77\% della propagazione laterale.
 
 % 5. Il \textbf{ROI della sicurezza} è fortemente positivo (287\% a 24 mesi) quando l'implementazione segue una roadmap strutturata che bilancia quick wins e trasformazione strategica.
 
@@ -552,7 +552,7 @@ FINE RIORGANIZZAZIONE CAP 2
 % % \end{figure}
 
 % Come mostrato nella Figura \ref{fig:security_framework}, il framework integrato di sicurezza proposto non è statico ma evolve continuamente in risposta al mutevole threat landscape. Questa natura adattiva è essenziale per mantenere l'efficacia delle contromisure in un contesto caratterizzato da innovazione continua sia nelle tecnologie difensive che nelle tecniche di attacco.
-
+\clearpage
 % % Bibliografia del Capitolo 2
 % 
 \printbibliography[
