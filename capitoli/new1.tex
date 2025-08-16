@@ -33,21 +33,50 @@ La letteratura esistente affronta tipicamente questi aspetti in modo isolato. Gl
 Alla luce di ciò, il problema di ricerca principale può essere formulato come segue:
 \textbf{Come progettare e implementare un'infrastruttura IT per la Grande Distribuzione Organizzata che bilanci in maniera ottimale sicurezza, performance, compliance e sostenibilità economica nel contesto di evoluzione tecnologica accelerata e minacce emergenti? }
 
-\subsection{Obiettivi della Ricerca}
+\section{Obiettivi e Contributi Originali Attesi}
+\subsection{Obiettivo Generale}
+L'obiettivo generale di questa ricerca è sviluppare e validare un framework integrato, denominato
+GIST (GDO Integrated Security Transformation), per la progettazione e gestione di infrastrutture IT sicure nella GDO20. Tale framework deve considerare l'intero stack tecnologico, dall'infrastruttura fisica alle applicazioni cloud-native, fornendo un approccio sistemico che sia rigoroso, ripetibile e flessibile2. 
+Il framework GIST si propone di colmare il gap identificato nella letteratura, offrendo un modello teorico e pratico che integri le dimensioni di sicurezza, performance, compliance e sostenibilità economica in un'unica visione coerente.
 
-L'obiettivo principale di questa ricerca è sviluppare e validare un framework integrato per la trasformazione sicura dell'infrastruttura IT nella GDO che consideri simultaneamente requisiti di sicurezza, performance e compliance. Questo obiettivo generale si articola in quattro obiettivi specifici:
+\subsection{Obiettivi Specifici e Misurabili}
+Per raggiungere l'obiettivo generale, la ricerca persegue quattro obiettivi specifici e misurabili:
+\begin{itemize}
+    \item (OS1) Analizzare l'evoluzione delle minacce e l'efficacia delle contromisure, mirando a documentare una riduzione degli incidenti superiore al 40\%22.
+    \item (OS2) Modellare l'impatto delle architetture cloud-ibride su performance e costi, sviluppando un modello predittivo con un coefficiente di determinazione R2 superiore a 0.8523.
+    \item (OS3) Quantificare i benefici di un approccio compliance-by-design, dimostrando una riduzione dei costi di conformità superiore al 30\%24.
+    \item (OS4) Sviluppare linee guida pratiche per la trasformazione, validate su casi reali per garantirne l'applicabilità ad almeno l'80\% delle organizzazioni target25.
 
-\textbf{Obiettivo 1: Analisi Sistemica del Threat Landscape}\\
-Caratterizzare quantitativamente il panorama delle minacce specifico per la GDO, identificando pattern di attacco ricorrenti, vettori di compromissione prevalenti e metriche di impatto. L'analisi deve considerare non solo le minacce cyber tradizionali, ma anche gli attacchi cyber-fisici emergenti che sfruttano la convergenza tra Information Technology (IT) e Operational Technology (OT).
+\end{itemize}
+\subsection{Contributi Originali Attesi}
+Il perseguimento di tali obiettivi porterà allo sviluppo di contributi originali sia per la teoria che per la pratica:
+\begin{enumerate}
+    \item Framework GIST: Un modello olistico e multi-livello per la valutazione e progettazione di infrastrutture sicure nella GDO26.
+    \item Modello Economico GDO-Cloud: Un framework quantitativo per l'analisi di TCO e ROI, validato empiricamente e specifico per il settore27.
+    \item Matrice di Integrazione Normativa: Una mappatura sistematica delle sinergie tra PCI-DSS 4.0, GDPR e NIS2 per un'implementazione unificata.
+    \item Dataset Empirico Anonimizzato: Una raccolta di metriche operative da 15 organizzazioni GDO, che costituirà una base solida per future ricerche.
+\end{enumerate}
 
-\textbf{Obiettivo 2: Modellazione dell'Evoluzione Infrastrutturale}\\
-Sviluppare un modello analitico per valutare percorsi di trasformazione infrastrutturale che bilancino requisiti di modernizzazione tecnologica, vincoli economici e imperativi di sicurezza. Il modello deve considerare l'intero stack tecnologico, dalle fondamenta fisiche (alimentazione, raffreddamento, connettività) alle architetture cloud-native.
 
-\textbf{Obiettivo 3: Ottimizzazione della Compliance Integrata}\\
-Progettare un approccio alla gestione della compliance che sfrutti le sinergie tra diversi framework normativi, riducendo la duplicazione degli sforzi e ottimizzando l'allocazione delle risorse. L'approccio deve trasformare la compliance da costo necessario a driver di miglioramento continuo.
 
-\textbf{Obiettivo 4: Validazione Empirica del Framework}\\
-Validare il framework proposto attraverso casi di studio reali, dimostrando la sua applicabilità pratica e quantificando i benefici ottenibili in termini di riduzione del rischio, miglioramento delle performance e ottimizzazione dei costi.
+\section{Ipotesi di Ricerca}
+La ricerca si propone di validare le seguenti tre ipotesi, formulate per essere empiricamente testabili.
+\begin{itemize}
+    \item H1 (Evoluzione Architetturale): L'implementazione di architetture cloud-ibride, progettate secondo pattern specifici per la GDO, permette di conseguire e mantenere livelli di disponibilità del servizio (SLA - Service Level Agreement) superiori al 99.95\% in presenza di carichi transazionali variabili, ottenendo come beneficio aggiuntivo una riduzione del TCO superiore al 30\% rispetto ad architetture tradizionali on-premise.
+    \item H2 (Sicurezza): L'integrazione di principi Zero Trust in architetture GDO distribuite riduce la superficie di attacco aggregata (misurata tramite lo score ASSA) di almeno il 35\%, mantenendo l'impatto sulla latenza delle transazioni critiche entro 50 millisecondi.
+    \item H3 (Compliance): L'implementazione di un sistema di gestione della compliance basato su principi di compliance-by-design e automazione permette di soddisfare simultaneamente i requisiti di PCI-DSS 4.0, GDPR e NIS2 con un overhead operativo inferiore al 10\% delle risorse IT, conseguendo una riduzione dei costi totali di conformità del 30-40\%
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Framework Teorico e Approccio Metodologico}
 
