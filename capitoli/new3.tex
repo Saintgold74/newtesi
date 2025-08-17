@@ -31,6 +31,7 @@ L'affidabilità dei sistemi di alimentazione è modellabile matematicamente. L'a
 \centering
 \caption{Analisi Comparativa delle Configurazioni di Ridondanza Power}
 \label{tab:power_redundancy_comparison}
+
 \begin{tabular}{lcccccc}
 \toprule
 \textbf{Configurazione} & \textbf{MTBF} & \textbf{Availability} & \textbf{Costo} & \textbf{PUE} & \textbf{Payback} & \textbf{Raccomandazione} \\
@@ -58,6 +59,7 @@ Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
 \end{flushleft}
 \end{table}
 (Qui inserire la Figura 3.1 e la Tabella 3.1 dalla versione Finale. Sono eccellenti nel visualizzare il trade-off tra costo, ridondanza e availability, supportando l'analisi quantitativa).
+
 \subsection{Ottimizzazione Termica e Sostenibilità}
 Il raffreddamento rappresenta mediamente il 38\% del consumo energetico di un data center GDO. L'ottimizzazione tramite modellazione \textbf{CFD (Computational Fluid Dynamics)} è essenziale. L'analisi di 89 implementazioni reali mostra che l'adozione di tecniche come il free cooling può ridurre il \textbf{PUE (Power Usage Effectiveness)} da una media di 1.82 a 1.40. Questi interventi non solo riducono i costi operativi, ma, migliorando la stabilità termica, contribuiscono direttamente all'affidabilità dei componenti, supportando indirettamente l'obiettivo di alta disponibilità dell'ipotesi \textbf{H1}.\autocite{GoogleDeepMind2024}
 \section{Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}
@@ -181,11 +183,7 @@ La transizione da topologie legacy hub-and-spoke a reti SD-WAN (Software-Defined
 (Qui inserire la Figura 3.2 e la Figura 3.3 dalla versione Finale, che illustrano perfettamente il confronto metrico e l'evoluzione dei paradigmi di rete).
 
 \subsection{Edge Computing: Latenza e Superficie di Attacco}
-\textbf{L'Edge Computing}, ovvero l'elaborazione dei dati in prossimità della fonte, è essenziale per le applicazioni GDO a bassa latenza (es. pagamenti, analytics real-time). L'implementazione ottimale riduce la latenza delle applicazioni critiche del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge,Ponemon2024}.
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0. e il traffico WAN del 67.8\%.
-
+\textbf{L'Edge Computing}, ovvero l'elaborazione dei dati in prossimità della fonte, è essenziale per le applicazioni GDO a bassa latenza (es. pagamenti, analytics real-time). L'implementazione ottimale riduce la latenza delle applicazioni critiche del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge,Ponemon2024} e il traffico WAN del 67.8\%.
 Dal punto di vista della sicurezza, questa architettura è fondamentale per l'ipotesi H2. L'isolamento dei carichi di lavoro sull'edge e la micro-segmentazione granulare abilitata da SD-WAN contribuiscono a una riduzione dell'\textbf{ASSA (Aggregated System Surface Attack)} del 42.7\% (IC 95\%: 39.2\%-46.2\%), superando il target del 35\%.
 
 \section{Trasformazione Cloud: Analisi Strategica ed Economica}
