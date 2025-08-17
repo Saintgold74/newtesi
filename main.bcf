@@ -2360,4 +2360,134 @@
       <bcf:constraint type="data" datatype="ismn">
         <bcf:field>ismn</bcf:field>
       </bcf:constraint>
-      <bcf:constraint type="data" 
+      <bcf:constraint type="data" datatype="pattern" pattern="(?:sf|sm|sn|pf|pm|pn|pp)">
+        <bcf:field>gender</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+  </bcf:datamodel>
+  <!-- CITATION DATA -->
+  <!-- SECTION 0 -->
+  <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/newtesi_ref.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 1 -->
+  <bcf:bibdata section="1">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia/newtesi_ref.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="1">
+    <bcf:citekey order="1" intorder="1">istat_struttura_2024</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Osservatorio2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">gartner2024cloud</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">enisa2024retail</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">ponemon2024compliance</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">forrester2024</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">ponemon2024</bcf:citekey>
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">enisa2025</bcf:citekey>
+    <bcf:citekey order="1" intorder="2">verizon2025</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">groupib2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">chen2024graph</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">nrf2024</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">verizon2024</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">nrf2024</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">verizon2024</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">checkpoint2025</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">secure2024</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">kaspersky2024</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">andersonmiller</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">sans2024</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">sans2024</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">paloalto2024</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">nrf2024</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">paloalto2024</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">enisa2024</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">colouris2023</bcf:citekey>
+    <bcf:citekey order="18" intorder="2">tanenbaum2023</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">zhang2024</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">gartner2024</bcf:citekey>
+    <bcf:citekey order="20" intorder="2">idc2024</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">klems2023</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">martens2024</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">dataset2024</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">avizienis2023</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">iso27001</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">forrester2024</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">survey2024</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">enisa2023cloud</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">benchmark2023</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">cisco2024</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">pcidss2024</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">ERCC2024</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">Deloitte2024</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">EDPB2024</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">Gartner2024</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">ENISA2024</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">Chvatal1979</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">Boyd2004</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">PWC2024</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">IBM2024</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">EY2024</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">kumar2024compliance</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">mckinsey2024cloud</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">nist2020zerotrust</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">chen2023zerotrust</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">forrester2024maturity</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">westerman2024leading</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">gartner2024retail</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">williams2024aiml</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="nyt">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="1"
+                name="nyt/global//global/global/global"
+                type="entry"
+                sortingtemplatename="nyt"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global"
+                namehashtemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="0"
+                name="nyt/global//global/global/global"
+                type="entry"
+                sortingtemplatename="nyt"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global"
+                namehashtemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
