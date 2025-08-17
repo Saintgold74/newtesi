@@ -1,0 +1,1225 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{andersonmiller}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=4d31c8bba6c545618e6ad3fd0f1bc517}{%
+           family={{ANDERSON J.P., MILLER R.K.}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {ACM Transactions on Information}%
+        {System SecurityVol. 27, No. 2}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \strng{namehash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{fullhash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{fullhashraw}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{bibnamehash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{authorbibnamehash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{authornamehash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{authorfullhash}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \strng{authorfullhashraw}{4d31c8bba6c545618e6ad3fd0f1bc517}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Epidemiological Modeling of Malware Propagation in Distributed Retail Networks,}
+      \field{type}{Technical Report}
+      \field{year}{2024}
+    \endentry
+    \entry{Boyd2004}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2608d599a0bc2a784c301329a8da5f7b}{%
+           family={Vandenberghe},
+           familyi={V\bibinitperiod},
+           given={Lieven},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{fullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{fullhashraw}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{bibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorbibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authornamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorfullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorfullhashraw}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0521833783}
+      \field{note}{Applied to compliance optimization context}
+      \field{title}{Convex Optimization}
+      \field{year}{2004}
+      \keyw{optimization,convex analysis,algorithms}
+    \endentry
+    \entry{checkpoint2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=864409a1897b280747495621e6d840b6}{%
+           family={{Check Point Research}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Check Point Software Technologies}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Tel Aviv}%
+      }
+      \strng{namehash}{864409a1897b280747495621e6d840b6}
+      \strng{fullhash}{864409a1897b280747495621e6d840b6}
+      \strng{fullhashraw}{864409a1897b280747495621e6d840b6}
+      \strng{bibnamehash}{864409a1897b280747495621e6d840b6}
+      \strng{authorbibnamehash}{864409a1897b280747495621e6d840b6}
+      \strng{authornamehash}{864409a1897b280747495621e6d840b6}
+      \strng{authorfullhash}{864409a1897b280747495621e6d840b6}
+      \strng{authorfullhashraw}{864409a1897b280747495621e6d840b6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The State of Ransomware in the First Quarter of 2025: Record-Breaking 149\% Spike}
+      \field{type}{Security Report}
+      \field{year}{2025}
+    \endentry
+    \entry{chen2024graph}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5ecc04ab7cd8350e63b66dc42451fa3e}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=13414502df57d59c82c59a065c752294}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{fullhash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{fullhashraw}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{bibnamehash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{authorbibnamehash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{authornamehash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{authorfullhash}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \strng{authorfullhashraw}{fe1d64d868dd604fe88b35ecdda7b68f}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Network and Service Management}
+      \field{number}{3}
+      \field{title}{Graph-theoretic Analysis of Distributed Retail Network Vulnerabilities}
+      \field{volume}{21}
+      \field{year}{2024}
+      \field{pages}{234\bibrangedash 247}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1109/TNSM.2024.xxxxxx
+      \endverb
+    \endentry
+    \entry{chen2023zerotrust}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=06debc36f6b61a405e8f0da1c7ccd6ca}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ac7343141a61ffff21c109d6940f49f7}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Marcus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e0797881fcf738000e29c823b498b43e}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={Raj},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{fullhash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{fullhashraw}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{bibnamehash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{authorbibnamehash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{authornamehash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{authorfullhash}{c0679a92175e24334eaa9fae28e004e3}
+      \strng{authorfullhashraw}{c0679a92175e24334eaa9fae28e004e3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2023 IEEE Symposium on Security and Privacy}
+      \field{title}{Zero Trust Architecture Implementation: Lessons from Large-Scale Deployments}
+      \field{year}{2023}
+      \field{pages}{1842\bibrangedash 1859}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1109/SP46215.2023.10179356
+      \endverb
+    \endentry
+    \entry{Chvatal1979}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=4cf1b743d9a52fa798d7b1dd7475f355}{%
+           family={Chvátal},
+           familyi={C\bibinitperiod},
+           given={Václav},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {INFORMS}%
+      }
+      \strng{namehash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{fullhash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{fullhashraw}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{bibnamehash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{authorbibnamehash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{authornamehash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{authorfullhash}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \strng{authorfullhashraw}{4cf1b743d9a52fa798d7b1dd7475f355}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of Operations Research}
+      \field{number}{3}
+      \field{title}{A Greedy Heuristic for the Set-Covering Problem}
+      \field{volume}{4}
+      \field{year}{1979}
+      \field{pages}{233\bibrangedash 235}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1287/moor.4.3.233
+      \endverb
+      \keyw{set-covering,optimization,algorithms}
+    \endentry
+    \entry{Deloitte2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=ece7c767c5364c207cb23ca46927dd1a}{%
+           family={{Deloitte Risk Advisory}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Deloitte}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \strng{namehash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{fullhash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{fullhashraw}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{bibnamehash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{authorbibnamehash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{authornamehash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{authorfullhash}{ece7c767c5364c207cb23ca46927dd1a}
+      \strng{authorfullhashraw}{ece7c767c5364c207cb23ca46927dd1a}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Cost analysis and implementation strategies for PCI DSS 4.0}
+      \field{title}{{PCI DSS} 4.0 Implementation Costs in {European} Retail}
+      \field{type}{Industry Report}
+      \field{year}{2024}
+      \keyw{PCI-DSS,costs,implementation}
+    \endentry
+    \entry{enisa2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=5f0e758bd03c86f599b64eab1cb40ba4}{%
+           family={{ENISA}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {European Union Agency for Cybersecurity}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Heraklion}%
+      }
+      \strng{namehash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{fullhash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{fullhashraw}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{bibnamehash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{authorbibnamehash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{authornamehash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{authorfullhash}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \strng{authorfullhashraw}{5f0e758bd03c86f599b64eab1cb40ba4}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Threat Landscape for Retail Sector 2025}
+      \field{type}{Security Report}
+      \field{year}{2025}
+    \endentry
+    \entry{EY2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=27e0160c47c8e846c1669b39af638011}{%
+           family={{Ernst \& Young}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {EY Risk Advisory}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \strng{namehash}{27e0160c47c8e846c1669b39af638011}
+      \strng{fullhash}{27e0160c47c8e846c1669b39af638011}
+      \strng{fullhashraw}{27e0160c47c8e846c1669b39af638011}
+      \strng{bibnamehash}{27e0160c47c8e846c1669b39af638011}
+      \strng{authorbibnamehash}{27e0160c47c8e846c1669b39af638011}
+      \strng{authornamehash}{27e0160c47c8e846c1669b39af638011}
+      \strng{authorfullhash}{27e0160c47c8e846c1669b39af638011}
+      \strng{authorfullhashraw}{27e0160c47c8e846c1669b39af638011}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{ROI analysis of compliance investments in European retail}
+      \field{title}{Compliance {ROI} Benchmarking Study 2024}
+      \field{type}{Benchmarking Report}
+      \field{year}{2024}
+      \keyw{ROI,compliance,benchmarking}
+    \endentry
+    \entry{EDPB2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=74d1e10fcee75ce98ed9bd00812ec2fb}{%
+           family={{European Data Protection Board}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {European Data Protection Board}%
+      }
+      \list{location}{1}{%
+        {Brussels}%
+      }
+      \strng{namehash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{fullhash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{fullhashraw}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{bibnamehash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{authorbibnamehash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{authornamehash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{authorfullhash}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \strng{authorfullhashraw}{74d1e10fcee75ce98ed9bd00812ec2fb}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Comprehensive database of GDPR enforcement actions}
+      \field{title}{{GDPR} Fines Database 2018-2024}
+      \field{type}{Statistical Report}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://edpb.europa.eu/
+      \endverb
+      \verb{url}
+      \verb https://edpb.europa.eu/
+      \endverb
+      \keyw{GDPR,fines,enforcement}
+    \endentry
+    \entry{ERCC2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=27754214aa5c8309dcf3555c7f6bece8}{%
+           family={{European Retail Compliance Consortium}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {ERCC}%
+      }
+      \list{location}{1}{%
+        {Brussels}%
+      }
+      \strng{namehash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{fullhash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{fullhashraw}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{bibnamehash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{authorbibnamehash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{authornamehash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{authorfullhash}{27754214aa5c8309dcf3555c7f6bece8}
+      \strng{authorfullhashraw}{27754214aa5c8309dcf3555c7f6bece8}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Comprehensive analysis of compliance integration in European retail}
+      \field{title}{Multi-Standard Compliance Implementation Study 2024}
+      \field{type}{Research Report}
+      \field{year}{2024}
+      \keyw{compliance,retail,integration}
+    \endentry
+    \entry{forrester2024maturity}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=97a576d4c651cc81bda22efbab36d463}{%
+           family={{Forrester Research}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Forrester Research Inc.}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \strng{namehash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{fullhash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{fullhashraw}{97a576d4c651cc81bda22efbab36d463}
+      \strng{bibnamehash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{authorbibnamehash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{authornamehash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{authorfullhash}{97a576d4c651cc81bda22efbab36d463}
+      \strng{authorfullhashraw}{97a576d4c651cc81bda22efbab36d463}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{Digital Maturity Assessment Framework for European Retail}
+      \field{type}{Industry Report}
+      \field{year}{2024}
+    \endentry
+    \entry{gartner2024retail}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0eed02931e30ccfe540805bc607ca253}{%
+           family={{Gartner Research}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Gartner Inc.}%
+      }
+      \list{location}{1}{%
+        {Stamford, CT}%
+      }
+      \strng{namehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{fullhash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{fullhashraw}{0eed02931e30ccfe540805bc607ca253}
+      \strng{bibnamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorbibnamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authornamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorfullhash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorfullhashraw}{0eed02931e30ccfe540805bc607ca253}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{note}{ID: G00798562}
+      \field{title}{Digital Transformation in Retail: From Survival to Competitive Advantage}
+      \field{type}{Market Guide}
+      \field{year}{2024}
+    \endentry
+    \entry{groupib2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0c980a74870f9bd763e5f9ea0f55907d}{%
+           family={{Group-IB}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Group-IB}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Singapore}%
+      }
+      \strng{namehash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{fullhash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{fullhashraw}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{bibnamehash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{authorbibnamehash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{authornamehash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{authorfullhash}{0c980a74870f9bd763e5f9ea0f55907d}
+      \strng{authorfullhashraw}{0c980a74870f9bd763e5f9ea0f55907d}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Evolution of POS Malware:A Technical Analysis of 2021-2025 Trends"}
+      \field{type}{Technical Analysis}
+      \field{year}{2025}
+    \endentry
+    \entry{IBM2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=59ceab62ce925644ab183eeed5eafbb5}{%
+           family={{IBM Research}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {IBM T.J. Watson Research Center}%
+      }
+      \list{location}{1}{%
+        {Yorktown Heights, NY}%
+      }
+      \strng{namehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{fullhash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{fullhashraw}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{bibnamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorbibnamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authornamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorfullhash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorfullhashraw}{59ceab62ce925644ab183eeed5eafbb5}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Analysis of automation benefits in compliance processes}
+      \field{title}{Automation Impact on Compliance Management}
+      \field{type}{Research Report}
+      \field{year}{2024}
+      \keyw{automation,compliance,policy-as-code}
+    \endentry
+    \entry{kaspersky2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=d2a15fd1de82ec029d4ebed2cd84afad}{%
+           family={{Kaspersky Lab}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Kaspersky Security Research}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Moscow}%
+      }
+      \strng{namehash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{fullhash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{fullhashraw}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{bibnamehash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{authorbibnamehash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{authornamehash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{authorfullhash}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \strng{authorfullhashraw}{d2a15fd1de82ec029d4ebed2cd84afad}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Prilex Evolution: Technical Analysis of NFC Interference Capabilities}
+      \field{type}{Technical Analysis}
+      \field{year}{2024}
+    \endentry
+    \entry{kumar2024compliance}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=3c2a6a0658f1ad90e7d4a83eef9c3841}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Vijay},
+           giveni={V\bibinitperiod}}}%
+        {{hash=bef7784976b3dd9a1e812bb33152eda5}{%
+           family={Martinez},
+           familyi={M\bibinitperiod},
+           given={Sofia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5915e05c4f16e804b19fbd1b6d1253ca}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c14999b9080b654b45d20987fb248191}
+      \strng{fullhash}{c14999b9080b654b45d20987fb248191}
+      \strng{fullhashraw}{c14999b9080b654b45d20987fb248191}
+      \strng{bibnamehash}{c14999b9080b654b45d20987fb248191}
+      \strng{authorbibnamehash}{c14999b9080b654b45d20987fb248191}
+      \strng{authornamehash}{c14999b9080b654b45d20987fb248191}
+      \strng{authorfullhash}{c14999b9080b654b45d20987fb248191}
+      \strng{authorfullhashraw}{c14999b9080b654b45d20987fb248191}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of Operational Research}
+      \field{number}{2}
+      \field{title}{Integrated Compliance Management: A Set-Covering Optimization Approach}
+      \field{volume}{312}
+      \field{year}{2024}
+      \field{pages}{456\bibrangedash 472}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1016/j.ejor.2024.01.028
+      \endverb
+    \endentry
+    \entry{mckinsey2024cloud}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=96eaa81a81a29c441708d1ec4be5a27b}{%
+           family={{McKinsey \& Company}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {McKinsey Global Institute}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \strng{namehash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{fullhash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{fullhashraw}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{bibnamehash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{authorbibnamehash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{authornamehash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{authorfullhash}{96eaa81a81a29c441708d1ec4be5a27b}
+      \strng{authorfullhashraw}{96eaa81a81a29c441708d1ec4be5a27b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{2}
+      \field{title}{Cloud Economics in European Retail: A Quantitative Analysis}
+      \field{type}{Technical Report}
+      \field{year}{2024}
+    \endentry
+    \entry{nrf2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=8d9e336e4f32263921ba079a912cd042}{%
+           family={{National Retail Federation}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NRF Research Center}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Washington DC}%
+      }
+      \strng{namehash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{fullhash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{fullhashraw}{8d9e336e4f32263921ba079a912cd042}
+      \strng{bibnamehash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{authorbibnamehash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{authornamehash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{authorfullhash}{8d9e336e4f32263921ba079a912cd042}
+      \strng{authorfullhashraw}{8d9e336e4f32263921ba079a912cd042}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{2024 Retail Workforce Turnover and Security Impact Report}
+      \field{type}{Research Report}
+      \field{year}{2024}
+    \endentry
+    \entry{nist2020zerotrust}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=a44b6b00e5eebd7494e1fd00658685e2}{%
+           family={{NIST}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {National Institute of Standards}%
+        {Technology}%
+      }
+      \list{location}{1}{%
+        {Gaithersburg, MD}%
+      }
+      \strng{namehash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{fullhash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{fullhashraw}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{bibnamehash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{authorbibnamehash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{authornamehash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{authorfullhash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \strng{authorfullhashraw}{a44b6b00e5eebd7494e1fd00658685e2}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{800-207}
+      \field{title}{Zero Trust Architecture}
+      \field{type}{Special Publication}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-207
+      \endverb
+    \endentry
+    \entry{paloalto2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=a63f94fec1d8ca5bc76be80dafdfbf2f}{%
+           family={{Palo Alto Networks}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Palo Alto Networks Unit 42}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Santa Clara}%
+      }
+      \strng{namehash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{fullhash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{fullhashraw}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{bibnamehash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{authorbibnamehash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{authornamehash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{authorfullhash}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \strng{authorfullhashraw}{a63f94fec1d8ca5bc76be80dafdfbf2f}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Zero Trust Network Architecture Performance Analysis 2024}
+      \field{type}{Technical Report}
+      \field{year}{2024}
+    \endentry
+    \entry{pcidss2024}{standard}{}{}
+      \name{author}{1}{}{%
+        {{hash=f017ecf8099b2803bea11655c8e9e795}{%
+           family={{PCI Security Standards Council}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {PCI Security Standards Council}%
+      }
+      \strng{namehash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{fullhash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{fullhashraw}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{bibnamehash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{authorbibnamehash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{authornamehash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{authorfullhash}{f017ecf8099b2803bea11655c8e9e795}
+      \strng{authorfullhashraw}{f017ecf8099b2803bea11655c8e9e795}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Payment Card Industry Data Security Standard (PCI DSS) v4.0.1}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.pcisecuritystandards.org/
+      \endverb
+      \verb{url}
+      \verb https://www.pcisecuritystandards.org/
+      \endverb
+    \endentry
+    \entry{PWC2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=8ef48b5801963efd12ce329a16970a39}{%
+           family={{PricewaterhouseCoopers}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {PwC}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \strng{namehash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{fullhash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{fullhashraw}{8ef48b5801963efd12ce329a16970a39}
+      \strng{bibnamehash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{authorbibnamehash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{authornamehash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{authorfullhash}{8ef48b5801963efd12ce329a16970a39}
+      \strng{authorfullhashraw}{8ef48b5801963efd12ce329a16970a39}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Empirical analysis of integrated compliance approaches}
+      \field{title}{Integrated vs Siloed Compliance: A Quantitative Comparison}
+      \field{type}{Comparative Study}
+      \field{year}{2024}
+      \keyw{compliance integration,cost analysis}
+    \endentry
+    \entry{sans2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=7eac1d603ba13985d63f9ec7ecc521f9}{%
+           family={{SANS Institute}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {SANS Digital Forensics}%
+        {Incident Response}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Bethesda}%
+      }
+      \strng{namehash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{fullhash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{fullhashraw}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{bibnamehash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{authorbibnamehash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{authornamehash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{authorfullhash}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \strng{authorfullhashraw}{7eac1d603ba13985d63f9ec7ecc521f9}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Retail Cyber Incident Case Studies: Lessons from Major Breaches 2020-2023}
+      \field{type}{Case Study Report}
+      \field{year}{2024}
+    \endentry
+    \entry{secure2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=477c313707ae80f42c50e2ffdb570fb3}{%
+           family={{SecureRetail Labs}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {SecureRetail Labs Research Division}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Boston}%
+      }
+      \strng{namehash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{fullhash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{fullhashraw}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{bibnamehash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{authorbibnamehash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{authornamehash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{authorfullhash}{477c313707ae80f42c50e2ffdb570fb3}
+      \strng{authorfullhashraw}{477c313707ae80f42c50e2ffdb570fb3}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{POS Memory Security Analysis: Timing Attack Windows in Production Environments}
+      \field{type}{Technical Analysis}
+      \field{year}{2024}
+    \endentry
+    \entry{verizon2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0ca25011ed3f70a5d2c745b6a644e004}{%
+           family={{Verizon Communications}},
+           familyi={V\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Verizon Business Security}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \strng{namehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{fullhash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{fullhashraw}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{bibnamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorbibnamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authornamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorfullhash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorfullhashraw}{0ca25011ed3f70a5d2c745b6a644e004}
+      \field{extraname}{1}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{2024 Data Breach Investigations Report}
+      \field{type}{Annual Report}
+      \field{year}{2024}
+    \endentry
+    \entry{verizon2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0ca25011ed3f70a5d2c745b6a644e004}{%
+           family={{Verizon Communications}},
+           familyi={V\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Verizon Business Security}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \strng{namehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{fullhash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{fullhashraw}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{bibnamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorbibnamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authornamehash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorfullhash}{0ca25011ed3f70a5d2c745b6a644e004}
+      \strng{authorfullhashraw}{0ca25011ed3f70a5d2c745b6a644e004}
+      \field{extraname}{2}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{2025 Data Breach Investigations Report(DBIR)-Retail Sector Deep Dive}
+      \field{type}{Annual Report}
+      \field{year}{2025}
+    \endentry
+    \entry{westerman2024leading}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=3da689c5cf8176fe95d792e6bfc4b8c1}{%
+           family={Westerman},
+           familyi={W\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0bc1602d1ed6bc802d93adfb74c084c1}{%
+           family={Bonnet},
+           familyi={B\bibinitperiod},
+           given={Didier},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00c50c0a44597347642883ea39a79e19}{%
+           family={McAfee},
+           familyi={M\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{fullhash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{fullhashraw}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{bibnamehash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{authorbibnamehash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{authornamehash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{authorfullhash}{13d2c1c86d27baa426b9b02285ff762d}
+      \strng{authorfullhashraw}{13d2c1c86d27baa426b9b02285ff762d}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{isbn}{978-0-262-04847-2}
+      \field{title}{Leading Digital: Turning Technology into Business Transformation}
+      \field{year}{2024}
+    \endentry
+    \entry{williams2024aiml}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=3eb607f460fc53b8867152fc521f9a50}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e3ce9caf995c3296a22488199727be71}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Susan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=eb0aecd83160d1f552629af8b8a74fba}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{fullhash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{fullhashraw}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{bibnamehash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{authorbibnamehash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{authornamehash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{authorfullhash}{00583fd660149abbf62fc23e99d67a7d}
+      \strng{authorfullhashraw}{00583fd660149abbf62fc23e99d67a7d}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Retailing}
+      \field{number}{1}
+      \field{title}{AI/ML Applications in Retail Operations: Current State and Future Directions}
+      \field{volume}{100}
+      \field{year}{2024}
+      \field{pages}{78\bibrangedash 95}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1016/j.jretai.2024.01.003
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{ENISA2024}
+  \missing{Gartner2024}
+\endrefsection
+
+\refsection{1}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{gartner2024cloud}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0eed02931e30ccfe540805bc607ca253}{%
+           family={{Gartner Research}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Gartner, Inc.}%
+      }
+      \list{location}{1}{%
+        {Stamford, CT}%
+      }
+      \strng{namehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{fullhash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{fullhashraw}{0eed02931e30ccfe540805bc607ca253}
+      \strng{bibnamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorbibnamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authornamehash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorfullhash}{0eed02931e30ccfe540805bc607ca253}
+      \strng{authorfullhashraw}{0eed02931e30ccfe540805bc607ca253}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{G00798234}
+      \field{title}{Market Guide for Cloud Management Platforms and Tools}
+      \field{type}{Research Report}
+      \field{year}{2024}
+    \endentry
+    \entry{istat2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=e4ee61434b3418f6eebdac3a3134b985}{%
+           family={{ISTAT}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Istituto Nazionale di Statistica}%
+      }
+      \list{language}{1}{%
+        {italian}%
+      }
+      \list{location}{1}{%
+        {Roma}%
+      }
+      \strng{namehash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{fullhash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{fullhashraw}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{bibnamehash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{authorbibnamehash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{authornamehash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{authorfullhash}{e4ee61434b3418f6eebdac3a3134b985}
+      \strng{authorfullhashraw}{e4ee61434b3418f6eebdac3a3134b985}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Struttura e competitività del sistema delle imprese - Commercio}
+      \field{type}{Report statistico}
+      \field{year}{2024}
+    \endentry
+    \entry{Osservatorio2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=2cea81ac5709d95ef7b52608c1306e0e}{%
+           family={{Politecnico di Milano}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Politecnico di Milano}%
+      }
+      \list{language}{1}{%
+        {italiano}%
+      }
+      \list{location}{1}{%
+        {Milano}%
+      }
+      \strng{namehash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{fullhash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{fullhashraw}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{bibnamehash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{authorbibnamehash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{authornamehash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{authorfullhash}{2cea81ac5709d95ef7b52608c1306e0e}
+      \strng{authorfullhashraw}{2cea81ac5709d95ef7b52608c1306e0e}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Il digitale nel Retail italiano: infrastrutture e trasformazione}
+      \field{type}{Research Report}
+      \field{year}{2024}
+    \endentry
+    \entry{ponemon2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=90934535280af6cfb41a281a6b154b2e}{%
+           family={{Ponemon Institute}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Ponemon Institute LLC}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Traverse City}%
+      }
+      \strng{namehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{fullhash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{fullhashraw}{90934535280af6cfb41a281a6b154b2e}
+      \strng{bibnamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorbibnamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authornamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorfullhash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorfullhashraw}{90934535280af6cfb41a281a6b154b2e}
+      \field{extraname}{1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cost of a Data Breach Report 2024: Retail Sector Analysis}
+      \field{type}{Research Report}
+      \field{year}{2024}
+    \endentry
+    \entry{ponemon2024compliance}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=90934535280af6cfb41a281a6b154b2e}{%
+           family={{Ponemon Institute}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Ponemon Institute LLC}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Traverse City}%
+      }
+      \strng{namehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{fullhash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{fullhashraw}{90934535280af6cfb41a281a6b154b2e}
+      \strng{bibnamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorbibnamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authornamehash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorfullhash}{90934535280af6cfb41a281a6b154b2e}
+      \strng{authorfullhashraw}{90934535280af6cfb41a281a6b154b2e}
+      \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cost of Compliance Report 2024: Retail Sector Analysis}
+      \field{type}{Research Report}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+  \missing{enisa2024retail}
+  \missing{forrester2024}
+\endrefsection
+
+\refsection{2}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{dataset2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=38d38cebba20f895746f6eb0785c1315}{%
+           family={{GDO Italia Consortium}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {italian}%
+      }
+      \strng{namehash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{fullhash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{fullhashraw}{38d38cebba20f895746f6eb0785c1315}
+      \strng{bibnamehash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{authorbibnamehash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{authornamehash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{authorfullhash}{38d38cebba20f895746f6eb0785c1315}
+      \strng{authorfullhashraw}{38d38cebba20f895746f6eb0785c1315}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Dataset proprietario anonimizzato}
+      \field{title}{Dataset Operativo Retail 2024}
+      \field{year}{2024}
+    \endentry
+    \entry{martens2024}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=cbcdaa381e3ece7e653d117842640e1a}{%
+           family={Martens},
+           familyi={M\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=63bb1015dc5c663b21b1eaf88cb9abdc}{%
+           family={Walterbusch},
+           familyi={W\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=00c8c166bb6e9b0e8b71a92a03dee5cd}{%
+           family={Teuteberg},
+           familyi={T\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{fullhash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{fullhashraw}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{bibnamehash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{authorbibnamehash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{authornamehash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{authorfullhash}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \strng{authorfullhashraw}{195ceb86250d5efdf080bb7a1a0a4c4e}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Systems Research}
+      \field{number}{1}
+      \field{title}{Costing of Cloud Computing Services: A Total Cost of Ownership Approach}
+      \field{volume}{35}
+      \field{year}{2024}
+      \field{pages}{156\bibrangedash 172}
+      \range{pages}{17}
+    \endentry
+  \enddatalist
+  \missing{(}
+\endrefsection
+\endinput
+

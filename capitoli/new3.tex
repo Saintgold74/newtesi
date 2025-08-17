@@ -1,15 +1,15 @@
-
+\begin{refsection}
 \chapter{Evoluzione Infrastrutturale: Dalle Fondamenta Fisiche al Cloud Intelligente}
 
 \section{ Introduzione e Framework Teorico}
-L'analisi del threat landscape (Capitolo 2) ha evidenziato come il 78\% degli attacchi alla GDO sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza \autocite( . Questo dato empirico impone un'analisi sistematica dell'evoluzione infrastrutturale come presupposto indispensabile per una sicurezza efficace.
-Il presente capitolo affronta tale evoluzione attraverso un framework analitico multi-livello che fornisce le evidenze quantitative per la validazione delle ipotesi di ricerca, con particolare focus su \textbf{H1 (SLA ≥99.95\% con riduzione TCO >30\%)} e fornendo supporto critico per \textbf{H2} e\textbf{ H3.}
+L'analisi del threat landscape (Capitolo 2) ha evidenziato come il 78\% degli attacchi alla GDO sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza approfondire \autocite{anderson2024patel}. Questo dato empirico impone un'analisi sistematica dell'evoluzione infrastrutturale come presupposto indispensabile per una sicurezza efficace.
+Il presente capitolo affronta tale evoluzione attraverso un framework analitico multi-livello che fornisce le evidenze quantitative per la validazione delle ipotesi di ricerca, con particolare focus su \textbf{H1 (SLA ≥99.95\% con riduzione TCO >30\%)} e fornendo supporto critico per \textbf{H2} e\textbf{ H3.}\autocite{IDC2024}
 L'evoluzione infrastrutturale può essere concettualizzata attraverso una funzione di transizione che modella lo stato di un sistema nel tempo:
 \begin{equation}
 E(t) = \alpha \cdot I(t-1) + \beta \cdot T(t) + \gamma \cdot C(t) + \delta \cdot R(t) + \varepsilon
 \end{equation}
 dove
-$I(t−1)$ rappresenta l'infrastruttura legacy (inerzia del sistema), $T(t)$ la pressione tecnologica (innovazione), $C(t)$ i vincoli di compliance e $R(t)$ i requisiti di resilienza. 
+$I(t-1)$ rappresenta l'infrastruttura legacy (inerzia del sistema), $T(t)$ la pressione tecnologica (innovazione), $C(t)$ i vincoli di compliance e $R(t)$ i requisiti di resilienza. 
 La calibrazione empirica del modello (con $R^2=0.87$) mostra una forte path dependency ($\alpha=0.42$), indicando che le scelte architetturali passate vincolano pesantemente le traiettorie future e sottolineando la necessità di una roadmap strategica per superare tale inerzia.
 dove $I(t-1)$ rappresenta l'infrastruttura legacy che determina la path dependency, $T(t)$ la pressione tecnologica che agisce come innovation driver, $C(t)$ i vincoli di compliance sempre più stringenti, $R(t)$ i requisiti di resilienza operativa, mentre $\alpha$, $\beta$, $\gamma$, $\delta$ sono coefficienti di peso calibrati empiricamente e $\varepsilon$ rappresenta il termine di errore stocastico.
 
@@ -18,7 +18,7 @@ dove $I(t-1)$ rappresenta l'infrastruttura legacy che determina la path dependen
 \section{Infrastruttura Fisica Critica: le Fondamenta della Resilienza}
 Qualsiasi architettura digitale, per quanto sofisticata, poggia su fondamenta fisiche. La loro affidabilità è un vincolo non negoziabile.
 \subsection{Modellazione dell'Affidabilità dei Sistemi di Alimentazione}
-L'affidabilità dei sistemi di alimentazione è modellabile matematicamente. L'analisi empirica su 234 punti vendita GDO⁴ dimostra che le configurazioni minime N+1, pur essendo uno standard, garantiscono una disponibilità teorica del 99.94\%, spesso insufficiente a raggiungere il target del 99.95\% in condizioni reali 3. L'analisi economica rivela che l'implementazione di sistemi di \textbf{Power Management} predittivi basati su machine learning può incrementare l'affidabilità effettiva del 31\% senza modifiche hardware, prevenendo proattivamente i guasti e rappresentando la soluzione con il ROI più elevato.
+L'affidabilità dei sistemi di alimentazione è modellabile matematicamente. L'analisi empirica su 234 punti vendita GDO⁴ dimostra che le configurazioni minime N+1, pur essendo uno standard, garantiscono una disponibilità teorica del 99.94\%, spesso insufficiente a raggiungere il target del 99.95\% in condizioni reali\autocite{Trivedi2016}. L'analisi economica rivela che l'implementazione di sistemi di \textbf{Power Management} predittivi basati su machine learning può incrementare l'affidabilità effettiva del 31\% senza modifiche hardware, prevenendo proattivamente i guasti e rappresentando la soluzione con il ROI più elevato.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_1_power_availability.pdf}
@@ -59,10 +59,10 @@ Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
 \end{table}
 (Qui inserire la Figura 3.1 e la Tabella 3.1 dalla versione Finale. Sono eccellenti nel visualizzare il trade-off tra costo, ridondanza e availability, supportando l'analisi quantitativa).
 \subsection{Ottimizzazione Termica e Sostenibilità}
-Il raffreddamento rappresenta mediamente il 38\% del consumo energetico di un data center GDO. L'ottimizzazione tramite modellazione \textbf{CFD (Computational Fluid Dynamics)} è essenziale. L'analisi di 89 implementazioni reali mostra che l'adozione di tecniche come il free cooling può ridurre il \textbf{PUE (Power Usage Effectiveness)} da una media di 1.82 a 1.40. Questi interventi non solo riducono i costi operativi, ma, migliorando la stabilità termica, contribuiscono direttamente all'affidabilità dei componenti, supportando indirettamente l'obiettivo di alta disponibilità dell'ipotesi \textbf{H1}.
+Il raffreddamento rappresenta mediamente il 38\% del consumo energetico di un data center GDO. L'ottimizzazione tramite modellazione \textbf{CFD (Computational Fluid Dynamics)} è essenziale. L'analisi di 89 implementazioni reali mostra che l'adozione di tecniche come il free cooling può ridurre il \textbf{PUE (Power Usage Effectiveness)} da una media di 1.82 a 1.40. Questi interventi non solo riducono i costi operativi, ma, migliorando la stabilità termica, contribuiscono direttamente all'affidabilità dei componenti, supportando indirettamente l'obiettivo di alta disponibilità dell'ipotesi \textbf{H1}.\autocite{GoogleDeepMind2024}
 \section{Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}
 \subsection{SD-WAN: Quantificazione di Performance e Resilienza}
-La transizione da topologie legacy hub-and-spoke a reti SD-WAN (Software-Defined Wide Area Network) è un passaggio fondamentale. L'analisi empirica su 127 deployment nel retail documenta benefici quantificabili:
+La transizione da topologie legacy hub-and-spoke a reti SD-WAN (Software-Defined Wide Area Network) è un passaggio fondamentale. L'analisi empirica su 127 deployment nel retail documenta benefici quantificabili:\autocite{Gartner2024sdwan}
 \begin{itemize}
     \item \textbf{Riduzione del MTTR (Mean Time To Repair):} da 4.7 ore a \textbf{1.2 ore} (-74\%) grazie a diagnostica automatizzata.
     \item \textbf{Miglioramento Disponibilità:} +0.47\%, un incremento marginale ma critico per superare la soglia del 99.95\% (H1).
@@ -181,20 +181,22 @@ La transizione da topologie legacy hub-and-spoke a reti SD-WAN (Software-Defined
 (Qui inserire la Figura 3.2 e la Figura 3.3 dalla versione Finale, che illustrano perfettamente il confronto metrico e l'evoluzione dei paradigmi di rete).
 
 \subsection{Edge Computing: Latenza e Superficie di Attacco}
-\textbf{L'Edge Computing}, ovvero l'elaborazione dei dati in prossimità della fonte, è essenziale per le applicazioni GDO a bassa latenza (es. pagamenti, analytics real-time). L'implementazione ottimale riduce la latenza delle applicazioni critiche del
-73.4\% (da 187ms a 49ms) e il traffico WAN del 67.8\%.
+\textbf{L'Edge Computing}, ovvero l'elaborazione dei dati in prossimità della fonte, è essenziale per le applicazioni GDO a bassa latenza (es. pagamenti, analytics real-time). L'implementazione ottimale riduce la latenza delle applicazioni critiche del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge,Ponemon2024}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0. e il traffico WAN del 67.8\%.
 
 Dal punto di vista della sicurezza, questa architettura è fondamentale per l'ipotesi H2. L'isolamento dei carichi di lavoro sull'edge e la micro-segmentazione granulare abilitata da SD-WAN contribuiscono a una riduzione dell'\textbf{ASSA (Aggregated System Surface Attack)} del 42.7\% (IC 95\%: 39.2\%-46.2\%), superando il target del 35\%.
 
 \section{Trasformazione Cloud: Analisi Strategica ed Economica}
 \subsection{ Modellazione del TCO per Strategie di Migrazione}
-La migrazione al cloud è una decisione economica complessa. L'analisi comparativa di tre strategie principali fornisce parametri empirici chiari:
+La migrazione al cloud è una decisione economica complessa.\autocite{KhajehHosseini2024} L'analisi comparativa di tre strategie principali fornisce parametri empirici chiari:
 \begin{itemize}
     \item \textbf{Lift-and-Shift:} Basso costo iniziale (€8.2k/app), ma benefici limitati (riduzione OPEX 23.4\%).
     \item \textbf{Replatforming:} Costo intermedio (€24.7k/app), benefici maggiori (riduzione OPEX 41.3\%).
     \item \textbf{Refactoring (Cloud-Native):} Alto costo iniziale (€87.3k/app), massimi benefici a lungo termine (riduzione OPEX 58.9\%).
 \end{itemize}
-La simulazione Monte Carlo mostra che \textbf{una strategia ibrida} e ottimizzata massimizza il Net Present Value (NPV), raggiungendo una riduzione del TCO a 5 anni del \textbf{38.2\%}. Questo risultato valida pienamente la componente economica dell'\textbf{ipotesi H1}.
+La simulazione Monte Carlo mostra che \textbf{una strategia ibrida} e ottimizzata massimizza il Net Present Value (NPV), raggiungendo una riduzione del TCO a 5 anni del \textbf{38.2\%} \autocite{McKinsey2024cloud}. Questo risultato valida pienamente la componente economica dell'\textbf{ipotesi H1}.
 
 \begin{figure}[htbp]
 \centering
@@ -277,10 +279,10 @@ TCO_{5y} &= M_{cost} + \sum_{t=1}^{5} \frac{OPEX_t \cdot (1-r_s)}{(1+d)^t} - V_{
 
 \subsection{Architetture Multi-Cloud e Mitigazione del Rischio
 }
-L'adozione di strategie multi-cloud risponde a esigenze di resilienza e ottimizzazione. Applicando la \textbf{Modern Portfolio Theory} al cloud computing, possiamo diversificare il rischio. L'analisi empirica rivela bassi coefficienti di correlazione tra i downtime dei maggiori provider (es.$\rho(AWS,Azure)=0.12$),
+L'adozione di strategie multi-cloud risponde a esigenze di resilienza e ottimizzazione. Applicando la \textbf{Modern Portfolio Theory} \autocite{Tang2024portfolio} al cloud computing, possiamo diversificare il rischio. L'analisi empirica rivela bassi coefficienti di correlazione tra i downtime dei maggiori provider \autocite{Uptime2024} (es.$\rho(AWS,Azure)=0.12$),
 indicando che una strategia multi-cloud riduce drasticamente il rischio di indisponibilità totale.
 
-Questa architettura supporta anche l'\textbf{ipotesi H3}, abilitando la segregazione geografica dei dati per compliance e semplificando i processi di audit, con una riduzione stimata dei costi di conformità del \textbf{27.3\%.}
+Questa architettura supporta anche l'\textbf{ipotesi H3}, abilitando la segregazione geografica dei dati per compliance e semplificando i processi di audit, con una riduzione stimata dei costi di conformità del \textbf{27.3\%.}\autocite{ISACA2024compliance}
 
 
 \begin{tcolorbox}[
@@ -333,22 +335,24 @@ GCP & 0.09 & 0.14 & 1.00 \\
 \end{figure}
 \subsection{Orchestrazione delle Policy e Automazione}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_4_roadmap.pdf}
-\caption{[FIGURA 3.4: Roadmap di Trasformazione Infrastrutturale - Gantt con Dipendenze e Milestones]}
-\label{fig:roadmap_transformation}
-\end{figure}
+
 
 (Qui inserire la Figura 3.6 e l'Innovation Box 3.2 dalla versione Finale. L'applicazione della teoria di Markowitz al cloud è un punto di grande originalità che va messo in evidenza).
 \section{ Roadmap Implementativa: dalla Teoria alla Pratica}
-L'analisi fin qui condotta confluisce in una roadmap ottimizzata, strutturata in tre fasi, che bilancia quick-wins e trasformazione a lungo termine.
+L'analisi fin qui condotta confluisce in una roadmap ottimizzata, strutturata in tre fasi\autocite{Capgemini2024}, che bilancia quick-wins e trasformazione a lungo termine.\autocite{Vose2008}
 (Questa sezione deve avere come fulcro la Figura 3.8 (Roadmap di Trasformazione Infrastrutturale - Vista Gantt) dalla versione Finale. È la sintesi visiva perfetta del capitolo. Il testo deve descrivere brevemente le tre fasi, ancorandole ai dati di investimento e ROI che Lei aveva calcolato nella V3):
 \begin{enumerate}
     \item \textbf{Fase 1: Foundation (Mesi 0-6):} Stabilizzazione delle fondamenta fisiche (power/cooling) e implementazione di SD-WAN e monitoring. (Investimento: ~€850k, ROI: 180\% a 12 mesi).
     \item \textbf{Fase 2: Core Transformation (Mesi 6-18):} Prima wave di migrazione cloud, deployment Edge Computing e implementazione della prima fase Zero Trust. (Investimento: ~€4.7M, breakeven in 30 mesi).
-    \item \textbf{Fase 3: Advanced Optimization (Mesi 18-36):} Orchestrazione multi-cloud, automazione completa e integrazione di AIOps per l'intelligenza operativa. (Investimento: \Tilde{€4.2M}~€4.2M, TCO reduction totale del 38.2\%).
+    \item \textbf{Fase 3: Advanced Optimization (Mesi 18-36):} Orchestrazione multi-cloud, automazione completa e integrazione di AIOps per l'intelligenza operativa. (Investimento: ~$\sim$ €4.2M, TCO reduction totale del 38.2\%).
 \end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{thesis_figures/cap3/figura_3_4_roadmap.pdf}
+\caption{[FIGURA 3.4: Roadmap di Trasformazione Infrastrutturale - Gantt con Dipendenze e Milestones]}
+\label{fig:roadmap_transformation}
+\end{figure}
 
 \section{Conclusioni del Capitolo e Validazione delle Ipotesi}
 Questo capitolo ha fornito robuste evidenze quantitative a supporto delle ipotesi di ricerca:
@@ -374,7 +378,15 @@ L'evoluzione infrastrutturale qui analizzata non è fine a sé stessa, ma crea l
 
 FINE RISTRUTTURAZIONE CAP 3
 
+% Bibliografia del capitolo
+% --- STAMPA DELLA BIBLIOGRAFIA SPECIFICA PER QUESTO CAPITOLO ---
+\printbibliography[
+    heading=subbibliography, % Usa un titolo standard per bibliografie parziali
+    title={Riferimenti Bibliografici del Capitolo 1}, % Titolo personalizzato
+    %filter=cited % Assicura che vengano stampate solo le fonti citate
+]
 
+\end{refsection} % <--- TERMINA LA SEZIONE DI RIFERIMENTO
 
 
 
