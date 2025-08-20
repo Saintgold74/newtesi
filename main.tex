@@ -39,7 +39,7 @@
     %citestyle=authortitle
     %bibstyle=verbose,
     sorting=nyt,                % Ordinamento nome-anno-titolo
-    refsection=chapter,         % Bibliografia per capitolo
+    %refsection=chapter,         % Bibliografia per capitolo
     maxbibnames=99,             % Mostra tutti gli autori
     giveninits=true,            % Usa iniziali per i nomi
     autolang=other,             % Gestione multilingua
@@ -91,14 +91,15 @@
 % ===== CARICA FILE BIBLIOGRAFIA =====
 %\usepackage[backend=biber,style=numeric]{biblatex}
 % Opzione 1: File separati per capitolo
-\addbibresource{bibliografia/cap1_references.bib}
-\addbibresource{bibliografia/cap2_references.bib}
-\addbibresource{bibliografia/cap3_references.bib}
-\addbibresource{bibliografia/cap4_references.bib}
-\addbibresource{bibliografia/cap5_references.bib}
+% \addbibresource{bibliografia/cap1_references.bib}
+% \addbibresource{bibliografia/cap2_references.bib}
+% \addbibresource{bibliografia/cap3_references.bib}
+% \addbibresource{bibliografia/cap4_references.bib}
+% \addbibresource{bibliografia/cap5_references.bib}
 
 % Opzione 2: Un unico file (decommentare se preferito)
-% \addbibresource{bibliografia/completa.bib}
+\addbibresource{bibliografia/newtesi_ref.bib}
+%\addbibresource{bibliografia/biblio_pers.bib}
 
 % ===== NOTE A PIÈ DI PAGINA =====
 \usepackage[bottom,hang]{footmisc}
@@ -161,13 +162,23 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{standalone}
-\usepackage[most]{tcolorbox} % Add this line to the preamble of your main.tex file
-\usepackage{stackengine}
 \usepackage{algorithmicx}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
 \graphicspath{{figure/}}
+
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+% Definiamo i colori per le fasi
+\definecolor{phase1}{HTML}{DAE8FC}
+\definecolor{phase2}{HTML}{D5F5E3}
+\definecolor{phase3}{HTML}{FCF3CF}
+\definecolor{phase4}{HTML}{FADBD8}
+
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -306,7 +317,7 @@
 \include{capitoli/new4-2}
 \include{capitoli/new5}
 %\include{capitoli/new5-2}
-\include{capitoli/new_app}
+%\include{capitoli/new_app}
 %\include{capitoli/nuova_C}
 
 % Bibliografia generale finale (tutto il documento)
