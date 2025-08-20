@@ -34,12 +34,11 @@
 % ===== BIBLATEX - CONFIGURAZIONE AVANZATA =====
 \usepackage[
     backend=biber,              % Backend moderno
-    %style=numeric,              % Stile numerico [1], [2]
-    style=verbose,
-    %citestyle=authortitle
-    %bibstyle=verbose,
+    style=authoryear,           % Note abbreviate (autore, anno)
+    citestyle=authoryear-comp,  % Citazioni compatte
+    bibstyle=authoryear,        % Bibliografia autore-anno
     sorting=nyt,                % Ordinamento nome-anno-titolo
-    %refsection=chapter,         % Bibliografia per capitolo
+    %refsection=chapter,         % Bibliografia per capitolo (disabilitato)
     maxbibnames=99,             % Mostra tutti gli autori
     giveninits=true,            % Usa iniziali per i nomi
     autolang=other,             % Gestione multilingua
@@ -48,7 +47,8 @@
     url=true,                   % Mostra URL
     doi=true,                   % Mostra DOI
     isbn=false,                 % Non mostrare ISBN
-    eprint=false                % Non mostrare eprint
+    eprint=false,               % Non mostrare eprint
+    autocite=footnote           % autocite genera note a piè pagina
 ]{biblatex}
 
 % ===== FORMATTAZIONE BIBLIOGRAFIA SECONDO REGOLAMENTO =====
@@ -84,6 +84,9 @@
 \DeclareFieldFormat{url}{\url{#1}}
 \DeclareFieldFormat{doi}{DOI\addcolon\space\url{https://doi.org/#1}}
 
+% ===== CONFIGURAZIONE NOTE A PIÈ PAGINA ABBREVIATE =====
+% Le citazioni \autocite{} generano automaticamente note a piè di pagina
+% con formato (Autore Anno) grazie al style authoryear con autocite=footnote
 
 % DOPO: csquotes (NECESSARIO per BibLaTeX)
 \usepackage{csquotes}  % ← IMPORTANTE!
