@@ -1,4 +1,119 @@
 \chapter{Sintesi e Direzioni Strategiche: Dal Framework alla Trasformazione}
+\section{5.1 Introduzione: Dall'Analisi all'Azione Strategica}
+
+Il percorso di ricerca condotto ha sezionato la complessa realtà della GDO, partendo dall'analisi del threat landscape (Cap. 2), passando per l'evoluzione delle architetture IT (Cap. 3), fino all'integrazione strategica della compliance (Cap. 4). Questo capitolo finale ricompone questi elementi in un quadro unificato. L'obiettivo è consolidare le evidenze empiriche, presentare il framework GIST (GDO Integrated Security Transformation) nella sua forma completa e validata, fornire una roadmap implementativa e discutere le implicazioni strategiche future.
+
+\section{5.2 Consolidamento delle Evidenze e Validazione delle Ipotesi}
+
+L'analisi quantitativa ha fornito evidenze definitive per la validazione delle tre ipotesi di ricerca, con forte significatività statistica ($p<0.001$).
+H1 (Cloud-Ibrido): Confermata. Le architetture cloud-ibride raggiungono una disponibilità media del 99.96\% e una riduzione del TCO del 38.2\% su 5 anni.
+H2 (Zero Trust): Validata. La superficie di attacco (ASSA) è ridotta del 42.7\%, mantenendo la latenza transazionale sotto i 50ms.
+H3 (Compliance-by-Design): Pienamente confermata. I costi di compliance sono ridotti del 39.1\%, con un overhead operativo contenuto al 9.7\%.
+[FIGURA 5.1: Tabella Riassuntiva della Validazione delle Ipotesi con Metriche Chiave]
+Nota: Inserire qui una tabella sintetica che per ogni ipotesi (H1, H2, H3) mostra il target, il risultato ottenuto e il p-value, come nella sua Figura 5.1.
+L'analisi ha inoltre rivelato forti effetti sinergici: l'interazione tra sicurezza e compliance, ad esempio, amplifica i benefici del 41\%. L'effetto sistemico totale porta a un'amplificazione del +52\% rispetto alla somma lineare dei miglioramenti, sottolineando il valore di un approccio olistico.
+[FIGURA 5.2: Diagramma degli Effetti Sinergici tra le Componenti del Framework GIST]
+Nota: Inserire qui il suo diagramma che visualizza le quattro componenti e l'amplificazione sistemica, come nella Figura 5.2.
+
+5.3 Il Framework GIST: Architettura Completa e Validata
+
+Il contributo metodologico centrale di questa tesi è il framework GIST. La maturità di un'organizzazione viene quantificata tramite lo GIST Score, calcolato con una formula che aggrega i punteggi delle componenti (Physical, Architectural, Security, Compliance) con pesi calibrati empiricamente tramite analisi multivariata \autocite{hair2019}. Il modello completo ha dimostrato un'elevata capacità predittiva, spiegando il 78.3\% della varianza negli outcome di sicurezza (R2=0.783).
+[FIGURA 5.3: Modello Integrato del Framework GIST con Pesi Validati]
+Nota: Inserire qui una visualizzazione del framework GIST che mostri le quattro componenti e i rispettivi pesi (es. P=18%, A=32%, etc.).
+
+5.4 Roadmap Implementativa Strategica
+
+Il framework GIST non è solo uno strumento di assessment, ma una guida per l'azione. La prioritizzazione degli interventi segue un'analisi costi-benefici dinamica \autocite{saaty1990}, che porta a una roadmap ottimale in tre wave di trasformazione \autocite{wolsey2020}.
+
+
+\begin{table}[h!]
+    \centering
+    \caption{Roadmap Implementativa Dettagliata con Fasi, Iniziative, Costi e ROI}
+    \label{tab:roadmap}
+    \begin{tabularx}{\textwidth}{l l X l l l}
+        \toprule
+        \textbf{Fase} & \textbf{Durata} & \textbf{Iniziative Chiave} & \textbf{Investimento (€)} & \textbf{ROI Atteso} & \textbf{Prerequisito} \\
+        \midrule
+        \rowcolor{phase1}
+        1: Foundation & 0-6 mesi & \begin{tabular}[t]{@{}l@{}}- Power/Cooling Upgrade \\ - Network Segm. Base \\ - Security Assessment\end{tabular} & 850k - 1.2M & 140\% (14m) & Executive Buy-in \\
+        \addlinespace
+        \rowcolor{phase2}
+        2: Modernization & 6-12 mesi & \begin{tabular}[t]{@{}l@{}}- SD-WAN Deployment \\ - Cloud Migration (W1) \\ - Zero Trust (Fase 1)\end{tabular} & 2.3M - 3.1M & 220\% (22m) & Fondamenta Stabili \\
+        \addlinespace
+        \rowcolor{phase3}
+        3: Integration & 12-18 mesi & \begin{tabular}[t]{@{}l@{}}- Multi-Cloud Orchestration \\ - Compliance Automation \\ - Edge Computing\end{tabular} & 1.8M - 2.4M & 310\% (18m) & Maturità Cloud >70\% \\
+        \addlinespace
+        \rowcolor{phase4}
+        4: Optimization & 18-36 mesi & \begin{tabular}[t]{@{}l@{}}- AIOps \\ - Zero Trust Maturo \\ - Predictive Capabilities\end{tabular} & 1.2M - 1.6M & 380\% (15m) & Integrazione Stabile \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+
+
+
+
+
+
+
+[TABELLA 5.1: Roadmap Implementativa Dettagliata con Fasi, Iniziative, Costi e ROI]
+Nota: Inserire qui una tabella che riassuma le 3-4 fasi della roadmap (es. Foundation, Modernization, Optimization) con le iniziative chiave, i costi stimati e il ROI per fase.
+Il successo di questa roadmap dipende criticamente dalla gestione del cambiamento organizzativo, per la quale si raccomanda l'adozione di un modello strutturato come l'ADKAR \autocite{hiatt2006}. L'efficacia della trasformazione va misurata con un sistema di KPI bilanciati \autocite{kaplan1996}, che coprano aspetti operativi, economici e strategici.
+
+5.5 Prospettive Future e Implicazioni per il Settore
+
+La trasformazione digitale è un processo continuo. L'analisi prospettica, basata su metodologie di technology forecasting \autocite{linstone2002,martino1993}, identifica trend che plasmeranno il futuro della GDO:
+Tecnologie Emergenti: L'impatto della crittografia post-quantistica, dell'IA Generativa nelle security operations e delle reti 6G richiederà un'evoluzione continua.
+Evoluzione Normativa: L'AI Act Europeo e il Cyber Resilience Act \autocite{ec2024digital} introdurranno nuovi livelli di complessità.
+Sostenibilità e Green IT: La sostenibilità diventerà un driver primario delle decisioni architetturali \autocite{greengrid2024}, premiando le infrastrutture energeticamente efficienti.
+
+5.6 Contributi della Ricerca e Direzioni Future
+
+Questa tesi ha prodotto quattro contributi fondamentali: 1) Il Framework GIST validato, 2) L'evidenza della sinergia sicurezza-performance, 3) Una metodologia di trasformazione risk-adjusted, e 4) Modelli economici specifici per il settore GDO. La ricerca futura dovrà estendere il framework per includere metriche di sostenibilità (ESG) \autocite{eurostat2024} e sviluppare modelli di compliance dinamica \autocite{parmenter2019}. L'analisi economica dovrà essere ulteriormente affinata per i margini specifici del settore retail \autocite{bcg2024,mckinsey2024digital,accenture2024tech}.
+
+5.7 Conclusioni Finali: Un Imperativo per l'Azione
+
+La trasformazione digitale sicura della GDO non è più un'opzione, ma un imperativo di sopravvivenza. Il framework GIST e le evidenze presentate forniscono una guida scientificamente validata. Il successo richiederà visione strategica, esecuzione disciplinata \autocite{mckinsey2023} e il coraggio di ripensare paradigmi consolidati. La sicurezza informatica nella GDO del futuro non sarà un costo, ma un investimento strategico da ottimizzare \autocite{forrester2024cloud}; non un vincolo all'innovazione, ma il suo principale abilitatore \autocite{gartner2024market}. Il tempo per agire è ora.
+[FIGURA 5.4: Vision 2030 - La GDO Cyber-Resiliente del Futuro]
+Nota: Inserire qui una figura concettuale che riassuma la visione finale di un'infrastruttura GDO sicura, efficiente e innovativa.
+
+% Note bibliografiche ora generate automaticamente tramite autocite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Consolidamento delle Evidenze Empiriche}
 
@@ -250,6 +365,10 @@ La trasformazione digitale sicura non è un progetto IT, è una trasformazione d
 % BIBLIOGRAFIA DEL CAPITOLO 5
 %==========================================================================
 
-% \bibliographystyle{IEEEtran}
-% \bibliography{cap5_references}
-% Note: Il file cap5_references.bib dovrebbe contenere le seguenti voci bibliografiche
+% Stampa bibliografia completa filtrata per le citazioni del capitolo
+% Nota: Per una bibliografia completa a fine tesi utilizzare \printbibliography nel main.tex
+\section{Bibliografia del Capitolo}
+\printbibliography[heading=none,keyword=cap5]
+
+% Alternative: Stampa tutta la bibliografia disponibile
+% \printbibliography[heading=none,title={Riferimenti Bibliografici}]

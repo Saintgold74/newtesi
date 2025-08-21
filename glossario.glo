@@ -1,0 +1,613 @@
+% ===================================================================
+% GLOSSARIO TERMINI - TESI GDO
+% File: glossario.glo
+% Utilizzare con: \input{glossario.glo} nel preambolo del documento
+% ===================================================================
+
+% ===== ACRONIMI PRINCIPALI =====
+
+\newglossaryentry{gdo}{
+    name=GDO,
+    description={Grande Distribuzione Organizzata - Settore del commercio al dettaglio caratterizzato da catene di punti vendita con gestione centralizzata e volumi significativi}
+}
+
+% ===== STANDARD E NORMATIVE =====
+
+\newglossaryentry{pci-dss}{
+    name=PCI-DSS,
+    description={Payment Card Industry Data Security Standard - Standard di sicurezza internazionale per la protezione dei dati delle carte di pagamento, richiesto per tutti gli esercenti che processano transazioni con carte di credito}
+}
+
+\newglossaryentry{gdpr}{
+    name=GDPR,
+    description={General Data Protection Regulation - Regolamento (UE) 2016/679 sulla protezione dei dati personali e sulla libera circolazione di tali dati nell'Unione Europea}
+}
+
+\newglossaryentry{nis2}{
+    name=NIS2,
+    description={Network and Information Security Directive 2 - Direttiva (UE) 2022/2555 relativa a misure per un livello comune elevato di cibersicurezza nell'Unione}
+}
+
+% ===== METRICHE E KPI =====
+
+\newglossaryentry{tco}{
+    name=TCO,
+    description={Total Cost of Ownership - Metodologia di valutazione che considera tutti i costi diretti e indiretti sostenuti durante l'intero ciclo di vita di un sistema informatico}
+}
+
+\newglossaryentry{mtbf}{
+    name=MTBF,
+    description={Mean Time Between Failures - Tempo medio intercorrente tra guasti consecutivi di un sistema, utilizzato come indicatore di affidabilità}
+}
+
+\newglossaryentry{mttr}{
+    name=MTTR,
+    description={Mean Time To Recovery - Tempo medio necessario per ripristinare la piena operatività di un sistema dopo un guasto o un incidente}
+}
+
+% ===== METODOLOGIE E FRAMEWORK =====
+
+\newglossaryentry{mcdm}{
+    name=MCDM,
+    description={Multi-Criteria Decision Making - Metodologia per supportare decisioni complesse che coinvolgono criteri multipli e spesso conflittuali}
+}
+
+% ===== TECNOLOGIE DI RETE =====
+
+\newglossaryentry{sd-wan}{
+    name=SD-WAN,
+    description={Software-Defined Wide Area Network - Architettura di rete che estende i principi della virtualizzazione alle reti geografiche, permettendo controllo centralizzato e ottimizzazione dinamica del traffico}
+}
+
+% ===== CLOUD E VIRTUALIZZAZIONE =====
+
+\newglossaryentry{iaas}{
+    name=IaaS,
+    description={Infrastructure as a Service - Modello di cloud computing che fornisce risorse di calcolo virtualizzate attraverso Internet}
+}
+
+\newglossaryentry{paas}{
+    name=PaaS,
+    description={Platform as a Service - Modello di cloud computing che fornisce una piattaforma di sviluppo e deployment completa attraverso Internet}
+}
+
+\newglossaryentry{saas}{
+    name=SaaS,
+    description={Software as a Service - Modello di distribuzione software in cui le applicazioni sono fornite attraverso Internet come servizio}
+}
+
+% ===== SICUREZZA INFORMATICA =====
+
+\newglossaryentry{siem}{
+    name=SIEM,
+    description={Security Information and Event Management - Soluzione software che aggrega e analizza dati di sicurezza da diverse fonti per identificare minacce e incidenti}
+}
+
+\newglossaryentry{soc}{
+    name=SOC,
+    description={Security Operations Center - Centro operativo dedicato al monitoraggio, rilevamento e risposta agli incidenti di sicurezza informatica}
+}
+
+\newglossaryentry{iam}{
+    name=IAM,
+    description={Identity and Access Management - Framework di processi e tecnologie per gestire identità digitali e controlli di accesso}
+}
+
+% ===== EDGE COMPUTING =====
+
+\newglossaryentry{edge}{
+    name=Edge Computing,
+    description={Paradigma di elaborazione distribuita che porta computazione e storage vicino alle sorgenti di dati per ridurre latenza e migliorare performance}
+}
+
+\newglossaryentry{iot}{
+    name=IoT,
+    description={Internet of Things - Rete di dispositivi fisici interconnessi attraverso Internet, dotati di sensori e capacità di comunicazione}
+}
+
+% ===== DEVELOPMENT E DEVOPS =====
+
+\newglossaryentry{cicd}{
+    name=CI/CD,
+    description={Continuous Integration/Continuous Deployment - Pratiche di sviluppo software che enfatizzano integrazione frequente del codice e deployment automatizzato}
+}
+
+\newglossaryentry{iac}{
+    name=IaC,
+    description={Infrastructure as Code - Pratica di gestione dell'infrastruttura IT attraverso codice versionato e automatizzato}
+}
+
+% ===== METODOLOGIE AGILI =====
+
+\newglossaryentry{devops}{
+    name=DevOps,
+    description={Metodologia che integra sviluppo software (Dev) e operazioni IT (Ops) per accelerare il ciclo di vita dello sviluppo software}
+}
+
+\newglossaryentry{devsecops}{
+    name=DevSecOps,
+    description={Estensione di DevOps che integra la sicurezza (Sec) nel processo di sviluppo e deployment software}
+}
+
+% ===== BUSINESS CONTINUITY =====
+
+\newglossaryentry{rto}{
+    name=RTO,
+    description={Recovery Time Objective - Tempo massimo accettabile per il ripristino di un servizio dopo un'interruzione}
+}
+
+\newglossaryentry{rpo}{
+    name=RPO,
+    description={Recovery Point Objective - Quantità massima accettabile di perdita di dati in caso di interruzione del servizio}
+}
+
+\newglossaryentry{bcp}{
+    name=BCP,
+    description={Business Continuity Plan - Piano strategico per garantire la continuità operativa dell'organizzazione durante e dopo eventi disruptivi}
+}
+
+% ===== ANALYTICS E AI =====
+
+\newglossaryentry{ml}{
+    name=ML,
+    description={Machine Learning - Sottocampo dell'intelligenza artificiale che utilizza algoritmi per permettere ai sistemi di imparare automaticamente dai dati}
+}
+
+\newglossaryentry{ai}{
+    name=AI,
+    description={Artificial Intelligence - Simulazione di processi di intelligenza umana attraverso sistemi informatici}
+}
+
+\newglossaryentry{bi}{
+    name=BI,
+    description={Business Intelligence - Insieme di strategie e tecnologie per l'analisi dei dati aziendali per supportare decisioni strategiche}
+}
+
+% ===== PERFORMANCE E MONITORING =====
+
+\newglossaryentry{sla}{
+    name=SLA,
+    description={Service Level Agreement - Contratto che definisce i livelli di servizio attesi tra fornitore e cliente}
+}
+
+\newglossaryentry{kpi}{
+    name=KPI,
+    description={Key Performance Indicator - Metrica utilizzata per valutare l'efficacia nel raggiungimento di obiettivi strategici}
+}
+
+\newglossaryentry{apm}{
+    name=APM,
+    description={Application Performance Monitoring - Monitoraggio e gestione delle prestazioni e disponibilità delle applicazioni software}
+}
+
+% ===================================================================
+% TERMINI AGGIUNTIVI PER GLOSSARIO - CAPITOLO 3
+% Da aggiungere al file glossario.glo esistente
+% ===================================================================
+
+% ===== SISTEMI DI MONITORAGGIO E CONTROLLO =====
+
+\newglossaryentry{bms}{
+    name=BMS,
+    description={Building Management System - Sistema integrato per il controllo e monitoraggio automatico degli impianti edilizi (HVAC, illuminazione, sicurezza, energia)}
+}
+
+\newglossaryentry{cfd}{
+    name=CFD,
+    description={Computational Fluid Dynamics - Metodologia numerica per l'analisi e la simulazione del comportamento dei fluidi e del trasferimento termico attraverso modelli matematici}
+}
+
+\newglossaryentry{pue}{
+    name=PUE,
+    description={Power Usage Effectiveness - Metrica di efficienza energetica dei data center definita come il rapporto tra energia totale consumata e energia utilizzata dall'equipaggiamento IT}
+}
+
+\newglossaryentry{vsd}{
+    name=VSD,
+    description={Variable Speed Drive - Dispositivo elettronico che controlla la velocità di rotazione dei motori elettrici variando la frequenza e la tensione di alimentazione per ottimizzare l'efficienza energetica}
+}
+
+% ===== TECNOLOGIE DI RETE AVANZATE =====
+
+\newglossaryentry{dpi}{
+    name=DPI,
+    description={Deep Packet Inspection - Tecnologia di analisi del traffico di rete che esamina il contenuto dei pacchetti dati oltre agli header per classificazione, security e quality of service}
+}
+
+\newglossaryentry{dscp}{
+    name=DSCP,
+    description={Differentiated Services Code Point - Campo nell'header IP utilizzato per la classificazione e gestione della Quality of Service (QoS) nel traffico di rete}
+}
+
+\newglossaryentry{arima}{
+    name=ARIMA,
+    description={AutoRegressive Integrated Moving Average - Modello statistico per l'analisi e previsione di serie temporali che combina componenti autoregressivi, integrati e di media mobile}
+}
+
+% ===== METRICHE ECONOMICHE E FINANZIARIE =====
+
+\newglossaryentry{npv}{
+    name=NPV,
+    description={Net Present Value - Valore attuale netto, metrica finanziaria che calcola il valore presente di flussi di cassa futuri scontati al costo del capitale per valutare la redditività di investimenti}
+}
+
+\newglossaryentry{irr}{
+    name=IRR,
+    description={Internal Rate of Return - Tasso interno di rendimento, tasso di sconto che rende il NPV di un investimento uguale a zero, utilizzato per valutare l'attrattività economica di progetti}
+}
+
+\newglossaryentry{wacc}{
+    name=WACC,
+    description={Weighted Average Cost of Capital - Costo medio ponderato del capitale, rappresenta il tasso di rendimento minimo richiesto dagli investitori per finanziare un'azienda}
+}
+
+% ===== CONTAINER E ORCHESTRAZIONE =====
+
+\newglossaryentry{kubernetes}{
+    name=Kubernetes,
+    description={Piattaforma open-source per l'orchestrazione automatica di container che gestisce deployment, scaling, e operazioni di applicazioni containerizzate su cluster distribuiti}
+}
+
+\newglossaryentry{microservizi}{
+    name=Microservizi,
+    description={Architettura applicativa che struttura un'applicazione come collezione di servizi loosely coupled, deployabili indipendentemente e organizzati attorno a specifiche funzionalità business}
+}
+
+\newglossaryentry{container}{
+    name=Container,
+    description={Tecnologia di virtualizzazione leggera che incapsula applicazioni e le loro dipendenze in unità portabili ed eseguibili in modo consistente attraverso diversi ambienti}
+}
+
+% ===== SERVICE MESH E NETWORKING =====
+
+\newglossaryentry{servicemesh}{
+    name=Service Mesh,
+    description={Infrastruttura di comunicazione dedicata per gestire le interazioni tra microservizi, fornendo funzionalità di security, observability, e traffic management}
+}
+
+\newglossaryentry{istio}{
+    name=Istio,
+    description={Piattaforma service mesh open-source che fornisce un modo uniforme per connettere, gestire e mettere in sicurezza microservizi attraverso proxy sidecar}
+}
+
+% ===== STANDARD E PROTOCOLLI =====
+
+\newglossaryentry{ashrae}{
+    name=ASHRAE,
+    description={American Society of Heating, Refrigerating and Air-Conditioning Engineers - Organizzazione che sviluppa standard per sistemi HVAC e gestione dell'ambiente negli edifici}
+}
+
+\newglossaryentry{raft}{
+    name=Raft,
+    description={Algoritmo di consensus distribuito progettato per essere comprensibile, che garantisce la consistenza dei dati in sistemi distribuiti attraverso elezione di leader e replica dei log}
+}
+
+% ===== DEPLOYMENT E AUTOMATION =====
+
+\newglossaryentry{terraform}{
+    name=Terraform,
+    description={Tool open-source per Infrastructure as Code che permette di definire, provisioning e gestire infrastruttura cloud attraverso file di configurazione dichiarativi}
+}
+
+\newglossaryentry{bluegreen}{
+    name=Blue-Green Deployment,
+    description={Strategia di deployment che mantiene due ambienti di produzione identici (blue e green) per permettere rilasci con zero downtime e rollback immediato}
+}
+
+\newglossaryentry{selfhealing}{
+    name=Self-Healing,
+    description={Capacità di un sistema di rilevare automaticamente guasti o degradazioni delle prestazioni e intraprendere azioni correttive senza intervento umano}
+}
+
+% ===== SICUREZZA E COMPLIANCE =====
+
+\newglossaryentry{zerotrust}{
+    name=Zero Trust,
+    description={Modello di sicurezza che assume che nessun utente o dispositivo, interno o esterno alla rete, sia attendibile per default e richiede verifica continua per ogni accesso}
+}
+
+\newglossaryentry{vectorclock}{
+    name=Vector Clock,
+    description={Algoritmo per determinare l'ordine causale degli eventi in sistemi distribuiti, dove ogni processo mantiene un vettore di timestamp logici}
+}
+
+% ===== OTTIMIZZAZIONE ENERGETICA =====
+
+\newglossaryentry{freecooling}{
+    name=Free Cooling,
+    description={Tecnologia di raffreddamento che sfrutta le condizioni climatiche esterne favorevoli per ridurre o eliminare l'uso di sistemi di refrigerazione meccanica}
+}
+
+\newglossaryentry{containment}{
+    name=Containment,
+    description={Strategia di gestione del flusso d'aria nei data center che separa fisicamente i corridoi di aria calda e fredda per migliorare l'efficienza del cooling}
+}
+
+% ===== CACHE E STORAGE =====
+
+\newglossaryentry{cachecoherency}{
+    name=Cache Coherency,
+    description={Protocollo che garantisce la consistenza dei dati condivisi tra multiple cache in sistemi distribuiti, evitando inconsistenze dovute a modifiche concorrenti}
+}
+
+\newglossaryentry{cdn}{
+    name=CDN,
+    description={Content Delivery Network - Rete geograficamente distribuita di server che fornisce contenuti web agli utenti dalla località più vicina per ridurre latenza}
+}
+
+% ===== METODOLOGIE DI SVILUPPO =====
+
+\newglossaryentry{apifirst}{
+    name=API-First Design,
+    description={Approccio di progettazione software che considera le API come cittadini di prima classe, progettandole prima dell'implementazione delle applicazioni che le utilizzano}
+}
+
+\newglossaryentry{declarative}{
+    name=Dichiarativo,
+    description={Paradigma di programmazione che esprime la logica di computazione senza descrivere il flusso di controllo, specificando cosa deve essere fatto piuttosto che come}
+}
+
+% ===================================================================
+% TERMINI AGGIUNTIVI GLOSSARIO - CAPITOLO 2
+% Da aggiungere al file glossario.glo esistente
+% ===================================================================
+
+% ===== SISTEMI E TECNOLOGIE PUNTO VENDITA =====
+
+\newglossaryentry{pos}{
+    name=POS,
+    description={Point of Sale - Sistema di elaborazione delle transazioni commerciali che gestisce pagamenti, inventario e dati di vendita nei punti vendita al dettaglio}
+}
+
+\newglossaryentry{memory-scraping}{
+    name=Memory Scraping,
+    description={Tecnica di attacco informatico che estrae dati sensibili dalla memoria volatile dei sistemi durante la finestra temporale in cui esistono in forma non cifrata}
+}
+
+% ===== ENDPOINT DETECTION E RESPONSE =====
+
+\newglossaryentry{edr}{
+    name=EDR,
+    description={Endpoint Detection and Response - Soluzione di sicurezza che monitora continuamente endpoint e workstation per rilevare e rispondere a minacce informatiche avanzate}
+}
+
+\newglossaryentry{behavioral-analysis}{
+    name=Behavioral Analysis,
+    description={Analisi comportamentale - Tecnica di sicurezza che identifica attività anomale attraverso l'osservazione di pattern comportamentali che deviano dalla baseline normale}
+}
+
+% ===== INTRUSION DETECTION E PREVENTION =====
+
+\newglossaryentry{ids}{
+    name=IDS,
+    description={Intrusion Detection System - Sistema di rilevamento delle intrusioni che monitora il traffico di rete e le attività di sistema per identificare comportamenti sospetti o malevoli}
+}
+
+\newglossaryentry{ips}{
+    name=IPS,
+    description={Intrusion Prevention System - Sistema di prevenzione delle intrusioni che oltre al rilevamento può bloccare attivamente traffico o attività identificate come dannose}
+}
+
+\newglossaryentry{signature-based-detection}{
+    name=Signature-Based Detection,
+    description={Rilevamento basato su firme - Metodo di detection che utilizza pattern predefiniti di attacchi conosciuti per identificare attività malevole}
+}
+
+\newglossaryentry{anomaly-based-detection}{
+    name=Anomaly-Based Detection,
+    description={Rilevamento basato su anomalie - Metodo di detection che identifica deviazioni dal comportamento normale utilizzando modelli statistici e machine learning}
+}
+
+% ===== CLOUD SECURITY =====
+
+\newglossaryentry{cspm}{
+    name=CSPM,
+    description={Cloud Security Posture Management - Soluzione per la gestione continua della postura di sicurezza in ambienti cloud, identificando misconfigurazione e rischi}
+}
+
+\newglossaryentry{cloud-native}{
+    name=Cloud-Native,
+    description={Approccio di sviluppo e deployment che sfrutta pienamente le caratteristiche cloud, utilizzando microservizi, container e orchestrazione dinamica}
+}
+
+% ===== ZERO TRUST E NETWORK SECURITY =====
+
+
+\newglossaryentry{network-segmentation}{
+    name=Network Segmentation,
+    description={Segmentazione di rete - Pratica di dividere una rete in sottoreti separate per migliorare sicurezza e prestazioni, limitando la propagazione di minacce}
+}
+
+\newglossaryentry{micro-segmentation}{
+    name=Micro-Segmentation,
+    description={Micro-segmentazione - Segmentazione granulare che applica controlli di sicurezza a livello di singolo workload o applicazione}
+}
+
+\newglossaryentry{lateral-movement}{
+    name=Lateral Movement,
+    description={Movimento laterale - Tecnica utilizzata dagli attaccanti per spostarsi attraverso una rete compromessa alla ricerca di dati o sistemi di valore}
+}
+
+% ===== PRIVACY E COMPLIANCE =====
+
+\newglossaryentry{differential-privacy}{
+    name=Differential Privacy,
+    description={Privacy differenziale - Tecnica matematica che permette di estrarre informazioni utili da dataset contenenti dati personali garantendo protezione della privacy individuale}
+}
+
+\newglossaryentry{privacy-by-design}{
+    name=Privacy by Design,
+    description={Privacy per progettazione - Approccio che integra la protezione della privacy direttamente nella progettazione di sistemi e processi business}
+}
+
+\newglossaryentry{compliance-by-design}{
+    name=Compliance by Design,
+    description={Conformità per progettazione - Metodologia che integra requisiti normativi e di compliance direttamente nell'architettura dei sistemi informatici}
+}
+
+\newglossaryentry{data-lifecycle-management}{
+    name=Data Lifecycle Management,
+    description={Gestione del ciclo di vita dei dati - Processo strutturato per gestire dati dalla creazione alla cancellazione sicura, includendo classificazione, uso e retention}
+}
+
+% ===== THREAT INTELLIGENCE E ANALISI RISCHI =====
+
+\newglossaryentry{threat-landscape}{
+    name=Threat Landscape,
+    description={Panorama delle minacce - Visione complessiva delle minacce informatiche attive in un determinato periodo e settore, incluse tendenze e evoluzione}
+}
+
+\newglossaryentry{threat-intelligence}{
+    name=Threat Intelligence,
+    description={Intelligence sulle minacce - Informazioni strutturate su minacce attuali e potenziali utilizzate per supportare decisioni di sicurezza informate}
+}
+
+\newglossaryentry{attack-surface}{
+    name=Attack Surface,
+    description={Superficie di attacco - Insieme di tutti i punti di accesso possibili che un attaccante può utilizzare per entrare in un sistema o rete}
+}
+
+\newglossaryentry{vulnerability-assessment}{
+    name=Vulnerability Assessment,
+    description={Valutazione delle vulnerabilità - Processo sistematico di identificazione, classificazione e prioritizzazione delle vulnerabilità di sicurezza in sistemi e reti}
+}
+
+\newglossaryentry{penetration-testing}{
+    name=Penetration Testing,
+    description={Test di penetrazione - Attacco simulato autorizzato condotto per valutare la sicurezza di un sistema identificando vulnerabilità sfruttabili}
+}
+
+% ===== TIPI DI ATTACCHI =====
+
+\newglossaryentry{ransomware}{
+    name=Ransomware,
+    description={Tipo di malware che cifra i dati della vittima richiedendo un riscatto per la decifratura, spesso causando interruzioni operative significative}
+}
+
+\newglossaryentry{supply-chain-attack}{
+    name=Supply Chain Attack,
+    description={Attacco alla catena di fornitura - Tipo di cyberattacco che compromette fornitori di software o hardware per raggiungere le organizzazioni target}
+}
+
+\newglossaryentry{social-engineering}{
+    name=Social Engineering,
+    description={Ingegneria sociale - Tecnica di manipolazione psicologica utilizzata per indurre persone a rivelare informazioni confidenziali o compiere azioni compromettenti}
+}
+
+\newglossaryentry{phishing}{
+    name=Phishing,
+    description={Tecnica di social engineering che utilizza comunicazioni fraudolente per indurre vittime a rivelare informazioni sensibili o installare malware}
+}
+
+\newglossaryentry{malware}{
+    name=Malware,
+    description={Software malevolo progettato per danneggiare, disturbare o ottenere accesso non autorizzato a sistemi informatici}
+}
+
+% ===== METRICHE E PERFORMANCE =====
+
+\newglossaryentry{roi}{
+    name=ROI,
+    description={Return on Investment - Metrica finanziaria utilizzata per valutare l'efficienza di un investimento, calcolata come rapporto tra beneficio netto e costo dell'investimento}
+}
+
+\newglossaryentry{false-positive}{
+    name=False Positive,
+    description={Falso positivo - Errore di classificazione in cui un sistema di sicurezza identifica erroneamente attività legittima come minaccia}
+}
+
+\newglossaryentry{detection-rate}{
+    name=Detection Rate,
+    description={Tasso di rilevamento - Percentuale di minacce effettive correttamente identificate da un sistema di sicurezza rispetto al totale delle minacce presenti}
+}
+
+% ===== RESILIENZA E CONTINUITÀ =====
+
+\newglossaryentry{cyber-resilience}{
+    name=Cyber Resilience,
+    description={Resilienza informatica - Capacità di un'organizzazione di continuare a operare durante e dopo incidenti di sicurezza informatica}
+}
+
+\newglossaryentry{incident-response}{
+    name=Incident Response,
+    description={Risposta agli incidenti - Processo strutturato per gestire e contenere le conseguenze di violazioni di sicurezza o cyberattacchi}
+}
+
+\newglossaryentry{disaster-recovery}{
+    name=Disaster Recovery,
+    description={Ripristino di emergenza - Insieme di politiche e procedure per il recupero di sistemi IT critici dopo eventi disastrosi}
+}
+
+\newglossaryentry{failover}{
+    name=Failover,
+    description={Processo automatico di commutazione verso un sistema di backup ridondante quando il sistema primario diventa non disponibile}
+}
+
+% ===== ARCHITETTURE E FRAMEWORK =====
+
+\newglossaryentry{defense-in-depth}{
+    name=Defense in Depth,
+    description={Difesa in profondità - Strategia di sicurezza che utilizza multiple layer di controlli di sicurezza per proteggere informazioni e sistemi}
+}
+
+\newglossaryentry{security-framework}{
+    name=Security Framework,
+    description={Framework di sicurezza - Struttura concettuale che definisce approcci per la gestione della sicurezza informatica in un'organizzazione}
+}
+
+\newglossaryentry{security-posture}{
+    name=Security Posture,
+    description={Postura di sicurezza - Stato complessivo della cybersecurity di un'organizzazione, inclusi controlli, policy e livello di rischio}
+}
+
+\newglossaryentry{risk-assessment}{
+    name=Risk Assessment,
+    description={Valutazione del rischio - Processo di identificazione, analisi e valutazione dei rischi di sicurezza per supportare decisioni di gestione del rischio}
+}
+
+% ===== AUTOMAZIONE E ORCHESTRAZIONE =====
+
+\newglossaryentry{security-orchestration}{
+    name=Security Orchestration,
+    description={Orchestrazione di sicurezza - Coordinamento automatizzato di strumenti e processi di sicurezza per migliorare l'efficienza della risposta alle minacce}
+}
+
+\newglossaryentry{soar}{
+    name=SOAR,
+    description={Security Orchestration, Automation and Response - Piattaforma che combina orchestrazione, automazione e risposta per migliorare l'efficacia delle operazioni di sicurezza}
+}
+
+\newglossaryentry{playbook}{
+    name=Playbook,
+    description={Insieme di procedure standardizzate e automatizzate per rispondere a specifici tipi di incidenti di sicurezza o minacce}
+}
+
+% ===== GOVERNANCE E POLICY =====
+
+\newglossaryentry{policy-engine}{
+    name=Policy Engine,
+    description={Motore di policy - Sistema software che implementa, gestisce e applica automaticamente policy di sicurezza e compliance in ambienti distribuiti}
+}
+
+\newglossaryentry{governance}{
+    name=Governance,
+    description={Insieme di processi, policy e controlli utilizzati per dirigere e controllare le attività IT di un'organizzazione}
+}
+
+\newglossaryentry{audit-trail}{
+    name=Audit Trail,
+    description={Traccia di audit - Registro cronologico delle attività di sistema che fornisce evidenza documentale per verifiche di sicurezza e compliance}
+}
+
+% ===== NOTE PER L'UTILIZZO =====
+% 
+% Questi termini vanno aggiunti al file glossario.glo esistente.
+% Utilizzare nel testo con \gls{termine}
+% 
+% Esempi di utilizzo specifici per il Capitolo 2:
+% - I sistemi \gls{pos} sono vulnerabili ad attacchi di \gls{memory-scraping}
+% - L'implementazione \gls{edr} migliora il \gls{detection-rate} del 94.3%
+% - L'architettura \gls{zerotrust} riduce la \gls{attack-surface} del 47%
+% - La \gls{differential-privacy} introduce overhead del 20-30% ma garantisce protezione formale
+% - Gli attacchi \gls{supply-chain-attack} hanno impact sistemico sulla \gls{gdo}
+%
