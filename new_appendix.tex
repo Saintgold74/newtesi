@@ -290,6 +290,8 @@ Overhead operativo (\% IT budget) & 16,2\% & 9,7\% & -40,1\% \\
 \chapter{Algoritmi e Modelli Principali}
 \label{app:algoritmi}
 
+\newtheorem{theorem}{Teorema}
+
 \section{C.1 Pseudocodice degli Algoritmi Core}
 
 \subsection{C.1.1 Algoritmo di Calcolo ASSA}
@@ -297,7 +299,7 @@ Overhead operativo (\% IT budget) & 16,2\% & 9,7\% & -40,1\% \\
 \begin{algorithm}
 \caption{Calcolo della Superficie di Attacco Aggregata (ASSA)}
 \label{alg:assa}
-\begin{algorithmic}[1]
+\begin{algorithmic}
 \Require Grafo $G(V,E)$ della rete, Attributi $A$ dei nodi
 \Ensure $ASSA_{score}$ - punteggio aggregato di superficie d'attacco
 \State $ASSA_{score} \gets 0$
@@ -323,7 +325,7 @@ Overhead operativo (\% IT budget) & 16,2\% & 9,7\% & -40,1\% \\
 \begin{algorithm}
 \caption{Ottimizzazione Set-Covering per Compliance Integrata}
 \label{alg:compliance}
-\begin{algorithmic}[1]
+\begin{algorithmic}
 \Require Requisiti $R$, Controlli $C$, Funzione costo $cost$
 \Ensure $S$ - insieme ottimale di controlli
 \State $S \gets \emptyset$
@@ -355,7 +357,7 @@ Overhead operativo (\% IT budget) & 16,2\% & 9,7\% & -40,1\% \\
 \begin{algorithm}
 \caption{Calcolo GIST Score}
 \label{alg:gist}
-\begin{algorithmic}[1]
+\begin{algorithmic}
 \Require Componenti $comp$, Pesi $w$, Contesto $ctx$
 \Ensure $GIST_{score}$ normalizzato in [0,100]
 \State \textbf{// Calcolo score base con modello aggregato}
@@ -408,7 +410,6 @@ Modello complessivo: $R^2 = 0.87$, $R^2_{adj} = 0.86$, $F(4,229) = 384.7$, $p < 
 
 \subsection{C.2.2 Dimostrazione della Complessità Computazionale}
 
-\newtheorem{theorem}{Teorema}
 \begin{theorem}
 L'algoritmo GDO-Cloud ottimizzato ha complessità $O(n \log n)$ dove $n$ è il numero di workload da migrare.
 \end{theorem}

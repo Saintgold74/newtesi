@@ -1,0 +1,39 @@
+RISULTATI BENCHMARK SISTEMA
+==================================================
+Data: 2025-08-21 16:59:19
+
+INFORMAZIONI SISTEMA:
+sistema: Windows
+release: 10
+versione: 10.0.26100
+architettura: 64bit
+macchina: AMD64
+processore: AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD
+hostname: Desktop-Marco
+dominio: Desktop-Marco
+avvio_sistema: 2025-08-20 19:30:37
+uptime_giorni: 0
+uptime_ore: 21
+utente_corrente: saint
+
+RISULTATI BENCHMARK:
+
+CPU:
+  Score: 0
+  Status: errore
+  Time: 0.00s
+  Error: Can't pickle local object 'multi_core_test.<locals>.worker_task'
+
+RAM:
+  Score: 1780
+  Status: completato
+  Time: 77.46s
+
+DISK:
+  Score: 1363
+  Status: completato
+  Time: 5.09s
+
+PUNTEGGIO COMPLESSIVO:
+Score: 943
+Rating: DISCRETO
