@@ -4,89 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an Italian academic thesis (tesi di laurea) on IT infrastructure, cloud security, and compliance in retail (GDO). Written in LaTeX using XeLaTeX with Arial font on Windows.
+Italian academic thesis (tesi di laurea) on IT infrastructure, cloud security, and compliance in retail (GDO) sector. The document uses XeLaTeX with Arial font family and follows strict Italian academic formatting requirements.
 
 ## Build Commands
 
-### Full Compilation (with bibliography)
+### macOS/Linux
 ```bash
-compila.bat
-```
-Performs complete compilation: XeLaTeX → BibTeX → XeLaTeX → XeLaTeX
+# Full compilation with bibliography
+xelatex main.tex && bibtex main && xelatex main.tex && xelatex main.tex
 
-### Quick Compilation (no bibliography)
+# Quick compilation (no bibliography)
+xelatex main.tex
+
+# Clean build artifacts
+rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot *.glo *.ist bu*.aux bu*.bbl
+```
+
+### Windows
 ```bash
-compila_veloce.bat
+compila.bat          # Full compilation: XeLaTeX → BibTeX → XeLaTeX → XeLaTeX
+compila_veloce.bat   # Single XeLaTeX pass for quick preview
+pulisci.bat          # Remove temporary files (.aux, .bbl, .log, etc.)
+verifica_sistema.bat # Check XeLaTeX installation, fonts, and file structure
 ```
-Single XeLaTeX pass for quick preview
 
-### Clean Build Artifacts
+## Architecture
+
+### Document Structure
+The thesis uses a modular LaTeX architecture with `main.tex` as the master document that includes:
+- Per-chapter bibliography management using `bibunits` package
+- Automatic figure generation pipeline from Python scripts
+- Strict formatting adherence to Italian academic standards (1.5 line spacing, specific margins: top/bottom 3.5cm, left 4.5cm, right 3cm)
+
+### Key Components
+- **Master document**: `main.tex` - Contains all package configurations and document settings
+- **Chapters**: `capitoli/new[1-5].tex` - Main content chapters following GIST framework
+- **Bibliography**: Distributed across `bibliografia/*.bib` files with per-chapter references
+- **Figure Generation**: Python scripts in `figure/` automatically generate scientific plots exported to `thesis_figures/cap*/`
+
+## Technical Requirements
+
+### Compilation
+- **Engine**: XeLaTeX (required for fontspec/Arial support)
+- **Bibliography**: BibTeX with `bibunits` package for per-chapter references
+- **Font**: Arial (system font on Windows/macOS)
+- **Key packages**: fontspec, polyglossia (Italian), tikz, pgfplots, tcolorbox, glossaries
+
+### Figure Pipeline
+Python scripts generate publication-quality figures:
 ```bash
-pulisci.bat
+# Example: Generate all Chapter 3 figures
+python figure/thesis_figures/cap3/generate_all_chapter3_figures.py
 ```
-Removes temporary files (.aux, .bbl, .log, etc.)
+Dependencies: numpy, matplotlib, seaborn, pandas, scipy
 
-### System Verification
-```bash
-verifica_sistema.bat
-```
-Checks XeLaTeX installation, fonts, and file structure
+## Critical Notes
 
-## Project Structure
-
-### Core Files
-- `main.tex` - Master document with all LaTeX configuration
-- `frontespizio.tex` - Title page
-- `prefazione.tex` - Preface
-
-### Chapters (`capitoli/`)
-- `new1.tex` - Introduction
-- `new2.tex` - Threat analysis
-- `new3.tex` - Cloud infrastructure
-- `new4.tex` - Compliance
-- `new5.tex` - Synthesis
-- `appendice_*.tex` - Various appendices
-
-### Bibliography (`bibliografia/`)
-- `bibliografia.bib` - Main bibliography database
-- `cap*_references.bib` - Chapter-specific references
-
-### Figures (`figure/`)
-- `thesis_figures/cap*/` - Generated figures by chapter
-- Python scripts for automated figure generation
-
-## LaTeX Configuration
-
-### Document Class
-```latex
-\documentclass[11pt,a4paper,oneside]{book}
-```
-
-### Key Packages
-- **fontspec** - Arial font family
-- **polyglossia** - Italian language support
-- **biblatex** - Advanced bibliography with per-chapter references
-- **tikz** - Diagrams and graphics
-- **listings** - Code highlighting
-- **hyperref** - Clickable references
-
-### Compilation Requirements
-- XeLaTeX (not pdfLaTeX)
-- Arial fonts (Windows system fonts)
-- BibTeX/Biber for bibliography
-
-## Figure Generation
-
-Python scripts in `figure/` generate scientific plots:
-- Dependencies: numpy, matplotlib, seaborn, pandas, scipy
-- Output: PDF/PNG to `thesis_figures/cap*/`
-
-## Important Notes
-
-1. **Always use XeLaTeX**, not pdfLaTeX (font requirements)
-2. **Run full compilation** (`compila.bat`) after bibliography changes
-3. **Chapter files** are in `capitoli/` with `new*.tex` naming
-4. **Bibliography entries** should go in `bibliografia.bib` or chapter-specific files
-5. **Figures** should be generated via Python scripts and placed in appropriate `thesis_figures/cap*/` directory
-6. **Language**: Document is in Italian - maintain Italian language in content
-7. **Academic format**: Maintain 1.5 line spacing, specific margins as configured in main.tex
+1. **XeLaTeX only** - pdfLaTeX will fail due to fontspec requirements
+2. **Full compilation sequence** required after bibliography changes: XeLaTeX → BibTeX → XeLaTeX → XeLaTeX
+3. **Working directory**: All commands assume execution from project root where `main.tex` is located
+4. **Figure references**: Use standardized naming: `fig_X_Y_description` where X=chapter, Y=figure number
+5. **Italian language**: All content must maintain Italian academic writing standards
+6. **Glossary compilation**: Run `makeglossaries main` if glossary entries are modified
