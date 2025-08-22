@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git rm:*)",
       "Bash(xelatex:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git fetch:*)"
     ],
     "deny": [],
     "ask": []

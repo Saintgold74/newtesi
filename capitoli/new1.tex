@@ -1,5 +1,5 @@
 % Capitolo 1 - Introduzione
-\begin{refsection}
+%\begin{refsection}
   
 
 \chapter{Introduzione}
@@ -29,7 +29,7 @@ L'analisi della letteratura scientifica e tecnica rivela una significativa disco
 \item \textbf{Limitata considerazione dei vincoli operativi: }Le ricerche su paradigmi come Zero Trust o cloud migration sono spesso sviluppate in contesti generici e non considerano vincoli critici della GDO quali la continuità H24, la gestione di personale con limitate competenze tecniche o la necessità di performance transazionali estreme.
 
 \end{itemize}
-La letteratura esistente affronta tipicamente questi aspetti in modo isolato. Gli studi sulla trasformazione cloud si concentrano sugli aspetti architetturali e economici\autocite{forrester2024}, quelli sulla sicurezza analizzano specifiche categorie di minacce\autocite{ponemon2024}, mentre la ricerca sulla compliance tende a focalizzarsi su singoli framework normativi. Manca un approccio integrato che consideri le interdipendenze sistemiche tra questi elementi e fornisca un framework operativo unificato.
+La letteratura esistente affronta tipicamente questi aspetti in modo isolato. Gli studi sulla trasformazione cloud si concentrano sugli aspetti architetturali e economici\autocite{forrester2024cloud}, quelli sulla sicurezza analizzano specifiche categorie di minacce\autocite{ponemon2024}, mentre la ricerca sulla compliance tende a focalizzarsi su singoli framework normativi. Manca un approccio integrato che consideri le interdipendenze sistemiche tra questi elementi e fornisca un framework operativo unificato.
 Alla luce di ciò, il problema di ricerca principale può essere formulato come segue:
 \textbf{Come progettare e implementare un'infrastruttura IT per la Grande Distribuzione Organizzata che bilanci in maniera ottimale sicurezza, performance, compliance e sostenibilità economica nel contesto di evoluzione tecnologica accelerata e minacce emergenti? }
 
@@ -83,7 +83,13 @@ La tesi si articola in cinque capitoli che guidano il lettore dalla definizione 
 
 FINE DELLA RIVISITAZIONE PRIMO CAPITOLO 
 \clearpage
+\printbibliography[
+    heading=subbibliography, % Usa un titolo standard per bibliografie parziali
+    title={Riferimenti Bibliografici del Capitolo 1}, % Titolo personalizzato
+    %filter=cited % Assicura che vengano stampate solo le fonti citate
+]
 
+%\end{refsection} % <--- TERMINA LA SEZIONE DI RIFERIMENTO
 
 
 
@@ -436,10 +442,3 @@ FINE DELLA RIVISITAZIONE PRIMO CAPITOLO
 
 % Bibliografia del capitolo
 % --- STAMPA DELLA BIBLIOGRAFIA SPECIFICA PER QUESTO CAPITOLO ---
-\printbibliography[
-    heading=subbibliography, % Usa un titolo standard per bibliografie parziali
-    title={Riferimenti Bibliografici del Capitolo 1}, % Titolo personalizzato
-    %filter=cited % Assicura che vengano stampate solo le fonti citate
-]
-
-\end{refsection} % <--- TERMINA LA SEZIONE DI RIFERIMENTO

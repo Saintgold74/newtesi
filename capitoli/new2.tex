@@ -5,7 +5,7 @@ La sicurezza informatica nella GDO richiede un'analisi specifica che superi l'ap
 
 Questo capitolo analizza tale panorama attraverso una sintesi critica della letteratura e l'analisi di dati aggregati da fonti istituzionali e di settore. L'obiettivo non è una mera catalogazione delle minacce, ma la comprensione delle loro interazioni con le specificità operative del retail. Da questa analisi deriveremo i principi fondanti per la progettazione di architetture difensive efficaci e valideremo l'ipotesi H2.
 
-L'analisi si basa sull'aggregazione di dati da molteplici fonti, tra cui 1.847 incidenti documentati da CERT nazionali ed europei\autocite{enisa2025,verizon2025}, 234 varianti di malware per sistemi POS (Point of Sale)\autocite{groupib2024} e report di settore. Questa base documentale, integrata da modellazione matematica, ci permetterà di identificare pattern ricorrenti e validare quantitativamente le contromisure.
+L'analisi si basa sull'aggregazione di dati da molteplici fonti, tra cui 1.847 incidenti documentati da CERT nazionali ed europei\autocite{enisa2024threat,verizon2024}, 234 varianti di malware per sistemi POS (Point of Sale)\autocite{groupib2024} e report di settore. Questa base documentale, integrata da modellazione matematica, ci permetterà di identificare pattern ricorrenti e validare quantitativamente le contromisure.
 
 \section{Caratterizzazione della Superficie di Attacco nella GDO}
 
@@ -38,10 +38,10 @@ L'analisi del fattore umano rivela un'amplificazione strutturale del rischio. Il
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_2_attack_types.pdf}
-\caption{Distribuzione delle tipologie di attacco nel settore GDO (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il ransomware, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{checkpoint2025}
+\caption{Distribuzione delle tipologie di attacco nel settore GDO (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il ransomware, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
 \label{fig:attack_types}
 \end{figure}
-I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come $FV=TE−TC$ \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni di \textbf{SecureRetail Labs} mostrano un valore medio di $FV=127ms$ \autocite{secure2024}, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
+I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come $FV=TE−TC$ \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni di \textbf{SecureRetail Labs} mostrano un valore medio di $FV=127ms$ \autocite{SecureRetailLabs2024}, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
 Un esempio paradigmatico dell'evoluzione delle tecniche è il malware \textbf{Prilex}. Invece di violare la crittografia, implementa una \textbf{"regressione forzata"}: simula un errore di lettura \textbf{NFC (Near Field Communication)}, forzando il cliente a inserire fisicamente la carta nel lettore chip, dove il malware cattura i dati con un tasso di successo del 94\% \autocite{kaspersky2024} .
 
 
