@@ -17,7 +17,7 @@
 \endgroup
 
 
-\refsection{2}
+\refsection{1}
   \datalist[entry]{nyt/global//global/global/global}
     \entry{enisa2024retail}{report}{}{}
       \name{author}{1}{}{%
@@ -263,7 +263,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{3}
+\refsection{2}
   \datalist[entry]{nyt/global//global/global/global}
     \entry{andersonmiller}{report}{}{}
       \name{author}{1}{}{%
@@ -645,7 +645,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{4}
+\refsection{3}
   \datalist[entry]{nyt/global//global/global/global}
     \entry{Anderson2024patel}{article}{}{}
       \name{author}{2}{}{%
@@ -1179,7 +1179,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{5}
+\refsection{4}
   \datalist[entry]{nyt/global//global/global/global}
     \entry{Bertsekas2017}{book}{}{}
       \name{author}{1}{}{%
@@ -1736,7 +1736,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{6}
+\refsection{5}
   \datalist[entry]{nyt/global//global/global/global}
     \entry{accenture2024tech}{report}{}{}
       \name{author}{1}{}{%
@@ -1798,54 +1798,6 @@
       \field{title}{Retail Security Value Study 2024}
       \field{type}{Research Report}
       \field{year}{2024}
-      \keyw{cap5}
-    \endentry
-    \entry{chen2023zerotrust}{inproceedings}{}{}
-      \name{author}{3}{}{%
-        {{un=0,uniquepart=base,hash=06debc36f6b61a405e8f0da1c7ccd6ca}{%
-           family={Chen},
-           familyi={C\bibinitperiod},
-           given={Wei},
-           giveni={W\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=ac7343141a61ffff21c109d6940f49f7}{%
-           family={Johnson},
-           familyi={J\bibinitperiod},
-           given={Marcus},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=e0797881fcf738000e29c823b498b43e}{%
-           family={Patel},
-           familyi={P\bibinitperiod},
-           given={Raj},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{organization}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{fullhash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{fullhashraw}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{bibnamehash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{authorbibnamehash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{authornamehash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{authorfullhash}{c0679a92175e24334eaa9fae28e004e3}
-      \strng{authorfullhashraw}{c0679a92175e24334eaa9fae28e004e3}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 2023 IEEE Symposium on Security and Privacy}
-      \field{title}{Zero Trust Architecture Implementation: Lessons from Large-Scale Deployments}
-      \field{year}{2023}
-      \field{pages}{1842\bibrangedash 1859}
-      \range{pages}{18}
-      \verb{doi}
-      \verb 10.1109/SP46215.2023.10179356
-      \endverb
       \keyw{cap5}
     \endentry
     \entry{ec2024digital}{report}{}{}
@@ -1910,40 +1862,6 @@
       \field{year}{2024}
       \keyw{cap5}
     \endentry
-    \entry{forrester2024maturity}{report}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=97a576d4c651cc81bda22efbab36d463}{%
-           family={{Forrester Research}},
-           familyi={F\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {Forrester Research Inc.}%
-      }
-      \list{location}{1}{%
-        {Cambridge, MA}%
-      }
-      \strng{namehash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{fullhash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{fullhashraw}{97a576d4c651cc81bda22efbab36d463}
-      \strng{bibnamehash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{authorbibnamehash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{authornamehash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{authorfullhash}{97a576d4c651cc81bda22efbab36d463}
-      \strng{authorfullhashraw}{97a576d4c651cc81bda22efbab36d463}
-      \field{extraname}{1}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradate}{1}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{3}
-      \field{title}{Digital Maturity Assessment Framework for European Retail}
-      \field{type}{Industry Report}
-      \field{year}{2024}
-      \keyw{cap5}
-    \endentry
     \entry{forrester2024cloud}{report}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=97a576d4c651cc81bda22efbab36d463}{%
@@ -1967,51 +1885,14 @@
       \strng{authornamehash}{97a576d4c651cc81bda22efbab36d463}
       \strng{authorfullhash}{97a576d4c651cc81bda22efbab36d463}
       \strng{authorfullhashraw}{97a576d4c651cc81bda22efbab36d463}
-      \field{extraname}{2}
       \field{sortinit}{F}
       \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The Total Economic Impact of Hybrid Cloud in Retail}
       \field{type}{TEI Study}
-      \field{year}{2024}
-      \keyw{cap5}
-    \endentry
-    \entry{gartner2024retail}{report}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=0eed02931e30ccfe540805bc607ca253}{%
-           family={{Gartner Research}},
-           familyi={G\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {Gartner Inc.}%
-      }
-      \list{location}{1}{%
-        {Stamford, CT}%
-      }
-      \strng{namehash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{fullhash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{fullhashraw}{0eed02931e30ccfe540805bc607ca253}
-      \strng{bibnamehash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{authorbibnamehash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{authornamehash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{authorfullhash}{0eed02931e30ccfe540805bc607ca253}
-      \strng{authorfullhashraw}{0eed02931e30ccfe540805bc607ca253}
-      \field{extraname}{1}
-      \field{sortinit}{G}
-      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
-      \field{extradate}{1}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{1}
-      \field{note}{ID: G00798562}
-      \field{title}{Digital Transformation in Retail: From Survival to Competitive Advantage}
-      \field{type}{Market Guide}
       \field{year}{2024}
       \keyw{cap5}
     \endentry
@@ -2035,10 +1916,8 @@
       \strng{authornamehash}{0eed02931e30ccfe540805bc607ca253}
       \strng{authorfullhash}{0eed02931e30ccfe540805bc607ca253}
       \strng{authorfullhashraw}{0eed02931e30ccfe540805bc607ca253}
-      \field{extraname}{2}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
-      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -2176,56 +2055,6 @@
       \field{year}{1996}
       \keyw{cap5}
     \endentry
-    \entry{kumar2024compliance}{article}{}{}
-      \name{author}{3}{}{%
-        {{un=0,uniquepart=base,hash=3c2a6a0658f1ad90e7d4a83eef9c3841}{%
-           family={Kumar},
-           familyi={K\bibinitperiod},
-           given={Vijay},
-           giveni={V\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=bef7784976b3dd9a1e812bb33152eda5}{%
-           family={Martinez},
-           familyi={M\bibinitperiod},
-           given={Sofia},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=5915e05c4f16e804b19fbd1b6d1253ca}{%
-           family={Anderson},
-           familyi={A\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{c14999b9080b654b45d20987fb248191}
-      \strng{fullhash}{c14999b9080b654b45d20987fb248191}
-      \strng{fullhashraw}{c14999b9080b654b45d20987fb248191}
-      \strng{bibnamehash}{c14999b9080b654b45d20987fb248191}
-      \strng{authorbibnamehash}{c14999b9080b654b45d20987fb248191}
-      \strng{authornamehash}{c14999b9080b654b45d20987fb248191}
-      \strng{authorfullhash}{c14999b9080b654b45d20987fb248191}
-      \strng{authorfullhashraw}{c14999b9080b654b45d20987fb248191}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{European Journal of Operational Research}
-      \field{number}{2}
-      \field{title}{Integrated Compliance Management: A Set-Covering Optimization Approach}
-      \field{volume}{312}
-      \field{year}{2024}
-      \field{pages}{456\bibrangedash 472}
-      \range{pages}{17}
-      \verb{doi}
-      \verb 10.1016/j.ejor.2024.01.028
-      \endverb
-      \keyw{cap5}
-    \endentry
     \entry{linstone2002}{book}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=2f830673a69e3b736843b13d087ff5d6}{%
@@ -2339,40 +2168,6 @@
       \endverb
       \keyw{cap5}
     \endentry
-    \entry{mckinsey2024cloud}{report}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=96eaa81a81a29c441708d1ec4be5a27b}{%
-           family={{McKinsey \& Company}},
-           familyi={M\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {McKinsey Global Institute}%
-      }
-      \list{location}{1}{%
-        {London}%
-      }
-      \strng{namehash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{fullhash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{fullhashraw}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{bibnamehash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{authorbibnamehash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{authornamehash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{authorfullhash}{96eaa81a81a29c441708d1ec4be5a27b}
-      \strng{authorfullhashraw}{96eaa81a81a29c441708d1ec4be5a27b}
-      \field{extraname}{2}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{extradate}{1}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{2}
-      \field{title}{Cloud Economics in European Retail: A Quantitative Analysis}
-      \field{type}{Technical Report}
-      \field{year}{2024}
-      \keyw{cap5}
-    \endentry
     \entry{mckinsey2024digital}{report}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=96eaa81a81a29c441708d1ec4be5a27b}{%
@@ -2393,10 +2188,9 @@
       \strng{authornamehash}{96eaa81a81a29c441708d1ec4be5a27b}
       \strng{authorfullhash}{96eaa81a81a29c441708d1ec4be5a27b}
       \strng{authorfullhashraw}{96eaa81a81a29c441708d1ec4be5a27b}
-      \field{extraname}{3}
+      \field{extraname}{2}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -2404,42 +2198,6 @@
       \field{title}{Digital Trust Survey 2024: Retail Sector Analysis}
       \field{type}{Survey Report}
       \field{year}{2024}
-      \keyw{cap5}
-    \endentry
-    \entry{nist2020zerotrust}{report}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=a44b6b00e5eebd7494e1fd00658685e2}{%
-           family={{NIST}},
-           familyi={N\bibinitperiod}}}%
-      }
-      \list{institution}{2}{%
-        {National Institute of Standards}%
-        {Technology}%
-      }
-      \list{location}{1}{%
-        {Gaithersburg, MD}%
-      }
-      \strng{namehash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{fullhash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{fullhashraw}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{bibnamehash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{authorbibnamehash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{authornamehash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{authorfullhash}{a44b6b00e5eebd7494e1fd00658685e2}
-      \strng{authorfullhashraw}{a44b6b00e5eebd7494e1fd00658685e2}
-      \field{sortinit}{N}
-      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{number}{800-207}
-      \field{title}{Zero Trust Architecture}
-      \field{type}{Special Publication}
-      \field{year}{2020}
-      \verb{doi}
-      \verb 10.6028/NIST.SP.800-207
-      \endverb
       \keyw{cap5}
     \endentry
     \entry{parmenter2019}{book}{}{}
@@ -2541,103 +2299,6 @@
       \field{title}{Sustainability Metrics for Data Centers 2024}
       \field{type}{White Paper}
       \field{year}{2024}
-      \keyw{cap5}
-    \endentry
-    \entry{westerman2024leading}{book}{}{}
-      \name{author}{3}{}{%
-        {{un=0,uniquepart=base,hash=3da689c5cf8176fe95d792e6bfc4b8c1}{%
-           family={Westerman},
-           familyi={W\bibinitperiod},
-           given={George},
-           giveni={G\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=0bc1602d1ed6bc802d93adfb74c084c1}{%
-           family={Bonnet},
-           familyi={B\bibinitperiod},
-           given={Didier},
-           giveni={D\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=00c50c0a44597347642883ea39a79e19}{%
-           family={McAfee},
-           familyi={M\bibinitperiod},
-           given={Andrew},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{location}{1}{%
-        {Cambridge, MA}%
-      }
-      \list{publisher}{1}{%
-        {MIT Press}%
-      }
-      \strng{namehash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{fullhash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{fullhashraw}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{bibnamehash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{authorbibnamehash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{authornamehash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{authorfullhash}{13d2c1c86d27baa426b9b02285ff762d}
-      \strng{authorfullhashraw}{13d2c1c86d27baa426b9b02285ff762d}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{3}
-      \field{isbn}{978-0-262-04847-2}
-      \field{title}{Leading Digital: Turning Technology into Business Transformation}
-      \field{year}{2024}
-      \keyw{cap5}
-    \endentry
-    \entry{williams2024aiml}{article}{}{}
-      \name{author}{3}{}{%
-        {{un=0,uniquepart=base,hash=3eb607f460fc53b8867152fc521f9a50}{%
-           family={Williams},
-           familyi={W\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=e3ce9caf995c3296a22488199727be71}{%
-           family={Miller},
-           familyi={M\bibinitperiod},
-           given={Susan},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=eb0aecd83160d1f552629af8b8a74fba}{%
-           family={Jones},
-           familyi={J\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{fullhash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{fullhashraw}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{bibnamehash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{authorbibnamehash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{authornamehash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{authorfullhash}{00583fd660149abbf62fc23e99d67a7d}
-      \strng{authorfullhashraw}{00583fd660149abbf62fc23e99d67a7d}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Retailing}
-      \field{number}{1}
-      \field{title}{AI/ML Applications in Retail Operations: Current State and Future Directions}
-      \field{volume}{100}
-      \field{year}{2024}
-      \field{pages}{78\bibrangedash 95}
-      \range{pages}{18}
-      \verb{doi}
-      \verb 10.1016/j.jretai.2024.01.003
-      \endverb
       \keyw{cap5}
     \endentry
     \entry{wolsey2020}{book}{}{}

@@ -305,4 +305,4 @@ if __name__ == "__main__":
     test_figura_3_3()
     
     # Se vuoi generare tutte le figure
-    # generate_all_figures_safe()python 
+    # generate_all_figures_safe()
