@@ -13,12 +13,13 @@ L'infrastruttura IT della GDO moderna deve garantire simultaneamente continuità
 
 \subsection{L'Evoluzione del Panorama Tecnologico e delle Minacce}
 
-Il settore sta attraversando una trasformazione profonda, guidata da tre forze convergenti. La prima è la trasformazione infrastrutturale: il 67\% delle organizzazioni GDO europee ha iniziato processi di migrazione da data center tradizionali verso modelli cloud-ibridi\autocite{gartner2024cloud}, una transizione che richiede un ripensamento fondamentale dei modelli operativi e di sicurezza.
-
-La seconda è l'evoluzione delle minacce informatiche: l'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\autocite{enisa2024retail}e l'emergere di attacchi cyber-fisici (es. compromissione di sistemi di refrigerazione \textbf{HVAC - Heating, Ventilation, and Air Conditioning)} impongono un radicale cambio di strategia difensiva. 
-
-La terza forza è la crescente complessità normativa: l'entrata in vigore simultanea del Payment Card Industry Data Security Standard (PCI-DSS) v4.0, gli aggiornamenti del General Data Protection Regulation (GDPR) e l'implementazione della Direttiva Network and Information Security 2 (NIS2) creano un panorama che, se affrontato con metodi tradizionali, può costare fino al 2-3\% del fatturato \autocite{ponemon2024compliance}.
-
+Il settore sta attraversando una trasformazione profonda, guidata da tre forze convergenti: 
+\begin{itemize}
+	\item La prima è \textbf{la trasformazione infrastrutturale}: il 67\% delle organizzazioni GDO europee ha iniziato processi di migrazione da data center tradizionali verso modelli cloud-ibridi\autocite{gartner2024cloud}, una transizione che richiede un ripensamento fondamentale dei modelli operativi e di sicurezza.
+	\item La seconda è \textbf{l'evoluzione delle minacce informatiche}: l'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\autocite{enisa2024retail}e l'emergere di attacchi cyber-fisici (es. compromissione di sistemi di refrigerazione \textbf{HVAC - Heating, Ventilation, and Air Conditioning)} impongono un radicale cambio di strategia difensiva. 
+	\item La terza forza è \textbf{la crescente complessità normativa}: l'entrata in vigore simultanea del \textbf{Payment Card Industry Data Security Standard (PCI-DSS) v4.0}, gli aggiornamenti del \textbf{General Data Protection Regulation (GDPR)} e l'implementazione della \textbf{Direttiva Network and Information Security 2 (NIS2)} creano un panorama che, se affrontato con metodi tradizionali, può costare fino al 2-3\% del fatturato \autocite{ponemon2024compliance}.
+	\item 
+\end{itemize}
 \section{Problema di Ricerca e Gap Scientifico}
 
 L'analisi della letteratura scientifica e tecnica rivela una significativa disconnessione tra la ricerca accademica e le necessità pratiche del settore GDO. Questo gap rappresenta l'opportunità per un contributo originale e si manifesta in tre aree principali:
@@ -66,15 +67,15 @@ La ricerca si propone di validare le seguenti tre ipotesi, formulate per essere 
     \item \textbf{H3 (Compliance):} L'implementazione di un sistema di gestione della compliance basato su principi di compliance-by-design e automazione permette di soddisfare simultaneamente i requisiti di PCI-DSS 4.0, GDPR e NIS2 con un overhead operativo inferiore al 10\% delle risorse IT, conseguendo una riduzione dei costi totali di conformità del 30-40\%
 \end{itemize}
 \section{Metodologia della Ricerca}
-Per validare le ipotesi, la ricerca adotta un  \textbf{approccio \textit{mixed-methods}} che combina analisi quantitativa rigorosa con insights qualitativi. La componente quantitativa si basa su uno
-\textbf{studio longitudinale di 24 mesi basato su simulazioni calibrate del settore GDO}, analizzando metriche operative, di sicurezza e finanziarie prima, durante e dopo la trasformazione . I dati raccolti includono log da sistemi SIEM (Security Information and Event Management), metriche infrastrutturali, dati finanziari (CAPEX/OPEX) e audit score . L'analisi statistica utilizzerà test appropriati (es. t-test paired, regressione multivariata) con un livello di significatività $\alpha=0.05$.
+Per validare le ipotesi, la ricerca adotta un  \textbf{approccio \textit{mixed - methods}} che combina analisi quantitativa rigorosa con insights qualitativi. La componente quantitativa si basa su uno
+\textbf{studio longitudinale di 24 mesi basato su simulazioni calibrate del settore GDO}, analizzando metriche operative, di sicurezza e finanziarie prima, durante e dopo la trasformazione . I dati raccolti includono log da sistemi \textbf{SIEM (Security Information and Event Management)}, metriche infrastrutturali, dati finanziari (CAPEX/OPEX) e audit score . L'analisi statistica utilizzerà test appropriati (es. t-test paired, regressione multivariata) con un livello di significatività $\alpha=0.05$.
 
 \section{Struttura della tesi}
 La tesi si articola in cinque capitoli che guidano il lettore dalla definizione del problema alla presentazione di una soluzione validata.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
+\includegraphics[width=1\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
 \caption{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema (Capitolo 1) attraverso l'analisi delle componenti specifiche (Capitoli 2-4) fino alla sintesi e validazione del framework completo (Capitolo 5). Le frecce indicano le dipendenze principali, mentre le linee tratteggiate rappresentano le interconnessioni tematiche. Le ipotesi di ricerca (H1, H2, H3) sono mappate ai capitoli dove vengono primariamente validate.}
 \label{fig:thesis_structure}
 \end{figure}
