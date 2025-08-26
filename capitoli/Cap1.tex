@@ -192,31 +192,31 @@ Il framework GIST si distingue per tre caratteristiche fondamentali che lo rendo
 \centering
 % Placeholder per il diagramma del framework GIST
 % In produzione, sostituire con:
-% \includegraphics[width=0.85\textwidth]{thesis_figures/cap1/fig_1_3_gist_framework.pdf}
+\includegraphics[width=0.85\textwidth]{thesis_figures/cap1/fig_1_1_gist_framework.pdf}
 %
-% ALTERNATIVA: Generazione diretta con TikZ (richiede \usepackage{tikz})
+%ALTERNATIVA: Generazione diretta con TikZ (richiede \usepackage{tikz})
 % \begin{tikzpicture}[scale=0.8, transform shape]
 %   % Definizione stili
 %   \tikzstyle{dimension}=[rectangle, draw=black, fill=blue!20, minimum width=3cm, minimum height=2cm]
 %   \tikzstyle{process}=[rectangle, draw=black, fill=yellow!20, minimum width=2cm, minimum height=1cm]
 %   \tikzstyle{control}=[diamond, draw=black, fill=red!20, minimum width=1.5cm, minimum height=1.5cm]
 %   \tikzstyle{arrow}=[->, thick]
-%   
+  
 %   % Posizionamento nodi principali
 %   \node[dimension] (gov) at (0,4) {Governance};
 %   \node[dimension] (infra) at (4,0) {Infrastructure};
 %   \node[dimension] (sec) at (0,-4) {Security};
 %   \node[dimension] (trans) at (-4,0) {Transformation};
-%   
+  
 %   % Nodo centrale
 %   \node[circle, draw=black, fill=green!20, minimum size=2cm] (core) at (0,0) {GIST Core};
-%   
+  
 %   % Connessioni
 %   \draw[arrow] (gov) -- (core);
 %   \draw[arrow] (infra) -- (core);
 %   \draw[arrow] (sec) -- (core);
 %   \draw[arrow] (trans) -- (core);
-%   
+  
 %   % Feedback loops
 %   \draw[arrow, dashed] (core) to[bend left=30] (gov);
 %   \draw[arrow, dashed] (core) to[bend left=30] (infra);
@@ -224,24 +224,25 @@ Il framework GIST si distingue per tre caratteristiche fondamentali che lo rendo
 %   \draw[arrow, dashed] (core) to[bend left=30] (trans);
 % \end{tikzpicture}
 %
-\fbox{\parbox{0.85\textwidth}{
-\centering
-\vspace{5cm}
-\textbf{[PLACEHOLDER FIGURA 1.3]}\\
-\vspace{0.5cm}
-\textit{Diagramma architetturale che mostra:}\\
-- 4 quadranti principali: Governance, Infrastructure, Security, Transformation\\
-- 23 punti di integrazione numerati\\
-- Nodi decisionali (cerchi)\\
-- Processi operativi (rettangoli)\\
-- Punti di controllo (diamanti)\\
-- Flussi di dati (frecce solide)\\
-- Feedback loops (frecce tratteggiate)\\
-- Codifica colore per livelli di maturità:\\
-  Verde: Base | Giallo: Intermedio | Rosso: Avanzato\\
-\vspace{5cm}
-}}
-\caption{Architettura del Framework GIST (GDO Integrated Security Transformation). Il diagramma illustra le quattro dimensioni principali (Governance, Infrastructure, Security, Transformation) e le loro interazioni attraverso 23 punti di integrazione. I cerchi rappresentano i nodi decisionali, i rettangoli i processi operativi, e i diamanti i punti di controllo. Le frecce solide indicano flussi di dati, mentre quelle tratteggiate rappresentano feedback loops. I colori indicano il livello di maturità richiesto: verde (base), giallo (intermedio), rosso (avanzato).}
+% \fbox{\parbox{0.85\textwidth}{
+% \centering
+% \vspace{5cm}
+% \textbf{[PLACEHOLDER FIGURA 1.3]}\\
+% \vspace{0.5cm}
+% \textit{Diagramma architetturale che mostra:}\\
+% - 4 quadranti principali: Governance, Infrastructure, Security, Transformation\\
+% - 23 punti di integrazione numerati\\
+% - Nodi decisionali (cerchi)\\
+% - Processi operativi (rettangoli)\\
+% - Punti di controllo (diamanti)\\
+% - Flussi di dati (frecce solide)\\
+% - Feedback loops (frecce tratteggiate)\\
+% - Codifica colore per livelli di maturità:\\
+%   Verde: Base | Giallo: Intermedio | Rosso: Avanzato\\
+% \vspace{5cm}
+% }}
+\caption{Architettura del Framework GIST (GDO Integrated Security Transformation). Il diagramma illustra le quattro dimensioni principali (Governance, Infrastructure, Security, Transformation) e le loro interazioni attraverso 23 punti di integrazione. I cerchi rappresentano i nodi decisionali, i rettangoli i processi operativi, e i diamanti i punti di controllo. Le frecce solide indicano flussi di dati, mentre quelle tratteggiate rappresentano feedback loops. I colori indicano il livello di maturità richiesto: verde (base), giallo (intermedio), rosso (avanzato).
+Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della GDO. Il framework evidenzia le interconnessioni sistemiche tra governance strategica (controllo e direzione), infrastruttura tecnologica (fondamenta operative), sicurezza (protezione e resilienza) e processi di trasformazione (evoluzione continua). Le frecce bidirezionali rappresentano i flussi di informazione e controllo, mentre le connessioni tratteggiate indicano le interdipendenze operative tra le componenti.}
 \label{fig:gist_framework_detail}
 \end{figure}
 
