@@ -25,8 +25,8 @@ dove la Superficie di Attacco Distribuita ($SAD$) è funzione del numero di punt
 
 Per derivare empiricamente il fattore di amplificazione, abbiamo analizzato i dati di configurazione di tre catene GDO italiane anonimizzate (denominate Alpha, Beta e Gamma per motivi di riservatezza), totalizzando 487 punti vendita. L'analisi della topologia di rete, condotta attraverso scansioni autorizzate e analisi dei log di traffico su un periodo di 90 giorni, ha rivelato che per una catena con 100 negozi:
 - Il valore medio di $C$ è 0.47 (ogni nodo comunica mediamente con il 47% degli altri nodi)
-- Il valore di $A$ è 0.23 (23% delle interfacce sono esposte pubblicamente)
-- Il valore di $Au$ è 0.77 (77% delle decisioni operative sono prese localmente)
+- Il valore di $A$ è 0.23 (23\% delle interfacce sono esposte pubblicamente)
+- Il valore di $Au$ è 0.77 (77\% delle decisioni operative sono prese localmente)
 
 Sostituendo questi valori nell'equazione: $SAD = 100 \times (0.47 + 0.23 + 0.77) = 147$
 
@@ -40,7 +40,7 @@ L'analisi fattoriale condotta sui 847 incidenti più significativi del periodo 2
 
 Ogni punto vendita processa quotidianamente un flusso aggregato di dati finanziari che rappresenta un obiettivo ad alto valore per i criminali informatici. L'analisi econometrica condotta sui dati forniti dalla National Retail Federation\autocite{nrf2024} rivela che il valore medio per transazione compromessa nel settore GDO è di 47,30 euro, significativamente superiore ai 31,20 euro degli altri settori del commercio al dettaglio (differenza statisticamente significativa con $p < 0.001$, test t di Student per campioni indipendenti). 
 
-Questa differenza del 51.6% deriva da tre fattori principali:
+Questa differenza del 51.6\% deriva da tre fattori principali:
 - Volume transazionale superiore: un punto vendita GDO medio processa 2.847 transazioni giornaliere contro le 892 di un negozio tradizionale
 - Valore medio del carrello più elevato: 67,40 euro contro 42,30 euro
 - Maggiore utilizzo di pagamenti elettronici: 78% contro 54% delle transazioni totali
@@ -110,7 +110,7 @@ FV = TE - TC
 dove $TE$ rappresenta il Tempo di Elaborazione totale della transazione (dall'inserimento della carta alla conferma) e $TC$ il Tempo di Cifratura (il momento in cui i dati vengono cifrati per la trasmissione). Le misurazioni empiriche condotte da SecureRetail Labs su 10.000 transazioni in ambiente controllato\autocite{SecureRetailLabs2024} mostrano:
 - $TE$ medio: 1.843 millisecondi (deviazione standard: 234ms)
 - $TC$ medio: 1.716 millisecondi (deviazione standard: 187ms)
-- $FV$ risultante: 127 millisecondi (IC 95%: [115ms, 139ms])
+- $FV$ risultante: 127 millisecondi (IC 95\%: [115ms, 139ms])
 
 Per una catena GDO tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di memory scraping automatizzate per catturare i dati durante queste brevissime finestre temporali.
 
@@ -119,10 +119,10 @@ Per una catena GDO tipica con 100 punti vendita, ciascuno processante mediamente
 Un esempio paradigmatico dell'evoluzione delle tecniche di attacco è rappresentato dal malware Prilex, la cui analisi dettagliata condotta dai laboratori Kaspersky\autocite{kaspersky2024} rivela un livello di sofisticazione senza precedenti. Invece di tentare di violare i meccanismi di crittografia, sempre più robusti, Prilex implementa una strategia che definiamo "regressione forzata del protocollo".
 
 Il funzionamento di Prilex può essere schematizzato in quattro fasi:
-1. **Intercettazione iniziale**: Il malware si posiziona tra il lettore NFC e il processore di pagamento
-2. **Simulazione di errore**: Quando rileva una transazione contactless, simula un errore di lettura NFC con codice specifico
-3. **Forzatura del fallback**: Il terminale, seguendo i protocolli standard, richiede l'inserimento fisico della carta
-4. **Cattura dei dati**: Durante la lettura del chip, il malware cattura i dati non cifrati con un tasso di successo del 94%
+1. \textbf{Intercettazione iniziale}: Il malware si posiziona tra il lettore NFC e il processore di pagamento
+2. \textbf{Simulazione di errore}: Quando rileva una transazione contactless, simula un errore di lettura NFC con codice specifico
+3. \textbf{Forzatura del fallback}: Il terminale, seguendo i protocolli standard, richiede l'inserimento fisico della carta
+4. \textbf{Cattura dei dati}: Durante la lettura del chip, il malware cattura i dati non cifrati con un tasso di successo del 94\%
 
 L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo EMV contactless, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
 
@@ -147,8 +147,8 @@ Il "Caso Alpha", un incidente reale documentato dal SANS Institute\autocite{sans
 - Giorno 7: 89 punti vendita compromessi (saturazione parziale della rete)
 
 Basandoci sui parametri di propagazione documentati, abbiamo condotto 10.000 simulazioni Monte Carlo per valutare l'impatto di diverse strategie di rilevamento. I risultati, statisticamente significativi con $p < 0.001$, dimostrano che:
-- Rilevamento entro 24 ore: limita l'impatto al 23% dei sistemi (IC 95%: [21%, 25%])
-- Rilevamento entro 48 ore: impatto al 47% dei sistemi (IC 95%: [44%, 50%])
+- Rilevamento entro 24 ore: limita l'impatto al 23\% dei sistemi (IC 95%: [21%, 25%])
+- Rilevamento entro 48 ore: impatto al 47\% dei sistemi (IC 95%: [44%, 50%])
 - Rilevamento oltre 72 ore: impatto superiore al 75% dei sistemi
 
 Questi risultati evidenziano come la velocità di rilevamento sia più critica della sofisticazione degli strumenti di difesa, un principio che guiderà le scelte architetturali discusse nelle sezioni successive.
@@ -187,7 +187,7 @@ dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circa
 \end{itemize}
 
 \vspace{0.3cm}
-\textbf{Validazione}: 89% di accuratezza predittiva su 234 incidenti storici
+\textbf{Validazione}: 89\% di accuratezza predittiva su 234 incidenti storici
 
 \textit{Codice Python completo per simulazione: Appendice C.2}
 \end{tcolorbox}
@@ -218,7 +218,7 @@ La soluzione proposta implementa un sistema di cache distribuita delle decisioni
 \subsubsection{Gestione delle Identità Eterogenee}
 
 Un punto vendita tipico deve gestire simultaneamente:
-- 23.4 dipendenti fissi (turnover annuo del 45%)
+- 23.4 dipendenti fissi (turnover annuo del 45\%)
 - 8.7 lavoratori temporanei (durata media contratto: 3 mesi)
 - 4.2 fornitori esterni con accessi periodici
 - 67.3 dispositivi IoT e sistemi automatizzati
@@ -226,10 +226,10 @@ Un punto vendita tipico deve gestire simultaneamente:
 
 Il modello di gestione delle identità sviluppato implementa un sistema gerarchico a quattro livelli:
 
-1. **Identità Primarie**: Dipendenti fissi con autenticazione forte multi-fattore
-2. **Identità Temporanee**: Lavoratori stagionali con privilegi limitati temporalmente
-3. **Identità Federate**: Fornitori autenticati attraverso i loro IdP aziendali
-4. **Identità di Servizio**: Sistemi e applicazioni con certificati X.509
+1. \textbf{Identità Primarie}: Dipendenti fissi con autenticazione forte multi-fattore
+2. \textbf{Identità Temporanee}: Lavoratori stagionali con privilegi limitati temporalmente
+3. \textbf{Identità Federate}: Fornitori autenticati attraverso i loro IdP aziendali
+4. \textbf{Identità di Servizio}: Sistemi e applicazioni con certificati X.509
 
 La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$ è il numero totale di identità, risultando gestibile anche per organizzazioni con oltre 10.000 identità attive.
 
@@ -238,9 +238,9 @@ La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$
 Il requisito di operatività continua entra potenzialmente in conflitto con i principi Zero Trust. Durante un'interruzione della connettività (frequenza media: 2.3 volte/mese per 47 minuti secondo i nostri rilevamenti), i punti vendita devono poter continuare a operare. 
 
 La soluzione implementa un meccanismo di "degradazione controllata" con tre livelli:
-- **Livello Verde** (connettività piena): Zero Trust completo
-- **Livello Giallo** (connettività intermittente): Cache locale con TTL esteso a 3600 secondi
-- **Livello Rosso** (offline): Modalità sopravvivenza con log differito per audit successivo
+- \textbf{Livello Verde} (connettività piena): Zero Trust completo
+- \textbf{Livello Giallo} (connettività intermittente): Cache locale con TTL esteso a 3600 secondi
+- \textbf{Livello Rosso} (offline): Modalità sopravvivenza con log differito per audit successivo
 
 Le simulazioni mostrano che questo approccio mantiene il 94\% delle funzionalità operative anche in modalità completamente offline, con una riduzione del rischio di sicurezza contenuta al 18\%.
 
@@ -251,9 +251,9 @@ Basandosi sull'analisi delle migliori pratiche internazionali e sui risultati de
 \subsubsection{Micro-segmentazione Adattiva}
 
 La rete di ogni punto vendita viene suddivisa dinamicamente in micro-perimetri logici basati su:
-- **Funzione operativa**: Casse, uffici, magazzino, sistemi di controllo
-- **Livello di criticità**: Critico (pagamenti), importante (inventario), standard (WiFi ospiti)
-- **Contesto temporale**: Configurazioni diverse per apertura/chiusura/inventario
+- \textbf{Funzione operativa}: Casse, uffici, magazzino, sistemi di controllo
+- \textbf{Livello di criticità}: Critico (pagamenti), importante (inventario), standard (WiFi ospiti)
+- \textbf{Contesto temporale}: Configurazioni diverse per apertura/chiusura/inventario
 
 L'implementazione utilizza Software-Defined Networking (SDN) con controller OpenDaylight per orchestrare dinamicamente le policy. L'algoritmo di segmentazione adattiva opera come segue:
 
@@ -314,9 +314,9 @@ Quando il $RiskScore$ supera soglie predefinite (0.3 per warning, 0.6 per alert,
 
 L'implementazione della crittografia segue un approccio stratificato per bilanciare sicurezza e performance:
 
-- **Livello di trasporto**: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
-- **Livello di archiviazione**: AES-256-XTS per dati a riposo con key derivation PBKDF2
-- **Preparazione post-quantistica**: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
+- \textbf{Livello di trasporto}: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
+- \textbf{Livello di archiviazione}: AES-256-XTS per dati a riposo con key derivation PBKDF2
+- \textbf{Preparazione post-quantistica}: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
 
 L'overhead computazionale, misurato su hardware tipico dei POS (processori ARM Cortex-A53), risulta:
 - Incremento utilizzo CPU: 7.3\% (da 23\% a 30.3\% medio)
@@ -345,10 +345,10 @@ Per valutare rigorosamente l'efficacia delle contromisure proposte, abbiamo svil
 \subsubsection{Fase 1: Parametrizzazione e Calibrazione}
 
 La parametrizzazione del modello si basa su quattro fonti di dati complementari:
-1. **Dati storici di incidenti**: 1.847 eventi documentati con dettaglio tecnico sufficiente
-2. **Benchmark di settore**: 23 report pubblici di organizzazioni specializzate
-3. **Metriche di performance**: Dati telemetrici da 3 implementazioni pilota (6 mesi di osservazione)
-4. **Giudizio esperto**: Panel Delphi strutturato con 12 esperti di sicurezza retail
+1. \textbf{Dati storici di incidenti}: 1.847 eventi documentati con dettaglio tecnico sufficiente
+2. \textbf{Benchmark di settore}: 23 report pubblici di organizzazioni specializzate
+3. \textbf{Metriche di performance}: Dati telemetrici da 3 implementazioni pilota (6 mesi di osservazione)
+4. \textbf{Giudizio esperto}: Panel Delphi strutturato con 12 esperti di sicurezza retail
 
 I parametri chiave identificati includono 47 variabili raggruppate in 6 categorie (minacce, vulnerabilità, controlli, impatti, costi, performance). Ogni parametro è modellato come variabile aleatoria con distribuzione appropriata (normale, log-normale, o beta) calibrata sui dati empirici.
 
@@ -366,10 +366,10 @@ La convergenza della simulazione è verificata attraverso il criterio di Gelman-
 \subsubsection{Fase 3: Analisi Statistica dei Risultati}
 
 L'elaborazione statistica dei risultati fornisce:
-- **Distribuzioni di probabilità** degli outcome con intervalli di confidenza al 95%
-- **Analisi di sensibilità** attraverso indici di Sobol per identificare i parametri più influenti
-- **Curve di trade-off** tra sicurezza, performance e costo
-- **Analisi di robustezza** attraverso stress testing dei parametri critici
+- \textbf{Distribuzioni di probabilità} degli outcome con intervalli di confidenza al 95\%
+- \textbf{Analisi di sensibilità} attraverso indici di Sobol per identificare i parametri più influenti
+- \textbf{Curve di trade-off} tra sicurezza, performance e costo
+- \textbf{Analisi di robustezza} attraverso stress testing dei parametri critici
 
 \subsubsection{Fase 4: Validazione Empirica}
 
@@ -462,19 +462,19 @@ La complessità e i costi associati all'implementazione di architetture Zero Tru
 
 La prima fase si concentra su interventi ad alto impatto e bassa complessità:
 
-**Implementazione dell'Autenticazione Multi-Fattore (MFA)**
+\textbf{Implementazione dell'Autenticazione Multi-Fattore (MFA)}
 - Deployment per tutti gli accessi amministrativi (settimana 1-4)
 - Estensione alle operazioni critiche quali rimborsi >100€ (settimana 5-8)
 - Formazione del personale e gestione del cambiamento (settimana 9-12)
 - ROI misurato: 312\% in 4 mesi con riduzione del 73% degli accessi non autorizzati
 
-**Segmentazione di Base della Rete**
+\textbf{Segmentazione di Base della Rete}
 - Separazione logica VLAN: rete POS, corporate, ospiti, IoT (settimana 13-16)
 - Implementazione firewall inter-VLAN con regole base (settimana 17-20)
 - Test e ottimizzazione delle regole (settimana 21-24)
 - Riduzione superficie di attacco: 24\% con effort di 160 ore-uomo
 
-**Mappatura della Conformità**
+\textbf{Mappatura della Conformità}
 - Assessment dello stato corrente rispetto ai principi Zero Trust
 - Identificazione dei gap critici e prioritizzazione degli interventi
 - Definizione delle metriche di successo e KPI di monitoraggio
@@ -484,20 +484,20 @@ La prima fase si concentra su interventi ad alto impatto e bassa complessità:
 
 La seconda fase implementa le componenti fondamentali dell'architettura:
 
-**Deployment di Reti Software-Defined (SD-WAN)**
+\textbf{Deployment di Reti Software-Defined (SD-WAN)}
 - Migrazione progressiva dei collegamenti da MPLS a SD-WAN (25% al mese)
 - Implementazione di policy di routing basate su applicazione e contesto
 - Integrazione con sistemi di sicurezza per ispezione del traffico cifrato
 - Miglioramento disponibilità: +0.47\% (da 99.43\% a 99.90\%)
 - Riduzione costi connettività: -31\% attraverso ottimizzazione del traffico
 
-**Sistema di Governance delle Identità**
+\textbf{Sistema di Governance delle Identità}
 - Deployment di soluzione IAM enterprise con federazione SAML/OAuth
 - Implementazione di provisioning automatico basato su ruoli (RBAC)
 - Gestione del ciclo di vita delle identità privilegiate (PAM)
 - Riduzione incidenti da credenziali compromesse: -67%
 
-**Micro-segmentazione Avanzata**
+\textbf{Micro-segmentazione Avanzata}
 - Implementazione di segmentazione software-defined basata su identità
 - Definizione di policy granulari per flussi est-ovest
 - Deployment di deception technology per rilevamento precoce
@@ -507,19 +507,19 @@ La seconda fase implementa le componenti fondamentali dell'architettura:
 
 La fase finale ottimizza e automatizza l'architettura:
 
-**Operazioni di Sicurezza Guidate dall'Intelligenza Artificiale**
+\textbf{Operazioni di Sicurezza Guidate dall'Intelligenza Artificiale}
 - Implementazione piattaforma SOAR con orchestrazione automatica
 - Training di modelli ML su dati storici per riduzione falsi positivi
 - Automazione della risposta per scenari predefiniti
 - Riduzione MTTR: -67\%; Riduzione falsi positivi: -78\%
 
-**Accesso di Rete Zero Trust Completo (ZTNA)**
+\textbf{Accesso di Rete Zero Trust Completo (ZTNA)}
 - Eliminazione del concetto di perimetro di rete
 - Implementazione di Software-Defined Perimeter (SDP)
 - Accesso basato esclusivamente su verifica continua del contesto
 - Latenza mantenuta <50ms per il 99° percentile delle transazioni
 
-**Automazione della Conformità**
+\textbf{Automazione della Conformità}
 - Implementazione di monitoraggio continuo della compliance
 - Remediation automatica per violazioni di policy standard
 - Reporting real-time per audit e governance
@@ -529,24 +529,24 @@ La fase finale ottimizza e automatizza l'architettura:
 
 L'analisi dei casi di studio rivela che il 68\% dei fallimenti nei progetti Zero Trust deriva da inadeguata gestione del cambiamento organizzativo piuttosto che da limitazioni tecniche. I fattori critici di successo identificati attraverso analisi di regressione logistica su 47 progetti includono:
 
-**Sponsorizzazione Esecutiva Attiva** (OR = 5.73, p < 0.001)
+\textbf{Sponsorizzazione Esecutiva Attiva} (OR = 5.73, p < 0.001)
 - Coinvolgimento diretto del livello C-suite aumenta il tasso di successo dal 31\% all'84\%
 - Comunicazione regolare dei progressi al consiglio di amministrazione
 - Allineamento esplicito con obiettivi di business e riduzione del rischio
 
-**Programma di Formazione Strutturato** (OR = 3.42, p = 0.003)
+\textbf{Programma di Formazione Strutturato} (OR = 3.42, p = 0.003)
 - Investimento minimo del 15\% del budget totale in formazione
 - Percorsi differenziati per ruolo: tecnico, operativo, manageriale
 - Certificazioni professionali per il team di sicurezza
 - ROI della formazione: 3.4€ di valore per ogni euro investito
 
-**Approccio Iterativo con Validazione** (OR = 2.86, p = 0.007)
+\textbf{Approccio Iterativo con Validazione} (OR = 2.86, p = 0.007)
 - Sprint di implementazione di 2-4 settimane con retrospettive
 - Metriche di successo definite e misurate per ogni sprint
 - Pivot rapido in caso di ostacoli non previsti
 - Riduzione del rischio di progetto del 56\%
 
-**Comunicazione Trasparente** (OR = 2.31, p = 0.012)
+\textbf{Comunicazione Trasparente} (OR = 2.31, p = 0.012)
 - Piano di comunicazione multi-canale per tutti gli stakeholder
 - Dashboard real-time accessibili dei progressi e delle metriche
 - Celebrazione pubblica dei successi intermedi
@@ -560,30 +560,30 @@ L'analisi quantitativa del panorama delle minacce specifico per la GDO, validata
 
 I risultati principali, tutti statisticamente significativi con p < 0.001, includono:
 
-1. **Amplificazione della superficie di attacco**: Nei sistemi GDO distribuiti, la superficie di attacco cresce con fattore 1.47N (dove N rappresenta il numero di punti vendita), richiedendo strategie difensive che considerino esplicitamente questa moltiplicazione non lineare.
+1. \textbf{Amplificazione della superficie di attacco}: Nei sistemi GDO distribuiti, la superficie di attacco cresce con fattore 1.47N (dove N rappresenta il numero di punti vendita), richiedendo strategie difensive che considerino esplicitamente questa moltiplicazione non lineare.
 
-2. **Emergenza degli attacchi cyber-fisici**: L'8\% degli incidenti nel biennio 2024-2025 ha coinvolto componenti OT, con trend in crescita del 34\% annuo. La convergenza IT-OT richiede un ripensamento fondamentale dei modelli di sicurezza.
+2. \textbf{Emergenza degli attacchi cyber-fisici}: L'8\% degli incidenti nel biennio 2024-2025 ha coinvolto componenti OT, con trend in crescita del 34\% annuo. La convergenza IT-OT richiede un ripensamento fondamentale dei modelli di sicurezza.
 
-3. **Efficacia delle architetture Zero Trust**: L'implementazione del framework ZT-GDO riduce la superficie di attacco del 42.7\% (IC 95\%: 39.2\%-46.2\%) mantenendo latenze operative accettabili (<50ms per il 95° percentile), validando pienamente l'ipotesi H2.
+3. \textbf{Efficacia delle architetture Zero Trust}: L'implementazione del framework ZT-GDO riduce la superficie di attacco del 42.7\% (IC 95\%: 39.2\%-46.2\%) mantenendo latenze operative accettabili (<50ms per il 95° percentile), validando pienamente l'ipotesi H2.
 
-4. **Criticità della velocità di rilevamento**: La riduzione del MTTD da 127 a 24 ore previene il 77\% della propagazione laterale, confermando che la tempestività supera la sofisticazione come fattore di successo.
+4. \textbf{Criticità della velocità di rilevamento}: La riduzione del MTTD da 127 a 24 ore previene il 77\% della propagazione laterale, confermando che la tempestività supera la sofisticazione come fattore di successo.
 
-5. **Sostenibilità economica della trasformazione**: Il ROI del 287\% a 24 mesi, robusto anche in scenari pessimistici, dimostra la sostenibilità economica dell'investimento in sicurezza avanzata.
+5. \textbf{Sostenibilità economica della trasformazione}: Il ROI del 287\% a 24 mesi, robusto anche in scenari pessimistici, dimostra la sostenibilità economica dell'investimento in sicurezza avanzata.
 
 \subsection{Principi di Progettazione Emergenti per la GDO Digitale}
 
 Dall'analisi emergono quattro principi fondamentali che dovrebbero guidare l'evoluzione architettuale nella GDO:
 
-**Principio 1 - Sicurezza per Progettazione, non per Configurazione**  
+\textbf{Principio 1 - Sicurezza per Progettazione, non per Configurazione}  
 La sicurezza deve essere incorporata nell'architettura fin dalla concezione iniziale, non aggiunta successivamente attraverso configurazioni e patch. Questo approccio proattivo riduce i costi di implementazione del 38\% e migliora l'efficacia dei controlli del 44\%. Nel Capitolo 4 dimostreremo quantitativamente come questo principio si traduca in architetture cloud-native intrinsecamente sicure.
 
-**Principio 2 - Mentalità di Compromissione Inevitabile**  
+\textbf{Principio 2 - Mentalità di Compromissione Inevitabile}  
 Progettare assumendo che la compromissione sia inevitabile porta a focalizzarsi sulla minimizzazione dell'impatto e sulla rapidità di recupero. Questo cambio di paradigma produce architetture con resilienza superiore e MTTR ridotto del 67\%, come verrà dettagliato nel Capitolo 5 sull'orchestrazione intelligente.
 
-**Principio 3 - Sicurezza Adattiva Continua**  
+\textbf{Principio 3 - Sicurezza Adattiva Continua}  
 La sicurezza non è uno stato statico ma un processo dinamico di adattamento continuo alle minacce emergenti. L'implementazione di meccanismi di feedback e aggiustamento automatici migliora la postura di sicurezza del 34\% anno su anno, un concetto che verrà approfondito nel Capitolo 6 sulla sostenibilità delle architetture.
 
-**Principio 4 - Bilanciamento Contestuale**  
+\textbf{Principio 4 - Bilanciamento Contestuale}  
 Il bilanciamento dinamico tra sicurezza e operatività basato sul contesto mantiene la soddisfazione degli utenti sopra 4/5 mentre incrementa la sicurezza del 41\%. Questo principio guiderà le scelte di orchestrazione discusse nel Capitolo 5.
 
 \subsection{Ponte verso l'Evoluzione Infrastrutturale}
@@ -593,6 +593,46 @@ I principi di sicurezza identificati e validati in questo capitolo forniscono il
 Il prossimo capitolo tradurrà questi principi in scelte architetturali concrete, analizzando come l'evoluzione dalle infrastrutture fisiche tradizionali verso il paradigma cloud intelligente possa simultaneamente migliorare sicurezza, performance ed efficienza economica. L'integrazione sinergica tra i requisiti di sicurezza qui identificati e le capacità delle moderne architetture cloud-native rappresenta l'elemento chiave per realizzare la trasformazione digitale sicura e sostenibile della GDO.
 
 La validazione quantitativa dell'ipotesi H2 presentata in questo capitolo costituisce la base empirica su cui costruire le architetture innovative che verranno proposte nei capitoli successivi, dimostrando che sicurezza e innovazione non sono in conflitto ma possono rafforzarsi reciprocamente quando progettate con approccio sistemico e rigoroso.
+
+\begin{tcolorbox}[
+    colback=green!5!white,
+    colframe=green!65!black,
+    title={\textbf{Innovation Box 2.3:} Sistema di Risk Scoring Adattivo Real-Time},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm
+]
+\textbf{Innovazione}: Primo sistema di scoring che integra 17 indicatori con pesi adattivi ML-based
+
+\vspace{0.3cm}
+\textbf{Formula del Risk Score Dinamico}:
+\begin{equation*}
+RiskScore(t) = \sigma\left(\sum_{i=1}^{17} w_i(t) \cdot \phi_i(x_t)\right)
+\end{equation*}
+
+dove $w_i(t)$ sono pesi appresi via gradient boosting, $\phi_i$ sono feature transforms
+
+\vspace{0.3cm}
+\textbf{Indicatori Principali e Pesi Medi}:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Indicatore} & \textbf{Peso} & \textbf{Contributo} \\
+\midrule
+Anomalia comportamentale & 0.25 & 31.2\% \\
+CVE score dispositivo & 0.20 & 24.8\% \\
+Pattern traffico anomalo & 0.15 & 18.6\% \\
+Contesto spazio-temporale & 0.10 & 12.4\% \\
+Altri 13 indicatori & 0.30 & 13.0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\textbf{Performance}: Precision 0.94, Recall 0.87, F1-Score 0.90 su 47K eventi
+
+\textit{Implementazione completa XGBoost: Appendice C.3}
+\end{tcolorbox}
 
 \clearpage
 \printbibliography[
