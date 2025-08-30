@@ -272,6 +272,14 @@
   basicstyle=\ttfamily,
 }
 
+%Definizione ambiente per Innovation Box
+\newtcolorbox{innovationbox}[1][]{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  fonttitle=\bfseries,
+  title={Innovation Box},
+  #1
+}
 
 
 
@@ -326,9 +334,11 @@
 \pagenumbering{arabic}
 %%%%\include{capitoli/new1}
 \include{capitoli/Cap1.tex}
+\include{capitoli/Cap1rev.tex}
 %%%%\include{capitoli/new2}
 %%%%%\include{capitoli/Cap2.tex}
 \include{capitoli/Cap2bis.tex}
+\include{capitoli/Cap2bis-rev.tex}
 %%%%\include{capitoli/new3}
 \include{capitoli/Cap3.tex}
 %%%%\include{capitoli/new4-2}
