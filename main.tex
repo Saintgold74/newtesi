@@ -259,6 +259,19 @@
 }
 \lstset{style=mystyle}
 
+\lstdefinelanguage{json}{%
+  morekeywords={true, false, null},
+  morestring=[b]",
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  basicstyle=\ttfamily,
+}
+
 
 
 
@@ -311,23 +324,23 @@
 
 % Capitoli (numerazione araba)
 \pagenumbering{arabic}
-\include{capitoli/new1}
+%%%%\include{capitoli/new1}
 \include{capitoli/Cap1.tex}
-\include{capitoli/new2}
-\include{capitoli/Cap2.tex}
+%%%%\include{capitoli/new2}
+%%%%%\include{capitoli/Cap2.tex}
 \include{capitoli/Cap2bis.tex}
-\include{capitoli/new3}
+%%%%\include{capitoli/new3}
 \include{capitoli/Cap3.tex}
-\include{capitoli/new4-2}
+%%%%\include{capitoli/new4-2}
 \include{capitoli/Cap4.tex}
-\include{capitoli/new5}
-\include{capitoli/Cap5.tex}
+%%%%\include{capitoli/new5}
+%%%\include{capitoli/Cap5.tex}
 \include{capitoli/Cap5bis.tex}
 %\include{capitoli/new5-2}
 %\include{capitoli/new_app}
 %\include{capitoli/nuova_C}
 \include{capitoli/appAbis}
-\include{capitoli/new_appendix}
+%%%%\include{capitoli/new_appendix}
 
 % Questa include TUTTE le fonti citate nell'intera tesi
 \printbibliography[
