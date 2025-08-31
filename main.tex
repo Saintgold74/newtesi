@@ -272,9 +272,9 @@
   basicstyle=\ttfamily,
 }
 
-
-
-
+\usepackage[acronym,toc]{glossaries} % 'numberedsection' is not a standard option and can be removed.
+\loadglsentries{glossario} % Load definitions from glossario.tex (do not include the extension)
+\makeglossaries
 
 % ===== INDICE GENERALE - Formattazione =====
 \usepackage{tocloft}
@@ -341,6 +341,9 @@
 %\include{capitoli/nuova_C}
 \include{capitoli/appAbis}
 %%%%\include{capitoli/new_appendix}
+
+\printglossary[type=\acronymtype,title={Lista degli Acronimi}]
+\printglossary[title={Glossario}]
 
 % Questa include TUTTE le fonti citate nell'intera tesi
 \printbibliography[
