@@ -1,27 +1,27 @@
-\documentclass[12pt,a4paper,twoside]{book}
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{xcolor}
-\usepackage{tcolorbox}
-\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+% \documentclass[12pt,a4paper,twoside]{book}
+% \usepackage[utf8]{inputenc}
+% \usepackage[italian]{babel}
+% \usepackage{amsmath,amssymb,amsthm}
+% \usepackage{graphicx}
+% \usepackage{booktabs}
+% \usepackage{hyperref}
+% \usepackage{xcolor}
+% \usepackage{tcolorbox}
+% \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 
-% Definizione ambiente per Innovation Box
-\newtcolorbox{innovationbox}[2][]{
-  colback=#2!5!white,
-  colframe=#2!65!black,
-  fonttitle=\bfseries,
-  title={#1},
-  boxrule=1.5pt,
-  arc=2mm
-}
+% % Definizione ambiente per Innovation Box
+% \newtcolorbox{innovationbox}[2][]{
+%   colback=#2!5!white,
+%   colframe=#2!65!black,
+%   fonttitle=\bfseries,
+%   title={#1},
+%   boxrule=1.5pt,
+%   arc=2mm
+% }
 
-\addbibresource{bibliografia.bib}
+% \addbibresource{bibliografia.bib}
 
-\begin{document}
+% \begin{document}
 
 \chapter{L'Evoluzione Infrastrutturale: Il Viaggio dalle Fondamenta Fisiche al Cloud Intelligente}
 \label{cap3_evoluzione_infrastrutturale}
@@ -72,7 +72,7 @@ Ma i numeri teorici raccontano solo parte della storia. L'analisi empirica su 23
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/cap3_power_reliability.pdf}
+\includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_1_power_availability.pdf}
 \caption{Le curve di affidabilità per diverse configurazioni di alimentazione rivelano rendimenti decrescenti: passare da N+1 a 2N migliora la disponibilità dello 0.12\%, ma raddoppia quasi i costi. La configurazione 2N+1, pur offrendo il 99.97\% di disponibilità, è economicamente giustificabile solo per data center critici.}
 \label{fig:power_reliability}
 \end{figure}
@@ -136,7 +136,7 @@ Con SD-WAN, l'automazione trasforma questi tempi: 0.05 ore per rilevamento autom
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/cap3_network_evolution.pdf}
+\includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_2_network_evolution.pdf}
 \caption{L'evoluzione dall'architettura hub-and-spoke tradizionale al full mesh SD-WAN non è solo un cambio topologico ma paradigmatico: la latenza media scende da 187ms a 49ms, mentre la resilienza aumenta esponenzialmente grazie ai percorsi multipli dinamicamente ottimizzati.}
 \label{fig:network_evolution}
 \end{figure}
@@ -190,12 +190,12 @@ L'analisi comparativa delle tre strategie principali di migrazione, basata su 43
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/cap3_tco_analysis.pdf}
+\includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_4_tco_analysis.pdf}
 \caption{L'analisi TCO con simulazione Monte Carlo (10.000 iterazioni) mostra che una strategia ibrida ottimizzata raggiunge il break-even in 15.7 mesi e genera una riduzione TCO del 38.2\%, validando la componente economica dell'ipotesi H1.}
 \label{fig:tco_analysis}
 \end{figure}
 
-La simulazione Monte Carlo su 10.000 iterazioni, incorporando incertezza parametrica attraverso distribuzioni triangolari calibrate, conferma che una strategia ibrida – combinando approcci diversi per diverse categorie di applicazioni – massimizza il valore attuale netto con una riduzione del TCO del 38.2\% (IC 95\%: 34.6\%-41.7\%), validando pienamente la componente economica dell'ipotesi H1.
+La simulazione Monte Carlo su 10.000 iterazioni, incorporando incertezza parametrica attraverso distribuzioni triangolari calibrate, conferma che una strategia ibrida - combinando approcci diversi per diverse categorie di applicazioni - massimizza il valore attuale netto con una riduzione del TCO del 38.2\% (IC 95\%: 34.6\%-41.7\%), validando pienamente la componente economica dell'ipotesi H1.
 
 \subsection{Multi-Cloud: La Diversificazione come Strategia di Resilienza}
 
@@ -252,7 +252,7 @@ L'implementazione Zero Trust riduce l'ASSA attraverso tre meccanismi sinergici:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/cap3_zero_trust_impact.pdf}
+\includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_5_zero_trust_impact.pdf}
 \caption{L'impatto di Zero Trust su sicurezza e performance mostra un punto ottimale al livello di maturità 4, dove la riduzione ASSA del 42.7\% si accompagna a latenza ancora accettabile sotto i 50ms per il 94\% delle transazioni.}
 \label{fig:zero_trust_impact}
 \end{figure}
@@ -331,7 +331,7 @@ I benefici consolidati: disponibilità 99.96\%, riduzione TCO 38.2\%, riduzione 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/cap3_implementation_roadmap.pdf}
+\includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_6_implementation_roadmap.pdf}
 \caption{La roadmap di trasformazione infrastrutturale mostra le dipendenze critiche tra attività. Il percorso critico, evidenziato in rosso, determina la durata minima del progetto a 30 mesi. I milestone chiave sono indicati dai diamanti.}
 \label{fig:roadmap}
 \end{figure}
@@ -420,7 +420,7 @@ L'automazione pervasiva permette la raccolta continua di evidenze di compliance.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/cap3_gist_framework.pdf}
+\includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_7_gist_framework.pdf}
 \caption{Il Framework GIST completo mostra l'integrazione dei cinque livelli evolutivi, dalle fondamenta fisiche alla compliance integrata. Le metriche chiave, validate attraverso simulazione Monte Carlo, confermano il raggiungimento di tutti i target stabiliti nelle ipotesi di ricerca.}
 \label{fig:gist_complete}
 \end{figure}
@@ -433,4 +433,4 @@ Il viaggio dalle fondamenta fisiche al cloud intelligente non è solo una trasfo
     title={Riferimenti Bibliografici del Capitolo 3},
 ]
 
-\end{document}
+% \end{document}
