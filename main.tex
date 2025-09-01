@@ -272,16 +272,15 @@
   basicstyle=\ttfamily,
 }
 
-%Definizione ambiente per Innovation Box
-\newtcolorbox{innovationbox}[1][]{
+\newtcolorbox{innovationbox}[2][]{
   colback=blue!5!white,
   colframe=blue!75!black,
   fonttitle=\bfseries,
-  title={Innovation Box},
+  title={#2},
+  boxrule=1.5pt,
+  arc=2mm
   #1
 }
-
-
 
 
 % ===== INDICE GENERALE - Formattazione =====
@@ -333,6 +332,7 @@
 % Capitoli (numerazione araba)
 \pagenumbering{arabic}
 %%%%\include{capitoli/new1}
+\include{figure/gist_framework_tikz.tex}
 \include{capitoli/Cap1.tex}
 \include{capitoli/Cap1rev.tex}
 %%%%\include{capitoli/new2}
@@ -341,11 +341,16 @@
 \include{capitoli/Cap2bis-rev.tex}
 %%%%\include{capitoli/new3}
 \include{capitoli/Cap3.tex}
+
+%\include{capitoli/Cap3rev.tex}
 %%%%\include{capitoli/new4-2}
 \include{capitoli/Cap4.tex}
+%\include{capitoli/Cap4rev.tex}
+
 %%%%\include{capitoli/new5}
 %%%\include{capitoli/Cap5.tex}
 \include{capitoli/Cap5bis.tex}
+\include{capitoli/Cap5rev.tex}
 %\include{capitoli/new5-2}
 %\include{capitoli/new_app}
 %\include{capitoli/nuova_C}
