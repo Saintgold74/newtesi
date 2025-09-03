@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "created_at": "2025-09-03T11:44:18.378428",
+  "config_hash": 5186576106489908993,
+  "validation": {
+    "transactions": {
+      "benford_law": {
+        "chi_square": 12696.226013777477,
+        "p_value": 0.0,
+        "follows_benford": "False",
+        "interpretation": "Dati violano la legge di Benford (p=0.000)"
+      },
+      "temporal_distribution": {
+        "chi_square": 267165.161845766,
+        "p_value": 0.0,
+        "is_realistic": "True",
+        "interpretation": "Pattern temporale realistico (picchi ore shopping)"
+      },
+      "weekend_effect": {
+        "weekend_avg": 46.33118897832054,
+        "weekday_avg": 46.72218548348467,
+        "ratio": 0.991631459420871,
+        "is_realistic": "True",
+        "interpretation": "Rapporto weekend/weekday: 0.99"
+      },
+      "data_completeness": {
+        "missing_ratio": 0.0,
+        "is_complete": "True",
+        "interpretation": "Dataset accettabile: 0.00% missing"
+      },
+      "transaction_id_uniqueness": {
+        "duplicates": "0",
+        "is_unique": "True",
+        "interpretation": "transaction_id univoci \u2713"
+      },
+      "temporal_autocorrelation": {
+        "lag1_correlation": 0.8269197197941363,
+        "has_memory": "True",
+        "is_realistic": true,
+        "interpretation": "Autocorrelazione presente (realistico): 0.827"
+      }
+    },
+    "security_events": {
+      "poisson_distribution": {
+        "lambda": 7813.666666666667,
+        "ks_statistic": 0.10818431143673796,
+        "p_value": 0.913053875050055,
+        "follows_poisson": "True",
+        "interpretation": "Eventi seguono Poisson con \u03bb=7813.67"
+      },
+      "incident_rate": {
+        "rate": 0.13059916385819717,
+        "false_positive_rate": 0.8694008361418029,
+        "is_realistic": "True",
+        "interpretation": "Tasso incidenti realistico: 13.06%"
+      },
+      "severity_distribution": {
+        "chi_square": 7330.202651642119,
+        "p_value": 0.0,
+        "matches_expected": "False",
+        "distribution": {
+          "medium": 0.33392879996587177,
+          "low": 0.3039652745190052,
+          "info": 0.261896890064417,
+          "high": 0.07963610767458726,
+          "critical": 0.020572927776118768
+        }
+      },
+      "data_completeness": {
+        "missing_ratio": 0.3751148780829682,
+        "is_complete": "True",
+        "interpretation": "Dataset accettabile: 37.51% missing"
+      },
+      "event_id_uniqueness": {
+        "duplicates": "0",
+        "is_unique": "True",
+        "interpretation": "event_id univoci \u2713"
+      },
+      "temporal_autocorrelation": {
+        "lag1_correlation": -0.014493744110884676,
+        "has_memory": "False",
+        "is_realistic": true,
+        "interpretation": "Autocorrelazione bassa: -0.014"
+      }
+    }
+  }
+}
