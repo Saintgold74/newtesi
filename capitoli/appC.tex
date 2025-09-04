@@ -1,0 +1,735 @@
+
+\chapter{Implementazioni Algoritmiche}
+\label{app:algoritmi}
+
+\section{C.1 Algoritmo ASSA-GDO}
+
+\subsection{C.1.1 Implementazione Completa}
+
+\begin{lstlisting}[language=Python, caption=Implementazione dell'algoritmo ASSA-GDO]
+import numpy as np
+import networkx as nx
+from typing import Dict, List, Tuple
+from dataclasses import dataclass
+
+@dataclass
+class Node:
+    """Rappresenta un nodo nell'infrastruttura GDO"""
+    id: str
+    type: str  # 'pos', 'server', 'network', 'iot'
+    cvss_score: float
+    exposure: float  # 0-1, livello di esposizione
+    privileges: Dict[str, float]
+    services: List[str]
+    
+class ASSA_GDO:
+    """
+    Attack Surface Score Aggregated per GDO
+    Quantifica la superficie di attacco considerando vulnerabilità
+    tecniche e fattori organizzativi
+    """
+    
+    def __init__(self, infrastructure: nx.Graph, org_factor: float = 1.0):
+        self.G = infrastructure
+        self.org_factor = org_factor
+        self.alpha = 0.73  # Fattore di amplificazione calibrato
+        
+    def calculate_assa(self) -> Tuple[float, Dict]:
+        """
+        Calcola ASSA totale e per componente
+        
+        Returns:
+            total_assa: Score totale
+            component_scores: Dictionary con score per componente
+        """
+        total_assa = 0
+        component_scores = {}
+        
+        for node_id in self.G.nodes():
+            node = self.G.nodes[node_id]['data']
+            
+            # Vulnerabilità base del nodo
+            V_i = self._normalize_cvss(node.cvss_score)
+            
+            # Esposizione del nodo
+            E_i = node.exposure
+            
+            # Calcolo propagazione
+            propagation_factor = 1.0
+            for neighbor_id in self.G.neighbors(node_id):
+                edge_data = self.G[node_id][neighbor_id]
+                P_ij = edge_data.get('propagation_prob', 0.1)
+                propagation_factor *= (1 + self.alpha * P_ij)
+            
+            # Score del nodo
+            node_score = V_i * E_i * propagation_factor
+            
+            # Applicazione fattore organizzativo
+            node_score *= self.org_factor
+            
+            component_scores[node_id] = node_score
+            total_assa += node_score
+            
+        return total_assa, component_scores
+    
+    def _normalize_cvss(self, cvss: float) -> float:
+        """Normalizza CVSS score a range 0-1"""
+        return cvss / 10.0
+    
+    def identify_critical_paths(self, threshold: float = 0.7) -> List[List[str]]:
+        """
+        Identifica percorsi critici nella rete con alta probabilità
+        di propagazione
+        """
+        critical_paths = []
+        
+        # Trova nodi ad alta esposizione
+        exposed_nodes = [n for n in self.G.nodes() 
+                        if self.G.nodes[n]['data'].exposure > 0.5]
+        
+        # Trova nodi critici (high value targets)
+        critical_nodes = [n for n in self.G.nodes()
+                         if self.G.nodes[n]['data'].type in ['server', 'database']]
+        
+        # Calcola percorsi da nodi esposti a nodi critici
+        for source in exposed_nodes:
+            for target in critical_nodes:
+                if source != target:
+                    try:
+                        paths = list(nx.all_simple_paths(
+                            self.G, source, target, cutoff=5
+                        ))
+                        for path in paths:
+                            path_prob = self._calculate_path_probability(path)
+                            if path_prob > threshold:
+                                critical_paths.append(path)
+                    except nx.NetworkXNoPath:
+                        continue
+                        
+        return critical_paths
+    
+    def _calculate_path_probability(self, path: List[str]) -> float:
+        """Calcola probabilità di compromissione lungo un percorso"""
+        prob = 1.0
+        for i in range(len(path) - 1):
+            edge_data = self.G[path[i]][path[i+1]]
+            prob *= edge_data.get('propagation_prob', 0.1)
+        return prob
+    
+    def recommend_mitigations(self, budget: float = 100000) -> Dict:
+        """
+        Raccomanda mitigazioni ottimali dato un budget
+        
+        Args:
+            budget: Budget disponibile in euro
+            
+        Returns:
+            Dictionary con mitigazioni raccomandate e ROI atteso
+        """
+        _, component_scores = self.calculate_assa()
+        
+        # Ordina componenti per criticità
+        sorted_components = sorted(
+            component_scores.items(), 
+            key=lambda x: x[1], 
+            reverse=True
+        )
+        
+        mitigations = []
+        remaining_budget = budget
+        total_risk_reduction = 0
+        
+        for node_id, score in sorted_components[:10]:
+            node = self.G.nodes[node_id]['data']
+            
+            # Stima costo mitigazione basato su tipo
+            mitigation_cost = self._estimate_mitigation_cost(node)
+            
+            if mitigation_cost <= remaining_budget:
+                risk_reduction = score * 0.7  # Assume 70% reduction
+                roi = (risk_reduction * 100000) / mitigation_cost  # €100k per point
+                
+                mitigations.append({
+                    'node': node_id,
+                    'type': node.type,
+                    'cost': mitigation_cost,
+                    'risk_reduction': risk_reduction,
+                    'roi': roi
+                })
+                
+                remaining_budget -= mitigation_cost
+                total_risk_reduction += risk_reduction
+                
+        return {
+            'mitigations': mitigations,
+            'total_cost': budget - remaining_budget,
+            'risk_reduction': total_risk_reduction,
+            'roi': (total_risk_reduction * 100000) / (budget - remaining_budget)
+        }
+    
+    def _estimate_mitigation_cost(self, node: Node) -> float:
+        """Stima costo di mitigazione per tipo di nodo"""
+        cost_map = {
+            'pos': 500,      # Patch/update POS
+            'server': 5000,   # Harden server
+            'network': 3000,  # Segment network
+            'iot': 200,       # Update firmware
+            'database': 8000, # Encrypt and secure DB
+        }
+        return cost_map.get(node.type, 1000)
+
+
+# Esempio di utilizzo
+def create_sample_infrastructure():
+    """Crea infrastruttura di esempio per testing"""
+    G = nx.Graph()
+    
+    # Aggiungi nodi
+    nodes = [
+        Node('pos1', 'pos', 6.5, 0.8, {'user': 0.3}, ['payment']),
+        Node('server1', 'server', 7.8, 0.3, {'admin': 0.9}, ['api', 'db']),
+        Node('db1', 'database', 8.2, 0.1, {'admin': 1.0}, ['storage']),
+        Node('iot1', 'iot', 5.2, 0.9, {'device': 0.1}, ['sensor'])
+    ]
+    
+    for node in nodes:
+        G.add_node(node.id, data=node)
+    
+    # Aggiungi connessioni con probabilità di propagazione
+    G.add_edge('pos1', 'server1', propagation_prob=0.6)
+    G.add_edge('server1', 'db1', propagation_prob=0.8)
+    G.add_edge('iot1', 'server1', propagation_prob=0.3)
+    
+    return G
+
+if __name__ == "__main__":
+    # Test dell'algoritmo
+    infra = create_sample_infrastructure()
+    assa = ASSA_GDO(infra, org_factor=1.2)
+    
+    total_score, components = assa.calculate_assa()
+    print(f"ASSA Totale: {total_score:.2f}")
+    print(f"Score per componente: {components}")
+    
+    critical = assa.identify_critical_paths(threshold=0.4)
+    print(f"Percorsi critici identificati: {len(critical)}")
+    
+    mitigations = assa.recommend_mitigations(budget=10000)
+    print(f"ROI delle mitigazioni: {mitigations['roi']:.2f}")
+\end{lstlisting}
+
+\section{C.2 Modello SIR per Propagazione Malware}
+
+\begin{lstlisting}[language=Python, caption=Simulazione modello SIR adattato per GDO]
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+from typing import Tuple, List
+
+class SIR_GDO:
+    """
+    Modello SIR esteso per propagazione malware in reti GDO
+    Include variazione circadiana e reinfezione
+    """
+    
+    def __init__(self, 
+                 beta_0: float = 0.31,
+                 alpha: float = 0.42,
+                 sigma: float = 0.73,
+                 gamma: float = 0.14,
+                 delta: float = 0.02,
+                 N: int = 500):
+        """
+        Parametri:
+            beta_0: Tasso base di trasmissione
+            alpha: Ampiezza variazione circadiana
+            sigma: Tasso di incubazione
+            gamma: Tasso di recupero
+            delta: Tasso di reinfezione
+            N: Numero totale di nodi
+        """
+        self.beta_0 = beta_0
+        self.alpha = alpha
+        self.sigma = sigma
+        self.gamma = gamma
+        self.delta = delta
+        self.N = N
+        
+    def beta(self, t: float) -> float:
+        """Tasso di trasmissione variabile nel tempo"""
+        T = 24  # Periodo di 24 ore
+        return self.beta_0 * (1 + self.alpha * np.sin(2 * np.pi * t / T))
+    
+    def model(self, y: List[float], t: float) -> List[float]:
+        """
+        Sistema di equazioni differenziali SEIR
+        y = [S, E, I, R]
+        """
+        S, E, I, R = y
+        
+        # Calcola derivate
+        dS = -self.beta(t) * S * I / self.N + self.delta * R
+        dE = self.beta(t) * S * I / self.N - self.sigma * E
+        dI = self.sigma * E - self.gamma * I
+        dR = self.gamma * I - self.delta * R
+        
+        return [dS, dE, dI, dR]
+    
+    def simulate(self, 
+                 S0: int, 
+                 E0: int, 
+                 I0: int,
+                 days: int = 30) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Simula propagazione per numero specificato di giorni
+        """
+        R0 = self.N - S0 - E0 - I0
+        y0 = [S0, E0, I0, R0]
+        
+        # Timeline in ore
+        t = np.linspace(0, days * 24, days * 24 * 4)  # 4 punti per ora
+        
+        # Risolvi sistema ODE
+        solution = odeint(self.model, y0, t)
+        
+        return t, solution
+    
+    def calculate_R0(self) -> float:
+        """Calcola numero di riproduzione base"""
+        return (self.beta_0 * self.sigma) / (self.gamma * (self.sigma + self.gamma))
+    
+    def plot_simulation(self, t: np.ndarray, solution: np.ndarray):
+        """Visualizza risultati simulazione"""
+        S, E, I, R = solution.T
+        
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+        
+        # Plot principale
+        ax1.plot(t/24, S, 'b-', label='Suscettibili', linewidth=2)
+        ax1.plot(t/24, E, 'y-', label='Esposti', linewidth=2)
+        ax1.plot(t/24, I, 'r-', label='Infetti', linewidth=2)
+        ax1.plot(t/24, R, 'g-', label='Recuperati', linewidth=2)
+        
+        ax1.set_xlabel('Giorni')
+        ax1.set_ylabel('Numero di Nodi')
+        ax1.set_title('Propagazione Malware in Rete GDO - Modello SEIR')
+        ax1.legend(loc='best')
+        ax1.grid(True, alpha=0.3)
+        
+        # Plot tasso di infezione
+        infection_rate = np.diff(I)
+        ax2.plot(t[1:]/24, infection_rate, 'r-', linewidth=1)
+        ax2.fill_between(t[1:]/24, 0, infection_rate, alpha=0.3, color='red')
+        ax2.set_xlabel('Giorni')
+        ax2.set_ylabel('Nuove Infezioni/Ora')
+        ax2.set_title('Tasso di Infezione')
+        ax2.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        return fig
+    
+    def monte_carlo_analysis(self, 
+                            n_simulations: int = 1000,
+                            param_variance: float = 0.2) -> Dict:
+        """
+        Analisi Monte Carlo con parametri incerti
+        """
+        results = {
+            'peak_infected': [],
+            'time_to_peak': [],
+            'total_infected': [],
+            'duration': []
+        }
+        
+        for _ in range(n_simulations):
+            # Varia parametri casualmente
+            beta_sim = np.random.normal(self.beta_0, self.beta_0 * param_variance)
+            gamma_sim = np.random.normal(self.gamma, self.gamma * param_variance)
+            
+            # Crea modello con parametri variati
+            model_sim = SIR_GDO(
+                beta_0=max(0.01, beta_sim),
+                gamma=max(0.01, gamma_sim),
+                alpha=self.alpha,
+                sigma=self.sigma,
+                delta=self.delta,
+                N=self.N
+            )
+            
+            # Simula
+            t, solution = model_sim.simulate(
+                S0=self.N-1, E0=0, I0=1, days=60
+            )
+            
+            I = solution[:, 2]
+            
+            # Raccogli statistiche
+            results['peak_infected'].append(np.max(I))
+            results['time_to_peak'].append(t[np.argmax(I)] / 24)
+            results['total_infected'].append(self.N - solution[-1, 0])
+            
+            # Durata outbreak (giorni con >5% infetti)
+            outbreak_days = np.sum(I > 0.05 * self.N) / (24 * 4)
+            results['duration'].append(outbreak_days)
+        
+        # Calcola statistiche
+        stats = {}
+        for key, values in results.items():
+            stats[key] = {
+                'mean': np.mean(values),
+                'std': np.std(values),
+                'percentile_5': np.percentile(values, 5),
+                'percentile_95': np.percentile(values, 95)
+            }
+            
+        return stats
+
+
+# Test e validazione
+if __name__ == "__main__":
+    # Inizializza modello con parametri calibrati
+    model = SIR_GDO(
+        beta_0=0.31,   # Calibrato su dati reali
+        alpha=0.42,    # Variazione circadiana
+        sigma=0.73,    # Incubazione ~33 ore
+        gamma=0.14,    # Recupero ~7 giorni
+        delta=0.02,    # Reinfezione 2%
+        N=500          # 500 nodi nella rete
+    )
+    
+    # Calcola R0
+    R0 = model.calculate_R0()
+    print(f"R0 (numero riproduzione base): {R0:.2f}")
+    
+    # Simula outbreak
+    print("\nSimulazione outbreak con 1 nodo inizialmente infetto...")
+    t, solution = model.simulate(S0=499, E0=0, I0=1, days=60)
+    
+    # Visualizza
+    fig = model.plot_simulation(t, solution)
+    plt.savefig('propagazione_malware_gdo.png', dpi=150, bbox_inches='tight')
+    
+    # Analisi Monte Carlo
+    print("\nEsecuzione analisi Monte Carlo (1000 simulazioni)...")
+    stats = model.monte_carlo_analysis(n_simulations=1000)
+    
+    print("\nStatistiche Monte Carlo:")
+    for metric, values in stats.items():
+        print(f"\n{metric}:")
+        print(f"  Media: {values['mean']:.2f}")
+        print(f"  Dev.Std: {values['std']:.2f}")
+        print(f"  95% CI: [{values['percentile_5']:.2f}, {values['percentile_95']:.2f}]")
+\end{lstlisting}
+
+\section{C.3 Sistema di Risk Scoring con XGBoost}
+
+\begin{lstlisting}[language=Python, caption=Implementazione Risk Scoring adattivo con XGBoost]
+import xgboost as xgb
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import roc_auc_score, precision_recall_curve
+from typing import Dict, Tuple
+import joblib
+
+class AdaptiveRiskScorer:
+    """
+    Sistema di Risk Scoring adattivo basato su XGBoost
+    per ambienti GDO
+    """
+    
+    def __init__(self):
+        self.model = None
+        self.feature_names = None
+        self.thresholds = {
+            'low': 0.3,
+            'medium': 0.6,
+            'high': 0.8,
+            'critical': 0.95
+        }
+        
+    def engineer_features(self, raw_data: pd.DataFrame) -> pd.DataFrame:
+        """
+        Feature engineering specifico per GDO
+        """
+        features = pd.DataFrame()
+        
+        # Anomalie comportamentali
+        features['login_hour_unusual'] = (
+            (raw_data['login_hour'] < 6) | 
+            (raw_data['login_hour'] > 22)
+        ).astype(int)
+        
+        features['transaction_velocity'] = (
+            raw_data['transactions_last_hour'] / 
+            raw_data['avg_transactions_hour'].clip(lower=1)
+        )
+        
+        features['location_new'] = (
+            raw_data['days_since_location_seen'] > 30
+        ).astype(int)
+        
+        # CVE Score del dispositivo
+        features['device_vulnerability'] = raw_data['cvss_max'] / 10.0
+        features['patches_missing'] = raw_data['patches_behind']
+        
+        # Pattern traffico anomalo
+        features['data_exfiltration_risk'] = (
+            raw_data['outbound_bytes'] / 
+            raw_data['avg_outbound_bytes'].clip(lower=1)
+        )
+        
+        features['connection_diversity'] = (
+            raw_data['unique_destinations'] / 
+            raw_data['avg_destinations'].clip(lower=1)
+        )
+        
+        # Contesto spazio-temporale
+        features['weekend'] = raw_data['day_of_week'].isin([5, 6]).astype(int)
+        features['night_shift'] = (
+            (raw_data['hour'] >= 22) | (raw_data['hour'] <= 6)
+        ).astype(int)
+        
+        # Interazioni cross-feature
+        features['high_risk_time_location'] = (
+            features['login_hour_unusual'] * features['location_new']
+        )
+        
+        features['vulnerable_high_activity'] = (
+            features['device_vulnerability'] * features['transaction_velocity']
+        )
+        
+        # Lag features (comportamento storico)
+        for lag in [1, 7, 30]:
+            features[f'risk_score_lag_{lag}d'] = raw_data[f'risk_score_{lag}d_ago']
+            features[f'incidents_lag_{lag}d'] = raw_data[f'incidents_{lag}d_ago']
+        
+        return features
+    
+    def train(self, 
+              X: pd.DataFrame, 
+              y: np.ndarray,
+              optimize_hyperparams: bool = True) -> Dict:
+        """
+        Training del modello con ottimizzazione iperparametri
+        """
+        self.feature_names = X.columns.tolist()
+        
+        X_train, X_val, y_train, y_val = train_test_split(
+            X, y, test_size=0.2, random_state=42, stratify=y
+        )
+        
+        if optimize_hyperparams:
+            # Grid search per iperparametri ottimali
+            param_grid = {
+                'max_depth': [3, 5, 7],
+                'learning_rate': [0.01, 0.05, 0.1],
+                'n_estimators': [100, 200, 300],
+                'subsample': [0.7, 0.8, 0.9],
+                'colsample_bytree': [0.7, 0.8, 0.9],
+                'gamma': [0, 0.1, 0.2]
+            }
+            
+            xgb_model = xgb.XGBClassifier(
+                objective='binary:logistic',
+                random_state=42,
+                n_jobs=-1
+            )
+            
+            grid_search = GridSearchCV(
+                xgb_model,
+                param_grid,
+                cv=5,
+                scoring='roc_auc',
+                n_jobs=-1,
+                verbose=1
+            )
+            
+            grid_search.fit(X_train, y_train)
+            self.model = grid_search.best_estimator_
+            best_params = grid_search.best_params_
+        else:
+            # Parametri default ottimizzati per GDO
+            self.model = xgb.XGBClassifier(
+                max_depth=5,
+                learning_rate=0.05,
+                n_estimators=200,
+                subsample=0.8,
+                colsample_bytree=0.8,
+                gamma=0.1,
+                objective='binary:logistic',
+                random_state=42,
+                n_jobs=-1
+            )
+            self.model.fit(X_train, y_train)
+            best_params = self.model.get_params()
+        
+        # Valutazione
+        y_pred_proba = self.model.predict_proba(X_val)[:, 1]
+        auc_score = roc_auc_score(y_val, y_pred_proba)
+        
+        # Calcola soglie ottimali
+        precision, recall, thresholds = precision_recall_curve(y_val, y_pred_proba)
+        f1_scores = 2 * (precision * recall) / (precision + recall + 1e-10)
+        optimal_threshold = thresholds[np.argmax(f1_scores)]
+        
+        # Feature importance
+        feature_importance = pd.DataFrame({
+            'feature': self.feature_names,
+            'importance': self.model.feature_importances_
+        }).sort_values('importance', ascending=False)
+        
+        return {
+            'auc_score': auc_score,
+            'optimal_threshold': optimal_threshold,
+            'best_params': best_params,
+            'feature_importance': feature_importance,
+            'precision_at_optimal': precision[np.argmax(f1_scores)],
+            'recall_at_optimal': recall[np.argmax(f1_scores)]
+        }
+    
+    def predict_risk(self, X: pd.DataFrame) -> pd.DataFrame:
+        """
+        Predizione del risk score con categorizzazione
+        """
+        if self.model is None:
+            raise ValueError("Modello non addestrato")
+        
+        # Assicura che le features siano nell'ordine corretto
+        X = X[self.feature_names]
+        
+        # Predizione probabilità
+        risk_scores = self.model.predict_proba(X)[:, 1]
+        
+        # Categorizzazione
+        risk_categories = pd.cut(
+            risk_scores,
+            bins=[0, 0.3, 0.6, 0.8, 0.95, 1.0],
+            labels=['Low', 'Medium', 'High', 'Critical', 'Extreme']
+        )
+        
+        results = pd.DataFrame({
+            'risk_score': risk_scores,
+            'risk_category': risk_categories
+        })
+        
+        # Aggiungi raccomandazioni
+        results['action_required'] = results['risk_category'].map({
+            'Low': 'Monitor',
+            'Medium': 'Investigate within 24h',
+            'High': 'Investigate within 4h',
+            'Critical': 'Immediate investigation',
+            'Extreme': 'Automatic containment'
+        })
+        
+        return results
+    
+    def explain_prediction(self, X_single: pd.DataFrame) -> Dict:
+        """
+        Spiega una singola predizione usando SHAP values
+        """
+        import shap
+        
+        explainer = shap.TreeExplainer(self.model)
+        shap_values = explainer.shap_values(X_single)
+        
+        # Crea dizionario con contributi delle features
+        feature_contributions = {}
+        for i, feature in enumerate(self.feature_names):
+            feature_contributions[feature] = {
+                'value': X_single.iloc[0, i],
+                'contribution': shap_values[0, i],
+                'direction': 'increase' if shap_values[0, i] > 0 else 'decrease'
+            }
+        
+        # Ordina per contributo assoluto
+        sorted_features = sorted(
+            feature_contributions.items(),
+            key=lambda x: abs(x[1]['contribution']),
+            reverse=True
+        )
+        
+        return {
+            'base_risk': explainer.expected_value,
+            'predicted_risk': self.model.predict_proba(X_single)[0, 1],
+            'top_factors': dict(sorted_features[:5]),
+            'all_factors': feature_contributions
+        }
+    
+    def save_model(self, filepath: str):
+        """Salva modello e metadata"""
+        joblib.dump({
+            'model': self.model,
+            'feature_names': self.feature_names,
+            'thresholds': self.thresholds
+        }, filepath)
+    
+    def load_model(self, filepath: str):
+        """Carica modello salvato"""
+        saved_data = joblib.load(filepath)
+        self.model = saved_data['model']
+        self.feature_names = saved_data['feature_names']
+        self.thresholds = saved_data['thresholds']
+
+
+# Esempio di utilizzo e validazione
+if __name__ == "__main__":
+    # Genera dati sintetici per testing
+    np.random.seed(42)
+    n_samples = 50000
+    
+    # Simula features
+    data = pd.DataFrame({
+        'login_hour': np.random.randint(0, 24, n_samples),
+        'transactions_last_hour': np.random.poisson(5, n_samples),
+        'avg_transactions_hour': np.random.uniform(3, 7, n_samples),
+        'days_since_location_seen': np.random.exponential(10, n_samples),
+        'cvss_max': np.random.uniform(0, 10, n_samples),
+        'patches_behind': np.random.poisson(2, n_samples),
+        'outbound_bytes': np.random.lognormal(10, 2, n_samples),
+        'avg_outbound_bytes': np.random.lognormal(10, 1.5, n_samples),
+        'unique_destinations': np.random.poisson(3, n_samples),
+        'avg_destinations': np.random.uniform(2, 4, n_samples),
+        'day_of_week': np.random.randint(0, 7, n_samples),
+        'hour': np.random.randint(0, 24, n_samples)
+    })
+    
+    # Aggiungi lag features
+    for lag in [1, 7, 30]:
+        data[f'risk_score_{lag}d_ago'] = np.random.uniform(0, 1, n_samples)
+        data[f'incidents_{lag}d_ago'] = np.random.poisson(0.1, n_samples)
+    
+    # Genera target (con pattern realistici)
+    risk_factors = (
+        (data['login_hour'] < 6) * 0.3 +
+        (data['cvss_max'] > 7) * 0.4 +
+        (data['patches_behind'] > 5) * 0.3 +
+        np.random.normal(0, 0.2, n_samples)
+    )
+    y = (risk_factors > 0.5).astype(int)
+    
+    # Inizializza e addestra scorer
+    scorer = AdaptiveRiskScorer()
+    X = scorer.engineer_features(data)
+    
+    print("Training Risk Scorer...")
+    results = scorer.train(X, y, optimize_hyperparams=False)
+    
+    print(f"\nPerformance Modello:")
+    print(f"AUC Score: {results['auc_score']:.3f}")
+    print(f"Precision: {results['precision_at_optimal']:.3f}")
+    print(f"Recall: {results['recall_at_optimal']:.3f}")
+    
+    print(f"\nTop 10 Features:")
+    print(results['feature_importance'].head(10))
+    
+    # Test predizione
+    X_test = X.iloc[:10]
+    predictions = scorer.predict_risk(X_test)
+    print(f"\nEsempio predizioni:")
+    print(predictions.head())
+    
+    # Salva modello
+    scorer.save_model('risk_scorer_gdo.pkl')
+    print("\nModello salvato in 'risk_scorer_gdo.pkl'")
+\end{lstlisting}

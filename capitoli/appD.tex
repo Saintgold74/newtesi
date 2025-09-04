@@ -1,0 +1,433 @@
+
+\chapter{Template e Strumenti Operativi}
+\label{app:template}
+
+\section{D.1 Template Assessment Infrastrutturale}
+
+\subsection{D.1.1 Checklist Pre-Migrazione Cloud}
+
+\begin{table}[htbp]
+\centering
+\caption{Checklist di valutazione readiness per migrazione cloud}
+\begin{tabular}{|p{6cm}|c|c|p{4cm}|}
+\hline
+\textbf{Area di Valutazione} & \textbf{Critico} & \textbf{Status} & \textbf{Note} \\
+\hline
+\multicolumn{4}{|l|}{\textbf{1. Infrastruttura Fisica}} \\
+\hline
+Banda disponibile per sede $\geq$ 100 Mbps & Sì & $\square$ & \\
+\hline
+Connettività ridondante (2+ carrier) & Sì & $\square$ & \\
+\hline
+Latenza verso cloud provider < 50ms & Sì & $\square$ & \\
+\hline
+Power backup minimo 4 ore & No & $\square$ & \\
+\hline
+\multicolumn{4}{|l|}{\textbf{2. Applicazioni}} \\
+\hline
+Inventory applicazioni completo & Sì & $\square$ & \\
+\hline
+Dipendenze mappate & Sì & $\square$ & \\
+\hline
+Licensing cloud-compatible & Sì & $\square$ & \\
+\hline
+Test di compatibilità eseguiti & No & $\square$ & \\
+\hline
+\multicolumn{4}{|l|}{\textbf{3. Dati}} \\
+\hline
+Classificazione dati completata & Sì & $\square$ & \\
+\hline
+Volume dati da migrare quantificato & Sì & $\square$ & \\
+\hline
+RPO/RTO definiti per applicazione & Sì & $\square$ & \\
+\hline
+Strategia di backup cloud-ready & Sì & $\square$ & \\
+\hline
+\multicolumn{4}{|l|}{\textbf{4. Sicurezza}} \\
+\hline
+Politiche di accesso cloud definite & Sì & $\square$ & \\
+\hline
+MFA implementato per admin & Sì & $\square$ & \\
+\hline
+Crittografia at-rest configurabile & Sì & $\square$ & \\
+\hline
+Network segmentation plan & No & $\square$ & \\
+\hline
+\multicolumn{4}{|l|}{\textbf{5. Competenze}} \\
+\hline
+Team cloud certificato (min 2 persone) & Sì & $\square$ & \\
+\hline
+Piano di formazione definito & No & $\square$ & \\
+\hline
+Supporto vendor contrattualizzato & No & $\square$ & \\
+\hline
+Runbook operativi preparati & Sì & $\square$ & \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{D.2 Matrice di Integrazione Normativa}
+
+\subsection{D.2.1 Template di Controllo Unificato}
+
+\begin{tcolorbox}[
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title={\textbf{Controllo Unificato CU-001: Gestione Accessi Privilegiati}},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm,
+    breakable
+]
+\textbf{Requisiti Soddisfatti:}
+\begin{itemize}
+    \item PCI-DSS 4.0: 7.2, 8.2.3, 8.3.1
+    \item GDPR: Art. 32(1)(a), Art. 25
+    \item NIS2: Art. 21(2)(d)
+\end{itemize}
+
+\textbf{Implementazione Tecnica:}
+\begin{enumerate}
+    \item Deploy soluzione PAM (CyberArk/HashiCorp Vault)
+    \item Configurazione politiche:
+    \begin{itemize}
+        \item Rotazione password ogni 30 giorni
+        \item MFA obbligatorio per accessi admin
+        \item Session recording per audit
+        \item Approval workflow per accessi critici
+    \end{itemize}
+    \item Integrazione con:
+    \begin{itemize}
+        \item Active Directory/LDAP
+        \item SIEM per monitoring
+        \item Ticketing system per approval
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Metriche di Conformità:}
+\begin{itemize}
+    \item \% account privilegiati sotto PAM: Target 100\%
+    \item Tempo medio approvazione accessi: < 15 minuti
+    \item Password rotation compliance: > 99\%
+    \item Failed access attempts: < 1\%
+\end{itemize}
+
+\textbf{Evidenze per Audit:}
+\begin{itemize}
+    \item Report mensile accessi privilegiati
+    \item Log di tutte le sessioni privilegiate
+    \item Attestazione trimestrale dei privilegi
+    \item Recording video sessioni critiche
+\end{itemize}
+
+\textbf{Costo Stimato:}
+\begin{itemize}
+    \item Licenze software: €45k/anno (500 utenti)
+    \item Implementazione: €25k (una tantum)
+    \item Manutenzione: €8k/anno
+    \item Training: €5k (iniziale)
+\end{itemize}
+
+\textbf{ROI:}
+\begin{itemize}
+    \item Riduzione audit effort: -30\% (€15k/anno)
+    \item Riduzione incidenti privileged access: -70\% (€50k/anno)
+    \item Payback period: 14 mesi
+\end{itemize}
+\end{tcolorbox}
+
+\section{D.3 Runbook Operativi}
+
+\subsection{D.3.1 Procedura Risposta Incidenti - Ransomware}
+
+\begin{lstlisting}[language=bash, caption=Runbook automatizzato per contenimento ransomware]
+#!/bin/bash
+# Runbook: Contenimento Ransomware GDO
+# Versione: 2.0
+# Ultimo aggiornamento: 2025-01-15
+
+set -euo pipefail
+
+# Configurazione
+INCIDENT_ID=$(date +%Y%m%d%H%M%S)
+LOG_DIR="/var/log/incidents/${INCIDENT_ID}"
+SIEM_API="https://siem.internal/api/v1"
+NETWORK_CONTROLLER="https://sdn.internal/api"
+
+# Funzioni di utilità
+log() {
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1" | tee -a "${LOG_DIR}/incident.log"
+}
+
+alert_team() {
+    # Invia alert al team
+    curl -X POST https://slack.internal/webhook \
+        -d "{\"text\": \"SECURITY ALERT: $1\"}"
+}
+
+# STEP 1: Identificazione e Isolamento
+isolate_affected_systems() {
+    log "STEP 1: Iniziando isolamento sistemi affetti"
+    
+    # Query SIEM per sistemi con indicatori ransomware
+    AFFECTED_SYSTEMS=$(curl -s "${SIEM_API}/query" \
+        -d '{"query": "event.type:ransomware_indicator", "last": "1h"}' \
+        | jq -r '.results[].host')
+    
+    for system in ${AFFECTED_SYSTEMS}; do
+        log "Isolando sistema: ${system}"
+        
+        # Isolamento network via SDN
+        curl -X POST "${NETWORK_CONTROLLER}/isolate" \
+            -d "{\"host\": \"${system}\", \"vlan\": \"quarantine\"}"
+        
+        # Disable account AD
+        ldapmodify -x -D "cn=admin,dc=gdo,dc=local" -w "${LDAP_PASS}" <<EOF
+dn: cn=${system},ou=computers,dc=gdo,dc=local
+changetype: modify
+replace: userAccountControl
+userAccountControl: 514
+EOF
+        
+        # Snapshot VM se virtualizzato
+        if vmware-cmd -l | grep -q "${system}"; then
+            vmware-cmd "${system}" create-snapshot "pre-incident-${INCIDENT_ID}"
+        fi
+    done
+    
+    echo "${AFFECTED_SYSTEMS}" > "${LOG_DIR}/affected_systems.txt"
+    alert_team "Isolati ${#AFFECTED_SYSTEMS[@]} sistemi"
+}
+
+# STEP 2: Contenimento della Propagazione  
+contain_lateral_movement() {
+    log "STEP 2: Contenimento movimento laterale"
+    
+    # Blocco SMB su tutti i segmenti non critici
+    for vlan in $(seq 100 150); do
+        curl -X POST "${NETWORK_CONTROLLER}/acl/add" \
+            -d "{\"vlan\": ${vlan}, \"rule\": \"deny tcp any any eq 445\"}"
+    done
+    
+    # Reset password account di servizio
+    for account in $(cat /etc/security/service_accounts.txt); do
+        NEW_PASS=$(openssl rand -base64 32)
+        ldappasswd -x -D "cn=admin,dc=gdo,dc=local" -w "${LDAP_PASS}" \
+            -s "${NEW_PASS}" "cn=${account},ou=service,dc=gdo,dc=local"
+        
+        # Salva in vault
+        vault kv put secret/incident/${INCIDENT_ID}/${account} password="${NEW_PASS}"
+    done
+    
+    # Kill processi sospetti
+    SUSPICIOUS_PROCS=$(osquery --json \
+        "SELECT * FROM processes WHERE 
+         (name LIKE '%crypt%' OR name LIKE '%lock%') 
+         AND start_time > datetime('now', '-1 hour')")
+    
+    echo "${SUSPICIOUS_PROCS}" | jq -r '.[]|.pid' | while read pid; do
+        kill -9 ${pid} 2>/dev/null || true
+    done
+}
+
+# STEP 3: Identificazione del Vettore
+identify_attack_vector() {
+    log "STEP 3: Identificazione vettore di attacco"
+    
+    # Analisi email phishing ultimi 7 giorni
+    PHISHING_CANDIDATES=$(curl -s "${SIEM_API}/email/suspicious" \
+        -d '{"days": 7, "min_score": 7}')
+    
+    echo "${PHISHING_CANDIDATES}" > "${LOG_DIR}/phishing_analysis.json"
+    
+    # Check vulnerabilità note non patchate
+    for system in $(cat "${LOG_DIR}/affected_systems.txt"); do
+        nmap -sV --script vulners "${system}" > "${LOG_DIR}/vuln_scan_${system}.txt"
+    done
+    
+    # Analisi log RDP/SSH per accessi anomali
+    grep -E "(Failed|Accepted)" /var/log/auth.log | \
+        awk '{print $1, $2, $3, $9, $11}' | \
+        sort | uniq -c | sort -rn > "${LOG_DIR}/access_analysis.txt"
+}
+
+# STEP 4: Preservazione delle Evidenze
+preserve_evidence() {
+    log "STEP 4: Preservazione evidenze forensi"
+    
+    for system in $(cat "${LOG_DIR}/affected_systems.txt"); do
+        # Dump memoria se accessibile
+        if ping -c 1 ${system} &>/dev/null; then
+            ssh forensics@${system} "sudo dd if=/dev/mem of=/tmp/mem.dump"
+            scp forensics@${system}:/tmp/mem.dump "${LOG_DIR}/${system}_memory.dump"
+        fi
+        
+        # Copia log critici
+        rsync -avz forensics@${system}:/var/log/ "${LOG_DIR}/${system}_logs/"
+        
+        # Hash per chain of custody
+        find "${LOG_DIR}/${system}_logs/" -type f -exec sha256sum {} \; \
+            > "${LOG_DIR}/${system}_hashes.txt"
+    done
+}
+
+# STEP 5: Comunicazione e Coordinamento
+coordinate_response() {
+    log "STEP 5: Coordinamento risposta"
+    
+    # Genera report preliminare
+    cat > "${LOG_DIR}/preliminary_report.md" <<EOF
+# Incident Report ${INCIDENT_ID}
+
+## Executive Summary
+- Tipo: Ransomware
+- Sistemi affetti: $(wc -l < "${LOG_DIR}/affected_systems.txt")
+- Impatto stimato: TBD
+- Status: CONTENUTO
+
+## Timeline
+$(grep "STEP" "${LOG_DIR}/incident.log")
+
+## Sistemi Affetti
+$(cat "${LOG_DIR}/affected_systems.txt")
+
+## Prossimi Passi
+1. Analisi forense completa
+2. Identificazione ransomware variant
+3. Valutazione opzioni recovery
+4. Comunicazione stakeholder
+EOF
+    
+    # Notifica management
+    mail -s "URGENT: Ransomware Incident ${INCIDENT_ID}" \
+        ciso@gdo.com security-team@gdo.com < "${LOG_DIR}/preliminary_report.md"
+    
+    # Apertura ticket
+    curl -X POST https://servicenow.internal/api/incident \
+        -d "{
+            \"priority\": 1,
+            \"category\": \"security\",
+            \"description\": \"Ransomware containment completed\",
+            \"incident_id\": \"${INCIDENT_ID}\"
+        }"
+}
+
+# Main execution
+main() {
+    mkdir -p "${LOG_DIR}"
+    log "=== Iniziando risposta incidente Ransomware ==="
+    
+    isolate_affected_systems
+    contain_lateral_movement
+    identify_attack_vector
+    preserve_evidence
+    coordinate_response
+    
+    log "=== Contenimento completato. Procedere con analisi forense ==="
+}
+
+# Esecuzione con error handling
+trap 'log "ERRORE: Runbook fallito al comando $BASH_COMMAND"' ERR
+main "$@"
+\end{lstlisting}
+
+\section{D.4 Dashboard e KPI Templates}
+
+\subsection{D.4.1 GIST Score Dashboard Configuration}
+\begin{lstlisting}[language=json, caption=Configurazione Grafana per GIST Score Dashboard]
+{
+  "dashboard": {
+    "title": "GIST Framework - Security Posture Dashboard",
+    "panels": [
+      {
+        "title": "GIST Score Trend",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "gist_total_score",
+            "legendFormat": "Total Score"
+          },
+          {
+            "expr": "gist_component_physical",  
+            "legendFormat": "Physical"
+          },
+          {
+            "expr": "gist_component_architectural",
+            "legendFormat": "Architectural"  
+          },
+          {
+            "expr": "gist_component_security",
+            "legendFormat": "Security"
+          },
+          {
+            "expr": "gist_component_compliance",
+            "legendFormat": "Compliance"
+          }
+        ]
+      },
+      {
+        "title": "Attack Surface (ASSA)",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "assa_score_current",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 500, "color": "yellow"},
+                {"value": 800, "color": "orange"},
+                {"value": 1000, "color": "red"}
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Compliance Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "compliance_score_pcidss",
+            "title": "PCI-DSS"
+          },
+          {
+            "expr": "compliance_score_gdpr",
+            "title": "GDPR"
+          },
+          {
+            "expr": "compliance_score_nis2",
+            "title": "NIS2"
+          }
+        ]
+      },
+      {
+        "title": "Security Incidents (24h)",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "security_incidents_by_severity",
+            "format": "table",
+            "columns": ["time", "severity", "type", "affected_systems", "status"]
+          }
+        ]
+      },
+      {
+        "title": "Infrastructure Health",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "infrastructure_health_by_location",
+            "format": "heatmap"
+          }
+        ]
+      }
+    ],
+    "refresh": "30s",
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    }
+  }
+}
+\end{lstlisting}
