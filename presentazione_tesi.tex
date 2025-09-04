@@ -1,0 +1,970 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% XeLaTeX setup
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\setmainfont{Calibri}
+\setsansfont{Calibri}
+
+% Tema e colori
+\usetheme{Madrid}
+\usecolortheme{whale}
+\setbeamercolor{structure}{fg=blue!70!black}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Pacchetti necessari
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes,arrows,positioning,calc,patterns,decorations.pathreplacing}
+\usepgfplotslibrary{fillbetween,statistics}
+
+% Colori personalizzati
+\definecolor{gistblue}{RGB}{52,152,219}
+\definecolor{gistgreen}{RGB}{46,204,113}
+\definecolor{gistred}{RGB}{231,76,60}
+\definecolor{gistyellow}{RGB}{241,196,15}
+
+% Box personalizzati
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% Listings per codice
+\usepackage{listings}
+\lstset{
+    basicstyle=\tiny\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    breaklines=true,
+    frame=single
+}
+
+% Metadata
+\title[Framework GIST per la GDO]{Sviluppo di un Framework Integrato per la Trasformazione Sicura dell'Infrastruttura IT nella Grande Distribuzione Organizzata}
+\subtitle{Framework GIST e Digital Twin GDO-Bench}
+\author[Mario Rossi]{Mario Rossi\\{\small Relatore: Prof. Giovanni Bianchi}}
+\institute[UniXX]{Università degli Studi di XX\\Corso di Laurea in Ingegneria Informatica}
+\date{Dicembre 2024}
+
+% Bibliografia semplificata
+\usepackage[backend=biber,style=authoryear-comp]{biblatex}
+
+\begin{document}
+
+% ====================
+% SLIDE 1: TITOLO
+% ====================
+\begin{frame}
+\titlepage
+\end{frame}
+
+% ====================
+% SLIDE 2: AGENDA
+% ====================
+\begin{frame}{Agenda}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+% ====================
+% SEZIONE 1: CONTESTO E MOTIVAZIONI
+% ====================
+\section{Contesto e Motivazioni}
+
+\begin{frame}{Il Settore GDO in Italia}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Dimensioni del Settore}
+\begin{itemize}
+    \item \textbf{€167 miliardi} fatturato annuo
+    \item \textbf{31,000+} punti vendita
+    \item \textbf{450,000+} dipendenti diretti
+    \item \textbf{70\%} penetrazione digitale pagamenti
+\end{itemize}
+\end{block}
+
+\begin{block}{Trend Digitali}
+\begin{itemize}
+    \item E-commerce: \textcolor{gistgreen}{+27\% YoY}
+    \item Click\&Collect: \textcolor{gistgreen}{+45\% 2023}
+    \item Pagamenti digitali: \textcolor{gistgreen}{+18\% YoY}
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=5cm,
+    ylabel={Incidenti (\%)},
+    symbolic x coords={2019,2020,2021,2022,2023},
+    xtick=data,
+    nodes near coords,
+    bar width=0.4cm,
+    title={Crescita Cyber-Incidenti GDO}
+]
+\addplot[fill=gistred] coordinates {
+    (2019,12) (2020,18) (2021,28) (2022,42) (2023,67)
+};
+\end{axis}
+\end{tikzpicture}
+
+\begin{alertblock}{Criticità}
+Incremento \textbf{458\%} degli attacchi cyber in 5 anni
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 4: PROBLEMA
+% ====================
+\begin{frame}{Il Problema: Complessità Multi-Dimensionale}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Nodi problemi
+    \node[circle,draw=gistred,fill=gistred!20,minimum size=2cm] (legacy) at (0,3) {Legacy\\Systems\\85\%};
+    \node[circle,draw=gistblue,fill=gistblue!20,minimum size=2cm] (compliance) at (3,3) {Multi\\Compliance\\PCI+GDPR+NIS2};
+    \node[circle,draw=gistgreen,fill=gistgreen!20,minimum size=2cm] (scale) at (6,3) {Scalabilità\\500+ PV};
+    \node[circle,draw=gistyellow,fill=gistyellow!20,minimum size=2cm] (cost) at (1.5,0) {Vincoli\\Budget\\-30\% IT};
+    \node[circle,draw=gray,fill=gray!20,minimum size=2cm] (skills) at (4.5,0) {Skill Gap\\67\%};
+    
+    % Centro
+    \node[rectangle,draw=black,fill=white,line width=2pt,
+          rounded corners,minimum width=3cm,minimum height=1cm] 
+          (problem) at (3,1.5) {\textbf{COMPLESSITÀ}};
+    
+    % Connessioni
+    \foreach \n in {legacy,compliance,scale,cost,skills}
+        \draw[->,thick,gray] (\n) -- (problem);
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Gap Identificato}
+\begin{itemize}
+    \item \textbf{Nessun framework integrato} specifico per GDO italiana
+    \item \textbf{Approcci frammentati}: sicurezza OR compliance OR performance
+    \item \textbf{Mancanza di dati} per validazione (privacy/sicurezza)
+\end{itemize}
+\end{block}
+\end{frame}
+
+% ====================
+% SEZIONE 2: OBIETTIVI E METODOLOGIA
+% ====================
+\section{Obiettivi e Metodologia}
+
+\begin{frame}{Obiettivi della Ricerca}
+\begin{columns}[T]
+\column{0.6\textwidth}
+\begin{block}{Obiettivo Principale}
+Sviluppare un \textbf{framework integrato} (GIST) per la trasformazione sicura dell'infrastruttura IT nella GDO
+\end{block}
+
+\begin{exampleblock}{Obiettivi Specifici}
+\begin{enumerate}
+    \item \textbf{Quantificare} il rischio cyber (metrica ASSA-GDO)
+    \item \textbf{Integrare} requisiti normativi multipli (MIN)
+    \item \textbf{Ottimizzare} architetture cloud-ibride
+    \item \textbf{Validare} attraverso simulazione
+\end{enumerate}
+\end{exampleblock}
+
+\column{0.4\textwidth}
+\begin{tikzpicture}[scale=0.6]
+    \node[rectangle,rounded corners,draw=gistblue,fill=gistblue!20,
+          minimum width=3cm,minimum height=0.8cm] (g) at (0,3) {Governance};
+    \node[rectangle,rounded corners,draw=gistgreen,fill=gistgreen!20,
+          minimum width=3cm,minimum height=0.8cm] (i) at (0,2) {Infrastructure};
+    \node[rectangle,rounded corners,draw=gistred,fill=gistred!20,
+          minimum width=3cm,minimum height=0.8cm] (s) at (0,1) {Security};
+    \node[rectangle,rounded corners,draw=gistyellow,fill=gistyellow!20,
+          minimum width=3cm,minimum height=0.8cm] (t) at (0,0) {Transformation};
+    
+    % GIST
+    \node[font=\Large\bfseries] at (0,-1) {GIST};
+    
+    % Frecce integrazione
+    \foreach \y in {0,1,2}
+        \draw[<->,thick] (-2,\y+0.5) -- (-2,\y+1.5);
+\end{tikzpicture}
+\end{exampleblock}
+\end{frame}
+
+% ====================
+% SLIDE 6: METODOLOGIA
+% ====================
+\begin{frame}{Metodologia: Approccio Digital Twin}
+
+\begin{alertblock}{Sfida: Impossibilità di Accesso a Dati Reali}
+\begin{itemize}
+    \item GDPR → Dati transazionali non accessibili
+    \item PCI-DSS → Log sicurezza confidenziali
+    \item NDA → Vincoli commerciali con fornitori
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Soluzione Innovativa: Digital Twin}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Framework di Simulazione}
+\begin{itemize}
+    \item Generazione dataset sintetici
+    \item Calibrazione su fonti pubbliche
+    \item Validazione statistica rigorosa
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Fonti di Calibrazione}
+\begin{itemize}
+    \item ISTAT - Commercio 2023
+    \item Banca d'Italia - Pagamenti
+    \item ENISA - Threat Landscape
+    \item Federdistribuzione - Report
+\end{itemize}
+\end{columns}
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    \node[rectangle,draw,fill=yellow!20] (real) at (0,0) {Dati Reali\\(Non disponibili)};
+    \node[rectangle,draw,fill=green!20] (twin) at (5,0) {Digital Twin\\(Generato)};
+    \draw[->,thick,red] (real) -- node[above] {Parametri} node[below] {Pubblici} (twin);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ====================
+% SEZIONE 3: CONTRIBUTI
+% ====================
+\section{Contributi Originali}
+
+\begin{frame}{Contributo 1: Framework GIST}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+    % Livelli
+    \node[rectangle,rounded corners,fill=gistblue!30,
+          minimum width=4cm,minimum height=0.8cm] at (0,3) {Governance};
+    \node[rectangle,rounded corners,fill=gistgreen!30,
+          minimum width=4cm,minimum height=0.8cm] at (0,2) {Infrastructure};
+    \node[rectangle,rounded corners,fill=gistred!30,
+          minimum width=4cm,minimum height=0.8cm] at (0,1) {Security};
+    \node[rectangle,rounded corners,fill=gistyellow!30,
+          minimum width=4cm,minimum height=0.8cm] at (0,0) {Transformation};
+    
+    % Interconnessioni
+    \foreach \y in {0,1,2} {
+        \draw[<->,thick,gray] (2.2,\y+0.4) to[out=30,in=-30] (2.2,\y+1.6);
+        \draw[<->,thick,gray] (-2.2,\y+0.4) to[out=150,in=-150] (-2.2,\y+1.6);
+    }
+    
+    % Core
+    \node[circle,draw,fill=white,line width=2pt] at (0,1.5) {Core};
+\end{tikzpicture}
+\end{center}
+
+\column{0.6\textwidth}
+\begin{block}{Caratteristiche Innovative}
+\begin{itemize}
+    \item \textbf{Integrazione sinergica} 4 dimensioni
+    \item \textbf{Calibrazione settoriale} GDO
+    \item \textbf{Metriche quantitative} oggettive
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Componenti Chiave}
+\begin{itemize}
+    \item Policy Engine (Governance)
+    \item Cloud Orchestrator (Infrastructure)  
+    \item Zero Trust Gateway (Security)
+    \item Change Manager (Transformation)
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 8: ALGORITMO ASSA-GDO
+% ====================
+\begin{frame}{Contributo 2: Algoritmo ASSA-GDO}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Attack Surface Score Aggregated}
+\begin{equation*}
+\text{ASSA} = \sum_{i=1}^{n} w_i \cdot \left( V_i \times E_i \times I_i \right)
+\end{equation*}
+
+Dove:
+\begin{itemize}
+    \item $V_i$ = Vulnerabilità nodo $i$
+    \item $E_i$ = Esposizione
+    \item $I_i$ = Impatto potenziale
+    \item $w_i$ = Peso topologico
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Complessità}
+$O(n^2 \log n)$ per $n$ nodi
+\end{exampleblock}
+
+\column{0.5\textwidth}
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=5cm,
+    ylabel={ASSA Score},
+    symbolic x coords={Legacy,Firewall,SIEM,ZeroTrust,GIST},
+    xtick=data,
+    x tick label style={rotate=45,anchor=east,font=\tiny},
+    nodes near coords,
+    bar width=0.3cm,
+    ymin=0,ymax=900
+]
+\addplot[fill=gradient] coordinates {
+    (Legacy,847) (Firewall,743) (SIEM,678) (ZeroTrust,523) (GIST,512)
+};
+\end{axis}
+\end{tikzpicture}
+
+\begin{alertblock}{Risultato}
+Riduzione \textbf{39.5\%} superficie di attacco
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 9: MATRICE MIN
+% ====================
+\begin{frame}{Contributo 3: Matrice di Integrazione Normativa (MIN)}
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Input
+    \node[rectangle,draw,fill=red!20] (pci) at (0,2) {PCI-DSS\\264 req.};
+    \node[rectangle,draw,fill=blue!20] (gdpr) at (0,0) {GDPR\\173 req.};
+    \node[rectangle,draw,fill=green!20] (nis) at (0,-2) {NIS2\\410 req.};
+    
+    % Matrice MIN
+    \node[rectangle,draw,line width=2pt,fill=yellow!20,
+          minimum width=3cm,minimum height=3cm] (min) at (4,0) {
+        \textbf{MIN}\\
+        Matrice\\
+        Integrazione
+    };
+    
+    % Output
+    \node[rectangle,draw,fill=gray!20] (unified) at (8,0) {
+        156 Controlli\\Unificati\\
+        \textbf{-81.5\%}
+    };
+    
+    % Frecce
+    \draw[->,thick] (pci) -- (min);
+    \draw[->,thick] (gdpr) -- (min);
+    \draw[->,thick] (nis) -- (min);
+    \draw[->,thick] (min) -- (unified);
+    
+    % Annotazioni
+    \node[above] at (2,1) {\footnotesize 847 requisiti};
+    \node[above] at (6,0.5) {\footnotesize 89 sinergie};
+\end{tikzpicture}
+\end{center}
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Vantaggi}
+\begin{itemize}
+    \item Eliminazione ridondanze
+    \item Implementazione unificata
+    \item Audit semplificato
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{exampleblock}{Efficienza}
+\begin{itemize}
+    \item Effort: \textcolor{gistgreen}{-40\%}
+    \item Conflitti: \textcolor{gistgreen}{-73\%}
+    \item Coverage: \textcolor{gistgreen}{+27\%}
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 10: DIGITAL TWIN
+% ====================
+\begin{frame}{Contributo 4: Framework Digital Twin GDO-Bench}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Architettura}
+\begin{center}
+\begin{tikzpicture}[scale=0.5,font=\tiny]
+    \node[rectangle,draw,fill=blue!20] (gen) at (0,2) {Generators};
+    \node[rectangle,draw,fill=green!20] (val) at (3,2) {Validators};
+    \node[rectangle,draw,fill=yellow!20] (data) at (1.5,0) {Synthetic Data};
+    
+    \draw[->,thick] (gen) -- (data);
+    \draw[->,thick] (data) -- (val);
+    \draw[->,thick] (val) to[out=150,in=30] (gen);
+\end{tikzpicture}
+\end{center}
+\end{block}
+
+\begin{block}{Componenti}
+\begin{itemize}
+    \item Transaction Generator
+    \item Security Event Simulator
+    \item Network Traffic Synthesizer
+    \item Statistical Validator
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{exampleblock}{Dataset Generato}
+\begin{itemize}
+    \item \textbf{421,168} record totali
+    \item \textbf{210,991} transazioni POS
+    \item \textbf{45,217} eventi sicurezza
+    \item \textbf{144.5 MB} (demo)
+    \item Scalabile a \textbf{TB}
+\end{itemize}
+\end{exampleblock}
+
+\begin{alertblock}{Validazione}
+\textbf{16/18} test statistici superati (88.9\%)
+\begin{itemize}
+    \item[\checkmark] Benford's Law
+    \item[\checkmark] Distribuzione Poisson
+    \item[\checkmark] Correlazioni realistiche
+\end{itemize}
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SEZIONE 4: VALIDAZIONE
+% ====================
+\section{Validazione e Risultati}
+
+\begin{frame}{Validazione Statistica del Digital Twin}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=5cm,
+    xlabel={Ora},
+    ylabel={Transazioni},
+    xtick={8,11,14,17,20},
+    bar width=0.2cm,
+    title={Pattern Bimodale Validato}
+]
+\addplot[fill=gistblue] coordinates {
+    (8,823) (9,1145) (10,1892) (11,2215) (12,2384)
+    (13,1923) (14,1245) (15,1023) (16,1356)
+    (17,1945) (18,2278) (19,2123) (20,1789) (21,951)
+};
+\addplot[smooth,thick,red,no marks] coordinates {
+    (8,800) (11,2200) (14,1000) (18,2300) (21,900)
+};
+\end{axis}
+\end{tikzpicture}
+
+\begin{center}
+\footnotesize Test $\chi^2 = 847.3$, $p < 0.001$
+\end{center}
+
+\column{0.5\textwidth}
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=5cm,
+    xlabel={First Digit},
+    ylabel={Frequency (\%)},
+    xtick={1,2,3,4,5,6,7,8,9},
+    bar width=0.2cm,
+    title={Benford's Law Compliance}
+]
+\addplot[fill=gistgreen] coordinates {
+    (1,30.2) (2,17.8) (3,12.4) (4,9.6) (5,7.9)
+    (6,6.7) (7,5.8) (8,5.1) (9,4.5)
+};
+\addplot[mark=*,red,thick] coordinates {
+    (1,30.1) (2,17.6) (3,12.5) (4,9.7) (5,7.9)
+    (6,6.7) (7,5.8) (8,5.1) (9,4.6)
+};
+\end{axis}
+\end{tikzpicture}
+
+\begin{center}
+\footnotesize $\chi^2 = 12.47$, $p = 0.127$ ✓
+\end{center}
+\end{columns}
+
+\begin{block}{Test Superati}
+\centering
+\begin{tabular}{lccc}
+\hline
+\textbf{Test} & \textbf{Statistica} & \textbf{p-value} & \textbf{Result} \\
+\hline
+Poisson Events & KS = 0.089 & 0.234 & ✓ \\
+Correlation & $r = 0.62$ & $<0.001$ & ✓ \\
+Weekend Effect & ratio = 1.28 & - & ✓ \\
+Autocorrelation & ACF = 0.41 & 0.003 & ✓ \\
+\hline
+\end{tabular}
+\end{block}
+\end{frame}
+
+% ====================
+% SLIDE 12: RISULTATI SIMULAZIONE
+% ====================
+\begin{frame}{Risultati: Validazione Computazionale}
+\begin{columns}[T]
+\column{0.6\textwidth}
+\begin{block}{Simulazione Monte Carlo}
+\begin{itemize}
+    \item \textbf{10,000} iterazioni
+    \item \textbf{156} configurazioni di rete
+    \item \textbf{24} mesi simulati
+    \item Parametri da fonti pubbliche
+\end{itemize}
+\end{block}
+
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    width=\textwidth,
+    height=4.5cm,
+    xlabel={Configurazione},
+    ylabel={Miglioramento (\%)},
+    ybar,
+    bar width=0.35cm,
+    symbolic x coords={Availability,ASSA,MTTR,Compliance,TCO},
+    xtick=data,
+    x tick label style={rotate=45,anchor=east,font=\tiny},
+    nodes near coords,
+    ymin=0,ymax=50
+]
+\addplot[fill=gistgreen] coordinates {
+    (Availability,0.66) (ASSA,39.5) (MTTR,57) (Compliance,27) (TCO,24)
+};
+\end{axis}
+\end{tikzpicture}
+
+\column{0.4\textwidth}
+\begin{alertblock}{Ipotesi Validate}
+\begin{itemize}
+    \item[\checkmark] H1: SLA > 99.95\%
+    \item[\checkmark] H2: ASSA -35\%
+    \item[\checkmark] H3: Compliance -30\%
+\end{itemize}
+\end{alertblock}
+
+\begin{exampleblock}{ROI Stimato}
+\begin{itemize}
+    \item Investimento: €200k
+    \item Risparmio 5y: €550k
+    \item \textbf{ROI: 175\%}
+    \item Payback: 1.8 anni
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 13: TCO ANALYSIS
+% ====================
+\begin{frame}{Analisi Economica: TCO Comparison}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+    width=0.9\textwidth,
+    height=6cm,
+    xlabel={Anno},
+    ylabel={TCO Cumulativo (k€)},
+    xmin=0,xmax=5,
+    ymin=0,ymax=2500,
+    legend pos=north west,
+    grid=major
+]
+\addplot[color=red,mark=square*,thick] coordinates {
+    (0,800) (1,1100) (2,1400) (3,1700) (4,2000) (5,2300)
+};
+\addplot[color=blue,mark=triangle*,thick] coordinates {
+    (0,200) (1,550) (2,880) (3,1190) (4,1480) (5,1750)
+};
+\addplot[color=green,mark=circle*,thick,dashed] coordinates {
+    (0,100) (1,580) (2,1060) (3,1540) (4,2020) (5,2500)
+};
+
+\legend{On-Premise,Cloud-Hybrid GIST,Cloud Pure}
+
+% Break-even
+\addplot[mark=*,mark size=4pt,only marks,black] coordinates {(1.8,750)};
+\node[font=\footnotesize] at (axis cs:1.8,900) {Break-even};
+
+% Savings
+\draw[<->,thick,blue] (axis cs:5,2300) -- (axis cs:5,1750);
+\node[anchor=west,font=\footnotesize\bfseries] at (axis cs:5.1,2025) {€550k};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Key Findings}
+\begin{itemize}
+    \item Risparmio 24\% vs on-premise tradizionale
+    \item Break-even a 1.8 anni
+    \item NPV(5\%,5y) = €423k positivo
+\end{itemize}
+\end{block}
+\end{frame}
+
+% ====================
+% SEZIONE 5: LIMITAZIONI
+% ====================
+\section{Limitazioni e Lavori Futuri}
+
+\begin{frame}{Limitazioni della Ricerca}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{alertblock}{Limitazioni Metodologiche}
+\begin{itemize}
+    \item Validazione su dati \textbf{sintetici}
+    \item Assenza di \textbf{pilot reali}
+    \item Contesto solo \textbf{italiano}
+    \item Parametri \textbf{stimati} da fonti pubbliche
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Limitazioni Tecniche}
+\begin{itemize}
+    \item Scalabilità non testata >500 PV
+    \item Integrazione legacy non prototipata
+    \item Edge cases approssimati
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{exampleblock}{Mitigazioni}
+\begin{itemize}
+    \item Framework \textbf{open-source} per validazione community
+    \item Metodologia \textbf{riproducibile}
+    \item Test statistici \textbf{rigorosi} (88.9\% pass)
+    \item Documentazione \textbf{completa}
+\end{itemize}
+\end{exampleblock}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!50,title=Nota Importante]
+\footnotesize
+Prima dell'implementazione in produzione è \textbf{essenziale} condurre pilot controllati con validazione progressiva
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+% ====================
+% SLIDE 15: LAVORI FUTURI
+% ====================
+\begin{frame}{Direzioni Future}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Validazione Empirica}
+\begin{enumerate}
+    \item Partnership con 2-3 GDO
+    \item Pilot 6-12 mesi
+    \item Metriche comparative reali
+    \item Stress test Black Friday
+\end{enumerate}
+\end{block}
+
+\begin{block}{Estensioni Tecniche}
+\begin{itemize}
+    \item ML per anomaly detection
+    \item Blockchain per supply chain
+    \item Quantum-ready crypto
+    \item Edge computing optimization
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{block}{Evoluzione Digital Twin}
+\begin{itemize}
+    \item Behavioral modeling avanzato
+    \item APT simulation multi-stage
+    \item Real-time threat intelligence
+    \item Federated learning
+\end{itemize}
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+    \node[rectangle,draw,fill=blue!20] (now) at (0,0) {Digital Twin\\v1.0};
+    \node[rectangle,draw,fill=green!20] (v2) at (3,0) {v2.0\\+ML};
+    \node[rectangle,draw,fill=yellow!20] (v3) at (6,0) {v3.0\\+Quantum};
+    
+    \draw[->,thick] (now) -- (v2);
+    \draw[->,thick] (v2) -- (v3);
+    
+    \node[below,font=\tiny] at (0,-0.5) {2024};
+    \node[below,font=\tiny] at (3,-0.5) {2025};
+    \node[below,font=\tiny] at (6,-0.5) {2026};
+\end{tikzpicture}
+\end{center}
+\end{columns}
+\end{frame}
+
+% ====================
+% SEZIONE 6: CONCLUSIONI
+% ====================
+\section{Conclusioni}
+
+\begin{frame}{Conclusioni}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Contributi Principali}
+\begin{enumerate}
+    \item \textbf{Framework GIST} integrato
+    \item \textbf{Algoritmo ASSA-GDO} per quantificazione rischio
+    \item \textbf{Matrice MIN} per compliance unificata
+    \item \textbf{Digital Twin GDO-Bench} open-source
+\end{enumerate}
+\end{block}
+
+\begin{exampleblock}{Risultati Chiave}
+\begin{itemize}
+    \item ASSA: \textcolor{gistgreen}{-39.5\%}
+    \item Compliance: \textcolor{gistgreen}{+27\%}
+    \item TCO: \textcolor{gistgreen}{-24\%}
+    \item ROI: \textcolor{gistgreen}{175\%}
+\end{itemize}
+\end{exampleblock}
+
+\column{0.5\textwidth}
+\begin{alertblock}{Impatto Previsto}
+Per organizzazione media (50 PV):
+\begin{itemize}
+    \item Risparmio: €110k/anno
+    \item Incidenti: -57\%
+    \item Downtime: -65\%
+\end{itemize}
+\end{alertblock}
+
+\begin{tcolorbox}[colback=green!10,colframe=green!50,title=Take-Home Message]
+\footnotesize
+Il framework GIST fornisce un \textbf{percorso strutturato} e \textbf{validato computazionalmente} per la trasformazione sicura dell'infrastruttura GDO
+\end{tcolorbox}
+\end{columns}
+
+\vspace{0.5cm}
+\begin{center}
+\Large\textbf{Repository:} \texttt{github.com/[user]/gdo-digital-twin}
+\end{center}
+\end{frame}
+
+% ====================
+% SLIDE 17: GRAZIE
+% ====================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2cm}
+{\Huge \textbf{Grazie per l'attenzione}}
+
+\vspace{1cm}
+{\Large Domande?}
+
+\vspace{2cm}
+\begin{tabular}{ll}
+\textbf{Email:} & mario.rossi@university.it \\
+\textbf{LinkedIn:} & linkedin.com/in/mariorossi \\
+\textbf{GitHub:} & github.com/mariorossi \\
+\textbf{Repository:} & github.com/mariorossi/gdo-digital-twin
+\end{tabular}
+\end{center}
+\end{frame}
+
+% ====================
+% BACKUP SLIDES
+% ====================
+\appendix
+\section{Backup Slides}
+
+\begin{frame}{Backup: Dettagli Algoritmo ASSA-GDO}
+\begin{block}{Formulazione Matematica Completa}
+\begin{equation*}
+\text{ASSA}_{total} = \sum_{i=1}^{n} w_i \cdot V_i \cdot E_i \cdot I_i + \sum_{(i,j) \in E} \phi_{ij}
+\end{equation*}
+
+Dove:
+\begin{itemize}
+    \item $V_i = \sum_{k} \text{CVSS}_k \cdot \text{exploitability}_k$
+    \item $E_i = \alpha \cdot \text{external} + \beta \cdot \text{internal}$
+    \item $I_i = \text{criticality} \times \text{dependencies}$
+    \item $\phi_{ij} = \text{lateral movement potential}$
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Implementazione}
+\begin{lstlisting}[language=Python]
+def calculate_assa(topology, vulnerabilities):
+    assa = 0
+    for node in topology.nodes():
+        v = sum(cvss * exp for cvss, exp in vulns[node])
+        e = alpha * external[node] + beta * internal[node]
+        i = criticality[node] * len(dependencies[node])
+        assa += weight[node] * v * e * i
+    return assa
+\end{lstlisting}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Backup: Matrice MIN - Esempio Controllo}
+\begin{exampleblock}{Controllo Unificato CU-001: Gestione Accessi}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Requisiti Soddisfatti:}
+\begin{itemize}
+    \item PCI-DSS: 7.2, 8.2.3, 8.3.1
+    \item GDPR: Art. 32(1)(a), Art. 25
+    \item NIS2: Art. 21(2)(d)
+\end{itemize}
+
+\textbf{Implementazione:}
+\begin{itemize}
+    \item PAM deployment
+    \item MFA obbligatorio
+    \item Session recording
+    \item Approval workflow
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Template Tecnico:}
+\begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
+# Deploy PAM
+kubectl apply -f pam-deployment.yaml
+
+# Configure policies
+pam-cli policy create \
+  --rotation 30d \
+  --mfa required \
+  --recording enabled \
+  --approval manager
+
+# Integration
+pam-cli integrate \
+  --ldap $LDAP_URL \
+  --siem $SIEM_ENDPOINT
+\end{lstlisting}
+
+\textbf{KPI:}
+\begin{itemize}
+    \item Coverage: 100\% privileged
+    \item Rotation: <30 days
+    \item MFA adoption: 100\%
+\end{itemize}
+\end{columns}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Backup: Performance Digital Twin}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+    width=0.9\textwidth,
+    height=6cm,
+    xlabel={Dataset Size (GB)},
+    ylabel={Generation Time (min)},
+    xmode=log,
+    ymode=log,
+    xmin=0.1,xmax=1000,
+    ymin=0.1,ymax=1000,
+    grid=both,
+    legend pos=north west
+]
+\addplot[color=blue,mark=square*,thick] coordinates {
+    (0.144,0.42) (0.5,1.5) (1,3.0) (5,15)
+    (10,30) (50,150) (100,300) (500,1500)
+};
+\addplot[domain=0.1:1000,dashed,black] {3*x};
+
+\legend{Digital Twin,$O(n)$ complexity}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{block}{Scalabilità Dimostrata}
+\begin{itemize}
+    \item Throughput: 160 MB/min (con validazione)
+    \item Complessità: $O(n \cdot m)$ lineare
+    \item Parallelizzabile su multi-core
+    \item Memory-efficient: streaming generation
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Backup: Zero Trust Implementation Roadmap}
+\begin{center}
+\begin{tikzpicture}[scale=0.7,font=\tiny]
+    % Timeline
+    \draw[thick,->] (0,0) -- (10,0);
+    
+    % Milestones
+    \foreach \x/\label/\desc in {
+        0/T0/{Baseline},
+        2/M3/{Identity\\ Platform},
+        4/M6/{Micro-\\ segmentation},
+        6/M9/{Continuous\\ Verification},
+        8/M12/{Automation},
+        10/M18/{Full ZT}
+    } {
+        \draw[thick] (\x,0) -- (\x,0.2);
+        \node[above] at (\x,0.3) {\label};
+        \node[below,text width=1.5cm,align=center] at (\x,-0.3) {\desc};
+    }
+    
+    % Maturity levels
+    \draw[thick,red] (0,1) -- (2,1);
+    \draw[thick,orange] (2,1) -- (4,1.5);
+    \draw[thick,yellow] (4,1.5) -- (6,2);
+    \draw[thick,lime] (6,2) -- (8,2.5);
+    \draw[thick,green] (8,2.5) -- (10,3);
+    
+    % Labels
+    \node[left] at (0,1) {Level 0};
+    \node[right] at (10,3) {Level 3};
+    
+    % ASSA reduction
+    \node[above] at (5,3) {ASSA Score};
+    \draw[thick,blue,dashed] (0,2.5) .. controls (3,2.3) and (7,1.8) .. (10,1.5);
+    \node[blue] at (0,2.7) {847};
+    \node[blue] at (10,1.3) {512};
+\end{tikzpicture}
+\end{center}
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{Phase 1 (0-6 months)}
+\begin{itemize}
+    \item Identity consolidation
+    \item Network segmentation
+    \item MFA rollout
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{block}{Phase 2 (6-18 months)}
+\begin{itemize}
+    \item Microsegmentation
+    \item Continuous monitoring
+    \item Policy automation
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+\end{document}

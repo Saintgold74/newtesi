@@ -336,13 +336,129 @@ Questa ricerca ha prodotto quattro contributi fondamentali che avanzano lo stato
 
 \subsection{5.6.2 Limitazioni e Ricerca Futura}
 
-Nonostante i risultati significativi, questa ricerca presenta limitazioni che offrono opportunità per estensioni future.
+\section{5.4 Limitazioni della Ricerca}
 
-L'orizzonte temporale di 24 mesi, seppur adeguato per catturare benefici primari, potrebbe non rivelare effetti a lungo termine. Uno studio longitudinale di 5-7 anni fornirebbe insights su sostenibilità e evoluzione dei benefici.
+\subsection{5.4.1 Limitazioni Metodologiche}
 
-Il focus sul contesto italiano/europeo limita la generalizzabilità. Ricerche future dovrebbero validare il framework in mercati emergenti (Asia, Africa) dove le dinamiche di digitalizzazione differiscono significativamente.
+Questa ricerca presenta diverse limitazioni che devono essere 
+esplicitamente riconosciute:
 
-L'esclusione di fattori culturali e organizzativi dal modello quantitativo rappresenta una semplificazione. Integrare dimensioni soft attraverso fuzzy logic o reti neurali potrebbe migliorare l'accuratezza predittiva.
+\subsubsection{Validazione su Dati Sintetici}
+La principale limitazione riguarda l'uso esclusivo di dati sintetici 
+generati dal framework Digital Twin. Sebbene i parametri siano calibrati 
+su fonti pubbliche affidabili, la validazione su dati reali rimane 
+essenziale per confermare i risultati.
+
+\subsubsection{Assenza di Pilot Reali}
+Per vincoli temporali e di accesso, non è stato possibile condurre 
+pilot con organizzazioni reali. I risultati sono quindi teorici e 
+computazionali, richiedendo validazione empirica futura.
+
+\subsubsection{Contesto Geografico}
+Il framework è calibrato specificamente sul contesto italiano. 
+L'applicabilità in altri contesti geografici richiede ricalibratura 
+dei parametri.
+
+\subsection{5.4.2 Limitazioni Tecniche}
+
+\begin{itemize}
+\item \textbf{Scalabilità non testata}: Le performance su deployment 
+      reali >500 PV sono estrapolate, non misurate
+\item \textbf{Integrazione legacy}: L'integrazione con sistemi legacy 
+      specifici non è stata prototipata
+\item \textbf{Edge cases}: Scenari estremi (es. attacchi zero-day) 
+      sono modellati con approssimazioni
+\end{itemize}
+
+\subsection{5.4.3 Trasformazione delle Limitazioni in Opportunità}
+
+Queste limitazioni non invalidano il contributo della ricerca, ma 
+definiscono chiare direzioni per lavori futuri:
+
+\begin{enumerate}
+\item Il framework Digital Twin sviluppato fornisce una piattaforma 
+      per future validazioni
+\item La metodologia può essere replicata e validata da altri ricercatori
+\item I modelli teorici forniscono ipotesi testabili empiricamente
+\end{enumerate}
+
+\section{Conclusioni}
+
+\subsection{Contributi della Ricerca}
+
+Questa tesi ha presentato il framework GIST per la trasformazione 
+sicura dell'infrastruttura IT nella GDO, con i seguenti contributi 
+originali:
+
+\begin{enumerate}
+\item \textbf{Framework GIST}: Modello integrato teoricamente fondato 
+      e computazionalmente validato
+      
+\item \textbf{Algoritmi Innovativi}: ASSA-GDO per quantificazione 
+      del rischio, MIN per integrazione normativa
+      
+\item \textbf{Digital Twin GDO-Bench}: Framework riutilizzabile per 
+      generazione di dataset sintetici, disponibile open-source
+      
+\item \textbf{Proof of Concept}: Implementazione prototipale che 
+      dimostra la fattibilità tecnica
+\end{enumerate}
+
+\subsection{Impatto Previsto}
+
+Sebbene la validazione empirica rimanga necessaria, i risultati 
+computazionali suggeriscono che il framework GIST possa:
+
+\begin{itemize}
+\item Ridurre la superficie di attacco del 35-40\% (simulato)
+\item Migliorare l'efficienza della compliance del 30\% (teorico)
+\item Fornire un percorso strutturato per la trasformazione cloud
+\end{itemize}
+
+\subsection{Raccomandazioni per l'Implementazione}
+
+\begin{enumerate}
+\item \textbf{Pilot Progressivo}: Iniziare con 1-2 PV per validazione
+\item \textbf{Calibrazione Continua}: Raffinare parametri con dati reali
+\item \textbf{Approccio Iterativo}: Implementare in fasi con checkpoint
+\end{enumerate}
+
+\section{5.5 Direzioni per Ricerche Future}
+
+\subsection{5.5.1 Validazione Empirica}
+
+La priorità principale per ricerche future è la validazione empirica:
+
+\begin{enumerate}
+\item \textbf{Pilot Reali}: Partnership con 2-3 organizzazioni GDO 
+      per test controllati di 6-12 mesi
+      
+\item \textbf{Metriche Comparative}: Confronto performance reali vs 
+      simulate per calibrazione del Digital Twin
+      
+\item \textbf{Stress Test}: Validazione sotto condizioni operative 
+      estreme (Black Friday, attacchi DDoS)
+\end{enumerate}
+
+\subsection{5.5.2 Estensioni del Framework}
+
+\begin{itemize}
+\item \textbf{ML Integration}: Integrazione di modelli predittivi 
+      per anomaly detection
+      
+\item \textbf{Blockchain}: Esplorazione DLT per supply chain security
+      
+\item \textbf{Quantum-Ready}: Preparazione per crittografia post-quantum
+\end{itemize}
+
+\subsection{5.5.3 Espansione del Digital Twin}
+
+Il framework Digital Twin può essere esteso con:
+\begin{itemize}
+\item Modelli di comportamento utente più sofisticati
+\item Simulazione di attacchi APT multi-stadio  
+\item Integrazione con threat intelligence real-time
+\end{itemize}
 
 \section{5.7 Conclusioni Finali: Un Imperativo per l'Azione}
 

@@ -1,0 +1,97 @@
+\documentclass{article}
+
+% --- PACCHETTI NECESSARI ---
+\usepackage{fontspec} % Indispensabile per XeLaTeX
+\usepackage{amsmath}  % Per il comando \text in modalità matematica
+\usepackage{xcolor}   % Per i colori e \colorbox
+\usepackage{caption}  % Per le didascalie delle figure
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning} % Librerie TikZ per matrici e posizionamento
+
+\begin{document}
+
+\begin{figure}[h!] % h! incoraggia LaTeX a posizionare la figura qui
+\centering
+\begin{tikzpicture}[
+    % --- DEFINIZIONE DEGLI STILI ---
+    test/.style={
+        rectangle, 
+        draw=black, 
+        rounded corners, 
+        minimum width=3.8cm, % Leggermente aumentato per una migliore leggibilità
+        minimum height=1.0cm,
+        font=\footnotesize,
+        align=center % Fondamentale per centrare il testo su più righe
+    },
+    pass/.style={test, fill=green!20, draw=green!60!black, thick},
+    fail/.style={test, fill=red!20, draw=red!60!black, thick},
+    partial/.style={test, fill=yellow!20, draw=orange!60!black, thick},
+]
+
+% --- GRIGLIA DEI TEST ---
+% La griglia è stata creata con 'matrix of nodes' per una sintassi più pulita e robusta.
+% È stata riorganizzata su 5 righe per avere un numero di colonne consistente.
+\matrix (grid) [
+    matrix of nodes, 
+    row sep=0.5cm, 
+    column sep=0.5cm,
+    nodes={test} % Applica lo stile 'test' di base a tutti i nodi
+] 
+{
+ % Riga 1
+    |[pass]|    {$\text{Benford's Law}$\\$p = 0.127$} &
+    |[pass]|    {$\text{Poisson Events}$\\$p = 0.234$} &
+    |[pass]|    {$\text{Correlazione}$\\$r = 0.62$} \\
+    % Riga 2
+    |[pass]|    {$\text{Weekend Effect}$\\$ratio = 1.28$} &
+    |[pass]|    {$\text{Stagionalità}$\\$F = 8.34$} &
+    |[pass]|    {$\text{Autocorrelazione}$\\$ACF = 0.41$} \\
+    % Riga 3
+    |[pass]|    {$\text{Non-uniformità}$\\$\chi^2 = 847.3$} &
+    |[pass]|    {$\text{Completezza}$\\$missing = 0\%$} & % CORRETTO: Rimossa parentesi graffa in più
+    |[partial]| {$\text{CVSS Distribution}$\\$\Delta = 0.08$} \\
+    % Riga 4
+    |[pass]|    {$\text{ID Unicità}$\\$dupl. = 0$} &
+    |[partial]| {$\text{Latenza Rete}$\\$95\% < 50ms$} &
+    |[pass]|    {$\text{Payment Mix}$\\$\chi^2 = 3.21$} \\
+    % Riga 5 (con celle vuote per mantenere l'allineamento)
+    |[pass]|    {$\text{Geolocalizzazione}$\\$dist. = 0.08$} &
+    {} & % Cella vuota
+    {} % Cella vuota
+    \\
+};
+
+% --- TITOLO ---
+% Posizionato in modo relativo sopra la griglia per un layout responsive
+\node[font=\large\bfseries, above=0.7cm of grid.north] 
+    {Dashboard Validazione Statistica Digital Twin};
+
+% --- BOX DI RIEPILOGO ---
+% Posizionato in modo relativo sotto la griglia per centrarlo automaticamente
+\node[
+    draw=black, thick, fill=blue!10, rounded corners,
+    minimum width=9cm, minimum height=1.5cm,
+    below=1cm of grid.south, font=\footnotesize
+] (summary) {
+    \begin{tabular}{lc|lc}
+        \textbf{Test Superati:} & 16/18 & \textbf{Tasso Successo:} & 88.9\% \\
+        \textbf{Conformità Statistica:} & Alta & \textbf{Validità:} & Confermata
+    \end{tabular}
+};
+
+% --- LEGENDA ---
+% Posizionata in modo relativo sotto il riepilogo
+\node[below=0.5cm of summary, font=\scriptsize] {
+    \colorbox{green!20}{PASS} = Test superato \quad
+    \colorbox{yellow!20}{PARTIAL} = Parzialmente superato \quad
+    \colorbox{red!20}{FAIL} = Test fallito
+};
+
+\end{tikzpicture}
+\caption{Dashboard riassuntivo validazione: 88.9\% dei test statistici superati 
+conferma la validità del framework Digital Twin per la generazione di dati 
+sintetici realistici.}
+\label{fig:validation-dashboard}
+\end{figure}
+
+\end{document}

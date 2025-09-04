@@ -92,17 +92,10 @@
 \usepackage{csquotes}  % ← IMPORTANTE!
 
 % ===== CARICA FILE BIBLIOGRAFIA =====
-%\usepackage[backend=biber,style=numeric]{biblatex}
-% Opzione 1: File separati per capitolo
-% \addbibresource{bibliografia/cap1_references.bib}
-% \addbibresource{bibliografia/cap2_references.bib}
-% \addbibresource{bibliografia/cap3_references.bib}
-% \addbibresource{bibliografia/cap4_references.bib}
-% \addbibresource{bibliografia/cap5_references.bib}
 
-% Opzione 2: Un unico file (decommentare se preferito)
 \addbibresource{bibliografia/newtesi_ref.bib}
 %\addbibresource{bibliografia/biblio_pers.bib}
+
 
 % ===== NOTE A PIÈ DI PAGINA =====
 \usepackage[bottom,hang]{footmisc}
@@ -168,10 +161,18 @@
 
 \graphicspath{{figure/}}
 
+
+% ===== GLOSSARI E ACRONIMI =====
+
+\input{glossario.glo}
+\usepackage[acronym]{glossaries}
+\makeglossaries
+
+
+
 \usepackage{tabularx}
 \usepackage{colortbl}
-\usepackage{booktabs}
-\usepackage{xcolor}
+
 
 % Definiamo i colori per le fasi
 \definecolor{phase1}{HTML}{DAE8FC}
@@ -187,6 +188,68 @@
 \usetikzlibrary{shapes.geometric,shapes.symbols,shapes.misc}
 \usetikzlibrary{matrix,chains,scopes,fit,backgrounds}
 \usetikzlibrary{arrows.meta, positioning, shapes, calc}
+
+% Nel preambolo principale, assicurati di avere:
+% Per XeLaTeX
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Per grafici TikZ/PGFPlots
+
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+
+
+% Librerie PGFPlots
+\usepgfplotslibrary{
+    fillbetween,
+    statistics,
+    colorbrewer,
+    groupplots
+}
+
+% Definizione stili globali
+\tikzset{
+    every picture/.style={font=\sffamily},
+    every node/.style={font=\sffamily}
+}
+
+% Colori personalizzati
+\definecolor{gistblue}{RGB}{52,152,219}
+\definecolor{gistgreen}{RGB}{46,204,113}
+\definecolor{gistred}{RGB}{231,76,60}
+\definecolor{gistyellow}{RGB}{241,196,15}
+\definecolor{gistgray}{RGB}{149,165,166}
+
+% Stile per cloud shape
+\tikzset{
+    cloud/.style={
+        draw,
+        ellipse,
+        minimum height=1cm,
+        minimum width=1.5cm,
+        fill=white,
+        append after command={
+            \pgfextra{
+                \pgfpathmoveto{\pgfpoint{-0.75cm}{0cm}}
+                \pgfpatharc{180}{360}{0.375cm and 0.25cm}
+                \pgfpatharc{180}{360}{0.375cm and 0.25cm}
+                \pgfpatharc{180}{360}{0.375cm and 0.25cm}
+            }
+        }
+    }
+}
+
+% Per checkmark nelle tabelle
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+
+
+% ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====
 
 % Formato capitoli
 \titleformat{\chapter}[display]
@@ -259,6 +322,48 @@
 }
 \lstset{style=mystyle}
 
+% Configurazione listings per Python
+\lstset{
+    language=Python,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{green!60!black},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    captionpos=b,
+    morekeywords={self, True, False, None}
+}
+% Per i grafici statistici
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{statistics}
+\pgfplotsset{compat=1.18}
+
+% Stile personalizzato per i grafici
+\pgfplotsset{
+    every axis/.append style={
+        thick,
+        tick style={thick},
+        label style={font=\small},
+        title style={font=\bfseries},
+    }
+}
+
+% Definizione colori personalizzati
+\definecolor{validgreen}{RGB}{39,174,96}
+\definecolor{failred}{RGB}{192,57,43}
+\definecolor{partialyellow}{RGB}{241,196,15}
+
+
+% Per i checkmark nelle tabelle
+\usepackage{amssymb}
+%\newcommand{\checkmark}{\ding{51}}
+
 \lstdefinelanguage{json}{%
   morekeywords={true, false, null},
   morestring=[b]",
@@ -307,6 +412,7 @@
 % ===== INIZIO DOCUMENTO =====
 \begin{document}
 
+
 % Frontespizio (senza numerazione)
 \pagenumbering{gobble}
 \input{capitoli/frontespizio}
@@ -332,14 +438,47 @@
 % Capitoli (numerazione araba)
 \pagenumbering{arabic}
 
-\include{figure/gist_framework_tikz.tex}
+\begin{abstract}
+Questa tesi presenta il framework GIST (Governance, Infrastructure, 
+Security, Transformation) per la gestione integrata della sicurezza IT 
+nella Grande Distribuzione Organizzata. 
+
+Di fronte all'impossibilità di accedere a dati reali per vincoli 
+di privacy e sicurezza, la ricerca introduce un approccio innovativo 
+basato su Digital Twin per la generazione di dataset sintetici 
+statisticamente validati. Il framework Digital Twin GDO-Bench, 
+sviluppato e rilasciato open-source, genera dati realistici calibrati 
+su fonti pubbliche (ISTAT, Banca d'Italia, ENISA) e validati attraverso 
+18 test statistici.
+
+Il framework GIST è stato validato computazionalmente attraverso 
+10,000 simulazioni Monte Carlo, dimostrando teoricamente una riduzione 
+del 35\% della superficie di attacco (metrica ASSA-GDO) e un'efficienza 
+del 30\% nella gestione integrata della compliance.
+
+Sebbene la validazione empirica rimanga essenziale per confermare 
+i risultati, questa ricerca fornisce:
+(i) un framework teorico rigoroso,
+(ii) strumenti computazionali concreti,
+(iii) una piattaforma riutilizzabile per future ricerche.
+
+Il lavoro costituisce un primo passo verso la trasformazione sicura 
+dell'infrastruttura GDO, fornendo una base metodologica solida per 
+successive validazioni empiriche.
+
+\textbf{Parole chiave}: GDO, Digital Twin, Cybersecurity, Cloud-Hybrid, 
+Zero Trust, Compliance Integration, Synthetic Data Generation
+\end{abstract}
+\clearpage
+
+%\include{figure/gist_framework_tikz.tex}
 %%%%\include{capitoli/new1}
 %%%%\include{capitoli/new2}
 %%%%\include{capitoli/new3}
 %\include{capitoli/new4-2}
 %\include{capitoli/new5}
 %\include{capitoli/new5-2}
-
+%\include{figure/figure_statistiche}
 
 \include{capitoli/Cap1.tex}
 %%\include{capitoli/Cap2.tex}
@@ -363,12 +502,16 @@
 
 \include{capitoli/appAbis}
 %\include{capitoli/appB}
+
 \include{capitoli/appBbis}
+\include{figure/figure_statistiche}
 
 \include{capitoli/appC}
 \include{capitoli/appD}
 
 %%%%\include{capitoli/new_appendix}
+
+\printglossaries
 
 % Questa include TUTTE le fonti citate nell'intera tesi
 \printbibliography[
