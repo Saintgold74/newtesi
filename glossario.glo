@@ -354,7 +354,7 @@
 
 % ===== SISTEMI E TECNOLOGIE PUNTO VENDITA =====
 
-\newglossaryentry{pos}{
+\newglossaryentry{POS}{
     name=POS,
     description={Point of Sale - Sistema di elaborazione delle transazioni commerciali che gestisce pagamenti, inventario e dati di vendita nei punti vendita al dettaglio}
 }

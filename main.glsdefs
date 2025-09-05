@@ -1622,7 +1622,7 @@ parent={},%
 %
 }%
 
-\glsdefs@newdocentry{pos}%
+\glsdefs@newdocentry{POS}%
 {%
 name={POS},%
 sort={POS},%
