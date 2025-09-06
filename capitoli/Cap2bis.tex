@@ -21,50 +21,62 @@ La natura intrinsecamente distribuita della GDO amplifica la superficie di attac
 SAD = N \times (C + A + Au)
 \end{equation}
 
-dove la Superficie di Attacco Distribuita ($SAD$) è funzione del numero di punti vendita ($N$), moltiplicato per la somma di tre fattori normalizzati: il fattore di connettività ($C$), che rappresenta il grado medio di interconnessione tra nodi calcolato come $C = \frac{E}{N(N-1)/2}$ dove $E$ è il numero di collegamenti nella rete; l'accessibilità ($A$), che quantifica l'esposizione verso reti esterne attraverso il rapporto tra interfacce pubbliche e totali; e l'autonomia operativa ($Au$), che misura la capacità decisionale locale in termini di privilegi amministrativi decentralizzati.
+dove la \textbf{Superficie di Attacco Distribuita ($SAD$)} è funzione del numero di punti vendita ($N$), moltiplicato per la somma di tre fattori normalizzati: il fattore di connettività ($C$), che rappresenta il grado medio di interconnessione tra nodi calcolato come 
+\begin{equation}
+C = \frac{E}{N(N-1)/2}    
+\end{equation}
+ dove $E$ è il numero di collegamenti nella rete; l'accessibilità ($A$), che quantifica l'esposizione verso reti esterne attraverso il rapporto tra interfacce pubbliche e totali; e l'autonomia operativa ($Au$), che misura la capacità decisionale locale in termini di privilegi amministrativi decentralizzati.
 
 Per derivare empiricamente il fattore di amplificazione, abbiamo analizzato i dati di configurazione di tre catene GDO italiane anonimizzate (denominate Alpha, Beta e Gamma per motivi di riservatezza), totalizzando 487 punti vendita. L'analisi della topologia di rete, condotta attraverso scansioni autorizzate e analisi dei log di traffico su un periodo di 90 giorni, ha rivelato che per una catena con 100 negozi:
-- Il valore medio di $C$ è 0.47 (ogni nodo comunica mediamente con il 47% degli altri nodi)
-- Il valore di $A$ è 0.23 (23\% delle interfacce sono esposte pubblicamente)
-- Il valore di $Au$ è 0.77 (77\% delle decisioni operative sono prese localmente)
+\begin{itemize}
+    \item - Il valore medio di $C$ è 0.47 (ogni nodo comunica mediamente con il 47\% degli altri nodi)
+    \item - Il valore di $A$ è 0.23 (23\% delle interfacce sono esposte pubblicamente)
+    \item - Il valore di $Au$ è 0.77 (77\% delle decisioni operative sono prese localmente)
+\end{itemize}
 
 Sostituendo questi valori nell'equazione: $SAD = 100 \times (0.47 + 0.23 + 0.77) = 147$
 
-Questo risultato, confermato con intervallo di confidenza al 95% [142, 152], dimostra che la superficie di attacco effettiva è 147 volte superiore a quella di un singolo nodo, validando quantitativamente l'ipotesi di amplificazione non lineare. La metodologia completa di misurazione e i dati anonimizzati sono disponibili nell'Appendice B.
+Questo risultato, confermato con intervallo di confidenza al 95\% [142, 152], dimostra che la superficie di attacco effettiva è 147 volte superiore a quella di un singolo nodo, validando quantitativamente l'ipotesi di amplificazione non lineare. La metodologia completa di misurazione e i dati anonimizzati sono disponibili nell'Appendice B.
 
 \subsection{Analisi dei Fattori di Vulnerabilità Specifici}
 
-L'analisi fattoriale condotta sui 847 incidenti più significativi del periodo 2020-2025 ha identificato tre dimensioni principali che caratterizzano univocamente la vulnerabilità della GDO. Questa analisi, realizzata utilizzando la tecnica di analisi delle componenti principali (PCA) con rotazione Varimax, spiega il 78.3% della varianza totale osservata nei dati di incidenti.
+L'analisi fattoriale condotta sui 847 incidenti più significativi del periodo 2020-2025 ha identificato tre dimensioni principali che caratterizzano univocamente la vulnerabilità della GDO. Questa analisi, realizzata utilizzando la tecnica di analisi delle componenti principali (PCA) con rotazione Varimax, spiega il 78.3\% della varianza totale osservata nei dati di incidenti.
 
 \subsubsection{Concentrazione di Valore Economico}
 
 Ogni punto vendita processa quotidianamente un flusso aggregato di dati finanziari che rappresenta un obiettivo ad alto valore per i criminali informatici. L'analisi econometrica condotta sui dati forniti dalla National Retail Federation\autocite{nrf2024} rivela che il valore medio per transazione compromessa nel settore GDO è di 47,30 euro, significativamente superiore ai 31,20 euro degli altri settori del commercio al dettaglio (differenza statisticamente significativa con $p < 0.001$, test t di Student per campioni indipendenti). 
 
 Questa differenza del 51.6\% deriva da tre fattori principali:
-- Volume transazionale superiore: un punto vendita GDO medio processa 2.847 transazioni giornaliere contro le 892 di un negozio tradizionale
-- Valore medio del carrello più elevato: 67,40 euro contro 42,30 euro
-- Maggiore utilizzo di pagamenti elettronici: 78% contro 54% delle transazioni totali
+\begin{itemize}
+    \item Volume transazionale superiore: un punto vendita GDO medio processa 2.847 transazioni giornaliere contro le 892 di un negozio tradizionale
+    \item Valore medio del carrello più elevato: 67,40 euro contro 42,30 euro
+    \item Maggiore utilizzo di pagamenti elettronici: 78\% contro 54\% delle transazioni totali
+\end{itemize}
 
-La concentrazione di valore crea quello che definiamo "effetto miele" (honey pot effect), dove l'attrattività del bersaglio per i criminali cresce in modo più che proporzionale al valore custodito, seguendo una funzione logaritmica del tipo $Attrattività = k \times \log(Valore)$ dove $k$ è una costante di settore stimata empiricamente a 2.34.
+La concentrazione di valore crea quello che definiamo \textbf{"effetto miele"} (\textit{honey pot effect}), dove l'attrattività del bersaglio per i criminali cresce in modo più che proporzionale al valore custodito, seguendo una funzione logaritmica del tipo $Attrattivita = k \times \log(Valore)$ dove $k$ è una costante di settore stimata empiricamente a 2.34.
 
 \subsubsection{Vincoli di Operatività Continua}
 
 I requisiti di disponibilità ventiquattro ore su ventiquattro, sette giorni su sette, impongono vincoli stringenti sulle finestre di manutenzione disponibili. L'analisi dei dati di patch management raccolti attraverso interviste strutturate con 34 responsabili IT di catene GDO rivela che il tempo medio per l'applicazione di patch critiche è di 127 giorni, contro una media industriale di 72 giorni documentata dal Data Breach Investigations Report di Verizon\autocite{verizon2024}. 
 
 Questa dilazione del 76.4\% nel tempo di applicazione delle patch deriva da:
-- Necessità di test estensivi in ambienti di staging che replichino l'eterogeneità dei punti vendita (35 giorni aggiuntivi in media)
-- Coordinamento con fornitori terzi per sistemi integrati (18 giorni)
-- Applicazione graduale per evitare disruzioni operative (12 giorni)
+\begin{itemize}
+    \item Necessità di test estensivi in ambienti di staging che replichino l'eterogeneità dei punti vendita (35 giorni aggiuntivi in media)
+    \item Coordinamento con fornitori terzi per sistemi integrati (18 giorni)
+    \item Applicazione graduale per evitare disruzioni operative (12 giorni)
+\end{itemize}
 
-Il modello di rischio cumulativo, basato sulla distribuzione di Weibull per la scoperta di vulnerabilità, mostra che questo ritardo aumenta la probabilità di compromissione del 234\% rispetto all'applicazione tempestiva delle patch.
+Il modello di rischio cumulativo, basato sulla distribuzione di Weibull \footnote{Spieghiamo cosa comporta} per la scoperta di vulnerabilità, mostra che questo ritardo aumenta la probabilità di compromissione del 234\% rispetto all'applicazione tempestiva delle patch.
 
 \subsubsection{Eterogeneità Tecnologica}
 
 L'inventario tecnologico medio per punto vendita, derivato dall'analisi di 47 audit di sicurezza condotti nel periodo 2023-2025, include:
-- 4.7 generazioni diverse di terminali POS (dal 2018 al 2025)
-- 3.2 sistemi operativi distinti (Windows 10/11, Linux embedded, Android)
-- 18.4 applicazioni verticali di fornitori diversi
-- 7.3 tipologie di dispositivi IoT (sensori temperatura, videocamere IP, beacon Bluetooth)
+\begin{itemize}
+    \item 4.7 generazioni diverse di terminali POS (dal 2018 al 2025)
+    \item 3.2 sistemi operativi distinti (Windows 10/11, Linux embedded, Android)
+    \item 18.4 applicazioni verticali di fornitori diversi
+    \item 7.3 tipologie di dispositivi IoT (sensori temperatura, videocamere IP, beacon Bluetooth)
+\end{itemize}
 
 Questa eterogeneità moltiplica la complessità della gestione delle vulnerabilità secondo un fattore che cresce con complessità $O(n^2)$ dove $n$ è il numero di tecnologie diverse. La dimostrazione matematica, basata sull'analisi combinatoria delle interazioni possibili tra componenti, mostra che per $n = 33$ (valore medio osservato), il numero di potenziali vettori di attacco cresce a 1.089 combinazioni uniche, rendendo praticamente impossibile il testing esaustivo di tutte le configurazioni.
 
@@ -74,10 +86,12 @@ L'analisi del fattore umano, condotta attraverso la revisione sistematica di 423
 
 L'analisi di correlazione di Pearson tra turnover e frequenza di incidenti, condotta su dati panel di 127 punti vendita monitorati per 36 mesi, mostra una correlazione positiva forte ($r = 0.67$, $p < 0.001$), indicando che per ogni incremento del 10\% nel turnover, la frequenza di incidenti aumenta del 6.7\%. 
 
-La formazione in sicurezza informatica risulta strutturalmente insufficiente: l'analisi dei piani formativi di 23 catene GDO rivela una media di 3.2 ore annue dedicate alla sicurezza informatica, contro le 12.7 ore raccomandate dallo standard ISO 27001 per ambienti ad alto rischio. Questa carenza formativa del 74.8\% si traduce in:
-- Incremento del 43\% negli incidenti di phishing riusciti
-- Aumento del 67\% nelle violazioni di policy di sicurezza
-- Crescita del 89\% negli errori di configurazione dei sistemi
+La formazione in sicurezza informatica risulta strutturalmente insufficiente: l'analisi dei piani formativi di 23 catene GDO rivela una media di 3.2 ore annue dedicate alla sicurezza informatica, contro le 12.7 ore raccomandate dallo standard ISO 27001 per ambienti ad alto rischio; questa carenza formativa del 74.8\% si traduce in:
+\begin{itemize}
+    \item Incremento del 43\% negli incidenti di phishing riusciti
+    \item Aumento del 67\% nelle violazioni di policy di sicurezza
+    \item Crescita del 89\% negli errori di configurazione dei sistemi
+\end{itemize}
 
 Complessivamente, il fattore umano emerge come causa principale nel 68\% degli incidenti analizzati\autocite{verizon2024}, sottolineando la necessità critica di progettare architetture di sicurezza che minimizzino la dipendenza da comportamenti umani corretti attraverso l'automazione e la progettazione di sistemi intrinsecamente sicuri.
 
@@ -85,7 +99,7 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{thesis_figures/cap2/fig_2_1_cyber_evolution.pdf}
+\includegraphics[width=0.9\textwidth]{cap2/fig_2_1_cyber_evolution.pdf}
 \caption{Evoluzione degli attacchi cyber al settore retail (2020-2025). Il grafico mostra l'incremento esponenziale del 312\% nel periodo 2021-2023, con una correlazione diretta tra numero di incidenti e impatto economico. La proiezione per il 2025 (linea tratteggiata) indica una continuazione del trend crescente. Fonte: aggregazione dati CERT nazionali ed ENISA.}
 \label{fig:cyber_evolution}
 \end{figure}
@@ -108,23 +122,27 @@ FV = TE - TC
 \end{equation}
 
 dove $TE$ rappresenta il Tempo di Elaborazione totale della transazione (dall'inserimento della carta alla conferma) e $TC$ il Tempo di Cifratura (il momento in cui i dati vengono cifrati per la trasmissione). Le misurazioni empiriche condotte da SecureRetail Labs su 10.000 transazioni in ambiente controllato\autocite{SecureRetailLabs2024} mostrano:
-- $TE$ medio: 1.843 millisecondi (deviazione standard: 234ms)
-- $TC$ medio: 1.716 millisecondi (deviazione standard: 187ms)
-- $FV$ risultante: 127 millisecondi (IC 95\%: [115ms, 139ms])
+\begin{itemize}
+    \item $TE$ medio: 1.843 millisecondi (deviazione standard: 234ms)
+    \item $TC$ medio: 1.716 millisecondi (deviazione standard: 187ms)
+    \item $FV$ risultante: 127 millisecondi (IC 95\%: [115ms, 139ms])
+\end{itemize}
 
-Per una catena GDO tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di memory scraping automatizzate per catturare i dati durante queste brevissime finestre temporali.
+Per una catena GDO tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di \textit{\textbf{memory scraping}} automatizzate per catturare i dati durante queste brevissime finestre temporali.
 
 \subsection{Evoluzione delle Tecniche: Il Caso Prilex}
 
-Un esempio paradigmatico dell'evoluzione delle tecniche di attacco è rappresentato dal malware Prilex, la cui analisi dettagliata condotta dai laboratori Kaspersky\autocite{kaspersky2024} rivela un livello di sofisticazione senza precedenti. Invece di tentare di violare i meccanismi di crittografia, sempre più robusti, Prilex implementa una strategia che definiamo "regressione forzata del protocollo".
+Un esempio paradigmatico dell'evoluzione delle tecniche di attacco è rappresentato dal malware \textbf{Prilex}, la cui analisi dettagliata condotta dai laboratori Kaspersky\autocite{kaspersky2024} rivela un livello di sofisticazione senza precedenti. Invece di tentare di violare i meccanismi di crittografia, sempre più robusti, Prilex implementa una strategia che definiamo "\textit{regressione forzata del protocollo"}.
 
 Il funzionamento di Prilex può essere schematizzato in quattro fasi:
-1. \textbf{Intercettazione iniziale}: Il malware si posiziona tra il lettore NFC e il processore di pagamento
-2. \textbf{Simulazione di errore}: Quando rileva una transazione contactless, simula un errore di lettura NFC con codice specifico
-3. \textbf{Forzatura del fallback}: Il terminale, seguendo i protocolli standard, richiede l'inserimento fisico della carta
-4. \textbf{Cattura dei dati}: Durante la lettura del chip, il malware cattura i dati non cifrati con un tasso di successo del 94\%
+\begin{enumerate}
+    \item \textbf{Intercettazione iniziale}: Il malware si posiziona tra il lettore NFC e il processore di pagamento
+    \item \textbf{Simulazione di errore}: Quando rileva una transazione contactless, simula un errore di lettura NFC con codice specifico
+    \item \textbf{Forzatura del fallback}: Il terminale, seguendo i protocolli standard, richiede l'inserimento fisico della carta
+    \item \textbf{Cattura dei dati}: Durante la lettura del chip, il malware cattura i dati non cifrati con un tasso di successo del 94\%
+\end{enumerate}
 
-L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo EMV contactless, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
+L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo \textbf{EMV contactless}, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
 
 \subsection{Modellazione della Propagazione in Ambienti Distribuiti}
 
@@ -147,9 +165,9 @@ Il "Caso Alpha", un incidente reale documentato dal SANS Institute\autocite{sans
 - Giorno 7: 89 punti vendita compromessi (saturazione parziale della rete)
 
 Basandoci sui parametri di propagazione documentati, abbiamo condotto 10.000 simulazioni Monte Carlo per valutare l'impatto di diverse strategie di rilevamento. I risultati, statisticamente significativi con $p < 0.001$, dimostrano che:
-- Rilevamento entro 24 ore: limita l'impatto al 23\% dei sistemi (IC 95%: [21%, 25%])
-- Rilevamento entro 48 ore: impatto al 47\% dei sistemi (IC 95%: [44%, 50%])
-- Rilevamento oltre 72 ore: impatto superiore al 75% dei sistemi
+- Rilevamento entro 24 ore: limita l'impatto al 23\% dei sistemi (IC 95\%: [21\%, 25\%])
+- Rilevamento entro 48 ore: impatto al 47\% dei sistemi (IC 95\%: [44\%, 50\%])
+- Rilevamento oltre 72 ore: impatto superiore al 75\% dei sistemi
 
 Questi risultati evidenziano come la velocità di rilevamento sia più critica della sofisticazione degli strumenti di difesa, un principio che guiderà le scelte architetturali discusse nelle sezioni successive.
 
@@ -210,8 +228,8 @@ La prima sfida riguarda la scalabilità delle verifiche di sicurezza. Una catena
 
 L'analisi delle performance condotta da Palo Alto Networks\autocite{paloalto2024} su implementazioni reali mostra un overhead medio totale di 12ms per transazione. Sebbene apparentemente modesto, questo incremento può tradursi in:
 - Ritardo cumulativo di 38.4 secondi per punto vendita al giorno
-- Incremento del 8% nei tempi di attesa alle casse durante i picchi
-- Potenziale perdita di fatturato dello 0.3% per abandonment rate aumentato
+- Incremento del 8\% nei tempi di attesa alle casse durante i picchi
+- Potenziale perdita di fatturato dello 0.3\% per abandonment rate aumentato
 
 La soluzione proposta implementa un sistema di cache distribuita delle decisioni di autorizzazione con validità temporale limitata (TTL di 300 secondi), riducendo l'overhead medio a 4ms mantenendo un livello di sicurezza accettabile.
 
