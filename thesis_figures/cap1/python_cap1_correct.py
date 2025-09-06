@@ -212,7 +212,7 @@ def create_fig_1_4_thesis_structure():
             'height': 1.5,
             'color': COLOR_DANGER,
             'content': 'Analisi minacce\nZero Trust\nValidazione H2',
-            'pages': '18-20 pp'
+            
         },
         'Cap. 3': {
             'title': 'Evoluzione\nInfrastrutturale',
@@ -221,7 +221,7 @@ def create_fig_1_4_thesis_structure():
             'height': 1.5,
             'color': COLOR_SUCCESS,
             'content': 'Da fisico a cloud\nArchitetture ibride\nValidazione H1',
-            'pages': '20-22 pp'
+            
         },
         'Cap. 4': {
             'title': 'Compliance\nIntegrata',
@@ -230,7 +230,7 @@ def create_fig_1_4_thesis_structure():
             'height': 1.5,
             'color': COLOR_PRIMARY,
             'content': 'Multi-standard\nSinergie normative\nValidazione H3',
-            'pages': '20-22 pp'
+            
         },
         'Cap. 5': {
             'title': 'Sintesi e Direzioni',
@@ -239,7 +239,7 @@ def create_fig_1_4_thesis_structure():
             'height': 1.2,
             'color': COLOR_SECONDARY,
             'content': 'Framework validato • Roadmap • Future research',
-            'pages': '8-10 pp'
+            
         }
     }
     
@@ -269,12 +269,12 @@ def create_fig_1_4_thesis_structure():
         # Titolo capitolo
         ax.text(x, y+h/4, f"{cap}: {props['title']}", 
                 ha='center', va='center',
-                fontsize=11, fontweight='bold', color='white')
+                fontsize=14, fontweight='bold', color='white')
         
         # Contenuto
         ax.text(x, y-h/4, props['content'], 
                 ha='center', va='center',
-                fontsize=8, color='white')
+                fontsize=10, color='white')
         
         # Pagine (se specificato)
         if 'pages' in props:
@@ -294,8 +294,8 @@ def create_fig_1_4_thesis_structure():
     ax.add_patch(box)
     ax.text(x, y, f"APPENDICI: {appendices['content']}", 
             ha='center', va='center',
-            fontsize=9, fontweight='bold')
-    
+            fontsize=10, fontweight='bold')
+
     # Frecce di flusso principale
     main_flow = [
         ((5, 9.5), (2.5, 9)),      # Cap1 → Cap2
@@ -312,15 +312,15 @@ def create_fig_1_4_thesis_structure():
     
     # Connessioni secondarie (interdipendenze)
     interdeps = [
-        ((2.5, 7.25), (7.5, 7.25), 'Threat-Infrastructure\ninteraction'),
-        ((3.5, 5.5), (6.5, 5.5), 'Security-Compliance\nintegration')
+        ((2.5, 7.05), (7.5, 7.05), 'Threat-Infrastructure\ninteraction'),
+        ((3.5, 4.6), (6.5, 4.6), 'Security-Compliance\nintegration')
     ]
     
     for start, end, label in interdeps:
         ax.plot([start[0], end[0]], [start[1], end[1]], 
                 'k:', alpha=0.5, linewidth=1.5)
         mid_x = (start[0] + end[0]) / 2
-        ax.text(mid_x, start[1]-0.2, label, ha='center', va='top',
+        ax.text(mid_x, start[1]-0.10, label, ha='center', va='top',
                 fontsize=7, style='italic', alpha=0.7)
     
     # Ipotesi di ricerca
@@ -337,7 +337,7 @@ def create_fig_1_4_thesis_structure():
                                     facecolor='lightyellow', alpha=0.8))
     
     # Legenda metodologica
-    ax.text(9.5, 11.5, 'Metodologia:\n• Simulazione Monte Carlo\n• Dati pilota (15 org)\n• Validazione empirica',
+    ax.text(9.5, 11.5, 'Metodologia:\n• Simulazione Monte Carlo\n• Digital Twin GDO-bench\n• Validazione empirica',
             ha='right', va='top', fontsize=8,
             bbox=dict(boxstyle="round,pad=0.3", 
                      facecolor='lightblue', alpha=0.8))
