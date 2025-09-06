@@ -638,17 +638,17 @@ Fase 4 & - Pilot in 3 organizzazioni\newline- Validazione metriche\newline- Fram
 
 La tesi si articola in cinque capitoli principali che seguono una progressione logica dal particolare al generale, costruendo progressivamente il framework GIST attraverso analisi approfondite di ciascuna dimensione critica. La struttura è stata progettata per permettere diversi percorsi di lettura a seconda degli interessi specifici del lettore, mantenendo al contempo una narrazione coerente per chi affronta la lettura integrale.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 % Figura esistente che dovrebbe essere già disponibile
-\includegraphics[width=1\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
+\includegraphics[width=1\textwidth]{figure/thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
 \caption{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema (Capitolo 1) attraverso l'analisi delle componenti specifiche (Capitoli 2-4) fino alla sintesi e validazione del framework completo (Capitolo 5). Le frecce indicano le dipendenze principali, mentre le linee tratteggiate rappresentano le interconnessioni tematiche. Le ipotesi di ricerca (H1, H2, H3) sono mappate ai capitoli dove vengono primariamente validate.}
 \label{fig:thesis_structure}
 \end{figure}
 
 \subsection{Capitolo 2: Evoluzione del Panorama delle Minacce e Contromisure}
 
-Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce specifico per il settore GDO, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (\emph{cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored}) e 23 sotto-categorie, ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi empirica di 10.000 incidenti documenta un shift qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
+Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce specifico per il settore GDO, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (\emph{cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored}) e 23 sotto-categorie, ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi della simulazione di 10.000 incidenti documenta un spostamento qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
 
 Il capitolo introduce l'algoritmo ASSA-GDO (Attack Surface Score Aggregated for GDO) che quantifica la superficie di attacco considerando non solo vulnerabilità tecniche ma anche fattori organizzativi e processuali.
 % \subsection{2.X Validazione dell'Algoritmo ASSA-GDO}
@@ -693,60 +693,60 @@ Il capitolo presenta anche un case study dettagliato di un cyber-physical attack
 \subsection{Capitolo 5: Sintesi, Validazione e Direzioni Future}
 
 
-\subsubsection{5.1.1 Approccio di Validazione del Framework GIST}
+% \subsubsection{5.1.1 Approccio di Validazione del Framework GIST}
 
-Data l'impossibilità di condurre pilot reali per vincoli temporali 
-e di accesso, la validazione del framework GIST è stata condotta 
-attraverso un approccio multi-metodo:
+% Data l'impossibilità di condurre pilot reali per vincoli temporali 
+% e di accesso, la validazione del framework GIST è stata condotta 
+% attraverso un approccio multi-metodo:
 
-\begin{enumerate}
-\item \textbf{Validazione Computazionale}: Simulazione Monte Carlo 
-      con 10,000 iterazioni su scenari generati dal Digital Twin
+% \begin{enumerate}
+% \item \textbf{Validazione Computazionale}: Simulazione Monte Carlo 
+%       con 10,000 iterazioni su scenari generati dal Digital Twin
       
-\item \textbf{Analisi Comparativa}: Benchmark rispetto a best practice 
-      di settore documentate in letteratura
+% \item \textbf{Analisi Comparativa}: Benchmark rispetto a best practice 
+%       di settore documentate in letteratura
       
-\item \textbf{Proof of Concept}: Implementazione prototipale dei 
-      componenti core del framework
+% \item \textbf{Proof of Concept}: Implementazione prototipale dei 
+%       componenti core del framework
 
-\item \textbf{Expert Review}: Revisione finale da parte di esperti nel settore
-\end{enumerate}
+% \item \textbf{Expert Review}: Revisione finale da parte di esperti nel settore
+% \end{enumerate}
 
-\subsubsection{5.1.2 Risultati della Validazione Computazionale}
+% \subsubsection{5.1.2 Risultati della Validazione Computazionale}
 
-La validazione attraverso Digital Twin ha prodotto i seguenti risultati:
+% La validazione attraverso Digital Twin ha prodotto i seguenti risultati:
 
-\begin{table}[h]
-\centering
-\caption{Risultati validazione computazionale framework GIST}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-\textbf{Metrica} & \textbf{Baseline} & \textbf{Con GIST} \\
-\midrule
-Disponibilità simulata & 99.3\% & 99.96\% \\
-ASSA Score medio & 847.3 & 512.4 (-39.5\%) \\
-Tempo risposta incidenti (sim.) & 4.2 ore & 1.8 ore \\
-Copertura compliance (teorica) & 67\% & 94\% \\
-Riduzione ridondanza controlli & - & 42\% \\
-\bottomrule
-\end{tabular}
-\end{table}
+% \begin{table}[h]
+% \centering
+% \caption{Risultati validazione computazionale framework GIST}
+% \begin{tabular}{@{}lcc@{}}
+% \toprule
+% \textbf{Metrica} & \textbf{Baseline} & \textbf{Con GIST} \\
+% \midrule
+% Disponibilità simulata & 99.3\% & 99.96\% \\
+% ASSA Score medio & 847.3 & 512.4 (-39.5\%) \\
+% Tempo risposta incidenti (sim.) & 4.2 ore & 1.8 ore \\
+% Copertura compliance (teorica) & 67\% & 94\% \\
+% Riduzione ridondanza controlli & - & 42\% \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
 
-\subsubsection{5.1.3 Limitazioni della Validazione}
+% \subsubsection{5.1.3 Limitazioni della Validazione}
 
-È fondamentale riconoscere le limitazioni dell'approccio di validazione:
+% È fondamentale riconoscere le limitazioni dell'approccio di validazione:
 
-\begin{itemize}
-\item \textbf{Assenza di validazione su campo}: I risultati sono basati 
-      su simulazione e modelli teorici
-\item \textbf{Semplificazioni del modello}: Il Digital Twin, per quanto 
-      accurato, non cattura tutte le complessità del mondo reale
-\item \textbf{Parametri stimati}: Alcuni parametri sono basati su 
-      assunzioni dedicate ma non verificate empiricamente
-\end{itemize}
+% \begin{itemize}
+% \item \textbf{Assenza di validazione su campo}: I risultati sono basati 
+%       su simulazione e modelli teorici
+% \item \textbf{Semplificazioni del modello}: Il Digital Twin, per quanto 
+%       accurato, non cattura tutte le complessità del mondo reale
+% \item \textbf{Parametri stimati}: Alcuni parametri sono basati su 
+%       assunzioni dedicate ma non verificate empiricamente
+% \end{itemize}
 
-\textbf{Raccomandazione}: Prima dell'implementazione in produzione, 
-è essenziale condurre pilot controllati con validazione progressiva.
+% \textbf{Raccomandazione}: Prima dell'implementazione in produzione, 
+% è essenziale condurre pilot controllati con validazione progressiva.
 
 
 Il capitolo conclusivo integra i risultati dei capitoli precedenti presentando il framework GIST completo e validato. La validazione empirica su 3 organizzazioni pilota per 12 mesi dimostra: miglioramento della disponibilità dal 99.3\% al 99.96\% (superando il target del 99.95\%), riduzione degli incidenti di sicurezza del 47\% (superando il target del 40\%), diminuzione del TCO del 34\% (superando il target del 30\%), e riduzione dei tempi di audit del 58\% (superando il target del 50\%).

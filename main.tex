@@ -144,6 +144,12 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{xunicode}
+\usepackage{xltxtra}
 
 \usepackage{xcolor} % Per i colori
 \usepackage{standalone}
@@ -170,8 +176,7 @@
 
 
 
-\usepackage{tabularx}
-\usepackage{colortbl}
+
 
 
 % Definiamo i colori per le fasi
@@ -189,18 +194,9 @@
 \usetikzlibrary{matrix,chains,scopes,fit,backgrounds}
 \usetikzlibrary{arrows.meta, positioning, shapes, calc}
 
-% Nel preambolo principale, assicurati di avere:
-% Per XeLaTeX
-\usepackage{fontspec}
-\usepackage{xunicode}
-\usepackage{xltxtra}
-
 % Per grafici TikZ/PGFPlots
-
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=1.18}
-
-
 
 % Librerie PGFPlots
 \usepgfplotslibrary{
@@ -493,6 +489,7 @@ Zero Trust, Compliance Integration, Synthetic Data Generation
 % \include{figure/figure_statistiche}
 
 \include{capitoli/Cap1.tex}
+
 %%\include{capitoli/Cap2.tex}
 \include{capitoli/Cap2bis.tex}
 \include{capitoli/Cap3.tex}
