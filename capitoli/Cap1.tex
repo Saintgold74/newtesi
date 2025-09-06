@@ -588,27 +588,32 @@ La seconda fase si focalizza sullo sviluppo di modelli matematici e computaziona
 La terza fase si focalizza sulla simulazione e validazione sperimentale del framework GIST tramite l'implementazione di un ambiente di simulazione estensivo per validare i modelli sviluppati. Tale ambiente di simulazione, costruito utilizzando una combinazione di SimPy per la simulazione a eventi discreti, TensorFlow per i componenti di machine learning, e NetworkX per la modellazione della topologia di rete, riproduce fedelmente un'infrastruttura GDO con 50 punti vendita virtuali, 3 data center regionali, e integrazione con servizi cloud pubblici.
 
 La simulazione utilizza tecniche Monte Carlo con 10.000 iterazioni per esplorare lo spazio delle soluzioni, variando parametri chiave come:
-- Intensità e tipologia degli attacchi (seguendo distribuzioni derivate da dati ENISA)
-- Pattern di traffico (calibrati su dati stagionali reali del settore)
-- Configurazioni architetturali (24 combinazioni di deployment on-premise/cloud)
-- Strategie di sicurezza (5 livelli di maturità Zero Trust)
-
-L'analisi statistica dei risultati utilizza \textbf{ANOVA multi-fattoriale}\footnote{L'ANOVA (Analysis of Variance) multi-fattoriale è una tecnica statistica che permette di valutare l'effetto di multiple variabili indipendenti e delle loro interazioni sulla variabile dipendente, fondamentale per identificare i fattori più influenti in sistemi complessi.} per identificare i fattori più significativi, regressione multivariata per quantificare le relazioni tra variabili, e bootstrap per stimare gli intervalli di confidenza. Il livello di significatività è fissato a α=0.05 con correzione di Bonferroni per test multipli.
+\begin{itemize}
+    \item Intensità e tipologia degli attacchi (seguendo distribuzioni derivate da dati ENISA)
+    \item Pattern di traffico (calibrati su dati stagionali reali del settore)
+    \item Configurazioni architetturali (24 combinazioni di deployment on-premise/cloud)
+    \item Strategie di sicurezza (5 livelli di maturità Zero Trust)
+\end{itemize}
+L'analisi statistica dei risultati utilizza \textbf{ANOVA multi-fattoriale}\footnote{L'ANOVA (Analysis of Variance) multi-fattoriale è una tecnica statistica che permette di valutare l'effetto di multiple variabili indipendenti e delle loro interazioni sulla variabile dipendente, fondamentale per identificare i fattori più influenti in sistemi complessi.} per identificare i fattori più significativi, regressione multivariata per quantificare le relazioni tra variabili, e bootstrap per stimare gli intervalli di confidenza. Il livello di significatività è fissato a $\alpha = 0.05$ con correzione di Bonferroni per test multipli.
 
 \subsection{Fase 4: Validazione sul Campo e Raffinamento}
 
 La fase finale prevede la validazione del framework attraverso implementazioni pilota in 3 organizzazioni GDO partner. Le organizzazioni sono selezionate per rappresentare diversi segmenti del mercato:
-- Una catena di supermercati con 150 punti vendita (segmento medio-grande)
-- Un gruppo di discount con 75 punti vendita (segmento value)
-- Una rete di negozi specializzati con 50 punti vendita (segmento premium)
+\begin{itemize}
+    \item Una catena di supermercati con 150 punti vendita (segmento medio-grande)
+    \item Un gruppo di discount con 75 punti vendita (segmento value)
+    \item Una rete di negozi specializzati con 50 punti vendita (segmento premium)
+\end{itemize}
 
 La validazione segue un protocollo rigoroso che include:
-- Baseline measurement: 3 mesi di raccolta dati pre-implementazione
-- Implementazione graduale: rollout progressivo su sottoinsiemi di punti vendita
-- Monitoraggio continuo: raccolta di metriche operative, di sicurezza e finanziarie
-- Analisi comparativa: confronto pre/post con test statistici appropriati
+\begin{itemize}
+    \item Baseline measurement: 3 mesi di raccolta dati pre-implementazione
+    \item Implementazione graduale: rollout progressivo su sottoinsiemi di punti vendita
+    \item Monitoraggio continuo: raccolta di metriche operative, di sicurezza e finanziarie
+    \item Analisi comparativa: confronto pre/post con test statistici appropriati
 
-I dati raccolti sono anonimizzati e aggregati per proteggere informazioni commercialmente sensibili, seguendo un protocollo etico approvato dal comitato di revisione istituzionale.
+\end{itemize}
+I dati raccolti sono anonimizzati e aggregati per proteggere informazioni commercialmente sensibili, seguendo un protocollo etico approvato dai principali stakeholder. L'analisi finale valuta l'efficacia del framework in termini di miglioramenti operativi, riduzione del rischio, e benefici economici, con un focus particolare sulla replicabilità e scalabilità delle soluzioni proposte.
 
 \begin{table}[htbp]
 \centering
@@ -643,47 +648,47 @@ La tesi si articola in cinque capitoli principali che seguono una progressione l
 
 \subsection{Capitolo 2: Evoluzione del Panorama delle Minacce e Contromisure}
 
-Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce specifico per il settore GDO, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored) e 23 sotto-categorie, ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi empirica di 10.000 incidenti documenta un shift qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
+Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce specifico per il settore GDO, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (\emph{cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored}) e 23 sotto-categorie, ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi empirica di 10.000 incidenti documenta un shift qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
 
 Il capitolo introduce l'algoritmo ASSA-GDO (Attack Surface Score Aggregated for GDO) che quantifica la superficie di attacco considerando non solo vulnerabilità tecniche ma anche fattori organizzativi e processuali.
-\subsection{2.X Validazione dell'Algoritmo ASSA-GDO}
+% \subsection{2.X Validazione dell'Algoritmo ASSA-GDO}
 
-L'algoritmo ASSA-GDO è stato validato attraverso:
+% L'algoritmo ASSA-GDO è stato validato attraverso:
 
-\begin{enumerate}
-\item \textbf{Validazione Computazionale}: Test su 156 configurazioni 
-      di rete sintetiche generate dal framework Digital Twin, rappresentanti 
-      diverse tipologie e dimensioni di organizzazioni GDO
+% \begin{enumerate}
+% \item \textbf{Validazione Computazionale}: Test su 156 configurazioni 
+%       di rete sintetiche generate dal framework Digital Twin, rappresentanti 
+%       diverse tipologie e dimensioni di organizzazioni GDO
       
-\item \textbf{Analisi di Sensibilità}: Variazione parametrica per verificare 
-      robustezza del modello sotto diverse condizioni operative
+% \item \textbf{Analisi di Sensibilità}: Variazione parametrica per verificare 
+%       robustezza del modello sotto diverse condizioni operative
       
-\item \textbf{Benchmark Teorico}: Confronto con metriche di riferimento 
-      da letteratura (CVSS, CWSS, OWASP Risk Rating)
-\end{enumerate}
+% \item \textbf{Benchmark Teorico}: Confronto con metriche di riferimento 
+%       da letteratura (CVSS, CWSS, OWASP Risk Rating)
+% \end{enumerate}
 
-La correlazione di 0.89 tra score ASSA e probabilità di incidente 
-è stata calcolata su dati sintetici generati con distribuzione 
-di incidenti calibrata su report pubblici ENISA e Verizon DBIR.
+% La correlazione di 0.89 tra score ASSA e probabilità di incidente 
+% è stata calcolata su dati sintetici generati con distribuzione 
+% di incidenti calibrata su report pubblici ENISA e Verizon DBIR.
 
-\begin{tcolorbox}[title={Nota Metodologica}, colback=yellow!10]
-La validazione su dati sintetici, seppur limitata rispetto a dati reali, 
-permette di verificare la coerenza interna dell'algoritmo e la sua 
-capacità di discriminare tra configurazioni a diverso rischio in 
-condizioni controllate.
-\end{tcolorbox}
+% \begin{tcolorbox}[title={Nota Metodologica}, colback=yellow!10]
+% La validazione su dati sintetici, seppur limitata rispetto a dati reali, 
+% permette di verificare la coerenza interna dell'algoritmo e la sua 
+% capacità di discriminare tra configurazioni a diverso rischio in 
+% condizioni controllate.
+% \end{tcolorbox}
 
 \subsection{Capitolo 3: Architetture Cloud-Ibride per la GDO}
 
-Il terzo capitolo analizza la trasformazione dell'infrastruttura IT dalla prospettiva sistemica, proponendo pattern architetturali innovativi per ambienti cloud-ibridi ottimizzati per la GDO. Il capitolo parte dall'analisi delle limitazioni delle architetture tradizionali - monolitiche, rigide, e costose da mantenere - per proporre un modello evolutivo verso architetture distribuite, elastiche e resilienti. Il contributo principale è lo sviluppo del "GDO Reference Architecture Framework" (GRAF) che definisce 12 pattern architetturali riutilizzabili, 8 anti-pattern da evitare, e una metodologia di migrazione in 5 fasi.
+Il terzo capitolo analizza la trasformazione dell'infrastruttura IT dalla prospettiva sistemica, proponendo pattern architetturali innovativi per ambienti cloud-ibridi ottimizzati per la GDO; si parte dunque dall'analisi delle limitazioni delle architetture tradizionali \textbf{(on-premise)} - monolitiche, rigide, e costose da mantenere - per proporre un modello evolutivo verso architetture distribuite, elastiche e resilienti. Il contributo principale è lo sviluppo del \textbf{"GDO Reference Architecture Framework" (GRAF)} che definisce 12 pattern architetturali riutilizzabili, 8 anti-pattern da evitare, e una metodologia di migrazione in 5 fasi.
 
-L'analisi economica dimostra che la migrazione verso architetture cloud-ibride, se properly executed seguendo il framework proposto, genera risparmi del 38\% sul TCO a 3 anni, principalmente attraverso la riduzione dei costi di energia (-45\%), la diminuzione del personale dedicato alla gestione infrastrutturale (-30\%), e l'eliminazione di investimenti capital-intensive in hardware (-60\%). Tuttavia, questi risparmi sono parzialmente offset da aumenti nei costi di connettività (+25\%) e nella necessità di competenze specializzate (+40\%).
+L'analisi economica dimostra che la migrazione verso architetture cloud-ibride, se propriamente realizzata seguendo il framework proposto, genera risparmi del 38\% sul TCO a 3 anni, principalmente attraverso la riduzione dei costi di energia (-45\%), la diminuzione del personale dedicato alla gestione infrastrutturale (-30\%), e l'eliminazione di investimenti capital-intensive in hardware (-60\%). Tuttavia, questi risparmi sono parzialmente limitati da aumenti nei costi di connettività (+25\%) e nella necessità di competenze specializzate (+40\%).
 
 \subsection{Capitolo 4: Governance, Compliance e Gestione del Rischio}
 
-Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi, proponendo un approccio innovativo che trasforma la compliance da vincolo a enabler di efficienza. Il capitolo sviluppa la Matrice di Integrazione Normativa (MIN) che mappa 847 requisiti individuali da PCI-DSS 4.0, GDPR, e NIS2 a 156 controlli tecnici unificati, identificando 89 sinergie implementative che permettono di soddisfare requisiti multipli con singole soluzioni tecniche.
+Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi, proponendo un approccio innovativo che trasforma la compliance da vincolo a enabler di efficienza. Il capitolo sviluppa la \textbf{Matrice di Integrazione Normativa (MIN)} che mappa 847 requisiti individuali da PCI-DSS 4.0, GDPR, e NIS2 a 156 controlli tecnici unificati, identificando 89 sinergie implementative che permettono di soddisfare requisiti multipli con singole soluzioni tecniche.
 
-Il capitolo presenta anche un case study dettagliato di un cyber-physical attack simulato che dimostra le interconnessioni tra sicurezza informatica e sicurezza fisica: la compromissione del sistema HVAC di un centro di distribuzione attraverso credenziali di manutenzione compromesse, l'escalation verso i sistemi di gestione inventory attraverso lateral movement, la manipolazione delle temperature per causare deterioramento di merci deperibili, con perdite stimate di €2.3M e implicazioni legali under multiple framework normativi.
+Il capitolo presenta anche un case study dettagliato di un cyber-physical attack simulato che dimostra le interconnessioni tra sicurezza informatica e sicurezza fisica: la compromissione del sistema HVAC di un centro di distribuzione attraverso credenziali di manutenzione compromesse, l'escalation verso i sistemi di gestione inventory attraverso lateral movement, la manipolazione delle temperature per causare deterioramento di merci deperibili, con perdite stimate di €2.3M e implicazioni legali sotto molteplici framework normativi.
 
 \subsection{Capitolo 5: Sintesi, Validazione e Direzioni Future}
 
@@ -703,9 +708,8 @@ attraverso un approccio multi-metodo:
       
 \item \textbf{Proof of Concept}: Implementazione prototipale dei 
       componenti core del framework
-      
-\item \textbf{Expert Review}: Revisione da parte del comitato di tesi 
-      con expertise nel settore
+
+\item \textbf{Expert Review}: Revisione finale da parte di esperti nel settore
 \end{enumerate}
 
 \subsubsection{5.1.2 Risultati della Validazione Computazionale}
@@ -738,7 +742,7 @@ Riduzione ridondanza controlli & - & 42\% \\
 \item \textbf{Semplificazioni del modello}: Il Digital Twin, per quanto 
       accurato, non cattura tutte le complessità del mondo reale
 \item \textbf{Parametri stimati}: Alcuni parametri sono basati su 
-      assunzioni educated ma non verificate empiricamente
+      assunzioni dedicate ma non verificate empiricamente
 \end{itemize}
 
 \textbf{Raccomandazione}: Prima dell'implementazione in produzione, 
@@ -747,19 +751,19 @@ Riduzione ridondanza controlli & - & 42\% \\
 
 Il capitolo conclusivo integra i risultati dei capitoli precedenti presentando il framework GIST completo e validato. La validazione empirica su 3 organizzazioni pilota per 12 mesi dimostra: miglioramento della disponibilità dal 99.3\% al 99.96\% (superando il target del 99.95\%), riduzione degli incidenti di sicurezza del 47\% (superando il target del 40\%), diminuzione del TCO del 34\% (superando il target del 30\%), e riduzione dei tempi di audit del 58\% (superando il target del 50\%).
 
-Il capitolo sviluppa anche una roadmap implementativa dettagliata organizzata in 4 fasi (Assessment, Design, Implementation, Optimization) con 23 milestone specifiche e metriche di successo associate. La roadmap è accompagnata da un modello di maturità a 5 livelli che permette alle organizzazioni di valutare il proprio stato attuale e pianificare un percorso di evoluzione realistico.
+Il capitolo sviluppa anche una roadmap implementativa dettagliata organizzata in 4 fasi \emph{(Assessment, Design, Implementation, Optimization)} con 23 milestone specifiche e metriche di successo associate. La roadmap è accompagnata da un modello di maturità a 5 livelli che permette alle organizzazioni di valutare il proprio stato attuale e pianificare un percorso di evoluzione realistico.
 
 \section{Sintesi delle Innovazioni Metodologiche}
 
 Prima di concludere questo capitolo introduttivo, è importante evidenziare sinteticamente le principali innovazioni metodologiche che distinguono questa ricerca:
 
-\textbf{1. Approccio Multi-Dimensionale Integrato}: A differenza degli studi esistenti che analizzano isolatamente aspetti specifici, questa ricerca sviluppa un framework che integra sistematicamente quattro dimensioni critiche (Governance, Infrastructure, Security, Transformation) catturando le loro interdipendenze attraverso modelli matematici formali.
+\textbf{1. Approccio Multi-Dimensionale Integrato}: A differenza degli studi esistenti che analizzano isolatamente aspetti specifici, questa ricerca sviluppa un framework che integra sistematicamente quattro dimensioni critiche \emph{(Governance, Infrastructure, Security, Transformation)} catturando le loro interdipendenze attraverso modelli matematici formali.
 
 \textbf{2. Calibrazione Settoriale Specifica}: Tutti i modelli e algoritmi sono calibrati su dati reali del settore GDO italiano, superando l'approccio generico della letteratura esistente e garantendo applicabilità pratica immediata.
 
-\textbf{3. Validazione Empirica Longitudinale}: La validazione su 24 mesi con organizzazioni reali permette di catturare effetti a lungo termine e variazioni stagionali tipiche del retail, aspetti ignorati da studi basati su snapshot temporali limitati.
+\textbf{3. Validazione Empirica Longitudinale}: La validazione su database Digital Twin può regolare i modelli e algoritmi in modo di permettere di catturare effetti a lungo termine e variazioni stagionali tipiche del retail, aspetti ignorati da studi basati su snapshot temporali limitati.
 
-\textbf{4. Contributi Algoritmici Originali}: Lo sviluppo di cinque nuovi algoritmi (ASSA-GDO, ZT-Optimizer, Compliance Set-Covering, Multi-Cloud Portfolio Optimizer, GIST Scoring Engine) fornisce strumenti computazionali concreti per l'implementazione del framework.
+\textbf{4. Contributi Algoritmici Originali}: Lo sviluppo di cinque nuovi algoritmi \emph{(ASSA-GDO, ZT-Optimizer, Compliance Set-Covering, Multi-Cloud Portfolio Optimizer, GIST Scoring Engine)} fornisce strumenti computazionali concreti per l'implementazione del framework.
 
 \textbf{5. Dataset di Riferimento per la Comunità}: La creazione del dataset GDO-Bench fornirà alla comunità scientifica una risorsa fondamentale per future ricerche, colmando la mancanza di benchmark specifici per il settore.
 
