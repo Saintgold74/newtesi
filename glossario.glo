@@ -6,9 +6,17 @@
 
 % ===== ACRONIMI PRINCIPALI =====
 
-\newglossaryentry{GDO}{
+\newglossaryentry{gdo}{
     name=GDO,
     description={Grande Distribuzione Organizzata - Settore del commercio al dettaglio caratterizzato da catene di punti vendita con gestione centralizzata e volumi significativi}
+}
+\newglossaryentry{rfid}{
+    name=RFId,
+    description={Radio Frequency Identification}
+}
+\newglossaryentry{sku}{
+    name=SKU,
+    description={Stock Keeping Unit}
 }
 
 % ===== STANDARD E NORMATIVE =====

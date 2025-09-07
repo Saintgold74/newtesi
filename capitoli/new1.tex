@@ -66,10 +66,22 @@ La ricerca si propone di validare le seguenti tre ipotesi, formulate per essere 
     \item \textbf{H2 (Sicurezza):} L'integrazione di principi Zero Trust in architetture GDO distribuite riduce la superficie di attacco aggregata (misurata tramite lo score ASSA) di almeno il 35\%, mantenendo l'impatto sulla latenza delle transazioni critiche entro 50 millisecondi.
     \item \textbf{H3 (Compliance):} L'implementazione di un sistema di gestione della compliance basato su principi di compliance-by-design e automazione permette di soddisfare simultaneamente i requisiti di PCI-DSS 4.0, GDPR e NIS2 con un overhead operativo inferiore al 10\% delle risorse IT, conseguendo una riduzione dei costi totali di conformità del 30-40\%
 \end{itemize}
+% \section{Metodologia della Ricerca}
+% Per validare le ipotesi, la ricerca adotta un  \textbf{approccio \textit{mixed - methods}} che combina analisi quantitativa rigorosa con insights qualitativi. La componente quantitativa si basa su uno
+% \textbf{studio longitudinale di 24 mesi basato su simulazioni calibrate del settore GDO}, analizzando metriche operative, di sicurezza e finanziarie prima, durante e dopo la trasformazione . I dati raccolti includono log da sistemi \textbf{SIEM (Security Information and Event Management)}, metriche infrastrutturali, dati finanziari (CAPEX/OPEX) e audit score . L'analisi statistica utilizzerà test appropriati (es. t-test paired, regressione multivariata) con un livello di significatività $\alpha=0.05$.
 \section{Metodologia della Ricerca}
-Per validare le ipotesi, la ricerca adotta un  \textbf{approccio \textit{mixed - methods}} che combina analisi quantitativa rigorosa con insights qualitativi. La componente quantitativa si basa su uno
-\textbf{studio longitudinale di 24 mesi basato su simulazioni calibrate del settore GDO}, analizzando metriche operative, di sicurezza e finanziarie prima, durante e dopo la trasformazione . I dati raccolti includono log da sistemi \textbf{SIEM (Security Information and Event Management)}, metriche infrastrutturali, dati finanziari (CAPEX/OPEX) e audit score . L'analisi statistica utilizzerà test appropriati (es. t-test paired, regressione multivariata) con un livello di significatività $\alpha=0.05$.
 
+Per validare le ipotesi formulate, la ricerca adotta un \textbf{approccio \textit{mixed-methods}} che unisce il rigore della simulazione quantitativa con approfondimenti qualitativi derivanti da best practice di settore.
+
+Data la sensibilità commerciale e i vincoli di riservatezza che impediscono l'accesso a dati operativi reali su larga scala, il nucleo della validazione quantitativa si affida al \textbf{framework Digital Twin GDO-Bench}, uno dei contributi originali di questa tesi. Questo ambiente di simulazione genera dataset sintetici ma \textbf{statisticamente realistici}, replicando le dinamiche di una rete GDO complessa. Il Digital Twin è stato \textbf{calibrato utilizzando dati aggregati pubblici, report di settore (ENISA, Gartner) e parametri tecnici documentati}, assicurando che i pattern transazionali, il traffico di rete e la distribuzione degli eventi di sicurezza siano rappresentativi del contesto reale italiano.
+
+All'interno di questo ambiente simulato, verrà condotta un'analisi sistematica per testare le ipotesi:
+\begin{itemize}
+    \item Esecuzione di \textbf{simulazioni Monte Carlo} per valutare l'impatto di diverse architetture (H1) e configurazioni di sicurezza (H2) su un ampio spettro di scenari operativi.
+    \item Analisi dell'efficienza dei controlli di compliance integrati (H3) attraverso la misurazione dell'\textbf{overhead computazionale} e la riduzione della ridondanza nei log generati.
+\end{itemize}
+
+Le metriche generate dalla simulazione (log da sistemi \textbf{SIEM}, indicatori di performance infrastrutturale, stime di costi \textbf{CAPEX/OPEX}) saranno raccolte e analizzate statisticamente utilizzando test appropriati (es. ANOVA, regressione multivariata) con un livello di significatività $\alpha=0.05$. Questo approccio garantisce la \textbf{testabilità empirica delle ipotesi in un ambiente controllato, ripetibile e scientificamente valido}.
 \section{Struttura della tesi}
 La tesi si articola in cinque capitoli che guidano il lettore dalla definizione del problema alla presentazione di una soluzione validata.
 
