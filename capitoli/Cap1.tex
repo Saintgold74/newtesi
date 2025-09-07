@@ -591,7 +591,7 @@ La simulazione utilizza tecniche Monte Carlo con 10.000 iterazioni per esplorare
 \begin{itemize}
     \item Intensità e tipologia degli attacchi (seguendo distribuzioni derivate da dati ENISA)
     \item Pattern di traffico (calibrati su dati stagionali reali del settore)
-    \item Configurazioni architetturali (24 combinazioni di deployment on-premise/cloud)
+    \item Configurazioni architetturali (24 combinazioni di deployment on-premise / cloud)
     \item Strategie di sicurezza (5 livelli di maturità Zero Trust)
 \end{itemize}
 L'analisi statistica dei risultati utilizza \textbf{ANOVA multi-fattoriale}\footnote{L'ANOVA (Analysis of Variance) multi-fattoriale è una tecnica statistica che permette di valutare l'effetto di multiple variabili indipendenti e delle loro interazioni sulla variabile dipendente, fondamentale per identificare i fattori più influenti in sistemi complessi.} per identificare i fattori più significativi, regressione multivariata per quantificare le relazioni tra variabili, e bootstrap per stimare gli intervalli di confidenza. Il livello di significatività è fissato a $\alpha = 0.05$ con correzione di Bonferroni per test multipli.
