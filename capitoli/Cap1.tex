@@ -30,7 +30,8 @@ Il settore della \gls{gdo} sta attraversando una fase di trasformazione tecnolog
 
 \subsubsection{La Trasformazione Infrastrutturale: Verso Architetture Ibride Adattive}
 
-La prima dimensione riguarda \textbf{la trasformazione infrastrutturale} in corso; il 67\% delle organizzazioni \gls{gdo} europee ha iniziato processi di migrazione da architetture monolitiche centralizzate verso modelli distribuiti basati su servizi\footcite{gartner2024cloud}. Questa transizione non rappresenta semplicemente un cambio di piattaforma tecnologica, ma richiede un ripensamento fondamentale dei modelli operativi, delle competenze organizzative e delle strategie di gestione del rischio. Infatti mentre un sistema monolitico tradizionale garantisce proprietà \textbf{ACID (Atomicità, Consistenza, Isolamento, Durabilità)\footnote{TODO}} attraverso transazioni locali con latenze nell'ordine dei microsecondi, un'architettura a microservizi deve orchestrare transazioni distribuite che coinvolgono molteplici servizi autonomi, ciascuno con il proprio stato e ciclo di vita. 
+La prima dimensione riguarda \textbf{la trasformazione infrastrutturale} in corso; il 67\% delle organizzazioni \gls{gdo} europee ha iniziato processi di migrazione da architetture monolitiche centralizzate verso modelli distribuiti basati su servizi\footcite{gartner2024cloud}. Questa transizione non rappresenta semplicemente un cambio di piattaforma tecnologica, ma richiede un ripensamento fondamentale dei modelli operativi, delle competenze organizzative e delle strategie di gestione del rischio. Infatti mentre un sistema monolitico tradizionale garantisce proprietà \textbf{ACID (Atomicità, Consistenza, Isolamento, Durabilità)\footnote{ACID è l'acronimo che definisce le quattro proprietà fondamentali delle transazioni nei database relazionali, garantendo l'integrità dei dati 
+anche in presenza di errori o interruzioni.}} attraverso transazioni locali con latenze nell'ordine dei microsecondi, un'architettura a microservizi deve orchestrare transazioni distribuite che coinvolgono molteplici servizi autonomi, ciascuno con il proprio stato e ciclo di vita. 
 Nel contesto della \gls{gdo}, una singola transazione di vendita può coinvolgere l'interazione coordinata di 10-15 servizi distinti: 
 \begin{itemize}
     \item il servizio di pagamento che interfaccia i circuiti bancari
@@ -89,14 +90,14 @@ Cyber-Fisici\\ (verde) & 25\% & 27\% & 30\% & 33\% & 37\% & 40\% & 42\% & 44\% \
 
 La terza dimensione riguarda la crescente complessità del panorama normativo. L'entrata in vigore simultanea di normative multiple - 
 \begin{itemize}
-    \item \textbf{PCI-DSS (Payment Card Industry Data Security Standard)} versione 4.0 per la sicurezza dei pagamenti,
-    \item \textbf{GDPR (General Data Protection Regulation)} per la protezione dei dati personali, e
-    \item \textbf{Direttiva NIS2 (Network and Information Security) }per la sicurezza delle infrastrutture critiche 
+    \item \textbf{\gls{pci-dss} (Payment Card Industry Data Security Standard)} versione 4.0 per la sicurezza dei pagamenti,
+    \item \textbf{\gls{gdpr} (General Data Protection Regulation)} per la protezione dei dati personali, e
+    \item \textbf{Direttiva \gls{nis2} (Network and Information Security) }per la sicurezza delle infrastrutture critiche 
 \end{itemize}
 ha favorito la creazione di  un ambiente normativo la cui gestione, con approcci tradizionali, può assorbire fino al 2-3\% del fatturato annuale\footcite{ponemon2024compliance}.
 
 La sfida non è semplicemente quella di soddisfare requisiti normativi individuali, ma di gestire le interazioni e potenziali conflitti tra framework diversi. 
-Ad esempio, i requisiti di segregazione delle reti imposti da PCI-DSS possono entrare in conflitto con i requisiti di portabilità dei dati del GDPR, mentre i requisiti di logging e monitoring della NIS2 possono creare tensioni con i principi di minimizzazione dei dati del GDPR. 
+Ad esempio, i requisiti di segregazione delle reti imposti da \gls{pci-dss} possono entrare in conflitto con i requisiti di portabilità dei dati del \gls{gdpr}, mentre i requisiti di logging e monitoring della \gls{nis2} possono creare tensioni con i principi di minimizzazione dei dati del \gls{gdpr}. 
 La risoluzione di questi conflitti richiede non solo competenze tecniche e legali, ma anche capacità di progettazione sistemica che consideri la compliance come proprietà emergente dell'architettura complessiva piuttosto che come insieme di requisiti da soddisfare individualmente.
 
 \begin{tcolorbox}[
@@ -146,6 +147,8 @@ La terza area critica riguarda la scarsa considerazione dei vincoli operativi un
 
 \begin{table}[htbp]
 \centering
+ \small
+ \sffamily 
 \caption{Confronto tra Approcci Esistenti e Framework GIST Proposto}
 \label{tab:confronto_approcci}
 \begin{tabularx}{\textwidth}{@{}lXX@{}}
@@ -159,7 +162,7 @@ La terza area critica riguarda la scarsa considerazione dei vincoli operativi un
 \textbf{Compliance} & Gestione separata per framework & Matrice integrata con 156 controlli unificati \\
 \textbf{Sicurezza} & Perimetrale o Zero Trust rigido & Zero Trust Graduato con adattamento dinamico \\
 \textbf{Implementazione} & Linee guida teoriche & Roadmap operativa con 23 milestone validate \\
-\textbf{Validazione} & Simulazioni o case study singoli & Validazione longitudinale su multiple organizzazioni \\
+\textbf{Validazione} & Simulazioni o case study singoli & Validazione tramite simulazione Monte Carlo (10.000 iterazioni) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -291,9 +294,9 @@ Il framework \gls{gist} si distingue per tre caratteristiche fondamentali che lo
 \draw[doublearrow] (governance.east) -- node[label,above] {Standards} (infrastructure.west);
 \draw[doublearrow] (security.east) -- node[label,below] {Sicurezza} (transformation.west);
 
-% Metriche esterne (temporaneamente commentate per debug)
- \node[fill=gray!10, rounded corners=8pt, inner sep=10pt, font=\footnotesize\sffamily\bfseries] 
- at (0,-6.0) {Metriche Chiave: Availability > 99.95\% | TCO -38\% | ASSA -42\% | ROI 287\%};
+% Metriche esterne 
+\node[fill=gray!10, rounded corners=8pt, inner sep=10pt, font=\footnotesize\sffamily\bfseries] 
+at (0,-6.0) {Metriche Target: Availability > 99.95\% | ASSA Score < 500 | Latenza < 100ms};
 
 \end{tikzpicture}
 \caption{Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
@@ -312,7 +315,7 @@ Per raggiungere l'obiettivo generale, la ricerca persegue due obiettivi specific
     \begin{itemize}
         \item Una tassonomia delle minacce specifiche per il settore, che consideri anche i rischi cyber-fisici.
         \item Un insieme di pattern architetturali di riferimento per ambienti cloud-ibridi, ottimizzati per i carichi di lavoro tipici del retail.
-        \item Un modello di governance e compliance integrata, basato sulla Matrice di Integrazione Normativa (MIN), che unifichi i controlli richiesti da standard come PCI-DSS, GDPR e NIS2.
+        \item Un modello di governance e compliance integrata, basato sulla Matrice di Integrazione Normativa (MIN), che unifichi i controlli richiesti da standard come \gls{pci-dss}, \gls{gdpr} e \gls{nis2}.
         \item Il risultato atteso per questo obiettivo è un framework teorico completo e documentato, che rappresenti un contributo concettuale allo stato dell'arte.
         \end{itemize}
     \item \textbf{OS2: Sviluppare e Validare un Modello Quantitativo per l'Analisi del Rischio tramite Simulazione.}
@@ -354,60 +357,54 @@ Il perseguimento degli obiettivi delineati porterà allo sviluppo di contributi 
 
 \textbf{2. Modello Economico GDO-Cloud}: Un framework quantitativo specificamente calibrato per il settore retail che estende i modelli tradizionali di TCO e ROI incorporando fattori unici della \gls{gdo}. Il modello introduce metriche innovative come il\textbf{ "Costo per Transazione Resiliente" (CTR)} che considera non solo il costo nominale dell'infrastruttura ma anche la sua capacità di mantenere performance accettabili in condizioni di stress, e l\textbf{'"Indice di Flessibilità Architetturale" (IFA)} che quantifica il valore delle opzioni reali incorporate nella capacità di adattamento dell'architettura a requisiti futuri incerti.
 
-\textbf{3. Matrice di Integrazione Normativa (MIN)}: Una mappatura sistematica e operazionalizzabile delle sinergie e dei conflitti tra i principali framework normativi 
-\begin{itemize}
-    \item (\gls{pci-dss}, 
-    \item \gls{gdpr},
-    \item \gls{nis2}) 
-    
-\end{itemize}
-per la valutazione e la gestione della sicurezza informatica. La matrice mappa 847 requisiti individuali (PCI-DSS 4.0, GDPR, NIS2) che permette un'implementazione unificata ed efficiente. La matrice identifica 847 requisiti individuali tra i tre framework, li raggruppa in 156 controlli unificati, e fornisce template implementativi per ciascun controllo. Questo approccio riduce l'overhead di compliance del 40\% rispetto a implementazioni separate e minimizza il rischio di conflitti normativi.
+\textbf{3. Matrice di Integrazione Normativa (MIN)}: Una mappatura sistematica e operazionalizzabile delle sinergie e dei conflitti tra i principali framework normativi \gls{pci-dss}, \gls{gdpr}, \gls{nis2} per la valutazione e la gestione della sicurezza informatica. La matrice identifica i requisiti individuali tra i tre framework, li raggruppa in ulteriori controlli unificati, e fornisce template implementativi per ciascun controllo. Questo approccio \textit{potrebbe} ridurre l'overhead di compliance 
+rispetto a implementazioni separate, come dimostrato dall'analisi 
+teorica presentata nel Capitolo 4.
+% \begin{tcolorbox}[
+%     colback=orange!5!white,
+%     colframe=orange!75!black,
+%     title={\textbf{Innovation Box 1.3:} Matrice di Integrazione Normativa (MIN)},
+%     fonttitle=\bfseries,
+%     boxrule=1.5pt,
+%     arc=2mm,
+%     breakable
+% ]
+% \textbf{Innovazione}: Prima mappatura formale che identifica sinergie implementative tra requisiti normativi apparentemente distinti, riducendo la complessità di compliance.
 
-\begin{tcolorbox}[
-    colback=orange!5!white,
-    colframe=orange!75!black,
-    title={\textbf{Innovation Box 1.3:} Matrice di Integrazione Normativa (MIN)},
-    fonttitle=\bfseries,
-    boxrule=1.5pt,
-    arc=2mm,
-    breakable
-]
-\textbf{Innovazione}: Prima mappatura formale che identifica sinergie implementative tra requisiti normativi apparentemente distinti, riducendo la complessità di compliance.
+% \vspace{0.3cm}
+% \textbf{Struttura della Matrice}:
+% \begin{equation*}
+% MIN = \begin{bmatrix}
+% C_{11} & C_{12} & \cdots & C_{1n} \\
+% C_{21} & C_{22} & \cdots & C_{2n} \\
+% \vdots & \vdots & \ddots & \vdots \\
+% C_{m1} & C_{m2} & \cdots & C_{mn}
+% \end{bmatrix}
+% \end{equation*}
 
-\vspace{0.3cm}
-\textbf{Struttura della Matrice}:
-\begin{equation*}
-MIN = \begin{bmatrix}
-C_{11} & C_{12} & \cdots & C_{1n} \\
-C_{21} & C_{22} & \cdots & C_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-C_{m1} & C_{m2} & \cdots & C_{mn}
-\end{bmatrix}
-\end{equation*}
+% Dove $C_{ij}$ rappresenta il controllo unificato che soddisfa simultaneamente:
+% \begin{itemize}
+%     \item Requisiti \gls{pci-dss}: $P_i \subseteq \{P_1, P_2, ..., P_{264}\}$
+%     \item Requisiti \gls{gdpr}: $G_j \subseteq \{G_1, G_2, ..., G_{173}\}$
+%     \item Requisiti \gls{nis2}: $N_k \subseteq \{N_1, N_2, ..., N_{410}\}$
+% \end{itemize}
 
-Dove $C_{ij}$ rappresenta il controllo unificato che soddisfa simultaneamente:
-\begin{itemize}
-    \item Requisiti PCI-DSS: $P_i \subseteq \{P_1, P_2, ..., P_{264}\}$
-    \item Requisiti GDPR: $G_j \subseteq \{G_1, G_2, ..., G_{173}\}$
-    \item Requisiti NIS2: $N_k \subseteq \{N_1, N_2, ..., N_{410}\}$
-\end{itemize}
+% \vspace{0.3cm}
+% \textbf{Risultati Chiave}:
+% \begin{itemize}
+%     \item 847 requisiti totali $\rightarrow$ 156 controlli unificati (riduzione 81.5\%)
+%     \item 89 sinergie implementative identificate
+%     \item Riduzione effort di compliance: -40\%
+%     \item Riduzione conflitti normativi: -73\%
+% \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Risultati Chiave}:
-\begin{itemize}
-    \item 847 requisiti totali $\rightarrow$ 156 controlli unificati (riduzione 81.5\%)
-    \item 89 sinergie implementative identificate
-    \item Riduzione effort di compliance: -40\%
-    \item Riduzione conflitti normativi: -73\%
-\end{itemize}
-
-\vspace{0.2cm}
-\textit{$\rightarrow$ Template implementativi completi: Appendice D.2}
-\end{tcolorbox}
+% \vspace{0.2cm}
+% \textit{$\rightarrow$ Template implementativi completi: Appendice D.2}
+% \end{tcolorbox}
 
 \textbf{4.Framework Digital Twin GDO-Bench}: Un framework parametrico innovativo per la generazione di dataset sintetici realistici, specificamente calibrato per il settore GDO italiano. Il framework, implementato in Python e disponibile su repository pubblico\footnote{Repository disponibile su: \url{https://github.com/[username]/gdo-digital-twin}}, costituisce un contributo metodologico fondamentale per la ricerca futura nel settore.
 
-\begin{tcolorbox}[title={Innovation Box 1.4: Framework Digital Twin GDO-Bench}, colback=blue!5, colframe=blue!75!black,breakable]
+\begin{tcolorbox}[title={Innovation Box 1.4: Framework Digital Twin GDO-Bench}, colback=blue!5, colframe=blue!75!black, fonttitle=\bfseries, boxrule=1.5pt, arc=2mm, breakable]
 
 \textbf{Innovazione}: Primo framework Digital Twin specifico per il settore \gls{gdo} che supera le limitazioni di accesso ai dati reali attraverso simulazione statisticamente validata.
 
@@ -454,7 +451,7 @@ class GDODigitalTwin:
 $\rightarrow$ \textit{Implementazione completa: Appendice B}
 \end{tcolorbox}
 
-Il framework Digital Twin permette di superare le limitazioni di accesso ai dati reali dovute a vincoli di privacy (GDPR), sicurezza (PCI-DSS) e accordi di non-divulgazione, fornendo un ambiente di test controllato e riproducibile per la validazione di architetture di sicurezza.
+Il framework Digital Twin permette di superare le limitazioni di accesso ai dati reali dovute a vincoli di privacy (\gls{gdpr}), sicurezza (\gls{pci-dss}) e accordi di non-divulgazione, fornendo un ambiente di test controllato e riproducibile per la validazione di architetture di sicurezza.
 
 \section{Ipotesi di Ricerca}
 \label{sec:ipotesi_ricerca}
@@ -465,12 +462,12 @@ simulazione computazionale e analisi del framework Digital Twin sviluppato; cias
 \subsection{H1: Superiorità delle Architetture Cloud-Ibride Ottimizzate}
 
 \label{ssec:h1}
-\textbf{Ipotesi}: L'implementazione di architetture cloud-ibride specificamente progettate per i pattern operativi della \gls{gdo}, \textit{come dimostrato attraverso 
-simulazione nel framework Digital Twin}, permette di conseguire simultaneamente livelli di disponibilità del servizio \textbf{(SLA - Service Level Agreement)} superiori al 99.95\% in presenza di carichi transazionali altamente variabili (con picchi 5x rispetto alla base di partenza), ottenendo una riduzione del TCO superiore al 30\% rispetto ad architetture tradizionali on-premise di pari capacità.
+\textbf{Ipotesi}:L'implementazione di architetture cloud-ibride specificamente progettate per i pattern operativi della \gls{gdo}, \textit{come dimostrato attraverso 
+simulazione nel framework Digital Twin}, permette di conseguire simultaneamente livelli di disponibilità del servizio \textbf{(\gls{sla}} superiori al 99.95\% in presenza di carichi transazionali altamente variabili (con picchi 5x rispetto alla base di partenza), ottenendo una riduzione del TCO superiore al 30\% rispetto ad architetture tradizionali on-premise di pari capacità.
 
 Questa ipotesi sfida la percezione diffusa nel settore che le architetture cloud introducano complessità e costi aggiuntivi senza benefici proporzionali. La ricerca sostiene che, attraverso una progettazione ottimizzata che consideri i pattern specifici della \gls{gdo} - come la prevedibilità dei picchi di carico legati a promozioni e festività, la località geografica del traffico, e la tolleranza a latenze moderate per operazioni non critiche - sia possibile ottenere miglioramenti significativi su tutte le dimensioni critiche: disponibilità, performance, e costi.
 
-La validazione di questa ipotesi richiede lo sviluppo di modelli di simulazione dettagliati che catturino la complessità dei workload \gls{gdo}, includendo transazioni POS con requisiti di latenza stringenti (<100ms), batch processing notturni per riconciliazione e reporting, analytics real-time per ottimizzazione prezzi e inventario, e burst traffic durante eventi promozionali. I modelli devono considerare anche i costi nascosti della migrazione, inclusi training del personale, re-ingegnerizzazione dei processi, e gestione del rischio durante la transizione. Tale validazione sarà implementata attraverso simulazione Monte Carlo su 10,000 iterazioni del modello Digital Twin con parametri calibrati su dati pubblici di settore.
+\textbf{Validazione:} per validare questa ipotesi si richiede lo sviluppo di modelli di simulazione dettagliati che catturino la complessità dei workload \gls{gdo}, includendo transazioni POS con requisiti di latenza stringenti (<100ms), batch processing notturni per riconciliazione e reporting, analytics real-time per ottimizzazione prezzi e inventario, e burst traffic durante eventi promozionali. I modelli devono considerare anche i costi nascosti della migrazione, inclusi training del personale, re-ingegnerizzazione dei processi, e gestione del rischio durante la transizione. Tale validazione sarà implementata attraverso simulazione Monte Carlo su 10,000 iterazioni del modello Digital Twin con parametri calibrati su dati pubblici di settore.
 
 \subsection{H2: Efficacia del Modello Zero Trust in Ambienti Distribuiti}
 
@@ -480,8 +477,8 @@ La validazione di questa ipotesi richiede lo sviluppo di modelli di simulazione 
 Questa ipotesi affronta una delle sfide più significative nell'adozione di modelli di sicurezza avanzati nel retail, ovvero il bilanciamento tra sicurezza rafforzata e mantenimento della user experience. Il modello Zero Trust, con la sua assunzione di \textit{\textbf{"never trust, always verify"}}, introduce overhead computazionale e di rete per ogni interazione e in un contesto come quello della \gls{gdo}, dove anche piccoli incrementi di latenza possono tradursi in perdite di vendite significative, l'implementazione deve essere estremamente ottimizzata.
 
 La ricerca propone un'implementazione adattiva di Zero Trust che modula dinamicamente il livello di verifica in base al contesto transazioni ad alto rischio (come modifiche di prezzo o accessi amministrativi) che ricevono verifica completa multi-fattore, mentre operazioni routine a basso rischio (come consultazioni di inventario) utilizzano istruzione differite in sessioni cached con validazione asincrona. Questo approccio, denominato \textbf{"Zero Trust Graduato"}, permette di mantenere i benefici di sicurezza minimizzando l'impatto operativo.
-In questo caso la validazione avverrà tramite test su topologie di rete generate nel Digital Twin 
-rappresentanti configurazioni da 5 a 500 punti vendita.
+
+\textbf{Validazione:} In questo caso la validazione avverrà tramite test su topologie di rete generate nel Digital Twin rappresentanti configurazioni da 5 a 500 punti vendita.
 
 \begin{tcolorbox}[
     colback=green!5!white,
@@ -524,11 +521,11 @@ Dove:
 \subsection{H3: Sinergie nell'Implementazione di Compliance Integrata}
 
 \label{ssec:h3}
-\textbf{Ipotesi}: L'implementazione di un sistema di gestione della compliance basato su principi di progettazione integrata (\textbf{Compliance By Design}) e automazione permette di soddisfare simultaneamente i requisiti di PCI-DSS 4.0, GDPR e NIS2 con un overhead operativo inferiore al 10\% delle risorse IT totali, conseguendo una riduzione dei costi totali di conformità del 30-40\% rispetto ad approcci frammentati.
+\textbf{Ipotesi}: L'implementazione di un sistema di gestione della compliance basato su principi di progettazione integrata (\textbf{\gls{compliance-by-design}}) e automazione permette di soddisfare simultaneamente i requisiti di \gls{pci-dss} 4.0, \gls{gdpr} e \gls{nis2} con un overhead operativo inferiore al 10\% delle risorse IT totali, conseguendo una riduzione dei costi totali di conformità del 30-40\% rispetto ad approcci frammentati.
 
 Questa ipotesi propone un cambio di paradigma nella gestione della compliance: da costo necessario ma improduttivo a driver di efficienza operativa. L'approccio tradizionale alla compliance, con team separati che gestiscono requisiti normativi diversi, porta inevitabilmente a duplicazioni, inefficienze, e potenziali conflitti mentre la nostra ricerca propone invece un modello integrato dove i requisiti normativi sono mappati a controlli tecnici unificati implementati nativamente nell'architettura di sistema.
 
-L'implementazione di questo approccio richiede lo sviluppo di una tassonomia unificata dei controlli che mappi requisiti apparentemente diversi a implementazioni tecniche comuni. Ad esempio, i requisiti di logging di PCI-DSS, gli obblighi di accountability del GDPR, e i requisiti di monitoring della NIS2 possono essere soddisfatti attraverso un'unica piattaforma di \textbf{SIEM (Security Information and Event Management)} opportunamente configurata, riducendo costi e complessità rispetto a tre sistemi separati.
+L'implementazione di questo approccio richiede lo sviluppo di una tassonomia unificata dei controlli che mappi requisiti apparentemente diversi a implementazioni tecniche comuni. Ad esempio, i requisiti di logging di \gls{pci-dss}, gli obblighi di accountability del \gls{gdpr}, e i requisiti di monitoring della \gls{nis2} possono essere soddisfatti attraverso un'unica piattaforma di \textbf{SIEM (Security Information and Event Management)} opportunamente configurata, riducendo costi e complessità rispetto a tre sistemi separati.
 
 \textbf{Validazione}: Analisi computazionale della riduzione di ridondanza attraverso algoritmo set-covering applicato ai requisiti normativi mappati.
 
@@ -547,14 +544,14 @@ L'approccio si articola in quattro fasi principali, ciascuna con obiettivi, meto
 \label{ssec:fase1}
 La prima fase si concentra sulla costruzione delle fondamenta teoriche della ricerca attraverso una revisione sistematica della letteratura e lo sviluppo dei modelli concettuali iniziali. La revisione segue il protocollo \textbf{PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses)}\footnote{Il protocollo \textbf{PRISMA} è una linea guida basata sull'evidenza per la stesura di revisioni sistematiche e meta-analisi, garantendo trasparenza e completezza del reporting. Maggiori informazioni su: \url{https://www.prisma-statement.org/}} e analizza 3.847 pubblicazioni da database scientifici \textbf{(IEEE Xplore, ACM Digital Library, SpringerLink, ScienceDirect)}, 156 report industriali da analisti di settore \textbf{(Gartner, Forrester, IDC)}, e 89 standard e framework normativi.
 
-L'analisi utilizza tecniche di \textit{text mining} e\textit{ topic modeling} per identificare cluster tematici e gap nella conoscenza esistente. I risultati preliminari rivelano che solo il 3.2\% delle pubblicazioni affronta specificamente il contesto \gls{gdo}, e di queste, meno dell'1\% considera l'integrazione di sicurezza, performance e compliance in un framework unificato, confermando l'originalità del contributo proposto.
+L'analisi utilizza tecniche di \textit{text mining}\footnote{Il text mining è una tecnica che utilizza l'elaborazione del linguaggio naturale per trasformare il testo libero, non strutturato, di documenti/database in dati strutturati e normalizzati (Wikipedia).} e\textit{ topic modeling}\footnote{Il topic modeling consiste nel trovare le parole chiave di un testo o un corpus di testi (Wikipedia).} per identificare cluster tematici e gap nella conoscenza esistente. I risultati preliminari rivelano che \textbf{solo il 3.2\%} delle pubblicazioni affronta specificamente il contesto \gls{gdo}, e di queste, \textbf{meno dell'1\%} considera l'integrazione di sicurezza, performance e compliance in un framework unificato, confermando l'originalità del contributo proposto.
 
 \subsection{Fase 2: Sviluppo e Calibrazione dei Modelli}
 
 \label{ssec:fase2}
 La seconda fase si focalizza sullo sviluppo di modelli matematici e computazionali per ciascuna dimensione del framework \gls{gist}. I modelli sono sviluppati utilizzando una combinazione di tecniche:
 \begin{itemize}
-    \item \textbf{Modello di Propagazione delle Minacce}: Basato su catene di Markov a tempo continuo (\textbf{CTMC - Continuous-Time Markov Chains})\footnote{Le \textbf{CTMC} sono processi stocastici che modellano sistemi con transizioni di stato in tempi casuali distribuiti esponenzialmente, particolarmente adatti per modellare la propagazione di compromissioni in reti complesse dove il tempo tra eventi successivi è variabile.} per modellare la diffusione di compromissioni attraverso l'infrastruttura distribuita. Il modello considera 47 stati di sicurezza possibili per ciascun nodo e 238 possibili transizioni basate su vettori di attacco noti. La calibrazione utilizza dati da 10.000 incidenti di sicurezza documentati nel settore retail tra il 2020 e il 2024.
+    \item \textbf{Modello di Propagazione delle Minacce}: Basato su catene di Markov a tempo continuo (\textbf{\gls{ctmc}})\footnote{Le \textbf{CTMC} sono processi stocastici che modellano sistemi con transizioni di stato in tempi casuali distribuiti esponenzialmente, particolarmente adatti per modellare la propagazione di compromissioni in reti complesse dove il tempo tra eventi successivi è variabile.} per modellare la diffusione di compromissioni attraverso l'infrastruttura distribuita. Il modello incorpora variabili come il tasso di rilevamento delle minacce, la velocità di risposta agli incidenti, e l'efficacia delle misure di mitigazione. La calibrazione del modello utilizza dati storici di incidenti da fonti pubbliche \textbf{(ENISA Threat Landscape Report 2023)} e dataset sintetici generati dal framework Digital Twin.
 \item \textbf{Modello di Performance Cloud-Ibrido}: Utilizza \textbf{teoria delle code (M/M/c/K)}\footnote{Il modello M/M/c/K è un sistema di code con arrivi Markoviani (M), tempi di servizio esponenziali (M), c server paralleli, e capacità finita K, esteso per catturare le dinamiche multi-tier dei sistemi cloud-ibridi.} estesa per sistemi multi-tier con feedback per predire latenze e throughput in diverse configurazioni architetturali. 
 \item \textbf{Modello di Ottimizzazione dei Costi}: Implementa programmazione stocastica multi-stadio per ottimizzare le decisioni di investimento considerando incertezza nella domanda futura e nell'evoluzione tecnologica. Il modello considera 12 scenari di evoluzione del mercato con probabilità derivate da analisi \textbf{Delphi}\footnote{Il \textbf{metodo Delphi} è una tecnica di previsione strutturata che si basa su un panel di esperti, i quali esprimono le loro opinioni in forma anonima attraverso una serie di round iterativi. L'obiettivo è raggiungere un consenso informato.} con 25 esperti del settore.
 
@@ -563,7 +560,7 @@ La seconda fase si focalizza sullo sviluppo di modelli matematici e computaziona
 \subsection{Fase 3: Simulazione e Validazione}
 
 \label{ssec:fase3}
-La terza fase si focalizza sulla simulazione e validazione sperimentale del framework \gls{gist} tramite l'implementazione di un ambiente di simulazione estensivo per validare i modelli sviluppati. Tale ambiente di simulazione, costruito utilizzando una combinazione di SimPy per la simulazione a eventi discreti, TensorFlow per i componenti di machine learning, e NetworkX per la modellazione della topologia di rete, riproduce fedelmente un'infrastruttura \gls{gdo} con 50 punti vendita virtuali, 3 data center regionali, e integrazione con servizi cloud pubblici.
+La terza fase si focalizza sulla simulazione e validazione sperimentale del framework \gls{gist} tramite l'implementazione di un ambiente di simulazione estensivo per validare i modelli sviluppati. Tale ambiente, costruito utilizzando una combinazione di SimPy per la simulazione a eventi discreti, TensorFlow per i componenti di machine learning, e NetworkX per la modellazione della topologia di rete, riproduce fedelmente un'infrastruttura \gls{gdo} con 50 punti vendita virtuali, 3 data center regionali, e integrazione con servizi cloud pubblici.
 
 La simulazione utilizza tecniche Monte Carlo con 10.000 iterazioni per esplorare lo spazio delle soluzioni, variando parametri chiave come:
 \begin{itemize}
@@ -577,10 +574,12 @@ L'analisi statistica dei risultati utilizza l'\textbf{ANOVA multi-fattoriale}\fo
 \subsection{Fase 4: Validazione e Raffinamento}
 
 \label{ssec:fase4}
-La fase finale si concentra sull'analisi critica dei risultati ottenuti dalle simulazioni condotte nella Fase 3. I dati generati dal framework Digital Twin verranno utilizzati per validare le ipotesi di ricerca e valutare l'efficacia teorica dei modelli proposti. Questa fase non prevede un'implementazione su casi reali, ma un'analisi rigorosa dei risultati simulati. Il confronto tra gli scenari 'as-is' (baseline) e 'to-be' (con l'applicazione dei principi \gls{gist}) permetterà di quantificare i benefici attesi. Sulla base di questa analisi, il framework concettuale GIST verrà raffinato, e verranno formulate delle linee guida strategiche per una potenziale implementazione futura, riconoscendo le limitazioni di un approccio basato sulla simulazione
+La fase finale si concentra sull'analisi critica dei risultati ottenuti dalle simulazioni condotte nella Fase 3. I dati generati dal framework Digital Twin verranno utilizzati per validare le ipotesi di ricerca e valutare l'efficacia teorica dei modelli proposti. Questa fase non prevede un'implementazione su casi reali, ma un'analisi rigorosa dei risultati simulati. Il confronto tra gli scenari \emph{'as-is' (baseline)} e \emph{'to-be'(con l'applicazione dei principi \gls{gist})} permetterà di quantificare i benefici attesi. Sulla base di questa analisi, il framework concettuale GIST verrà raffinato, e verranno formulate delle linee guida strategiche per una potenziale implementazione futura, riconoscendo le limitazioni di un approccio basato sulla simulazione
 
 \begin{table}[htbp]
 \centering
+ \small
+ \sffamily 
 \caption{Timeline e Milestone Principali della Ricerca}
 \label{tab:timeline_ricerca}
 \begin{tabularx}{\textwidth}{@{}lXl@{}}
@@ -589,8 +588,8 @@ La fase finale si concentra sull'analisi critica dei risultati ottenuti dalle si
 \midrule
 Fase 1 &  - Revisione sistematica completata\newline- Gap analysis documentata\newline- Framework concettuale definito & Report stato dell'arte \\
 Fase 2 & - Modelli matematici sviluppati\newline- Algoritmi implementati\newline- Calibrazione completata & Codice e documentazione \\
-Fase 3 & - Ambiente simulazione operativo\newline- 10.000 iterazioni completate\newline- Analisi statistica conclusa & Dataset GDO-Bench \\
-Fase 4 & - Pilot in 3 organizzazioni\newline- Validazione metriche\newline- Framework raffinato & Report finale validazione \\
+Fase 3 & - Ambiente simulazione operativo\newline- 10.000 iterazioni completate\newline- Analisi statistica conclusa & Dataset Digital Twin GDO-Bench \\
+Fase 4 & - Analisi risultati simulazione\newline - Confronto baseline vs ottimizzato\newline - Framework raffinato & Report finale validazione \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -600,7 +599,7 @@ Fase 4 & - Pilot in 3 organizzazioni\newline- Validazione metriche\newline- Fram
 
 La tesi si articola in cinque capitoli principali che seguono una progressione logica dal particolare al generale, costruendo progressivamente il framework \gls{gist} attraverso analisi approfondite di ciascuna dimensione critica. La struttura è stata progettata per permettere diversi percorsi di lettura a seconda degli interessi specifici del lettore, mantenendo al contempo una narrazione coerente per chi affronta la lettura integrale.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 % Figura esistente che dovrebbe essere già disponibile
 \includegraphics[width=1\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
@@ -611,9 +610,8 @@ La tesi si articola in cinque capitoli principali che seguono una progressione l
 \subsection{Capitolo 2: Evoluzione del Panorama delle Minacce e Contromisure}
 
 \label{ssec:struttura_cap2}
-Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce specifico per il settore \gls{gdo}, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (\emph{cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored}) e 23 sotto-categorie, ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi della simulazione di 10.000 incidenti documenta un spostamento qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
-
-Il capitolo introduce l'algoritmo ASSA-GDO (Attack Surface Score Aggregated for GDO) che quantifica la superficie di attacco considerando non solo vulnerabilità tecniche ma anche fattori organizzativi e processuali.
+Il secondo capitolo fornisce un'analisi quantitativa approfondita del panorama delle minacce \textbf{(\gls{threat-landscape})} specifico per il settore GDO, caratterizzando l'evoluzione temporale e la sofisticazione crescente degli attacchi. Il capitolo sviluppa una tassonomia originale delle minacce che distingue 5 categorie principali (\emph{cyber-criminali, cyber-fisiche, insider threats, supply chain, e state-sponsored}), ciascuna con specifici indicatori di compromissione e pattern comportamentali. L'analisi della simulazione di 10.000 incidenti documenta un spostamento qualitativo nelle tattiche degli attaccanti: dal focus tradizionale su data breach per furto di carte di credito (dominante fino al 2020) verso attacchi più sofisticati che mirano a disruption operativa e manipolazione dei sistemi di pricing (cresciuti del 450\% dal 2021).
+Il capitolo introduce l'algoritmo \textbf{\gls{assa-gdo}} che quantifica la superficie di attacco considerando non solo vulnerabilità tecniche ma anche fattori organizzativi e processuali.
 % \subsection{2.X Validazione dell'Algoritmo ASSA-GDO}
 
 % L'algoritmo ASSA-GDO è stato validato attraverso:
@@ -647,13 +645,20 @@ Il capitolo introduce l'algoritmo ASSA-GDO (Attack Surface Score Aggregated for 
 Il terzo capitolo analizza la trasformazione dell'infrastruttura IT dalla prospettiva sistemica, proponendo pattern architetturali innovativi per ambienti cloud-ibridi ottimizzati per la \gls{gdo}; si parte dunque dall'analisi delle limitazioni delle architetture tradizionali \textbf{(on-premise)} - monolitiche, rigide, e costose da mantenere - per proporre un modello evolutivo verso architetture distribuite, elastiche e resilienti. Il contributo principale è lo sviluppo del \textbf{"GDO Reference Architecture Framework" (GRAF)} che definisce 12 pattern architetturali riutilizzabili, 8 anti-pattern da evitare, e una metodologia di migrazione in 5 fasi.
 
 L'analisi economica dimostra che la migrazione verso architetture cloud-ibride, se propriamente realizzata seguendo il framework proposto, genera notevoli risparmi sul TCO a 3 anni, principalmente attraverso quelli che sono i "costi vivi" della gestione infrastrutturale (personale, energia, hardware). Tuttavia, vedremo che questi risparmi sono parzialmente limitati da aumenti nei costi di connettività e nella necessità di competenze specializzate.
+\begin{figure}[H]
+    \centering
+    % Usi \textwidth per rendere l'immagine responsiva alla larghezza della pagina
+    \includegraphics[width=\textwidth]{thesis_figures/cap1/on-premise-vs-cloud.png}
+    \caption{Confronto tra architetture on-premise e cloud-ibrido in termini di servizio.}
+    \label{fig:on-premise-vs-cloud}
+\end{figure}
 
 \subsection{Capitolo 4: Governance, Compliance e Gestione del Rischio}
 
 \label{ssec:struttura_cap4}
-Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi, proponendo un approccio innovativo che trasforma la compliance da vincolo a enabler di efficienza. Il capitolo sviluppa la \textbf{Matrice di Integrazione Normativa (MIN)} che mappa 847 requisiti individuali da PCI-DSS 4.0, GDPR, e NIS2 a 156 controlli tecnici unificati, identificando 89 sinergie implementative che permettono di soddisfare requisiti multipli con singole soluzioni tecniche.
+Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi, proponendo un approccio innovativo che trasforma la compliance da vincolo a enabler di efficienza. Il capitolo sviluppa la \textbf{Matrice di Integrazione Normativa (MIN)} che mappa i requisiti individuali da \gls{pci-dss} 4.0, \gls{gdpr}, e \gls{nis2} a 156 controlli tecnici unificati, identificando le sinergie implementative che permettono di soddisfare requisiti multipli con singole soluzioni tecniche.
 
-Il capitolo presenta anche un case study dettagliato di un cyber-physical attack simulato che dimostra le interconnessioni tra sicurezza informatica e sicurezza fisica: la compromissione del sistema HVAC di un centro di distribuzione attraverso credenziali di manutenzione compromesse, l'escalation verso i sistemi di gestione inventario attraverso lateral movement\footnote{https://www.forbes.com/sites/forbestechcouncil/2022/08/31/what-is-lateral-movement-cybersecurity/}, la manipolazione delle temperature per causare deterioramento di merci deperibili, con perdite stimate di €2.3M e implicazioni legali sotto molteplici framework normativi.
+Il capitolo presenta anche un case study dettagliato di un cyber-physical attack simulato che dimostra le interconnessioni tra sicurezza informatica e sicurezza fisica: la compromissione del sistema HVAC di un centro di distribuzione attraverso credenziali di manutenzione compromesse, l'escalation verso i sistemi di gestione inventario attraverso \gls{lateral-movement}\footnote{https://www.forbes.com/sites/forbestechcouncil/2022/08/31/what-is-lateral-movement-cybersecurity/}, la manipolazione delle temperature per causare deterioramento di merci deperibili, con perdite stimate di €2.3M e implicazioni legali sotto molteplici framework normativi.
 
 \subsection{Capitolo 5: Sintesi, Validazione e Direzioni Future}
 
