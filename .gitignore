@@ -237,3 +237,6 @@ __marimo__/
 *.nav
 *.snm
 *.vrb
+
+# LaTeX main output files
+main.*
