@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc} % Codifica UTF-8
 \usepackage[T1]{fontenc}
 
+
 % ===== XELATEX: FONT ARIAL WINDOWS =====
 \usepackage{fontspec}
 \setmainfont{Arial}[
@@ -10,6 +11,11 @@
     ItalicFont = {Arial Italic},
     BoldItalicFont = {Arial Bold Italic}
 ]
+\setlength{\headheight}{27.58636pt} % Correzione dell'altezza dell'intestazione
+\addtolength{\topmargin}{-12.58636pt} % Regolazione del margine superiore
+\newcommand{\checkmark}{\textcolor{green}{✓}}
+\newcommand{\crossmark}{\textcolor{red}{✗}}
+
 
 % ===== LINGUA ITALIANA =====
 \usepackage{polyglossia}

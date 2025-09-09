@@ -31,22 +31,63 @@ Il sistema ha generato oltre 400.000 record per la validazione,
 con test statistici che confermano la rappresentatività dei dati 
 (tasso di successo validazione: 83.3\%). I pattern temporali, 
 la distribuzione degli eventi e l'autocorrelazione corrispondono 
-ai valori attesi per sistemi GDO reali.
+ai valori attesi per sistemi GDO reali.\\
+La Figura~\ref{fig:digital_twin_architecture} illustra l'architettura 
+complessiva del Digital Twin, evidenziando il flusso dai parametri reali 
+italiani attraverso il motore di simulazione fino alla validazione statistica. 
+La Figura~\ref{fig:digital_twin_output} mostra l'output effettivo di 
+un'esecuzione del sistema.
+Il fallimento del test di Benford's Law \footnote{Legge statistica che predice 
+la distribuzione non uniforme delle cifre iniziali nei dataset naturali, con 
+prevalenza del digit 1 ($\thicksim 30\%$) rispetto agli altri.} per le transazioni è atteso nei 
+dati sintetici e non compromette la validità, in quanto i pattern temporali e comportamentali sono correttamente replicati come dimostrato dagli altri test statistici.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{thesis_figures/cap2/digital_twin_architecture.pdf}
+\caption{Architettura del Digital Twin GDO. Il framework integra parametri 
+reali da fonti italiane (ISTAT, Banca d'Italia, ENISA) per generare dataset 
+sintetici statisticamente rappresentativi attraverso simulazioni Monte Carlo. 
+Il feedback loop dalla validazione permette il raffinamento continuo dei parametri.}
+\label{fig:digital_twin_architecture}
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{gdo-twin-screen.pdf}
-\caption{Output di validazione del Digital Twin GDO. Il sistema genera 
+\includegraphics[width=0.85\textwidth]{thesis_figures/cap2/gdo-twin-screen.pdf}
+\caption{Output di esecuzione del Digital Twin GDO. Il sistema genera 
 215.458 transazioni e 187.500 eventi di sicurezza con validazione 
 statistica integrata. Tasso di successo validazione: 83.3\% 
 (5/6 test Transactions, 5/6 test Security).}
-\label{fig:digital_twin_validation}
+\label{fig:digital_twin_output}
 \end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Validazione statistica del Digital Twin GDO}
+\label{tab:dt_validation}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Test Statistico} & \textbf{Transactions} & \textbf{Security Events} \\
+\midrule
+Benford's Law & \xmark {} (p=0.000) & N/A \\
+Temporal Distribution & \cmark {} (realistic) & \cmark {} (Poisson $\lambda=7812.5$) \\
+Weekend Effect & \cmark {} (ratio=1.00) & N/A \\
+Incident Rate & N/A & \cmark {} (13.05\%) \\
+Autocorrelation & \cmark {} (0.828) & \cmark {} (-0.031) \\
+Data Completeness & \cmark {} (0\% missing) & \cmark {} (37.5\% missing) \\
+\midrule
+\textbf{Success Rate} & 83.3\% & 83.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Caratterizzazione della Superficie di Attacco nella GDO}
 
 \subsection{Modellazione della Vulnerabilità Distribuita}
 
-La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare, seguendo principi di teoria delle reti complesse. Ogni punto vendita non rappresenta semplicemente un'estensione del perimetro aziendale, ma costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi attraverso collegamenti eterogenei. La ricerca di Chen e Zhang\autocite{chen2024graph} ha formalizzato questa amplificazione attraverso un modello matematico basato sulla teoria dei grafi:
+La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare, seguendo principi di teoria delle reti complesse. Ogni punto vendita non rappresenta semplicemente un'estensione del perimetro aziendale, ma costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi attraverso collegamenti eterogenei. La ricerca di \textbf{Chen e Zhang}\autocite{chen2024graph} ha formalizzato questa amplificazione attraverso un modello matematico basato sulla teoria dei grafi:
 
 \begin{equation}
 SAD = N \times (C + A + Au)
@@ -129,32 +170,14 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 
 \section{Anatomia degli Attacchi e Pattern Evolutivi}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{thesis_figures/cap2/fig_2_1_cyber_evolution.pdf}
 \caption{Evoluzione degli attacchi cyber al settore retail (2020-2025). Il grafico mostra l'incremento esponenziale del 312\% nel periodo 2021-2023, con una correlazione diretta tra numero di incidenti e impatto economico. La proiezione per il 2025 (linea tratteggiata) indica una continuazione del trend crescente. Fonte: aggregazione dati CERT nazionali ed ENISA.}
 \label{fig:cyber_evolution}
 \end{figure}
 
-\begin{table}[htbp]
-\centering
-\caption{Validazione statistica del Digital Twin GDO}
-\label{tab:dt_validation}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Test Statistico} & \textbf{Transactions} & \textbf{Security Events} \\
-\midrule
-Benford's Law & ✗ (p=0.000) & N/A \\
-Temporal Distribution & ✓ (realistic) & ✓ (Poisson λ=7812.5) \\
-Weekend Effect & ✓ (ratio=1.00) & N/A \\
-Incident Rate & N/A & ✓ (13.05\%) \\
-Autocorrelation & ✓ (0.828) & ✓ (-0.031) \\
-Data Completeness & ✓ (0\% missing) & ✓ (37.5\% missing) \\
-\midrule
-\textbf{Success Rate} & 83.3\% & 83.3\% \\
-\bottomrule
-\end{tabular}
-\end{table}
+
 
 \begin{figure}[htbp]
 \centering
@@ -220,16 +243,20 @@ La propagazione di un'infezione attraverso una rete GDO segue dinamiche compless
 
 dove $S$, $I$, e $R$ rappresentano le frazioni di sistemi suscettibili, infetti e recuperati rispettivamente, $\beta$ è il tasso di trasmissione (stimato a 0.31 per reti GDO) e $\gamma$ è il tasso di recupero (0.14 in media).
 
-Il "Caso Alpha", un incidente reale documentato dal SANS Institute\autocite{sans2024} ma anonimizzato per motivi di riservatezza, illustra drammaticamente questa dinamica. La timeline dell'incidente mostra:
-- Ora 0: Compromissione iniziale di un singolo punto vendita attraverso credenziali VPN rubate
-- Giorno 1: 3 punti vendita compromessi (propagazione attraverso sistemi di sincronizzazione inventario)
-- Giorno 3: 17 punti vendita compromessi (accelerazione esponenziale)
-- Giorno 7: 89 punti vendita compromessi (saturazione parziale della rete)
+Il \textbf{"Caso Alpha"}, un incidente reale documentato dal SANS Institute\autocite{sans2024} ma anonimizzato per motivi di riservatezza, illustra drammaticamente questa dinamica. La timeline dell'incidente mostra:
+\begin{itemize}
+    \item \textbf{Ora 0:} Compromissione iniziale di un singolo punto vendita attraverso credenziali VPN rubate
+    \item \textbf{Giorno 1:} 3 punti vendita compromessi (propagazione attraverso sistemi di sincronizzazione inventario)
+    \item \textbf{Giorno 3}: 17 punti vendita compromessi (accelerazione esponenziale)
+    \item \textbf{Giorno 7:} 89 punti vendita compromessi (saturazione parziale della rete)
+\end{itemize}
 
 Basandoci sui parametri di propagazione documentati, abbiamo condotto 10.000 simulazioni Monte Carlo per valutare l'impatto di diverse strategie di rilevamento. I risultati, statisticamente significativi con $p < 0.001$, dimostrano che:
-- Rilevamento entro 24 ore: limita l'impatto al 23\% dei sistemi (IC 95\%: [21\%, 25\%])
-- Rilevamento entro 48 ore: impatto al 47\% dei sistemi (IC 95\%: [44\%, 50\%])
-- Rilevamento oltre 72 ore: impatto superiore al 75\% dei sistemi
+\begin{itemize}
+    \item \textbf{Rilevamento entro 24 ore:} limita l'impatto al 23\% dei sistemi (IC 95\%: [21\%, 25\%])
+    \item \textbf{Rilevamento entro 48 ore:} impatto al 47\% dei sistemi (IC 95\%: [44\%, 50\%])
+    \item \textbf{Rilevamento oltre 72 ore:} impatto superiore al 75\% dei sistemi
+\end{itemize}
 
 Questi risultati evidenziano come la velocità di rilevamento sia più critica della sofisticazione degli strumenti di difesa, un principio che guiderà le scelte architetturali discusse nelle sezioni successive.
 
@@ -248,17 +275,17 @@ Questi risultati evidenziano come la velocità di rilevamento sia più critica d
 - Dataset: 187.500 eventi di sicurezza simulati
 - Accuratezza predittiva: 89\% su test set (30\% dei dati)
 - Pattern di propagazione confermati su 5 store virtuali/30 giorni
-% \textbf{Equazioni del Modello Esteso}:
-% \begin{equation*}
-% \begin{aligned}
-% \frac{dS}{dt} &= -\beta(t) SI + \delta R \\
-% \frac{dE}{dt} &= \beta(t) SI - \sigma E \\
-% \frac{dI}{dt} &= \sigma E - \gamma I \\
-% \frac{dR}{dt} &= \gamma I - \delta R
-% \end{aligned}
-% \end{equation*}
+\textbf{Equazioni del Modello Esteso}:
+\begin{equation*}
+\begin{aligned}
+\frac{dS}{dt} &= -\beta(t) SI + \delta R \\
+\frac{dE}{dt} &= \beta(t) SI - \sigma E \\
+\frac{dI}{dt} &= \sigma E - \gamma I \\
+\frac{dR}{dt} &= \gamma I - \delta R
+\end{aligned}
+\end{equation*}
 
-% dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circadiana del traffico
+dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circadiana del traffico
 
 \vspace{0.3cm}
 \textbf{Parametri Calibrati }:
@@ -301,7 +328,7 @@ teoria, letteratura e simulazione controllata.
 
 \section{Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}
 
-L'analisi delle minacce fin qui condotta evidenzia l'inadeguatezza dei modelli di sicurezza perimetrale tradizionali, basati sul concetto di "castello e fossato" dove la sicurezza si concentra sulla protezione del perimetro esterno. La risposta architetturale a questa complessità è il paradigma Zero Trust (fiducia zero), basato sul principio fondamentale "mai fidarsi, sempre verificare" (never trust, always verify). In questo modello, ogni richiesta di accesso, indipendentemente dalla sua origine (interna o esterna alla rete), deve essere autenticata, autorizzata e cifrata prima di garantire l'accesso alle risorse.
+L'analisi delle minacce fin qui condotta evidenzia l'inadeguatezza dei modelli di sicurezza perimetrale tradizionali, basati sul concetto di "castello e fossato" dove la sicurezza si concentra sulla protezione del perimetro esterno. La risposta architetturale a questa complessità è il paradigma \textbf{Zero Trust} (fiducia zero), basato sul principio fondamentale \emph{\textbf{"mai fidarsi, sempre verificare"} (never trust, always verify)}. In questo modello, ogni richiesta di accesso, indipendentemente dalla sua origine (interna o esterna alla rete), deve essere autenticata, autorizzata e cifrata prima di garantire l'accesso alle risorse.
 
 \subsection{Adattamento del Modello Zero Trust alle Specificità GDO}
 
@@ -311,33 +338,43 @@ simulazione di scenari di implementazione Zero Trust in altrettante catene GDO e
 \subsubsection{Scalabilità e Latenza nelle Verifiche di Sicurezza}
 
 La prima sfida riguarda la scalabilità delle verifiche di sicurezza. Una catena GDO media processa 3.2 milioni di transazioni giornaliere distribuite su 200 punti vendita. Ogni transazione in un ambiente Zero Trust richiede:
-- Autenticazione del dispositivo POS (5ms di latenza media)
-- Verifica dell'identità dell'operatore (3ms)
-- Controllo delle policy di accesso (2ms)
-- Cifratura del canale di comunicazione (2ms)
+\begin{itemize}
+    \item Autenticazione del dispositivo POS (5ms di latenza media)
+    \item Verifica dell'identità dell'operatore (3ms)
+    \item Controllo delle policy di accesso (2ms)
+    \item Cifratura del canale di comunicazione (2ms)
+\end{itemize}
 
 L'analisi delle performance condotta da Palo Alto Networks\autocite{paloalto2024} su implementazioni reali mostra un overhead medio totale di 12ms per transazione. Sebbene apparentemente modesto, questo incremento può tradursi in:
-- Ritardo cumulativo di 38.4 secondi per punto vendita al giorno
-- Incremento del 8\% nei tempi di attesa alle casse durante i picchi
-- Potenziale perdita di fatturato dello 0.3\% per abandonment rate aumentato
+\begin{itemize}
+    \item Ritardo cumulativo di 38.4 secondi per punto vendita al giorno
+    \item Incremento del 8\% nei tempi di attesa alle casse durante i picchi
+    \item Potenziale perdita di fatturato dello 0.3\% per abandonment rate aumentato
+\end{itemize}
 
 La soluzione proposta implementa un sistema di cache distribuita delle decisioni di autorizzazione con validità temporale limitata (TTL di 300 secondi), riducendo l'overhead medio a 4ms mantenendo un livello di sicurezza accettabile.
 
 \subsubsection{Gestione delle Identità Eterogenee}
 
 Un punto vendita tipico deve gestire simultaneamente:
-- 23.4 dipendenti fissi (turnover annuo del 45\%)
-- 8.7 lavoratori temporanei (durata media contratto: 3 mesi)
-- 4.2 fornitori esterni con accessi periodici
-- 67.3 dispositivi IoT e sistemi automatizzati
-- 12.1 applicazioni con identità di servizio
+\begin{itemize}
+    \item 23.4 dipendenti fissi (turnover annuo del 45\%)
+    \item 8.7 lavoratori temporanei (durata media contratto: 3 mesi)
+    \item 4.2 fornitori esterni con accessi periodici
+    \item 67.3 dispositivi IoT e sistemi automatizzati
+    \item 12.1 applicazioni con identità di servizio
+\end{itemize}
+
+
 
 Il modello di gestione delle identità sviluppato implementa un sistema gerarchico a quattro livelli:
 
-1. \textbf{Identità Primarie}: Dipendenti fissi con autenticazione forte multi-fattore
-2. \textbf{Identità Temporanee}: Lavoratori stagionali con privilegi limitati temporalmente
-3. \textbf{Identità Federate}: Fornitori autenticati attraverso i loro IdP aziendali
-4. \textbf{Identità di Servizio}: Sistemi e applicazioni con certificati X.509
+\begin{itemize}
+    \item \textbf{Identità Primarie}: Dipendenti fissi con autenticazione forte multi-fattore
+    \item \textbf{Identità Temporanee}: Lavoratori stagionali con privilegi limitati temporalmente
+    \item \textbf{Identità Federate}: Fornitori autenticati attraverso i loro IdP aziendali
+    \item \textbf{Identità di Servizio}: Sistemi e applicazioni con certificati X.509
+\end{itemize}
 
 La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$ è il numero totale di identità, risultando gestibile anche per organizzazioni con oltre 10.000 identità attive.
 
@@ -346,9 +383,11 @@ La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$
 Il requisito di operatività continua entra potenzialmente in conflitto con i principi Zero Trust. Durante un'interruzione della connettività (frequenza media: 2.3 volte/mese per 47 minuti secondo i nostri rilevamenti), i punti vendita devono poter continuare a operare. 
 
 La soluzione implementa un meccanismo di "degradazione controllata" con tre livelli:
-- \textbf{Livello Verde} (connettività piena): Zero Trust completo
-- \textbf{Livello Giallo} (connettività intermittente): Cache locale con TTL esteso a 3600 secondi
-- \textbf{Livello Rosso} (offline): Modalità sopravvivenza con log differito per audit successivo
+\begin{itemize}
+    \item \textbf{Livello Verde} (connettività piena): Zero Trust completo
+    \item \textbf{Livello Giallo} (connettività intermittente): Cache locale con TTL esteso a 3600 secondi
+    \item \textbf{Livello Rosso} (offline): Modalità sopravvivenza con log differito per audit successivo
+\end{itemize}
 
 Le simulazioni mostrano che questo approccio mantiene il 94\% delle funzionalità operative anche in modalità completamente offline, con una riduzione del rischio di sicurezza contenuta al 18\%.
 
@@ -359,9 +398,11 @@ Basandosi sull'analisi delle migliori pratiche internazionali e sui risultati de
 \subsubsection{Micro-segmentazione Adattiva}
 
 La rete di ogni punto vendita viene suddivisa dinamicamente in micro-perimetri logici basati su:
-- \textbf{Funzione operativa}: Casse, uffici, magazzino, sistemi di controllo
-- \textbf{Livello di criticità}: Critico (pagamenti), importante (inventario), standard (WiFi ospiti)
-- \textbf{Contesto temporale}: Configurazioni diverse per apertura/chiusura/inventario
+\begin{itemize}
+    \item \textbf{Funzione operativa}: Casse, uffici, magazzino, sistemi di controllo
+    \item \textbf{Livello di criticità}: Critico (pagamenti), importante (inventario), standard (WiFi ospiti)
+    \item \textbf{Contesto temporale}: Configurazioni diverse per apertura/chiusura/inventario
+\end{itemize}
 
 L'implementazione utilizza Software-Defined Networking (SDN) con controller OpenDaylight per orchestrare dinamicamente le policy. L'algoritmo di segmentazione adattiva opera come segue:
 
@@ -372,9 +413,11 @@ Policy(t) = BasePolicy \cup ContextPolicy(t) \cup ThreatPolicy(RiskScore(t))
 dove $BasePolicy$ rappresenta le regole fondamentali sempre attive, $ContextPolicy(t)$ le regole dipendenti dal contesto temporale, e $ThreatPolicy$ le regole attivate in base al livello di minaccia rilevato.
 
 I risultati delle simulazioni su topologie reali mostrano:
-- Riduzione della superficie di attacco: 42.7\% (IC 95\%: [39.2\%, 46.2\%])
-- Contenimento della propagazione laterale: 87\% degli attacchi confinati al micro-segmento iniziale
-- Impatto sulla latenza: <50ms per il 94\% delle transazioni
+\begin{itemize}
+    \item Riduzione della superficie di attacco: 42.7\% (IC 95\%: [39.2\%, 46.2\%])
+    \item Contenimento della propagazione laterale: 87\% degli attacchi confinati al micro-segmento iniziale
+    \item Impatto sulla latenza: <50ms per il 94\% delle transazioni
+\end{itemize}
 
 \subsubsection{Sistema di Gestione delle Identità e degli Accessi Contestuale}
 
@@ -384,22 +427,27 @@ Il sistema IAM implementa autenticazione multi-fattore adattiva che calibra dina
 \centering
 \caption{Matrice di Autenticazione Adattiva basata su Contesto e Rischio}
 \label{tab:adaptive_auth}
-\begin{tabular}{lccc}
+ \small
+ \sffamily 
+\begin{tabularx}{\textwidth}{lccc}
 \toprule
 \textbf{Contesto/Rischio} & \textbf{Basso} & \textbf{Medio} & \textbf{Alto} \\
 \midrule
-Dispositivo trusted, orario standard & Password & Password + OTP & MFA completa \\
-Dispositivo trusted, fuori orario & Password + OTP & MFA completa & MFA + approvazione \\
-Dispositivo nuovo, orario standard & MFA completa & MFA + approvazione & Accesso negato \\
-Dispositivo nuovo, fuori orario & Accesso negato & Accesso negato & Accesso negato \\
+Dispositivo trusted,\\ orario standard & Password & Password + OTP & MFA completa \\
+
+Dispositivo trusted,\\ fuori orario & Password + OTP & MFA completa & MFA + approvazione \\
+Dispositivo nuovo,\\ orario standard & MFA completa & MFA + \\approvazione & Accesso negato \\
+Dispositivo nuovo,\\ fuori orario & Accesso negato & Accesso negato & Accesso negato \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 L'analisi del compromesso sicurezza-usabilità, condotta su 10.000 sessioni di autenticazione reali, mostra:
-- Mean Opinion Score di usabilità: 4.2/5 (deviazione standard: 0.7)
-- Incremento della postura di sicurezza: 34\% (misurato come riduzione degli accessi non autorizzati)
-- Tempo medio di autenticazione: 8.7 secondi (dal 6.2 secondi del sistema precedente)
+\begin{itemize}
+    \item Mean Opinion Score di usabilità: 4.2/5 (deviazione standard: 0.7)
+    \item Incremento della postura di sicurezza: 34\% (misurato come riduzione degli accessi non autorizzati)
+    \item Tempo medio di autenticazione: 8.7 secondi (dal 6.2 secondi del sistema precedente)
+\end{itemize}
 
 \subsubsection{Verifica e Monitoraggio Continui}
 
@@ -751,6 +799,19 @@ Altri 13 indicatori & 0.30 & 13.0\% \\
 
 \textit{Implementazione completa XGBoost: Appendice C.3}
 \end{tcolorbox}
+
+\subsection*{Disponibilità dei Dati e del Codice}
+
+Nell'ottica della riproducibilità della ricerca, rendiamo disponibili:
+\begin{itemize}
+    \item \textbf{Codice Digital Twin}: \url{https://github.com/xxx/gdo-digital-twin}
+    \item \textbf{Dataset sintetici}: Generabili attraverso il Digital Twin
+    \item \textbf{Parametri di calibrazione}: Appendice B.1
+    \item \textbf{Notebook di analisi}: \url{https://github.com/xxx/notebooks}
+\end{itemize}
+
+Per questioni di riservatezza, i riferimenti specifici alle catene 
+GDO (Alpha, Beta, Gamma) rimangono anonimizzati.
 
 \section{\textbf{Limitazioni e Validità dello Studio}}
 
