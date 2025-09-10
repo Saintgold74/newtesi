@@ -1,0 +1,190 @@
+% File: figures/power_infographic.tex
+% Infografica moderna sui sistemi di alimentazione per GDO
+% Per uso con \input{} nel documento principale
+
+\begin{tikzpicture}[
+    % Stili per le card
+    card/.style={rectangle, rounded corners=10pt, thick, drop shadow},
+    cardblue/.style={card, draw=blue!60, fill=blue!5},
+    cardgreen/.style={card, draw=green!60, fill=green!5},
+    cardorange/.style={card, draw=orange!60, fill=orange!5},
+    cardred/.style={card, draw=red!60, fill=red!5},
+    % Stili per icone
+    icon/.style={circle, minimum width=1.5cm, minimum height=1.5cm, thick},
+    iconblue/.style={icon, draw=blue!70, fill=blue!20},
+    icongreen/.style={icon, draw=green!70, fill=green!20},
+    iconorange/.style={icon, draw=orange!70, fill=orange!20},
+    iconred/.style={icon, draw=red!70, fill=red!20},
+    % Stili per percentuali grandi
+    bignum/.style={font=\Huge\bfseries},
+    percent/.style={font=\Large},
+    % Altri stili
+    header/.style={font=\large\bfseries},
+    subheader/.style={font=\normalsize\bfseries},
+    metric/.style={font=\small},
+    arrow/.style={->, very thick, >=stealth}
+]
+
+% === TITOLO PRINCIPALE ===
+\node[font=\Large\bfseries] at (0,8.5) {SISTEMI DI ALIMENTAZIONE CRITICA PER GDO};
+\node[font=\normalsize, text=gray] at (0,8) {Analisi comparativa configurazioni UPS e impatto operativo};
+
+% === SEZIONE 1: IL PROBLEMA (TOP LEFT) ===
+\node[cardred, minimum width=5.5cm, minimum height=2.5cm] at (-4.5,5.5) {};
+\node[header, text=red!70] at (-4.5,6.5) {IL PROBLEMA};
+
+% Icona warning
+\node[iconred] at (-6,5.5) {!};
+
+% Statistiche problema
+\node[bignum, text=red!60] at (-4.5,5.5) {43\%};
+\node[metric] at (-4.5,5) {dei downtime};
+\node[metric] at (-4.5,4.6) {da guasti elettrici};
+
+\node[metric, text=red!70] at (-3,5.5) {€127k/h};
+\node[font=\tiny] at (-3,5.1) {costo downtime};
+\node[font=\tiny] at (-3,4.8) {in picco vendite};
+
+% === SEZIONE 2: CONFRONTO SOLUZIONI (CENTER) ===
+\node[header] at (0,6.5) {CONFIGURAZIONI A CONFRONTO};
+
+% Card N+1
+\node[cardblue, minimum width=3cm, minimum height=4cm] at (-2,3.5) {};
+\node[subheader, text=blue!70] at (-2,5.2) {N+1};
+\node at (-2,4.5) {\Large 🔌🔌🔌+1};
+
+% Metriche N+1
+\node[bignum, text=blue!60] at (-2,3.5) {99.82\%};
+\node[metric] at (-2,3) {disponibilità};
+
+\begin{scope}[shift={(-2,2.3)}]
+    % Mini progress bar MTBF
+    \draw[gray!30, line width=3pt] (-1,0) -- (1,0);
+    \draw[blue!60, line width=3pt] (-1,0) -- (-0.3,0);
+    \node[font=\tiny] at (0,-0.3) {MTBF: 52k ore};
+\end{scope}
+
+\node[metric, text=blue!70] at (-2,1.5) {€€};
+\node[font=\tiny] at (-2,1.2) {Costo base};
+
+% Card 2N
+\node[cardgreen, minimum width=3cm, minimum height=4cm] at (2,3.5) {};
+\node[subheader, text=green!70] at (2,5.2) {2N};
+\node at (2,4.5) {\Large 🔌🔌 | 🔌🔌};
+
+% Metriche 2N
+\node[bignum, text=green!60] at (2,3.5) {99.94\%};
+\node[metric] at (2,3) {disponibilità};
+
+\begin{scope}[shift={(2,2.3)}]
+    % Mini progress bar MTBF
+    \draw[gray!30, line width=3pt] (-1,0) -- (1,0);
+    \draw[green!60, line width=3pt] (-1,0) -- (0.7,0);
+    \node[font=\tiny] at (0,-0.3) {MTBF: 175k ore};
+\end{scope}
+
+\node[metric, text=green!70] at (2,1.5) {€€€};
+\node[font=\tiny] at (2,1.2) {+43\% costo};
+
+% Freccia di confronto
+\draw[arrow, draw=green!50, line width=2pt] (-0.5,3.5) -- (0.5,3.5);
+\node[font=\small, text=green!60] at (0,3.8) {+0.12\%};
+
+% === SEZIONE 3: INNOVAZIONE ML (TOP RIGHT) ===
+\node[cardorange, minimum width=5.5cm, minimum height=2.5cm] at (4.5,5.5) {};
+\node[header, text=orange!70] at (4.5,6.5) {INNOVAZIONE ML};
+
+% Icona AI
+\node[icongreen] at (3,5.5) {AI};
+
+\node[bignum, text=orange!60] at (4.5,5.5) {94.3\%};
+\node[metric] at (4.5,5) {accuratezza};
+\node[metric] at (4.5,4.6) {predizione guasti};
+
+\node[metric, text=orange!70] at (6,5.5) {72h};
+\node[font=\tiny] at (6,5.1) {anticipo};
+\node[font=\tiny] at (6,4.8) {rilevamento};
+
+% === SEZIONE 4: TIMELINE GUASTO (BOTTOM) ===
+\node[header] at (0,0.5) {SCENARIO GUASTO: CONTINUITÀ OPERATIVA};
+
+% Timeline background
+\draw[gray!20, line width=40pt, cap=round] (-6,-1) -- (6,-1);
+
+% Timeline N+1
+\draw[red!40, line width=15pt, cap=round] (-6,-0.5) -- (-2,-0.5);
+\node[font=\small\bfseries, text=red!70] at (-4,-0.5) {N+1};
+% Eventi N+1
+\node[circle, fill=red!60, inner sep=2pt] at (-3,-0.5) {};
+\node[font=\tiny, text=red!70, above] at (-3,-0.2) {Guasto};
+\node[circle, fill=orange!60, inner sep=2pt] at (-1,-0.5) {};
+\node[font=\tiny, text=orange!70, above] at (-1,-0.2) {Degrado};
+\node[circle, fill=red!80, inner sep=2pt] at (0.5,-0.5) {};
+\node[font=\tiny, text=red!80, above] at (0.5,-0.2) {Rischio!};
+
+% Timeline 2N
+\draw[green!40, line width=15pt, cap=round] (-6,-1.5) -- (6,-1.5);
+\node[font=\small\bfseries, text=green!70] at (-4,-1.5) {2N};
+% Eventi 2N
+\node[circle, fill=green!60, inner sep=2pt] at (-3,-1.5) {};
+\node[font=\tiny, text=green!70, below] at (-3,-1.8) {Guasto A};
+\node[circle, fill=green!60, inner sep=2pt] at (0,-1.5) {};
+\node[font=\tiny, text=green!70, below] at (0,-1.8) {Operativo B};
+\node[circle, fill=green!60, inner sep=2pt] at (3,-1.5) {};
+\node[font=\tiny, text=green!70, below] at (3,-1.8) {Ripristino A};
+
+\draw[arrow, draw=green!60] (5.5,-1.5) -- (6.5,-1.5);
+
+% === SEZIONE 5: KEY METRICS DASHBOARD (BOTTOM) ===
+\begin{scope}[shift={(0,-3.5)}]
+    % Container
+    \draw[gray!40, thick, rounded corners=10pt] (-7,-0.5) rectangle (7,1.5);
+    \node[header, text=gray!70] at (0,1.2) {METRICHE CHIAVE DI DECISIONE};
+    
+    % ROI
+    \begin{scope}[shift={(-5,0.2)}]
+        \node[iconblue, minimum width=1cm, minimum height=1cm] at (0,0) {€};
+        \node[font=\small\bfseries] at (0,-0.6) {ROI};
+        \node[font=\footnotesize] at (0,-0.9) {28 mesi};
+    \end{scope}
+    
+    % PUE
+    \begin{scope}[shift={(-2.5,0.2)}]
+        \node[icongreen, minimum width=1cm, minimum height=1cm] at (0,0) {⚡};
+        \node[font=\small\bfseries] at (0,-0.6) {PUE};
+        \node[font=\footnotesize] at (0,-0.9) {1.40 con ML};
+    \end{scope}
+    
+    % Downtime
+    \begin{scope}[shift={(0,0.2)}]
+        \node[iconred, minimum width=1cm, minimum height=1cm] at (0,0) {⏱};
+        \node[font=\small\bfseries] at (0,-0.6) {Downtime};
+        \node[font=\footnotesize] at (0,-0.9) {-47\%};
+    \end{scope}
+    
+    % Maintenance
+    \begin{scope}[shift={(2.5,0.2)}]
+        \node[icongreen, minimum width=1cm, minimum height=1cm] at (0,0) {🔧};
+        \node[font=\small\bfseries] at (0,-0.6) {Manutenzione};
+        \node[font=\footnotesize] at (0,-0.9) {Online 2N};
+    \end{scope}
+    
+    % Autonomia
+    \begin{scope}[shift={(5,0.2)}]
+        
+        \node[iconorange, minimum width=1cm, minimum height=1cm] at (0,0) {🔋};
+        \node[font=\small\bfseries] at (0,-0.6) {Autonomia};
+        \node[font=\footnotesize] at (0,-0.9) {30min+72h};
+    \end{scope}
+\end{scope}
+
+% === RACCOMANDAZIONE FINALE ===
+\node[draw=green!70, fill=green!10, very thick, rounded corners=10pt, minimum width=10cm, minimum height=1cm] at (0,-5.5) {
+    \Large\bfseries
+    \textcolor{green!70}{✓} Configurazione 2N con ML: Miglior Rapporto Resilienza/Costo
+};
+
+% === FONTE DATI ===
+\node[font=\tiny, text=gray!60] at (0,-6.2) {Fonte: Analisi 234 interruzioni GDO Europa 2020-2024 | 23 implementazioni validate};
+
+\end{tikzpicture}

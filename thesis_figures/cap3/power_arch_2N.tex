@@ -1,0 +1,161 @@
+% File: figures/power_configurations_simple.tex
+% Confronto semplificato tra configurazioni N+1 e 2N
+% Per uso con \input{} nel documento principale
+
+\begin{tikzpicture}[
+    % Stili base
+    ups/.style={rectangle, draw=blue!70, fill=blue!15, very thick, minimum width=1.8cm, minimum height=2.5cm, rounded corners=5pt},
+    load/.style={rectangle, draw=green!70, fill=green!15, thick, minimum width=3cm, minimum height=1.5cm, rounded corners=5pt},
+    fail/.style={rectangle, draw=red!70, fill=red!15, opacity=0.5, very thick, minimum width=1.8cm, minimum height=2.5cm, rounded corners=5pt},
+    grid/.style={rectangle, draw=black, thick, minimum width=1.5cm, minimum height=1cm},
+    battery/.style={rectangle, draw=orange!70, fill=orange!15, thick, minimum width=1.2cm, minimum height=0.6cm},
+    % Frecce
+    powerok/.style={->, very thick, draw=green!60},
+    powerfail/.style={->, very thick, draw=red!60, dashed},
+    % Testo
+    title/.style={font=\large\bfseries},
+    config/.style={font=\normalsize\bfseries, fill=white, text=black, rounded corners=3pt},
+    label/.style={font=\small},
+    value/.style={font=\footnotesize\ttfamily}
+]
+
+% === TITOLO PRINCIPALE ===
+\node[title] at (0,7) {Confronto Configurazioni di Ridondanza Sistemi UPS};
+
+% === CONFIGURAZIONE N+1 (SINISTRA) ===
+\begin{scope}[shift={(-5,0)}]
+    % Titolo configurazione
+    \node[config, fill=blue!30] at (0,5) {Configurazione N+1};
+    
+    % Rete elettrica
+    \node[grid] (grid_n1) at (0,3) {RETE};
+    
+    % UPS
+    \node[ups] (ups1) at (-2,0) {UPS 1 \newline 100kW};
+    \node[ups] (ups2) at (0,0) {UPS 2 \newline 100kW};
+    \node[ups] (ups3) at (2,0) {UPS 3 \newline 100kW};
+    \node[label, text=blue!70] at (0,-1.8) {3 attivi per 200kW carico};
+    
+    % Batterie (semplificate)
+    \node[battery] at (-2,-1) {Batt};
+    \node[battery] at (0,-1) {Batt};
+    \node[battery] at (2,-1) {Batt};
+    
+    % Carico
+    \node[load] (load_n1) at (0,-3.5) {CARICO IT \newline 200kW};
+    
+    % Connessioni
+    \draw[powerok] (grid_n1) -- (ups1);
+    \draw[powerok] (grid_n1) -- (ups2);
+    \draw[powerok] (grid_n1) -- (ups3);
+    \draw[powerok] (ups1) -- (load_n1);
+    \draw[powerok] (ups2) -- (load_n1);
+    \draw[powerok] (ups3) -- (load_n1);
+    
+    % Box informativo
+    \node[draw=gray!50, thick, rounded corners, text width=4cm] at (0,-5.5) {
+        \centering\footnotesize
+        \textbf{Disponibilità: 99.82\%}\\[2pt]
+        MTBF: 52.560 ore\\
+        Costo: 100 (base)\\
+        \textcolor{green!60}{✓ Economico}\\
+        \textcolor{red!60}{✗ Manutenzione difficile}
+    };
+\end{scope}
+
+% === SEPARATORE ===
+\draw[gray!40, very thick, dashed] (0,5.5) -- (0,-6.5);
+
+% === CONFIGURAZIONE 2N (DESTRA) ===
+\begin{scope}[shift={(5,0)}]
+    % Titolo configurazione
+    \node[config, fill=green!30] at (0,5) {Configurazione 2N};
+    
+    % Due reti separate
+    \node[grid] (grid_a) at (-1.5,3) {RETE A};
+    \node[grid] (grid_b) at (1.5,3) {RETE B};
+    
+    % Sistema A
+    \node[ups] (ups_a) at (-1.5,0) {UPS A \newline 200kW};
+    \node[battery] at (-1.5,-1) {Batt A};
+    
+    % Sistema B
+    \node[ups] (ups_b) at (1.5,0) {UPS B \newline 200kW};
+    \node[battery] at (1.5,-1) {Batt B};
+    
+    \node[label, text=green!70] at (0,-1.8) {Ogni sistema gestisce 100\% carico};
+    
+    % Carico con doppia alimentazione
+    \node[load] (load_2n) at (0,-3.5) {CARICO IT \newline 200kW \newline (2x PSU)};
+    
+    % Connessioni
+    \draw[powerok] (grid_a) -- (ups_a);
+    \draw[powerok] (grid_b) -- (ups_b);
+    \draw[powerok] (ups_a) -- (load_2n.north west);
+    \draw[powerok] (ups_b) -- (load_2n.north east);
+    
+    % Box informativo
+    \node[draw=gray!50, thick, rounded corners, text width=4cm] at (0,-5.5) {
+        \centering\footnotesize
+        \textbf{Disponibilità: 99.94\%}\\[2pt]
+        MTBF: 175.200 ore\\
+        Costo: 143 (+43\%)\\
+        \textcolor{green!60}{✓ Manutenzione online}\\
+        \textcolor{green!60}{✓ Zero downtime}
+    };
+\end{scope}
+
+% === SCENARIO DI GUASTO (PARTE INFERIORE) ===
+\node[title, font=\normalsize\bfseries] at (0,-7.5) {Comportamento in Caso di Guasto};
+
+% N+1 con guasto
+\begin{scope}[shift={(-5,-10)}]
+    \node[label, text=red!70] at (0,1) {N+1: Guasto UPS};
+    
+    % UPS con uno guasto
+    \node[fail] (ups1f) at (-2,0) {UPS 1\\GUASTO};
+    \node[ups] (ups2f) at (0,0) {UPS 2\\100kW};
+    \node[ups] (ups3f) at (2,0) {UPS 3\\100kW};
+    
+    % Carico
+    \node[load] (load_n1f) at (0,-2) {CARICO\\200kW};
+    
+    % Connessioni
+    \draw[powerfail] (ups1f) -- (load_n1f);
+    \draw[powerok] (ups2f) -- (load_n1f);
+    \draw[powerok] (ups3f) -- (load_n1f);
+    
+    \node[label, text=orange!70] at (0,-3.2) {⚠ Nessuna ridondanza residua};
+\end{scope}
+
+% 2N con guasto
+\begin{scope}[shift={(5,-10)}]
+    \node[label, text=red!70] at (0,1) {2N: Guasto Sistema A};
+    
+    % Sistema A guasto
+    \node[fail] (ups_af) at (-1.5,0) {UPS A\\GUASTO};
+    
+    % Sistema B operativo
+    \node[ups] (ups_bf) at (1.5,0) {UPS B\\200kW};
+    
+    % Carico
+    \node[load] (load_2nf) at (0,-2) {CARICO\\200kW};
+    
+    % Connessioni
+    \draw[powerfail] (ups_af) -- (load_2nf);
+    \draw[powerok] (ups_bf) -- (load_2nf);
+    
+    \node[label, text=green!70] at (0,-3.2) {✓ Sistema B gestisce 100\% carico};
+\end{scope}
+
+% === LEGENDA CENTRALE ===
+\node[draw=gray!40, thick, rounded corners] at (0,-13.5) {
+    \footnotesize
+    \textbf{Vantaggi chiave 2N:} \quad
+    +0.12\% disponibilità \quad
+    3.3× MTBF \quad
+    Manutenzione senza downtime \quad
+    ROI 28 mesi
+};
+
+\end{tikzpicture}

@@ -1,0 +1,111 @@
+% File: figures/sdwan_simplified.tex
+% Architettura SD-WAN Semplificata - Solo TikZpicture per \input
+% NON includere \begin{figure} o \caption qui
+
+\begin{tikzpicture}[
+    scale=0.9, % Aggiusta la scala se necessario
+    % Stili per i piani
+    plane/.style={rectangle, rounded corners=10pt, very thick, minimum width=12cm, minimum height=3cm},
+    controlplane/.style={plane, draw=blue!70, fill=blue!5},
+    managementplane/.style={plane, draw=purple!70, fill=purple!5},
+    dataplane/.style={plane, draw=green!70, fill=green!5},
+    % Stili per i componenti
+    component/.style={rectangle, rounded corners=5pt, thick, minimum width=2.5cm, minimum height=1cm},
+    controller/.style={component, draw=blue!60, fill=blue!20},
+    management/.style={component, draw=purple!60, fill=purple!20},
+    device/.style={component, draw=green!60, fill=green!20},
+    endpoint/.style={component, draw=orange!60, fill=orange!20},
+    % Stili per le connessioni
+    flow/.style={->, thick, >=stealth},
+    southbound/.style={flow, draw=blue!60},
+    api/.style={flow, draw=purple!60},
+    dataflow/.style={<->, very thick, draw=green!60},
+    % Stili per il testo
+    planetext/.style={font=\large\bfseries},
+    componenttext/.style={font=\normalsize},
+    protocoltext/.style={font=\small\ttfamily, text=gray}
+]
+
+% === PIANO DI CONTROLLO ===
+\node[controlplane] (control) at (0,5.5) {};
+\node[planetext] at (-4,6.5) {Piano di Controllo};
+\node[controller] (sdnctrl) at (0,5.5) {SDN Controller};
+\node[componenttext, text=blue!70, below=0.3cm of sdnctrl] {\small Politiche Centralizzate};
+
+% === PIANO DI GESTIONE ===
+\node[managementplane] (management) at (0,2) {};
+\node[planetext] at (-4,2.9) {Piano di Gestione};
+\node[management] (orch) at (-2,2) {Orchestrator};
+\node[management] (analytics) at (2,2) {Analytics};
+\node[componenttext, text=purple!70] at (0,0.6) {\small API REST • Monitoring • AI/ML};
+
+% === PIANO DATI ===
+\node[dataplane] (data) at (0,-1.5) {};
+\node[planetext] at (-5,-0.55) {Piano Dati};
+\node[device] (edge1) at (-4,-1.5) {Edge SD-WAN};
+\node[device] (edge2) at (0,-1.5) {Edge SD-WAN};
+\node[device] (edge3) at (4,-1.5) {Edge SD-WAN};
+\node[componenttext, text=green!70] at (0,-2.8) {\small Tunnel IPSec/VXLAN • QoS • Routing};
+
+% === ENDPOINTS (Punti Vendita) ===
+\node[endpoint] (pv1) at (-4,-4) {Punto Vendita};
+\node[endpoint] (pv2) at (0,-4) {Punto Vendita};
+\node[endpoint] (pv3) at (4,-4) {Punto Vendita};
+\node[componenttext, text=orange!70] at (0,-5) {\small POS • IoT • Guest WiFi};
+
+% === CONNESSIONI TRA PIANI ===
+% Controllo -> Dati (Southbound)
+\draw[southbound] (sdnctrl) to[out=-45,in=90] node[protocoltext, right, pos=0.7] {OpenFlow} (edge3);
+\draw[southbound] (sdnctrl) to[out=-135,in=90] node[protocoltext, left, pos=0.7] {NetConf} (edge1);
+\draw[southbound] (sdnctrl) to[out=-90,in=90] (edge2);
+
+% Gestione <-> Controllo
+\draw[api] (orch) -- node[protocoltext , below, yshift=1mm] {API} (control.south);
+\draw[api] (analytics) -- node[protocoltext,  below, yshift=1mm,xshift=6mm] {Telemetry} (control.south);
+
+% Dati <-> Dati (Overlay Network)
+\draw[dataflow] (edge1) -- (edge2);
+\draw[dataflow] (edge2) -- (edge3);
+
+% Dati -> Endpoints
+\draw[flow, draw=orange!60] (edge1) -- (pv1);
+\draw[flow, draw=orange!60] (edge2) -- (pv2);
+\draw[flow, draw=orange!60] (edge3) -- (pv3);
+
+% === SEPARATORI VISIVI ===
+\draw[gray!30, thick, dashed] (-6.5,3.75) -- (6.5,3.75);
+\draw[gray!30, thick, dashed] (-6.5,0.25) -- (6.5,0.25);
+\draw[gray!30, thick, dashed] (-6.5,-3.25) -- (6.5,-3.25);
+
+% === CARATTERISTICHE CHIAVE (Box laterale) ===
+\node[draw=gray!50, thick, rounded corners, anchor=west] at (7,2) {
+    \begin{minipage}{3.5cm}
+    \footnotesize
+    \textbf{Caratteristiche Chiave:}\\[4pt]
+    \textcolor{blue!70}{- Controllo Centralizzato}\\
+    Politiche unificate\\[3pt]
+    \textcolor{purple!70}{- Gestione Intelligente}\\
+    Automazione e AI\\[3pt]
+    \textcolor{green!70}{- Rete Overlay Sicura}\\
+    Cifratura end-to-end\\[3pt]
+    \textcolor{orange!70}{- Multi-segmentazione}\\
+    Isolamento VRF
+    \end{minipage}
+};
+
+% === BENEFICI (Box laterale) ===
+\node[draw=gray!50, thick, rounded corners, anchor=west] at (7,-3.5) {
+    \begin{minipage}{3.5cm}
+    \footnotesize
+    \textbf{Benefici Misurati:}\\[4pt]
+    • MTTR: -74\%\\
+    • Latenza: -73\%\\
+    • Downtime: -47\%\\
+    • TCO: -38\%
+    \end{minipage}
+};
+
+% === TITOLO ===
+\node[font=\large\bfseries] at (0,7.5) {Architettura SD-WAN: Separazione dei Piani Funzionali};
+
+\end{tikzpicture}

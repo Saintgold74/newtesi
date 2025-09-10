@@ -207,6 +207,8 @@
 \usetikzlibrary{matrix,chains,scopes,fit,backgrounds}
 \usetikzlibrary{arrows.meta, positioning, shapes, calc}
 
+%\usetikzlibrary{intersections}
+
 % Nel preambolo principale, assicurati di avere:
 % Per XeLaTeX
 \usepackage{fontspec}
@@ -449,13 +451,14 @@
 
 
 % ===== INDICE GENERALE - Formattazione =====
-\usepackage{tocloft}
 \renewcommand{\cftdot}{.}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
 \setlength{\cftchapnumwidth}{2em}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 
 % ===== HYPERREF (sempre ultimo) =====
 \usepackage[

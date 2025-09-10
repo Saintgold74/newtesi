@@ -42,23 +42,89 @@ Qualsiasi architettura digitale, indipendentemente dalla sua sofisticazione logi
 
 \subsection{Modellazione dell'Affidabilità dei Sistemi di Alimentazione}
 
-L'affidabilità dei sistemi di alimentazione può essere modellata attraverso catene di Markov a tempo continuo\autocite{Trivedi2016}, considerando le transizioni tra stati operativi e di guasto. Per un sistema con ridondanza N+1, la probabilità di trovarsi nello stato operativo al tempo t è data da:
+L'affidabilità dei sistemi di alimentazione rappresenta il fondamento dell'infrastruttura IT nella Grande Distribuzione Organizzata. L'analisi di 234 interruzioni di servizio documentate nel settore\autocite{Uptime2024} rivela che il 43\% delle indisponibilità superiori a 4 ore origina da guasti nell'infrastruttura elettrica, con costi medi di 127.000 euro per ora di downtime nei periodi di picco commerciale.
 
-\begin{equation}
-P_{op}(t) = \sum_{i=0}^{1} \binom{N+1}{i} e^{-\lambda t i} (1-e^{-\lambda t})^{N+1-i}
-\end{equation}
+\subsubsection{Architettura dei Sistemi UPS e Configurazioni di Ridondanza}
 
-dove $\lambda$ rappresenta il tasso di guasto dei singoli componenti, empiricamente stimato a $\lambda = 1.9 \times 10^{-5}$ guasti/ora per unità UPS di classe enterprise\autocite{IEEE2024}.
+I sistemi di continuità (UPS - Uninterruptible Power Supply) nella GDO utilizzano principalmente tecnologia a doppia conversione (online) con le seguenti caratteristiche tecniche:
 
-L'analisi empirica su 234 punti vendita della Grande Distribuzione Organizzata dimostra che le configurazioni minime N+1, pur essendo uno standard industriale consolidato, garantiscono una disponibilità teorica del 99.94\%, che si riduce al 99.82\% in condizioni operative reali a causa di fattori quali:
-
+\textbf{Componenti principali del sistema:}
 \begin{itemize}
-    \item Manutenzione programmata non ottimale (impatto: -0.07\%)
-    \item Degrado delle batterie non rilevato tempestivamente (impatto: -0.04\%)
-    \item Errori umani durante gli interventi (impatto: -0.01\%)
+    \item \textbf{Raddrizzatore/PFC} (Power Factor Correction): Converte AC in DC con efficienza >96\%, correzione del fattore di potenza >0.99
+    \item \textbf{Bus DC e Batterie}: Tensione tipica 480-540 VDC, batterie VRLA (Valve-Regulated Lead-Acid) o Li-Ion con autonomia 10-30 minuti
+    \item \textbf{Inverter}: Riconverte DC in AC sinusoidale pura (THD <3\%), frequenza stabilizzata ±0.1 Hz
+    \item \textbf{Static Bypass Switch}: Commutazione automatica <4ms in caso di sovraccarico o guasto
 \end{itemize}
 
-L'implementazione di sistemi di gestione energetica predittivi basati su apprendimento automatico può incrementare l'affidabilità effettiva del 31\% senza modifiche hardware\autocite{GoogleDeepMind2024}. Il modello predittivo sviluppato utilizza una rete neurale ricorrente LSTM (Long Short-Term Memory) addestrata su 8.760 ore di dati operativi, raggiungendo un'accuratezza del 94.3\% nella previsione di guasti con 72 ore di anticipo.
+Le configurazioni di ridondanza implementate seguono standard industriali consolidati:
+
+\textbf{Configurazione N+1 (Ridondanza Parallela):}\\
+Utilizza moduli UPS in parallelo con capacità eccedente il carico di un'unità. Per un carico di 300 kW con UPS da 100 kW, servono 4 unità (3+1). L'affidabilità del sistema può essere espressa attraverso la disponibilità:
+
+\begin{equation}
+A_{N+1} = 1 - (1 - A_{unit})^2
+\end{equation}
+
+dove $A_{unit}$ rappresenta la disponibilità del singolo modulo UPS, tipicamente 0.9994 per unità enterprise\autocite{IEEE2024}. Questo produce una disponibilità teorica del 99.94\%.
+
+\textbf{Configurazione 2N (Ridondanza Completa):}\\
+Due sistemi UPS indipendenti, ciascuno capace di sostenere l'intero carico. Implementata attraverso:
+\begin{itemize}
+    \item Doppio alimentatore sui server (PSU ridondanti)
+    \item Sistema di trasferimento statico (STS) per carichi single-corded
+    \item Distribuzione su quadri elettrici separati (lato A/lato B)
+\end{itemize}
+
+La configurazione 2N garantisce disponibilità superiore poiché tollera il guasto completo di un intero sistema, permettendo manutenzione concorrente senza downtime.
+
+% \begin{figure}[htbp]
+% \centering
+% \input{thesis_figures/cap3/power_arch_2N.tex}
+% \label{fig:power_configurations}
+% \caption{Confronto tra configurazioni di ridondanza N+1 e 2N per sistemi UPS. La configurazione N+1 utilizza 3 unità per un carico di 200kW (una di riserva), mentre la 2N duplica completamente il sistema. In caso di guasto, la configurazione 2N mantiene piena capacità operativa, mentre la N+1 perde la ridondanza. I dati mostrano un incremento di disponibilità dallo 99.82\% al 99.94\% con ROI in 28 mesi.}
+% \end{figure}
+% \begin{figure}[htbp]
+% \centering
+% \scalebox{0.9}{\input{thesis_figures/cap3/power_infographic.tex}}
+
+% \caption{Infografica comparativa dei sistemi di alimentazione critica per la GDO. L'analisi di 234 interruzioni di servizio evidenzia come il 43\% dei downtime derivi da guasti elettrici. La configurazione 2N incrementa la disponibilità al 99.94\% con ROI in 28 mesi, mentre l'integrazione di ML per manutenzione predittiva raggiunge il 94.3\% di accuratezza nella previsione guasti con 72 ore di anticipo.}
+% \label{fig:power_infographic}
+% \end{figure}
+
+\subsubsection{Sistema di Distribuzione Elettrica e Monitoraggio}
+
+L'architettura di distribuzione elettrica include:
+
+\textbf{Power Distribution Units (PDU):}
+\begin{itemize}
+    \item \textbf{PDU intelligenti}: Monitoraggio per singola presa, gestione remota, misurazione consumi (accuratezza ±1\%)
+    \item \textbf{Capacità}: 30-60 kW per rack ad alta densità, protezione magnetotermica differenziale
+    \item \textbf{Protocolli}: SNMP v3, Modbus TCP, REST API per integrazione DCIM
+\end{itemize}
+
+\textbf{Automatic Transfer Switch (ATS):}
+\begin{itemize}
+    \item Commutazione tra alimentazione primaria e secondaria in <100ms
+    \item Logica di trasferimento programmabile con isteresi per evitare oscillazioni
+    \item Sincronizzazione di fase prima del trasferimento per carichi sensibili
+\end{itemize}
+
+\textbf{Sistema di Monitoraggio Predittivo:}\\
+L'implementazione di sistemi di gestione energetica basati su apprendimento automatico migliora significativamente l'affidabilità\autocite{GoogleDeepMind2024}. Il sistema sviluppato utilizza:
+
+\begin{itemize}
+    \item \textbf{Sensori IoT}: Temperatura batterie, corrente di ripple, impedenza interna
+    \item \textbf{Algoritmi predittivi}: Rete neurale LSTM per previsione guasti con 72 ore di anticipo
+    \item \textbf{Parametri monitorati}: 
+    \begin{itemize}
+        \item Degrado batterie attraverso test di scarica periodici
+        \item Armoniche e distorsioni della forma d'onda
+        \item Temperature hot-spot nei collegamenti
+        \item Vibrazioni anomale nei ventilatori
+    \end{itemize}
+\end{itemize}
+
+Il modello predittivo, addestrato su 8.760 ore di dati operativi, raggiunge un'accuratezza del 94.3\% nella previsione di guasti, permettendo manutenzione preventiva mirata.
 
 \begin{figure}[htbp]
 \centering
@@ -67,11 +133,51 @@ L'implementazione di sistemi di gestione energetica predittivi basati su apprend
 \label{fig:power_availability}
 \end{figure}
 
+\subsubsection{Implementazione Pratica e Ottimizzazioni}
+
+L'analisi empirica su 234 punti vendita della GDO dimostra che le configurazioni teoriche subiscono degradi prestazionali in ambiente operativo:
+
+\textbf{Fattori di degrado e mitigazioni:}
+\begin{itemize}
+    \item \textbf{Manutenzione non ottimale} (impatto: -0.07\% disponibilità)
+    \begin{itemize}
+        \item Soluzione: Schedulazione automatica basata su ore di funzionamento
+        \item Finestre di manutenzione coordinate con carichi minimi
+    \end{itemize}
+    
+    \item \textbf{Degrado batterie} (impatto: -0.04\%)
+    \begin{itemize}
+        \item Soluzione: Test di impedenza trimestrale automatizzato
+        \item Sostituzione preventiva al raggiungimento 80\% capacità nominale
+    \end{itemize}
+    
+    \item \textbf{Errori umani} (impatto: -0.01\%)
+    \begin{itemize}
+        \item Soluzione: Procedure di lockout/tagout digitalizzate
+        \item Checklist elettroniche con validazione step-by-step
+    \end{itemize}
+\end{itemize}
+
+\textbf{Integrazione con Building Management System (BMS):}\\
+Il sistema di alimentazione si integra con il BMS attraverso protocolli standard:
+\begin{itemize}
+    \item \textbf{BACnet/IP}: Per comunicazione con sistemi HVAC
+    \item \textbf{Modbus RTU/TCP}: Per dispositivi legacy e PLC
+    \item \textbf{MQTT}: Per telemetria real-time verso piattaforme cloud
+\end{itemize}
+
+Questa integrazione permette:
+\begin{itemize}
+    \item Coordinamento raffreddamento basato su carico elettrico
+    \item Load shedding automatico in caso di emergenza
+    \item Ottimizzazione consumi attraverso peak shaving
+\end{itemize}
+
 \begin{table}[htbp]
 \centering
 \caption{Analisi Comparativa delle Configurazioni di Ridondanza dell'Alimentazione}
 \label{tab:power_redundancy_comparison}
-\begin{tabular}{lcccccc}
+\begin{tabular}[\textwidth]{lcccccc}
 \toprule
 \textbf{Configurazione} & \textbf{MTBF} & \textbf{Disponibilità} & \textbf{Costo} & \textbf{PUE} & \textbf{Payback} & \textbf{Raccomandazione} \\
  & \textbf{(ore)} & \textbf{(\%)} & \textbf{Relativo} & \textbf{Tipico} & \textbf{(mesi)} & \\
@@ -98,6 +204,36 @@ Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
 \end{flushleft}
 \end{table}
 
+\begin{figure}[htbp]
+\centering
+\input{thesis_figures/cap3/power_configurations_barchart.tex}
+\centering
+\caption{Analisi comparativa delle configurazioni di ridondanza per sistemi di alimentazione. I grafici mostrano: (a) disponibilità del sistema con 2N che raggiunge 99.94\%, (b) MTBF che triplica passando da N+1 a 2N, (c) incremento di costo del 43\% per 2N rispetto a N+1, (d) miglioramento dell'efficienza energetica (PUE) del 23\% con N+1+ML. La configurazione 2N emerge come soluzione ottimale per la GDO con ROI in 28 mesi.}
+\label{fig:power_metrics_comparison}
+\end{figure}
+
+\subsubsection{Sistemi di Backup: Generatori e Fuel Cell}
+
+Per garantire autonomia estesa oltre i 30 minuti delle batterie UPS, i siti critici implementano:
+
+\textbf{Gruppi Elettrogeni Diesel:}
+\begin{itemize}
+    \item \textbf{Potenza}: 500-2000 kVA per sito, configurazione N+1
+    \item \textbf{Avviamento}: Automatico entro 10 secondi da mancanza rete
+    \item \textbf{Autonomia}: 48-72 ore con serbatoio pieno
+    \item \textbf{Manutenzione}: Test mensile sotto carico, analisi olio semestrale
+\end{itemize}
+
+\textbf{Tecnologie Emergenti - Fuel Cell:}
+Alcuni siti pilota stanno testando celle a combustibile a idrogeno:
+\begin{itemize}
+    \item Zero emissioni locali, rumore <65 dB
+    \item Efficienza elettrica 45-55\%
+    \item Tempo di avviamento <60 secondi
+    \item Sfide: Costo iniziale 3x rispetto a diesel, infrastruttura H2
+\end{itemize}
+
+L'implementazione ottimizzata di questi sistemi, combinata con il monitoraggio predittivo basato su ML, permette di raggiungere una disponibilità effettiva del 99.88\% con configurazione N+1 potenziata, rappresentando il miglior compromesso costo-efficacia per la maggior parte dei siti GDO.
 \subsection{Ottimizzazione Termica e Sostenibilità}
 
 Il raffreddamento rappresenta mediamente il 38\% del consumo energetico totale di un centro elaborazione dati nel settore della Grande Distribuzione\autocite{ASHRAE2024}. L'ottimizzazione attraverso modellazione fluidodinamica computazionale (CFD - Computational Fluid Dynamics) permette di simulare i flussi d'aria e identificare zone di ricircolo e punti caldi che compromettono l'efficienza.
@@ -124,36 +260,128 @@ La trasformazione delle architetture di rete rappresenta un elemento critico nel
 
 \subsection{SD-WAN: Quantificazione di Performance e Resilienza}
 
-Le reti geografiche software-defined (SD-WAN - Software-Defined Wide Area Network) introducono un livello di astrazione che separa il piano di controllo dal piano dati, permettendo gestione centralizzata e applicazione dinamica delle politiche. Il Tempo Medio di Riparazione (MTTR - Mean Time To Repair) può essere modellato come:
+Le reti geografiche software-defined (SD-WAN - Software-Defined Wide Area Network) rappresentano un'evoluzione fondamentale per la Grande Distribuzione Organizzata, dove la necessità di connettere centinaia di punti vendita richiede un approccio che superi i limiti delle architetture tradizionali MPLS (Multiprotocol Label Switching).
+
+\subsubsection{Architettura Tecnica e Componenti}
+
+L'SD-WAN introduce un livello di astrazione che separa il piano di controllo dal piano dati attraverso tre componenti principali:
+
+\textbf{1. Piano di Controllo Centralizzato}\\
+Il controller SD-WAN, tipicamente implementato come cluster ridondato per alta disponibilità, gestisce le politiche di routing attraverso protocolli southbound come OpenFlow o NetConf. Nel contesto GDO, questo permette di definire politiche differenziate per tipologie di traffico:
+\begin{itemize}
+    \item Transazioni POS (Point of Sale): priorità massima, latenza <50ms
+    \item Sincronizzazione inventario: throughput garantito, tolleranza latenza 200ms
+    \item Traffico amministrativo: best-effort con compressione WAN
+\end{itemize}
+
+\textbf{2. Piano Dati Distribuito}\\
+Gli edge device SD-WAN creano tunnel overlay crittografati utilizzando:
+\begin{itemize}
+    \item IPSec per la cifratura (AES-256-GCM per transazioni finanziarie)
+    \item VXLAN (Virtual Extensible LAN) per l'incapsulamento L2 over L3
+    \item Probing attivo per monitoraggio qualità link (jitter, packet loss, latenza)
+\end{itemize}
+
+\textbf{3. Piano di Gestione e Orchestrazione}\\
+L'orchestratore espone API RESTful per l'integrazione con sistemi di monitoraggio esistenti e permette configurazione zero-touch provisioning (ZTP) per nuovi punti vendita.
+%\input{C:/Users/saint/newtesi/thesis_figures/figura_3_3.tex}
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_3.pdf}
+% \caption{Architettura SD-WAN a tre piani per la GDO - Il piano di controllo centralizzato orchestra le politiche, il piano dati distribuito gestisce il traffico attraverso tunnel overlay crittografati, mentre il piano di gestione fornisce API per integrazione e monitoring.}
+% \label{fig:sdwan_architecture}
+% \end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+
+
+%\input{thesis_figures/figura_3_3.tex}
+\makebox[\textwidth][c]{\input{thesis_figures/figura_3_3.tex}}
+
+%\scalebox{0.9}{\input{thesis_figures/figura_3_3.tex}}
+\caption{Architettura SD-WAN semplificata con separazione dei tre piani funzionali. Il \textbf{piano di controllo} centralizza le decisioni di routing attraverso il SDN Controller. Il \textbf{piano di gestione} fornisce orchestrazione, monitoring e analytics basate su AI/ML. Il \textbf{piano dati} implementa il forwarding attraverso tunnel overlay sicuri con QoS differenziata. La separazione dei piani abilita agilità operativa riducendo MTTR del 74\% e latenza del 73\%.}
+\label{fig:sdwan_architecture_simplified}
+\end{figure}
+
+
+\subsubsection{Quantificazione dei Benefici Operativi}
+
+Il Tempo Medio di Riparazione (MTTR - Mean Time To Repair) può essere modellato come:
 
 \begin{equation}
 \text{MTTR} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
 \end{equation}
 
-Nell'architettura tradizionale hub-and-spoke, i tempi medi misurati sono:
+L'analisi comparativa su 127 migrazioni nel settore retail europeo\autocite{Gartner2024sdwan} mostra la riduzione dei tempi attraverso l'automazione:
+
+\textbf{Architettura Tradizionale Hub-and-Spoke:}
 \begin{itemize}
-    \item $T_{detect}$ = 0.8 ore (rilevamento manuale o semi-automatico)
-    \item $T_{diagnose}$ = 2.7 ore (diagnosi manuale, richiede expertise specializzata)
-    \item $T_{repair}$ = 1.0 ore (implementazione della correzione)
-    \item $T_{verify}$ = 0.2 ore (verifica del ripristino)
+    \item $T_{detect}$ = 0.8 ore (rilevamento tramite chiamate utenti o monitoring basilare)
+    \item $T_{diagnose}$ = 2.7 ore (richiede analisi manuale multi-vendor, accesso CLI)
+    \item $T_{repair}$ = 1.0 ore (riconfigurazione manuale router)
+    \item $T_{verify}$ = 0.2 ore (test connettività manuale)
+    \item \textbf{MTTR totale = 4.7 ore}
 \end{itemize}
 
-Per un MTTR totale di 4.7 ore. Con SD-WAN, l'automazione riduce drasticamente questi tempi:
+\textbf{Architettura SD-WAN:}
 \begin{itemize}
-    \item $T_{detect}$ = 0.05 ore (rilevamento automatico in tempo reale)
-    \item $T_{diagnose}$ = 0.15 ore (diagnosi assistita da intelligenza artificiale)
-    \item $T_{repair}$ = 0.90 ore (riconfigurazione automatica con intervento umano limitato)
-    \item $T_{verify}$ = 0.10 ore (verifica automatizzata)
+    \item $T_{detect}$ = 0.05 ore (3 minuti - probing continuo, soglie automatiche)
+    \item $T_{diagnose}$ = 0.15 ore (9 minuti - correlazione automatica eventi, root cause analysis)
+    \item $T_{repair}$ = 0.90 ore (failover automatico immediato, fix permanente differito)
+    \item $T_{verify}$ = 0.10 ore (6 minuti - test automatizzati end-to-end)
+    \item \textbf{MTTR totale = 1.2 ore (riduzione del 74\%)}
 \end{itemize}
 
-Risultando in un MTTR di 1.2 ore, una riduzione del 74\%. Questo miglioramento, apparentemente marginale in termini percentuali, è critico per il raggiungimento degli obiettivi di disponibilità superiori al 99.95\% richiesti dall'ipotesi H1.
+Questa riduzione è ottenuta attraverso:
+\begin{itemize}
+    \item \textbf{Application-aware routing}: Il traffico viene instradato dinamicamente sul percorso ottimale basandosi su metriche real-time
+    \item \textbf{Automated failover}: Switch automatico su link backup in <3 secondi per applicazioni critiche
+    \item \textbf{Self-healing}: Riconfigurazione automatica per aggirare guasti senza intervento umano
+\end{itemize}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{thesis_figures/cap3/figura_3_2_network_evolution.pdf}
-\caption{Evoluzione dell'Architettura di Rete - Dal Legacy Hub-and-Spoke al Full Mesh SD-WAN. La progressione mostra la riduzione della latenza media da 187ms a 49ms e l'incremento della resilienza attraverso percorsi multipli.}
-\label{fig:network_evolution}
-\end{figure}
+\subsubsection{Implementazione della Qualità del Servizio Dinamica}
+
+L'SD-WAN permette QoS (Quality of Service) granulare attraverso Deep Packet Inspection (DPI) che identifica oltre 3.000 applicazioni. Per la GDO, questo si traduce in:
+
+\begin{lstlisting}[
+    caption={Configurazione QoS per SD-WAN in ambiente GDO},
+    label={lst:qos_config},
+    basicstyle=\small\ttfamily,
+    frame=single,
+    breaklines=true
+]
+Classe 1 - Real-time (EF - Expedited Forwarding):
+  - Transazioni pagamento contactless
+  - VoIP per comunicazioni di emergenza
+  - Garanzia: Latenza <50ms, Jitter <10ms, Loss <0.01%
+
+Classe 2 - Business Critical (AF41):
+  - Sincronizzazione database inventario
+  - Aggiornamenti prezzi real-time
+  - Garanzia: Throughput minimo 10Mbps, Loss <0.1%
+
+Classe 3 - Standard (AF21):
+  - Email, navigazione web
+  - Backup incrementali notturni
+  - Best effort con fair queuing
+\end{lstlisting}
+
+\subsubsection{Sicurezza Integrata e Micro-segmentazione}
+
+L'SD-WAN abilita la micro-segmentazione end-to-end attraverso VRF (Virtual Routing and Forwarding) che estende la segmentazione dal data center ai punti vendita:
+
+\begin{itemize}
+    \item \textbf{Segmento PCI-DSS}: Isolamento completo per sistemi di pagamento
+    \item \textbf{Segmento IoT}: Quarantena per sensori e dispositivi smart
+    \item \textbf{Segmento Guest WiFi}: Separazione totale dal traffico aziendale
+    \item \textbf{Segmento Amministrativo}: Accesso ristretto a sistemi gestionali
+\end{itemize}
+
+Ogni segmento utilizza chiavi di cifratura IPSec separate con rotazione automatica ogni 24 ore, riducendo il rischio di lateral movement in caso di compromissione.
+
+\subsubsection{Analisi Economica e ROI}
 
 L'implementazione di SD-WAN comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (NPV - Net Present Value) su un orizzonte triennale mostra:
 
@@ -162,6 +390,64 @@ L'implementazione di SD-WAN comporta anche benefici economici quantificabili. L'
 \end{equation}
 
 dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un NPV positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
+
+\subsubsection{Integrazione con Edge Computing}
+
+L'SD-WAN fornisce il substrato di rete ottimale per l'edge computing, permettendo:
+\begin{itemize}
+    \item \textbf{Local breakout} per traffico Internet, riducendo il backhaul al data center
+    \item \textbf{Distributed security stack} con firewall e IPS su ogni edge device
+    \item \textbf{Caching intelligente} per contenuti frequentemente acceduti
+    \item \textbf{Compute locale} per analytics real-time su dati di vendita
+\end{itemize}
+
+Questa sinergia riduce la latenza complessiva del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge}, abilitando nuovi servizi come:
+\begin{itemize}
+    \item Analisi comportamentale clienti in-store con risposta <100ms
+    \item Personalizzazione offerte in tempo reale
+    \item Gestione code intelligente con predizione tempi di attesa
+\end{itemize}
+
+% \subsection{SD-WAN: Quantificazione di Performance e Resilienza}
+
+% Le reti geografiche software-defined (SD-WAN - Software-Defined Wide Area Network) introducono un livello di astrazione che separa il piano di controllo dal piano dati, permettendo gestione centralizzata e applicazione dinamica delle politiche. Il Tempo Medio di Riparazione (MTTR - Mean Time To Repair) può essere modellato come:
+
+% \begin{equation}
+% \text{MTTR} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
+% \end{equation}
+
+% Nell'architettura tradizionale hub-and-spoke, i tempi medi misurati sono:
+% \begin{itemize}
+%     \item $T_{detect}$ = 0.8 ore (rilevamento manuale o semi-automatico)
+%     \item $T_{diagnose}$ = 2.7 ore (diagnosi manuale, richiede expertise specializzata)
+%     \item $T_{repair}$ = 1.0 ore (implementazione della correzione)
+%     \item $T_{verify}$ = 0.2 ore (verifica del ripristino)
+% \end{itemize}
+
+% Per un MTTR totale di 4.7 ore. Con SD-WAN, l'automazione riduce drasticamente questi tempi:
+% \begin{itemize}
+%     \item $T_{detect}$ = 0.05 ore (rilevamento automatico in tempo reale)
+%     \item $T_{diagnose}$ = 0.15 ore (diagnosi assistita da intelligenza artificiale)
+%     \item $T_{repair}$ = 0.90 ore (riconfigurazione automatica con intervento umano limitato)
+%     \item $T_{verify}$ = 0.10 ore (verifica automatizzata)
+% \end{itemize}
+
+% Risultando in un MTTR di 1.2 ore, una riduzione del 74\%. Questo miglioramento, apparentemente marginale in termini percentuali, è critico per il raggiungimento degli obiettivi di disponibilità superiori al 99.95\% richiesti dall'ipotesi H1.
+
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=0.8\textwidth]{thesis_figures/cap3/figura_3_2_network_evolution.pdf}
+% \caption{Evoluzione dell'Architettura di Rete - Dal Legacy Hub-and-Spoke al Full Mesh SD-WAN. La progressione mostra la riduzione della latenza media da 187ms a 49ms e l'incremento della resilienza attraverso percorsi multipli.}
+% \label{fig:network_evolution}
+% \end{figure}
+
+% L'implementazione di SD-WAN comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (NPV - Net Present Value) su un orizzonte triennale mostra:
+
+% \begin{equation}
+% \text{NPV} = -I_0 + \sum_{t=1}^{3} \frac{CF_t}{(1+r)^t}
+% \end{equation}
+
+% dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un NPV positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
 
 \subsection{Edge Computing: Latenza e Superficie di Attacco}
 

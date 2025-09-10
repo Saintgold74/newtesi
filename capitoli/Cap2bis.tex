@@ -1,9 +1,9 @@
 % Capitolo 2 - Threat Landscape e Sicurezza Distribuita nella GDO
 \refsection 
-\chapter{Threat Landscape e Sicurezza Distribuita nella GDO}
+\chapter{\texorpdfstring{\textbf{Threat Landscape e Sicurezza Distribuita nella GDO}}{Capitolo 2 - Threat Landscape e Sicurezza Distribuita nella GDO}}
 \label{cap2_threat_landscape}
 
-\section{Introduzione e Obiettivi del Capitolo}
+\section{\texorpdfstring{\textbf{Introduzione e Obiettivi del Capitolo}}{2.1 - Introduzione e Obiettivi del Capitolo}}
 
 La sicurezza informatica nella Grande Distribuzione Organizzata richiede un'analisi specifica che superi l'applicazione di principi generici. Le caratteristiche sistemiche uniche del settore - architetture distribuite con centinaia di punti vendita interconnessi, operatività continua ventiquattro ore su ventiquattro, eterogeneità tecnologica derivante da acquisizioni e fusioni successive, e convergenza tra \textbf{sistemi informatici (IT)} e \textbf{sistemi operazionali (OT)} - creano un panorama di minacce con peculiarità che non trovano equivalenti in altri domini industriali.
 
@@ -12,7 +12,7 @@ Questo capitolo analizza tale panorama attraverso una sintesi critica della lett
 L'analisi si basa sull'aggregazione sistematica di dati provenienti da molteplici fonti autorevoli, includendo 1.847 incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\autocite{enisa2024threat,verizon2024}, l'analisi di 234 varianti uniche di malware specificamente progettate per sistemi di punto vendita\autocite{groupib2024}, e report di settore provenienti da organizzazioni specializzate nella sicurezza del commercio al dettaglio. Questa base documentale, integrata da modellazione matematica rigorosa basata su principi di teoria dei grafi e analisi stocastica, ci permetterà di identificare pattern ricorrenti statisticamente significativi e validare quantitativamente l'efficacia delle contromisure proposte.
 
 
-\subsection{Framework di Validazione: Digital Twin GDO}
+\subsection{\texorpdfstring{\textbf{Framework di Validazione: Digital Twin GDO}}{2.1.1 - Framework di Validazione: Digital Twin GDO}}
 
 Per validare le ipotesi teoriche presentate in questo capitolo, 
 abbiamo sviluppato un Digital Twin specifico per il settore GDO 
@@ -83,9 +83,9 @@ Data Completeness & \cmark {} (0\% missing) & \cmark {} (37.5\% missing) \\
 \end{tabular}
 \end{table}
 
-\section{Caratterizzazione della Superficie di Attacco nella GDO}
+\section{\texorpdfstring{\textbf{Caratterizzazione della Superficie di Attacco nella GDO}}{2.2 - Caratterizzazione della Superficie di Attacco nella GDO}}
 
-\subsection{Modellazione della Vulnerabilità Distribuita}
+\subsection{\texorpdfstring{\textbf{Modellazione della Vulnerabilità Distribuita}}{2.2.1 - Modellazione della Vulnerabilità Distribuita}}
 
 La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare, seguendo principi di teoria delle reti complesse. Ogni punto vendita non rappresenta semplicemente un'estensione del perimetro aziendale, ma costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi attraverso collegamenti eterogenei. La ricerca di \textbf{Chen e Zhang}\autocite{chen2024graph} ha formalizzato questa amplificazione attraverso un modello matematico basato sulla teoria dei grafi:
 
@@ -110,11 +110,11 @@ Sostituendo questi valori nell'equazione: $SAD = 100 \times (0.47 + 0.23 + 0.77)
 
 Questo risultato, confermato con intervallo di confidenza al 95\% [142, 152], dimostra che la superficie di attacco effettiva è 147 volte superiore a quella di un singolo nodo, validando quantitativamente l'ipotesi di amplificazione non lineare. La metodologia completa di misurazione e i dati anonimizzati sono disponibili nell'Appendice B.
 
-\subsection{Analisi dei Fattori di Vulnerabilità Specifici}
+\subsection{\texorpdfstring{\textbf{Analisi dei Fattori di Vulnerabilità Specifici}}{2.2.2 - Analisi dei Fattori di Vulnerabilità Specifici}}
 
 L'analisi fattoriale condotta sui 847 incidenti più significativi del periodo 2020-2025 ha identificato tre dimensioni principali che caratterizzano univocamente la vulnerabilità della GDO. Questa analisi, realizzata utilizzando la tecnica di analisi delle componenti principali (PCA) con rotazione Varimax, spiega il 78.3\% della varianza totale osservata nei dati di incidenti.
 
-\subsubsection{Concentrazione di Valore Economico}
+\subsubsection{\texorpdfstring{\textbf{Concentrazione di Valore Economico}}{2.2.2.1 - Concentrazione di Valore Economico}}
 
 Ogni punto vendita processa quotidianamente un flusso aggregato di dati finanziari che rappresenta un obiettivo ad alto valore per i criminali informatici. L'analisi econometrica condotta sui dati forniti dalla National Retail Federation\autocite{nrf2024} rivela che il valore medio per transazione compromessa nel settore GDO è di 47,30 euro, significativamente superiore ai 31,20 euro degli altri settori del commercio al dettaglio (differenza statisticamente significativa con $p < 0.001$, test t di Student per campioni indipendenti). 
 
@@ -127,7 +127,7 @@ Questa differenza del 51.6\% deriva da tre fattori principali:
 
 La concentrazione di valore crea quello che definiamo \textbf{"effetto miele"} (\textit{honey pot effect}), dove l'attrattività del bersaglio per i criminali cresce in modo più che proporzionale al valore custodito, seguendo una funzione logaritmica del tipo $Attrattivita = k \times \log(Valore)$ dove $k$ è una costante di settore stimata empiricamente a 2.34.
 
-\subsubsection{Vincoli di Operatività Continua}
+\subsubsection{\texorpdfstring{\textbf{Vincoli di Operatività Continua}}{2.2.2.2 - Vincoli di Operatività Continua}}
 
 I requisiti di disponibilità ventiquattro ore su ventiquattro, sette giorni su sette, impongono vincoli stringenti sulle finestre di manutenzione disponibili. L'analisi dei dati di patch management raccolti attraverso interviste strutturate con 34 responsabili IT di catene GDO rivela che il tempo medio per l'applicazione di patch critiche è di 127 giorni, contro una media industriale di 72 giorni documentata dal Data Breach Investigations Report di Verizon\autocite{verizon2024}. 
 
@@ -141,7 +141,7 @@ Questa dilazione del 76.4\% nel tempo di applicazione delle patch deriva da:
 Il modello di rischio cumulativo, basato sulla distribuzione di Weibull \footnote{La distribuzione di Weibull modella il tempo al guasto dei sistemi, 
 permettendo di calcolare la probabilità cumulativa di compromissione nel tempo con parametri di forma k=1.5 e scala λ=90 giorni} per la scoperta di vulnerabilità, mostra che questo ritardo aumenta la probabilità di compromissione del 234\% rispetto all'applicazione tempestiva delle patch.
 
-\subsubsection{Eterogeneità Tecnologica}
+\subsubsection{\texorpdfstring{\textbf{Eterogeneità Tecnologica}}{2.2.2.3 - Eterogeneità Tecnologica}}
 
 L'inventario tecnologico medio per punto vendita, derivato dall'analisi di 47 audit di sicurezza condotti nel periodo 2023-2025, include:
 \begin{itemize}
@@ -153,7 +153,7 @@ L'inventario tecnologico medio per punto vendita, derivato dall'analisi di 47 au
 
 Questa eterogeneità moltiplica la complessità della gestione delle vulnerabilità secondo un fattore che cresce con complessità $O(n^2)$ dove $n$ è il numero di tecnologie diverse. La dimostrazione matematica, basata sull'analisi combinatoria delle interazioni possibili tra componenti, mostra che per $n = 33$ (valore medio osservato), il numero di potenziali vettori di attacco cresce a 1.089 combinazioni uniche, rendendo praticamente impossibile il testing esaustivo di tutte le configurazioni.
 
-\subsection{Il Fattore Umano come Moltiplicatore di Rischio}
+\subsection{\texorpdfstring{\textbf{Il Fattore Umano come Moltiplicatore di Rischio}}{2.2.3 - Il Fattore Umano come Moltiplicatore di Rischio}}
 
 L'analisi del fattore umano, condotta attraverso la revisione sistematica di 423 incident report dettagliati, rivela un'amplificazione strutturale del rischio che va oltre i semplici errori individuali. Il turnover del personale nella GDO italiana, che raggiunge tassi del 75-100\% annuo secondo i dati dell'Osservatorio sul Mercato del Lavoro\autocite{nrf2024}, crea un ambiente dove la sedimentazione di competenze di sicurezza diventa strutturalmente impossibile.
 
@@ -168,7 +168,7 @@ La formazione in sicurezza informatica risulta strutturalmente insufficiente: l'
 
 Complessivamente, il fattore umano emerge come causa principale nel 68\% degli incidenti analizzati\autocite{verizon2024}, sottolineando la necessità critica di progettare architetture di sicurezza che minimizzino la dipendenza da comportamenti umani corretti attraverso l'automazione e la progettazione di sistemi intrinsecamente sicuri.
 
-\section{Anatomia degli Attacchi e Pattern Evolutivi}
+\section{\texorpdfstring{\textbf{Anatomia degli Attacchi e Pattern Evolutivi}}{2.3 - Anatomia degli Attacchi e Pattern Evolutivi}}
 
 \begin{figure}[H]
 \centering
@@ -186,7 +186,7 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 \label{fig:attack_types}
 \end{figure}
 
-\subsection{Vulnerabilità dei Sistemi di Pagamento}
+\subsection{\texorpdfstring{\textbf{Vulnerabilità dei Sistemi di Pagamento}}{2.3.1 - Vulnerabilità dei Sistemi di Pagamento}}
 
 I sistemi di punto vendita rappresentano il bersaglio primario degli attacchi informatici nel settore GDO, con il 47\% degli incidenti analizzati che coinvolgono direttamente o indirettamente questi sistemi. Durante il processo di pagamento, esiste una finestra temporale critica in cui i dati della carta di credito devono necessariamente esistere in forma non cifrata nella memoria del terminale per permettere l'elaborazione della transazione.
 
@@ -205,7 +205,7 @@ dove $TE$ rappresenta il Tempo di Elaborazione totale della transazione (dall'in
 
 Per una catena GDO tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di \textit{\textbf{memory scraping}} automatizzate per catturare i dati durante queste brevissime finestre temporali.
 
-\subsection{Evoluzione delle Tecniche: Il Caso Prilex}
+\subsection{\texorpdfstring{\textbf{Evoluzione delle Tecniche: Il Caso Prilex}}{2.3.2 - Evoluzione delle Tecniche: Il Caso Prilex}}
 
 Un esempio paradigmatico dell'evoluzione delle tecniche di attacco è rappresentato dal malware \textbf{Prilex}, la cui analisi dettagliata condotta dai laboratori Kaspersky\autocite{kaspersky2024} rivela un livello di sofisticazione senza precedenti. Invece di tentare di violare i meccanismi di crittografia, sempre più robusti, Prilex implementa una strategia che definiamo "\textit{regressione forzata del protocollo"}.
 
@@ -229,7 +229,7 @@ Il framework ZT-GDO mitiga specificamente attacchi come Prilex attraverso:
 La validazione nel Digital Twin con simulazione di 1000 attacchi Prilex-like 
 ha mostrato un tasso di contenimento del 94\% (IC 95\%: [91\%, 97\%]).
 
-\subsection{Modellazione della Propagazione in Ambienti Distribuiti}
+\subsection{\texorpdfstring{\textbf{Modellazione della Propagazione in Ambienti Distribuiti}}{2.3.3 - Modellazione della Propagazione in Ambienti Distribuiti}}
 
 La propagazione di un'infezione attraverso una rete GDO segue dinamiche complesse che possono essere modellate adattando il modello epidemiologico SIR (Suscettibile-Infetto-Recuperato). Anderson e Miller\autocite{andersonmiller} hanno proposto una variante del modello specificamente calibrata per reti informatiche distribuite:
 
@@ -303,7 +303,7 @@ dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circa
 \end{tcolorbox}
 
 
-\subsection{Metodologia di Ricerca e Validazione}
+\subsection{\texorpdfstring{\textbf{Metodologia di Ricerca e Validazione}}{2.3.4 - Metodologia di Ricerca e Validazione}}
 \label{ssec:metodologia}
 
 Questo capitolo adotta un approccio metodologico tripartito:
@@ -326,16 +326,16 @@ Questa metodologia, pur non basandosi su dati proprietari,
 fornisce risultati robusti grazie alla triangolazione tra 
 teoria, letteratura e simulazione controllata.
 
-\section{Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}
+\section{\texorpdfstring{\textbf{Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}}{2.4 - Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}}
 
 L'analisi delle minacce fin qui condotta evidenzia l'inadeguatezza dei modelli di sicurezza perimetrale tradizionali, basati sul concetto di "castello e fossato" dove la sicurezza si concentra sulla protezione del perimetro esterno. La risposta architetturale a questa complessità è il paradigma \textbf{Zero Trust} (fiducia zero), basato sul principio fondamentale \emph{\textbf{"mai fidarsi, sempre verificare"} (never trust, always verify)}. In questo modello, ogni richiesta di accesso, indipendentemente dalla sua origine (interna o esterna alla rete), deve essere autenticata, autorizzata e cifrata prima di garantire l'accesso alle risorse.
 
-\subsection{Adattamento del Modello Zero Trust alle Specificità GDO}
+\subsection{\texorpdfstring{\textbf{Adattamento del Modello Zero Trust alle Specificità GDO}}{2.4.1 - Adattamento del Modello Zero Trust alle Specificità GDO}}
 
 L'implementazione del paradigma Zero Trust in ambito GDO presenta sfide uniche che richiedono adattamenti significativi rispetto al modello standard sviluppato per ambienti enterprise tradizionali. La nostra ricerca ha identificato e quantificato tre sfide principali attraverso l'analisi di case study documentati in letteratura e 
 simulazione di scenari di implementazione Zero Trust in altrettante catene GDO europee.
 
-\subsubsection{Scalabilità e Latenza nelle Verifiche di Sicurezza}
+\subsubsection{\texorpdfstring{\textbf{Scalabilità e Latenza nelle Verifiche di Sicurezza}}{2.4.1.1 - Scalabilità e Latenza nelle Verifiche di Sicurezza}}
 
 La prima sfida riguarda la scalabilità delle verifiche di sicurezza. Una catena GDO media processa 3.2 milioni di transazioni giornaliere distribuite su 200 punti vendita. Ogni transazione in un ambiente Zero Trust richiede:
 \begin{itemize}
@@ -354,7 +354,7 @@ L'analisi delle performance condotta da Palo Alto Networks\autocite{paloalto2024
 
 La soluzione proposta implementa un sistema di cache distribuita delle decisioni di autorizzazione con validità temporale limitata (TTL di 300 secondi), riducendo l'overhead medio a 4ms mantenendo un livello di sicurezza accettabile.
 
-\subsubsection{Gestione delle Identità Eterogenee}
+\subsubsection{\texorpdfstring{\textbf{Gestione delle Identità Eterogenee}}{2.4.1.2 - Gestione delle Identità Eterogenee}}
 
 Un punto vendita tipico deve gestire simultaneamente:
 \begin{itemize}
@@ -378,7 +378,7 @@ Il modello di gestione delle identità sviluppato implementa un sistema gerarchi
 
 La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$ è il numero totale di identità, risultando gestibile anche per organizzazioni con oltre 10.000 identità attive.
 
-\subsubsection{Continuità Operativa in Modalità Degradata}
+\subsubsection{\texorpdfstring{\textbf{Continuità Operativa in Modalità Degradata}}{2.4.1.3 - Continuità Operativa in Modalità Degradata}}
 
 Il requisito di operatività continua entra potenzialmente in conflitto con i principi Zero Trust. Durante un'interruzione della connettività (frequenza media: 2.3 volte/mese per 47 minuti secondo i nostri rilevamenti), i punti vendita devono poter continuare a operare. 
 
@@ -391,11 +391,11 @@ La soluzione implementa un meccanismo di "degradazione controllata" con tre live
 
 Le simulazioni mostrano che questo approccio mantiene il 94\% delle funzionalità operative anche in modalità completamente offline, con una riduzione del rischio di sicurezza contenuta al 18\%.
 
-\subsection{Framework di Implementazione Zero Trust per la GDO}
+\subsection{\texorpdfstring{\textbf{Framework di Implementazione Zero Trust per la GDO}}{2.4.2 - Framework di Implementazione Zero Trust per la GDO}}
 
 Basandosi sull'analisi delle migliori pratiche internazionali e sui risultati delle simulazioni Monte Carlo, la ricerca propone un framework di implementazione Zero Trust specificamente ottimizzato per il contesto GDO. Il framework, denominato ZT-GDO (Zero Trust for Retail), si articola in cinque componenti fondamentali interconnesse.
 
-\subsubsection{Micro-segmentazione Adattiva}
+\subsubsection{\texorpdfstring{\textbf{Micro-segmentazione Adattiva}}{2.4.2.1 - Micro-segmentazione Adattiva}}
 
 La rete di ogni punto vendita viene suddivisa dinamicamente in micro-perimetri logici basati su:
 \begin{itemize}
@@ -419,7 +419,7 @@ I risultati delle simulazioni su topologie reali mostrano:
     \item Impatto sulla latenza: <50ms per il 94\% delle transazioni
 \end{itemize}
 
-\subsubsection{Sistema di Gestione delle Identità e degli Accessi Contestuale}
+\subsubsection{\texorpdfstring{\textbf{Sistema di Gestione delle Identità e degli Accessi Contestuale}}{2.4.2.2 - Sistema di Gestione delle Identità e degli Accessi Contestuale}}
 
 Il sistema IAM implementa autenticazione multi-fattore adattiva che calibra dinamicamente i requisiti di sicurezza:
 
@@ -449,7 +449,7 @@ L'analisi del compromesso sicurezza-usabilità, condotta su 10.000 sessioni di a
     \item Tempo medio di autenticazione: 8.7 secondi (dal 6.2 secondi del sistema precedente)
 \end{itemize}
 
-\subsubsection{Verifica e Monitoraggio Continui}
+\subsubsection{\texorpdfstring{\textbf{Verifica e Monitoraggio Continui}}{2.4.2.3 - Verifica e Monitoraggio Continui}}
 
 Ogni sessione autenticata è soggetta a verifica continua attraverso un sistema di scoring del rischio in tempo reale:
 
@@ -466,7 +466,7 @@ dove $w_i$ sono i pesi calibrati attraverso machine learning e $Indicator_i(t)$ 
 
 Quando il $RiskScore$ supera soglie predefinite (0.3 per warning, 0.6 per alert, 0.8 per blocco), il sistema attiva automaticamente contromisure proporzionate.
 
-\subsubsection{Crittografia Pervasiva Resistente al Calcolo Quantistico}
+\subsubsection{\texorpdfstring{\textbf{Crittografia Pervasiva Resistente al Calcolo Quantistico}}{2.4.2.4 - Crittografia Pervasiva Resistente al Calcolo Quantistico}}
 
 L'implementazione della crittografia segue un approccio stratificato per bilanciare sicurezza e performance:
 
@@ -479,7 +479,7 @@ L'overhead computazionale, misurato su hardware tipico dei POS (processori ARM C
 - Incremento latenza transazioni: 2.1ms (trascurabile per l'esperienza utente)
 - Consumo energetico aggiuntivo: 4.2W (gestibile con alimentatori standard)
 
-\subsubsection{Motore di Policy Centralizzato con Applicazione Distribuita}
+\subsubsection{\texorpdfstring{\textbf{Motore di Policy Centralizzato con Applicazione Distribuita}}{2.4.2.5 - Motore di Policy Centralizzato con Applicazione Distribuita}}
 
 L'architettura implementa un modello di governance delle policy che bilancia controllo centralizzato e resilienza distribuita:
 
@@ -492,13 +492,13 @@ L'architettura implementa un modello di governance delle policy che bilancia con
 
 Le policy sono definite utilizzando il linguaggio XACML 3.0, memorizzate in un repository Git centralizzato con versionamento, e distribuite attraverso un meccanismo di pubblicazione-sottoscrizione basato su Apache Kafka. Ogni punto vendita mantiene una cache locale con capacità di operare autonomamente per 72 ore.
 
-\section{Quantificazione dell'Efficacia delle Contromisure}
+\section{\texorpdfstring{\textbf{Quantificazione dell'Efficacia delle Contromisure}}{2.5 - Quantificazione dell'Efficacia delle Contromisure}}
 
-\subsection{Metodologia di Valutazione Multi-Criterio}
+\subsection{\texorpdfstring{\textbf{Metodologia di Valutazione Multi-Criterio}}{2.5.1 - Metodologia di Valutazione Multi-Criterio}}
 
 Per valutare rigorosamente l'efficacia delle contromisure proposte, abbiamo sviluppato un framework di valutazione basato su simulazione Monte Carlo che incorpora l'incertezza intrinseca nei parametri di sicurezza. La metodologia, validata attraverso confronto con dati reali di tre implementazioni pilota, si articola in quattro fasi sequenziali.
 
-\subsubsection{Fase 1: Parametrizzazione e Calibrazione}
+\subsubsection{\texorpdfstring{\textbf{Fase 1: Parametrizzazione e Calibrazione}}{2.5.1.1 - Fase 1: Parametrizzazione e Calibrazione}}
 
 La parametrizzazione del modello si basa su quattro fonti di dati complementari:
 1. \textbf{Dati storici di incidenti}: 1.847 eventi documentati con dettaglio tecnico sufficiente
@@ -508,7 +508,7 @@ La parametrizzazione del modello si basa su quattro fonti di dati complementari:
 
 I parametri chiave identificati includono 47 variabili raggruppate in 6 categorie (minacce, vulnerabilità, controlli, impatti, costi, performance). Ogni parametro è modellato come variabile aleatoria con distribuzione appropriata (normale, log-normale, o beta) calibrata sui dati empirici.
 
-\subsubsection{Fase 2: Simulazione Stocastica}
+\subsubsection{\texorpdfstring{\textbf{Fase 2: Simulazione Stocastica}}{2.5.1.2 - Fase 2: Simulazione Stocastica}}
 
 Il motore di simulazione, implementato in Python utilizzando la libreria NumPy per l'efficienza computazionale, esegue 10.000 iterazioni per ogni scenario considerato. Ad ogni iterazione:
 
@@ -519,7 +519,7 @@ Il motore di simulazione, implementato in Python utilizzando la libreria NumPy p
 
 La convergenza della simulazione è verificata attraverso il criterio di Gelman-Rubin ($\hat{R} < 1.1$ per tutte le metriche).
 
-\subsubsection{Fase 3: Analisi Statistica dei Risultati}
+\subsubsection{\texorpdfstring{\textbf{Fase 3: Analisi Statistica dei Risultati}}{2.5.1.3 - Fase 3: Analisi Statistica dei Risultati}}
 
 L'elaborazione statistica dei risultati fornisce:
 - \textbf{Distribuzioni di probabilità} degli outcome con intervalli di confidenza al 95\%
@@ -527,7 +527,7 @@ L'elaborazione statistica dei risultati fornisce:
 - \textbf{Curve di trade-off} tra sicurezza, performance e costo
 - \textbf{Analisi di robustezza} attraverso stress testing dei parametri critici
 
-\subsubsection{Fase 4: Validazione Empirica}
+\subsubsection{\texorpdfstring{\textbf{Fase 4: Validazione Empirica}}{2.5.1.4 - Fase 4: Validazione Empirica}}
 
 La validazione confronta le predizioni del modello con dati reali raccolti da:
 - 3 configurazioni simulate rappresentative di organizzazioni tipo (piccola, media, grande) con 6 mesi di dati simulati
@@ -536,7 +536,7 @@ La validazione confronta le predizioni del modello con dati reali raccolti da:
 
 La concordanza tra predizioni e osservazioni, misurata attraverso il coefficiente di correlazione di Spearman, risulta $\rho = 0.83$ (p < 0.001), indicando una buona capacità predittiva del modello.
 
-\subsection{Risultati dell'Analisi Quantitativa}
+\subsection{\texorpdfstring{\textbf{Risultati dell'Analisi Quantitativa}}{2.5.2 - Risultati dell'Analisi Quantitativa}}
 
 L'analisi quantitativa fornisce evidenze robuste e statisticamente significative sull'efficacia delle contromisure proposte. I risultati, riassunti nella Figura \ref{fig:assa_reduction} e dettagliati nelle sottosezioni seguenti, supportano fortemente l'ipotesi H2 della ricerca.
 
@@ -547,7 +547,7 @@ L'analisi quantitativa fornisce evidenze robuste e statisticamente significative
 \label{fig:assa_reduction}
 \end{figure}
 
-\subsubsection{Riduzione della Superficie di Attacco}
+\subsubsection{\texorpdfstring{\textbf{Riduzione della Superficie di Attacco}}{2.5.2.1 - Riduzione della Superficie di Attacco}}
 
 L'implementazione completa del framework Zero Trust produce una riduzione media dell'Attack Surface Score Aggregated (ASSA) del 42.7\% (IC 95\%: 39.2\%-46.2\%). L'analisi di decomposizione della varianza (ANOVA) rivela che questa riduzione non è uniforme tra i componenti del sistema:
 
@@ -571,7 +571,7 @@ Physical Security & 23.7\% & [20.2\%, 27.2\%] & 8.9\% & 0.002 \\
 
 L'analisi delle interazioni tra componenti attraverso modelli di regressione multivariata rivela effetti sinergici significativi: l'implementazione congiunta di micro-segmentazione e identity management produce una riduzione addizionale del 7.3% oltre alla somma degli effetti individuali.
 
-\subsubsection{Miglioramento delle Metriche Temporali}
+\subsubsection{\texorpdfstring{\textbf{Miglioramento delle Metriche Temporali}}{2.5.2.2 - Miglioramento delle Metriche Temporali}}
 
 Le architetture Zero Trust dimostrano miglioramenti drammatici nelle metriche temporali critiche per la gestione degli incidenti:
 
@@ -592,7 +592,7 @@ MTTRC (ore) & 72 & 18 & -75.0\% & [72.3\%, 77.7\%] & d=1.98 \\
 
 L'analisi causale attraverso grafi aciclici diretti (DAG) mostra che il 73\% del miglioramento nel MTTD è attribuibile direttamente al monitoraggio continuo, mentre il 27\% deriva dall'effetto indiretto attraverso la riduzione dei falsi positivi.
 
-\subsubsection{Analisi del Ritorno sull'Investimento}
+\subsubsection{\texorpdfstring{\textbf{Analisi del Ritorno sull'Investimento}}{2.5.2.3 - Analisi del Ritorno sull'Investimento}}
 
 L'analisi economica, condotta utilizzando il metodo del Valore Attuale Netto (VAN) con tasso di sconto del 8\% annuo, fornisce metriche di ritorno sull'investimento robuste:
 
@@ -610,13 +610,13 @@ Il ROI cumulativo a 24 mesi risulta del 287\% (IC 95\%: 267\%-307\%), rappresent
 \end{itemize}
 L'analisi di sensibilità mostra che il ROI rimane positivo anche negli scenari pessimistici (5° percentile: ROI = 127\%).
 
-\section{Roadmap Implementativa e Prioritizzazione}
+\section{\texorpdfstring{\textbf{Roadmap Implementativa e Prioritizzazione}}{2.6 - Roadmap Implementativa e Prioritizzazione}}
 
-\subsection{Framework di Prioritizzazione Basato su Rischio e Valore}
+\subsection{\texorpdfstring{\textbf{Framework di Prioritizzazione Basato su Rischio e Valore}}{2.6.1 - Framework di Prioritizzazione Basato su Rischio e Valore}}
 
 La complessità e i costi associati all'implementazione di architetture Zero Trust complete richiedono un approccio graduale che massimizzi il valore generato minimizzando la disruzione operativa. La ricerca propone una roadmap implementativa strutturata in tre fasi successive, ciascuna calibrata per bilanciare benefici immediati e trasformazione strategica.
 
-\subsubsection{Fase 1: Vittorie Rapide e Fondamenta (0-6 mesi)}
+\subsubsection{\texorpdfstring{\textbf{Fase 1: Vittorie Rapide e Fondamenta (0-6 mesi)}}{2.6.1.1 - Fase 1: Vittorie Rapide e Fondamenta (0-6 mesi)}}
 
 La prima fase si concentra su interventi ad alto impatto e bassa complessità:
 
@@ -638,7 +638,7 @@ La prima fase si concentra su interventi ad alto impatto e bassa complessità:
 - Definizione delle metriche di successo e KPI di monitoraggio
 - Riduzione dell'effort delle fasi successive del 43\%
 
-\subsubsection{Fase 2: Trasformazione del Nucleo (6-18 mesi)}
+\subsubsection{\texorpdfstring{\textbf{Fase 2: Trasformazione del Nucleo (6-18 mesi)}}{2.6.1.2 - Fase 2: Trasformazione del Nucleo (6-18 mesi)}}
 
 La seconda fase implementa le componenti fondamentali dell'architettura:
 
@@ -661,7 +661,7 @@ La seconda fase implementa le componenti fondamentali dell'architettura:
 - Deployment di deception technology per rilevamento precoce
 - Riduzione ASSA addizionale: 28\% rispetto alla segmentazione base
 
-\subsubsection{Fase 3: Ottimizzazione Avanzata (18-36 mesi)}
+\subsubsection{\texorpdfstring{\textbf{Fase 3: Ottimizzazione Avanzata (18-36 mesi)}}{2.6.1.3 - Fase 3: Ottimizzazione Avanzata (18-36 mesi)}}
 
 La fase finale ottimizza e automatizza l'architettura:
 
@@ -683,7 +683,7 @@ La fase finale ottimizza e automatizza l'architettura:
 - Reporting real-time per audit e governance
 - Riduzione costi di audit: -39\%; Miglioramento postura: +44\%
 
-\subsection{Gestione del Cambiamento e Fattori Critici di Successo}
+\subsection{\texorpdfstring{\textbf{Gestione del Cambiamento e Fattori Critici di Successo}}{2.6.2 - Gestione del Cambiamento e Fattori Critici di Successo}}
 
 L'analisi dei casi di studio rivela che il 68\% dei fallimenti nei progetti Zero Trust deriva da inadeguata gestione del cambiamento organizzativo piuttosto che da limitazioni tecniche. I fattori critici di successo identificati attraverso analisi di regressione logistica su 47 progetti includono:
 
@@ -710,9 +710,9 @@ L'analisi dei casi di studio rivela che il 68\% dei fallimenti nei progetti Zero
 - Celebrazione pubblica dei successi intermedi
 - Incremento dell'adoption rate del 41%
 
-\section{Conclusioni e Implicazioni per la Progettazione Architettuale}
+\section{\texorpdfstring{\textbf{Conclusioni e Implicazioni per la Progettazione Architettuale}}{2.7 - Conclusioni e Implicazioni per la Progettazione Architettuale}}
 
-\subsection{Sintesi dei Risultati Chiave e Validazione delle Ipotesi}
+\subsection{\texorpdfstring{\textbf{Sintesi dei Risultati Chiave e Validazione delle Ipotesi}}{2.7.1 - Sintesi dei Risultati Chiave e Validazione delle Ipotesi}}
 
 L'analisi quantitativa del panorama delle minacce specifico per la GDO, validata attraverso 10.000 simulazioni Monte Carlo con parametri calibrati su dati reali, rivela una realtà complessa caratterizzata da vulnerabilità sistemiche che richiedono approcci di sicurezza specificatamente progettati per questo contesto.
 
@@ -736,7 +736,7 @@ Questi valori rappresentano il \textbf{potenziale teorico massimo}.
 Applicando fattori di attrito realistici (0.6), il ROI atteso 
 si posiziona nell'intervallo 127\%-187\%.
 
-\subsection{Principi di Progettazione Emergenti per la GDO Digitale}
+\subsection{\texorpdfstring{\textbf{Principi di Progettazione Emergenti per la GDO Digitale}}{2.7.2 - Principi di Progettazione Emergenti per la GDO Digitale}}
 
 Dall'analisi emergono quattro principi fondamentali che dovrebbero guidare l'evoluzione architettuale nella GDO:
 
@@ -752,7 +752,7 @@ La sicurezza non è uno stato statico ma un processo dinamico di adattamento con
 \textbf{Principio 4 - Bilanciamento Contestuale}  
 Il bilanciamento dinamico tra sicurezza e operatività basato sul contesto mantiene la soddisfazione degli utenti sopra 4/5 mentre incrementa la sicurezza del 41\%. Questo principio guiderà le scelte di orchestrazione discusse nel Capitolo 5.
 
-\subsection{Ponte verso l'Evoluzione Infrastrutturale}
+\subsection{\texorpdfstring{\textbf{Ponte verso l'Evoluzione Infrastrutturale}}{2.7.3 - Ponte verso l'Evoluzione Infrastrutturale}}
 
 I principi di sicurezza identificati e validati in questo capitolo forniscono il framework concettuale indispensabile per le decisioni architetturali che verranno analizzate nel Capitolo 3. L'evoluzione verso architetture cloud-ibride non può prescindere dalla considerazione sistematica delle implicazioni di sicurezza: ogni scelta infrastrutturale deve essere valutata non solo in termini di performance e costo, ma soprattutto rispetto all'impatto sulla superficie di attacco e sulla capacità di implementare controlli Zero Trust efficaci.
 
@@ -813,7 +813,7 @@ Nell'ottica della riproducibilità della ricerca, rendiamo disponibili:
 Per questioni di riservatezza, i riferimenti specifici alle catene 
 GDO (Alpha, Beta, Gamma) rimangono anonimizzati.
 
-\section{\textbf{Limitazioni e Validità dello Studio}}
+\section{\texorpdfstring{\textbf{Limitazioni e Validità dello Studio}}{2.8 - Limitazioni e Validità dello Studio}}
 
 Questo capitolo presenta un'analisi teorica robusta con le seguenti limitazioni:
 \begin{enumerate}
