@@ -46,7 +46,7 @@ L'affidabilità dei sistemi di alimentazione rappresenta il fondamento dell'infr
 
 \subsubsection{\texorpdfstring{\textbf{Architettura dei Sistemi UPS e Configurazioni di Ridondanza}}{3.2.1.1 - Architettura dei Sistemi UPS e Configurazioni di Ridondanza}}
 
-I sistemi di continuità (UPS - Uninterruptible Power Supply) nella GDO utilizzano principalmente tecnologia a doppia conversione (online) con le seguenti caratteristiche tecniche:
+I sistemi di continuità (UPS - Uninterruptible Power Supply) nella \gls{gdo} utilizzano principalmente tecnologia a doppia conversione (online) con le seguenti caratteristiche tecniche:
 
 \textbf{Componenti principali del sistema:}
 \begin{itemize}
@@ -87,7 +87,7 @@ La configurazione 2N garantisce disponibilità superiore poiché tollera il guas
 % \centering
 % \scalebox{0.9}{\input{thesis_figures/cap3/power_infographic.tex}}
 
-% \caption{Infografica comparativa dei sistemi di alimentazione critica per la GDO. L'analisi di 234 interruzioni di servizio evidenzia come il 43\% dei downtime derivi da guasti elettrici. La configurazione 2N incrementa la disponibilità al 99.94\% con ROI in 28 mesi, mentre l'integrazione di ML per manutenzione predittiva raggiunge il 94.3\% di accuratezza nella previsione guasti con 72 ore di anticipo.}
+% \caption{Infografica comparativa dei sistemi di alimentazione critica per la \gls{gdo}. L'analisi di 234 interruzioni di servizio evidenzia come il 43\% dei downtime derivi da guasti elettrici. La configurazione 2N incrementa la disponibilità al 99.94\% con ROI in 28 mesi, mentre l'integrazione di \gls{ml} per manutenzione predittiva raggiunge il 94.3\% di accuratezza nella previsione guasti con 72 ore di anticipo.}
 % \label{fig:power_infographic}
 % \end{figure}
 
@@ -113,7 +113,7 @@ L'architettura di distribuzione elettrica include:
 L'implementazione di sistemi di gestione energetica basati su apprendimento automatico migliora significativamente l'affidabilità\autocite{GoogleDeepMind2024}. Il sistema sviluppato utilizza:
 
 \begin{itemize}
-    \item \textbf{Sensori IoT}: Temperatura batterie, corrente di ripple, impedenza interna
+    \item \textbf{Sensori \gls{iot}}: Temperatura batterie, corrente di ripple, impedenza interna
     \item \textbf{Algoritmi predittivi}: Rete neurale LSTM per previsione guasti con 72 ore di anticipo
     \item \textbf{Parametri monitorati}: 
     \begin{itemize}
@@ -135,7 +135,7 @@ Il modello predittivo, addestrato su 8.760 ore di dati operativi, raggiunge un'a
 
 \subsubsection{\texorpdfstring{\textbf{Implementazione Pratica e Ottimizzazioni}}{3.2.1.3 - Implementazione Pratica e Ottimizzazioni}}
 
-L'analisi empirica su 234 punti vendita della GDO dimostra che le configurazioni teoriche subiscono degradi prestazionali in ambiente operativo:
+L'analisi empirica su 234 punti vendita della \gls{gdo} dimostra che le configurazioni teoriche subiscono degradi prestazionali in ambiente operativo:
 
 \textbf{Fattori di degrado e mitigazioni:}
 \begin{itemize}
@@ -158,12 +158,12 @@ L'analisi empirica su 234 punti vendita della GDO dimostra che le configurazioni
     \end{itemize}
 \end{itemize}
 
-\textbf{Integrazione con Building Management System (BMS):}\\
-Il sistema di alimentazione si integra con il BMS attraverso protocolli standard:
+\textbf{Integrazione con Building Management System (\gls{bms}):}\\
+Il sistema di alimentazione si integra con il \gls{bms} attraverso protocolli standard:
 \begin{itemize}
-    \item \textbf{BACnet/IP}: Per comunicazione con sistemi HVAC
+    \item \textbf{BACnet/IP}: Per comunicazione con sistemi \gls{hvac}
     \item \textbf{Modbus RTU/TCP}: Per dispositivi legacy e PLC
-    \item \textbf{MQTT}: Per telemetria real-time verso piattaforme cloud
+    \item \textbf{\gls{mqtt}}: Per telemetria real-time verso piattaforme cloud
 \end{itemize}
 
 Questa integrazione permette:
@@ -179,19 +179,19 @@ Questa integrazione permette:
 \label{tab:power_redundancy_comparison}
 \begin{tabular}[\textwidth]{lcccccc}
 \toprule
-\textbf{Configurazione} & \textbf{MTBF} & \textbf{Disponibilità} & \textbf{Costo} & \textbf{PUE} & \textbf{Payback} & \textbf{Raccomandazione} \\
+\textbf{Configurazione} & \textbf{\gls{mtbf}} & \textbf{Disponibilità} & \textbf{Costo} & \textbf{\gls{pue}} & \textbf{Payback} & \textbf{Raccomandazione} \\
  & \textbf{(ore)} & \textbf{(\%)} & \textbf{Relativo} & \textbf{Tipico} & \textbf{(mesi)} & \\
 \midrule
 N+1 & 52.560 & 99.82 & 100 & 1.82 & -- & Minimo per\\
  & (±3.840) & (±0.12) & (baseline) & (±0.12) & & ambienti critici\\
 \midrule
 2N & 175.200 & 99.94 & 143 & 1.65 & 28 & Standard per\\
- & (±12.100) & (±0.04) & (±8) & (±0.09) & (±4) & GDO moderna\\
+ & (±12.100) & (±0.04) & (±8) & (±0.09) & (±4) & \gls{gdo} moderna\\
 \midrule
 2N+1 & 350.400 & 99.97 & 186 & 1.58 & 42 & Solo per\\
  & (±24.300) & (±0.02) & (±12) & (±0.07) & (±6) & ultra-critici\\
 \midrule
-N+1 con ML* & 69.141 & 99.88 & 112 & 1.40 & 14 & Migliore rapporto\\
+N+1 con \gls{ml}* & 69.141 & 99.88 & 112 & 1.40 & 14 & Migliore rapporto\\
  & (±4.820) & (±0.08) & (±5) & (±0.08) & (±2) & costo-efficacia\\
 \bottomrule
 \end{tabular}
@@ -200,7 +200,7 @@ N+1 con ML* & 69.141 & 99.88 & 112 & 1.40 & 14 & Migliore rapporto\\
 \footnotesize
 *N+1 con apprendimento automatico predittivo per manutenzione preventiva\\
 IC 95\% mostrati tra parentesi\\
-Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
+Fonte: Aggregazione dati da 23 implementazioni \gls{gdo} (2020-2024)
 \end{flushleft}
 \end{table}
 
@@ -208,7 +208,7 @@ Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
 \centering
 \input{thesis_figures/cap3/power_configurations_barchart.tex}
 \centering
-\caption{Analisi comparativa delle configurazioni di ridondanza per sistemi di alimentazione. I grafici mostrano: (a) disponibilità del sistema con 2N che raggiunge 99.94\%, (b) MTBF che triplica passando da N+1 a 2N, (c) incremento di costo del 43\% per 2N rispetto a N+1, (d) miglioramento dell'efficienza energetica (PUE) del 23\% con N+1+ML. La configurazione 2N emerge come soluzione ottimale per la GDO con ROI in 28 mesi.}
+\caption{Analisi comparativa delle configurazioni di ridondanza per sistemi di alimentazione. I grafici mostrano: (a) disponibilità del sistema con 2N che raggiunge 99.94\%, (b) \gls{mtbf} che triplica passando da N+1 a 2N, (c) incremento di costo del 43\% per 2N rispetto a N+1, (d) miglioramento dell'efficienza energetica (PUE) del 23\% con N+1+\gls{ml}. La configurazione 2N emerge come soluzione ottimale per la GDO con ROI in 28 mesi.}
 \label{fig:power_metrics_comparison}
 \end{figure}
 
@@ -233,10 +233,10 @@ Alcuni siti pilota stanno testando celle a combustibile a idrogeno:
     \item Sfide: Costo iniziale 3x rispetto a diesel, infrastruttura H2
 \end{itemize}
 
-L'implementazione ottimizzata di questi sistemi, combinata con il monitoraggio predittivo basato su ML, permette di raggiungere una disponibilità effettiva del 99.88\% con configurazione N+1 potenziata, rappresentando il miglior compromesso costo-efficacia per la maggior parte dei siti GDO.
+L'implementazione ottimizzata di questi sistemi, combinata con il monitoraggio predittivo basato su \gls{ml}, permette di raggiungere una disponibilità effettiva del 99.88\% con configurazione N+1 potenziata, rappresentando il miglior compromesso costo-efficacia per la maggior parte dei siti \gls{gdo}.
 \subsection{\texorpdfstring{\textbf{Ottimizzazione Termica e Sostenibilità}}{3.2.2 - Ottimizzazione Termica e Sostenibilità}}
 
-Il raffreddamento rappresenta mediamente il 38\% del consumo energetico totale di un centro elaborazione dati nel settore della Grande Distribuzione\autocite{ASHRAE2024}. L'ottimizzazione attraverso modellazione fluidodinamica computazionale (CFD - Computational Fluid Dynamics) permette di simulare i flussi d'aria e identificare zone di ricircolo e punti caldi che compromettono l'efficienza.
+Il raffreddamento rappresenta mediamente il 38\% del consumo energetico totale di un centro elaborazione dati nel settore della Grande Distribuzione\autocite{ASHRAE2024}. L'ottimizzazione attraverso modellazione fluidodinamica computazionale (\gls{cfd}) permette di simulare i flussi d'aria e identificare zone di ricircolo e punti caldi che compromettono l'efficienza.
 
 La fluidodinamica computazionale risolve numericamente le equazioni di Navier-Stokes per flussi turbolenti:
 
@@ -246,13 +246,13 @@ La fluidodinamica computazionale risolve numericamente le equazioni di Navier-St
 
 % dove $\rho$ è la densità dell'aria, $\mathbf{u}$ il campo di velocità, $p$ la pressione, $\mu$ la viscosità dinamica e $\mathbf{f}$ le forze esterne. La risoluzione attraverso metodi agli elementi finiti su mesh di 10^6 elementi fornisce mappe termiche con risoluzione spaziale di 10 cm, permettendo l'identificazione di inefficienze altrimenti non rilevabili.
 
-L'analisi di 89 implementazioni reali\autocite{DatacenterDynamics2024} mostra che l'adozione di tecniche di raffreddamento libero (free cooling) può ridurre l'Efficacia dell'Utilizzo Energetico (PUE - Power Usage Effectiveness) da una media di 1.82 a 1.40. Il PUE è definito come:
+L'analisi di 89 implementazioni reali\autocite{DatacenterDynamics2024} mostra che l'adozione di tecniche di raffreddamento libero (\gls{freecooling}) può ridurre l'Efficacia dell'Utilizzo Energetico (\gls{pue}) da una media di 1.82 a 1.40. Il \gls{pue} è definito come:
 
 \begin{equation}
-\text{PUE} = \frac{\text{Potenza Totale Facility}}{\text{Potenza IT Equipment}} = \frac{P_{tot}}{P_{IT}}
+\text{\gls{pue}} = \frac{\text{Potenza Totale Facility}}{\text{Potenza IT Equipment}} = \frac{P_{tot}}{P_{IT}}
 \end{equation}
 
-Una riduzione del PUE da 1.82 a 1.40 si traduce in un risparmio energetico del 23\% e una riduzione delle emissioni di CO₂ di 2.340 tonnellate annue per un data center di medie dimensioni (500 kW IT load), contribuendo agli obiettivi di sostenibilità aziendale e riducendo i costi operativi di circa 187.000 euro annui ai prezzi energetici correnti\autocite{Eurostat2024energy}.
+Una riduzione del \gls{pue} da 1.82 a 1.40 si traduce in un risparmio energetico del 23\% e una riduzione delle emissioni di CO₂ di 2.340 tonnellate annue per un data center di medie dimensioni (500 kW IT load), contribuendo agli obiettivi di sostenibilità aziendale e riducendo i costi operativi di circa 187.000 euro annui ai prezzi energetici correnti\autocite{Eurostat2024energy}.
 
 \section{\texorpdfstring{\textbf{Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}}{3.3 - Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}}
 
@@ -260,14 +260,14 @@ La trasformazione delle architetture di rete rappresenta un elemento critico nel
 
 \subsection{\texorpdfstring{\textbf{SD-WAN: Quantificazione di Performance e Resilienza}}{3.3.1 - SD-WAN: Quantificazione di Performance e Resilienza}}
 
-Le reti geografiche software-defined (SD-WAN - Software-Defined Wide Area Network) rappresentano un'evoluzione fondamentale per la Grande Distribuzione Organizzata, dove la necessità di connettere centinaia di punti vendita richiede un approccio che superi i limiti delle architetture tradizionali MPLS (Multiprotocol Label Switching).
+Le reti geografiche software-defined (\gls{sd-wan}) rappresentano un'evoluzione fondamentale per la Grande Distribuzione Organizzata, dove la necessità di connettere centinaia di punti vendita richiede un approccio che superi i limiti delle architetture tradizionali MPLS (Multiprotocol Label Switching).
 
 \subsubsection{\texorpdfstring{\textbf{Architettura Tecnica e Componenti}}{3.3.1.1 - Architettura Tecnica e Componenti}}
 
-L'SD-WAN introduce un livello di astrazione che separa il piano di controllo dal piano dati attraverso tre componenti principali:
+L'\gls{sd-wan} introduce un livello di astrazione che separa il piano di controllo dal piano dati attraverso tre componenti principali:
 
 \textbf{1. Piano di Controllo Centralizzato}\\
-Il controller SD-WAN, tipicamente implementato come cluster ridondato per alta disponibilità, gestisce le politiche di routing attraverso protocolli southbound come OpenFlow o NetConf. Nel contesto GDO, questo permette di definire politiche differenziate per tipologie di traffico:
+Il controller \gls{sd-wan}, tipicamente implementato come cluster ridondato per alta disponibilità, gestisce le politiche di routing attraverso protocolli southbound come OpenFlow o NetConf. Nel contesto \gls{gdo}, questo permette di definire politiche differenziate per tipologie di traffico:
 \begin{itemize}
     \item Transazioni POS (Point of Sale): priorità massima, latenza <50ms
     \item Sincronizzazione inventario: throughput garantito, tolleranza latenza 200ms
@@ -275,7 +275,7 @@ Il controller SD-WAN, tipicamente implementato come cluster ridondato per alta d
 \end{itemize}
 
 \textbf{2. Piano Dati Distribuito}\\
-Gli edge device SD-WAN creano tunnel overlay crittografati utilizzando:
+Gli edge device \gls{sd-wan} creano tunnel overlay crittografati utilizzando:
 \begin{itemize}
     \item IPSec per la cifratura (AES-256-GCM per transazioni finanziarie)
     \item VXLAN (Virtual Extensible LAN) per l'incapsulamento L2 over L3
@@ -288,7 +288,7 @@ L'orchestratore espone API RESTful per l'integrazione con sistemi di monitoraggi
 % \begin{figure}[htbp]
 % \centering
 % \includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_3.pdf}
-% \caption{Architettura SD-WAN a tre piani per la GDO - Il piano di controllo centralizzato orchestra le politiche, il piano dati distribuito gestisce il traffico attraverso tunnel overlay crittografati, mentre il piano di gestione fornisce API per integrazione e monitoring.}
+% \caption{Architettura \gls{sd-wan} a tre piani per la \gls{gdo} - Il piano di controllo centralizzato orchestra le politiche, il piano dati distribuito gestisce il traffico attraverso tunnel overlay crittografati, mentre il piano di gestione fornisce API per integrazione e monitoring.}
 % \label{fig:sdwan_architecture}
 % \end{figure}
 
@@ -301,17 +301,17 @@ L'orchestratore espone API RESTful per l'integrazione con sistemi di monitoraggi
 \makebox[\textwidth][c]{\input{thesis_figures/figura_3_3.tex}}
 
 %\scalebox{0.9}{\input{thesis_figures/figura_3_3.tex}}
-\caption{Architettura SD-WAN semplificata con separazione dei tre piani funzionali. Il \textbf{piano di controllo} centralizza le decisioni di routing attraverso il SDN Controller. Il \textbf{piano di gestione} fornisce orchestrazione, monitoring e analytics basate su AI/ML. Il \textbf{piano dati} implementa il forwarding attraverso tunnel overlay sicuri con QoS differenziata. La separazione dei piani abilita agilità operativa riducendo MTTR del 74\% e latenza del 73\%.}
+\caption{Architettura \gls{sd-wan} semplificata con separazione dei tre piani funzionali. Il \textbf{piano di controllo} centralizza le decisioni di routing attraverso il SDN Controller. Il \textbf{piano di gestione} fornisce orchestrazione, monitoring e analytics basate su \gls{ai}/\gls{ml}. Il \textbf{piano dati} implementa il forwarding attraverso tunnel overlay sicuri con QoS differenziata. La separazione dei piani abilita agilità operativa riducendo \gls{mttr} del 74\% e latenza del 73\%.}
 \label{fig:sdwan_architecture_simplified}
 \end{figure}
 
 
 \subsubsection{\texorpdfstring{\textbf{Quantificazione dei Benefici Operativi}}{3.3.1.2 - Quantificazione dei Benefici Operativi}}
 
-Il Tempo Medio di Riparazione (MTTR - Mean Time To Repair) può essere modellato come:
+Il Tempo Medio di Riparazione (\gls{mttr}) può essere modellato come:
 
 \begin{equation}
-\text{MTTR} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
+\text{\gls{mttr}} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
 \end{equation}
 
 L'analisi comparativa su 127 migrazioni nel settore retail europeo\autocite{Gartner2024sdwan} mostra la riduzione dei tempi attraverso l'automazione:
@@ -322,16 +322,16 @@ L'analisi comparativa su 127 migrazioni nel settore retail europeo\autocite{Gart
     \item $T_{diagnose}$ = 2.7 ore (richiede analisi manuale multi-vendor, accesso CLI)
     \item $T_{repair}$ = 1.0 ore (riconfigurazione manuale router)
     \item $T_{verify}$ = 0.2 ore (test connettività manuale)
-    \item \textbf{MTTR totale = 4.7 ore}
+    \item \textbf{\gls{mttr} totale = 4.7 ore}
 \end{itemize}
 
-\textbf{Architettura SD-WAN:}
+\textbf{Architettura \gls{sd-wan}:}
 \begin{itemize}
     \item $T_{detect}$ = 0.05 ore (3 minuti - probing continuo, soglie automatiche)
     \item $T_{diagnose}$ = 0.15 ore (9 minuti - correlazione automatica eventi, root cause analysis)
     \item $T_{repair}$ = 0.90 ore (failover automatico immediato, fix permanente differito)
     \item $T_{verify}$ = 0.10 ore (6 minuti - test automatizzati end-to-end)
-    \item \textbf{MTTR totale = 1.2 ore (riduzione del 74\%)}
+    \item \textbf{\gls{mttr} totale = 1.2 ore (riduzione del 74\%)}
 \end{itemize}
 
 Questa riduzione è ottenuta attraverso:
@@ -343,10 +343,10 @@ Questa riduzione è ottenuta attraverso:
 
 \subsubsection{\texorpdfstring{\textbf{Implementazione della Qualità del Servizio Dinamica}}{3.3.1.3 - Implementazione della Qualità del Servizio Dinamica}}
 
-L'SD-WAN permette QoS (Quality of Service) granulare attraverso Deep Packet Inspection (DPI) che identifica oltre 3.000 applicazioni. Per la GDO, questo si traduce in:
+L'\gls{sd-wan} permette QoS (Quality of Service) granulare attraverso Deep Packet Inspection (\gls{dpi}) che identifica oltre 3.000 applicazioni. Per la GDO, questo si traduce in:
 
 \begin{lstlisting}[
-    caption={Configurazione QoS per SD-WAN in ambiente GDO},
+    caption={Configurazione QoS per \gls{sd-wan} in ambiente \gls{gdo}},
     label={lst:qos_config},
     basicstyle=\small\ttfamily,
     frame=single,
@@ -370,11 +370,11 @@ Classe 3 - Standard (AF21):
 
 \subsubsection{\texorpdfstring{\textbf{Sicurezza Integrata e Micro-segmentazione}}{3.3.1.4 - Sicurezza Integrata e Micro-segmentazione}}
 
-L'SD-WAN abilita la micro-segmentazione end-to-end attraverso VRF (Virtual Routing and Forwarding) che estende la segmentazione dal data center ai punti vendita:
+L'\gls{sd-wan} abilita la micro-segmentazione end-to-end attraverso VRF (Virtual Routing and Forwarding) che estende la segmentazione dal data center ai punti vendita:
 
 \begin{itemize}
     \item \textbf{Segmento PCI-DSS}: Isolamento completo per sistemi di pagamento
-    \item \textbf{Segmento IoT}: Quarantena per sensori e dispositivi smart
+    \item \textbf{Segmento \gls{iot}}: Quarantena per sensori e dispositivi smart
     \item \textbf{Segmento Guest WiFi}: Separazione totale dal traffico aziendale
     \item \textbf{Segmento Amministrativo}: Accesso ristretto a sistemi gestionali
 \end{itemize}
@@ -383,20 +383,20 @@ Ogni segmento utilizza chiavi di cifratura IPSec separate con rotazione automati
 
 \subsubsection{\texorpdfstring{\textbf{Analisi Economica e ROI}}{3.3.1.5 - Analisi Economica e ROI}}
 
-L'implementazione di SD-WAN comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (NPV - Net Present Value) su un orizzonte triennale mostra:
+L'implementazione di \gls{sd-wan} comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (\gls{npv}) su un orizzonte triennale mostra:
 
 \begin{equation}
-\text{NPV} = -I_0 + \sum_{t=1}^{3} \frac{CF_t}{(1+r)^t}
+\text{\gls{npv}} = -I_0 + \sum_{t=1}^{3} \frac{CF_t}{(1+r)^t}
 \end{equation}
 
-dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un NPV positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
+dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un \gls{npv} positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
 
-\subsubsection{\texorpdfstring{\textbf{Integrazione con Edge Computing}}{3.3.1.6 - Integrazione con Edge Computing}}
+\subsubsection{\texorpdfstring{\textbf{Integrazione con \gls{edge}}}{3.3.1.6 - Integrazione con \gls{edge}}}
 
-L'SD-WAN fornisce il substrato di rete ottimale per l'edge computing, permettendo:
+L'\gls{sd-wan} fornisce il substrato di rete ottimale per l'\gls{edge}, permettendo:
 \begin{itemize}
     \item \textbf{Local breakout} per traffico Internet, riducendo il backhaul al data center
-    \item \textbf{Distributed security stack} con firewall e IPS su ogni edge device
+    \item \textbf{Distributed security stack} con firewall e \gls{ips} su ogni edge device
     \item \textbf{Caching intelligente} per contenuti frequentemente acceduti
     \item \textbf{Compute locale} per analytics real-time su dati di vendita
 \end{itemize}
@@ -410,10 +410,10 @@ Questa sinergia riduce la latenza complessiva del 73.4\% (da 187ms a 49ms)\autoc
 
 % \subsection{SD-WAN: Quantificazione di Performance e Resilienza}
 
-% Le reti geografiche software-defined (SD-WAN - Software-Defined Wide Area Network) introducono un livello di astrazione che separa il piano di controllo dal piano dati, permettendo gestione centralizzata e applicazione dinamica delle politiche. Il Tempo Medio di Riparazione (MTTR - Mean Time To Repair) può essere modellato come:
+% Le reti geografiche software-defined (\gls{sd-wan}) introducono un livello di astrazione che separa il piano di controllo dal piano dati, permettendo gestione centralizzata e applicazione dinamica delle politiche. Il Tempo Medio di Riparazione (\gls{mttr}) può essere modellato come:
 
 % \begin{equation}
-% \text{MTTR} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
+% \text{\gls{mttr}} = T_{detect} + T_{diagnose} + T_{repair} + T_{verify}
 % \end{equation}
 
 % Nell'architettura tradizionale hub-and-spoke, i tempi medi misurati sono:
@@ -424,7 +424,7 @@ Questa sinergia riduce la latenza complessiva del 73.4\% (da 187ms a 49ms)\autoc
 %     \item $T_{verify}$ = 0.2 ore (verifica del ripristino)
 % \end{itemize}
 
-% Per un MTTR totale di 4.7 ore. Con SD-WAN, l'automazione riduce drasticamente questi tempi:
+% Per un MTTR totale di 4.7 ore. Con \gls{sd-wan}, l'automazione riduce drasticamente questi tempi:
 % \begin{itemize}
 %     \item $T_{detect}$ = 0.05 ore (rilevamento automatico in tempo reale)
 %     \item $T_{diagnose}$ = 0.15 ore (diagnosi assistita da intelligenza artificiale)
@@ -437,39 +437,39 @@ Questa sinergia riduce la latenza complessiva del 73.4\% (da 187ms a 49ms)\autoc
 % \begin{figure}[htbp]
 % \centering
 % \includegraphics[width=0.8\textwidth]{thesis_figures/cap3/figura_3_2_network_evolution.pdf}
-% \caption{Evoluzione dell'Architettura di Rete - Dal Legacy Hub-and-Spoke al Full Mesh SD-WAN. La progressione mostra la riduzione della latenza media da 187ms a 49ms e l'incremento della resilienza attraverso percorsi multipli.}
+% \caption{Evoluzione dell'Architettura di Rete - Dal Legacy Hub-and-Spoke al Full Mesh \gls{sd-wan}. La progressione mostra la riduzione della latenza media da 187ms a 49ms e l'incremento della resilienza attraverso percorsi multipli.}
 % \label{fig:network_evolution}
 % \end{figure}
 
-% L'implementazione di SD-WAN comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (NPV - Net Present Value) su un orizzonte triennale mostra:
+% L'implementazione di \gls{sd-wan} comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (\gls{npv}) su un orizzonte triennale mostra:
 
 % \begin{equation}
-% \text{NPV} = -I_0 + \sum_{t=1}^{3} \frac{CF_t}{(1+r)^t}
+% \text{\gls{npv}} = -I_0 + \sum_{t=1}^{3} \frac{CF_t}{(1+r)^t}
 % \end{equation}
 
-% dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un NPV positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
+% dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un \gls{npv} positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
 
-\subsection{\texorpdfstring{\textbf{Edge Computing: Latenza e Superficie di Attacco}}{3.3.2 - Edge Computing: Latenza e Superficie di Attacco}}
+\subsection{\texorpdfstring{\textbf{\gls{edge}: Latenza e Superficie di Attacco}}{3.3.2 - \gls{edge}: Latenza e Superficie di Attacco}}
 
-L'elaborazione al margine (Edge Computing) rappresenta un paradigma fondamentale per supportare le esigenze di bassa latenza delle applicazioni moderne nella Grande Distribuzione. I dati empirici su 89 deployment mostrano una riduzione della latenza media del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge}, abilitando scenari applicativi prima non realizzabili.
+L'elaborazione al margine (\gls{edge}) rappresenta un paradigma fondamentale per supportare le esigenze di bassa latenza delle applicazioni moderne nella Grande Distribuzione. I dati empirici su 89 deployment mostrano una riduzione della latenza media del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge}, abilitando scenari applicativi prima non realizzabili.
 
-\subsubsection{\texorpdfstring{\textbf{Architettura Edge per la GDO}}{3.3.2.1 - Architettura Edge per la GDO}}
+\subsubsection{\texorpdfstring{\textbf{Architettura \gls{edge} per la \gls{gdo}}}{3.3.2.1 - Architettura \gls{edge} per la \gls{gdo}}}
 
-L'implementazione edge nella Grande Distribuzione segue un modello gerarchico a tre livelli:
+L'implementazione \gls{edge} nella Grande Distribuzione segue un modello gerarchico a tre livelli:
 
-\textbf{1. Far Edge - Dispositivi IoT (Livello Sensori):}
+\textbf{1. Far Edge - Dispositivi \gls{iot} (Livello Sensori):}
 \begin{itemize}
     \item \textbf{Hardware}: Raspberry Pi 4, ESP32, Arduino MKR
     \item \textbf{Sensori}: Temperatura frigo, occupancy, RFID reader
     \item \textbf{Processing}: Filtraggio dati, aggregazione locale
-    \item \textbf{Protocolli}: MQTT, CoAP, LoRaWAN per low power
+    \item \textbf{Protocolli}: \gls{mqtt}, CoAP, LoRaWAN per low power
 \end{itemize}
 
 \textbf{2. Near Edge - Gateway Intelligenti (Livello Punto Vendita):}
 \begin{itemize}
     \item \textbf{Hardware}: Intel NUC, NVIDIA Jetson, Dell Edge Gateway
     \item \textbf{Capacità}: 8-16 core CPU, 32-64GB RAM, GPU opzionale
-    \item \textbf{Software}: K3s (lightweight Kubernetes), Docker
+    \item \textbf{Software}: K3s (lightweight \gls{kubernetes}), Docker
     \item \textbf{Workload}: Analytics real-time, computer vision, cache locale
 \end{itemize}
 
@@ -477,13 +477,13 @@ L'implementazione edge nella Grande Distribuzione segue un modello gerarchico a 
 \begin{itemize}
     \item \textbf{Infrastruttura}: 1-5 rack, 50-200 kW
     \item \textbf{Ubicazione}: Centri distributivi o hub logistici
-    \item \textbf{Funzione}: Aggregazione multi-store, ML training, backup
+    \item \textbf{Funzione}: Aggregazione multi-store, \gls{ml} training, backup
     \item \textbf{Connettività}: Fibra dedicata 10 Gbps verso cloud
 \end{itemize}
 
 \subsubsection{\texorpdfstring{\textbf{Stack Software Edge-Native}}{3.3.2.2 - Stack Software Edge-Native}}
 
-\textbf{Container Orchestration Leggera:}
+\textbf{\gls{container} Orchestration Leggera:}
 \begin{lstlisting}[caption={K3s Deployment per Edge Store},label={lst:k3s_edge}]
 # Deploy K3s su edge gateway
 curl -sfL https://get.k3s.io | sh -s - \
@@ -539,9 +539,9 @@ spec:
 EOF
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Protocolli e Comunicazione IoT}}{3.3.2.3 - Protocolli e Comunicazione IoT}}
+\subsubsection{\texorpdfstring{\textbf{Protocolli e Comunicazione \gls{iot}}}{3.3.2.3 - Protocolli e Comunicazione \gls{iot}}}
 
-\textbf{MQTT per Telemetria:}
+\textbf{\gls{mqtt} per Telemetria:}
 \begin{itemize}
     \item \textbf{Broker}: Mosquitto/EMQX su edge gateway
     \item \textbf{QoS Levels}: 0 per sensori non critici, 1 per allarmi
@@ -576,7 +576,7 @@ void callback_temp(CoapPacket &packet, IPAddress ip, int port) {
 }
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Use Cases Edge nella GDO}}{3.3.2.4 - Use Cases Edge nella GDO}}
+\subsubsection{\texorpdfstring{\textbf{Use Cases \gls{edge} nella \gls{gdo}}}{3.3.2.4 - Use Cases \gls{edge} nella \gls{gdo}}}
 
 \textbf{1. Computer Vision per Analytics Cliente:}
 \begin{itemize}
@@ -589,7 +589,7 @@ void callback_temp(CoapPacket &packet, IPAddress ip, int port) {
 \textbf{2. Predictive Maintenance Frigoriferi:}
 \begin{itemize}
     \item \textbf{Sensori}: Temperatura, vibrazioni, consumo energetico
-    \item \textbf{ML Model}: Random Forest su edge per anomaly detection
+    \item \textbf{\gls{ml} Model}: Random Forest su edge per anomaly detection
     \item \textbf{Alert}: Notifica immediata se deriva termica >2°C/ora
     \item \textbf{Beneficio}: Prevenzione perdite merce (-85\% food waste)
 \end{itemize}
@@ -610,7 +610,7 @@ La latenza end-to-end può essere decomposta come:
 L_{total} = L_{prop} + L_{trans} + L_{proc} + L_{queue}
 \end{equation}
 
-Confronto Cloud vs Edge per transazione POS:
+Confronto Cloud vs \gls{edge} per transazione POS:
 
 \begin{tabular}{lcc}
 \toprule
@@ -627,13 +627,13 @@ $L_{queue}$ (coda) & 30ms & 3ms \\
 
 \subsubsection{\texorpdfstring{\textbf{Sicurezza e Superficie di Attacco}}{3.3.2.6 - Sicurezza e Superficie di Attacco}}
 
-Dal punto di vista della sicurezza, l'edge computing contribuisce significativamente all'ipotesi H2. L'isolamento dei carichi di lavoro sull'edge e la micro-segmentazione abilitata riducono la Superficie di Attacco del 42.7\%\autocite{Ponemon2024}:
+Dal punto di vista della sicurezza, l'\gls{edge} contribuisce significativamente all'ipotesi H2. L'isolamento dei carichi di lavoro sull'edge e la micro-segmentazione abilitata riducono la Superficie di Attacco del 42.7\%\autocite{Ponemon2024}:
 
 \textbf{Misure di Sicurezza Edge:}
 \begin{itemize}
     \item \textbf{Secure Boot}: Firmware verificato crittograficamente
     \item \textbf{TPM Integration}: Chiavi hardware per cifratura dati
-    \item \textbf{Network Isolation}: VLAN separate per IoT/OT/IT
+    \item \textbf{Network Isolation}: VLAN separate per \gls{iot}/OT/IT
     \item \textbf{Local Firewall}: iptables/nftables con default deny
     \item \textbf{Certificate Pinning}: mTLS per comunicazioni edge-cloud
 \end{itemize}
@@ -669,12 +669,12 @@ if [ "$VERSION_NEW" != "$VERSION_CURRENT" ]; then
 fi
 \end{lstlisting}
 
-L'implementazione edge computing nella GDO rappresenta quindi un elemento critico per raggiungere gli obiettivi di latenza (<100ms) mantenendo sicurezza e affidabilità, abilitando nuovi servizi a valore aggiunto che migliorano sia l'efficienza operativa che l'esperienza cliente.
+L'implementazione \gls{edge} nella \gls{gdo} rappresenta quindi un elemento critico per raggiungere gli obiettivi di latenza (<100ms) mantenendo sicurezza e affidabilità, abilitando nuovi servizi a valore aggiunto che migliorano sia l'efficienza operativa che l'esperienza cliente.
 \section{\texorpdfstring{\textbf{Trasformazione Cloud: Analisi Strategica ed Economica}}{3.4 - Trasformazione Cloud: Analisi Strategica ed Economica}}
 
 La migrazione verso il cloud rappresenta una delle decisioni strategiche più significative per le organizzazioni della Grande Distribuzione, con implicazioni che vanno oltre i semplici aspetti tecnologici per toccare modelli operativi, strutture di costo e capacità competitive.
 
-\subsection{\texorpdfstring{\textbf{Modellazione del TCO per Strategie di Migrazione}}{3.4.1 - Modellazione del TCO per Strategie di Migrazione}}
+\subsection{\texorpdfstring{\textbf{Modellazione del \gls{tco} per Strategie di Migrazione}}{3.4.1 - Modellazione del \gls{tco} per Strategie di Migrazione}}
 
 La migrazione verso il cloud nella Grande Distribuzione Organizzata richiede un'analisi che bilanci aspetti economici con scelte architetturali tecniche. Il modello sviluppato\autocite{KhajehHosseini2024} considera non solo i costi ma soprattutto le implicazioni tecniche di ciascuna strategia migratoria.
 
@@ -682,14 +682,14 @@ La migrazione verso il cloud nella Grande Distribuzione Organizzata richiede un'
 
 L'analisi comparativa basata su 43 migrazioni complete\autocite{McKinsey2024cloud} identifica tre approcci principali con implicazioni tecniche distinte:
 
-\textbf{1. Lift-and-Shift (Rehosting) - Migrazione IaaS}
+\textbf{1. Lift-and-Shift (Rehosting) - Migrazione \gls{iaas}}
 
 \textit{Architettura Tecnica:}
 \begin{itemize}
     \item \textbf{Virtualizzazione}: Conversione VM on-premise (VMware) verso cloud (EC2/Azure VM)
     \item \textbf{Storage}: Migrazione block storage verso EBS/Managed Disks con snapshot incrementali
     \item \textbf{Networking}: VPN site-to-site o Direct Connect/ExpressRoute per connettività ibrida
-    \item \textbf{Database}: Installazione self-managed su IaaS, backup tradizionali
+    \item \textbf{Database}: Installazione self-managed su \gls{iaas}, backup tradizionali
 \end{itemize}
 
 \textit{Stack Tecnologico Tipico:}
@@ -724,17 +724,17 @@ resource "aws_instance" "legacy_app" {
     \item Disaster recovery manuale
 \end{itemize}
 
-\textbf{2. Replatforming - Modernizzazione Parziale PaaS}
+\textbf{2. Replatforming - Modernizzazione Parziale \gls{paas}}
 
 \textit{Architettura Cloud-Optimized:}
 \begin{itemize}
-    \item \textbf{Container Runtime}: Migrazione verso Docker/containerd
-    \item \textbf{Orchestration}: ECS/AKS per gestione container senza full Kubernetes
+    \item \textbf{\gls{container} Runtime}: Migrazione verso Docker/\gls{container}d
+    \item \textbf{Orchestration}: ECS/AKS per gestione \gls{container} senza full \gls{kubernetes}
     \item \textbf{Database Gestito}: RDS/Azure SQL con read replicas automatiche
     \item \textbf{Caching Layer}: ElastiCache/Azure Cache per Redis
 \end{itemize}
 
-\textit{Implementazione Container-Based:}
+\textit{Implementazione \gls{container}-Based:}
 \begin{lstlisting}[caption={Docker Compose per Replatforming},label={lst:replatform}]
 version: '3.8'
 services:
@@ -775,7 +775,7 @@ services:
 
 \textbf{3. Refactoring - Architettura Cloud-Native}
 
-\textit{Microservizi e Pattern Serverless:}
+\textit{\gls{microservizi} e Pattern Serverless:}
 \begin{itemize}
     \item \textbf{API Gateway}: REST/GraphQL con rate limiting e caching
     \item \textbf{Microservices}: Decomposizione in bounded contexts
@@ -783,8 +783,8 @@ services:
     \item \textbf{Serverless Compute}: Lambda/Functions per workload variabili
 \end{itemize}
 
-\textit{Architettura Kubernetes Cloud-Native:}
-\begin{lstlisting}[caption={Kubernetes Manifest per Microservizi},label={lst:k8s_refactor}]
+\textit{Architettura \gls{kubernetes} Cloud-Native:}
+\begin{lstlisting}[caption={\gls{kubernetes} Manifest per \gls{microservizi}},label={lst:k8s_refactor}]
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -892,16 +892,16 @@ spec:
 \toprule
 \textbf{Caratteristica} & \textbf{Lift-and-Shift} & \textbf{Replatforming} & \textbf{Refactoring} \\
 \midrule
-\textbf{Architettura} & Monolitica preservata & Container monolitici & Microservizi \\
+\textbf{Architettura} & Monolitica preservata & \gls{container} monolitici & \gls{microservizi} \\
 \textbf{Scalabilità} & Verticale only & Orizzontale limitata & Full elasticity \\
 \textbf{Deployment} & Blue-green basic & Rolling updates & Canary/Progressive \\
 \textbf{State Management} & Stateful sessions & Sticky sessions & Stateless + cache \\
 \textbf{Database} & Self-managed & Managed RDS & DynamoDB/Cosmos \\
 \textbf{Resilienza} & Manual failover & Auto-failover parziale & Self-healing \\
 \textbf{Latenza API} & 200-500ms & 100-200ms & 20-50ms \\
-\textbf{RTO/RPO} & 4h/1h & 1h/15min & 5min/1min \\
-\textbf{DevOps Maturity} & Bassa (CI only) & Media (CI/CD basic) & Alta (GitOps) \\
-\textbf{Vendor Lock-in} & Minimo (IaaS) & Medio (PaaS) & Alto (Serverless) \\
+\textbf{\gls{rto}/\gls{rpo}} & 4h/1h & 1h/15min & 5min/1min \\
+\textbf{\gls{devops} Maturity} & Bassa (CI only) & Media (\gls{cicd} basic) & Alta (GitOps) \\
+\textbf{Vendor Lock-in} & Minimo (\gls{iaas}) & Medio (\gls{paas}) & Alto (Serverless) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -917,7 +917,7 @@ La migrazione utilizza toolchain specifici per minimizzare rischi e downtime:
     \item \textbf{CloudEndure}: Replicazione continua per cutover minimo
 \end{itemize}
 
-\textbf{Migration Pipeline CI/CD:}
+\textbf{Migration Pipeline \gls{cicd}:}
 \begin{lstlisting}[caption={GitLab CI per Migrazione Progressiva},label={lst:migration_pipeline}]
 stages:
   - validate
@@ -974,7 +974,7 @@ L'analisi empirica mostra che l'investimento in refactoring, seppur maggiore ini
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap3/fig_3_4_tco_comparison.pdf}
-\caption{Analisi TCO Multi-Strategia per Migrazione Cloud con Simulazione Monte Carlo. Il grafico mostra le distribuzioni di probabilità del TCO per ciascuna strategia e il punto di break-even temporale.}
+\caption{Analisi TCO Multi-Strategia per Migrazione Cloud con Simulazione Monte Carlo. Il grafico mostra le distribuzioni di probabilità del \gls{tco} per ciascuna strategia e il punto di break-even temporale.}
 \label{fig:cloud_tco}
 \end{figure}
 
@@ -991,7 +991,7 @@ L'implementazione multi-cloud richiede un layer di astrazione che permetta gesti
 
 \textbf{Cloud-Agnostic Orchestration Layer:}
 \begin{itemize}
-    \item \textbf{Kubernetes Federation}: Gestione cluster multipli cross-provider
+    \item \textbf{\gls{kubernetes} Federation}: Gestione cluster multipli cross-provider
     \item \textbf{Terraform Cloud}: Infrastructure as Code unificato per AWS, Azure, GCP
     \item \textbf{Service Mesh Multi-Cluster}: Istio/Consul per comunicazione sicura inter-cloud
     \item \textbf{GitOps}: ArgoCD per deployment dichiarativo su tutti i cluster
@@ -999,7 +999,7 @@ L'implementazione multi-cloud richiede un layer di astrazione che permetta gesti
 
 \textbf{Distribuzione Workload per Provider:}
 
-Basandosi sull'analisi delle caratteristiche tecniche di ciascun provider e sui requisiti della GDO, l'allocazione ottimale dei workload segue criteri tecnici specifici:
+Basandosi sull'analisi delle caratteristiche tecniche di ciascun provider e sui requisiti della \gls{gdo}, l'allocazione ottimale dei workload segue criteri tecnici specifici:
 
 \begin{itemize}
     \item \textbf{AWS (35\% workload)}:
@@ -1018,8 +1018,8 @@ Basandosi sull'analisi delle caratteristiche tecniche di ciascun provider e sui 
     
     \item \textbf{GCP (25\% workload)}:
     \begin{itemize}
-        \item Machine Learning e AI (Vertex AI, BigQuery)
-        \item Kubernetes-native workloads (GKE Autopilot)
+        \item Machine Learning e \gls{ai} (Vertex AI, BigQuery)
+        \item \gls{kubernetes}-native workloads (GKE Autopilot)
         \item Real-time analytics (Dataflow, Pub/Sub)
     \end{itemize}
 \end{itemize}
@@ -1030,7 +1030,7 @@ Basandosi sull'analisi delle caratteristiche tecniche di ciascun provider e sui 
 
 Implementazione di servizi attivi simultaneamente su più cloud:
 
-\begin{lstlisting}[caption={Kubernetes Multi-Cloud Service},label={lst:multicloud_k8s}]
+\begin{lstlisting}[caption={\gls{kubernetes} Multi-Cloud Service},label={lst:multicloud_k8s}]
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
@@ -1079,7 +1079,7 @@ Sincronizzazione dati cross-cloud per disaster recovery:
     \item \textbf{Database}: Multi-master replication con CockroachDB/YugabyteDB
     \item \textbf{Object Storage}: Rclone/CloudSync per S3-Blob-GCS sync
     \item \textbf{Message Queue}: Kafka MirrorMaker 2 per event streaming
-    \item \textbf{CDN}: Multi-CDN strategy (CloudFront + Azure CDN + Cloud CDN)
+    \item \textbf{\gls{cdn}}: Multi-\gls{cdn} strategy (CloudFront + Azure \gls{cdn} + Cloud \gls{cdn})
 \end{itemize}
 
 \subsubsection{\texorpdfstring{\textbf{Gestione della Complessità Multi-Cloud}}{3.4.2.3 - Gestione della Complessità Multi-Cloud}}
@@ -1130,7 +1130,7 @@ scrape_configs:
 \begin{itemize}
     \item \textbf{Tagging Strategy}: Tag unificati cross-cloud per cost allocation
     \item \textbf{Reserved Instances}: Bilanciamento RI/Savings Plans per ottimizzazione
-    \item \textbf{Spot Fleet Management}: Kubernetes Cluster Autoscaler con spot instances
+    \item \textbf{Spot Fleet Management}: \gls{kubernetes} Cluster Autoscaler con spot instances
 \end{itemize}
 
 \subsubsection{\texorpdfstring{\textbf{Analisi del Rischio e Correlazioni}}{3.4.2.4 - Analisi del Rischio e Correlazioni}}
@@ -1206,15 +1206,15 @@ deny[msg] {
 L'approccio multi-cloud abilita strategie DR avanzate:
 
 \begin{itemize}
-    \item \textbf{RTO}: 5 minuti attraverso failover DNS automatico
-    \item \textbf{RPO}: 1 minuto con replicazione asincrona continua
+    \item \textbf{\gls{rto}}: 5 minuti attraverso failover DNS automatico
+    \item \textbf{\gls{rpo}}: 1 minuto con replicazione asincrona continua
     \item \textbf{Testing}: Chaos engineering mensile (Litmus/Gremlin)
 \end{itemize}
 
 \begin{tcolorbox}[
     colback=purple!5!white,
     colframe=purple!65!black,
-    title={\textbf{Innovation Box 3.2:} Orchestrazione Multi-Cloud Intelligente con ML},
+    title={\textbf{Innovation Box 3.2:} Orchestrazione Multi-Cloud Intelligente con \gls{ml}},
     fonttitle=\bfseries,
     boxrule=1.5pt,
     arc=2mm
@@ -1236,7 +1236,7 @@ Il sistema apprende la distribuzione ottimale basandosi su:
 \begin{itemize}
     \item Riduzione costi cloud: 31\%
     \item Miglioramento latenza p95: 23\%
-    \item Riduzione violazioni SLA: 67\%
+    \item Riduzione violazioni \gls{sla}: 67\%
 \end{itemize}
 
 \textit{→ Implementazione completa in Appendice C.3.5}
@@ -1244,17 +1244,17 @@ Il sistema apprende la distribuzione ottimale basandosi su:
 
 L'implementazione multi-cloud, pur introducendo complessità gestionale, riduce il rischio operativo del 67\% e i costi di compliance del 27.3\%, validando l'investimento in architetture distribuite per la Grande Distribuzione Organizzata.
 
-\section{\texorpdfstring{\textbf{Architettura Zero Trust: Quantificazione dell'Impatto}}{3.5 - Architettura Zero Trust: Quantificazione dell'Impatto}}
+\section{\texorpdfstring{\textbf{Architettura \gls{zerotrust}: Quantificazione dell'Impatto}}{3.5 - Architettura \gls{zerotrust}: Quantificazione dell'Impatto}}
 
-L'implementazione di architetture Zero Trust rappresenta un cambio paradigmatico fondamentale nella sicurezza delle infrastrutture IT, passando da un modello basato sul perimetro con fiducia implicita a uno di verifica continua e granulare. Il principio "mai fidarsi, sempre verificare" richiede una ristrutturazione profonda dell'architettura di sicurezza attraverso componenti tecnologiche specifiche.
+L'implementazione di architetture \gls{zerotrust} rappresenta un cambio paradigmatico fondamentale nella sicurezza delle infrastrutture IT, passando da un modello basato sul perimetro con fiducia implicita a uno di verifica continua e granulare. Il principio "mai fidarsi, sempre verificare" richiede una ristrutturazione profonda dell'architettura di sicurezza attraverso componenti tecnologiche specifiche.
 
 \subsection{\texorpdfstring{\textbf{Componenti Architetturali e Implementazione}}{3.5.1 - Componenti Architetturali e Implementazione}}
 
-L'architettura Zero Trust nella GDO si basa su cinque pilastri tecnologici interconnessi:
+L'architettura \gls{zerotrust} nella \gls{gdo} si basa su cinque pilastri tecnologici interconnessi:
 
-\subsubsection{\texorpdfstring{\textbf{Identity and Access Management (IAM)}}{3.5.1.1 - Identity and Access Management (IAM)}}
+\subsubsection{\texorpdfstring{\textbf{Identity and Access Management (\gls{iam})}}{3.5.1.1 - Identity and Access Management (\gls{iam})}}
 
-Il sistema IAM costituisce il nucleo dell'architettura, implementato attraverso:
+Il sistema \gls{iam} costituisce il nucleo dell'architettura, implementato attraverso:
 
 \textbf{Identity Provider (IdP) Federato:}
 \begin{itemize}
@@ -1287,9 +1287,9 @@ L'implementazione Secure Access Service Edge (SASE) combina funzionalità di ret
 
 \textbf{Architettura SASE Distribuita:}
 \begin{itemize}
-    \item \textbf{Cloud Access Security Broker (CASB)}: Visibilità e controllo su applicazioni SaaS
+    \item \textbf{Cloud Access Security Broker (CASB)}: Visibilità e controllo su applicazioni \gls{saas}
     \item \textbf{Secure Web Gateway (SWG)}: Filtering del traffico web con SSL inspection
-    \item \textbf{Zero Trust Network Access (ZTNA)}: Accesso applicativo senza VPN tradizionale
+    \item \textbf{\gls{zerotrust} Network Access (ZTNA)}: Accesso applicativo senza VPN tradizionale
     \item \textbf{Firewall-as-a-Service (FWaaS)}: Ispezione stateful distribuita geograficamente
 \end{itemize}
 
@@ -1309,10 +1309,10 @@ La segmentazione viene implementata a livello di workload attraverso:
 \begin{itemize}
     \item \textbf{Agent-based}: Guardicore o Illumio ASP su ogni endpoint
     \item \textbf{Agentless}: VMware NSX per ambienti virtualizzati
-    \item \textbf{Container-native}: Calico o Cilium per Kubernetes
+    \item \textbf{\gls{container}-native}: Calico o Cilium per \gls{kubernetes}
 \end{itemize}
 
-\textbf{Matrice di Comunicazione Zero Trust:}
+\textbf{Matrice di Comunicazione \gls{zerotrust}:}
 \begin{lstlisting}[caption={Regole iptables per micro-segmentazione},label={lst:iptables}]
 # Default deny all
 iptables -P INPUT DROP
@@ -1332,7 +1332,7 @@ iptables -A FORWARD -s 10.1.0.0/24 -d 10.2.0.0/24 \
 
 \subsection{\texorpdfstring{\textbf{Modellazione della Riduzione della Superficie di Attacco}}{3.5.2 - Modellazione della Riduzione della Superficie di Attacco}}
 
-La Superficie di Attacco Aggregata del Sistema (ASSA) può essere quantificata attraverso l'implementazione Zero Trust:
+La Superficie di Attacco Aggregata del Sistema (ASSA) può essere quantificata attraverso l'implementazione \gls{zerotrust}:
 
 \begin{equation}
 \text{ASSA} = \sum_{i=1}^{n} E_i \times P_i \times V_i \times I_i
@@ -1346,7 +1346,7 @@ dove:
     \item $I_i$ = impatto potenziale di compromissione (scala 0-1)
 \end{itemize}
 
-L'implementazione Zero Trust riduce ciascun fattore attraverso meccanismi specifici:
+L'implementazione \gls{zerotrust} riduce ciascun fattore attraverso meccanismi specifici:
 
 \textbf{1. Riduzione Endpoint Esposti ($E_i$):}
 \begin{itemize}
@@ -1387,7 +1387,7 @@ L'architettura separa decisione ed enforcement delle policy:
 
 \textbf{PEP Distribuiti:}
 \begin{itemize}
-    \item \textbf{API Gateway}: Kong o Apigee con plugin Zero Trust
+    \item \textbf{API Gateway}: Kong o Apigee con plugin \gls{zerotrust}
     \item \textbf{Service Mesh}: Istio con sidecar Envoy proxy
     \item \textbf{Database Proxy}: Teleport o StrongDM per accesso dati
 \end{itemize}
@@ -1420,7 +1420,7 @@ if risk_score > threshold:
 
 La verifica continua introduce overhead computazionale misurabile. L'analisi della latenza mostra:
 
-\textbf{Breakdown Latenza Zero Trust:}
+\textbf{Breakdown Latenza \gls{zerotrust}:}
 \begin{itemize}
     \item Autenticazione iniziale: 125ms (OIDC + MFA)
     \item Policy evaluation: 8ms (OPA cached)
@@ -1447,7 +1447,7 @@ La verifica continua introduce overhead computazionale misurabile. L'analisi del
 
 \textbf{3. Predictive Pre-Authorization:}
 \begin{itemize}
-    \item ML model (XGBoost) per predizione accessi
+    \item \gls{ml} model (XGBoost) per predizione accessi
     \item Pre-fetch authorization per pattern ricorrenti
     \item Eliminazione latenza per 34\% richieste
 \end{itemize}
@@ -1455,13 +1455,13 @@ La verifica continua introduce overhead computazionale misurabile. L'analisi del
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_5_semplificata.pdf}
-\caption{Analisi dell'Impatto Zero Trust su Sicurezza e Performance. Il grafico mostra la correlazione tra livello di maturità Zero Trust (asse X) e riduzione percentuale dell'ASSA (asse Y sinistro) con impatto sulla latenza (asse Y destro).}
+\caption{Analisi dell'Impatto \gls{zerotrust} su Sicurezza e Performance. Il grafico mostra la correlazione tra livello di maturità \gls{zerotrust} (asse X) e riduzione percentuale dell'ASSA (asse Y sinistro) con impatto sulla latenza (asse Y destro).}
 \label{fig:zero_trust_impact}
 \end{figure}
 
-\subsection{\texorpdfstring{\textbf{Deployment Pattern per la GDO}}{3.5.5 - Deployment Pattern per la GDO}}
+\subsection{\texorpdfstring{\textbf{Deployment Pattern per la \gls{gdo}}}{3.5.5 - Deployment Pattern per la \gls{gdo}}}
 
-L'implementazione Zero Trust nella Grande Distribuzione segue un pattern specifico:
+L'implementazione \gls{zerotrust} nella Grande Distribuzione segue un pattern specifico:
 
 \textbf{Fase 1 - Identity-First (Mesi 1-3):}
 \begin{itemize}
@@ -1482,12 +1482,12 @@ L'implementazione Zero Trust nella Grande Distribuzione segue un pattern specifi
 \textbf{Fase 3 - Continuous Verification (Mesi 10-12):}
 \begin{itemize}
     \item Deploy EDR su tutti gli endpoint
-    \item SIEM/SOAR integration (Splunk/Phantom)
+    \item \gls{siem}/\gls{soar} integration (Splunk/Phantom)
     \item Automated response playbooks
     \item Costo: ~300k€, MTTD: da 197 giorni a 3.4 giorni
 \end{itemize}
 
-La riduzione complessiva dell'ASSA del 42.7\% con mantenimento delle performance operative (latenza <100ms per il 95 percentile delle transazioni) valida l'efficacia dell'approccio Zero Trust nel contesto della Grande Distribuzione Organizzata.
+La riduzione complessiva dell'ASSA del 42.7\% con mantenimento delle performance operative (latenza <100ms per il 95 percentile delle transazioni) valida l'efficacia dell'approccio \gls{zerotrust} nel contesto della Grande Distribuzione Organizzata.
 
 \section{\texorpdfstring{\textbf{Roadmap Implementativa: dalla Teoria alla Pratica}}{3.6 - Roadmap Implementativa: dalla Teoria alla Pratica}}
 
@@ -1502,13 +1502,13 @@ La prima fase si concentra su interventi a basso rischio e alto ritorno:
     \item Upgrade sistemi di alimentazione a configurazione 2N (investimento: ~350k€)
     \item Implementazione monitoring avanzato con dashboard real-time (150k€)
     \item Assessment sicurezza e remediation vulnerabilità critiche (200k€)
-    \item Ottimizzazione raffreddamento con CFD analysis (150k€)
+    \item Ottimizzazione raffreddamento con \gls{cfd} analysis (150k€)
 \end{itemize}
 
 \textbf{Risultati Attesi:}
 \begin{itemize}
     \item Riduzione downtime non pianificati del 47\%
-    \item Miglioramento PUE da 1.82 a 1.65
+    \item Miglioramento \gls{pue} da 1.82 a 1.65
     \item Identificazione e mitigazione del 73\% delle vulnerabilità critiche
     \item ROI: 180\% a 12 mesi
 \end{itemize}
@@ -1521,13 +1521,13 @@ La seconda fase affronta le trasformazioni strutturali:
 \begin{itemize}
     \item Deployment completo SD-WAN (1.8M€)
     \item Prima wave cloud migration (30\% applicazioni) (1.4M€)
-    \item Implementazione Zero Trust fase 1 (perimetro e identità) (1.0M€)
+    \item Implementazione \gls{zerotrust} fase 1 (perimetro e identità) (1.0M€)
     \item Edge computing per punti vendita critici (500k€)
 \end{itemize}
 
 \textbf{Risultati Target:}
 \begin{itemize}
-    \item MTTR ridotto a 1.8 ore
+    \item \gls{mttr} ridotto a 1.8 ore
     \item Latenza transazioni <60ms per 95 percentile
     \item Riduzione ASSA del 28\%
     \item Saving operativi: 1.9M€/anno
@@ -1540,7 +1540,7 @@ La fase finale completa la trasformazione:
 \textbf{Interventi Avanzati:}
 \begin{itemize}
     \item Orchestrazione multi-cloud completa (1.5M€)
-    \item Zero Trust maturo con automazione (1.2M€)
+    \item \gls{zerotrust} maturo con automazione (1.2M€)
     \item AIOps per gestione predittiva (800k€)
     \item Compliance automation platform (700k€)
 \end{itemize}
@@ -1592,7 +1592,7 @@ Per i rischi con RPN > 100, sono definiti piani di contingenza specifici:
 
 \textbf{1. Vendor Lock-in (RPN: 168)}
 \begin{itemize}
-    \item Strategia: Containerizzazione applicazioni (Docker/Kubernetes)
+    \item Strategia: Containerizzazione applicazioni (Docker/\gls{kubernetes})
     \item Investimento: 200k€ per portability layer
     \item Beneficio: Riduzione switching cost del 67\%
 \end{itemize}
@@ -1617,12 +1617,12 @@ L'analisi condotta in questo capitolo ha esaminato l'evoluzione infrastrutturale
 
 \subsection{\texorpdfstring{\textbf{Validazione dell'Ipotesi H1}}{3.8.1 - Validazione dell'Ipotesi H1}}
 
-L'ipotesi H1, che postula la possibilità per architetture cloud-ibride di garantire SLA ≥99.95\% con riduzione TCO >30\%, trova piena validazione attraverso l'implementazione sinergica di multiple tecnologie:
+L'ipotesi H1, che postula la possibilità per architetture cloud-ibride di garantire \gls{sla} ≥99.95\% con riduzione \gls{tco} >30\%, trova piena validazione attraverso l'implementazione sinergica di multiple tecnologie:
 
 \textbf{Disponibilità del Sistema:}
 \begin{itemize}
-    \item \textbf{Infrastruttura Fisica}: Configurazione 2N per alimentazione raggiunge 99.94\% di disponibilità (Tabella \ref{tab:power_redundancy_comparison}), con MTBF di 175.200 ore validato su 234 punti vendita
-    \item \textbf{Rete SD-WAN}: Riduzione MTTR del 74\% (da 4.7 a 1.2 ore) attraverso automazione e self-healing (Figura \ref{fig:sdwan_architecture_simplified})
+    \item \textbf{Infrastruttura Fisica}: Configurazione 2N per alimentazione raggiunge 99.94\% di disponibilità (Tabella \ref{tab:power_redundancy_comparison}), con \gls{mtbf} di 175.200 ore validato su 234 punti vendita
+    \item \textbf{Rete SD-WAN}: Riduzione \gls{mttr} del 74\% (da 4.7 a 1.2 ore) attraverso automazione e \gls{selfhealing} (Figura \ref{fig:sdwan_architecture_simplified})
     \item \textbf{Architettura Multi-Cloud}: Disponibilità aggregata del 99.987\% sfruttando basse correlazioni tra provider ($\rho < 0.15$, Tabella \ref{tab:cloud_correlation})
     \item \textbf{Edge Computing}: Latenza ridotta del 73.4\% (da 187ms a 49ms) per transazioni critiche\autocite{Wang2024edge}
 \end{itemize}
@@ -1633,20 +1633,20 @@ La combinazione di queste tecnologie permette di raggiungere una disponibilità 
 L'analisi delle strategie di migrazione cloud (Sezione 3.4.1) e l'implementazione di architetture ottimizzate producono:
 \begin{itemize}
     \item Riduzione OPEX attraverso auto-scaling e serverless: 58.9\%
-    \item Efficienza energetica migliorata (PUE da 1.82 a 1.40): saving 187.000€/anno
+    \item Efficienza energetica migliorata (\gls{pue} da 1.82 a 1.40): saving 187.000€/anno
     \item Manutenzione predittiva con LSTM (Innovation Box 3.1): riduzione downtime 47\%
     \item TCO complessivo ridotto del \textbf{38.2\%} (IC 95\%: 34.6\%-41.7\%)\autocite{McKinsey2024cloud}
 \end{itemize}
 
 \subsection{\texorpdfstring{\textbf{Supporto all'Ipotesi H2}}{3.8.2 - Supporto all'Ipotesi H2}}
 
-L'ipotesi H2 sulla riduzione della superficie di attacco attraverso architetture Zero Trust riceve forte supporto dalle implementazioni tecniche:
+L'ipotesi H2 sulla riduzione della superficie di attacco attraverso architetture \gls{zerotrust} riceve forte supporto dalle implementazioni tecniche:
 
 \textbf{Riduzione della Superficie di Attacco (ASSA):}
 \begin{itemize}
     \item \textbf{Micro-segmentazione}: Implementata via Istio/NSX con policy granulari (Sezione 3.5)
     \item \textbf{Identity-Based Access}: ABAC policies con OPA, MFA FIDO2/WebAuthn
-    \item \textbf{Continuous Verification}: Risk scoring real-time con ML, MTTD ridotto da 197 giorni a 3.4 giorni
+    \item \textbf{Continuous Verification}: Risk scoring real-time con \gls{ml}, MTTD ridotto da 197 giorni a 3.4 giorni
     \item \textbf{Edge Security}: TPM integration e secure boot su dispositivi IoT
 \end{itemize}
 
@@ -1670,8 +1670,8 @@ I costi di compliance sono ridotti del \textbf{27.3\%}\autocite{ISACA2024complia
 
 Il capitolo presenta diversi contributi originali all'avanzamento tecnologico del settore:
 
-\textbf{1. Framework GIST (GDO Infrastructure Security Transformation):}
-Framework strutturato in 5 livelli che fornisce una roadmap replicabile per la trasformazione infrastrutturale (Figura \ref{fig:framework_gist}), con KPI validati e metriche di maturità.
+\textbf{1. Framework GIST (\gls{gdo} Infrastructure Security Transformation):}
+Framework strutturato in 5 livelli che fornisce una roadmap replicabile per la trasformazione infrastrutturale (Figura \ref{fig:framework_gist}), con \gls{kpi} validati e metriche di maturità.
 
 \textbf{2. Algoritmo LSTM per Manutenzione Predittiva:}
 Modello di deep learning (Innovation Box 3.1) che raggiunge:
@@ -1681,12 +1681,12 @@ Modello di deep learning (Innovation Box 3.1) che raggiunge:
     \item Deployment edge con TensorRT: latenza 12ms per 100 dispositivi
 \end{itemize}
 
-\textbf{3. Orchestrazione Multi-Cloud con ML:}
+\textbf{3. Orchestrazione Multi-Cloud con \gls{ml}:}
 Sistema Q-Learning (Innovation Box 3.2) per ottimizzazione dinamica workload placement:
 \begin{itemize}
     \item Riduzione costi cloud: 31\%
     \item Miglioramento latenza p95: 23\%
-    \item Riduzione violazioni SLA: 67\%
+    \item Riduzione violazioni \gls{sla}: 67\%
 \end{itemize}
 
 \subsection{\texorpdfstring{\textbf{Implicazioni Pratiche e Roadmap Implementativa}}{3.8.5 - Implicazioni Pratiche e Roadmap Implementativa}}
@@ -1702,16 +1702,16 @@ L'analisi fornisce una roadmap implementativa chiara in tre fasi:
 
 \textbf{Fase 2 (6-18 mesi) - Trasformazione Core:}
 \begin{itemize}
-    \item SD-WAN completo: MTTR ridotto a 1.8 ore
+    \item SD-WAN completo: \gls{mttr} ridotto a 1.8 ore
     \item Prima wave cloud migration (30\% applicazioni) con pattern containerizzati
-    \item Zero Trust fase 1: Identity-first con MFA e SSO
+    \item \gls{zerotrust} fase 1: Identity-first con MFA e SSO
 \end{itemize}
 
 \textbf{Fase 3 (18-36 mesi) - Ottimizzazione Avanzata:}
 \begin{itemize}
-    \item Multi-cloud orchestration con Kubernetes Federation
-    \item Zero Trust maturo con continuous verification
-    \item Edge computing deployment completo con K3s
+    \item Multi-cloud orchestration con \gls{kubernetes} Federation
+    \item \gls{zerotrust} maturo con continuous verification
+    \item \gls{edge} deployment completo con K3s
 \end{itemize}
 
 \subsection{\texorpdfstring{\textbf{Limitazioni e Ricerca Futura}}{3.8.6 - Limitazioni e Ricerca Futura}}
@@ -1733,7 +1733,7 @@ Le direzioni di ricerca futura includono:
 
 \subsection{\texorpdfstring{\textbf{Bridge verso il Capitolo 4}}{3.8.7 - Bridge verso il Capitolo 4}}
 
-L'infrastruttura moderna analizzata in questo capitolo crea le premesse tecniche indispensabili per l'integrazione efficace della compliance normativa. Le architetture cloud-native, la micro-segmentazione Zero Trust, e l'automazione pervasiva non solo migliorano performance e sicurezza, ma abilitano approcci innovativi alla gestione della conformità.
+L'infrastruttura moderna analizzata in questo capitolo crea le premesse tecniche indispensabili per l'integrazione efficace della compliance normativa. Le architetture cloud-native, la micro-segmentazione \gls{zerotrust}, e l'automazione pervasiva non solo migliorano performance e sicurezza, ma abilitano approcci innovativi alla gestione della conformità.
 
 Il prossimo capitolo approfondirà come queste fondamenta tecnologiche possano essere sfruttate per trasformare la compliance da costo necessario a vantaggio competitivo, attraverso l'implementazione di framework compliance-by-design che integrano requisiti normativi direttamente nell'architettura, riducendo ulteriormente costi e complessità gestionale mentre si mantiene o migliora l'efficacia dei controlli.
 
@@ -1742,7 +1742,7 @@ Le tecnologie di automazione (Policy as Code con OPA), monitoring continuo (Prom
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap3/figura_3_6_framework_integrato.pdf}
-\caption{Framework GIST (GDO Infrastructure Security Transformation): Integrazione dei risultati del Capitolo 3 e collegamento con le tematiche di Compliance del Capitolo 4. I cinque livelli mostrano l'evoluzione dalle fondamenta fisiche alla compliance integrata, con le metriche chiave validate attraverso simulazione Monte Carlo (10.000 iterazioni).}
+\caption{Framework GIST (\gls{gdo} Infrastructure Security Transformation): Integrazione dei risultati del Capitolo 3 e collegamento con le tematiche di Compliance del Capitolo 4. I cinque livelli mostrano l'evoluzione dalle fondamenta fisiche alla compliance integrata, con le metriche chiave validate attraverso simulazione Monte Carlo (10.000 iterazioni).}
 \label{fig:framework_gist}
 \end{figure}
 

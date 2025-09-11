@@ -6,7 +6,9 @@
       "WebSearch",
       "Bash(git fetch:*)",
       "Bash(find:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(tr:*)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []
