@@ -1,12 +1,12 @@
 % APPENDICE A - METODOLOGIA E FRAMEWORK TEORICO
 \appendix
-\chapter{Framework Teorico e Metodologia}
+\chapter{\texorpdfstring{\textbf{Framework Teorico e Metodologia}}{Appendice A - Framework Teorico e Metodologia}}
 
-\section{A.1 Framework GIST - Modello Matematico}
+\section{\texorpdfstring{\textbf{A.1 Framework GIST - Modello Matematico}}{A.1 - Framework GIST - Modello Matematico}}
 
 Il framework GIST (Governance-Infrastructure-Security-Technology) rappresenta il contributo teorico principale di questa ricerca per la valutazione olistica delle infrastrutture IT nella GDO.
 
-\subsection{A.1.1 Formulazione Matematica}
+\subsection{\texorpdfstring{\textbf{A.1.1 Formulazione Matematica}}{A.1.1 - Formulazione Matematica}}
 
 Il modello distingue due approcci complementari:
 
@@ -28,7 +28,7 @@ dove:
     \item $I$ = Fattore innovazione, range [0, 0.35]
 \end{itemize}
 
-\subsection{A.1.2 Calibrazione Empirica}
+\subsection{\texorpdfstring{\textbf{A.1.2 Calibrazione Empirica}}{A.1.2 - Calibrazione Empirica}}
 
 I parametri sono stati calibrati attraverso regressione multivariata su 156 organizzazioni GDO:
 \begin{itemize}
@@ -37,9 +37,9 @@ I parametri sono stati calibrati attraverso regressione multivariata su 156 orga
     \item Validazione cross-settoriale: 42 implementazioni
 \end{itemize}
 
-\section{A.2 Metodologia di Simulazione Monte Carlo}
+\section{\texorpdfstring{\textbf{A.2 Metodologia di Simulazione Monte Carlo}}{A.2 - Metodologia di Simulazione Monte Carlo}}
 
-\subsection{A.2.1 Parametri Principali}
+\subsection{\texorpdfstring{\textbf{A.2.1 Parametri Principali}}{A.2.1 - Parametri Principali}}
 
 \begin{table}[htbp]
 \centering
@@ -56,7 +56,7 @@ Riduzione TCO cloud & Triangolare(28\%, 38\%, 45\%) & AWS/Azure TCO calculator \
 \caption{Distribuzioni statistiche per simulazioni Monte Carlo}
 \end{table}
 
-\subsection{A.2.2 Processo di Simulazione}
+\subsection{\texorpdfstring{\textbf{A.2.2 Processo di Simulazione}}{A.2.2 - Processo di Simulazione}}
 
 Per ogni ipotesi sono state eseguite 10.000 iterazioni secondo il seguente schema:
 \begin{enumerate}
@@ -66,9 +66,9 @@ Per ogni ipotesi sono state eseguite 10.000 iterazioni secondo il seguente schem
     \item Test di ipotesi con soglia di significatività $\alpha = 0.05$
 \end{enumerate}
 
-\section{A.3 Metriche di Valutazione}
+\section{\texorpdfstring{\textbf{A.3 Metriche di Valutazione}}{A.3 - Metriche di Valutazione}}
 
-\subsection{A.3.1 ASSA Score (Aggregated System Surface Attack)}
+\subsection{\texorpdfstring{\textbf{A.3.1 ASSA Score (Aggregated System Surface Attack)}}{A.3.1 - ASSA Score (Aggregated System Surface Attack)}}
 
 Metrica per quantificare la superficie di attacco nelle reti distribuite:
 
@@ -78,7 +78,7 @@ ASSA = \sum_{i=1}^{n} \left(0.3 P_i + 0.4 S_i + 0.3 V_i\right) \times C_i
 
 dove $P_i$ = porte aperte, $S_i$ = servizi esposti, $V_i$ = vulnerabilità note, $C_i$ = centralità del nodo.
 
-\subsection{A.3.2 Modello di Availability}
+\subsection{\texorpdfstring{\textbf{A.3.2 Modello di Availability}}{A.3.2 - Modello di Availability}}
 
 Per architetture ibride con failover:
 
@@ -89,13 +89,13 @@ A_{hybrid} = 1 - (1 - A_{cloud}) \times (1 - A_{on-premise})
 Con valori empirici: $A_{cloud} = 0.9995$ (SLA contrattuale), $A_{on-premise} \sim \text{Weibull}(2.1, 0.994)$
 
 % APPENDICE B - ALGORITMI PRINCIPALI
-\chapter{Algoritmi e Modelli Computazionali}
+\chapter{\texorpdfstring{\textbf{Algoritmi e Modelli Computazionali}}{Appendice B - Algoritmi e Modelli Computazionali}}
 
-\section{B.1 Algoritmo di Ottimizzazione Compliance}
+\section{\texorpdfstring{\textbf{B.1 Algoritmo di Ottimizzazione Compliance}}{B.1 - Algoritmo di Ottimizzazione Compliance}}
 
 Per l'ottimizzazione dei controlli di compliance multi-framework è stato utilizzato un approccio greedy al problema del Set Covering pesato.
 
-\subsection{B.1.1 Pseudocodice}
+\subsection{\texorpdfstring{\textbf{B.1.1 Pseudocodice}}{B.1.1 - Pseudocodice}}
 
 \begin{algorithmic}[1]
 \State \textbf{Input:} Requisiti $R$, Controlli $C$, Funzione costo $cost()$
@@ -121,9 +121,9 @@ Per l'ottimizzazione dei controlli di compliance multi-framework è stato utiliz
 
 \textbf{Complessità}: $O(mn \log n)$ con garanzia di approssimazione $\ln(m)$ dall'ottimo.
 
-\section{B.2 Modello di Simulazione Availability}
+\section{\texorpdfstring{\textbf{B.2 Modello di Simulazione Availability}}{B.2 - Modello di Simulazione Availability}}
 
-\subsection{B.2.1 Pseudocodice Monte Carlo}
+\subsection{\texorpdfstring{\textbf{B.2.1 Pseudocodice Monte Carlo}}{B.2.1 - Pseudocodice Monte Carlo}}
 
 \begin{algorithmic}[1]
 \State \textbf{function} SimulateAvailability($architecture$, $n\_iterations$)
@@ -142,9 +142,9 @@ Per l'ottimizzazione dei controlli di compliance multi-framework è stato utiliz
 \State \Return Statistics($availability$)
 \end{algorithmic}
 
-\section{B.3 Calcolo Riduzione ASSA con Zero Trust}
+\section{\texorpdfstring{\textbf{B.3 Calcolo Riduzione ASSA con Zero Trust}}{B.3 - Calcolo Riduzione ASSA con Zero Trust}}
 
-\subsection{B.3.1 Modello Matematico}
+\subsection{\texorpdfstring{\textbf{B.3.1 Modello Matematico}}{B.3.1 - Modello Matematico}}
 
 La riduzione della superficie di attacco con Zero Trust è modellata come:
 
@@ -171,11 +171,11 @@ Identity Verification & 15.6\% & [13.2\%, 18.2\%] \\
 \end{table}
 
 % APPENDICE C - RISULTATI DELLE SIMULAZIONI
-\chapter{Risultati Dettagliati delle Simulazioni}
+\chapter{\texorpdfstring{\textbf{Risultati Dettagliati delle Simulazioni}}{Appendice C - Risultati Dettagliati delle Simulazioni}}
 
-\section{C.1 Validazione Ipotesi H1 - Architetture Cloud Ibride}
+\section{\texorpdfstring{\textbf{C.1 Validazione Ipotesi H1 - Architetture Cloud Ibride}}{C.1 - Validazione Ipotesi H1 - Architetture Cloud Ibride}}
 
-\subsection{C.1.1 Risultati Availability}
+\subsection{\texorpdfstring{\textbf{C.1.1 Risultati Availability}}{C.1.1 - Risultati Availability}}
 
 \begin{table}[htbp]
 \centering
@@ -191,7 +191,7 @@ Cloud-native & 99.98\% & 99.98\% & 0.01\% & 97.2\% \\
 \caption{Confronto availability per architettura (10.000 simulazioni)}
 \end{table}
 
-\subsection{C.1.2 Analisi TCO}
+\subsection{\texorpdfstring{\textbf{C.1.2 Analisi TCO}}{C.1.2 - Analisi TCO}}
 
 \begin{table}[htbp]
 \centering
@@ -211,9 +211,9 @@ ROI 24 mesi & - & 89.3\% & - & - \\
 
 \textbf{Conclusione}: H1 validata con p < 0.001. L'architettura ibrida garantisce availability ≥ 99.95\% nell'84.3\% dei casi e riduce il TCO del 38.2\%.
 
-\section{C.2 Validazione Ipotesi H2 - Zero Trust}
+\section{\texorpdfstring{\textbf{C.2 Validazione Ipotesi H2 - Zero Trust}}{C.2 - Validazione Ipotesi H2 - Zero Trust}}
 
-\subsection{C.2.1 Riduzione Superficie di Attacco}
+\subsection{\texorpdfstring{\textbf{C.2.1 Riduzione Superficie di Attacco}}{C.2.1 - Riduzione Superficie di Attacco}}
 
 \begin{table}[htbp]
 \centering
@@ -230,7 +230,7 @@ ZT completo (6 controlli) & 67.8\% & [64.1\%, 71.3\%] & <0.001 \\
 \caption{Impatto Zero Trust su ASSA}
 \end{table}
 
-\subsection{C.2.2 Analisi Latenza}
+\subsection{\texorpdfstring{\textbf{C.2.2 Analisi Latenza}}{C.2.2 - Analisi Latenza}}
 
 \begin{table}[htbp]
 \centering
@@ -248,9 +248,9 @@ Hybrid ZT & 31ms & 58ms & 78\% & Sì \\
 
 \textbf{Conclusione}: H2 validata. Zero Trust riduce ASSA del 42.7\% mantenendo latenza <50ms nel 94\% dei casi con architettura edge-based.
 
-\section{C.3 Validazione Ipotesi H3 - Compliance Integrata}
+\section{\texorpdfstring{\textbf{C.3 Validazione Ipotesi H3 - Compliance Integrata}}{C.3 - Validazione Ipotesi H3 - Compliance Integrata}}
 
-\subsection{C.3.1 Analisi Overlap Requisiti}
+\subsection{\texorpdfstring{\textbf{C.3.1 Analisi Overlap Requisiti}}{C.3.1 - Analisi Overlap Requisiti}}
 
 \begin{table}[htbp]
 \centering
@@ -267,7 +267,7 @@ NIS2 & 329 & 103 (31.3\%) & 68.7\% \\
 \caption{Analisi overlap requisiti normativi}
 \end{table}
 
-\subsection{C.3.2 Benefici Economici}
+\subsection{\texorpdfstring{\textbf{C.3.2 Benefici Economici}}{C.3.2 - Benefici Economici}}
 
 \begin{table}[htbp]
 \centering
@@ -286,9 +286,9 @@ ROI 24 mesi & 145\% & 287\% & +97.9\% & <0.001 \\
 
 \textbf{Conclusione}: H3 validata. L'approccio integrato riduce costi del 37.8\% e effort del 41.2\% con ROI a 24 mesi del 287\%.
 
-\section{C.4 Validazione Framework GIST}
+\section{\texorpdfstring{\textbf{C.4 Validazione Framework GIST}}{C.4 - Validazione Framework GIST}}
 
-\subsection{C.4.1 Distribuzione Score nel Campione}
+\subsection{\texorpdfstring{\textbf{C.4.1 Distribuzione Score nel Campione}}{C.4.1 - Distribuzione Score nel Campione}}
 
 \begin{table}[htbp]
 \centering
@@ -306,7 +306,7 @@ Compliance (C) & 0.41 & 0.54 & 0.69 & 0.55 & 0.18 \\
 \caption{Distribuzione score GIST (n=156 organizzazioni)}
 \end{table}
 
-\subsection{C.4.2 Effetti Sinergici}
+\subsection{\texorpdfstring{\textbf{C.4.2 Effetti Sinergici}}{C.4.2 - Effetti Sinergici}}
 
 \begin{table}[htbp]
 \centering
@@ -323,7 +323,7 @@ Security → Compliance & +41\% & p < 0.001 \\
 \caption{Effetti sinergici oltre la somma lineare delle componenti}
 \end{table}
 
-\subsection{C.4.3 Correlazione con Outcome Business}
+\subsection{\texorpdfstring{\textbf{C.4.3 Correlazione con Outcome Business}}{C.4.3 - Correlazione con Outcome Business}}
 
 \begin{table}[htbp]
 \centering
@@ -342,9 +342,9 @@ Customer satisfaction & 0.53 & <0.01 \\
 \end{table}
 
 % APPENDICE D - GLOSSARIO
-\chapter{Glossario e Acronimi}
+\chapter{\texorpdfstring{\textbf{Glossario e Acronimi}}{Appendice D - Glossario e Acronimi}}
 
-\section{D.1 Acronimi Principali}
+\section{\texorpdfstring{\textbf{D.1 Acronimi Principali}}{D.1 - Acronimi Principali}}
 
 \begin{tabular}{ll}
 \textbf{Acronimo} & \textbf{Significato} \\
@@ -372,7 +372,7 @@ ZT & Zero Trust \\
 ZTNA & Zero Trust Network Access \\
 \end{tabular}
 
-\section{D.2 Definizioni Essenziali}
+\section{\texorpdfstring{\textbf{D.2 Definizioni Essenziali}}{D.2 - Definizioni Essenziali}}
 
 \textbf{Betweenness Centrality}: Misura di centralità in teoria dei grafi che quantifica quanti cammini minimi passano attraverso un nodo.
 
