@@ -1,10 +1,10 @@
 
-\chapter{\texorpdfstring{\textbf{Implementazioni Algoritmiche}}{Appendice C - Implementazioni Algoritmiche}}
+\chapter{\texorpdfstring{Implementazioni Algoritmiche}{Appendice C - Implementazioni Algoritmiche}}
 \label{app:algoritmi}
 
-\section{\texorpdfstring{\textbf{C.1 Algoritmo ASSA-GDO}}{C.1 - Algoritmo ASSA-GDO}}
+\section{\texorpdfstring{Algoritmo ASSA-GDO}{C.1 - Algoritmo ASSA-GDO}}
 
-\subsection{\texorpdfstring{\textbf{C.1.1 Implementazione Completa}}{C.1.1 - Implementazione Completa}}
+\subsection{\texorpdfstring{Implementazione Completa}{C.1.1 - Implementazione Completa}}
 
 \begin{lstlisting}[language=Python, caption=Implementazione dell'algoritmo ASSA-GDO]
 import numpy as np
@@ -218,7 +218,7 @@ if __name__ == "__main__":
     print(f"ROI delle mitigazioni: {mitigations['roi']:.2f}")
 \end{lstlisting}
 
-\section{\texorpdfstring{\textbf{C.2 Modello SIR per Propagazione Malware}}{C.2 - Modello SIR per Propagazione Malware}}
+\section{\texorpdfstring{Modello SIR per Propagazione Malware}{C.2 - Modello SIR per Propagazione Malware}}
 
 \begin{lstlisting}[language=Python, caption=Simulazione modello SIR adattato per GDO]
 import numpy as np
@@ -421,7 +421,7 @@ if __name__ == "__main__":
         print(f"  95% CI: [{values['percentile_5']:.2f}, {values['percentile_95']:.2f}]")
 \end{lstlisting}
 
-\section{\texorpdfstring{\textbf{C.3 Sistema di Risk Scoring con XGBoost}}{C.3 - Sistema di Risk Scoring con XGBoost}}
+\section{\texorpdfstring{Sistema di Risk Scoring con XGBoost}{C.3 - Sistema di Risk Scoring con XGBoost}}
 
 \begin{lstlisting}[language=Python, caption=Implementazione Risk Scoring adattivo con XGBoost]
 import xgboost as xgb
@@ -734,10 +734,10 @@ if __name__ == "__main__":
     print("\nModello salvato in 'risk_scorer_gdo.pkl'")
 \end{lstlisting}
 
-\section{C.2 Algoritmo di Calcolo GIST Score}
+\section{\texorpdfstring{Algoritmo di Calcolo GIST Score}{C.4 - Algoritmo di Calcolo GIST Score}}
 \label{sec:gist_algorithm}
 
-\subsection{C.2.1 Descrizione Formale dell'Algoritmo}
+\subsection{\texorpdfstring{Descrizione Formale dell'Algoritmo}{C.4.1 - Descrizione Formale dell'Algoritmo}}
 
 L'algoritmo GIST Score quantifica la maturità digitale di un'organizzazione GDO attraverso l'integrazione pesata di quattro componenti fondamentali. La formulazione matematica è stata calibrata su dati empirici di 234 organizzazioni del settore.
 
@@ -765,7 +765,7 @@ dove:
 \item $\gamma = 0.95$: esponente di scala per rendimenti decrescenti
 \end{itemize}
 
-\subsection{C.2.2 Implementazione Python}
+\subsection{\texorpdfstring{Implementazione Python}{C.4.2 - Implementazione Python}}
 
 \begin{lstlisting}[language=Python, caption={Implementazione completa GIST Calculator con validazione e reporting}]
 #!/usr/bin/env python3
@@ -1203,7 +1203,7 @@ if __name__ == "__main__":
     run_example()
 \end{lstlisting}
 
-\subsection{C.2.3 Analisi di Complessità e Performance}
+\subsection{\texorpdfstring{Analisi di Complessità e Performance}{C.4.3 - Analisi di Complessità e Performance}}
 
 \textbf{Complessità Computazionale:}
 
@@ -1237,7 +1237,7 @@ Test su hardware standard (Intel i7, 16GB RAM):
 \item Export JSON con storia 1000 calcoli: < 50ms
 \end{itemize}
 
-\subsection{C.2.4 Validazione Empirica}
+\subsection{\texorpdfstring{Validazione Empirica}{C.4.4 - Validazione Empirica}}
 
 La calibrazione dei pesi è stata effettuata attraverso:
 

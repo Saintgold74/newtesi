@@ -1,14 +1,14 @@
-\refsection
-\chapter{\texorpdfstring{\textbf{Evoluzione Infrastrutturale: Dalle Fondamenta Fisiche al Cloud Intelligente}}{Capitolo 3 - Evoluzione Infrastrutturale: Dalle Fondamenta Fisiche al Cloud Intelligente}}
+%\refsection
+\chapter{\texorpdfstring{Evoluzione Infrastrutturale: Dalle Fondamenta Fisiche al Cloud Intelligente}{Capitolo 3 - Evoluzione Infrastrutturale: Dalle Fondamenta Fisiche al Cloud Intelligente}}
 \label{cap3_infrastructure_evolution}
 
-\section{\texorpdfstring{\textbf{Introduzione e Framework Teorico}}{3.1 - Introduzione e Framework Teorico}}
+\section{\texorpdfstring{Introduzione e Framework Teorico}{3.1 - Introduzione e Framework Teorico}}
 
 L'analisi del panorama delle minacce condotta nel Capitolo 2 ha evidenziato come il 78\% degli attacchi alla Grande Distribuzione Organizzata sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\autocite{Anderson2024patel}. Questo dato, derivato dall'aggregazione di 1.247 incidenti documentati nel database ENISA per il periodo 2020-2024 e verificato attraverso triangolazione con i report Verizon DBIR\autocite{Verizon2024}, sottolinea l'importanza critica dell'architettura infrastrutturale come prima linea di difesa. 
 
 Il presente capitolo affronta tale evoluzione attraverso un framework analitico multi-livello che fornisce le evidenze quantitative per la validazione delle ipotesi di ricerca, con particolare focus su \textbf{H1} (raggiungimento di Accordi sul Livello di Servizio superiori al 99.95\% con riduzione del Costo Totale di Proprietà superiore al 30\%) e fornendo supporto critico per \textbf{H2} e \textbf{H3}\autocite{IDC2024}.
 
-\subsection{\texorpdfstring{\textbf{Derivazione del Modello di Evoluzione Infrastrutturale}}{3.1.1 - Derivazione del Modello di Evoluzione Infrastrutturale}}
+\subsection{\texorpdfstring{Derivazione del Modello di Evoluzione Infrastrutturale}{3.1.1 - Derivazione del Modello di Evoluzione Infrastrutturale}}
 
 L'evoluzione infrastrutturale nelle organizzazioni complesse segue dinamiche che possono essere modellate attraverso la teoria dei sistemi adattativi\autocite{Holland2024}. Partendo dal framework di Christensen per l'innovazione disruptiva\autocite{Christensen2023} e integrandolo con i modelli di dipendenza dal percorso di Arthur\autocite{Arthur2024}, possiamo derivare una funzione di transizione che cattura l'essenza del cambiamento infrastrutturale:
 
@@ -36,15 +36,15 @@ La calibrazione del modello è stata effettuata attraverso regressione multipla 
 
 Il modello spiega l'87\% della varianza osservata ($R^2=0.87$, $R^2_{adj}=0.86$), con test di Durbin-Watson (DW=1.92) che esclude autocorrelazione seriale dei residui. La validazione attraverso cross-validation k-fold (k=5) conferma la robustezza predittiva con errore quadratico medio di 0.043.
 
-\section{\texorpdfstring{\textbf{Infrastruttura Fisica Critica: le Fondamenta della Resilienza}}{3.2 - Infrastruttura Fisica Critica: le Fondamenta della Resilienza}}
+\section{\texorpdfstring{Infrastruttura Fisica Critica: le Fondamenta della Resilienza}{3.2 - Infrastruttura Fisica Critica: le Fondamenta della Resilienza}}
 
 Qualsiasi architettura digitale, indipendentemente dalla sua sofisticazione logica, dipende criticamente dall'affidabilità delle componenti fisiche sottostanti. L'analisi di 234 interruzioni di servizio documentate nel settore della Grande Distribuzione europea\autocite{Uptime2024} rivela che il 43\% delle indisponibilità superiori a 4 ore origina da guasti nell'infrastruttura fisica, con costi medi di 127.000 euro per ora di downtime nei periodi di picco commerciale.
 
-\subsection{\texorpdfstring{\textbf{Modellazione dell'Affidabilità dei Sistemi di Alimentazione}}{3.2.1 - Modellazione dell'Affidabilità dei Sistemi di Alimentazione}}
+\subsection{\texorpdfstring{Modellazione dell'Affidabilità dei Sistemi di Alimentazione}{3.2.1 - Modellazione dell'Affidabilità dei Sistemi di Alimentazione}}
 
 L'affidabilità dei sistemi di alimentazione rappresenta il fondamento dell'infrastruttura IT nella Grande Distribuzione Organizzata. L'analisi di 234 interruzioni di servizio documentate nel settore\autocite{Uptime2024} rivela che il 43\% delle indisponibilità superiori a 4 ore origina da guasti nell'infrastruttura elettrica, con costi medi di 127.000 euro per ora di downtime nei periodi di picco commerciale.
 
-\subsubsection{\texorpdfstring{\textbf{Architettura dei Sistemi UPS e Configurazioni di Ridondanza}}{3.2.1.1 - Architettura dei Sistemi UPS e Configurazioni di Ridondanza}}
+\subsubsection{\texorpdfstring{Architettura dei Sistemi UPS e Configurazioni di Ridondanza}{3.2.1.1 - Architettura dei Sistemi UPS e Configurazioni di Ridondanza}}
 
 I sistemi di continuità (UPS - Uninterruptible Power Supply) nella \gls{gdo} utilizzano principalmente tecnologia a doppia conversione (online) con le seguenti caratteristiche tecniche:
 
@@ -91,7 +91,7 @@ La configurazione 2N garantisce disponibilità superiore poiché tollera il guas
 % \label{fig:power_infographic}
 % \end{figure}
 
-\subsubsection{\texorpdfstring{\textbf{Sistema di Distribuzione Elettrica e Monitoraggio}}{3.2.1.2 - Sistema di Distribuzione Elettrica e Monitoraggio}}
+\subsubsection{\texorpdfstring{Sistema di Distribuzione Elettrica e Monitoraggio}{3.2.1.2 - Sistema di Distribuzione Elettrica e Monitoraggio}}
 
 L'architettura di distribuzione elettrica include:
 
@@ -133,7 +133,7 @@ Il modello predittivo, addestrato su 8.760 ore di dati operativi, raggiunge un'a
 \label{fig:power_availability}
 \end{figure}
 
-\subsubsection{\texorpdfstring{\textbf{Implementazione Pratica e Ottimizzazioni}}{3.2.1.3 - Implementazione Pratica e Ottimizzazioni}}
+\subsubsection{\texorpdfstring{Implementazione Pratica e Ottimizzazioni}{3.2.1.3 - Implementazione Pratica e Ottimizzazioni}}
 
 L'analisi empirica su 234 punti vendita della \gls{gdo} dimostra che le configurazioni teoriche subiscono degradi prestazionali in ambiente operativo:
 
@@ -212,7 +212,7 @@ Fonte: Aggregazione dati da 23 implementazioni \gls{gdo} (2020-2024)
 \label{fig:power_metrics_comparison}
 \end{figure}
 
-\subsubsection{\texorpdfstring{\textbf{Sistemi di Backup: Generatori e Fuel Cell}}{3.2.1.4 - Sistemi di Backup: Generatori e Fuel Cell}}
+\subsubsection{\texorpdfstring{Sistemi di Backup: Generatori e Fuel Cell}{3.2.1.4 - Sistemi di Backup: Generatori e Fuel Cell}}
 
 Per garantire autonomia estesa oltre i 30 minuti delle batterie UPS, i siti critici implementano:
 
@@ -234,7 +234,7 @@ Alcuni siti pilota stanno testando celle a combustibile a idrogeno:
 \end{itemize}
 
 L'implementazione ottimizzata di questi sistemi, combinata con il monitoraggio predittivo basato su \gls{ml}, permette di raggiungere una disponibilità effettiva del 99.88\% con configurazione N+1 potenziata, rappresentando il miglior compromesso costo-efficacia per la maggior parte dei siti \gls{gdo}.
-\subsection{\texorpdfstring{\textbf{Ottimizzazione Termica e Sostenibilità}}{3.2.2 - Ottimizzazione Termica e Sostenibilità}}
+\subsection{\texorpdfstring{Ottimizzazione Termica e Sostenibilità}{3.2.2 - Ottimizzazione Termica e Sostenibilità}}
 
 Il raffreddamento rappresenta mediamente il 38\% del consumo energetico totale di un centro elaborazione dati nel settore della Grande Distribuzione\autocite{ASHRAE2024}. L'ottimizzazione attraverso modellazione fluidodinamica computazionale (\gls{cfd}) permette di simulare i flussi d'aria e identificare zone di ricircolo e punti caldi che compromettono l'efficienza.
 
@@ -252,17 +252,17 @@ L'analisi di 89 implementazioni reali\autocite{DatacenterDynamics2024} mostra ch
 \text{\gls{pue}} = \frac{\text{Potenza Totale Facility}}{\text{Potenza IT Equipment}} = \frac{P_{tot}}{P_{IT}}
 \end{equation}
 
-Una riduzione del \gls{pue} da 1.82 a 1.40 si traduce in un risparmio energetico del 23\% e una riduzione delle emissioni di CO₂ di 2.340 tonnellate annue per un data center di medie dimensioni (500 kW IT load), contribuendo agli obiettivi di sostenibilità aziendale e riducendo i costi operativi di circa 187.000 euro annui ai prezzi energetici correnti\autocite{Eurostat2024energy}.
+Una riduzione del \gls{pue} da 1.82 a 1.40 si traduce in un risparmio energetico del 23\% e una riduzione delle emissioni di $CO_2$ di 2.340 tonnellate annue per un data center di medie dimensioni (500 kW IT load), contribuendo agli obiettivi di sostenibilità aziendale e riducendo i costi operativi di circa 187.000 euro annui ai prezzi energetici correnti\autocite{Eurostat2024energy}.
 
-\section{\texorpdfstring{\textbf{Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}}{3.3 - Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}}
+\section{\texorpdfstring{Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}{3.3 - Evoluzione delle Architetture di Rete: da Legacy a Software-Defined}}
 
 La trasformazione delle architetture di rete rappresenta un elemento critico nell'evoluzione infrastrutturale, con impatti diretti su prestazioni, sicurezza e costi operativi. L'analisi comparativa di 127 migrazioni complete nel settore retail europeo\autocite{Gartner2024sdwan} fornisce evidenze quantitative sui benefici ottenibili.
 
-\subsection{\texorpdfstring{\textbf{SD-WAN: Quantificazione di Performance e Resilienza}}{3.3.1 - SD-WAN: Quantificazione di Performance e Resilienza}}
+\subsection{\texorpdfstring{SD-WAN: Quantificazione di Performance e Resilienza}{3.3.1 - SD-WAN: Quantificazione di Performance e Resilienza}}
 
 Le reti geografiche software-defined (\gls{sd-wan}) rappresentano un'evoluzione fondamentale per la Grande Distribuzione Organizzata, dove la necessità di connettere centinaia di punti vendita richiede un approccio che superi i limiti delle architetture tradizionali MPLS (Multiprotocol Label Switching).
 
-\subsubsection{\texorpdfstring{\textbf{Architettura Tecnica e Componenti}}{3.3.1.1 - Architettura Tecnica e Componenti}}
+\subsubsection{\texorpdfstring{Architettura Tecnica e Componenti}{3.3.1.1 - Architettura Tecnica e Componenti}}
 
 L'\gls{sd-wan} introduce un livello di astrazione che separa il piano di controllo dal piano dati attraverso tre componenti principali:
 
@@ -306,7 +306,7 @@ L'orchestratore espone API RESTful per l'integrazione con sistemi di monitoraggi
 \end{figure}
 
 
-\subsubsection{\texorpdfstring{\textbf{Quantificazione dei Benefici Operativi}}{3.3.1.2 - Quantificazione dei Benefici Operativi}}
+\subsubsection{\texorpdfstring{Quantificazione dei Benefici Operativi}{3.3.1.2 - Quantificazione dei Benefici Operativi}}
 
 Il Tempo Medio di Riparazione (\gls{mttr}) può essere modellato come:
 
@@ -341,7 +341,7 @@ Questa riduzione è ottenuta attraverso:
     \item \textbf{Self-healing}: Riconfigurazione automatica per aggirare guasti senza intervento umano
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Implementazione della Qualità del Servizio Dinamica}}{3.3.1.3 - Implementazione della Qualità del Servizio Dinamica}}
+\subsubsection{\texorpdfstring{Implementazione della Qualità del Servizio Dinamica}{3.3.1.3 - Implementazione della Qualità del Servizio Dinamica}}
 
 L'\gls{sd-wan} permette QoS (Quality of Service) granulare attraverso Deep Packet Inspection (\gls{dpi}) che identifica oltre 3.000 applicazioni. Per la GDO, questo si traduce in:
 
@@ -368,7 +368,7 @@ Classe 3 - Standard (AF21):
   - Best effort con fair queuing
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Sicurezza Integrata e Micro-segmentazione}}{3.3.1.4 - Sicurezza Integrata e Micro-segmentazione}}
+\subsubsection{\texorpdfstring{Sicurezza Integrata e Micro-segmentazione}{3.3.1.4 - Sicurezza Integrata e Micro-segmentazione}}
 
 L'\gls{sd-wan} abilita la micro-segmentazione end-to-end attraverso VRF (Virtual Routing and Forwarding) che estende la segmentazione dal data center ai punti vendita:
 
@@ -381,7 +381,7 @@ L'\gls{sd-wan} abilita la micro-segmentazione end-to-end attraverso VRF (Virtual
 
 Ogni segmento utilizza chiavi di cifratura IPSec separate con rotazione automatica ogni 24 ore, riducendo il rischio di lateral movement in caso di compromissione.
 
-\subsubsection{\texorpdfstring{\textbf{Analisi Economica e ROI}}{3.3.1.5 - Analisi Economica e ROI}}
+\subsubsection{\texorpdfstring{Analisi Economica e ROI}{3.3.1.5 - Analisi Economica e ROI}}
 
 L'implementazione di \gls{sd-wan} comporta anche benefici economici quantificabili. L'analisi del Valore Attuale Netto (\gls{npv}) su un orizzonte triennale mostra:
 
@@ -391,7 +391,7 @@ L'implementazione di \gls{sd-wan} comporta anche benefici economici quantificabi
 
 dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un \gls{npv} positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
 
-\subsubsection{\texorpdfstring{\textbf{Integrazione con \gls{edge}}}{3.3.1.6 - Integrazione con \gls{edge}}}
+\subsubsection{\texorpdfstring{Integrazione con edge}{3.3.1.6 - Integrazione con edge}}
 
 L'\gls{sd-wan} fornisce il substrato di rete ottimale per l'\gls{edge}, permettendo:
 \begin{itemize}
@@ -449,11 +449,11 @@ Questa sinergia riduce la latenza complessiva del 73.4\% (da 187ms a 49ms)\autoc
 
 % dove $I_0$ rappresenta l'investimento iniziale (mediana: 450.000 euro per 100 sedi), $CF_t$ i flussi di cassa positivi derivanti dai risparmi operativi (mediana: 220.000 euro/anno), e $r$ il tasso di sconto (5\% per il settore retail). Questo produce un \gls{npv} positivo di 147.000 euro e un Periodo di Recupero (Payback Period) di 24.5 mesi.
 
-\subsection{\texorpdfstring{\textbf{\gls{edge}: Latenza e Superficie di Attacco}}{3.3.2 - \gls{edge}: Latenza e Superficie di Attacco}}
+\subsection{\texorpdfstring{\gls{edge}: Latenza e Superficie di Attacco}{3.3.2 - Edge: Latenza e Superficie di Attacco}}
 
 L'elaborazione al margine (\gls{edge}) rappresenta un paradigma fondamentale per supportare le esigenze di bassa latenza delle applicazioni moderne nella Grande Distribuzione. I dati empirici su 89 deployment mostrano una riduzione della latenza media del 73.4\% (da 187ms a 49ms)\autocite{Wang2024edge}, abilitando scenari applicativi prima non realizzabili.
 
-\subsubsection{\texorpdfstring{\textbf{Architettura \gls{edge} per la \gls{gdo}}}{3.3.2.1 - Architettura \gls{edge} per la \gls{gdo}}}
+\subsubsection{\texorpdfstring{Architettura \gls{edge} per la \gls{gdo}}{3.3.2.1 - Architettura Edge per la GDO}}
 
 L'implementazione \gls{edge} nella Grande Distribuzione segue un modello gerarchico a tre livelli:
 
@@ -481,7 +481,7 @@ L'implementazione \gls{edge} nella Grande Distribuzione segue un modello gerarch
     \item \textbf{Connettività}: Fibra dedicata 10 Gbps verso cloud
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Stack Software Edge-Native}}{3.3.2.2 - Stack Software Edge-Native}}
+\subsubsection{\texorpdfstring{Stack Software Edge-Native}{3.3.2.2 - Stack Software Edge-Native}}
 
 \textbf{\gls{container} Orchestration Leggera:}
 \begin{lstlisting}[caption={K3s Deployment per Edge Store},label={lst:k3s_edge}]
@@ -539,7 +539,7 @@ spec:
 EOF
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Protocolli e Comunicazione \gls{iot}}}{3.3.2.3 - Protocolli e Comunicazione \gls{iot}}}
+\subsubsection{\texorpdfstring{Protocolli e Comunicazione \gls{iot}}{3.3.2.3 - Protocolli e Comunicazione IoT}}
 
 \textbf{\gls{mqtt} per Telemetria:}
 \begin{itemize}
@@ -576,7 +576,7 @@ void callback_temp(CoapPacket &packet, IPAddress ip, int port) {
 }
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Use Cases \gls{edge} nella \gls{gdo}}}{3.3.2.4 - Use Cases \gls{edge} nella \gls{gdo}}}
+\subsubsection{\texorpdfstring{Use Cases \gls{edge} nella \gls{gdo}}{3.3.2.4 - Use Cases Edge nella GDO}}
 
 \textbf{1. Computer Vision per Analytics Cliente:}
 \begin{itemize}
@@ -602,7 +602,7 @@ void callback_temp(CoapPacket &packet, IPAddress ip, int port) {
     \item \textbf{Risultato}: +12\% margine su prodotti deperibili
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Decomposizione della Latenza}}{3.3.2.5 - Decomposizione della Latenza}}
+\subsubsection{\texorpdfstring{Decomposizione della Latenza}{3.3.2.5 - Decomposizione della Latenza}}
 
 La latenza end-to-end può essere decomposta come:
 
@@ -625,7 +625,7 @@ $L_{queue}$ (coda) & 30ms & 3ms \\
 \bottomrule
 \end{tabular}
 
-\subsubsection{\texorpdfstring{\textbf{Sicurezza e Superficie di Attacco}}{3.3.2.6 - Sicurezza e Superficie di Attacco}}
+\subsubsection{\texorpdfstring{Sicurezza e Superficie di Attacco}{3.3.2.6 - Sicurezza e Superficie di Attacco}}
 
 Dal punto di vista della sicurezza, l'\gls{edge} contribuisce significativamente all'ipotesi H2. L'isolamento dei carichi di lavoro sull'edge e la micro-segmentazione abilitata riducono la Superficie di Attacco del 42.7\%\autocite{Ponemon2024}:
 
@@ -670,15 +670,15 @@ fi
 \end{lstlisting}
 
 L'implementazione \gls{edge} nella \gls{gdo} rappresenta quindi un elemento critico per raggiungere gli obiettivi di latenza (<100ms) mantenendo sicurezza e affidabilità, abilitando nuovi servizi a valore aggiunto che migliorano sia l'efficienza operativa che l'esperienza cliente.
-\section{\texorpdfstring{\textbf{Trasformazione Cloud: Analisi Strategica ed Economica}}{3.4 - Trasformazione Cloud: Analisi Strategica ed Economica}}
+\section{\texorpdfstring{Trasformazione Cloud: Analisi Strategica ed Economica}{3.4 - Trasformazione Cloud: Analisi Strategica ed Economica}}
 
 La migrazione verso il cloud rappresenta una delle decisioni strategiche più significative per le organizzazioni della Grande Distribuzione, con implicazioni che vanno oltre i semplici aspetti tecnologici per toccare modelli operativi, strutture di costo e capacità competitive.
 
-\subsection{\texorpdfstring{\textbf{Modellazione del \gls{tco} per Strategie di Migrazione}}{3.4.1 - Modellazione del \gls{tco} per Strategie di Migrazione}}
+\subsection{\texorpdfstring{Modellazione del \gls{tco} per Strategie di Migrazione}{3.4.1 - Modellazione del TCO per Strategie di Migrazione}}
 
 La migrazione verso il cloud nella Grande Distribuzione Organizzata richiede un'analisi che bilanci aspetti economici con scelte architetturali tecniche. Il modello sviluppato\autocite{KhajehHosseini2024} considera non solo i costi ma soprattutto le implicazioni tecniche di ciascuna strategia migratoria.
 
-\subsubsection{\texorpdfstring{\textbf{Pattern Architetturali e Strategie di Migrazione}}{3.4.1.1 - Pattern Architetturali e Strategie di Migrazione}}
+\subsubsection{\texorpdfstring{Pattern Architetturali e Strategie di Migrazione}{3.4.1.1 - Pattern Architetturali e Strategie di Migrazione}}
 
 L'analisi comparativa basata su 43 migrazioni complete\autocite{McKinsey2024cloud} identifica tre approcci principali con implicazioni tecniche distinte:
 
@@ -882,7 +882,7 @@ spec:
     \item \textbf{Logging}: ELK stack o Fluentd + CloudWatch
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Analisi Tecnica Comparativa}}{3.4.1.2 - Analisi Tecnica Comparativa}}
+\subsubsection{\texorpdfstring{Analisi Tecnica Comparativa}{3.4.1.2 - Analisi Tecnica Comparativa}}
 
 \begin{table}[htbp]
 \centering
@@ -906,7 +906,7 @@ spec:
 \end{tabular}
 \end{table}
 
-\subsubsection{\texorpdfstring{\textbf{Pipeline di Migrazione Automatizzata}}{3.4.1.3 - Pipeline di Migrazione Automatizzata}}
+\subsubsection{\texorpdfstring{Pipeline di Migrazione Automatizzata}{3.4.1.3 - Pipeline di Migrazione Automatizzata}}
 
 La migrazione utilizza toolchain specifici per minimizzare rischi e downtime:
 
@@ -956,7 +956,7 @@ progressive-rollout:
     - flagger analyze --threshold 95
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Impatto Economico e TCO}}{3.4.1.4 - Impatto Economico e TCO}}
+\subsubsection{\texorpdfstring{Impatto Economico e TCO}{3.4.1.4 - Impatto Economico e TCO}}
 
 Il Costo Totale di Proprietà quinquennale, pur importante, è conseguenza delle scelte tecniche:
 
@@ -981,11 +981,11 @@ L'analisi empirica mostra che l'investimento in refactoring, seppur maggiore ini
 La scelta della strategia ottimale dipende principalmente da fattori tecnici quali complessità applicativa, technical debt accumulato, e requisiti di performance, con il TCO che diventa una metrica di validazione piuttosto che il driver decisionale primario.% 
 
 
-\subsection{\texorpdfstring{\textbf{Architetture Multi-Cloud e Mitigazione del Rischio}}{3.4.2 - Architetture Multi-Cloud e Mitigazione del Rischio}}
+\subsection{\texorpdfstring{Architetture Multi-Cloud e Mitigazione del Rischio}{3.4.2 - Architetture Multi-Cloud e Mitigazione del Rischio}}
 
 L'adozione di strategie multi-cloud nella Grande Distribuzione risponde a esigenze di resilienza operativa, ottimizzazione dei costi e mitigazione del rischio di dipendenza da singolo fornitore. L'analisi empirica dei dati di disponibilità 2020-2024\autocite{Uptime2024} conferma che la diversificazione tra provider cloud riduce significativamente i rischi di downtime totale.
 
-\subsubsection{\texorpdfstring{\textbf{Architettura Tecnica Multi-Cloud}}{3.4.2.1 - Architettura Tecnica Multi-Cloud}}
+\subsubsection{\texorpdfstring{Architettura Tecnica Multi-Cloud}{3.4.2.1 - Architettura Tecnica Multi-Cloud}}
 
 L'implementazione multi-cloud richiede un layer di astrazione che permetta gestione unificata mantenendo la portabilità delle applicazioni:
 
@@ -1024,7 +1024,7 @@ Basandosi sull'analisi delle caratteristiche tecniche di ciascun provider e sui 
     \end{itemize}
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Pattern di Deployment Multi-Cloud}}{3.4.2.2 - Pattern di Deployment Multi-Cloud}}
+\subsubsection{\texorpdfstring{Pattern di Deployment Multi-Cloud}{3.4.2.2 - Pattern di Deployment Multi-Cloud}}
 
 \textbf{1. Active-Active Multi-Cloud:}
 
@@ -1082,7 +1082,7 @@ Sincronizzazione dati cross-cloud per disaster recovery:
     \item \textbf{\gls{cdn}}: Multi-\gls{cdn} strategy (CloudFront + Azure \gls{cdn} + Cloud \gls{cdn})
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Gestione della Complessità Multi-Cloud}}{3.4.2.3 - Gestione della Complessità Multi-Cloud}}
+\subsubsection{\texorpdfstring{Gestione della Complessità Multi-Cloud}{3.4.2.3 - Gestione della Complessità Multi-Cloud}}
 
 La complessità operativa richiede strumenti specifici di gestione:
 
@@ -1133,7 +1133,7 @@ scrape_configs:
     \item \textbf{Spot Fleet Management}: \gls{kubernetes} Cluster Autoscaler con spot instances
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Analisi del Rischio e Correlazioni}}{3.4.2.4 - Analisi del Rischio e Correlazioni}}
+\subsubsection{\texorpdfstring{Analisi del Rischio e Correlazioni}{3.4.2.4 - Analisi del Rischio e Correlazioni}}
 
 L'applicazione della teoria della diversificazione\autocite{Tang2024portfolio} al cloud computing mostra benefici quantificabili. L'analisi dei dati di downtime rivela correlazioni sorprendentemente basse tra provider:
 
@@ -1160,7 +1160,7 @@ A_{multi} = 1 - \prod_{i=1}^{n} (1 - A_i \cdot w_i)
 
 dove $A_i$ è la disponibilità del provider i e $w_i$ il peso del workload. Con le allocazioni proposte, si raggiunge una disponibilità del 99.987\%.
 
-\subsubsection{\texorpdfstring{\textbf{Compliance e Data Sovereignty}}{3.4.2.5 - Compliance e Data Sovereignty}}
+\subsubsection{\texorpdfstring{Compliance e Data Sovereignty}{3.4.2.5 - Compliance e Data Sovereignty}}
 
 L'architettura multi-cloud facilita la conformità normativa\autocite{ISACA2024compliance}:
 
@@ -1201,7 +1201,7 @@ deny[msg] {
 }
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Disaster Recovery Multi-Cloud}}{3.4.2.6 - Disaster Recovery Multi-Cloud}}
+\subsubsection{\texorpdfstring{Disaster Recovery Multi-Cloud}{3.4.2.6 - Disaster Recovery Multi-Cloud}}
 
 L'approccio multi-cloud abilita strategie DR avanzate:
 
@@ -1244,15 +1244,15 @@ Il sistema apprende la distribuzione ottimale basandosi su:
 
 L'implementazione multi-cloud, pur introducendo complessità gestionale, riduce il rischio operativo del 67\% e i costi di compliance del 27.3\%, validando l'investimento in architetture distribuite per la Grande Distribuzione Organizzata.
 
-\section{\texorpdfstring{\textbf{Architettura \gls{zerotrust}: Quantificazione dell'Impatto}}{3.5 - Architettura \gls{zerotrust}: Quantificazione dell'Impatto}}
+\section{\texorpdfstring{Architettura \gls{zerotrust}: Quantificazione dell'Impatto}{3.5 - Architettura Zero Trust: Quantificazione dell'Impatto}}
 
 L'implementazione di architetture \gls{zerotrust} rappresenta un cambio paradigmatico fondamentale nella sicurezza delle infrastrutture IT, passando da un modello basato sul perimetro con fiducia implicita a uno di verifica continua e granulare. Il principio "mai fidarsi, sempre verificare" richiede una ristrutturazione profonda dell'architettura di sicurezza attraverso componenti tecnologiche specifiche.
 
-\subsection{\texorpdfstring{\textbf{Componenti Architetturali e Implementazione}}{3.5.1 - Componenti Architetturali e Implementazione}}
+\subsection{\texorpdfstring{Componenti Architetturali e Implementazione}{3.5.1 - Componenti Architetturali e Implementazione}}
 
 L'architettura \gls{zerotrust} nella \gls{gdo} si basa su cinque pilastri tecnologici interconnessi:
 
-\subsubsection{\texorpdfstring{\textbf{Identity and Access Management (\gls{iam})}}{3.5.1.1 - Identity and Access Management (\gls{iam})}}
+\subsubsection{\texorpdfstring{Identity and Access Management (\gls{iam})}{3.5.1.1 - Identity and Access Management (IAM)}}
 
 Il sistema \gls{iam} costituisce il nucleo dell'architettura, implementato attraverso:
 
@@ -1281,7 +1281,7 @@ Il sistema \gls{iam} costituisce il nucleo dell'architettura, implementato attra
 }
 \end{lstlisting}
 
-\subsubsection{\texorpdfstring{\textbf{Software-Defined Perimeter (SDP) e SASE}}{3.5.1.2 - Software-Defined Perimeter (SDP) e SASE}}
+\subsubsection{\texorpdfstring{Software-Defined Perimeter (SDP) e SASE}{3.5.1.2 - Software-Defined Perimeter (SDP) e SASE}}
 
 L'implementazione Secure Access Service Edge (SASE) combina funzionalità di rete e sicurezza:
 
@@ -1301,7 +1301,7 @@ Invece di una VPN monolitica, ogni applicazione riceve il proprio micro-tunnel c
     \item Tunnel Analytics: WireGuard per bassa latenza
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Micro-segmentazione Granulare}}{3.5.1.3 - Micro-segmentazione Granulare}}
+\subsubsection{\texorpdfstring{Micro-segmentazione Granulare}{3.5.1.3 - Micro-segmentazione Granulare}}
 
 La segmentazione viene implementata a livello di workload attraverso:
 
@@ -1330,7 +1330,7 @@ iptables -A FORWARD -s 10.1.0.0/24 -d 10.2.0.0/24 \
   -m comment --comment "PCI to DMZ" -j REJECT
 \end{lstlisting}
 
-\subsection{\texorpdfstring{\textbf{Modellazione della Riduzione della Superficie di Attacco}}{3.5.2 - Modellazione della Riduzione della Superficie di Attacco}}
+\subsection{\texorpdfstring{Modellazione della Riduzione della Superficie di Attacco}{3.5.2 - Modellazione della Riduzione della Superficie di Attacco}}
 
 La Superficie di Attacco Aggregata del Sistema (ASSA) può essere quantificata attraverso l'implementazione \gls{zerotrust}:
 
@@ -1371,9 +1371,9 @@ L'implementazione \gls{zerotrust} riduce ciascun fattore attraverso meccanismi s
 
 L'analisi di 47 implementazioni\autocite{Forrester2024zero} mostra una riduzione complessiva dell'ASSA del 42.7\% (IC 95\%: 39.2\%-46.2\%), superando il target del 35\% stabilito nell'ipotesi H2.
 
-\subsection{\texorpdfstring{\textbf{Stack Tecnologico di Implementazione}}{3.5.3 - Stack Tecnologico di Implementazione}}
+\subsection{\texorpdfstring{Stack Tecnologico di Implementazione}{3.5.3 - Stack Tecnologico di Implementazione}}
 
-\subsubsection{\texorpdfstring{\textbf{Policy Decision Point (PDP) e Policy Enforcement Point (PEP)}}{3.5.3.1 - Policy Decision Point (PDP) e Policy Enforcement Point (PEP)}}
+\subsubsection{\texorpdfstring{Policy Decision Point (PDP) e Policy Enforcement Point (PEP)}{3.5.3.1 - Policy Decision Point (PDP) e Policy Enforcement Point (PEP)}}
 
 L'architettura separa decisione ed enforcement delle policy:
 
@@ -1392,7 +1392,7 @@ L'architettura separa decisione ed enforcement delle policy:
     \item \textbf{Database Proxy}: Teleport o StrongDM per accesso dati
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{Continuous Verification Architecture}}{3.5.3.2 - Continuous Verification Architecture}}
+\subsubsection{\texorpdfstring{Continuous Verification Architecture}{3.5.3.2 - Continuous Verification Architecture}}
 
 Il monitoraggio continuo utilizza:
 
@@ -1416,7 +1416,7 @@ if risk_score > threshold:
     log_security_event()
 \end{lstlisting}
 
-\subsection{\texorpdfstring{\textbf{Impatto sulla Latenza e Strategie di Mitigazione}}{3.5.4 - Impatto sulla Latenza e Strategie di Mitigazione}}
+\subsection{\texorpdfstring{Impatto sulla Latenza e Strategie di Mitigazione}{3.5.4 - Impatto sulla Latenza e Strategie di Mitigazione}}
 
 La verifica continua introduce overhead computazionale misurabile. L'analisi della latenza mostra:
 
@@ -1459,7 +1459,7 @@ La verifica continua introduce overhead computazionale misurabile. L'analisi del
 \label{fig:zero_trust_impact}
 \end{figure}
 
-\subsection{\texorpdfstring{\textbf{Deployment Pattern per la \gls{gdo}}}{3.5.5 - Deployment Pattern per la \gls{gdo}}}
+\subsection{\texorpdfstring{Deployment Pattern per la \gls{gdo}}{3.5.5 - Deployment Pattern per la GDO}}
 
 L'implementazione \gls{zerotrust} nella Grande Distribuzione segue un pattern specifico:
 
@@ -1489,11 +1489,11 @@ L'implementazione \gls{zerotrust} nella Grande Distribuzione segue un pattern sp
 
 La riduzione complessiva dell'ASSA del 42.7\% con mantenimento delle performance operative (latenza <100ms per il 95 percentile delle transazioni) valida l'efficacia dell'approccio \gls{zerotrust} nel contesto della Grande Distribuzione Organizzata.
 
-\section{\texorpdfstring{\textbf{Roadmap Implementativa: dalla Teoria alla Pratica}}{3.6 - Roadmap Implementativa: dalla Teoria alla Pratica}}
+\section{\texorpdfstring{Roadmap Implementativa: dalla Teoria alla Pratica}{3.6 - Roadmap Implementativa: dalla Teoria alla Pratica}}
 
 La trasformazione infrastrutturale richiede un approccio fasato che bilanci quick-wins immediati con trasformazioni a lungo termine. L'analisi delle implementazioni di successo identifica un pattern ottimale in tre fasi.
 
-\subsection{\texorpdfstring{\textbf{Fase 1: Stabilizzazione e Quick Wins (0-6 mesi)}}{3.6.1 - Fase 1: Stabilizzazione e Quick Wins (0-6 mesi)}}
+\subsection{\texorpdfstring{Fase 1: Stabilizzazione e Quick Wins (0-6 mesi)}{3.6.1 - Fase 1: Stabilizzazione e Quick Wins (0-6 mesi)}}
 
 La prima fase si concentra su interventi a basso rischio e alto ritorno:
 
@@ -1513,7 +1513,7 @@ La prima fase si concentra su interventi a basso rischio e alto ritorno:
     \item ROI: 180\% a 12 mesi
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Fase 2: Trasformazione Core (6-18 mesi)}}{3.6.2 - Fase 2: Trasformazione Core (6-18 mesi)}}
+\subsection{\texorpdfstring{Fase 2: Trasformazione Core (6-18 mesi)}{3.6.2 - Fase 2: Trasformazione Core (6-18 mesi)}}
 
 La seconda fase affronta le trasformazioni strutturali:
 
@@ -1533,7 +1533,7 @@ La seconda fase affronta le trasformazioni strutturali:
     \item Saving operativi: 1.9M€/anno
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Fase 3: Ottimizzazione Avanzata (18-36 mesi)}}{3.6.3 - Fase 3: Ottimizzazione Avanzata (18-36 mesi)}}
+\subsection{\texorpdfstring{Fase 3: Ottimizzazione Avanzata (18-36 mesi)}{3.6.3 - Fase 3: Ottimizzazione Avanzata (18-36 mesi)}}
 
 La fase finale completa la trasformazione:
 
@@ -1560,11 +1560,11 @@ La fase finale completa la trasformazione:
 \label{fig:roadmap_transformation}
 \end{figure}
 
-\section{\texorpdfstring{\textbf{Analisi dei Rischi e Strategie di Mitigazione}}{3.7 - Analisi dei Rischi e Strategie di Mitigazione}}
+\section{\texorpdfstring{Analisi dei Rischi e Strategie di Mitigazione}{3.7 - Analisi dei Rischi e Strategie di Mitigazione}}
 
 La trasformazione infrastrutturale comporta rischi significativi che devono essere identificati e mitigati proattivamente. L'analisi FMEA (Failure Mode and Effects Analysis) condotta su 23 trasformazioni identifica i rischi principali.
 
-\subsection{\texorpdfstring{\textbf{Matrice dei Rischi Critici}}{3.7.1 - Matrice dei Rischi Critici}}
+\subsection{\texorpdfstring{Matrice dei Rischi Critici}{3.7.1 - Matrice dei Rischi Critici}}
 
 I rischi sono valutati secondo probabilità (P), impatto (I) e rilevabilità (R), producendo un Risk Priority Number (RPN = P × I × R):
 
@@ -1586,7 +1586,7 @@ Compliance gap & 4 & 9 & 2 & 72 & Assessment preventivo \\
 \end{tabular}
 \end{table}
 
-\subsection{\texorpdfstring{\textbf{Piano di Contingenza}}{3.7.2 - Piano di Contingenza}}
+\subsection{\texorpdfstring{Piano di Contingenza}{3.7.2 - Piano di Contingenza}}
 
 Per i rischi con RPN > 100, sono definiti piani di contingenza specifici:
 
@@ -1611,11 +1611,11 @@ Per i rischi con RPN > 100, sono definiti piani di contingenza specifici:
     \item Trigger: Deviation >10\% attiva review board
 \end{itemize}
 
-\section{\texorpdfstring{\textbf{Conclusioni del Capitolo e Validazione delle Ipotesi}}{3.8 - Conclusioni del Capitolo e Validazione delle Ipotesi}}
+\section{\texorpdfstring{Conclusioni del Capitolo e Validazione delle Ipotesi}{3.8 - Conclusioni del Capitolo e Validazione delle Ipotesi}}
 
 L'analisi condotta in questo capitolo ha esaminato l'evoluzione infrastrutturale nella Grande Distribuzione Organizzata attraverso una lente prevalentemente tecnica, dimostrando come architetture moderne possano simultaneamente migliorare disponibilità, sicurezza e efficienza operativa. I risultati ottenuti forniscono robuste evidenze empiriche a supporto delle ipotesi di ricerca.
 
-\subsection{\texorpdfstring{\textbf{Validazione dell'Ipotesi H1}}{3.8.1 - Validazione dell'Ipotesi H1}}
+\subsection{\texorpdfstring{Validazione dell'Ipotesi H1}{3.8.1 - Validazione dell'Ipotesi H1}}
 
 L'ipotesi H1, che postula la possibilità per architetture cloud-ibride di garantire \gls{sla} ≥99.95\% con riduzione \gls{tco} >30\%, trova piena validazione attraverso l'implementazione sinergica di multiple tecnologie:
 
@@ -1638,7 +1638,7 @@ L'analisi delle strategie di migrazione cloud (Sezione 3.4.1) e l'implementazion
     \item TCO complessivo ridotto del \textbf{38.2\%} (IC 95\%: 34.6\%-41.7\%)\autocite{McKinsey2024cloud}
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Supporto all'Ipotesi H2}}{3.8.2 - Supporto all'Ipotesi H2}}
+\subsection{\texorpdfstring{Supporto all'Ipotesi H2}{3.8.2 - Supporto all'Ipotesi H2}}
 
 L'ipotesi H2 sulla riduzione della superficie di attacco attraverso architetture \gls{zerotrust} riceve forte supporto dalle implementazioni tecniche:
 
@@ -1652,7 +1652,7 @@ L'ipotesi H2 sulla riduzione della superficie di attacco attraverso architetture
 
 La riduzione complessiva dell'ASSA del \textbf{42.7\%} (IC 95\%: 39.2\%-46.2\%)\autocite{Forrester2024zero} supera significativamente il target del 35\%, mantenendo latenze operative <100ms per il 95 percentile delle transazioni.
 
-\subsection{\texorpdfstring{\textbf{Contributo all'Ipotesi H3}}{3.8.3 - Contributo all'Ipotesi H3}}
+\subsection{\texorpdfstring{Contributo all'Ipotesi H3}{3.8.3 - Contributo all'Ipotesi H3}}
 
 L'architettura sviluppata facilita significativamente la compliance normativa:
 
@@ -1666,7 +1666,7 @@ L'architettura sviluppata facilita significativamente la compliance normativa:
 
 I costi di compliance sono ridotti del \textbf{27.3\%}\autocite{ISACA2024compliance} attraverso automazione e standardizzazione cross-cloud.
 
-\subsection{\texorpdfstring{\textbf{Contributi Tecnici Innovativi}}{3.8.4 - Contributi Tecnici Innovativi}}
+\subsection{\texorpdfstring{Contributi Tecnici Innovativi}{3.8.4 - Contributi Tecnici Innovativi}}
 
 Il capitolo presenta diversi contributi originali all'avanzamento tecnologico del settore:
 
@@ -1689,7 +1689,7 @@ Sistema Q-Learning (Innovation Box 3.2) per ottimizzazione dinamica workload pla
     \item Riduzione violazioni \gls{sla}: 67\%
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Implicazioni Pratiche e Roadmap Implementativa}}{3.8.5 - Implicazioni Pratiche e Roadmap Implementativa}}
+\subsection{\texorpdfstring{Implicazioni Pratiche e Roadmap Implementativa}{3.8.5 - Implicazioni Pratiche e Roadmap Implementativa}}
 
 L'analisi fornisce una roadmap implementativa chiara in tre fasi:
 
@@ -1714,7 +1714,7 @@ L'analisi fornisce una roadmap implementativa chiara in tre fasi:
     \item \gls{edge} deployment completo con K3s
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Limitazioni e Ricerca Futura}}{3.8.6 - Limitazioni e Ricerca Futura}}
+\subsection{\texorpdfstring{Limitazioni e Ricerca Futura}{3.8.6 - Limitazioni e Ricerca Futura}}
 
 Nonostante i risultati positivi, lo studio presenta alcune limitazioni:
 
@@ -1731,7 +1731,7 @@ Le direzioni di ricerca futura includono:
     \item Studio dell'impatto di 5G/6G sulle architetture edge
 \end{itemize}
 
-\subsection{\texorpdfstring{\textbf{Bridge verso il Capitolo 4}}{3.8.7 - Bridge verso il Capitolo 4}}
+\subsection{\texorpdfstring{Bridge verso il Capitolo 4}{3.8.7 - Bridge verso il Capitolo 4}}
 
 L'infrastruttura moderna analizzata in questo capitolo crea le premesse tecniche indispensabili per l'integrazione efficace della compliance normativa. Le architetture cloud-native, la micro-segmentazione \gls{zerotrust}, e l'automazione pervasiva non solo migliorano performance e sicurezza, ma abilitano approcci innovativi alla gestione della conformità.
 
@@ -1752,6 +1752,6 @@ Le tecnologie di automazione (Policy as Code con OPA), monitoring continuo (Prom
     title={Riferimenti Bibliografici del Capitolo 3},
 ]
 
-\endrefsection
+%\endrefsection
 
 \clearpage

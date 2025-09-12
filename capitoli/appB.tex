@@ -1,8 +1,8 @@
 \appendix
-\chapter{\texorpdfstring{\textbf{Framework Digital Twin per la Simulazione GDO}}{Appendice B - Framework Digital Twin per la Simulazione GDO}}
+\chapter{\texorpdfstring{Framework Digital Twin per la Simulazione GDO}{Appendice B - Framework Digital Twin per la Simulazione GDO}}
 \label{app:digital-twin}
 
-\section{\texorpdfstring{\textbf{B.1 Architettura del Framework Digital Twin}}{B.1 - Architettura del Framework Digital Twin}}
+\section{\texorpdfstring{Architettura del Framework Digital Twin}{B.1 - Architettura del Framework Digital Twin}}
 \input{thesis_figures/gist_framework_tikz.tex}
 
 Il framework Digital Twin GDO-Bench rappresenta un contributo metodologico originale per la generazione di dataset sintetici realistici nel settore della Grande Distribuzione Organizzata. L'approccio Digital Twin, mutuato dall'Industry 4.0\autocite{tao2019digital}, viene qui applicato per la prima volta al contesto specifico della sicurezza IT nella GDO.
@@ -119,7 +119,7 @@ e implementa ridondanza multi-path, riducendo ASSA del 39.5\%.}
 \label{fig:network-topology}
 \end{figure}
 
-\subsection{\texorpdfstring{\textbf{B.1.1 Motivazioni e Obiettivi}}{B.1.1 - Motivazioni e Obiettivi}}
+\subsection{\texorpdfstring{Motivazioni e Obiettivi}{B.1.1 - Motivazioni e Obiettivi}}
 
 L'accesso a dati reali nel settore GDO è severamente limitato da vincoli multipli:
 
@@ -132,7 +132,7 @@ L'accesso a dati reali nel settore GDO è severamente limitato da vincoli multip
 
 Il framework Digital Twin supera queste limitazioni fornendo un ambiente di simulazione statisticamente validato che preserva le caratteristiche operative del settore senza esporre dati sensibili.
 
-\subsection{\texorpdfstring{\textbf{B.1.2 Parametri di Calibrazione}}{B.1.2 - Parametri di Calibrazione}}
+\subsection{\texorpdfstring{Parametri di Calibrazione}{B.1.2 - Parametri di Calibrazione}}
 
 I parametri del modello sono calibrati esclusivamente su fonti pubbliche verificabili:
 
@@ -154,9 +154,9 @@ Distribuzione minacce & Malware 28\%, Phishing 22\% & ENISA\autocite{enisa2023} 
 \end{tabular}
 \end{table}
 
-\subsection{\texorpdfstring{\textbf{B.1.3 Componenti del Framework}}{B.1.3 - Componenti del Framework}}
+\subsection{\texorpdfstring{Componenti del Framework}{B.1.3 - Componenti del Framework}}
 
-\subsubsection{\texorpdfstring{\textbf{Transaction Generator}}{Transaction Generator}}
+\subsubsection{\texorpdfstring{Transaction Generator}{B.1.3.1 - Transaction Generator}}
 
 Il modulo di generazione transazioni implementa un modello stocastico multi-livello:
 
@@ -213,7 +213,7 @@ La distribuzione degli importi segue una log-normale per riflettere il pattern o
 
 dove $\bar{x}$ è il valore medio dello scontrino per tipologia di store.
 
-\subsubsection{\texorpdfstring{\textbf{Security Event Simulator}}{Security Event Simulator}}
+\subsubsection{\texorpdfstring{Security Event Simulator}{B.1.3.2 - Security Event Simulator}}
 
 La simulazione degli eventi di sicurezza implementa un processo di Poisson non omogeneo calibrato sul threat landscape ENISA:
 
@@ -261,7 +261,7 @@ class SecurityEventGenerator:
         return pd.DataFrame(events)
 \end{lstlisting}
 
-\subsection{\texorpdfstring{\textbf{B.1.4 Validazione Statistica}}{B.1.4 - Validazione Statistica}}
+\subsection{\texorpdfstring{Validazione Statistica}{B.1.4 - Validazione Statistica}}
 
 Il framework include un modulo di validazione che verifica la conformità statistica dei dati generati:
 
@@ -287,7 +287,7 @@ Completezza dati & missing = 0.0\% & - & \checkmark PASS \\
 \end{tabular}
 \end{table}
 
-\subsubsection{\texorpdfstring{\textbf{Test di Benford's Law}}{Test di Benford's Law}}
+\subsubsection{\texorpdfstring{Test di Benford's Law}{B.1.4.1 - Test di Benford's Law}}
 
 La conformità alla legge di Benford per gli importi delle transazioni conferma il realismo della distribuzione:
 
@@ -365,7 +365,7 @@ e serali (17-20). Test \(\chi^2 = 847.3\), \(p < 0.001\) conferma pattern non un
 \end{figure}
 
 
-\subsection{\texorpdfstring{\textbf{B.1.5 Dataset Dimostrativo Generato}}{B.1.5 - Dataset Dimostrativo Generato}}
+\subsection{\texorpdfstring{Dataset Dimostrativo Generato}{B.1.5 - Dataset Dimostrativo Generato}}
 
 Il framework ha generato con successo un dataset dimostrativo con le seguenti caratteristiche:
 
@@ -387,7 +387,7 @@ Network flows & 156,320 & 41.7 MB & 8.7 sec \\
 \end{tabular}
 \end{table}
 
-\subsection{\texorpdfstring{\textbf{B.1.6 Scalabilità e Performance}}{B.1.6 - Scalabilità e Performance}}
+\subsection{\texorpdfstring{Scalabilità e Performance}{B.1.6 - Scalabilità e Performance}}
 
 Il framework dimostra scalabilità lineare con complessità $O(n \cdot m)$ dove $n$ è il numero di store e $m$ il periodo temporale:
 
@@ -438,7 +438,7 @@ Il framework dimostra scalabilità lineare con complessità $O(n \cdot m)$ dove 
 \label{fig:scalability}
 \end{figure}
 
-\subsection{\texorpdfstring{\textbf{B.1.7 Confronto con Approcci Alternativi}}{B.1.7 - Confronto con Approcci Alternativi}}
+\subsection{\texorpdfstring{Confronto con Approcci Alternativi}{B.1.7 - Confronto con Approcci Alternativi}}
 
 \begin{table}[h]
 \centering
@@ -459,7 +459,7 @@ Scalabilità & Limitata & Illimitata & Limitata \\
 \end{tabular}
 \end{table}
 
-\subsection{\texorpdfstring{\textbf{B.1.8 Disponibilità e Riproducibilità}}{B.1.8 - Disponibilità e Riproducibilità}}
+\subsection{\texorpdfstring{Disponibilità e Riproducibilità}{B.1.8 - Disponibilità e Riproducibilità}}
 
 Il framework è rilasciato come software open-source con licenza MIT:
 
@@ -471,9 +471,9 @@ Il framework è rilasciato come software open-source con licenza MIT:
     \item \textbf{CI/CD}: GitHub Actions per test automatici
 \end{itemize}
 
-\section{\texorpdfstring{\textbf{B.2 Esempi di Utilizzo}}{B.2 - Esempi di Utilizzo}}
+\section{\texorpdfstring{Esempi di Utilizzo}{B.2 - Esempi di Utilizzo}}
 
-\subsection{\texorpdfstring{\textbf{B.2.1 Generazione Dataset Base}}{B.2.1 - Generazione Dataset Base}}
+\subsection{\texorpdfstring{Generazione Dataset Base}{B.2.1 - Generazione Dataset Base}}
 
 \begin{lstlisting}[language=Python, caption={Esempio generazione dataset base}]
 from gdo_digital_twin import GDODigitalTwin
@@ -499,7 +499,7 @@ print(f"Eventi sicurezza: {len(security_events):,}")
 print(f"Incidenti reali: {security_events['is_incident'].sum()}")
 \end{lstlisting}
 
-\subsection{\texorpdfstring{\textbf{B.2.2 Simulazione Scenario Black Friday}}{B.2.2 - Simulazione Scenario Black Friday}}
+\subsection{\texorpdfstring{Simulazione Scenario Black Friday}{B.2.2 - Simulazione Scenario Black Friday}}
 
 \begin{lstlisting}[language=Python, caption={Simulazione scenario Black Friday}]
 # Configura parametri Black Friday

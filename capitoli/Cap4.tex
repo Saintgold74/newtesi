@@ -1,9 +1,9 @@
 % Capitolo 4 - Compliance Integrata e Governance: Ottimizzazione attraverso Sinergie Normative
-\refsection % <--- INIZIA LA SEZIONE DI RIFERIMENTO
-\chapter{\texorpdfstring{\textbf{Compliance Integrata e Governance: Ottimizzazione attraverso Sinergie Normative}}{Capitolo 4 - Compliance Integrata e Governance: Ottimizzazione attraverso Sinergie Normative}}
+%\refsection % <--- INIZIA LA SEZIONE DI RIFERIMENTO
+\chapter{\texorpdfstring{Compliance Integrata e Governance: Ottimizzazione attraverso Sinergie Normative}{Capitolo 4 - Compliance Integrata e Governance: Ottimizzazione attraverso Sinergie Normative}}
 \label{cap4_compliance_integration}
 
-\section{\texorpdfstring{\textbf{Introduzione: La Conformità Normativa come Vantaggio Competitivo}}{4.1 - Introduzione: La Conformità Normativa come Vantaggio Competitivo}}
+\section{\texorpdfstring{Introduzione: La Conformità Normativa come Vantaggio Competitivo}{4.1 - Introduzione: La Conformità Normativa come Vantaggio Competitivo}}
 
 I capitoli precedenti hanno stabilito come le vulnerabilità architetturali siano la causa principale degli attacchi informatici (Capitolo 2) e come le infrastrutture moderne possano abilitare prestazioni e sicurezza superiori (Capitolo 3). Tuttavia, ogni decisione tecnologica opera all'interno di un panorama normativo complesso che richiede un'analisi approfondita. L'analisi di settore, basata su dati aggregati da 1.847 incidenti nel periodo 2022-2024, mostra che il 68\% delle violazioni di dati sfrutta lacune nella conformità normativa \autocite{verizon2024}. 
 
@@ -11,13 +11,13 @@ Questo capitolo affronta la sfida della conformità multi-standard attraverso un
 
 La metodologia adottata combina teoria dei grafi per mappare le relazioni tra requisiti, programmazione lineare per l'ottimizzazione delle risorse, e analisi stocastica per la quantificazione del rischio. Questo approccio multidisciplinare permette di superare i limiti degli approcci tradizionali, tipicamente frammentati e sub-ottimali, offrendo un modello integrato validato su dati reali provenienti da 47 organizzazioni del settore.
 
-\section{\texorpdfstring{\textbf{Analisi Quantitativa del Panorama Normativo nella Grande Distribuzione}}{4.2 - Analisi Quantitativa del Panorama Normativo nella Grande Distribuzione}}
+\section{\texorpdfstring{Analisi Quantitativa del Panorama Normativo nella Grande Distribuzione}{4.2 - Analisi Quantitativa del Panorama Normativo nella Grande Distribuzione}}
 
-\subsection{Metodologia di Quantificazione degli Impatti Economici}
+\subsection{\texorpdfstring{Metodologia di Quantificazione degli Impatti Economici}{4.2.1 - Metodologia di Quantificazione degli Impatti Economici}}
 
 L'implementazione del \gls{pci-dss} 4.0, con i suoi 51 nuovi requisiti rispetto alla versione 3.2.1\autocite{pcidss2024}, richiede un approccio strutturato che vada oltre la semplice analisi economica. Il costo medio stimato di 2,3 milioni di euro per un'organizzazione di medie dimensioni deriva da un'analisi condotta su 82 aziende europee\autocite{Gartner2024gdpr}, ma la vera sfida risiede nell'implementazione tecnica efficace.
 
-\subsubsection{Architettura Tecnica per \gls{pci-dss} 4.0}
+\subsubsection{\texorpdfstring{Architettura Tecnica per \gls{pci-dss} 4.0}{4.2.1.1 - Architettura Tecnica per PCI-DSS 4.0}}
 
 I nuovi requisiti del \gls{pci-dss} 4.0 richiedono implementazioni tecniche specifiche:
 
@@ -67,7 +67,7 @@ La distribuzione dell'investimento di 2,3M€ si concentra su componenti tecnich
     \item \textbf{Automazione e processi} (12\%): \gls{cicd} security pipeline, \gls{soar}
 \end{itemize}
 
-\subsection{Modellazione del Rischio Finanziario tramite Analisi Quantitativa}
+\subsection{\texorpdfstring{Modellazione del Rischio Finanziario tramite Analisi Quantitativa}{4.2.2 - Modellazione del Rischio Finanziario tramite Analisi Quantitativa}}
 
 Il rischio finanziario legato al \gls{gdpr} può essere analizzato attraverso metriche concrete\autocite{mcneil2015}. L'analisi delle 847 sanzioni nel settore retail europeo (2018-2024)\autocite{EDPB2024} rivela pattern specifici di violazione:
 
@@ -79,7 +79,7 @@ Il rischio finanziario legato al \gls{gdpr} può essere analizzato attraverso me
     \item \textbf{Privacy by design mancante} (14\%): Architetture non conformi, data retention eccessiva
 \end{itemize}
 
-\subsubsection{Implementazione Tecnica \gls{gdpr}}
+\subsubsection{\texorpdfstring{Implementazione Tecnica \gls{gdpr}}{4.2.2.1 - Implementazione Tecnica GDPR}}
 
 \textbf{Sistema Automatizzato per Gestione Consensi:}
 \begin{lstlisting}[caption={API REST per Gestione Consensi \gls{gdpr}},label={lst:gdpr_consent}]
@@ -140,7 +140,7 @@ def handle_dsar():
                    'estimated_completion': '25_days'}), 202
 \end{lstlisting}
 
-\subsubsection{Requisiti Tecnici \gls{nis2}}
+\subsubsection{\texorpdfstring{Requisiti Tecnici \gls{nis2}}{4.2.2.2 - Requisiti Tecnici NIS2}}
 
 La Direttiva \gls{nis2}, con estensione del perimetro applicativo, introduce requisiti operativi stringenti\autocite{ENISA2024nis2}:
 
@@ -176,13 +176,13 @@ L'investimento tecnico per conformità NIS2 si concentra su:
     \item \textbf{\gls{incident-response} Platform} (150.000€): TheHive, Cortex XSOAR
     \item \textbf{\gls{threat-intelligence}} (85.000€): Feed commerciali, MISP integration
 \end{itemize}
-\section{\texorpdfstring{\textbf{Modello di Ottimizzazione per la Conformità Integrata}}{4.3 - Modello di Ottimizzazione per la Conformità Integrata}}
+\section{\texorpdfstring{Modello di Ottimizzazione per la Conformità Integrata}{4.3 - Modello di Ottimizzazione per la Conformità Integrata}}
 
-\subsection{Formalizzazione del Problema di Integrazione}
+\subsection{\texorpdfstring{Formalizzazione del Problema di Integrazione}{4.3.1 - Formalizzazione del Problema di Integrazione}}
 
 L'approccio integrato alla conformità sfrutta le sinergie naturali esistenti tra le diverse normative. L'analisi dettagliata delle sovrapposizioni, condotta attraverso mappatura manuale e validazione da esperti, rivela che 188 controlli (31\% del totale) sono comuni a tutti e tre gli standard principali.
 
-\subsubsection{Mappatura Tecnica dei Controlli Comuni}
+\subsubsection{\texorpdfstring{Mappatura Tecnica dei Controlli Comuni}{4.3.1.1 - Mappatura Tecnica dei Controlli Comuni}}
 
 La mappatura dei controlli rivela convergenze tecniche significative:
 
@@ -209,7 +209,7 @@ La mappatura dei controlli rivela convergenze tecniche significative:
 \label{fig:venn_normative}
 \end{figure}
 
-\subsubsection{Framework di Implementazione Unificato}
+\subsubsection{\texorpdfstring{Framework di Implementazione Unificato}{4.3.1.2 - Framework di Implementazione Unificato}}
 
 Invece di un approccio puramente matematico, proponiamo un framework pratico di implementazione:
 
@@ -288,11 +288,11 @@ mapper.map_control_to_requirements(
 )
 \end{lstlisting}
 
-\subsection{Algoritmo di Ottimizzazione e Risultati Computazionali}
+\subsection{\texorpdfstring{Algoritmo di Ottimizzazione e Risultati Computazionali}{4.3.2 - Algoritmo di Ottimizzazione e Risultati Computazionali}}
 
 L'implementazione pratica utilizza un approccio greedy modificato che considera non solo il costo ma anche le dipendenze tecniche tra controlli\autocite{Chvatal1979}.
 
-\subsubsection{Strategia di Implementazione Fasata}
+\subsubsection{\texorpdfstring{Strategia di Implementazione Fasata}{4.3.2.1 - Strategia di Implementazione Fasata}}
 
 \textbf{Fase 1 - Controlli Fondamentali (Mesi 0-6):}
 \begin{itemize}
@@ -336,7 +336,7 @@ Tempo risoluzione NC & 8,2 giorni & 3,1 giorni & 62,2\% & Workflow automatizzati
 \end{tabular}
 \end{table}
 
-\subsubsection{Architettura Tecnica della Soluzione Integrata}
+\subsubsection{\texorpdfstring{Architettura Tecnica della Soluzione Integrata}{4.3.2.2 - Architettura Tecnica della Soluzione Integrata}}
 
 L'architettura integrata si basa su componenti specifici:
 
@@ -420,13 +420,13 @@ class GRCIntegration:
 
 Questi risultati, validati attraverso l'analisi di 47 implementazioni reali nel periodo 2022-2024\autocite{PWC2024}, dimostrano che l'approccio integrato non solo riduce i costi diretti ma migliora significativamente l'efficienza operativa attraverso l'automazione e la gestione unificata.
 
-\section{\texorpdfstring{\textbf{Architettura di Governance Unificata e Automazione}}{4.4 - Architettura di Governance Unificata e Automazione}}
+\section{\texorpdfstring{Architettura di Governance Unificata e Automazione}{4.4 - Architettura di Governance Unificata e Automazione}}
 
-\subsection{Modello di Maturità per la Governance Integrata}
+\subsection{\texorpdfstring{Modello di Maturità per la Governance Integrata}{4.4.1 - Modello di Maturità per la Governance Integrata}}
 
 Un modello operativo integrato richiede una struttura di governance unificata che coordini efficacemente tutti gli aspetti della conformità. La maturità di tale governance può essere misurata attraverso un modello basato sul Capability Maturity Model Integration (CMMI)\autocite{CMMI2023}, adattato specificamente per il contesto della conformità normativa nel settore retail.
 
-\subsubsection{Framework Operativo di Governance}
+\subsubsection{\texorpdfstring{Framework Operativo di Governance}{4.4.1.1 - Framework Operativo di Governance}}
 
 La \gls{governance} unificata si struttura su tre livelli organizzativi e tecnologici:
 
@@ -454,7 +454,7 @@ La \gls{governance} unificata si struttura su tre livelli organizzativi e tecnol
     \item \textbf{Incident Management}: PagerDuty per alerting e escalation
 \end{itemize}
 
-\subsubsection{Metriche di Maturità Operative}
+\subsubsection{\texorpdfstring{Metriche di Maturità Operative}{4.4.1.2 - Metriche di Maturità Operative}}
 
 Il modello valuta la maturità su cinque dimensioni con metriche concrete:
 
@@ -504,11 +504,11 @@ L'analisi statistica mostra una correlazione negativa forte (r = -0,72, p < 0,00
 \label{fig:cmi_radar}
 \end{figure}
 
-\subsection{Implementazione dell'Automazione attraverso Paradigmi Dichiarativi}
+\subsection{\texorpdfstring{Implementazione dell'Automazione attraverso Paradigmi Dichiarativi}{4.4.2 - Implementazione dell'Automazione attraverso Paradigmi Dichiarativi}}
 
 L'automazione attraverso il paradigma "policy come codice" trasforma le politiche di conformità da documenti statici a regole eseguibili che possono essere validate e applicate automaticamente\autocite{Brynjolfsson2016}.
 
-\subsubsection{Architettura Policy as Code}
+\subsubsection{\texorpdfstring{Architettura Policy as Code}{4.4.2.1 - Architettura Policy as Code}}
 
 L'implementazione si basa su tre componenti tecnologici principali:
 
@@ -565,7 +565,7 @@ decision := {
 }
 \end{lstlisting}
 
-\subsubsection{Pipeline di Automazione \gls{compliance}}
+\subsubsection{\texorpdfstring{Pipeline di Automazione \gls{compliance}}{4.4.2.2 - Pipeline di Automazione Compliance}}
 
 La pipeline automatizza il ciclo completo dalla definizione policy all'enforcement:
 
@@ -605,7 +605,7 @@ Il sistema di monitoraggio raccoglie metriche in tempo reale:
     \item \textbf{Audit Completeness}: 100\% decisioni registrate
 \end{itemize}
 
-\subsubsection{Integrazione con Sistemi Esistenti}
+\subsubsection{\texorpdfstring{Integrazione con Sistemi Esistenti}{4.4.2.3 - Integrazione con Sistemi Esistenti}}
 
 L'automazione si integra con l'infrastruttura esistente tramite API e webhook:
 
@@ -630,7 +630,7 @@ L'automazione si integra con l'infrastruttura esistente tramite API e webhook:
     \item Revoca accessi automatica per violazioni
 \end{itemize}
 
-\subsubsection{Risultati Misurati dell'Automazione}
+\subsubsection{\texorpdfstring{Risultati Misurati dell'Automazione}{4.4.2.4 - Risultati Misurati dell'Automazione}}
 
 L'implementazione dell'automazione genera benefici quantificabili:
 
@@ -646,13 +646,13 @@ Il passaggio da \gls{governance} frammentata a unificata e automatizzata rappres
 
 \textit{Nota: Implementazioni complete delle policy e script di automazione sono disponibili in Appendice C.4 per riferimento dettagliato.}
 
-\section{\texorpdfstring{\textbf{Caso di Studio: Analisi di un Attacco alla Convergenza IT/OT}}{4.5 - Caso di Studio: Analisi di un Attacco alla Convergenza IT/OT}}
+\section{\texorpdfstring{Caso di Studio: Analisi di un Attacco alla Convergenza IT/OT}{4.5 - Caso di Studio: Analisi di un Attacco alla Convergenza IT/OT}}
 
-\subsection{Anatomia dell'Attacco e Vettori di Compromissione}
+\subsection{\texorpdfstring{Anatomia dell'Attacco e Vettori di Compromissione}{4.5.1 - Anatomia dell'Attacco e Vettori di Compromissione}}
 
 Per concretizzare i rischi della non conformità, analizziamo in dettaglio un attacco reale documentato dal SANS Institute, avvenuto nel secondo trimestre 2024 contro "RetailCo" (nome anonimizzato)\autocite{SANS2024}. L'attacco ha sfruttato la convergenza tra sistemi informativi (IT) e tecnologia operativa (OT) per compromettere la catena del freddo in 23 punti vendita.
 
-\subsubsection{Ricostruzione Forense dell'Attacco}
+\subsubsection{\texorpdfstring{Ricostruzione Forense dell'Attacco}{4.5.1.1 - Ricostruzione Forense dell'Attacco}}
 
 La sequenza temporale è stata ricostruita attraverso analisi dei log \gls{siem}, network forensics e timeline analysis:
 
@@ -709,7 +709,7 @@ La violazione critica è avvenuta attraverso:
     \item \textbf{Mancanza segmentazione}: VLAN flat tra IT e OT, no firewall industriale
 \end{itemize}
 
-\subsubsection{Analisi Tecnica dei Sistemi SCADA Compromessi}
+\subsubsection{\texorpdfstring{Analisi Tecnica dei Sistemi SCADA Compromessi}{4.5.1.2 - Analisi Tecnica dei Sistemi SCADA Compromessi}}
 
 I sistemi SCADA (Supervisory Control and Data Acquisition) controllanti la refrigerazione presentavano vulnerabilità multiple:
 
@@ -751,11 +751,11 @@ L'alterazione dei parametri ha causato:
     \item \textbf{Contenimento}: Isolamento rete OT dopo 48 ore
 \end{itemize}
 
-\subsection{Analisi Controfattuale e Lezioni Apprese}
+\subsection{\texorpdfstring{Analisi Controfattuale e Lezioni Apprese}{4.5.2 - Analisi Controfattuale e Lezioni Apprese}}
 
 L'analisi post-incidente ha identificato controlli mancanti critici e fornito indicazioni per il miglioramento della postura di sicurezza\autocite{Pearl2018}.
 
-\subsubsection{Controlli Tecnici Mancanti}
+\subsubsection{\texorpdfstring{Controlli Tecnici Mancanti}{4.5.2.1 - Controlli Tecnici Mancanti}}
 
 L'analisi gap rispetto agli standard di conformità rivela carenze sistematiche:
 
@@ -783,7 +783,7 @@ L'analisi gap rispetto agli standard di conformità rivela carenze sistematiche:
     \item \textbf{Integrazione}: SIEM per correlazione eventi IT/OT
 \end{itemize}
 
-\subsubsection{Indicatori di Compromissione (IoC) Identificati}
+\subsubsection{\texorpdfstring{Indicatori di Compromissione (IoC) Identificati}{4.5.2.2 - Indicatori di Compromissione (IoC) Identificati}}
 
 L'analisi forense ha estratto IoC (Indicators of Compromise - tracce tecniche lasciate dagli attaccanti che permettono di identificare l'intrusione) specifici per detection futura:
 
@@ -807,7 +807,7 @@ Modbus Cmd & FC=16, Addr>40000 & Comando di scrittura registri (setpoint) \\
 \end{tabular}
 \end{table}
 
-\subsubsection{\gls{playbook} di Risposta Sviluppato}
+\subsubsection{\texorpdfstring{\gls{playbook} di Risposta Sviluppato}{4.5.2.3 - Playbook di Risposta Sviluppato}}
 
 Basandosi sull'incidente, è stato sviluppato un \gls{playbook} di risposta specifico per attacchi IT/OT:
 
@@ -839,7 +839,7 @@ Basandosi sull'incidente, è stato sviluppato un \gls{playbook} di risposta spec
     \item Reconnessione graduale con monitoring enhanced
 \end{enumerate}
 
-\subsubsection{Implementazione Controlli Post-Incidente}
+\subsubsection{\texorpdfstring{Implementazione Controlli Post-Incidente}{4.5.2.4 - Implementazione Controlli Post-Incidente}}
 
 L'organizzazione ha implementato un piano di remediation strutturato:
 
@@ -868,13 +868,13 @@ Il caso RetailCo dimostra come la mancata conformità agli standard di segmentaz
 
 \textit{Nota: Report tecnico completo con packet capture, memory dump analysis e timeline dettagliata disponibile in Appendice D.2 previa autorizzazione.}
 
-\section{\texorpdfstring{\textbf{Modello Economico e Validazione dell'Ipotesi H3}}{4.6 - Modello Economico e Validazione dell'Ipotesi H3}}
+\section{\texorpdfstring{Modello Economico e Validazione dell'Ipotesi H3}{4.6 - Modello Economico e Validazione dell'Ipotesi H3}}
 
-\subsection{Framework del Costo Totale della Conformità}
+\subsection{\texorpdfstring{Framework del Costo Totale della Conformità}{4.6.1 - Framework del Costo Totale della Conformità}}
 
 L'analisi economica della conformità integrata richiede un approccio pratico che consideri sia i costi diretti che i benefici operativi. Il framework del \gls{tcc} (TCC - Total Cost of Compliance), adattato dal modello di Activity-Based Costing\autocite{Kaplan2007}, permette di quantificare l'impatto reale dell'integrazione.
 
-\subsubsection{Componenti del Costo di Conformità}
+\subsubsection{\texorpdfstring{Componenti del Costo di Conformità}{4.6.1.1 - Componenti del Costo di Conformità}}
 
 Il TCC si compone di elementi misurabili attraverso sistemi di gestione esistenti:
 
@@ -910,7 +910,7 @@ Il TCC si compone di elementi misurabili attraverso sistemi di gestione esistent
     \item \textbf{Riduzione}: 67\% con controlli integrati vs frammentati
 \end{itemize}
 
-\subsubsection{Implementazione del Modello TCC}
+\subsubsection{\texorpdfstring{Implementazione del Modello TCC}{4.6.1.2 - Implementazione del Modello TCC}}
 
 L'implementazione pratica utilizza tool specifici per raccolta e analisi dati:
 
@@ -987,11 +987,11 @@ class ComplianceCostCalculator:
         }
 \end{lstlisting}
 
-\subsection{Ottimizzazione degli Investimenti tramite Approccio Fasato}
+\subsection{\texorpdfstring{Ottimizzazione degli Investimenti tramite Approccio Fasato}{4.6.2 - Ottimizzazione degli Investimenti tramite Approccio Fasato}}
 
 Invece di modelli matematici complessi, l'ottimizzazione degli investimenti segue un approccio pratico basato su priorità e dipendenze tecniche\autocite{Bertsekas2017}.
 
-\subsubsection{Strategia di Investimento Progressivo}
+\subsubsection{\texorpdfstring{Strategia di Investimento Progressivo}{4.6.2.1 - Strategia di Investimento Progressivo}}
 
 \textbf{Anno 1 - Fondamenta (60\% budget totale):}
 \begin{itemize}
@@ -1017,11 +1017,11 @@ Invece di modelli matematici complessi, l'ottimizzazione degli investimenti segu
     \item \textbf{Maturità}: Livello 4 su scala CMMI
 \end{itemize}
 
-\subsection{Validazione Empirica dell'Ipotesi H3}
+\subsection{\texorpdfstring{Validazione Empirica dell'Ipotesi H3}{4.6.3 - Validazione Empirica dell'Ipotesi H3}}
 
 L'ipotesi H3 postulava la possibilità di ridurre i costi di conformità del 30-40\% mantenendo o migliorando l'efficacia dei controlli. I dati raccolti da 47 organizzazioni del settore\autocite{ernstyoung2024} confermano questa previsione.
 
-\subsubsection{Metodologia di Validazione}
+\subsubsection{\texorpdfstring{Metodologia di Validazione}{4.6.3.1 - Metodologia di Validazione}}
 
 La validazione ha utilizzato un approccio multi-metodo:
 
@@ -1041,7 +1041,7 @@ La validazione ha utilizzato un approccio multi-metodo:
     \item \textbf{Test statistici}: t-test per differenze medie, Mann-Whitney per robustezza
 \end{itemize}
 
-\subsubsection{Risultati della Validazione}
+\subsubsection{\texorpdfstring{Risultati della Validazione}{4.6.3.2 - Risultati della Validazione}}
 
 I risultati confermano e superano le previsioni dell'ipotesi H3:
 
@@ -1065,7 +1065,7 @@ Audit effort & -- & -42.9\% & [-45\%, -40\%] & <0.001 \\
 
 \textit{Note: IC = Intervallo di Confidenza, NC = Non Conformità, MTTR = Mean Time To Remediation}
 
-\subsubsection{Fattori Critici di Successo}
+\subsubsection{\texorpdfstring{Fattori Critici di Successo}{4.6.3.3 - Fattori Critici di Successo}}
 
 L'analisi qualitativa attraverso interviste strutturate ha identificato i fattori determinanti:
 
@@ -1092,7 +1092,7 @@ L'analisi qualitativa attraverso interviste strutturate ha identificato i fattor
 \label{fig:supplementare_roi_timeline}
 \end{figure}
 
-\subsubsection{Analisi di Robustezza}
+\subsubsection{\texorpdfstring{Analisi di Robustezza}{4.6.3.4 - Analisi di Robustezza}}
 
 Per verificare la solidità dei risultati, sono state condotte analisi di sensibilità:
 
@@ -1116,69 +1116,14 @@ La validazione empirica conferma quindi che l'approccio integrato alla conformit
 
 \textit{Nota: Dataset completo e script R/Python per replicazione analisi disponibili in Appendice E.1 su richiesta.}
 
-\subsection{\texorpdfstring{\textbf{Framework del Costo Totale della Conformità}}{4.6.1 - Framework del Costo Totale della Conformità}}
 
-L'analisi economica completa richiede l'applicazione del framework del \gls{tcc} (Total Cost of Compliance - TCC), adattato dal modello di Activity-Based Costing di Kaplan e Anderson \autocite{Kaplan2007}. Il TCC per un'organizzazione può essere espresso come:
+\section{\texorpdfstring{Innovazioni Metodologiche e Contributi alla Ricerca}{4.7 - Innovazioni Metodologiche e Contributi alla Ricerca}}
 
-\begin{equation}
-TCC = C_{impl} + C_{op} + C_{audit} + C_{risk} - B_{syn}
-\end{equation}
-
-dove:
-\begin{itemize}
-\item $C_{impl}$ rappresenta i costi di implementazione iniziale
-\item $C_{op}$ i costi operativi annuali
-\item $C_{audit}$ i costi di certificazione e audit
-\item $C_{risk}$ il valore atteso delle perdite da non conformità
-\item $B_{syn}$ i benefici derivanti dalle sinergie nell'approccio integrato
-\end{itemize}
-
-L'applicazione di questo modello a dati reali di 47 organizzazioni mostra che l'approccio integrato riduce il TCC del 50\% su un orizzonte di 5 anni, con il punto di pareggio raggiunto mediamente al mese 14.
-
-\subsection{\texorpdfstring{\textbf{Ottimizzazione degli Investimenti tramite Programmazione Dinamica}}{4.6.2 - Ottimizzazione degli Investimenti tramite Programmazione Dinamica}}
-
-L'allocazione ottimale degli investimenti in conformità può essere modellata come un problema di programmazione dinamica stocastica \autocite{Bertsekas2017}. L'equazione di Bellman per questo problema è:
-
-\begin{equation}
-V_t(s) = \max_{a \in A(s)} \left\{ R(s,a) + \gamma \mathbb{E}[V_{t+1}(s') | s, a] \right\}
-\end{equation}
-
-dove $V_t(s)$ è il valore della funzione al tempo $t$ nello stato $s$, $a$ rappresenta l'azione (investimento in uno specifico controllo), $R(s,a)$ è il beneficio immediato, $\gamma$ è il fattore di sconto, e $s'$ è lo stato futuro.
-
-La soluzione numerica di questo problema, ottenuta attraverso tecniche di approssimazione del valore \autocite{Boyd2004}, indica che la strategia ottimale prevede:
-\begin{enumerate}
-\item Investimento iniziale concentrato (60\% nel primo anno) sui controlli fondamentali comuni
-\item Implementazione graduale (anni 2-3) dei controlli specifici per standard
-\item Ottimizzazione continua (anni 4-5) attraverso automazione e miglioramento dei processi
-\end{enumerate}
-
-\subsection{\texorpdfstring{\textbf{Validazione Empirica dell'Ipotesi H3}}{4.6.3 - Validazione Empirica dell'Ipotesi H3}}
-
-I risultati dell'analisi empirica validano pienamente l'ipotesi H3, che postulava la possibilità di ridurre i costi di conformità del 30-40\% mantenendo o migliorando l'efficacia dei controlli. I dati aggregati mostrano:
-
-\begin{itemize}
-\item \textbf{Riduzione dei costi}: 39,1\% (intervallo di confidenza 95\%: 37,2\% - 41,0\%)
-\item \textbf{Riduzione dell'overhead operativo}: 9,7\% delle risorse IT totali (target: <10\%)
-\item \textbf{Miglioramento dell'efficacia}: riduzione del 67\% nelle non conformità critiche
-\item \textbf{Tempo di implementazione}: riduzione del 39,5\% rispetto all'approccio frammentato
-\end{itemize}
-
-Questi risultati, supportati da analisi di robustezza attraverso tecniche di bootstrap e validazione incrociata \autocite{ernstyoung2024}, confermano la superiorità dell'approccio integrato in tutte le dimensioni analizzate.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\textwidth]{thesis_figures/cap4/figura_4_supplementare_roi_timeline.pdf}
-\caption{Evoluzione temporale del ritorno sull'investimento per l'approccio integrato alla conformità. Il grafico mostra il confronto tra i costi cumulativi dell'approccio tradizionale frammentato (linea rossa) e quello integrato (linea blu), evidenziando il punto di pareggio al mese 14 e il risparmio cumulativo crescente nel tempo. L'area ombreggiata rappresenta l'intervallo di confidenza al 95\% basato su simulazioni Monte Carlo.}
-\label{fig:supplementare_roi_timeline}
-\end{figure}
-
-\section{\texorpdfstring{\textbf{Innovazioni Metodologiche e Contributi alla Ricerca}}{4.7 - Innovazioni Metodologiche e Contributi alla Ricerca}}
-
-\subsection{Framework di Orchestrazione Multi-Standard}
+\subsection{\texorpdfstring{Framework di Orchestrazione Multi-Standard}{4.7.1 - Framework di Orchestrazione Multi-Standard}}
 
 Un contributo significativo di questa ricerca è lo sviluppo di un framework di orchestrazione che gestisce dinamicamente i requisiti multipli attraverso un sistema di prioritizzazione basato sul rischio. Il framework coordina l'implementazione dei controlli considerando dipendenze tecniche, scadenze normative e impatto sul business.
 
-\subsubsection{Architettura del Framework di Orchestrazione}
+\subsubsection{\texorpdfstring{Architettura del Framework di Orchestrazione}{4.7.1.1 - Architettura del Framework di Orchestrazione}}
 
 Il framework si basa su quattro componenti integrate:
 
@@ -1311,11 +1256,11 @@ class ControlPrioritizer:
 \end{itemize}
 \end{tcolorbox}
 
-\subsection{Metriche Avanzate per la Valutazione della Conformità}
+\subsection{\texorpdfstring{Metriche Avanzate per la Valutazione della Conformità}{4.7.2 - Metriche Avanzate per la Valutazione della Conformità}}
 
 Lo sviluppo di metriche quantitative robuste rappresenta un altro contributo metodologico significativo. Le metriche tradizionali basate su checklist binarie (conforme/non conforme) non catturano la complessità della conformità moderna.
 
-\subsubsection{Indice di Efficienza della Conformità Integrata (IECI)}
+\subsubsection{\texorpdfstring{Indice di Efficienza della Conformità Integrata (IECI)}{4.7.2.1 - Indice di Efficienza della Conformità Integrata (IECI)}}
 
 Proponiamo un nuovo indice composito che considera molteplici dimensioni:
 
@@ -1335,7 +1280,7 @@ IECI = 0.3C + 0.2M + 0.2A + 0.2R + 0.1E
 
 Questa metrica, validata su dati longitudinali di 24 mesi, mostra correlazione di 0.89 con la riduzione effettiva degli incidenti di conformità.
 
-\subsubsection{Dashboard di Monitoraggio IECI}
+\subsubsection{\texorpdfstring{Dashboard di Monitoraggio IECI}{4.7.2.2 - Dashboard di Monitoraggio IECI}}
 
 L'implementazione pratica utilizza dashboard interattive per tracking real-time:
 
@@ -1383,9 +1328,9 @@ FROM metrics
 ORDER BY quarter;
 \end{lstlisting}
 
-\subsection{Contributi Metodologici alla Comunità Scientifica}
+\subsection{\texorpdfstring{Contributi Metodologici alla Comunità Scientifica}{4.7.3 - Contributi Metodologici alla Comunità Scientifica}}
 
-\subsubsection{Framework Open Source}
+\subsubsection{\texorpdfstring{Framework Open Source}{4.7.3.1 - Framework Open Source}}
 
 Il framework sviluppato è stato rilasciato come progetto open source per beneficio della comunità:
 
@@ -1406,7 +1351,7 @@ Il framework sviluppato è stato rilasciato come progetto open source per benefi
     \item Integrazione in 3 piattaforma GRC commerciali
 \end{itemize}
 
-\subsubsection{Pubblicazioni e Riconoscimenti}
+\subsubsection{\texorpdfstring{Pubblicazioni e Riconoscimenti}{4.7.3.2 - Pubblicazioni e Riconoscimenti}}
 
 La ricerca ha generato contributi accademici e pratici:
 
@@ -1424,9 +1369,9 @@ La ricerca ha generato contributi accademici e pratici:
     \item ISACA GRC Conference: Workshop pratico su framework
 \end{itemize}
 
-\subsection{Limitazioni e Sviluppi Futuri}
+\subsection{\texorpdfstring{Limitazioni e Sviluppi Futuri}{4.7.4 - Limitazioni e Sviluppi Futuri}}
 
-\subsubsection{Limitazioni Identificate}
+\subsubsection{\texorpdfstring{Limitazioni Identificate}{4.7.4.1 - Limitazioni Identificate}}
 
 L'approccio presenta alcune limitazioni da considerare:
 
@@ -1445,7 +1390,7 @@ L'approccio presenta alcune limitazioni da considerare:
     \item \textbf{Initial Investment}: Barriera all'ingresso per PMI
 \end{itemize}
 
-\subsubsection{Roadmap di Sviluppo}
+\subsubsection{\texorpdfstring{Roadmap di Sviluppo}{4.7.4.2 - Roadmap di Sviluppo}}
 
 Gli sviluppi futuri pianificati includono:
 
@@ -1472,13 +1417,13 @@ Gli sviluppi futuri pianificati includono:
 
 Le innovazioni metodologiche presentate forniscono quindi strumenti pratici e validati per affrontare la complessità della conformità multi-standard, con benefici dimostrati e potenziale di evoluzione significativo.
 
-\section{\texorpdfstring{\textbf{Prospettive Future e Sfide Emergenti}}{4.8 - Prospettive Future e Sfide Emergenti}}
+\section{\texorpdfstring{Prospettive Future e Sfide Emergenti}{4.8 - Prospettive Future e Sfide Emergenti}}
 
-\subsection{Impatto dell'Intelligenza Artificiale Generativa}
+\subsection{\texorpdfstring{Impatto dell'Intelligenza Artificiale Generativa}{4.8.1 - Impatto dell'Intelligenza Artificiale Generativa}}
 
 L'avvento di modelli linguistici di grandi dimensioni (LLM - Large Language Models, sistemi AI che processano e generano testo) e sistemi di intelligenza artificiale generativa sta trasformando il panorama della conformità. Le organizzazioni del settore devono prepararsi all'entrata in vigore dell'AI Act europeo nel 2026, che introduce requisiti specifici per l'uso di sistemi AI.
 
-\subsubsection{Requisiti Tecnici dell'AI Act}
+\subsubsection{\texorpdfstring{Requisiti Tecnici dell'AI Act}{4.8.1.1 - Requisiti Tecnici dell'AI Act}}
 
 L'AI Act classifica i sistemi AI in base al rischio e impone requisiti tecnici specifici:
 
@@ -1516,7 +1461,7 @@ L'AI Act classifica i sistemi AI in base al rischio e impone requisiti tecnici s
     \item \textbf{Security}: Protezione modelli da model extraction e data poisoning
 \end{itemize}
 
-\subsubsection{Implementazione Pratica Conformità AI}
+\subsubsection{\texorpdfstring{Implementazione Pratica Conformità AI}{4.8.1.2 - Implementazione Pratica Conformità AI}}
 
 L'implementazione della conformità AI richiede tool e processi specifici:
 
@@ -1618,11 +1563,11 @@ class AIActComplianceFramework:
         return decision_wrapper
 \end{lstlisting}
 
-\subsection{Evoluzione verso la Conformità Predittiva}
+\subsection{\texorpdfstring{Evoluzione verso la Conformità Predittiva}{4.8.2 - Evoluzione verso la Conformità Predittiva}}
 
 Il futuro della conformità normativa si muove verso modelli predittivi che anticipano le non conformità prima che si verifichino, utilizzando tecniche avanzate di machine learning e analisi comportamentale.
 
-\subsubsection{Architettura del Sistema Predittivo}
+\subsubsection{\texorpdfstring{Architettura del Sistema Predittivo}{4.8.2.1 - Architettura del Sistema Predittivo}}
 
 Il sistema di conformità predittiva integra multiple fonti dati per identificare pattern di rischio:
 
@@ -1644,7 +1589,7 @@ Il sistema di conformità predittiva integra multiple fonti dati per identificar
     \item \textbf{Monitoring}: Evidently AI per drift detection
 \end{itemize}
 
-\subsubsection{Metriche di Performance del Sistema Predittivo}
+\subsubsection{\texorpdfstring{Metriche di Performance del Sistema Predittivo}{4.8.2.2 - Metriche di Performance del Sistema Predittivo}}
 
 I risultati preliminari su dataset di test mostrano performance promettenti:
 
@@ -1669,7 +1614,7 @@ Drift configurazioni & 88\% & 84\% & 24 ore \\
 
 \textit{Note: Precisione = predizioni corrette/totale predizioni positive; Recall = eventi predetti/totale eventi; Lead Time = anticipo medio della predizione rispetto all'evento}
 
-\subsubsection{Casi d'Uso Pratici nella GDO}
+\subsubsection{\texorpdfstring{Casi d'Uso Pratici nella GDO}{4.8.2.3 - Casi d'Uso Pratici nella GDO}}
 
 \textbf{1. Predizione Violazioni GDPR:}
 \begin{itemize}
@@ -1687,9 +1632,9 @@ Drift configurazioni & 88\% & 84\% & 24 ore \\
     \item \textbf{Azione}: Remediation prioritizzata pre-audit
 \end{itemize}
 
-\subsection{Tecnologie Emergenti e Impatti sulla Conformità}
+\subsection{\texorpdfstring{Tecnologie Emergenti e Impatti sulla Conformità}{4.8.3 - Tecnologie Emergenti e Impatti sulla Conformità}}
 
-\subsubsection{Quantum Computing e Crittografia Post-Quantistica}
+\subsubsection{\texorpdfstring{Quantum Computing e Crittografia Post-Quantistica}{4.8.3.1 - Quantum Computing e Crittografia Post-Quantistica}}
 
 L'avvento del quantum computing richiederà migrazione verso algoritmi crittografici quantum-resistant:
 
@@ -1708,7 +1653,7 @@ L'avvento del quantum computing richiederà migrazione verso algoritmi crittogra
     \item NIS2 includerà resilienza quantum nelle valutazioni rischio
 \end{itemize}
 
-\subsubsection{Blockchain per Audit Trail Immutabile}
+\subsubsection{\texorpdfstring{Blockchain per Audit Trail Immutabile}{4.8.3.2 - Blockchain per Audit Trail Immutabile}}
 
 L'implementazione di blockchain privata o consortium per audit trail offre vantaggi significativi:
 
@@ -1728,9 +1673,9 @@ L'implementazione di blockchain privata o consortium per audit trail offre vanta
     \item Riduzione 50\% tempo preparazione audit
 \end{itemize}
 
-\subsection{Sfide e Opportunità per il Settore}
+\subsection{\texorpdfstring{Sfide e Opportunità per il Settore}{4.8.4 - Sfide e Opportunità per il Settore}}
 
-\subsubsection{Sfide Principali}
+\subsubsection{\texorpdfstring{Sfide Principali}{4.8.4.1 - Sfide Principali}}
 
 \textbf{1. Competenze Specialistiche:}
 \begin{itemize}
@@ -1753,7 +1698,7 @@ L'implementazione di blockchain privata o consortium per audit trail offre vanta
     \item Conflitti tra normative (privacy vs trasparenza AI)
 \end{itemize}
 
-\subsubsection{Opportunità di Innovazione}
+\subsubsection{\texorpdfstring{Opportunità di Innovazione}{4.8.4.2 - Opportunità di Innovazione}}
 
 \textbf{1. Compliance as a Service (CaaS):}
 \begin{itemize}
@@ -1778,13 +1723,13 @@ L'implementazione di blockchain privata o consortium per audit trail offre vanta
 
 Le prospettive future richiedono quindi un approccio proattivo e innovativo alla conformità, trasformando le sfide normative in opportunità per migliorare efficienza operativa e fiducia dei clienti.
 
-\section{\texorpdfstring{\textbf{Conclusioni del Capitolo}}{4.9 - Conclusioni del Capitolo}}
+\section{\texorpdfstring{Conclusioni del Capitolo}{4.9 - Conclusioni del Capitolo}}
 
 L'analisi presentata in questo capitolo dimostra che l'integrazione sinergica dei requisiti normativi non solo è tecnicamente fattibile, ma rappresenta un imperativo strategico per le organizzazioni della \gls{gdo}. Attraverso implementazioni concrete, architetture validate e strumenti pratici, abbiamo dimostrato come trasformare la conformità da onere burocratico a vantaggio competitivo.
 
-\subsection{Sintesi dei Risultati Principali}
+\subsection{\texorpdfstring{Sintesi dei Risultati Principali}{4.9.1 - Sintesi dei Risultati Principali}}
 
-\subsubsection{Validazione dell'Ipotesi H3}
+\subsubsection{\texorpdfstring{Validazione dell'Ipotesi H3}{4.9.1.1 - Validazione dell'Ipotesi H3}}
 
 La ricerca ha confermato pienamente l'ipotesi H3, dimostrando una riduzione dei costi di conformità del 39,1\% (intervallo di confidenza 95\%: 37,2\%-41,0\%) mantenendo e migliorando l'efficacia dei controlli. Questo risultato è stato ottenuto attraverso:
 
@@ -1804,7 +1749,7 @@ La ricerca ha confermato pienamente l'ipotesi H3, dimostrando una riduzione dei 
     \item Riduzione del 42,9\% nello sforzo di audit annuale
 \end{itemize}
 
-\subsubsection{Contributi Metodologici e Pratici}
+\subsubsection{\texorpdfstring{Contributi Metodologici e Pratici}{4.9.1.2 - Contributi Metodologici e Pratici}}
 
 Il capitolo ha introdotto innovazioni significative per la gestione della conformità:
 
@@ -1835,7 +1780,7 @@ Rilascio pubblico degli strumenti sviluppati con:
     \item Adozione da parte di 47 organizzazioni in produzione
 \end{itemize}
 
-\subsection{Lezioni Apprese dal Case Study RetailCo}
+\subsection{\texorpdfstring{Lezioni Apprese dal Case Study RetailCo}{4.9.2 - Lezioni Apprese dal Case Study RetailCo}}
 
 L'analisi forense dell'attacco a RetailCo ha evidenziato criticità sistemiche derivanti dalla non conformità:
 
@@ -1857,9 +1802,9 @@ L'analisi forense dell'attacco a RetailCo ha evidenziato criticità sistemiche d
 
 Il caso dimostra concretamente come l'integrazione della conformità non sia solo un requisito normativo ma una necessità operativa per la protezione del business.
 
-\subsection{Implicazioni per il Settore}
+\subsection{\texorpdfstring{Implicazioni per il Settore}{4.9.3 - Implicazioni per il Settore}}
 
-\subsubsection{Trasformazione del Modello Operativo}
+\subsubsection{\texorpdfstring{Trasformazione del Modello Operativo}{4.9.3.1 - Trasformazione del Modello Operativo}}
 
 L'approccio integrato richiede un cambio fondamentale nel modello operativo:
 
@@ -1879,7 +1824,7 @@ L'approccio integrato richiede un cambio fondamentale nel modello operativo:
     \item Compliance engineers con skill di programmazione (Python, Rego)
 \end{itemize}
 
-\subsubsection{Preparazione per il Futuro}
+\subsubsection{\texorpdfstring{Preparazione per il Futuro}{4.9.3.2 - Preparazione per il Futuro}}
 
 Le prospettive analizzate richiedono preparazione proattiva:
 
@@ -1907,9 +1852,9 @@ Le prospettive analizzate richiedono preparazione proattiva:
     \item \gls{zerotrust} Architecture per \gls{micro-segmentation} avanzata
 \end{itemize}
 
-\subsection{Limitazioni e Ricerca Futura}
+\subsection{\texorpdfstring{Limitazioni e Ricerca Futura}{4.9.4 - Limitazioni e Ricerca Futura}}
 
-\subsubsection{Limitazioni dello Studio}
+\subsubsection{\texorpdfstring{Limitazioni dello Studio}{4.9.4.1 - Limitazioni dello Studio}}
 
 È importante riconoscere le limitazioni della ricerca:
 
@@ -1929,7 +1874,7 @@ Le prospettive analizzate richiedono preparazione proattiva:
     \item Necessità di aggiornamento continuo per nuove versioni normative
 \end{itemize}
 
-\subsubsection{Direzioni per Ricerca Futura}
+\subsubsection{\texorpdfstring{Direzioni per Ricerca Futura}{4.9.4.2 - Direzioni per Ricerca Futura}}
 
 Le seguenti aree meritano ulteriore investigazione:
 
@@ -1954,7 +1899,7 @@ Le seguenti aree meritano ulteriore investigazione:
     \item Analisi longitudinale su periodo 5-10 anni
 \end{itemize}
 
-\subsection{Collegamento con il Capitolo Successivo}
+\subsection{\texorpdfstring{Collegamento con il Capitolo Successivo}{4.9.5 - Collegamento con il Capitolo Successivo}}
 
 I risultati di questo capitolo stabiliscono le fondamenta per la visione strategica integrata che sarà presentata nel capitolo conclusivo. La convergenza tra:
 \begin{itemize}
@@ -1973,4 +1918,4 @@ La conformità integrata non è più un'opzione ma una necessità competitiva. L
 \printbibliography[
     heading=subbibliography,
 ]
-\endrefsection % <--- TERMINA LA SEZIONE DI RIFERIMENTO
+%\endrefsection % <--- TERMINA LA SEZIONE DI RIFERIMENTO
