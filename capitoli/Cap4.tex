@@ -25,7 +25,7 @@ I nuovi requisiti del \gls{pci-dss} 4.0 richiedono implementazioni tecniche spec
 \begin{itemize}
     \item \textbf{Tecnologia}: Microsegmentazione software-defined con NSX-T o Guardicore
     \item \textbf{Implementazione}: VLAN dedicate + firewall stateful inspection
-    \item \textbf{Validazione}: Penetration test trimestrale automatizzato con Metasploit
+    \item \textbf{Validazione}: \gls{penetration-testing} trimestrale automatizzato con Metasploit
     \item \textbf{Monitoraggio}: NetFlow analysis per rilevare comunicazioni non autorizzate
 \end{itemize}
 
@@ -54,7 +54,7 @@ iptables -A INPUT -p tcp --dport 443 \
 \textbf{Crittografia End-to-End (Requisito 3.5.1):}
 \begin{itemize}
     \item \textbf{Standard}: TLS 1.3 con cifrari AEAD (AES-256-GCM)
-    \item \textbf{Gestione Chiavi}: HSM (Hardware Security Module) con FIPS 140-2 Level 3
+    \item \textbf{Gestione Chiavi}: \gls{hsm} con FIPS 140-2 Level 3
     \item \textbf{Rotazione}: Automatica ogni 90 giorni via HashiCorp Vault
     \item \textbf{Tokenizzazione}: Sostituzione PAN con token non sensibili
 \end{itemize}
@@ -62,7 +62,7 @@ iptables -A INPUT -p tcp --dport 443 \
 La distribuzione dell'investimento di 2,3M€ si concentra su componenti tecniche:
 \begin{itemize}
     \item \textbf{Infrastruttura di sicurezza} (42\%): WAF, \gls{siem}, DLP, HSM
-    \item \textbf{Risorse specializzate} (28\%): Security architects, DevSecOps engineers
+    \item \textbf{Risorse specializzate} (28\%): Security architects, \gls{devsecops} engineers
     \item \textbf{Tool di conformità} (18\%): Scanner vulnerabilità, piattaforma GRC
     \item \textbf{Automazione e processi} (12\%): \gls{cicd} security pipeline, \gls{soar}
 \end{itemize}
@@ -173,8 +173,8 @@ action.webhook.param.url = https://csirt.gov/api/nis2/notify
 L'investimento tecnico per conformità NIS2 si concentra su:
 \begin{itemize}
     \item \textbf{\gls{soc} 24/7} (450.000€): Security Operations Center con analisti L1/L2/L3
-    \item \textbf{Incident Response Platform} (150.000€): TheHive, Cortex XSOAR
-    \item \textbf{Threat Intelligence} (85.000€): Feed commerciali, MISP integration
+    \item \textbf{\gls{incident-response} Platform} (150.000€): TheHive, Cortex XSOAR
+    \item \textbf{\gls{threat-intelligence}} (85.000€): Feed commerciali, MISP integration
 \end{itemize}
 \section{\texorpdfstring{\textbf{Modello di Ottimizzazione per la Conformità Integrata}}{4.3 - Modello di Ottimizzazione per la Conformità Integrata}}
 
@@ -277,7 +277,7 @@ mapper = ComplianceControlMapper()
 
 # Mappatura controllo firewall a requisiti multipli
 mapper.map_control_to_requirements(
-    'FW-001',  # Network segmentation firewall
+    'FW-001',  # \gls{network-segmentation} firewall
     ['PCI-1.2.3', 'NIS2-A.I.2a', 'GDPR-32.1b']
 )
 
@@ -297,7 +297,7 @@ L'implementazione pratica utilizza un approccio greedy modificato che considera 
 \textbf{Fase 1 - Controlli Fondamentali (Mesi 0-6):}
 \begin{itemize}
     \item \textbf{Identity Management}: Deploy Azure AD/Okta con MFA
-    \item \textbf{Network Segmentation}: Implementazione microsegmentazione
+    \item \textbf{\gls{network-segmentation}}: Implementazione \gls{micro-segmentation}
     \item \textbf{Logging Centralizzato}: \gls{siem} (Splunk/Elastic) per tutti i sistemi
     \item \textbf{Investimento}: 1.8M€, Copertura requisiti: 45\%
 \end{itemize}
@@ -306,7 +306,7 @@ L'implementazione pratica utilizza un approccio greedy modificato che considera 
 \begin{itemize}
     \item \textbf{Data Loss Prevention}: DLP per PCI e GDPR
     \item \textbf{Vulnerability Management}: Scanner automatizzati (Qualys/Tenable)
-    \item \textbf{Incident Response}: Piattaforma \gls{soar} per \gls{nis2}
+    \item \textbf{\gls{incident-response}}: Piattaforma \gls{soar} per \gls{nis2}
     \item \textbf{Investimento}: 1.5M€, Copertura cumulativa: 78\%
 \end{itemize}
 
@@ -314,7 +314,7 @@ L'implementazione pratica utilizza un approccio greedy modificato che considera 
 \begin{itemize}
     \item \textbf{Automazione}: Policy as Code, \gls{cicd} security
     \item \textbf{Continuous Conformità}: Dashboard real-time
-    \item \textbf{AI/ML Enhancement}: Anomaly detection avanzata
+    \item \textbf{\gls{ai}/\gls{ml} Enhancement}: Anomaly detection avanzata
     \item \textbf{Investimento}: 2.0M€, Copertura finale: 95\%
 \end{itemize}
 
@@ -340,7 +340,7 @@ Tempo risoluzione NC & 8,2 giorni & 3,1 giorni & 62,2\% & Workflow automatizzati
 
 L'architettura integrata si basa su componenti specifici:
 
-\textbf{Governance, Risk and Compliance (GRC) Platform:}
+\textbf{\gls{governance}, Risk and \gls{compliance} (GRC) Platform:}
 \begin{itemize}
     \item \textbf{Soluzione}: ServiceNow GRC o RSA Archer
     \item \textbf{Integrazioni}: API verso \gls{siem}, Vulnerability Scanner, ITSM
@@ -428,7 +428,7 @@ Un modello operativo integrato richiede una struttura di governance unificata ch
 
 \subsubsection{Framework Operativo di Governance}
 
-La governance unificata si struttura su tre livelli organizzativi e tecnologici:
+La \gls{governance} unificata si struttura su tre livelli organizzativi e tecnologici:
 
 \textbf{Livello Strategico - Comitato di Conformità:}
 \begin{itemize}
@@ -448,8 +448,8 @@ La governance unificata si struttura su tre livelli organizzativi e tecnologici:
 
 \textbf{Livello Operativo - Implementazione Tecnica:}
 \begin{itemize}
-    \item \textbf{DevSecOps}: Integrazione security in \gls{cicd} pipeline
-    \item \textbf{Infrastructure as Code}: Terraform/Ansible per configurazioni conformi
+    \item \textbf{\gls{devsecops}}: Integrazione security in \gls{cicd} pipeline
+    \item \textbf{\gls{iac}}: \gls{terraform}/Ansible per configurazioni conformi
     \item \textbf{Monitoring continuo}: Prometheus + Grafana per metriche conformità
     \item \textbf{Incident Management}: PagerDuty per alerting e escalation
 \end{itemize}
@@ -482,7 +482,7 @@ Il modello valuta la maturità su cinque dimensioni con metriche concrete:
     
     \item \textbf{Cultura organizzativa} (15\%):
     \begin{itemize}
-        \item Metrica: Completion rate training compliance
+        \item Metrica: Completion rate training \gls{compliance}
         \item Target: 95\% personale certificato annualmente
         \item Piattaforma: LMS con tracking automatico
     \end{itemize}
@@ -495,7 +495,7 @@ Il modello valuta la maturità su cinque dimensioni con metriche concrete:
     \end{itemize}
 \end{enumerate}
 
-L'analisi statistica mostra una correlazione negativa forte (r = -0,72, p < 0,001) tra il livello di maturità della governance e il tasso di incidenti di conformità.
+L'analisi statistica mostra una correlazione negativa forte (r = -0,72, p < 0,001) tra il livello di maturità della \gls{governance} e il tasso di incidenti di conformità.
 
 \begin{figure}[htbp]
 \centering
@@ -512,11 +512,11 @@ L'automazione attraverso il paradigma "policy come codice" trasforma le politich
 
 L'implementazione si basa su tre componenti tecnologici principali:
 
-\textbf{1. Policy Engine - Open Policy Agent (OPA):}
+\textbf{1. \gls{policy-engine} - Open Policy Agent (OPA):}
 \begin{itemize}
-    \item \textbf{Deployment}: Container sidecar in Kubernetes
+    \item \textbf{Deployment}: \gls{container} sidecar in \gls{kubernetes}
     \item \textbf{Linguaggio}: Rego per definizione policy
-    \item \textbf{Integrazione}: Admission controller per K8s, API gateway
+    \item \textbf{Integrazione}: Admission controller per \gls{kubernetes}, API gateway
     \item \textbf{Performance}: 50.000 decisioni/secondo per nodo
 \end{itemize}
 
@@ -565,13 +565,13 @@ decision := {
 }
 \end{lstlisting}
 
-\subsubsection{Pipeline di Automazione Compliance}
+\subsubsection{Pipeline di Automazione \gls{compliance}}
 
 La pipeline automatizza il ciclo completo dalla definizione policy all'enforcement:
 
 \textbf{Fase 1 - Definizione e Test:}
-\begin{lstlisting}[caption={Pipeline \gls{cicd} per Policy Compliance},label={lst:cicd_policy}]
-# .gitlab-ci.yml per policy compliance
+\begin{lstlisting}[caption={Pipeline \gls{cicd} per Policy \gls{compliance}},label={lst:cicd_policy}]
+# .gitlab-ci.yml per policy \gls{compliance}
 stages:
   - validate
   - test
@@ -642,7 +642,7 @@ L'implementazione dell'automazione genera benefici quantificabili:
     \item \textbf{\gls{roi}}: 287\% a 24 mesi considerando risparmio FTE e riduzione rischio
 \end{itemize}
 
-Il passaggio da governance frammentata a unificata e automatizzata rappresenta quindi non solo un'ottimizzazione operativa, ma un cambio fondamentale nel modo di gestire la conformità, trasformandola da attività reattiva a capacità proattiva integrata nei processi aziendali.
+Il passaggio da \gls{governance} frammentata a unificata e automatizzata rappresenta quindi non solo un'ottimizzazione operativa, ma un cambio fondamentale nel modo di gestire la conformità, trasformandola da attività reattiva a capacità proattiva integrata nei processi aziendali.
 
 \textit{Nota: Implementazioni complete delle policy e script di automazione sono disponibili in Appendice C.4 per riferimento dettagliato.}
 
@@ -666,7 +666,7 @@ L'attacco è iniziato con una campagna di spear \gls{phishing} mirata. L'analisi
     \item \textbf{Tasso successo}: 3 account su 25 targetizzati (12\%)
 \end{itemize}
 
-\begin{lstlisting}[caption={Query Splunk per Detection Phishing},label={lst:splunk_phishing}]
+\begin{lstlisting}[caption={Query Splunk per Detection \gls{phishing}},label={lst:splunk_phishing}]
 index=email sourcetype=exchange
 | rex field=sender "(?<sender_domain>@[^>]+)"
 | eval suspicious = if(match(sender_domain, 
@@ -807,9 +807,9 @@ Modbus Cmd & FC=16, Addr>40000 & Comando di scrittura registri (setpoint) \\
 \end{tabular}
 \end{table}
 
-\subsubsection{Playbook di Risposta Sviluppato}
+\subsubsection{\gls{playbook} di Risposta Sviluppato}
 
-Basandosi sull'incidente, è stato sviluppato un playbook di risposta specifico per attacchi IT/OT:
+Basandosi sull'incidente, è stato sviluppato un \gls{playbook} di risposta specifico per attacchi IT/OT:
 
 \textbf{Detection (0-4 ore):}
 \begin{enumerate}
@@ -872,7 +872,7 @@ Il caso RetailCo dimostra come la mancata conformità agli standard di segmentaz
 
 \subsection{Framework del Costo Totale della Conformità}
 
-L'analisi economica della conformità integrata richiede un approccio pratico che consideri sia i costi diretti che i benefici operativi. Il framework del Costo Totale della Conformità (TCC - Total Cost of Compliance), adattato dal modello di Activity-Based Costing\autocite{Kaplan2007}, permette di quantificare l'impatto reale dell'integrazione.
+L'analisi economica della conformità integrata richiede un approccio pratico che consideri sia i costi diretti che i benefici operativi. Il framework del \gls{tcc} (TCC - Total Cost of Compliance), adattato dal modello di Activity-Based Costing\autocite{Kaplan2007}, permette di quantificare l'impatto reale dell'integrazione.
 
 \subsubsection{Componenti del Costo di Conformità}
 
@@ -890,22 +890,22 @@ Il TCC si compone di elementi misurabili attraverso sistemi di gestione esistent
 \begin{itemize}
     \item \textbf{Personale dedicato}: FTE (Full-Time Equivalent - equivalenti a tempo pieno) per gestione conformità
     \item \textbf{Manutenzione sistemi}: Aggiornamenti software, patch management
-    \item \textbf{Monitoraggio continuo}: SOC (Security Operations Center) 24/7
-    \item \textbf{KPI tracking}: Dashboard Power BI/Tableau per metriche real-time
+    \item \textbf{Monitoraggio continuo}: \gls{soc} 24/7
+    \item \textbf{\gls{kpi} tracking}: Dashboard Power BI/Tableau per metriche real-time
 \end{itemize}
 
 \textbf{3. Costi di Certificazione e Audit ($C_{audit}$):}
 \begin{itemize}
-    \item \textbf{Audit esterni}: QSA (Qualified Security Assessor) per PCI-DSS, DPO (Data Protection Officer) per GDPR
+    \item \textbf{Audit esterni}: QSA (Qualified Security Assessor) per \gls{pci-dss}, DPO (Data Protection Officer) per \gls{gdpr}
     \item \textbf{\gls{penetration-testing}}: Test trimestrali richiesti da PCI-DSS 4.0
     \item \textbf{Certificazioni}: ISO 27001, SOC 2 (Service Organization Control 2)
-    \item \textbf{Automazione}: Riduzione 40\% attraverso continuous compliance monitoring
+    \item \textbf{Automazione}: Riduzione 40\% attraverso continuous \gls{compliance} monitoring
 \end{itemize}
 
 \textbf{4. Valore del Rischio Residuo ($C_{risk}$):}
 \begin{itemize}
     \item \textbf{Calcolo}: Probabilità incidente × Impatto potenziale
-    \item \textbf{Misurazione}: Risk register in piattaforma GRC
+    \item \textbf{Misurazione}: \gls{risk-assessment} register in piattaforma GRC
     \item \textbf{Quantificazione}: Metodologia FAIR (Factor Analysis of Information Risk)
     \item \textbf{Riduzione}: 67\% con controlli integrati vs frammentati
 \end{itemize}
@@ -996,7 +996,7 @@ Invece di modelli matematici complessi, l'ottimizzazione degli investimenti segu
 \textbf{Anno 1 - Fondamenta (60\% budget totale):}
 \begin{itemize}
     \item \textbf{Focus}: Controlli comuni a tutti gli standard
-    \item \textbf{Implementazioni}: IAM (Identity and Access Management), SIEM, network segmentation
+    \item \textbf{Implementazioni}: \gls{iam}, SIEM, \gls{network-segmentation}
     \item \textbf{Metriche}: Copertura requisiti 45\%, riduzione rischio 35\%
     \item \textbf{Tool}: ServiceNow per project tracking, Jira per task management
 \end{itemize}
@@ -1012,7 +1012,7 @@ Invece di modelli matematici complessi, l'ottimizzazione degli investimenti segu
 \textbf{Anno 4-5 - Ottimizzazione (10\% budget):}
 \begin{itemize}
     \item \textbf{Focus}: Automazione e miglioramento continuo
-    \item \textbf{Implementazioni}: RPA (Robotic Process Automation) per task ripetitivi, ML per anomaly detection
+    \item \textbf{Implementazioni}: RPA (Robotic Process Automation) per task ripetitivi, \gls{ml} per anomaly detection
     \item \textbf{Metriche}: Copertura 95\%, automazione 85\%
     \item \textbf{Maturità}: Livello 4 su scala CMMI
 \end{itemize}
@@ -1074,7 +1074,7 @@ L'analisi qualitativa attraverso interviste strutturate ha identificato i fattor
     \item \textbf{Piattaforma GRC unificata}: Essenziale per visibilità cross-standard (citata dal 92\% degli intervistati)
     \item \textbf{Automazione policy}: Policy as Code riduce errori manuali dell'87\%
     \item \textbf{API integration}: Connessione real-time tra sistemi di sicurezza
-    \item \textbf{Dashboard centralizzate}: KPI unificati per decisioni data-driven
+    \item \textbf{Dashboard centralizzate}: \gls{kpi} unificati per decisioni data-driven
 \end{itemize}
 
 \textbf{Fattori Organizzativi:}
@@ -1082,7 +1082,7 @@ L'analisi qualitativa attraverso interviste strutturate ha identificato i fattor
     \item \textbf{Team cross-funzionale}: Eliminazione silos tra standard (85\% citazioni)
     \item \textbf{Executive sponsorship}: Supporto C-level critico per budget e change management
     \item \textbf{Formazione continua}: Upskilling del personale su approccio integrato
-    \item \textbf{Cultura compliance}: Shift da "checkbox" a "continuous improvement"
+    \item \textbf{Cultura \gls{compliance}}: Shift da "checkbox" a "continuous improvement"
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -1118,7 +1118,7 @@ La validazione empirica conferma quindi che l'approccio integrato alla conformit
 
 \subsection{\texorpdfstring{\textbf{Framework del Costo Totale della Conformità}}{4.6.1 - Framework del Costo Totale della Conformità}}
 
-L'analisi economica completa richiede l'applicazione del framework del Costo Totale della Conformità (Total Cost of Compliance - TCC), adattato dal modello di Activity-Based Costing di Kaplan e Anderson \autocite{Kaplan2007}. Il TCC per un'organizzazione può essere espresso come:
+L'analisi economica completa richiede l'applicazione del framework del \gls{tcc} (Total Cost of Compliance - TCC), adattato dal modello di Activity-Based Costing di Kaplan e Anderson \autocite{Kaplan2007}. Il TCC per un'organizzazione può essere espresso come:
 
 \begin{equation}
 TCC = C_{impl} + C_{op} + C_{audit} + C_{risk} - B_{syn}
@@ -1208,10 +1208,10 @@ Il framework si basa su quattro componenti integrate:
 
 \textbf{4. Sistema di Monitoraggio Continuo:}
 \begin{itemize}
-    \item \textbf{Metriche}: KPI (Key Performance Indicators) per ogni standard
+    \item \textbf{Metriche}: \gls{kpi} (Key Performance Indicators) per ogni standard
     \item \textbf{Alerting}: Soglie configurabili con escalation automatica
     \item \textbf{Reporting}: Generazione automatica evidence per audit
-    \item \textbf{Analytics}: ML per identificare trend e anomalie
+    \item \textbf{Analytics}: \gls{ml} per identificare trend e anomalie
 \end{itemize}
 
 \begin{tcolorbox}[
@@ -1237,7 +1237,7 @@ P_i = \alpha \cdot R_i + \beta \cdot \frac{1}{T_i} + \gamma \cdot \frac{B_i}{C_i
 Dove:
 \begin{itemize}
 \item $P_i$ = punteggio di priorità del controllo $i$
-\item $R_i$ = livello di rischio mitigato (scala 0-10, da risk assessment)
+\item $R_i$ = livello di rischio mitigato (scala 0-10, da \gls{risk-assessment})
 \item $T_i$ = tempo alla scadenza normativa (giorni rimanenti)
 \item $B_i$ = beneficio atteso (riduzione esposizione in €)
 \item $C_i$ = costo di implementazione (€)
@@ -1249,7 +1249,7 @@ Dove:
 \textbf{Implementazione Pratica}:
 \begin{lstlisting}[language=Python]
 class ControlPrioritizer:
-    """Sistema di prioritizzazione controlli compliance"""
+    """Sistema di prioritizzazione controlli \gls{compliance}"""
     
     def __init__(self):
         # Pesi calibrati su 47 organizzazioni
@@ -1393,8 +1393,8 @@ Il framework sviluppato è stato rilasciato come progetto open source per benefi
 \begin{itemize}
     \item \textbf{GitHub Repository}: github.com/gdo-compliance-framework (pseudonimo)
     \item \textbf{Documentazione}: ReadTheDocs con esempi pratici
-    \item \textbf{Docker Images}: Container pre-configurati per deployment rapido
-    \item \textbf{Terraform Modules}: Infrastructure as Code per cloud deployment
+    \item \textbf{Docker Images}: \gls{container} pre-configurati per deployment rapido
+    \item \textbf{Terraform Modules}: \gls{iac} per cloud deployment
     \item \textbf{Policy Templates}: Libreria di 200+ policy Rego/OPA
 \end{itemize}
 
@@ -1452,14 +1452,14 @@ Gli sviluppi futuri pianificati includono:
 \textbf{Breve Termine (6-12 mesi):}
 \begin{itemize}
     \item Supporto per ISO 27001 e SOC 2
-    \item Plugin per Kubernetes admission controller
+    \item Plugin per \gls{kubernetes} admission controller
     \item Mobile app per approval workflow
 \end{itemize}
 
 \textbf{Medio Termine (12-24 mesi):}
 \begin{itemize}
-    \item AI/ML per suggerimenti remediation automatici
-    \item Blockchain per audit trail immutabile
+    \item \gls{ai}/\gls{ml} per suggerimenti remediation automatici
+    \item Blockchain per \gls{audit-trail} trail immutabile
     \item Integrazione con quantum-safe cryptography
 \end{itemize}
 
@@ -1467,7 +1467,7 @@ Gli sviluppi futuri pianificati includono:
 \begin{itemize}
     \item Framework per conformità predittiva
     \item Digital twin per simulazione impatti
-    \item Autonomous compliance management
+    \item Autonomous \gls{compliance} management
 \end{itemize}
 
 Le innovazioni metodologiche presentate forniscono quindi strumenti pratici e validati per affrontare la complessità della conformità multi-standard, con benefici dimostrati e potenziale di evoluzione significativo.
@@ -1492,7 +1492,7 @@ L'AI Act classifica i sistemi AI in base al rischio e impone requisiti tecnici s
 
 \textbf{Requisiti Tecnici per Sistemi ad Alto Rischio:}
 
-\textbf{1. Data Governance e Qualità:}
+\textbf{1. Data \gls{governance} e Qualità:}
 \begin{itemize}
     \item \textbf{Dataset Training}: Documentazione completa origine dati, bias analysis
     \item \textbf{Data Quality Metrics}: Accuratezza, completezza, rappresentatività
@@ -1813,7 +1813,7 @@ Il sistema sviluppato gestisce dinamicamente i requisiti di PCI-DSS 4.0, GDPR e 
 \begin{itemize}
     \item Mappatura automatica delle sovrapposizioni (188 controlli comuni identificati)
     \item Algoritmo di prioritizzazione con implementazione Python funzionante
-    \item Dashboard real-time per monitoraggio KPI unificati
+    \item Dashboard real-time per monitoraggio \gls{kpi} unificati
     \item Integrazione nativa con tool esistenti (Jira, ServiceNow, MS Project)
 \end{itemize}
 
@@ -1874,7 +1874,7 @@ L'approccio integrato richiede un cambio fondamentale nel modello operativo:
 \textbf{Competenze Richieste:}
 \begin{itemize}
     \item Security architects con conoscenza multi-standard
-    \item DevSecOps engineers per automazione compliance
+    \item \gls{devsecops} engineers per automazione compliance
     \item Data analyst per metriche e dashboard
     \item Compliance engineers con skill di programmazione (Python, Rego)
 \end{itemize}
@@ -1902,9 +1902,9 @@ Le prospettive analizzate richiedono preparazione proattiva:
 \textbf{Tecnologie Emergenti:}
 \begin{itemize}
     \item Migrazione verso crittografia post-quantistica entro il 2030
-    \item Blockchain per audit trail immutabili e proof of compliance
+    \item Blockchain per \gls{audit-trail} trail immutabili e proof of compliance
     \item Edge computing per processing dati in conformità con data residency
-    \item \gls{zerotrust} Architecture per microsegmentazione avanzata
+    \item \gls{zerotrust} Architecture per \gls{micro-segmentation} avanzata
 \end{itemize}
 
 \subsection{Limitazioni e Ricerca Futura}
