@@ -8,7 +8,9 @@
       "Bash(find:*)",
       "Bash(python:*)",
       "Bash(tr:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(dir:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []
