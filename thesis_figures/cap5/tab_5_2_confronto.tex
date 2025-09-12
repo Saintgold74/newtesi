@@ -1,0 +1,30 @@
+\documentclass{standalone} % Carica anche il pacchetto tikz
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{tabular}[\textwidth]{l c c c}
+\toprule
+\textbf{Caratteristica} & \textbf{Descrizione} & \textbf{GIST} & \textbf{Framework Tradizionali} \\
+\midrule
+\rowcolor{gray!10}
+Focus primario & Obiettivo principale del framework & Trasformazione GDO & Generico/Multi-settore \\
+Specificità settore & Calibrazione per retail & Alta (parametri GDO) & Bassa (generalista) \\
+\rowcolor{gray!10}
+Copertura cloud & Supporto architetture moderne & Nativa & Parziale/Aggiunta \\
+Zero Trust & Integrazione del paradigma & Integrato & Non specifico \\
+\rowcolor{gray!10}
+Metriche & Tipo di valutazione & Quantitative calibrate & Qualitative/Generiche \\
+Conformità & Approccio normativo & Automatizzata & Procedurale \\
+\rowcolor{gray!10}
+Analisi economica & Modelli TCO/ROI & Incorporata & Limitata/Assente \\
+Tempo deployment & Implementazione tipica & 18-24 mesi & 24-48 mesi \\
+\rowcolor{gray!10}
+Curva apprendimento & Difficoltà adozione & Moderata & Alta/Molto alta \\
+Costo licenze & Modello economico & Open source & Commerciale \\
+\bottomrule
+\end{tabular}
+
+\end{document}

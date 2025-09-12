@@ -1,5 +1,5 @@
 % !TEX program = xelatex  % Questa riga può aiutare alcuni editor a scegliere il compilatore giusto
-\documentclass[12pt,a4paper,oneside]{book}
+\documentclass[12pt,a4paper,twoside]{book}
 \usepackage{import}
 \usepackage{pre_tesi}
 \setlength{\headheight}{27.58636pt} % Fix for fancyhdr warning
@@ -11,10 +11,13 @@
 
 \frontmatter
 
+%\input{glossario.glo}
+
+
 % Frontespizio (senza numerazione)
 \pagenumbering{gobble}
 
-\clearpage
+
 \input{capitoli/frontespizio}
 \clearpage
 
@@ -92,13 +95,20 @@ The scientific contribution includes the development of five original algorithms
 % \include{capitoli/new5-2}
 % \include{figure/figure_statistiche}
 
-\include{capitoli/Cap1.tex}
 
-\include{capitoli/Cap2.tex}
-\include{capitoli/Cap3.tex}
-\include{capitoli/Cap4.tex}
 
-\include{capitoli/Cap5.tex}
+% %%\include{capitoli/Cap2.tex}
+% \include{capitoli/Cap2.tex}
+% \include{capitoli/Cap3.tex}
+% \include{capitoli/Cap4.tex}
+% %%\include{capitoli/Cap5.tex}
+% \include{capitoli/Cap5.tex}
+
+\include{capitoli/vecchie_versioni/Cap1rev.tex}
+\include{capitoli/vecchie_versioni/Cap2bis-rev.tex}
+\include{capitoli/vecchie_versioni/Cap3rev.tex}
+\include{capitoli/vecchie_versioni/Cap4rev.tex}
+\include{capitoli/vecchie_versioni/Cap5rev.tex}
 
 %\include{capitoli/new_app}
 %\include{capitoli/nuova_C}

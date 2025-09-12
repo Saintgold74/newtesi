@@ -1,5 +1,5 @@
 % !TEX program = xelatex  % Questa riga può aiutare alcuni editor a scegliere il compilatore giusto
-\documentclass[12pt,a4paper,oneside]{book}
+\documentclass[12pt,a4paper,twoside]{book}
 \usepackage{import}
 \usepackage{pre_tesi}
 \setlength{\headheight}{27.58636pt} % Fix for fancyhdr warning
@@ -11,10 +11,13 @@
 
 \frontmatter
 
+%\input{glossario.glo}
+
+
 % Frontespizio (senza numerazione)
 \pagenumbering{gobble}
 
-\clearpage
+
 \input{capitoli/frontespizio}
 \clearpage
 
@@ -82,23 +85,28 @@ The scientific contribution includes the development of five original algorithms
 \clearpage
 
 %\include{figure/gist_framework_tikz.tex}
-% \include{capitoli/new1}
-% \include{capitoli/Capitolo 1 - Introduzione}
-% \include{capitoli/new2}
-% \include{capitoli/Capitolo 2 - Threat Landscape e Sicurezza}
-% \include{capitoli/new3}
-% \include{capitoli/new4-2}
-% % \include{capitoli/new5}
-% \include{capitoli/new5-2}
-% \include{figure/figure_statistiche}
+\include{capitoli/vecchie_versioni/new1}
+\include{capitoli/vecchie_versioni/new2}
+\include{capitoli/vecchie_versioni/new3}
+\include{capitoli/vecchie_versioni/new4-2}
+% \include{capitoli/new5}
+\include{capitoli/vecchie_versioni/new5-2}
+%\include{figure/figure_statistiche}
 
-\include{capitoli/Cap1.tex}
 
-\include{capitoli/Cap2.tex}
-\include{capitoli/Cap3.tex}
-\include{capitoli/Cap4.tex}
 
-\include{capitoli/Cap5.tex}
+% %%\include{capitoli/Cap2.tex}
+% \include{capitoli/Cap2.tex}
+% \include{capitoli/Cap3.tex}
+% \include{capitoli/Cap4.tex}
+% %%\include{capitoli/Cap5.tex}
+% \include{capitoli/Cap5.tex}
+
+% \include{capitoli/vecchie_versioni/Cap1rev.tex}
+% \include{capitoli/vecchie_versioni/Cap2bis-rev.tex}
+% \include{capitoli/vecchie_versioni/Cap3rev.tex}
+% \include{capitoli/vecchie_versioni/Cap4rev.tex}
+% \include{capitoli/vecchie_versioni/Cap5rev.tex}
 
 %\include{capitoli/new_app}
 %\include{capitoli/nuova_C}

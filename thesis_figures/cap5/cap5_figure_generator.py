@@ -109,14 +109,18 @@ def figura_5_1_validation_summary():
         ax.set_xticks(x)
         ax.set_xticklabels(data['metrics'], rotation=0)
         ax.set_ylabel('Valore')
-        ax.legend(loc='upper left', fontsize=9)
+        if idx == 2:  # Sposta la legenda solo per il terzo grafico, più affollato
+            ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1), fontsize=9)
+        else:
+            ax.legend(loc='upper left', fontsize=9)
         ax.grid(True, alpha=0.3, axis='y')
         
         # Aggiungi indicatore di validazione
-        ax.text(0.5, 0.95, '✓ VALIDATA', transform=ax.transAxes,
-               ha='center', va='top', fontsize=10, color='green', fontweight='bold',
-               bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
-                        edgecolor='green', alpha=0.8))
+        if idx == 2: # Mostra l'indicatore solo sull'ultimo grafico per pulizia
+            ax.text(0.5, 0.95, '✓ VALIDATA', transform=ax.transAxes,
+                   ha='center', va='top', fontsize=10, color='green', fontweight='bold',
+                   bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+                            edgecolor='green', alpha=0.8))
     
     # Subplot riassuntivo
     ax_summary = plt.subplot(gs[1, :])
@@ -178,12 +182,13 @@ def figura_5_2_synergies():
     """
     Figura 5.2: Diagramma degli effetti sinergici tra componenti GIST
     """
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
+    # Modificato per creare un singolo subplot di dimensioni più adeguate
+    fig, ax = plt.subplots(figsize=(8, 8))
     
     # Subplot 1: Network diagram delle sinergie
-    ax1.set_xlim(0, 10)
-    ax1.set_ylim(0, 10)
-    ax1.axis('off')
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+    ax.axis('off')
     
     # Posizioni delle componenti
     components = {
@@ -202,9 +207,9 @@ def figura_5_2_synergies():
                                      else COLORS['secondary'],
                             edgecolor='darkblue',
                             linewidth=2, alpha=0.7)
-        ax1.add_patch(box)
-        ax1.text(x, y, name, ha='center', va='center', 
-                fontsize=11, fontweight='bold', color='white')
+        ax.add_patch(box)
+        ax.text(x, y, name, ha='center', va='center', 
+                fontsize=13, fontweight='bold', color='white')
     
     # Aggiungi frecce con percentuali di amplificazione
     synergies = [
@@ -227,7 +232,7 @@ def figura_5_2_synergies():
                               mutation_scale=20,
                               color=COLORS['success'],
                               linewidth=2, alpha=0.8)
-        ax1.add_patch(arrow)
+        ax.add_patch(arrow)
         
         # Posiziona etichetta
         mid_x = (start[0] + end[0]) / 2
@@ -239,63 +244,23 @@ def figura_5_2_synergies():
         else:
             mid_x += 0.3 if dx > 0 else -0.3
             
-        ax1.text(mid_x, mid_y, label, ha='center', va='center',
+        ax.text(mid_x, mid_y, label, ha='center', va='center',
                bbox=dict(boxstyle="round,pad=0.3", facecolor='white', 
                         edgecolor=COLORS['success'], alpha=0.9),
-               fontsize=10, fontweight='bold', color=COLORS['success'])
+               fontsize=12, fontweight='bold', color=COLORS['success'])
     
     # Box centrale per effetto totale
-    center_box = FancyBboxPatch((4, 4.5), 2, 1,
+    center_box = FancyBboxPatch((5, 5.1), 2, 1,
                                boxstyle="round,pad=0.1",
                                facecolor=COLORS['warning'],
                                edgecolor='darkorange',
                                linewidth=3, alpha=0.9)
-    ax1.add_patch(center_box)
-    ax1.text(5, 5, 'Effetto\nSistemico\n+52%', ha='center', va='center',
+    ax.add_patch(center_box)
+    ax.text(5.9, 5.6, 'Effetto\nSistemico\n+52%', ha='center', va='center',
            fontsize=12, fontweight='bold', color='white')
-    
-    ax1.set_title('Network delle Sinergie GIST', fontsize=12, fontweight='bold')
-    
-    # Subplot 2: Heatmap delle correlazioni
-    ax2.clear()
-    
-    # Matrice di amplificazione
-    components_list = ['Physical', 'Architectural', 'Security', 'Compliance']
-    amplification_matrix = np.array([
-        [0, 27, 18, 15],
-        [27, 0, 34, 22],
-        [18, 34, 0, 41],
-        [15, 22, 41, 0]
-    ])
-    
-    # Crea heatmap
-    im = ax2.imshow(amplification_matrix, cmap='YlOrRd', vmin=0, vmax=50)
-    
-    # Configura assi
-    ax2.set_xticks(np.arange(len(components_list)))
-    ax2.set_yticks(np.arange(len(components_list)))
-    ax2.set_xticklabels(components_list, rotation=45, ha='right')
-    ax2.set_yticklabels(components_list)
-    
-    # Aggiungi valori nelle celle
-    for i in range(len(components_list)):
-        for j in range(len(components_list)):
-            if i != j:
-                text = ax2.text(j, i, f'+{amplification_matrix[i, j]}%',
-                              ha='center', va='center', fontsize=10,
-                              color='white' if amplification_matrix[i, j] > 25 else 'black',
-                              fontweight='bold')
-            else:
-                ax2.text(j, i, '-', ha='center', va='center', fontsize=12,
-                        color='gray')
-    
-    ax2.set_title('Matrice di Amplificazione Sinergica (%)', fontsize=12, fontweight='bold')
-    
-    # Colorbar
-    cbar = plt.colorbar(im, ax=ax2)
-    cbar.set_label('Amplificazione (%)', fontsize=10)
-    
-    plt.suptitle('Effetti Sinergici del Framework GIST', fontsize=14, fontweight='bold')
+
+    ax.set_title('Network delle Sinergie GIST', fontsize=14, fontweight='bold')
+
     plt.tight_layout()
     plt.savefig('figura_5_2_synergies.pdf', dpi=300, bbox_inches='tight')
     plt.savefig('figura_5_2_synergies.png', dpi=300, bbox_inches='tight')
@@ -367,7 +332,7 @@ def figura_5_3_gist_framework():
                                    linewidth=1.5, alpha=0.9)
                 ax_main.add_patch(sub_box)
                 ax_main.text(sub_x, 3.9, sub, ha='center', va='center',
-                           fontsize=8, color=comp['color'])
+                           fontsize=7, color=comp['color'])
                 
                 # Freccia da sub a main
                 arrow = FancyArrowPatch((sub_x, 4.3), (comp['x'], 5),
@@ -388,8 +353,8 @@ def figura_5_3_gist_framework():
     
     params_text = """Parametri calibrati:
     • w = [0.18, 0.32, 0.28, 0.22] (pesi componenti)
-    • γ = 0.95 (esponente di scala)
-    • R² = 0.783 (capacità predittiva)
+    • $\gamma $ = 0.95 (esponente di scala)
+    • $R^2$ = 0.783 (capacità predittiva)
     • MAE = 2.3 punti (errore medio)"""
     
     ax_formula.text(0.5, 0.3, params_text, ha='center', va='center',

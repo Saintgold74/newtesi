@@ -87,23 +87,33 @@ Questo fenomeno di amplificazione sistemica è stato quantificato attraverso un 
 
 L'analisi della varianza (ANOVA) - una tecnica statistica che valuta le differenze tra gruppi - ha confermato la significatività statistica di questi effetti di interazione con un valore F di 14,73 e 227 gradi di libertà.
 
+
 \begin{figure}[htbp]
 \centering
-\fbox{\parbox{0.95\textwidth}{
-\centering
-\textbf{[FIGURA 5.1: Diagramma degli Effetti Sinergici]}\\[0.5em]
-Inserire qui un diagramma che mostri le quattro componenti del framework (Fisica, Architetturale, Sicurezza, Conformità) come nodi interconnessi. 
-Le frecce bidirezionali tra i nodi dovrebbero indicare le percentuali di amplificazione:
-\begin{itemize}
-\item Fisica ↔ Architetturale: +27\%
-\item Architetturale ↔ Sicurezza: +34\%
-\item Sicurezza ↔ Conformità: +41\%
-\item Fisica ↔ Sicurezza: +18\%
-\item Architetturale ↔ Conformità: +22\%
-\item Fisica ↔ Conformità: +15\%
-\end{itemize}
-Al centro: "Effetto Sistema Totale: +52\%"
-}}
+\includegraphics[width=1.1\textwidth]{thesis_figures/cap5/figura_5_2_synergies.pdf}
+% \caption{Sinergia tra le componenti del framework GIST.}
+% \label{fig:evoluzione_attacchi}
+% \end{figure}
+
+
+
+% \begin{figure}[htbp]
+% \centering
+% \fbox{\parbox{0.95\textwidth}{
+% \centering
+% \textbf{[FIGURA 5.1: Diagramma degli Effetti Sinergici]}\\[0.5em]
+% Inserire qui un diagramma che mostri le quattro componenti del framework (Fisica, Architetturale, Sicurezza, Conformità) come nodi interconnessi. 
+% Le frecce bidirezionali tra i nodi dovrebbero indicare le percentuali di amplificazione:
+% \begin{itemize}
+% \item Fisica ↔ Architetturale: +27\%
+% \item Architetturale ↔ Sicurezza: +34\%
+% \item Sicurezza ↔ Conformità: +41\%
+% \item Fisica ↔ Sicurezza: +18\%
+% \item Architetturale ↔ Conformità: +22\%
+% \item Fisica ↔ Conformità: +15\%
+% \end{itemize}
+% Al centro: "Effetto Sistema Totale: +52\%"
+% }}
 \caption{Effetti sinergici tra le componenti del framework GIST. Le percentuali indicano l'amplificazione dei benefici quando le componenti sono implementate congiuntamente rispetto all'implementazione isolata.}
 \label{fig:synergies}
 \end{figure}
@@ -148,7 +158,7 @@ Il punteggio \gls{gist} non è una semplice media pesata, ma incorpora effetti n
 \subsection{\texorpdfstring{Capacità Predittiva e Validazione del Modello}{5.3.2 - Capacità Predittiva e Validazione del Modello}}
 \label{subsec:5.3.2}
 
-Il modello ha dimostrato un'elevata capacità predittiva nella previsione degli outcome di sicurezza. Il coefficiente di determinazione R² = 0,783 indica che il modello spiega circa il 78\% della variabilità osservata nei risultati di sicurezza. In termini pratici, conoscendo il punteggio GIST di un'organizzazione, possiamo prevedere con buona accuratezza:
+Il modello ha dimostrato un'elevata capacità predittiva nella previsione degli outcome di sicurezza. Il coefficiente di determinazione $R^2 = 0,783$ indica che il modello spiega circa il 78\% della variabilità osservata nei risultati di sicurezza. In termini pratici, conoscendo il punteggio GIST di un'organizzazione, possiamo prevedere con buona accuratezza:
 \begin{itemize}
 \item Il numero atteso di incidenti di sicurezza critici annui (errore medio: ±2,3 incidenti)
 \item Il tempo medio di recupero da un incidente (errore medio: ±4,7 ore)
@@ -164,10 +174,10 @@ Per posizionare il framework \gls{gist} nel panorama delle metodologie esistenti
 
 \begin{table}[htbp]
 \centering
-\caption{Confronto del Framework \gls{gist} con Metodologie Consolidate}
+\caption{Confronto del Framework GIST con Metodologie Consolidate}
 \label{tab:framework_comparison_revised}
 \small
-\begin{tabularx}{\textwidth}{l X c c}
+\begin{tabular}[width=0.7\textwidth]{l c c c}
 \toprule
 \textbf{Caratteristica} & \textbf{Descrizione} & \textbf{GIST} & \textbf{Framework Tradizionali} \\
 \midrule
@@ -187,7 +197,7 @@ Tempo deployment & Implementazione tipica & 18-24 mesi & 24-48 mesi \\
 Curva apprendimento & Difficoltà adozione & Moderata & Alta/Molto alta \\
 Costo licenze & Modello economico & Open source & Commerciale \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 I principali vantaggi differenziali del framework \gls{gist} rispetto alle metodologie tradizionali includono:
@@ -205,152 +215,159 @@ I principali vantaggi differenziali del framework \gls{gist} rispetto alle metod
 
 Per dimostrare l'applicazione concreta del framework \gls{gist}, presentiamo il calcolo dettagliato attraverso tre scenari rappresentativi del settore GDO italiano. Questi esempi illustrano come il framework quantifichi oggettivamente la maturità digitale di un'organizzazione.
 
+% Innovation Box 5.2 - Versione Corretta
+% Risolve i problemi di overflow dei margini attraverso:
+% 1. Suddivisione in sezioni più gestibili
+% 2. Controllo esplicito delle larghezze delle colonne
+% 3. Utilizzo di tabularx per gestione automatica dello spazio
+% 4. Separazione del codice Python in un listing dedicato
+
 \begin{tcolorbox}[
     colback=yellow!5!white,
     colframe=yellow!75!black,
-    title={\textbf{Innovation Box 5.2:} Calcolo Operativo del \gls{gist} Score - Tre Scenari \gls{gdo}},
+    title={\textbf{Innovation Box 5.2:} Calcolo Operativo del \gls{gist} Score - Metodologia},
     fonttitle=\bfseries,
     boxrule=2pt,
     arc=2mm,
-    breakable
+    breakable,
+    width=\textwidth
 ]
 
 \textbf{Formula Standard (Sommatoria Pesata):}
 $$GIST_{Score} = \sum_{k=1}^{4} w_k \cdot S_k^{\gamma}$$
 
-dove $w_k$ sono i pesi calibrati, $S_k$ i punteggi delle componenti (0-100), e $\gamma = 0,95$ l'esponente di scala.
+dove $w_k$ sono i pesi calibrati empiricamente, $S_k$ i punteggi delle componenti normalizzati (0-100), e $\gamma = 0,95$ l'esponente di scala che considera rendimenti decrescenti negli investimenti.
 
-\vspace{0.5cm}
-\textbf{Scenario 1: \gls{gdo} Tradizionale (Baseline)}
+\vspace{0.3cm}
+\textbf{Pesi delle Componenti (Calibrati su 234 Organizzazioni):}
+\begin{itemize}
+\item Dimensione Fisica: $w_1 = 0,18$ (18\%)
+\item Dimensione Architetturale: $w_2 = 0,32$ (32\%) 
+\item Dimensione Sicurezza: $w_3 = 0,28$ (28\%)
+\item Dimensione Conformità: $w_4 = 0,22$ (22\%)
+\end{itemize}
 
-Organizzazione con 45 punti vendita, infrastruttura prevalentemente on-premise, sicurezza perimetrale tradizionale:
+\end{tcolorbox}
+
+% Primo scenario separato per migliore leggibilità
+\begin{tcolorbox}[
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title={\textbf{Scenario 1:} GDO Tradizionale (Baseline)},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm,
+    breakable,
+    width=\textwidth
+]
+
+\textbf{Profilo:} Organizzazione con 45 punti vendita, infrastruttura prevalentemente on-premise, approccio di sicurezza perimetrale tradizionale.
 
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabularx}{\textwidth}{l c X}
 \toprule
-\textbf{Componente} & \textbf{Punteggio} & \textbf{Dettaglio} \\
+\textbf{Componente} & \textbf{Score} & \textbf{Caratteristiche Principali} \\
 \midrule
-\textbf{Fisica (P)} & 42/100 & \begin{tabular}[t]{@{}l@{}}
-- \gls{ups} base (15 min autonomia)\\
-- Raffreddamento inadeguato\\
-- Connettività ADSL 60\% PV
-\end{tabular} \\
-\textbf{Architetturale (A)} & 38/100 & \begin{tabular}[t]{@{}l@{}}
-- Monolitica centralizzata\\
-- Backup manuale giornaliero\\
-- Nessuna ridondanza geografica
-\end{tabular} \\
-\textbf{Sicurezza (S)} & 45/100 & \begin{tabular}[t]{@{}l@{}}
-- Firewall perimetrale\\
-- Antivirus endpoint base\\
-- Patch trimestrali
-\end{tabular} \\
-\textbf{Conformità (C)} & 52/100 & \begin{tabular}[t]{@{}l@{}}
-- Audit annuale manuale\\
-- Documentazione cartacea\\
-- Training sporadico
-\end{tabular} \\
+\textbf{Fisica} & 42/100 & UPS base (15 min), raffreddamento inadeguato, connettività ADSL 60\% PV \\
+\textbf{Architetturale} & 38/100 & Architettura monolitica centralizzata, backup manuale giornaliero \\
+\textbf{Sicurezza} & 45/100 & Firewall perimetrale, antivirus endpoint base, patch trimestrali \\
+\textbf{Conformità} & 52/100 & Audit annuale manuale, documentazione cartacea, training sporadico \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
-\textbf{Calcolo:}
-\begin{align}
-GIST_{baseline} &= 0,18 \times (42)^{0,95} + 0,32 \times (38)^{0,95} + 0,28 \times (45)^{0,95} + 0,22 \times (52)^{0,95} \\
-&= 0,18 \times 39,24 + 0,32 \times 35,32 + 0,28 \times 42,11 + 0,22 \times 48,87 \\
-&= 7,06 + 11,30 + 11,79 + 10,75 \\
-&= \boxed{40,90}
-\end{align}
+\textbf{Calcolo GIST Score:}
+\begin{multline}
+GIST_{baseline} = 0,18 \times (42)^{0,95} + 0,32 \times (38)^{0,95} + 0,28 \times (45)^{0,95} \\+ 0,22 \times (52)^{0,95} \\
+= 7,06 + 11,30 + 11,79 + 10,75 = \boxed{40,90}
+\end{multline}
 
-\vspace{0.5cm}
-\textbf{Scenario 2: \gls{gdo} in Transizione Digitale}
+\end{tcolorbox}
 
-Organizzazione che ha avviato modernizzazione parziale, cloud ibrido per servizi non critici:
+% Secondo scenario
+\begin{tcolorbox}[
+    colback=orange!5!white,
+    colframe=orange!75!black,
+    title={\textbf{Scenario 2:} GDO in Transizione Digitale},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm,
+    breakable,
+    width=\textwidth
+]
+
+\textbf{Profilo:} Organizzazione che ha avviato modernizzazione parziale, implementazione cloud ibrido per servizi non critici.
 
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabularx}{\textwidth}{l c X}
 \toprule
-\textbf{Componente} & \textbf{Punteggio} & \textbf{Dettaglio} \\
+\textbf{Componente} & \textbf{Score} & \textbf{Caratteristiche Principali} \\
 \midrule
-\textbf{Fisica (P)} & 65/100 & \begin{tabular}[t]{@{}l@{}}
-- \gls{ups} ridondanti (2h autonomia)\\
-- Raffreddamento ottimizzato\\
-- Fibra 40\% PV, FTTC resto
-\end{tabular} \\
-\textbf{Architetturale (A)} & 68/100 & \begin{tabular}[t]{@{}l@{}}
-- Microservizi per e-commerce\\
-- Cloud pubblico per analytics\\
-- DR site passivo
-\end{tabular} \\
-\textbf{Sicurezza (S)} & 62/100 & \begin{tabular}[t]{@{}l@{}}
-- \gls{siem} centralizzato\\
-- \gls{edr} su endpoint critici\\
-- Patch mensili automatizzate
-\end{tabular} \\
-\textbf{Conformità (C)} & 70/100 & \begin{tabular}[t]{@{}l@{}}
-- GRC platform parziale\\
-- Audit semestrale misto\\
-- E-learning obbligatorio
-\end{tabular} \\
+\textbf{Fisica} & 65/100 & UPS ridondanti (2h), raffreddamento ottimizzato, fibra 40\% PV \\
+\textbf{Architetturale} & 68/100 & Microservizi per e-commerce, cloud pubblico per analytics, DR passivo \\
+\textbf{Sicurezza} & 62/100 & SIEM centralizzato, EDR su endpoint critici, patch automatizzate \\
+\textbf{Conformità} & 70/100 & GRC platform parziale, audit semestrale, e-learning obbligatorio \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
-\textbf{Calcolo:}
-\begin{align}
-GIST_{transizione} &= 0,18 \times (65)^{0,95} + 0,32 \times (68)^{0,95} + 0,28 \times (62)^{0,95} + 0,22 \times (70)^{0,95} \\
-&= 0,18 \times 61,26 + 0,32 \times 64,18 + 0,28 \times 58,37 + 0,22 \times 66,13 \\
-&= 11,03 + 20,54 + 16,34 + 14,55 \\
-&= \boxed{62,46}
-\end{align}
+\textbf{Calcolo GIST Score:}
+\begin{multline}
+GIST_{transizione} = 0,18 \times (65)^{0,95} + 0,32 \times (68)^{0,95} + 0,28 \times (62)^{0,95} \\ + 0,22 \times (70)^{0,95} \\
+= 11,03 + 20,54 + 16,34 + 14,55 = \boxed{62,46}
+\end{multline}
 
-\vspace{0.5cm}
-\textbf{Scenario 3: \gls{gdo} con Framework \gls{gist} Implementato}
+\end{tcolorbox}
 
-Organizzazione che ha completato la trasformazione seguendo il framework:
+% Terzo scenario
+\begin{tcolorbox}[
+    colback=green!5!white,
+    colframe=green!75!black,
+    title={\textbf{Scenario 3:} GDO con Framework GIST Completo},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm,
+    breakable,
+    width=\textwidth
+]
+
+\textbf{Profilo:} Organizzazione che ha completato la trasformazione seguendo integralmente il framework GIST proposto.
 
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabularx}{\textwidth}{l c X}
 \toprule
-\textbf{Componente} & \textbf{Punteggio} & \textbf{Dettaglio} \\
+\textbf{Componente} & \textbf{Score} & \textbf{Caratteristiche Principali} \\
 \midrule
-\textbf{Fisica (P)} & 85/100 & \begin{tabular}[t]{@{}l@{}}
-- Data center Tier III\\
-- \gls{edge} in PV\\
-- Fibra 95\% PV, 5G backup
-\end{tabular} \\
-\textbf{Architetturale (A)} & 88/100 & \begin{tabular}[t]{@{}l@{}}
-- Full cloud-native\\
-- Multi-cloud orchestrato\\
-- Active-active DR
-\end{tabular} \\
-\textbf{Sicurezza (S)} & 82/100 & \begin{tabular}[t]{@{}l@{}}
-- \gls{zerotrust} implementato\\
-- \gls{soc} 24/7 con \gls{ai}\\
-- Patch zero-day automated
-\end{tabular} \\
-\textbf{Conformità (C)} & 86/100 & \begin{tabular}[t]{@{}l@{}}
-- Compliance-as-code\\
-- Continuous monitoring\\
-- Certificazioni multiple
-\end{tabular} \\
+\textbf{Fisica} & 85/100 & Data center Tier III, edge computing nei PV, fibra 95\% + 5G backup \\
+\textbf{Architetturale} & 88/100 & Full cloud-native, multi-cloud orchestrato, Active-active DR \\
+\textbf{Sicurezza} & 82/100 & Zero Trust implementato, SOC 24/7 con AI, patch zero-day automatiche \\
+\textbf{Conformità} & 86/100 & Compliance-as-code, continuous monitoring, certificazioni multiple \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
-\textbf{Calcolo:}
-\begin{align}
-GIST_{ottimizzato} &= 0,18 \times (85)^{0,95} + 0,32 \times (88)^{0,95} + 0,28 \times (82)^{0,95} + 0,22 \times (86)^{0,95} \\
-&= 0,18 \times 80,72 + 0,32 \times 83,67 + 0,28 \times 77,80 + 0,22 \times 81,70 \\
-&= 14,53 + 26,77 + 21,78 + 17,97 \\
-&= \boxed{81,05}
-\end{align}
+\textbf{Calcolo GIST Score:}
+\begin{multline}
+GIST_{ottimizzato} = 0,18 \times (85)^{0,95} + 0,32 \times (88)^{0,95} + 0,28 \times (82)^{0,95} \\ + 0,22 \times (86)^{0,95} \\
+= 14,53 + 26,77 + 21,78 + 17,97 = \boxed{81,05}
+\end{multline}
 
-\vspace{0.5cm}
-\textbf{Analisi Comparativa:}
+\end{tcolorbox}
+
+% Analisi comparativa finale
+\begin{tcolorbox}[
+    colback=gray!5!white,
+    colframe=gray!75!black,
+    title={\textbf{Analisi Comparativa:} Evoluzione della Maturità Digitale},
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=2mm,
+    breakable,
+    width=\textwidth
+]
 
 \begin{center}
-\begin{tabular}{lccc}
+\begin{tabularx}{\textwidth}{l c c c}
 \toprule
 \textbf{Metrica} & \textbf{Baseline} & \textbf{Transizione} & \textbf{Ottimizzato} \\
 \midrule
@@ -358,81 +375,20 @@ GIST Score & 40,90 & 62,46 & 81,05 \\
 Δ vs Baseline & - & +52,7\% & +98,2\% \\
 Livello Maturità & Iniziale & Sviluppato & Avanzato \\
 Disponibilità Attesa & 99,0\% & 99,5\% & 99,95\% \\
-\gls{assa-gdo} Score Atteso & 850 & 620 & 425 \\
-\gls{roi} Stimato (3 anni) & - & 180\% & 340\% \\
+ASSA-GDO Score & 850 & 620 & 425 \\
+ROI Stimato (3 anni) & - & 180\% & 340\% \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
-\vspace{0.5cm}
-\textbf{Formula Alternativa con Produttoria (Sistemi Mission-Critical):}
+\vspace{0.3cm}
+\textbf{Formula Alternativa per Sistemi Mission-Critical:}
 
-Per organizzazioni dove l'eccellenza in \textit{tutte} le dimensioni è critica (es. GDO con servizi finanziari integrati), proponiamo una formula più restrittiva basata sulla media geometrica pesata:
+Per organizzazioni che gestiscono infrastrutture critiche, proponiamo una formulazione basata sulla media geometrica pesata che penalizza severamente le componenti deboli:
 
 $$GIST_{critical} = \prod_{k=1}^{4} S_k^{w_k}$$
 
-Questa formulazione penalizza severamente le componenti deboli. Per lo Scenario 1:
-$$GIST_{critical} = 42^{0,18} \times 38^{0,32} \times 45^{0,28} \times 52^{0,22} = 2,84 \times 3,65 \times 3,44 \times 3,01 = \boxed{107,5}$$
-
-Normalizzando su scala 0-100: $GIST_{critical,norm} = 107,5 / 100^{1} = 43,75$
-
-Si nota come la formula con produttoria sia più sensibile ai valori bassi: un punteggio zero in qualsiasi componente azzererebbe l'intero score, riflettendo la criticità sistemica di ogni dimensione.
-
-\vspace{0.3cm}
-\textbf{Implementazione Python:}
-\begin{lstlisting}[language=Python, basicstyle=\scriptsize\ttfamily]
-import numpy as np
-
-def calculate_gist_score(scores, weights, gamma=0.95, method='sum'):
-    """
-    Calcola il \gls{gist} Score
-    
-    Args:
-        scores: dict con punteggi componenti (0-100)
-        weights: dict con pesi componenti
-        gamma: esponente di scala (default 0.95)
-        method: 'sum' per sommatoria, 'prod' per produttoria
-    
-    Returns:
-        gist_score: punteggio finale
-    """
-    if method == 'sum':
-        # Formula standard con sommatoria
-        score = sum(weights[k] * (scores[k]**gamma) 
-                   for k in scores.keys())
-    elif method == 'prod':
-        # Formula restrittiva con produttoria
-        score = np.prod([scores[k]**weights[k] 
-                        for k in scores.keys()])
-        # Normalizzazione
-        score = score / (100**sum(weights.values()))
-    
-    return round(score, 2)
-
-# Esempio Scenario 1
-scores_baseline = {
-    'physical': 42,
-    'architectural': 38,
-    'security': 45,
-    'compliance': 52
-}
-
-weights = {
-    'physical': 0.18,
-    'architectural': 0.32,
-    'security': 0.28,
-    'compliance': 0.22
-}
-
-print(f"\gls{gist} Standard: {calculate_gist_score(scores_baseline, weights)}")
-print(f"\gls{gist} Critical: {calculate_gist_score(scores_baseline, weights, method='prod')}")
-\end{lstlisting}
-
-\textbf{Output:}
-\begin{verbatim}
-\gls{gist} Standard: 40.90
-\gls{gist} Critical: 43.75
-\end{verbatim}
+Questa formula garantisce che una debolezza significativa in qualsiasi dimensione comprometta l'intero punteggio, riflettendo la criticità sistemica di ogni componente nell'ecosistema GDO.
 
 \end{tcolorbox}
 
@@ -816,5 +772,8 @@ if __name__ == "__main__":
 %==========================================================================
 % BIBLIOGRAFIA DEL CAPITOLO
 %==========================================================================
-
-\printbibliography[heading=subbibliography,title={Bibliografia del Capitolo}]
+\clearpage
+\printbibliography[
+    heading=subbibliography,
+    title={Riferimenti Bibliografici del Capitolo 5},
+]
