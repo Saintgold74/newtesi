@@ -135,11 +135,11 @@ Questa dilazione del 76.4\% nel tempo di applicazione delle patch deriva da:
 \begin{itemize}
     \item Necessità di test estensivi in ambienti di staging che replichino l'eterogeneità dei punti vendita (35 giorni aggiuntivi in media)
     \item Coordinamento con fornitori terzi per sistemi integrati (18 giorni)
-    \item Applicazione graduale per evitare disruzioni operative (12 giorni)
+    \item Applicazione graduale per evitare distruzioni operative (12 giorni)
 \end{itemize}
 
 Il modello di rischio cumulativo, basato sulla distribuzione di Weibull \footnote{La distribuzione di Weibull modella il tempo al guasto dei sistemi, 
-permettendo di calcolare la probabilità cumulativa di compromissione nel tempo con parametri di forma k=1.5 e scala λ=90 giorni} per la scoperta di vulnerabilità, mostra che questo ritardo aumenta la probabilità di compromissione del 234\% rispetto all'applicazione tempestiva delle patch.
+permettendo di calcolare la probabilità cumulativa di compromissione nel tempo con parametri di forma $k=1.5$ e scala $\lambda =90$ giorni} per la scoperta di vulnerabilità, mostra che questo ritardo aumenta la probabilità di compromissione del 234\% rispetto all'applicazione tempestiva delle patch.
 
 \subsubsection{\texorpdfstring{Eterogeneità Tecnologica}{2.2.2.3 - Eterogeneità Tecnologica}}
 
@@ -179,10 +179,10 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 
 
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_2_attack_types.pdf}
-\caption{Distribuzione delle tipologie di attacco nel settore \gls{gdo} (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il \gls{ransomware}, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
+\caption [Distribuzione delle tipologie di attacco nel settore \gls{gdo}]{Distribuzione delle tipologie di attacco nel settore \gls{gdo} (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il \gls{ransomware}, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
 \label{fig:attack_types}
 \end{figure}
 
@@ -219,12 +219,14 @@ Il funzionamento di Prilex può essere schematizzato in quattro fasi:
 
 L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo \textbf{EMV contactless}, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
 Il framework ZT-\gls{gdo} mitiga specificamente attacchi come Prilex attraverso:
-1. \gls{micro-segmentation} che isola i terminali \gls{pos}, limitando la propagazione 
-   anche in caso di compromissione (riduzione del 87% nella propagazione laterale)
-2. Monitoraggio comportamentale che rileva anomalie nei pattern di fallback 
-   (soglia di alert a 3 fallback consecutivi in 60 secondi)
-3. Crittografia end-to-end che persiste anche durante i fallback attraverso 
-   tokenizzazione P2PE certificata \gls{pci-dss}
+\begin{enumerate}
+    \item \gls{micro-segmentation} che isola i terminali \gls{pos}, limitando la propagazione 
+       anche in caso di compromissione (riduzione del 87\% nella propagazione laterale)
+    \item Monitoraggio comportamentale che rileva anomalie nei pattern di fallback 
+       (soglia di alert a 3 fallback consecutivi in 60 secondi)
+    \item Crittografia end-to-end che persiste anche durante i fallback attraverso 
+       tokenizzazione P2PE certificata \gls{pci-dss}
+\end{enumerate}
    
 La validazione nel Digital Twin con simulazione di 1000 attacchi Prilex-like 
 ha mostrato un tasso di contenimento del 94\% (IC 95\%: [91\%, 97\%]).
@@ -298,7 +300,7 @@ dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circa
 \end{itemize}
 
 \vspace{0.3cm}
-\textbf{Validazione}: 89\% di accuratezza predittiva su 234 incidenti storici \textit{simulati con distribuzione calibrata su report ENISA}
+\textbf{Validazione}:\textit{ 89\% di accuratezza predittiva su 234 incidenti storici simulati con distribuzione calibrata su report ENISA}
 \textit{Codice Python completo per simulazione: Appendice C.2}
 \end{tcolorbox}
 
@@ -334,10 +336,10 @@ teoria, letteratura e simulazione controllata.
 
 Per comprendere concretamente le superfici di attacco e le vulnerabilità discusse nelle sezioni precedenti, presentiamo l'analisi di un database operativo per un supermercato di medie dimensioni, sviluppato durante il corso di Basi di Dati. Questo modello, seppur semplificato rispetto alla realtà produttiva, evidenzia le molteplici interconnessioni che ogni attaccante può sfruttare per compromettere un sistema \gls{gdo}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/supermark.png}
-\caption{Diagramma Entità-Relazione di un sistema informativo \gls{gdo} di medie dimensioni. Il modello gestisce l'intero ciclo operativo: dall'approvvigionamento (Bolle, Ordini) alla vendita (Scontrini, Transazioni), dalla gestione promozioni al controllo dispersioni. Ogni relazione rappresenta un potenziale vettore di attacco e ogni entità un target di valore per attaccanti con motivazioni diverse.}
+\caption[Diagramma Entità-Relazione di un sistema informativo \gls{gdo} di medie dimensioni.]{Diagramma Entità-Relazione di un sistema informativo \gls{gdo} di medie dimensioni. Il modello gestisce l'intero ciclo operativo: dall'approvvigionamento (Bolle, Ordini) alla vendita (Scontrini, Transazioni), dalla gestione promozioni al controllo dispersioni. Ogni relazione rappresenta un potenziale vettore di attacco e ogni entità un target di valore per attaccanti con motivazioni diverse.}
 \label{fig:database_er}
 \end{figure}
 
@@ -571,7 +573,7 @@ La rete di ogni punto vendita viene suddivisa dinamicamente in micro-perimetri l
 L'implementazione utilizza Software-Defined Networking (SDN) con controller OpenDaylight per orchestrare dinamicamente le policy. L'algoritmo di segmentazione adattiva opera come segue:
 
 \begin{equation}
-Policy(t) = BasePolicy \cup ContextPolicy(t) \cup ThreatPolicy(RiskScore(t))
+Policy(t) = BasePolicy \cup ContextPolicy(t) \\ \cup ThreatPolicy(RiskScore(t))
 \end{equation}
 
 dove $BasePolicy$ rappresenta le regole fondamentali sempre attive, $ContextPolicy(t)$ le regole dipendenti dal contesto temporale, e $ThreatPolicy$ le regole attivate in base al livello di minaccia rilevato.
@@ -622,11 +624,13 @@ RiskScore(t) = \sum_{i=1}^{n} w_i \times Indicator_i(t)
 \end{equation}
 
 dove $w_i$ sono i pesi calibrati attraverso machine learning e $Indicator_i(t)$ sono indicatori normalizzati quali:
-- Deviazione dai pattern comportamentali abituali (peso: 0.25)
-- Vulnerabilità note nel dispositivo (peso: 0.20)
-- Anomalie nel traffico di rete (peso: 0.15)
-- Orario e località dell'accesso (peso: 0.10)
-- Altri 12 indicatori minori (peso totale: 0.30)
+\begin{itemize}
+    \item Deviazione dai pattern comportamentali abituali (peso: 0.25)
+    \item Vulnerabilità note nel dispositivo (peso: 0.20)
+    \item Anomalie nel traffico di rete (peso: 0.15)
+    \item Orario e località dell'accesso (peso: 0.10)
+    \item Altri 12 indicatori minori (peso totale: 0.30)
+\end{itemize}
 
 Quando il $RiskScore$ supera soglie predefinite (0.3 per warning, 0.6 per alert, 0.8 per blocco), il sistema attiva automaticamente contromisure proporzionate.
 
@@ -634,14 +638,18 @@ Quando il $RiskScore$ supera soglie predefinite (0.3 per warning, 0.6 per alert,
 
 L'implementazione della crittografia segue un approccio stratificato per bilanciare sicurezza e performance:
 
-- \textbf{Livello di trasporto}: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
-- \textbf{Livello di archiviazione}: AES-256-XTS per dati a riposo con key derivation PBKDF2
-- \textbf{Preparazione post-quantistica}: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
+\begin{itemize}
+    \item \textbf{Livello di trasporto}: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
+    \item \textbf{Livello di archiviazione}: AES-256-XTS per dati a riposo con key derivation PBKDF2
+    \item \textbf{Preparazione post-quantistica}: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
+\end{itemize}
 
 L'overhead computazionale, misurato su hardware tipico dei \gls{pos} (processori ARM Cortex-A53), risulta:
-- Incremento utilizzo CPU: 7.3\% (da 23\% a 30.3\% medio)
-- Incremento latenza transazioni: 2.1ms (trascurabile per l'esperienza utente)
-- Consumo energetico aggiuntivo: 4.2W (gestibile con alimentatori standard)
+\begin{itemize}
+    \item Incremento utilizzo CPU: 7.3\% (da 23\% a 30.3\% medio)
+    \item Incremento latenza transazioni: 2.1ms (trascurabile per l'esperienza utente)
+    \item Consumo energetico aggiuntivo: 4.2W (gestibile con alimentatori standard)
+\end{itemize}
 
 \subsubsection{\texorpdfstring{Motore di Policy Centralizzato con Applicazione Distribuita}{2.4.2.5 - Motore di Policy Centralizzato con Applicazione Distribuita}}
 
@@ -665,10 +673,12 @@ Per valutare rigorosamente l'efficacia delle contromisure proposte, abbiamo svil
 \subsubsection{\texorpdfstring{Fase 1: Parametrizzazione e Calibrazione}{2.5.1.1 - Fase 1: Parametrizzazione e Calibrazione}}
 
 La parametrizzazione del modello si basa su quattro fonti di dati complementari:
-1. \textbf{Dati storici di incidenti}: 1.847 eventi documentati con dettaglio tecnico sufficiente
-2. \textbf{Benchmark di settore}: 23 report pubblici di organizzazioni specializzate
-3. \textbf{Metriche di performance}: Dati telemetrici da 3 implementazioni pilota (6 mesi di osservazione)
-4. \textbf{Giudizio esperto}: Panel Delphi strutturato con 12 esperti di sicurezza retail
+\begin{enumerate}
+    \item \textbf{Dati storici di incidenti}: 1.847 eventi documentati con dettaglio tecnico sufficiente
+    \item \textbf{Benchmark di settore}: 23 report pubblici di organizzazioni specializzate
+    \item \textbf{Metriche di performance}: Dati telemetrici da 3 implementazioni pilota (6 mesi di osservazione)
+    \item \textbf{Giudizio esperto}: Panel Delphi strutturato con 12 esperti di sicurezza retail
+\end{enumerate}
 
 I parametri chiave identificati includono 47 variabili raggruppate in 6 categorie (minacce, vulnerabilità, controlli, impatti, costi, performance). Ogni parametro è modellato come variabile aleatoria con distribuzione appropriata (normale, log-normale, o beta) calibrata sui dati empirici.
 
@@ -676,27 +686,33 @@ I parametri chiave identificati includono 47 variabili raggruppate in 6 categori
 
 Il motore di simulazione, implementato in Python utilizzando la libreria NumPy per l'efficienza computazionale, esegue 10.000 iterazioni per ogni scenario considerato. Ad ogni iterazione:
 
-1. Campionamento dei parametri dalle distribuzioni di probabilità
-2. Generazione di una sequenza di eventi di attacco secondo processo di Poisson non omogeneo
-3. Simulazione della risposta del sistema con e senza contromisure
-4. Calcolo delle metriche di outcome (impatto economico, tempo di recupero, dati compromessi)
+\begin{enumerate}
+    \item Campionamento dei parametri dalle distribuzioni di probabilità
+    \item Generazione di una sequenza di eventi di attacco secondo processo di Poisson non omogeneo
+    \item Simulazione della risposta del sistema con e senza contromisure
+    \item Calcolo delle metriche di outcome (impatto economico, tempo di recupero, dati compromessi)
+\end{enumerate}
 
 La convergenza della simulazione è verificata attraverso il criterio di Gelman-Rubin ($\hat{R} < 1.1$ per tutte le metriche).
 
 \subsubsection{\texorpdfstring{Fase 3: Analisi Statistica dei Risultati}{2.5.1.3 - Fase 3: Analisi Statistica dei Risultati}}
 
 L'elaborazione statistica dei risultati fornisce:
-- \textbf{Distribuzioni di probabilità} degli outcome con intervalli di confidenza al 95\%
-- \textbf{Analisi di sensibilità} attraverso indici di Sobol per identificare i parametri più influenti
-- \textbf{Curve di trade-off} tra sicurezza, performance e costo
-- \textbf{Analisi di robustezza} attraverso stress testing dei parametri critici
+\begin{itemize}
+    \item \textbf{Distribuzioni di probabilità} degli outcome con intervalli di confidenza al 95\%
+    \item \textbf{Analisi di sensibilità} attraverso indici di Sobol per identificare i parametri più influenti
+    \item \textbf{Curve di trade-off} tra sicurezza, performance e costo
+    \item \textbf{Analisi di robustezza} attraverso stress testing dei parametri critici
 
-\subsubsection{\texorpdfstring{Fase 4: Validazione Empirica}{2.5.1.4 - Fase 4: Validazione Empirica}}
+    \subsubsection{\texorpdfstring{Fase 4: Validazione Empirica}{2.5.1.4 - Fase 4: Validazione Empirica}}
+\end{itemize}
 
 La validazione confronta le predizioni del modello con dati reali raccolti da:
-- 3 configurazioni simulate rappresentative di organizzazioni tipo (piccola, media, grande) con 6 mesi di dati simulati
-- 17 case study documentati in letteratura peer-reviewed
-- Feedback strutturato da 8 CISO di catene GDO europee
+\begin{itemize}
+    \item 3 configurazioni simulate rappresentative di organizzazioni tipo (piccola, media, grande) con 6 mesi di dati simulati
+    \item 17 case study documentati in letteratura peer-reviewed
+    \item Feedback strutturato da 8 CISO di catene GDO europee
+\end{itemize}
 
 La concordanza tra predizioni e osservazioni, misurata attraverso il coefficiente di correlazione di Spearman, risulta $\rho = 0.83$ (p < 0.001), indicando una buona capacità predittiva del modello.
 
@@ -733,7 +749,7 @@ Physical Security & 23.7\% & [20.2\%, 27.2\%] & 8.9\% & 0.002 \\
 \end{tabular}
 \end{table}
 
-L'analisi delle interazioni tra componenti attraverso modelli di regressione multivariata rivela effetti sinergici significativi: l'implementazione congiunta di \gls{micro-segmentation} e identity management produce una riduzione addizionale del 7.3% oltre alla somma degli effetti individuali.
+L'analisi delle interazioni tra componenti attraverso modelli di regressione multivariata rivela effetti sinergici significativi: l'implementazione congiunta di \gls{micro-segmentation} e identity management produce una riduzione addizionale del 7.3\% oltre alla somma degli effetti individuali.
 
 \subsubsection{\texorpdfstring{Miglioramento delle Metriche Temporali}{2.5.2.2 - Miglioramento delle Metriche Temporali}}
 
@@ -778,23 +794,27 @@ L'analisi di sensibilità mostra che il \gls{roi} rimane positivo anche negli sc
 
 \subsection{\texorpdfstring{Framework di Prioritizzazione Basato su Rischio e Valore}{2.6.1 - Framework di Prioritizzazione Basato su Rischio e Valore}}
 
-La complessità e i costi associati all'implementazione di architetture \gls{zerotrust} complete richiedono un approccio graduale che massimizzi il valore generato minimizzando la disruzione operativa. La ricerca propone una roadmap implementativa strutturata in tre fasi successive, ciascuna calibrata per bilanciare benefici immediati e trasformazione strategica.
+La complessità e i costi associati all'implementazione di architetture \gls{zerotrust} complete richiedono un approccio graduale che massimizzi il valore generato minimizzando la distruzione operativa. La ricerca propone una roadmap implementativa strutturata in tre fasi successive, ciascuna calibrata per bilanciare benefici immediati e trasformazione strategica.
 
 \subsubsection{\texorpdfstring{Fase 1: Vittorie Rapide e Fondamenta (0-6 mesi)}{2.6.1.1 - Fase 1: Vittorie Rapide e Fondamenta (0-6 mesi)}}
 
 La prima fase si concentra su interventi ad alto impatto e bassa complessità:
 
 \textbf{Implementazione dell'Autenticazione Multi-Fattore (MFA)}
-- Deployment per tutti gli accessi amministrativi (settimana 1-4)
-- Estensione alle operazioni critiche quali rimborsi >100€ (settimana 5-8)
-- Formazione del personale e gestione del cambiamento (settimana 9-12)
-- \gls{roi} misurato: 312\% in 4 mesi con riduzione del 73% degli accessi non autorizzati
+\begin{itemize}
+    \item Deployment per tutti gli accessi amministrativi (settimana 1-4)
+    \item Estensione alle operazioni critiche quali rimborsi >100€ (settimana 5-8)
+    \item Formazione del personale e gestione del cambiamento (settimana 9-12)
+    \item \gls{roi} misurato: 312\% in 4 mesi con riduzione del 73\% degli accessi non autorizzati
 
+\end{itemize}
 \textbf{Segmentazione di Base della Rete}
-- Separazione logica VLAN: rete \gls{pos}, corporate, ospiti, \gls{iot} (settimana 13-16)
-- Implementazione firewall inter-VLAN con regole base (settimana 17-20)
-- Test e ottimizzazione delle regole (settimana 21-24)
-- Riduzione superficie di attacco: 24\% con effort di 160 ore-uomo
+\begin{itemize}
+    \item Separazione logica VLAN: rete \gls{pos}, corporate, ospiti, \gls{iot} (settimana 13-16)
+    \item Implementazione firewall inter-VLAN con regole base (settimana 17-20)
+    \item Test e ottimizzazione delle regole (settimana 21-24)
+    \item Riduzione superficie di attacco: 24\% con effort di 160 ore-uomo
+\end{itemize}
 
 \textbf{Mappatura della Conformità}
 - Assessment dello stato corrente rispetto ai principi \gls{zerotrust}
