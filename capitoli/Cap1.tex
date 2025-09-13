@@ -84,7 +84,7 @@ Questi scenari richiedono un approccio alla sicurezza che trascende i confini tr
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap1/evoluzione_attacchi.png}
-\caption{Evoluzione della composizione percentuale delle tipologie di attacco nel settore GDO (2019-2026). Il grafico mostra la transizione da attacchi tradizionali focalizzati sul furto di dati (area blu) verso attacchi più sofisticati che mirano alla disruzione operativa (area rossa) e alla compromissione cyber-fisica (area verde). Le curve tratteggiate indicano le proiezioni basate su modelli \gls{arima}.}
+\caption[Evoluzione della composizione percentuale delle tipologie di attacco nel settore GDO (2019-2026)]{Evoluzione della composizione percentuale delle tipologie di attacco nel settore GDO (2019-2026). Il grafico mostra la transizione da attacchi tradizionali focalizzati sul furto di dati (area blu) verso attacchi più sofisticati che mirano alla distruzione operativa (area rossa) e alla compromissione cyber-fisica (area verde). Le curve tratteggiate indicano le proiezioni basate su modelli \gls{arima}.}
 \label{fig:evoluzione_attacchi}
 \end{figure}
 
@@ -228,7 +228,7 @@ Alla luce di queste considerazioni, il problema di ricerca principale può esser
 \subsection{\texorpdfstring{Obiettivo Generale}{1.3.1 - Obiettivo Generale}}
 \label{subsec:obiettivo_generale}
 
-L'obiettivo generale di questa ricerca è la progettazione di un framework integrato, denominato \textbf{\gls{gist}}, per l'analisi e l'evoluzione delle infrastrutture IT nel settore della Grande Distribuzione Organizzata. Il framework fornisce un modello concettuale robusto che integra sicurezza, performance e conformità. All'interno di questo quadro teorico, verrà sviluppato e validato, tramite un approccio basato sulla simulazione, un componente algoritmico specifico per la quantificazione della superficie di attacco.
+L'obiettivo generale di questa ricerca è la progettazione di un framework integrato, denominato \textbf{\glsfirst{gist}}, per l'analisi e l'evoluzione delle infrastrutture IT nel settore della Grande Distribuzione Organizzata. Il framework fornisce un modello concettuale robusto che integra sicurezza, performance e conformità. All'interno di questo quadro teorico, verrà sviluppato e validato, tramite un approccio basato sulla simulazione, un componente algoritmico specifico per la quantificazione della superficie di attacco.
 
 Il framework \gls{gist} si distingue per tre caratteristiche fondamentali:
 
@@ -337,7 +337,7 @@ Il framework \gls{gist} si distingue per tre caratteristiche fondamentali:
 at (0,-6.0) {Metriche Target: Disponibilità > 99,95\% | Score ASSA < 500 | Latenza < 100ms};
 
 \end{tikzpicture}
-\caption{Il Framework \gls{gist}: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
+\caption[Il Framework \gls{gist}: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}]{Il Framework \gls{gist}: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
 \label{fig:gist_framework}
 \end{figure}
 
@@ -352,7 +352,7 @@ Il primo obiettivo consiste nello sviluppo concettuale del framework \gls{gist} 
 \begin{itemize}
 \item Una tassonomia delle minacce specifiche per il settore, considerando anche i rischi cyber-fisici
 \item Pattern architetturali di riferimento per ambienti cloud-ibridi ottimizzati per i carichi di lavoro del retail
-\item Un modello di governance e conformità integrata basato sulla Matrice di Integrazione Normativa (MIN)
+\item Un modello di governance e conformità integrata basato sulla \textbf{Matrice di Integrazione Normativa (MIN)}
 \item Il risultato atteso è un framework teorico completo e documentato
 \end{itemize}
 
@@ -360,8 +360,8 @@ Il primo obiettivo consiste nello sviluppo concettuale del framework \gls{gist} 
 
 Il secondo obiettivo è rendere operativo un elemento chiave del framework \gls{gist} attraverso:
 \begin{itemize}
-\item Implementazione dell'algoritmo \gls{assa-gdo} per la quantificazione della superficie di attacco
-\item Sviluppo del framework di simulazione Digital Twin GDO-Bench per scenari realistici
+\item Implementazione dell'algoritmo \textbf{\gls{assa-gdo}} per la quantificazione della superficie di attacco
+\item Creazione e sviluppo del framework di simulazione proprietario chiamato \textbf{"Digital Twin GDO-Bench"} per scenari realistici
 \item Validazione dell'ipotesi che l'applicazione dei principi \gls{gist} riduca lo score di rischio ASSA di almeno il 35\%
 \end{itemize}
 
@@ -456,6 +456,17 @@ Il \gls{gist} integra diversi algoritmi specializzati:
 \end{itemize}
 
 Ciascun algoritmo contribuisce al calcolo della rispettiva componente, ma è il GIST Score aggregato che fornisce la visione olistica della maturità digitale dell'organizzazione.
+
+\vspace{0.3cm}
+\textbf{Formula Alternativa per Sistemi Mission-Critical:}
+
+Nei casi di sistema mission critical, dove ogni singolo elemento è tenuto ad avere un livello alto per non inficiare sull'affidabilità di tutto il sistema, la formulazione è basata sulla media geometrica pesata che penalizza severamente le componenti deboli:
+
+$$GIST_{critical} = \prod_{k=1}^{4} S_k^{w_k}$$
+
+Questa formula garantisce che una debolezza significativa in qualsiasi dimensione comprometta l'intero punteggio, riflettendo la criticità sistemica di ogni componente nell'ecosistema GDO.
+
+
 \end{tcolorbox}
 
 \section{\texorpdfstring{Ipotesi di Ricerca}{1.4 - Ipotesi di Ricerca}}
