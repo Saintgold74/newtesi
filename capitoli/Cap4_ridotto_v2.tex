@@ -270,19 +270,23 @@ H_1&: \mu_{MIN} < 0.7 \cdot \mu_{Trad}
 \end{align}
 
 Risultati:
-- $\bar{x}_{MIN} = 5.3$M€ (n=24, s=1.2)
-- $\bar{x}_{Trad} = 8.7$M€ (n=23, s=1.8)
-- Riduzione osservata: 39.1\%
-- $t = -7.82$, df = 38.4, p < 0.001
-- Cohen's d = 2.27 (effect size molto grande)
+\begin{itemize}
+    \item $\bar{x}_{MIN} = 5.3M€ (n=24, s=1.2)$
+    \item $\bar{x}_{Trad} = 8.7M€ (n=23, s=1.8)$
+    \item Riduzione osservata: 39.1\%
+    \item $t = -7.82, df = 38.4, p < 0.001$
+    \item Cohen's d = 2.27 (effect size molto grande)
+\end{itemize}
 
 \subsection{\texorpdfstring{Analisi di Robustezza}{4.6.2 - Robustezza}}
 
 Tre test confermano la robustezza dei risultati:
 
-1. **Bootstrap** (10.000 iterazioni): IC 95\% per riduzione = [35.2\%, 43.1\%]
-2. **Difference-in-Differences**: ATT = -3.42M€ (p < 0.001)
-3. **Analisi di sensibilità**: Risultati stabili escludendo outliers (±2σ)
+\begin{enumerate}
+    \item \textbf{Bootstrap} (10.000 iterazioni): IC 95\% per riduzione = [35.2\%, 43.1\%]
+    \item \textbf{Difference-in-Differences}: ATT = -3.42M€ (p < 0.001)
+    \item \textbf{Analisi di sensibilità}: Risultati stabili escludendo outliers $(±2\sigma)$
+\end{enumerate}
 
 L'ipotesi H3 è quindi validata con alta confidenza statistica.
 
