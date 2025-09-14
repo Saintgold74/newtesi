@@ -6,7 +6,7 @@
 \section{\texorpdfstring{Il Paradosso della Conformità Frammentata}{4.1 - Il Paradosso della Conformità Frammentata}}
 \label{sec:cap4_introduzione}
 
-Nel 2024, un'organizzazione \gls{gdo} media gestisce simultaneamente 891 requisiti normativi attraverso tre framework principali—\gls{pci-dss} 4.0, \gls{gdpr}, e \gls{nis2}—impiegando 12.3 FTE e investendo 8.7 milioni di euro annui in conformità\autocite{PWC2024}. Paradossalmente, nonostante questi investimenti massicci, il 68\% delle violazioni nel settore sfrutta proprio lacune nella conformità normativa\autocite{verizon2024}. Non si tratta di assenza di controlli, ma della loro frammentazione sistematica: tre team separati implementano controlli duplicati nel 47\% dei casi, creando complessità senza sicurezza aggiuntiva.
+Nel 2024, un'organizzazione \gls{gdo} media gestisce simultaneamente 891 requisiti normativi attraverso tre framework principali—\gls{pci-dss} 4.0, \gls{gdpr}, e \gls{nis2} impiegando 12.3 FTE e investendo 8.7 milioni di euro annui in conformità\autocite{PWC2024}. Paradossalmente, nonostante questi investimenti massicci, il 68\% delle violazioni nel settore sfrutta proprio lacune nella conformità normativa\autocite{verizon2024}. Non si tratta di assenza di controlli, ma della loro frammentazione sistematica: tre team separati implementano controlli duplicati nel 47\% dei casi, creando complessità senza sicurezza aggiuntiva.
 
 Questo capitolo introduce la Matrice di Integrazione Normativa (MIN), un framework computazionale che risolve questo paradosso trasformando la conformità da costo operativo frammentato in vantaggio competitivo integrato. MIN rappresenta il terzo pilastro del framework GIST (Governance Integration for Security Transformation), contribuendo per il 22\% al modello complessivo e complementando l'algoritmo ASSA-GDO (sicurezza, 28\%) e il framework GRAF (architettura, 32\%) presentati nei capitoli precedenti.
 
@@ -160,10 +160,12 @@ TCC = C_{impl} + \sum_{t=1}^{5} \frac{C_{op,t} + C_{audit,t} + C_{risk,t}}{(1+r)
 \end{equation}
 
 Con tasso di sconto $r = 5\%$:
-- $TCC_{MIN} = 15.3$M€ (VAN)
-- $TCC_{Tradizionale} = 25.2$M€ (VAN)
-- **Risparmio netto**: 9.9M€ (-39.3\%)
-- **ROI**: 187\% con payback 18 mesi
+\begin{itemize}
+\item $TCC_{MIN} = 15.3$M€ (VAN)
+\item $TCC_{Tradizionale} = 25.2$M€ (VAN)
+\item \textbf{Risparmio netto}: 9.9M€ (-39.3\%)
+\item \textbf{ROI}: 187\% con payback 18 mesi
+\end{itemize}
 
 La regressione panel con effetti fissi conferma che MIN è il predittore dominante della riduzione costi ($\beta = -0.67$, SE = 0.08, p < 0.001), controllando per dimensione, settore, e maturità digitale.
 
@@ -186,10 +188,12 @@ Manipolazione dei setpoint temperatura SCADA: incremento di 8°C in 12 punti ven
 \subsection{\texorpdfstring{Analisi dell'Impatto}{4.4.2 - Analisi dell'Impatto}}
 
 L'impatto totale quantificato ammonta a 6.09M€:
-- Perdite operative dirette: 3.7M€
-- Sanzione GDPR: 1.2M€ (0.03\% fatturato)
-- Multa NIS2: 1.19M€
-- Incremento fee PCI: 0.5\% ongoing
+\begin{itemize}
+\item Perdite operative dirette: 3.7M€
+\item Sanzione GDPR: 1.2M€ (0.03\% fatturato)
+\item Multa NIS2: 1.19M€
+\item Incremento fee PCI: 0.5\% ongoing
+\end{itemize}
 
 L'analisi root cause rivela il problema sistemico: tre team indipendenti gestivano PCI, GDPR e NIS2 con il 47\% di controlli duplicati ma implementati inconsistentemente. Il MTTR di 9 giorni riflette l'assenza di un playbook integrato.
 
@@ -197,17 +201,21 @@ L'analisi root cause rivela il problema sistemico: tre team indipendenti gestiva
 
 RetailCo ha implementato MIN in modalità accelerata (90 giorni), focalizzandosi su quattro controlli unificati critici:
 
-1. **Segmentazione Zero Trust** (controllo NS-001): Isolamento completo OT/IT/Pagamenti
-2. **IAM Unificato** (controllo IAM-001): SSO + MFA + PAM cross-domain
-3. **SIEM Convergente** (controllo LM-001): Correlazione eventi real-time
-4. **Playbook Integrato** (controllo IR-001): Procedure unificate multi-standard
+\begin{enumerate}
+\item \textbf{Segmentazione Zero Trust} (controllo NS-001): Isolamento completo OT/IT/Pagamenti
+\item \textbf{IAM Unificato} (controllo IAM-001): SSO + MFA + PAM cross-domain
+\item \textbf{SIEM Convergente} (controllo LM-001): Correlazione eventi real-time
+\item \textbf{Playbook Integrato} (controllo IR-001): Procedure unificate multi-standard
+\end{enumerate}
 
 Risultati a 12 mesi:
-- Incidenti maggiori: 0
-- Compliance score: 96% (da 67%)
-- MTTD: 4 ore (da 72)
-- MTTR: 8 ore (da 216)
-- **ROI**: 217\% considerando prevenzione singolo evento equivalente
+\begin{itemize}
+\item Incidenti maggiori: 0
+\item Compliance score: 96\% (da 67\%)
+\item MTTD: 4 ore (da 72)
+\item MTTR: 8 ore (da 216)
+\item \textbf{ROI}: 217\% considerando prevenzione singolo evento equivalente
+\end{itemize}
 
 \section{\texorpdfstring{Governance e Automazione della Conformità}{4.5 - Governance e Automazione}}
 \label{sec:governance}
@@ -319,10 +327,12 @@ Innovazione continua attraverso ML per anomaly detection, AI per compliance pred
 \subsection{\texorpdfstring{Metriche di Successo}{4.7.2 - Metriche di Successo}}
 
 Ogni fase ha KPI specifici monitorati in real-time:
-- Fase 1: 100\% requisiti mappati, team formato
-- Fase 2: 45\% copertura, <5 giorni MTTR
-- Fase 3: 95\% copertura, 70\% automazione
-- Fase 4: Zero-touch compliance per 80\% controlli
+\begin{itemize}
+\item Fase 1: 100\% requisiti mappati, team formato
+\item Fase 2: 45\% copertura, <5 giorni MTTR
+\item Fase 3: 95\% copertura, 70\% automazione
+\item Fase 4: Zero-touch compliance per 80\% controlli
+\end{itemize}
 
 \section{\texorpdfstring{Conclusioni: MIN come Enabler Strategico}{4.8 - Conclusioni}}
 \label{sec:cap4_conclusioni}

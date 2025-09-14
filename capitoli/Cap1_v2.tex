@@ -69,7 +69,49 @@ Questi contributi convergono nel fornire non solo un avanzamento teorico signifi
 \section{\texorpdfstring{Ipotesi di Ricerca e Approccio Metodologico}{1.4 - Ipotesi di Ricerca e Approccio Metodologico}}
 \label{sec:ipotesi_metodologia}
 
-La ricerca si fonda su tre ipotesi interconnesse che catturano le dimensioni critiche della trasformazione digitale nella \gls{gdo}, ciascuna verificabile empiricamente attraverso metriche quantitative specifiche.
+La ricerca si fonda su tre ipotesi interconnesse che catturano le dimensioni critiche della trasformazione digitale nella GDO, ciascuna verificabile attraverso metriche quantitative specifiche \textbf{in ambiente di simulazione controllato}.
+
+\subsection{Framework di Validazione: Digital Twin GDO-Bench}
+
+\subsection{Delimitazione dei Contributi Originali}
+
+\begin{table}[h!]
+\centering
+\caption{Matrice dei Contributi della Ricerca}
+\begin{tabular}{|p{3.5cm}|p{3cm}|p{7cm}|}
+\hline
+\textbf{Componente} & \textbf{Tipo Contributo} & \textbf{Descrizione} \\
+\hline
+Digital Twin GDO-Bench & Originale & Framework di simulazione calibrato su dati pubblici italiani per il settore GDO \\
+\hline
+Algoritmo ASSA-GDO & Adattamento & Estensione del modello di Chen e Zhang (2024) con parametri specifici per retail distribuito \\
+\hline
+Framework GRAF & Sintesi empirica & Codifica di 12 pattern identificati dall'analisi della letteratura e casi studio pubblici \\
+\hline
+Matrice MIN & Originale & Approccio algoritmico per unificazione requisiti normativi mediante clustering gerarchico \\
+\hline
+GIST Score & Integrazione originale & Modello matematico che integra le quattro dimensioni con pesi calibrati empiricamente \\
+\hline
+\end{tabular}
+\end{table}
+
+Data l'impossibilità di accedere a dati operativi reali di centinaia di organizzazioni per vincoli di riservatezza e sicurezza, questa ricerca adotta un approccio innovativo basato sulla simulazione mediante Digital Twin. Il framework GDO-Bench, sviluppato specificamente per questo studio, costituisce l'ambiente primario di validazione delle ipotesi.
+
+\begin{table}[h]
+\centering
+\caption{Architettura della Validazione mediante Digital Twin}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Componente} & \textbf{Tipo} & \textbf{Descrizione} \\
+\hline
+Dati di Calibrazione & Pubblici & ISTAT, Banca d'Italia, ENISA \\
+Organizzazioni Simulate & 234 & Configurazioni rappresentative del settore \\
+Periodo Simulato & 18 mesi & Equivalente operativo \\
+Scenari di Attacco & 1.847 & Basati su incident report ENISA \\
+Validazione Statistica & Monte Carlo & 10.000 iterazioni \\
+\hline
+\end{tabular}
+\end{table}
 
 \textbf{Ipotesi H1 - Efficienza delle architetture ibride:} L'adozione di architetture cloud-ibride progettate secondo i pattern del framework GRAF consente il raggiungimento simultaneo di livelli di servizio superiori al 99,95\% e una riduzione del costo totale di proprietà del 30\% su un orizzonte temporale triennale. Questa ipotesi sfida la concezione tradizionale secondo cui prestazioni elevate e efficienza economica siano obiettivi mutuamente esclusivi, proponendo invece che un'architettura ottimizzata possa conseguire entrambi attraverso l'allocazione intelligente dei carichi di lavoro tra risorse locali e cloud.
 
@@ -83,7 +125,17 @@ La \textbf{fase di fondazione teorica} ha sviluppato il framework concettuale at
 
 La \textbf{fase di implementazione algoritmica} ha tradotto i costrutti teorici in artefatti computazionali utilizzando Python 3.9 per lo sviluppo degli algoritmi core e R 4.2 per l'analisi statistica avanzata. L'architettura software ha seguito principi di progettazione modulare e test-driven development, con copertura dei test superiore al 95\%. La validazione algoritmica ha impiegato tecniche Monte Carlo con 10.000 iterazioni per caratterizzare la distribuzione dei risultati sotto diverse condizioni operative, garantendo robustezza statistica e universalità.
 
-La \textbf{fase di simulazione empirica} ha costruito un ambiente di gemello digitale (\textit{Digital Twin}) che replica fedelmente le dinamiche operative di 234 organizzazioni \gls{gdo} italiane. Il gemello digitale, calibrato su 36 mesi di dati storici (2021-2024), incorpora pattern di traffico reali, distribuzioni di carico empiriche e scenari di guasto documentati. La simulazione ha processato l'equivalente di 18 mesi di operazioni per ciascuna organizzazione, generando oltre 500 GB di dati telemetrici sottoposti ad analisi multivariata.
+La fase di validazione mediante \textit{Digital Twin} ha costituito il cuore 
+metodologico della ricerca. Il framework GDO-Bench, sviluppato 
+specificamente per questo studio, genera un ambiente di simulazione 
+statisticamente rappresentativo di 234 configurazioni organizzative 
+tipiche del settore GDO italiano. Questo gemello digitale, calibrato 
+esclusivamente su dati pubblici verificabili (ISTAT per volumi 
+transazionali, Banca d'Italia per pattern di pagamento, ENISA per 
+threat landscape), permette di superare i vincoli di accesso ai dati 
+reali mantenendo rigore scientifico. La simulazione ha processato 
+l'equivalente di 18 mesi di operazioni per ciascuna configurazione, 
+generando dataset sintetici ma realistici per la validazione delle ipotesi.
 
 La \textbf{fase di validazione comparativa} ha confrontato sistematicamente scenari baseline con configurazioni ottimizzate secondo il framework GIST. La validazione ha seguito il protocollo di Campbell e Stanley per quasi-esperimenti\footcite{campbell1963}, controllando variabili confondenti attraverso tecniche di propensity score matching. L'analisi di potenza statistica ha confermato una dimensione campionaria sufficiente per rilevare effect size di Cohen d≥0.3 con potenza 0.8 e significatività α=0.05. I test di robustezza hanno incluso analisi di sensibilità sui parametri chiave e validazione incrociata k-fold per verificare la universalità dei risultati.
 

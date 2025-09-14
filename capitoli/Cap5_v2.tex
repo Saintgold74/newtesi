@@ -99,9 +99,11 @@ F_{interaction} = \frac{MS_{interaction}}{MS_{error}} = \frac{847,3}{57,5} = 14,
 \end{equation}
 
 Questo effetto moltiplicatore si manifesta concretamente in:
-- **Riduzione incidenti**: 67\% con approccio integrato vs 44\% con implementazioni separate
-- **Time-to-market**: Nuovi servizi in 12 giorni vs 47 giorni
-- **Resilienza operativa**: Recovery da attacchi in 4 ore vs 72 ore
+\begin{itemize}
+\item \textbf{Riduzione incidenti}: 67\% con approccio integrato vs 44\% con implementazioni separate
+\item \textbf{Time-to-market}: Nuovi servizi in 12 giorni vs 47 giorni
+\item \textbf{Resilienza operativa}: Recovery da attacchi in 4 ore vs 72 ore
+\end{itemize}
 
 \section{\texorpdfstring{Il Framework GIST: Formalizzazione e Calibrazione}{5.3 - Il Framework GIST}}
 \label{sec:5.3}
@@ -142,14 +144,18 @@ Il punteggio GIST aggregato utilizza una media ponderata con esponente di penali
 \end{equation}
 
 L'esponente $\alpha = 0,95$ introduce una penalizzazione sub-lineare che:
-- Riduce il punteggio totale se una dimensione è significativamente carente
-- Mantiene sensibilità ai miglioramenti marginali
-- Riflette la realtà operativa dove debolezze sistemiche compromettono l'intero sistema
+\begin{itemize}
+\item Riduce il punteggio totale se una dimensione è significativamente carente
+\item Mantiene sensibilità ai miglioramenti marginali
+\item Riflette la realtà operativa dove debolezze sistemiche compromettono l'intero sistema
+\end{itemize}
 
 La funzione presenta proprietà matematiche desiderabili:
-- **Monotonicità**: $\frac{\partial GIST}{\partial S_k} > 0 \quad \forall k$
-- **Concavità**: $\frac{\partial^2 GIST}{\partial S_k^2} < 0$ (rendimenti decrescenti)
-- **Bounded**: $GIST \in [0, 100]$
+\begin{itemize}
+\item \textbf{Monotonicità}: $\frac{\partial GIST}{\partial S_k} > 0 \quad \forall k$
+\item \textbf{Concavità}: $\frac{\partial^2 GIST}{\partial S_k^2} < 0$ (rendimenti decrescenti)
+\item \textbf{Bounded}: $GIST \in [0, 100]$
+\end{itemize}
 
 \subsection{\texorpdfstring{Applicazione: Tre Archetipi Organizzativi}{5.3.3 - Tre Archetipi}}
 \label{subsec:5.3.3}
@@ -174,11 +180,11 @@ L'applicazione del framework a tre archetipi organizzativi reali dimostra la cap
 \end{tabular}
 \end{table}
 
-**Archetipo Legacy** (GIST = 40,90): Rappresenta il 47\% delle organizzazioni analizzate. Infrastruttura on-premise, sicurezza perimetrale, conformità manuale. Vulnerabile a ransomware (probabilità annua 12,3\%) e inefficienze operative (38\% effort duplicato).
+\textbf{Archetipo Legacy} (GIST = 40,90): Rappresenta il 47\% delle organizzazioni analizzate. Infrastruttura on-premise, sicurezza perimetrale, conformità manuale. Vulnerabile a ransomware (probabilità annua 12,3\%) e inefficienze operative (38\% effort duplicato).
 
-**Archetipo Transizione** (GIST = 62,46): Il 38\% del campione. Migrazione cloud parziale (40\% workload), Zero Trust per sistemi critici, automazione conformità iniziata. Miglioramento tangibile ma potenziale non realizzato.
+\textbf{Archetipo Transizione} (GIST = 62,46): Il 38\% del campione. Migrazione cloud parziale (40\% workload), Zero Trust per sistemi critici, automazione conformità iniziata. Miglioramento tangibile ma potenziale non realizzato.
 
-**Archetipo Ottimizzato** (GIST = 81,05): Il 15\% leader del mercato. Full cloud-native, Zero Trust maturo, SOC con AI/ML, compliance-as-code completo. Questi leader mostrano resilienza superiore: durante l'incidente CrowdStrike di luglio 2024, recovery in 4 ore vs 72 ore media settore.
+\textbf{Archetipo Ottimizzato} (GIST = 81,05): Il 15\% leader del mercato. Full cloud-native, Zero Trust maturo, SOC con AI/ML, compliance-as-code completo. Questi leader mostrano resilienza superiore: durante l'incidente CrowdStrike di luglio 2024, recovery in 4 ore vs 72 ore media settore.
 
 Il salto da Legacy a Ottimizzato (+98,2\% GIST Score) rappresenta una trasformazione profonda che richiede 24-36 mesi e 6-8M€ di investimento per una catena di 50 PV, ma genera ROI del 340\% in 3 anni.
 
@@ -220,19 +226,25 @@ Ogni fase è progettata per essere autofinanziante: i risparmi generati nella Fa
 I quick wins, identificati attraverso analisi Pareto (20\% effort, 80\% impatto), garantiscono risultati visibili che sostengono il commitment organizzativo:
 
 \textbf{Mese 1-2: Security Hygiene}
-- MFA universale: -82\% compromissioni account (2 settimane implementazione)
-- Patch automation: -67\% vulnerabilità critiche exploitable (1 settimana)
-- ROI immediato: 3,2M€ rischio evitato annualmente
+\begin{itemize}
+\item MFA universale: -82\% compromissioni account (2 settimane implementazione)
+\item Patch automation: -67\% vulnerabilità critiche exploitable (1 settimana)
+\item ROI immediato: 3,2M€ rischio evitato annualmente
+\end{itemize}
 
 \textbf{Mese 3-4: Operational Excellence}
-- SIEM centralizzato: MTTD da 72h a 8h (4 settimane)
-- Network segmentation base: -43\% lateral movement (3 settimane)
-- Impatto: 1 incidente maggiore evitato/trimestre
+\begin{itemize}
+\item SIEM centralizzato: MTTD da 72h a 8h (4 settimane)
+\item Network segmentation base: -43\% lateral movement (3 settimane)
+\item Impatto: 1 incidente maggiore evitato/trimestre
+\end{itemize}
 
 \textbf{Mese 5-6: Compliance Acceleration}
-- GRC platform: -70\% effort audit manuale (6 settimane)
-- Policy-as-code per PCI-DSS: 100\% coverage automatica (4 settimane)
-- Risparmio: 450k€/anno in audit esterni
+\begin{itemize}
+\item GRC platform: -70\% effort audit manuale (6 settimane)
+\item Policy-as-code per PCI-DSS: 100\% coverage automatica (4 settimane)
+\item Risparmio: 450k€/anno in audit esterni
+\end{itemize}
 
 \subsection{\texorpdfstring{Gestione del Rischio e Change Management}{5.4.3 - Risk e Change}}
 \label{subsec:5.4.3}
@@ -270,16 +282,20 @@ Il framework GIST abilita un nuovo modello competitivo dove la tecnologia non è
 
 \textbf{Da Cost Center a Profit Enabler}\\
 Le organizzazioni con GIST > 70 mostrano:
-- **Revenue uplift**: +12\% da servizi digitali innovativi
-- **Customer satisfaction**: NPS +23 punti
-- **Operational efficiency**: -38\% costi operativi
-- **Market valuation**: EV/EBITDA premium del 2,3x
+\begin{itemize}
+\item \textbf{Revenue uplift}: +12\% da servizi digitali innovativi
+\item \textbf{Customer satisfaction}: NPS +23 punti
+\item \textbf{Operational efficiency}: -38\% costi operativi
+\item \textbf{Market valuation}: EV/EBITDA premium del 2,3x
+\end{itemize}
 
 \textbf{Resilienza come Differenziatore}\\
 Durante disruption (pandemia, cyber attacchi, supply chain crisis), le organizzazioni GIST-mature mantengono:
-- 94\% operatività (vs 67\% media)
-- Recovery time 4h (vs 72h)
-- Customer retention 97\% (vs 82\%)
+\begin{itemize}
+\item 94\% operatività (vs 67\% media)
+\item Recovery time 4h (vs 72h)
+\item Customer retention 97\% (vs 82\%)
+\end{itemize}
 
 \subsection{\texorpdfstring{Evoluzione verso l'Autonomous Retail}{5.5.2 - Autonomous Retail}}
 \label{subsec:5.5.2}
@@ -287,22 +303,28 @@ Durante disruption (pandemia, cyber attacchi, supply chain crisis), le organizza
 GIST costituisce la piattaforma abilitante per l'Autonomous Retail, l'evoluzione naturale della \gls{gdo}:
 
 \textbf{Horizon 1 (2025-2027): Automation}
-- 70\% processi automatizzati
-- Checkout-free shopping (30\% transazioni)
-- AI-driven inventory (precisione 96\%)
-- Predictive maintenance (downtime -82\%)
+\begin{itemize}
+\item 70\% processi automatizzati
+\item Checkout-free shopping (30\% transazioni)
+\item AI-driven inventory (precisione 96\%)
+\item Predictive maintenance (downtime -82\%)
+\end{itemize}
 
 \textbf{Horizon 2 (2027-2030): Autonomy}
-- Dark stores fully automated
-- Drone delivery mainstream (15\% ordini)
-- Digital twin per ogni PV
-- Customer AI agents (80\% interazioni)
+\begin{itemize}
+\item Dark stores fully automated
+\item Drone delivery mainstream (15\% ordini)
+\item Digital twin per ogni PV
+\item Customer AI agents (80\% interazioni)
+\end{itemize}
 
 \textbf{Horizon 3 (Post-2030): Ambient Commerce}
-- Retail-as-a-Service platform
-- Metaverse shopping experiences
-- Quantum-safe security
-- Carbon-neutral operations
+\begin{itemize}
+\item Retail-as-a-Service platform
+\item Metaverse shopping experiences
+\item Quantum-safe security
+\item Carbon-neutral operations
+\end{itemize}
 
 \subsection{\texorpdfstring{Raccomandazioni per Stakeholder}{5.5.3 - Raccomandazioni}}
 \label{subsec:5.5.3}
@@ -331,6 +353,46 @@ GIST costituisce la piattaforma abilitante per l'Autonomous Retail, l'evoluzione
 \item Certificazione professionale "GIST Practitioner"
 \end{enumerate}
 
+\section{Limitazioni dello Studio e Ricerche Future}
+
+\subsection{Limitazioni Metodologiche}
+
+Questa ricerca, pur fornendo contributi significativi, presenta limitazioni che devono essere esplicitamente riconosciute:
+
+\subsubsection{Validazione in Ambiente Simulato}
+La validazione mediante Digital Twin, seppur rigorosa e calibrata su parametri reali, non può catturare completamente:
+\begin{itemize}
+\item La complessità delle dinamiche organizzative umane
+\item Eventi black swan non presenti nei dati storici
+\item Interdipendenze sistemiche emergenti non modellate
+\item Variabilità geografica e culturale specifica
+\end{itemize}
+
+\subsubsection{Generalizzabilità dei Risultati}
+I risultati sono stati calibrati sul contesto italiano e potrebbero richiedere adattamenti per:
+\begin{itemize}
+\item Mercati con diversa maturità digitale
+\item Framework normativi differenti
+\item Scale operative significativamente diverse
+\end{itemize}
+
+\subsubsection{Assunzioni del Modello}
+Il framework GIST assume:
+\begin{itemize}
+\item Linearità locale nelle relazioni tra componenti (esponente $\gamma = 0.95$)
+\item Indipendenza statistica di alcuni eventi di sicurezza
+\item Stabilità dei pattern di attacco nel periodo di validazione
+\end{itemize}
+
+\subsection{Direzioni per Ricerche Future}
+
+\begin{enumerate}
+\item \textbf{Validazione sul Campo}: Implementazione pilota in 3-5 organizzazioni reali per confermare i risultati simulati
+\item \textbf{Estensione Internazionale}: Adattamento del framework a contesti normativi diversi (es. SOX per USA)
+\item \textbf{Integrazione AI/ML}: Evoluzione di ASSA-GDO con capacità predittive mediante deep learning
+\item \textbf{Quantum-Ready Security}: Preparazione del framework per minacce post-quantum
+\end{enumerate}
+
 \section{\texorpdfstring{Conclusioni: Un Framework per il Futuro del Retail}{5.6 - Conclusioni}}
 \label{sec:5.6}
 
@@ -347,6 +409,8 @@ Il messaggio per i leader della \gls{gdo} è inequivocabile: la trasformazione d
 Il framework GIST fornisce mappa, bussola e motore per questo viaggio. La destinazione—leadership sostenibile nell'economia digitale—giustifica ampiamente l'investimento e l'effort richiesti. Ma la finestra di opportunità non rimarrà aperta indefinitamente: mentre i leader implementano GIST e catturano vantaggio competitivo, i ritardatari rischiano marginalizzazione irreversibile.
 
 La scelta, in ultima analisi, è semplice quanto urgente: trasformare o essere trasformati, guidare o essere guidati, innovare o scomparire. Il framework GIST offre gli strumenti; sta ai leader della Grande Distribuzione Organizzata decidere di utilizzarli con visione, coraggio e determinazione. Il futuro del retail appartiene a chi saprà integrare tecnologia, sicurezza e business in un sistema coerente, resiliente e orientato al valore. Quel futuro inizia oggi, con GIST.
+
+
 
 \clearpage
 \printbibliography[

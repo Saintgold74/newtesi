@@ -94,29 +94,35 @@ La migrazione verso il cloud rappresenta il fulcro della trasformazione infrastr
 \subsection{\texorpdfstring{Rehosting: Velocità vs Ottimizzazione}{3.3.1 - Rehosting: Velocità vs Ottimizzazione}}
 
 Il rehosting ("lift-and-shift") trasferisce applicazioni esistenti su infrastruttura cloud senza modifiche architetturali. Analisi empirica su 127 applicazioni migrate:
-- **Time-to-migration**: 3-6 mesi (75\% più veloce di refactoring)
-- **Riduzione costi iniziale**: -5% a +10% (variabilità elevata)
-- **Complessità tecnica**: Bassa (skill reuse 85\%)
-- **Debito tecnico**: Invariato o aumentato
+\begin{itemize}
+\item \textbf{Time-to-migration}: 3-6 mesi (75\% più veloce di refactoring)
+\item \textbf{Riduzione costi iniziale}: -5\% a +10\% (variabilità elevata)
+\item \textbf{Complessità tecnica}: Bassa (skill reuse 85\%)
+\item \textbf{Debito tecnico}: Invariato o aumentato
+\end{itemize}
 
 Il pattern GRAF-1 ottimizza il rehosting attraverso right-sizing automatico e reserved instance planning, migliorando il TCO del 18\% rispetto a migrazioni non ottimizzate.
 
 \subsection{\texorpdfstring{Refactoring: Modernizzazione Profonda}{3.3.2 - Refactoring: Modernizzazione Profonda}}
 
 Il refactoring implica riprogettazione per sfruttare servizi cloud-native. Metriche validate su 89 applicazioni:
-- **Time-to-migration**: 12-18 mesi
-- **Riduzione TCO**: 35-45% a regime
-- **Scalabilità**: 10x miglioramento elasticità
-- **Manutenibilità**: Riduzione effort 67%
+\begin{itemize}
+\item \textbf{Time-to-migration}: 12-18 mesi
+\item \textbf{Riduzione TCO}: 35-45\% a regime
+\item \textbf{Scalabilità}: 10x miglioramento elasticità
+\item \textbf{Manutenibilità}: Riduzione effort 67\%
+\end{itemize}
 
 Il pattern GRAF-2 (Event-Driven Microservices) guida la decomposizione ottimale con domain-driven design, risultando in servizi con accoppiamento <0.3 (Coupling Index).
 
 \subsection{\texorpdfstring{Hybrid Cloud: Bilanciamento Strategico}{3.3.3 - Hybrid Cloud: Bilanciamento Strategico}}
 
 L'approccio ibrido mantiene workload critici on-premise mentre sfrutta il cloud per elasticità. Distribuzione ottimale validata:
-- **On-premise (35\%)**: Sistemi core transazionali, dati sensibili
-- **Private cloud (25\%)**: Workload con requisiti compliance stringenti  
-- **Public cloud (40\%)**: Analytics, sviluppo/test, workload variabili
+\begin{itemize}
+\item \textbf{On-premise (35\%)}: Sistemi core transazionali, dati sensibili
+\item \textbf{Private cloud (25\%)}: Workload con requisiti compliance stringenti
+\item \textbf{Public cloud (40\%)}: Analytics, sviluppo/test, workload variabili
+\end{itemize}
 
 Il pattern GRAF-1 (Hybrid Cloud Broker) automatizza il placement attraverso algoritmi di ottimizzazione multi-obiettivo che bilanciano costo, latenza e compliance.
 
@@ -154,17 +160,19 @@ Il pattern GRAF-3 definisce un'architettura edge a tre livelli:
 \textbf{Regional Edge} (Livello 3): Data center regionali per aggregazione e analytics cross-store. Latenza <10ms per il 95\% dei punti vendita serviti.
 
 La decomposizione della latenza mostra vantaggi significativi:
-- Cloud centrale: 110ms (45ms propagazione + 20ms trasmissione + 15ms processing + 30ms queueing)
-- Edge locale: 18ms (2ms + 5ms + 8ms + 3ms)
-- Miglioramento: 83.6\% riduzione latenza end-to-end
+\begin{itemize}
+\item Cloud centrale: 110ms (45ms propagazione + 20ms trasmissione + 15ms processing + 30ms queueing)
+\item Edge locale: 18ms (2ms + 5ms + 8ms + 3ms)
+\item Miglioramento: 83.6\% riduzione latenza end-to-end
+\end{itemize}
 
 \subsection{\texorpdfstring{Use Case ad Alto Impatto}{3.4.2 - Use Case ad Alto Impatto}}
 
-**Computer Vision per Customer Analytics**: Deployment di modelli YOLOv8 su NVIDIA Jetson per people counting e heat mapping. Privacy-by-design con processing locale, solo metriche aggregate al cloud. ROI: riduzione shrinkage del 31\%.
+\textbf{Computer Vision per Customer Analytics}: Deployment di modelli YOLOv8 su NVIDIA Jetson per people counting e heat mapping. Privacy-by-design con processing locale, solo metriche aggregate al cloud. ROI: riduzione shrinkage del 31\%.
 
-**Manutenzione Predittiva Refrigerazione**: Sensori vibrazione/temperatura con Random Forest su edge per anomaly detection. Alert immediato per derive termiche >2°C/ora. Impatto: riduzione food waste dell'85\%.
+\textbf{Manutenzione Predittiva Refrigerazione}: Sensori vibrazione/temperatura con Random Forest su edge per anomaly detection. Alert immediato per derive termiche >2°C/ora. Impatto: riduzione food waste dell'85\%.
 
-**Dynamic Pricing Real-Time**: Ottimizzazione prezzi basata su inventory, foot traffic, e competitor monitoring. Update Electronic Shelf Labels in <2 secondi. Risultato: incremento margine del 12\% su prodotti deperibili.
+\textbf{Dynamic Pricing Real-Time}: Ottimizzazione prezzi basata su inventory, foot traffic, e competitor monitoring. Update Electronic Shelf Labels in <2 secondi. Risultato: incremento margine del 12\% su prodotti deperibili.
 
 \section{\texorpdfstring{Orchestrazione Multi-Cloud: Resilienza attraverso Diversificazione}{3.5 - Orchestrazione Multi-Cloud: Resilienza attraverso Diversificazione}}
 \label{sec:multi_cloud}
@@ -174,9 +182,11 @@ La strategia multi-cloud, adottata dal 67\% delle organizzazioni \gls{gdo} enter
 \subsection{\texorpdfstring{Allocazione Ottimale dei Workload}{3.5.1 - Allocazione Ottimale dei Workload}}
 
 Il pattern GRAF-7 prescrive distribuzione basata su strengths specifiche:
-- **AWS (35\%)**: Workload legacy migrati, data lake analytics (S3/Athena)
-- **Azure (40\%)**: Integrazione Microsoft ecosystem, compliance EU
-- **GCP (25\%)**: Machine learning (Vertex AI), workload Kubernetes-native
+\begin{itemize}
+\item \textbf{AWS (35\%)}: Workload legacy migrati, data lake analytics (S3/Athena)
+\item \textbf{Azure (40\%)}: Integrazione Microsoft ecosystem, compliance EU
+\item \textbf{GCP (25\%)}: Machine learning (Vertex AI), workload Kubernetes-native
+\end{itemize}
 
 La disponibilità aggregata raggiunge:
 $$A_{multi} = 1 - \prod_{i=1}^{3} (1 - A_i \cdot w_i) = 99.987\%$$
@@ -196,35 +206,44 @@ La validazione del framework GRAF è stata condotta attraverso simulazione Monte
 
 L'ipotesi H1 postula il raggiungimento simultaneo di SLA ≥99.95\% con riduzione TCO >30\%. I risultati confermano pienamente l'ipotesi:
 
-**Disponibilità del Sistema**:
-- Infrastruttura fisica 2N: 99.94\% (MTBF 175.200 ore)
-- SD-WAN con self-healing: MTTR ridotto 74\% (4.7→1.2 ore)
-- Multi-cloud orchestrato: 99.987\% disponibilità aggregata
-- **Disponibilità complessiva: 99.96%** (supera target 99.95%)
+\textbf{Disponibilità del Sistema}:
+\begin{itemize}
+\item Infrastruttura fisica 2N: 99.94\% (MTBF 175.200 ore)
+\item SD-WAN con self-healing: MTTR ridotto 74\% (4.7→1.2 ore)
+\item Multi-cloud orchestrato: 99.987\% disponibilità aggregata
+\item \textbf{Disponibilità complessiva: 99.96\%} (supera target 99.95\%)
+\end{itemize}
 
-**Ottimizzazione Costi**:
-- Riduzione OPEX via auto-scaling: -58.9%
-- Efficienza energetica (PUE 1.82→1.40): -€187k/anno
-- Manutenzione predittiva: downtime -47%
-- **TCO ridotto: 38.2%** (IC 95%: 34.6%-41.7%)
+\textbf{Ottimizzazione Costi}:
+\begin{itemize}
+\item Riduzione OPEX via auto-scaling: -58.9\%
+\item Efficienza energetica (PUE 1.82→1.40): -€187k/anno
+\item Manutenzione predittiva: downtime -47\%
+\item \textbf{TCO ridotto: 38.2\%} (IC 95\%: 34.6\%-41.7\%)
+\end{itemize}
 
 \subsection{\texorpdfstring{Contributo alle Ipotesi H2 e H3}{3.6.2 - Contributo alle Ipotesi H2 e H3}}
 
-**Supporto H2 (Sicurezza Zero-Trust)**:
-- Pattern GRAF-3 (Zero-Trust Mesh): superficie attacco -42.7\%
-- Micro-segmentazione via Istio: blast radius ridotto 89\%
-- Continuous verification: MTTD 127→24 ore
+\textbf{Supporto H2 (Sicurezza Zero-Trust)}:
+\begin{itemize}
+\item Pattern GRAF-3 (Zero-Trust Mesh): superficie attacco -42.7\%
+\item Micro-segmentazione via Istio: blast radius ridotto 89\%
+\item Continuous verification: MTTD 127→24 ore
+\end{itemize}
 
-**Supporto H3 (Compliance Automatizzata)**:
-- Pattern GRAF-11 (Policy-as-Code): effort audit -67\%
-- Data residency automatica: compliance GDPR 100\%
-- Audit trail immutabile: completezza 99.7\%
+\textbf{Supporto H3 (Compliance Automatizzata)}:
+\begin{itemize}
+\item Pattern GRAF-11 (Policy-as-Code): effort audit -67\%
+\item Data residency automatica: compliance GDPR 100\%
+\item Audit trail immutabile: completezza 99.7\%
+\end{itemize}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{thesis_figures/cap3/validation_results.pdf}
-\caption[Risultati validazione framework GRAF su 234 organizzazioni]{Risultati della validazione del framework GRAF attraverso simulazione Monte Carlo (10.000 iterazioni) su 234 organizzazioni \gls{gdo}. Il grafico mostra la distribuzione congiunta di disponibilità del sistema e riduzione TCO, con il 94\% delle simulazioni che raggiunge o supera entrambi i target (area verde). La correlazione positiva (r=0.67) indica che miglioramenti in disponibilità tendono a coincidere con riduzioni di costo attraverso minore downtime e manutenzione.}
+\caption[Risultati validazione framework GRAF su 234 organizzazioni]{Risultati della validazione del framework GRAF attraverso simulazione Monte Carlo (10.000 iterazioni) su 234 organizzazioni \gls{gdo}. Il grafico mostra la distribuzione congiunta di disponibilità del sistema e riduzione TCO, con il 94\% delle simulazioni che raggiunge o supera entrambi i target (area verde). La correlazione positiva $(r=0.67)$ indica che miglioramenti in disponibilità tendono a coincidere con riduzioni di costo attraverso minore downtime e manutenzione.}
 \label{fig:validation_results}
+
 \end{figure}
 
 \section{\texorpdfstring{Roadmap Implementativa del Framework GRAF}{3.7 - Roadmap Implementativa del Framework GRAF}}
@@ -234,29 +253,35 @@ L'adozione del framework GRAF richiede un approccio fasato che bilanci quick win
 
 \subsection{\texorpdfstring{Fase 1: Foundation (0-6 mesi)}{3.7.1 - Fase 1: Foundation (0-6 mesi)}}
 
-**Obiettivi**: Stabilizzare infrastruttura critica e creare visibilità.
-- Upgrade alimentazione/cooling a configurazione 2N (€350k, ROI 180\% in 12 mesi)
-- Deployment stack Prometheus/Grafana per observability
-- Assessment sicurezza con ASSA-GDO e remediation top-10 vulnerabilità
-- **Quick win**: 73\% vulnerabilità critiche mitigate, MTTR -35\%
+\textbf{Obiettivi}: Stabilizzare infrastruttura critica e creare visibilità.
+\begin{itemize}
+\item Upgrade alimentazione/cooling a configurazione 2N (€350k, ROI 180\% in 12 mesi)
+\item Deployment stack Prometheus/Grafana per observability
+\item Assessment sicurezza con ASSA-GDO e remediation top-10 vulnerabilità
+\item \textbf{Quick win}: 73\% vulnerabilità critiche mitigate, MTTR -35\%
+\end{itemize}
 
 \subsection{\texorpdfstring{Fase 2: Modernization (6-18 mesi)}{3.7.2 - Fase 2: Modernization (6-18 mesi)}}
 
-**Obiettivi**: Abilitare agilità e scalabilità.
-- SD-WAN deployment completo con zero-touch provisioning
-- Prima wave cloud migration (30\% applicazioni) usando pattern GRAF-1/2
-- Containerizzazione applicazioni core con Kubernetes
-- Zero-Trust fase 1: Identity-first con MFA/SSO
-- **Risultati**: Latenza -45\%, provisioning nuovi servizi 10x più veloce
+\textbf{Obiettivi}: Abilitare agilità e scalabilità.
+\begin{itemize}
+\item SD-WAN deployment completo con zero-touch provisioning
+\item Prima wave cloud migration (30\% applicazioni) usando pattern GRAF-1/2
+\item Containerizzazione applicazioni core con Kubernetes
+\item Zero-Trust fase 1: Identity-first con MFA/SSO
+\item \textbf{Risultati}: Latenza -45\%, provisioning nuovi servizi 10x più veloce
+\end{itemize}
 
 \subsection{\texorpdfstring{Fase 3: Optimization (18-36 mesi)}{3.7.3 - Fase 3: Optimization (18-36 mesi)}}
 
-**Obiettivi**: Massimizzare valore attraverso intelligenza e automazione.
-- Multi-cloud orchestration con Kubernetes federation
-- Edge deployment completo con K3s per use case real-time
-- ML operazionalizzato per predictive maintenance e demand forecasting
-- Zero-Trust maturo con continuous verification
-- **Impatto finale**: TCO -38\%, disponibilità 99.96\%, time-to-market -60\%
+\textbf{Obiettivi}: Massimizzare valore attraverso intelligenza e automazione.
+\begin{itemize}
+\item Multi-cloud orchestration con Kubernetes federation
+\item Edge deployment completo con K3s per use case real-time
+\item ML operazionalizzato per predictive maintenance e demand forecasting
+\item Zero-Trust maturo con continuous verification
+\item \textbf{Impatto finale}: TCO -38\%, disponibilità 99.96\%, time-to-market -60\%
+\end{itemize}
 
 \section{\texorpdfstring{Conclusioni e Implicazioni per la Ricerca}{3.8 - Conclusioni e Implicazioni per la Ricerca}}
 \label{sec:cap3_conclusioni}

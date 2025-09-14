@@ -6,9 +6,11 @@
 \section{\texorpdfstring{Introduzione: La Metamorfosi delle Minacce nella GDO}{2.1 - Introduzione: La Metamorfosi delle Minacce nella GDO}}
 \label{sec:cap2_introduzione}
 
-Il panorama delle minacce alla sicurezza nella Grande Distribuzione Organizzata ha subito una metamorfosi radicale negli ultimi cinque anni, evolvendo da attacchi opportunistici isolati verso campagne coordinate di guerra economica e disruzione sistemica. Questa evoluzione non rappresenta semplicemente un'escalation quantitativa - benché l'incremento del 312\% documentato nel Capitolo 1 sia allarmante - ma segnala una trasformazione qualitativa nella sofisticazione, persistenza e impatto degli attacchi. Le caratteristiche sistemiche uniche del settore \gls{gdo} - architetture distribuite con migliaia di nodi interconnessi, convergenza tra sistemi informatici e operazionali, eterogeneità tecnologica stratificata nel tempo - creano vulnerabilità composite che gli attaccanti sfruttano con efficacia crescente e metodica precisione.
+\section{Introduzione: L'Evoluzione delle Minacce nella GDO}
 
-L'analisi presentata in questo capitolo si fonda sull'aggregazione sistematica di 1.847 incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\footcite{enisa2024threat}, integrata dall'analisi forense di 234 varianti di malware specificamente progettate per sistemi di punto vendita\footcite{groupib2024}. Questa base empirica, combinata con modellazione matematica rigorosa basata su teoria dei grafi e analisi stocastica, ci permette di derivare principi quantitativi per la progettazione di architetture difensive efficaci e validare l'ipotesi H2 relativa all'efficacia del paradigma Zero Trust (Fiducia Zero) nel ridurre la superficie di attacco del 35\% mantenendo latenze operative accettabili.
+Il panorama delle minacce alla sicurezza nella Grande Distribuzione Organizzata ha subito una trasformazione significativa negli ultimi cinque anni, evolvendo da attacchi opportunistici isolati verso campagne coordinate di disruzione sistemica. Questa evoluzione non rappresenta semplicemente un'escalation quantitativa---benché l'incremento del 312\% documentato nel Capitolo 1 sia allarmante---ma segnala una trasformazione qualitativa nella sofisticazione, persistenza e impatto degli attacchi.
+
+L'analisi presentata in questo capitolo si fonda sull'aggregazione sistematica di 1.847 tipologie di incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\autocite{ENISA Threat Landscape 2024}, utilizzati per parametrizzare il nostro ambiente di simulazione Digital Twin. Questa base empirica, combinata con modellazione matematica rigorosa basata su teoria dei grafi e analisi stocastica, ci permette di derivare principi quantitativi per la progettazione di architetture difensive efficaci e validare l'ipotesi H2 relativa all'efficacia del paradigma Zero Trust nel ridurre la superficie di attacco del 35\% mantenendo latenze operative accettabili \textbf{in ambiente simulato}.
 
 Il capitolo introduce l'algoritmo ASSA-GDO (\textit{Attack Surface Security Assessment for GDO}), che costituisce la componente di valutazione della sicurezza (28\% del peso totale) nel framework GIST presentato nel Capitolo 1. Questo algoritmo non solo quantifica dinamicamente la superficie di attacco considerando le peculiarità del settore retail, ma fornisce anche la metrica fondamentale per il calcolo del GIST Score nella sua dimensione di sicurezza. Attraverso simulazioni su un gemello digitale calibrato su parametri operativi reali di 234 organizzazioni italiane, dimostreremo come una riduzione del 42.7\% della superficie di attacco si traduca in un incremento di 19.4 punti nel punteggio GIST complessivo, validando quantitativamente il valore strategico dell'investimento in sicurezza.
 
@@ -124,10 +126,12 @@ La complessità temporale è $O(|V_{changed}| \cdot d_{avg})$ dove $V_{changed}$
 \subsection{\texorpdfstring{Calibrazione dei Parametri e Validazione}{2.4.4 - Calibrazione dei Parametri e Validazione}}
 
 La calibrazione dei parametri è stata effettuata attraverso ottimizzazione bayesiana su 487 configurazioni reali anonimizzate. I valori ottimali identificati sono:
-- Fattori di esposizione $\alpha$: derivati da vulnerability scanning con pesi CVSSv3
-- Pesi degli archi $w$: calibrati su metriche di traffico normalizzate  
-- Fattori di propagazione $\beta$: stimati attraverso simulazioni Monte Carlo
-- Correzione contestuale $\gamma$: modellata su pattern stagionali del retail italiano
+\begin{itemize}
+\item Fattori di esposizione $\alpha$: derivati da vulnerability scanning con pesi CVSSv3
+\item Pesi degli archi $w$: calibrati su metriche di traffico normalizzate
+\item Fattori di propagazione $\beta$: stimati attraverso simulazioni Monte Carlo
+\item Correzione contestuale $\gamma$: modellata su pattern stagionali del retail italiano
+\end{itemize}
 
 La validazione su dataset indipendente ha mostrato correlazione di Pearson r=0.87 (p<0.001) tra valori ASSA predetti e incidenti osservati nei 90 giorni successivi, confermando la capacità predittiva dell'algoritmo.
 
@@ -149,9 +153,11 @@ La validazione dell'efficacia di ASSA-GDO e del framework Zero Trust è stata co
 
 L'esperimento ha adottato un design fattoriale completo confrontando tre configurazioni attraverso 1.000 scenari di attacco per ciascuna:
 
-1. **Baseline**: Architettura tradizionale con sicurezza perimetrale classica
-2. **Zero Trust Parziale**: Implementazione limitata ai soli sistemi critici (pagamenti, dati clienti)
-3. **Zero Trust Completo**: Implementazione integrale ASSA-GDO con tutti i cinque componenti
+\begin{enumerate}
+\item \textbf{Baseline}: Architettura tradizionale con sicurezza perimetrale classica
+\item \textbf{Zero Trust Parziale}: Implementazione limitata ai soli sistemi critici (pagamenti, dati clienti)
+\item \textbf{Zero Trust Completo}: Implementazione integrale ASSA-GDO con tutti i cinque componenti
+\end{enumerate}
 
 Per ciascuna configurazione, abbiamo misurato metriche operative e di sicurezza: tasso di compromissione iniziale, velocità di propagazione laterale, tempo medio di rilevamento (MTTD), tempo medio di contenimento (MTTC), impatto operativo quantificato in downtime e transazioni perse, e latenza percepita dagli utenti finali.
 
