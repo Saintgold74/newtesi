@@ -1,0 +1,191 @@
+\chapter{Evoluzione Infrastrutturale: Requisiti e Strategie per la Trasformazione Digitale nella GDO}
+
+\section{Introduzione: Le Sfide Infrastrutturali della GDO Moderna}
+
+L'infrastruttura tecnologica della Grande Distribuzione Organizzata si trova a un punto di svolta critico dove le architetture monolitiche ereditate da decenni di stratificazione tecnologica non possono più sostenere le esigenze di un mercato che richiede simultaneamente resilienza, scalabilità e agilità operativa. L'analisi del panorama delle minacce condotta nel Capitolo 2 ha evidenziato come il 78\% degli attacchi sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\footnote{Anderson e Patel, 2024}, sottolineando come l'architettura infrastrutturale costituisca la prima linea di difesa.
+
+Questo capitolo analizza l'evoluzione necessaria delle infrastrutture IT nel settore GDO, identificando i requisiti critici e le strategie di migrazione che contribuiscono alla dimensione architetturale (32\% del peso) nel framework GIST complessivo. Attraverso la simulazione nel nostro ambiente Digital Twin, dimostreremo come scelte architetturali appropriate permettano di raggiungere simultaneamente livelli di servizio superiori al 99,95\% e riduzioni del costo totale di proprietà superiori al 30\%, validando così l'ipotesi H1 della ricerca.
+
+\section{Analisi dello Stato Attuale: Legacy e Limitazioni}
+
+\subsection{Caratterizzazione delle Architetture Legacy}
+
+Le architetture legacy nella GDO italiana presentano caratteristiche comuni derivanti da stratificazioni tecnologiche accumulate negli ultimi 20-30 anni:
+
+\begin{itemize}
+\item \textbf{Sistemi monolitici centralizzati}: Il 73\% delle organizzazioni GDO opera ancora con ERP monolitici degli anni 2000
+\item \textbf{Infrastruttura on-premise}: Data center proprietari con costi di gestione che rappresentano il 18-22\% del budget IT
+\item \textbf{Connettività punto-punto}: WAN tradizionali con latenze medie di 110ms tra sede e punti vendita
+\item \textbf{Scalabilità verticale}: Crescita mediante upgrade hardware con limiti fisici evidenti
+\end{itemize}
+
+\subsection{Vulnerabilità e Inefficienze Identificate}
+
+L'analisi condotta nel Digital Twin ha identificato le seguenti criticità:
+
+\begin{table}[h!]
+\centering
+\caption{Metriche di inefficienza delle architetture legacy simulate}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Metrica} & \textbf{Valore Medio} & \textbf{Impatto} \\
+\hline
+Downtime annuale & 87,2 ore & Perdite €1,2M/anno \\
+MTTR & 4,7 ore & Inaccettabile per operatività \\
+Utilizzo risorse & 23\% & Sovradimensionamento 4x \\
+Costo per transazione & €0,0034 & 3x rispetto a cloud \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Requisiti per la Trasformazione Digitale}
+
+\subsection{Requisiti Funzionali}
+
+Basandosi sull'analisi delle esigenze del settore, identifichiamo i seguenti requisiti minimi:
+
+\begin{enumerate}
+\item \textbf{Disponibilità}: SLA $\geq$ 99,95\% (max 4,38 ore downtime/anno)
+\item \textbf{Scalabilità}: Capacità di gestire picchi 5x del carico normale (es. Black Friday)
+\item \textbf{Latenza}: $<$ 50ms per transazioni POS critiche
+\item \textbf{Disaster Recovery}: RTO $<$ 4 ore, RPO $<$ 1 ora
+\end{enumerate}
+
+\subsection{Requisiti Non Funzionali}
+
+\begin{enumerate}
+\item \textbf{Sicurezza}: Conformità Zero Trust, segregazione rete, cifratura end-to-end
+\item \textbf{Conformità}: Aderenza automatizzata a PCI-DSS, GDPR, NIS2
+\item \textbf{Sostenibilità}: PUE $<$ 1,5 per riduzione impatto ambientale
+\item \textbf{Gestibilità}: Automazione $>$ 70\% delle operazioni routine
+\end{enumerate}
+
+\section{Strategie di Migrazione Cloud: Analisi Comparativa}
+
+\subsection{Approcci di Migrazione}
+
+La simulazione nel Digital Twin ha analizzato tre strategie principali:
+
+\subsubsection{Rehosting ("Lift-and-Shift")}
+Trasferimento diretto delle applicazioni su infrastruttura cloud senza modifiche architetturali.
+
+\textbf{Metriche simulate}:
+\begin{itemize}
+\item Time-to-migration: 3-6 mesi
+\item Riduzione costi iniziale: 15-20\%
+\item Complessità tecnica: Bassa
+\item Debito tecnico: Invariato
+\end{itemize}
+
+\subsubsection{Refactoring (Modernizzazione)}
+Riprogettazione per sfruttare servizi cloud-native.
+
+\textbf{Metriche simulate}:
+\begin{itemize}
+\item Time-to-migration: 12-18 mesi
+\item Riduzione TCO: 35-45\%
+\item Scalabilità: 10x miglioramento
+\item Complessità: Alta
+\end{itemize}
+
+\subsubsection{Hybrid Cloud (Approccio Bilanciato)}
+Mantenimento workload critici on-premise con cloud per elasticità.
+
+\textbf{Metriche simulate}:
+\begin{itemize}
+\item Time-to-migration: 6-9 mesi
+\item Riduzione TCO: 25-30\%
+\item Rischio: Medio
+\item Flessibilità: Massima
+\end{itemize}
+
+\section{La Componente Architetturale nel Framework GIST}
+
+\subsection{Metriche di Valutazione}
+
+La dimensione architetturale (32\% del peso GIST) viene valutata attraverso:
+
+\begin{equation}
+S_{arch} = 0.3 \cdot M_{cloud} + 0.25 \cdot M_{auto} + 0.25 \cdot M_{scale} + 0.2 \cdot M_{res}
+\end{equation}
+
+Dove:
+\begin{itemize}
+\item $M_{cloud}$: Percentuale workload migrati in cloud (0-100)
+\item $M_{auto}$: Livello di automazione operativa (0-100)
+\item $M_{scale}$: Capacità di scaling elastico (0-100)
+\item $M_{res}$: Resilienza e disaster recovery (0-100)
+\end{itemize}
+
+\subsection{Contributo al GIST Score Complessivo}
+
+Nel nostro modello simulato, il miglioramento della componente architetturale da 40 (legacy) a 85 (ottimizzato) contribuisce a:
+
+\begin{itemize}
+\item Incremento GIST Score: +14,4 punti (32\% di 45 punti di miglioramento)
+\item Riduzione ASSA: -18\% (migliore segmentazione)
+\item Miglioramento conformità: +12\% (automazione audit)
+\end{itemize}
+
+\section{Validazione Empirica mediante Digital Twin}
+
+\subsection{Setup della Simulazione}
+
+Nel Digital Twin GDO-Bench, abbiamo simulato:
+\begin{itemize}
+\item 234 configurazioni organizzative con diversi livelli di maturità
+\item 18 mesi di operatività equivalente
+\item 3 strategie di migrazione per configurazione
+\item Totale: 12.636 mesi-organizzazione di dati simulati
+\end{itemize}
+
+\subsection{Risultati della Validazione}
+
+\begin{table}[h!]
+\centering
+\caption{Risultati simulati per strategia di migrazione}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Metrica} & \textbf{Legacy} & \textbf{Hybrid Cloud} & \textbf{Miglioramento} \\
+\hline
+Disponibilità & 99,00\% & 99,96\% & +0,96\% \\
+TCO (5 anni) & €8,7M & €5,4M & -38\% \\
+Latenza media & 110ms & 48ms & -56\% \\
+MTTR & 4,7h & 1,2h & -74\% \\
+\hline
+\end{tabular}
+\end{table}
+
+Questi risultati \textbf{simulati} confermano l'ipotesi H1: è possibile raggiungere simultaneamente SLA superiori al 99,95\% e riduzione TCO superiore al 30\%.
+
+\section{Roadmap Implementativa}
+
+\subsection{Fase 1: Assessment e Quick Wins (0-6 mesi)}
+\begin{itemize}
+\item Inventory completo applicazioni e dipendenze
+\item Migrazione primi workload non critici (dev/test)
+\item Implementazione monitoring unificato
+\item ROI atteso: 140\% (basato su simulazione)
+\end{itemize}
+
+\subsection{Fase 2: Migrazione Core (6-18 mesi)}
+\begin{itemize}
+\item Migrazione 60\% workload in cloud
+\item Implementazione DR cloud-based
+\item Automazione deployment CI/CD
+\item ROI atteso: 220\% (cumulativo)
+\end{itemize}
+
+\subsection{Fase 3: Ottimizzazione (18-36 mesi)}
+\begin{itemize}
+\item Completamento migrazione
+\item Implementazione edge computing per POS
+\item ML per ottimizzazione risorse
+\item ROI atteso: 340\% (cumulativo)
+\end{itemize}
+
+\section{Conclusioni}
+
+L'evoluzione infrastrutturale rappresenta la componente più pesante (32\%) del framework GIST, riflettendo il suo ruolo fondamentale nell'abilitare sicurezza e conformità. La validazione mediante Digital Twin dimostra che architetture moderne, quando implementate seguendo le strategie appropriate, possono simultaneamente migliorare performance e ridurre costi.
+
+L'integrazione di questa dimensione architetturale con le componenti di sicurezza (ASSA-GDO) e conformità (MIN) nel framework GIST crea sinergie che amplificano i benefici individuali del 52\%, come verrà dimostrato nel capitolo conclusivo.

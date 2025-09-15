@@ -6,7 +6,7 @@
 \input{thesis_figures/gist_framework_tikz.tex}
 
 Il framework Digital Twin GDO-Bench rappresenta un contributo metodologico originale per la generazione di dataset sintetici realistici nel settore della Grande Distribuzione Organizzata. L'approccio Digital Twin, mutuato dall'Industry 4.0\autocite{tao2019digital}, viene qui applicato per la prima volta al contesto specifico della sicurezza IT nella GDO.
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
     scale=0.8,
@@ -136,7 +136,7 @@ Il framework Digital Twin supera queste limitazioni fornendo un ambiente di simu
 
 I parametri del modello sono calibrati esclusivamente su fonti pubbliche verificabili:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Fonti di calibrazione del Digital Twin GDO-Bench}
 \label{tab:calibration-sources}
@@ -265,7 +265,7 @@ class SecurityEventGenerator:
 
 Il framework include un modulo di validazione che verifica la conformità statistica dei dati generati:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Risultati validazione statistica del dataset generato}
 \label{tab:validation-results}
@@ -319,7 +319,7 @@ def test_benford_law(amounts):
             'pass': p_value > 0.05}
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -369,7 +369,7 @@ e serali (17-20). Test \(\chi^2 = 847.3\), \(p < 0.001\) conferma pattern non un
 
 Il framework ha generato con successo un dataset dimostrativo con le seguenti caratteristiche:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Composizione dataset GDO-Bench generato}
 \label{tab:dataset-composition}
@@ -391,7 +391,7 @@ Network flows & 156,320 & 41.7 MB & 8.7 sec \\
 
 Il framework dimostra scalabilità lineare con complessità $O(n \cdot m)$ dove $n$ è il numero di store e $m$ il periodo temporale:
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -440,7 +440,7 @@ Il framework dimostra scalabilità lineare con complessità $O(n \cdot m)$ dove 
 
 \subsection{\texorpdfstring{Confronto con Approcci Alternativi}{B.1.7 - Confronto con Approcci Alternativi}}
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Confronto Digital Twin vs alternative}
 \label{tab:comparison}
