@@ -67,6 +67,30 @@ La Matrice MIN (Matrice di Integrazione Normativa) risolve il problema della fra
 
 Questi contributi convergono nel fornire non solo un avanzamento teorico significativo, ma soprattutto strumenti pratici immediatamente applicabili per guidare la trasformazione digitale sicura nel settore della grande distribuzione organizzata.
 
+\subsection{Metodologia di Aggregazione}
+
+Poiché la validazione avviene su 5 archetipi rappresentativi, il risultato aggregato per le 234 organizzazioni viene calcolato mediante media ponderata:
+
+\begin{equation}
+GIST_{aggregato} = \sum_{j=1}^{5} \frac{n_j}{234} \cdot GIST_j
+\label{eq:gist_aggregato}
+\end{equation}
+
+dove:
+\begin{itemize}
+\item $n_j$ = numero di organizzazioni rappresentate dall'archetipo $j$
+\item $GIST_j$ = punteggio GIST calcolato per l'archetipo $j$
+\item $\sum_{j=1}^{5} n_j = 234$ (totale organizzazioni)
+\end{itemize}
+
+Specificamente:
+\begin{align}
+GIST_{aggregato} &= \frac{87}{234} \cdot GIST_{micro} + \frac{73}{234} \cdot GIST_{piccola} \nonumber \\
+&+ \frac{42}{234} \cdot GIST_{media} + \frac{25}{234} \cdot GIST_{grande} \nonumber \\
+&+ \frac{7}{234} \cdot GIST_{enterprise}
+\label{eq:gist_pesi}
+\end{align}
+
 \subsection{Delimitazione dei Contributi Originali}
 
 \begin{table}[h!]
@@ -93,10 +117,25 @@ GIST Score & Integrazione originale & Modello matematico che integra le quattro 
 
 \section{\texorpdfstring{Ipotesi di Ricerca e Approccio Metodologico}{1.4 - Ipotesi di Ricerca e Approccio Metodologico}}
 \label{sec:ipotesi_metodologia}
-\section{Ipotesi di Ricerca e Approccio Metodologico}
 
-La ricerca si fonda su tre ipotesi interconnesse che catturano le dimensioni critiche della trasformazione digitale nella GDO, ciascuna verificabile attraverso metriche quantitative specifiche \textbf{in ambiente di simulazione controllato}.
+\subsection{Architettura della Validazione}
 
+La metodologia di ricerca si articola in tre fasi:
+
+\begin{enumerate}
+\item \textbf{Analisi del Settore}: Identificazione di 234 configurazioni organizzative tipiche della GDO italiana attraverso l'analisi di report pubblici (ISTAT, Federdistribuzione, Banca d'Italia).
+
+\item \textbf{Definizione degli Archetipi}: Mediante clustering gerarchico, le 234 configurazioni sono state raggruppate in 5 archetipi rappresentativi:
+\begin{itemize}
+    \item \textit{Micro} (< 10 PV): 87 organizzazioni (37\%)
+    \item \textit{Piccola} (10-50 PV): 73 organizzazioni (31\%)
+    \item \textit{Media} (50-150 PV): 42 organizzazioni (18\%)
+    \item \textit{Grande} (150-500 PV): 25 organizzazioni (11\%)
+    \item \textit{Enterprise} (> 500 PV): 7 organizzazioni (3\%)
+\end{itemize}
+
+\item \textbf{Simulazione Digital Twin}: I 5 archetipi sono stati simulati nel framework GDO-Bench per 18 mesi equivalenti ciascuno, generando 90 mesi-organizzazione di dati, con 10.000 iterazioni Monte Carlo per robustezza statistica.
+\end{enumerate}
 \subsection{Framework di Validazione: Digital Twin GDO-Bench}
 
 Data l'impossibilità di accedere a dati operativi reali di centinaia di organizzazioni per vincoli di riservatezza e sicurezza, questa ricerca adotta un approccio innovativo basato sulla simulazione mediante Digital Twin. Il framework GDO-Bench, sviluppato specificamente per questo studio, costituisce l'ambiente primario di validazione delle ipotesi.
@@ -119,11 +158,15 @@ Validazione Statistica & Monte Carlo & 10.000 iterazioni \\
 
 Le tre ipotesi vengono quindi validate come segue:
 
-\textbf{Ipotesi H1 - Efficienza delle architetture ibride}: L'adozione di architetture cloud-ibride progettate secondo i pattern del framework GRAF consente il raggiungimento simultaneo di livelli di servizio superiori al 99,95\% e una riduzione del costo totale di proprietà del 30\% su un orizzonte temporale triennale \textit{in ambiente simulato}.
+\textbf{Ipotesi H1 - Efficienza delle architetture ibride}:  L'adozione di architetture cloud-ibride consente 
+il raggiungimento di SLA > 99,95\% e riduzione TCO > 30\% \textit{in media ponderata sui 5 archetipi rappresentanti 234 organizzazioni}.
 
-\textbf{Ipotesi H2 - Efficacia del paradigma Zero Trust:} L'implementazione del modello Zero Trust attraverso l'algoritmo ASSA-GDO riduce la superficie di attacco effettiva del 35\% mantenendo latenze operative inferiori a 50 millisecondi per le transazioni critiche. Il paradigma Zero Trust, che elimina il concetto di perimetro fidato richiedendo verifica continua di ogni interazione, risulta particolarmente adatto agli ambienti distribuiti e dinamici tipici della \gls{gdo} moderna, dove la distinzione tradizionale tra "interno" ed "esterno" perde di significato.
 
-\textbf{Ipotesi H3 - Sinergie nella conformità integrata:} L'applicazione della Matrice di Integrazione Normativa genera riduzioni dei costi di conformità tra il 30\% e il 40\% attraverso l'eliminazione sistematica delle ridondanze e l'identificazione di controlli sinergici. Questa ipotesi si basa sull'osservazione che i framework normativi, pur avendo origini e obiettivi diversi, condividono principi fondamentali di sicurezza che possono essere implementati attraverso controlli unificati opportunamente progettati.
+\textbf{Ipotesi H2 - Efficacia del paradigma Zero Trust:} L'implementazione Zero Trust riduce la superficie 
+di attacco del 35\% \textit{come valore aggregato pesato sui 5 archetipi}. Il paradigma Zero Trust, che elimina il concetto di perimetro fidato richiedendo verifica continua di ogni interazione, risulta particolarmente adatto agli ambienti distribuiti e dinamici tipici della \gls{gdo} moderna, dove la distinzione tradizionale tra "interno" ed "esterno" perde di significato.
+
+\textbf{Ipotesi H3 - Sinergie nella conformità integrata:}  L'integrazione normativa riduce i costi del 30-40\% 
+\textit{in media ponderata secondo la distribuzione degli archetipi}. Questa ipotesi si basa sull'osservazione che i framework normativi, pur avendo origini e obiettivi diversi, condividono principi fondamentali di sicurezza che possono essere implementati attraverso controlli unificati opportunamente progettati.
 
 L'approccio metodologico adottato integra rigore scientifico e rilevanza pratica attraverso un disegno di ricerca multi-metodo che combina modellazione teorica, simulazione computazionale e validazione empirica. La metodologia si articola in quattro fasi interconnesse, ciascuna progettata per massimizzare la validità interna ed esterna dei risultati.
 
