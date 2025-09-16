@@ -38,6 +38,7 @@
 \clearpage
 
 \printglossaries
+\clearpage
 
 \mainmatter
 
@@ -55,7 +56,12 @@ La Grande Distribuzione Organizzata (GDO) italiana gestisce un'infrastruttura te
 La tesi propone GIST (Grande distribuzione - Integrazione Sicurezza e Trasformazione), un framework quantitativo innovativo che integra quattro dimensioni critiche: fisica, architetturale, sicurezza e conformità. Il framework è stato sviluppato attraverso l'analisi di 234 configurazioni organizzative del settore GDO italiano, raggruppate in 5 archetipi 
 rappresentativi e \textbf{validate mediante simulazione Monte Carlo con 10.000 iterazioni su un ambiente Digital Twin (GDO-Bench) appositamente sviluppato, calibrato su parametri operativi pubblici del settore italiano}.
 
-I risultati della \textbf{validazione simulata} dimostrano che l'applicazione del framework GIST permette di conseguire: (i) una riduzione del 38\% del costo totale di proprietà (TCO) su un orizzonte quinquennale; (ii) livelli di disponibilità del 99,96\% anche con carichi transazionali variabili del 500\%; (iii) una riduzione del 42,7\% della superficie di attacco misurata attraverso l'algoritmo ASSA-GDO sviluppato; (iv) una riduzione del 39\% dei costi di conformità attraverso la Matrice di Integrazione Normativa (MIN) che unifica 847 requisiti individuali in 156 controlli integrati.
+I risultati della \textbf{validazione simulata} dimostrano che l'applicazione del framework GIST permette di conseguire: \begin{itemize}
+    \item una riduzione del 38\% del costo totale di proprietà (TCO) su un orizzonte quinquennale; 
+    \item livelli di disponibilità del 99,96\% anche con carichi transazionali variabili del 500\%; 
+    \item una riduzione del 42,7\% della superficie di attacco misurata attraverso l'algoritmo ASSA-GDO sviluppato; 
+    \item una riduzione del 39\% dei costi di conformità attraverso la Matrice di Integrazione Normativa (MIN) che unifica 847 requisiti individuali in 156 controlli integrati.
+\end{itemize}
 
 Il contributo scientifico include lo sviluppo del framework Digital Twin GDO-Bench per la comunità di ricerca, l'adattamento di algoritmi esistenti al contesto GDO, e una roadmap implementativa teoricamente validata. La ricerca dimostra che sicurezza e performance non sono obiettivi conflittuali ma sinergici quando implementati attraverso un approccio sistemico, con effetti di amplificazione del 52\% rispetto a interventi isolati \textbf{in ambiente simulato}.
 
@@ -70,13 +76,19 @@ Il contributo scientifico include lo sviluppo del framework Digital Twin GDO-Ben
 \begin{otherlanguage}{english}
 \begin{abstract}
 
-The Italian Large-Scale Retail sector manages a technological infrastructure of complexity comparable to global financial systems, with over 27,000 points of sale processing 45 million daily transactions. This research addresses the critical challenge of designing and implementing secure, performant, and economically sustainable IT infrastructures for the retail sector, in a context characterized by reduced operating margins (2-4\%), exponentially growing cyber threats (+312\% since 2021), and increasingly stringent regulatory requirements.
+The Italian Large-Scale Retail sector (GDO) manages a technological infrastructure of complexity comparable to global financial systems, with over 27,000 points of sale processing 45 million daily transactions. This research addresses the critical challenge of designing and implementing secure, performant, and economically sustainable IT infrastructures for the retail sector, in a context characterized by reduced operating margins (2-4\%), exponentially growing cyber threats (+312\% since 2021), and increasingly stringent regulatory requirements.
 
-The thesis proposes GIST (Large-scale retail - Integration Security and Transformation), an innovative quantitative framework that integrates four critical dimensions: physical, architectural, security, and compliance. The framework was developed through the analysis of 234 European retail organizations and validated through Monte Carlo simulation with 10,000 iterations on a specially developed Digital Twin environment.
+The thesis proposes GIST (Large-scale retail - Integration Security and Transformation), an innovative quantitative framework that integrates four critical dimensions: physical, architectural, security, and compliance. The framework was developed through the analysis of 234 organizational configurations of the Italian GDO sector, grouped into 5 representative archetypes and \textbf{validated through Monte Carlo simulation with 10,000 iterations on a specially developed Digital Twin environment (GDO-Bench), calibrated on public operational parameters of the Italian sector}.
 
-The main results demonstrate that the application of the GIST framework enables: (i) a 38\% reduction in total cost of ownership (TCO) over a five-year horizon; (ii) availability levels of 99.96\% even with 500\% variable transactional loads; (iii) a 42.7\% reduction in attack surface measured through the developed ASSA-GDO algorithm; (iv) a 39\% reduction in compliance costs through the Normative Integration Matrix (MIN) that unifies 847 individual requirements into 156 integrated controls.
+The results of the \textbf{simulated validation} demonstrate that the application of the GIST framework enables: 
+\begin{itemize}
+    \item a 38\% reduction in total cost of ownership (TCO) over a five-year horizon; 
+    \item availability levels of 99.96\% even with 500\% variable transactional loads; 
+    \item a 42.7\% reduction in attack surface measured through the developed ASSA-GDO algorithm; 
+    \item a 39\% reduction in compliance costs through the Normative Integration Matrix (MIN) that unifies 847 individual requirements into 156 integrated controls.
+\end{itemize}
 
-The scientific contribution includes the development of five original algorithms, the creation of the GDO-Bench dataset for the research community, and an empirically validated implementation roadmap. The research demonstrates that security and performance are not conflicting objectives but synergistic when implemented through a systemic approach, with amplification effects of 52\% compared to isolated interventions.
+The scientific contribution includes the development of the Digital Twin GDO-Bench framework for the research community, the adaptation of existing algorithms to the GDO context, and a theoretically validated implementation roadmap. The research demonstrates that security and performance are not conflicting objectives but synergistic when implemented through a systemic approach, with amplification effects of 52\% compared to isolated interventions \textbf{in a simulated environment}.
 
 \textbf{Keywords:} Large-Scale Retail, Cybersecurity, Hybrid Cloud, Zero Trust, Regulatory Compliance, GIST Framework
 
@@ -101,7 +113,7 @@ The scientific contribution includes the development of five original algorithms
 % \include{capitoli/Cap2.tex}
 \include{capitoli/Cap2_v2.tex}
 % \include{capitoli/Cap3.tex}
-\include{capitoli/Cap3_v2.tex}
+\include{capitoli/Cap3_v3.tex}
 % \include{capitoli/Cap4.tex}
 \include{capitoli/Cap4_v2.tex}
 
@@ -118,7 +130,7 @@ The scientific contribution includes the development of five original algorithms
 \include{capitoli/appB}
 
 %\include{capitoli/appBbis}
-%\include{thesis_figures/figure_statistiche.tex}
+\include{thesis_figures/figure_statistiche.tex}
 
 \include{capitoli/appC}
 \include{capitoli/appD}

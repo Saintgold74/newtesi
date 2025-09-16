@@ -1,0 +1,130 @@
+
+\documentclass[11pt,a4paper]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\pgfplotsset{compat=1.18}
+
+% Definizione colori
+\definecolor{gdoblue}{RGB}{0, 102, 204}
+\definecolor{gdogreen}{RGB}{76, 175, 80}
+\definecolor{gdored}{RGB}{244, 67, 54}
+\definecolor{gdoorange}{RGB}{255, 152, 0}
+\definecolor{gdopurple}{RGB}{156, 39, 176}
+\definecolor{gdogray}{RGB}{158, 158, 158}
+\definecolor{gdolightblue}{RGB}{179, 229, 252}
+\definecolor{gdodarkblue}{RGB}{25, 32, 102}
+
+% Librerie TikZ
+\usetikzlibrary{arrows.meta,positioning,calc,patterns,decorations.pathreplacing,shadows,shapes.geometric,backgrounds,fit,shapes.symbols}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    node distance=2cm,
+    chapter/.style={
+        rectangle,
+        draw=gdoblue,
+        fill=gdolightblue!30,
+        text width=3.5cm,
+        minimum height=2cm,
+        align=center,
+        font=\small\bfseries,
+        drop shadow
+    },
+    framework/.style={
+        ellipse,
+        draw=gdogreen,
+        fill=gdogreen!20,
+        text width=3cm,
+        minimum height=1.8cm,
+        align=center,
+        font=\small,
+        drop shadow
+    },
+    arrow/.style={
+        ->,
+        thick,
+        gdoblue,
+        >=Stealth
+    },
+    feedback/.style={
+        <->,
+        dashed,
+        gdogray,
+        >=Stealth
+    }
+]
+
+\node[chapter] (cap1) {Capitolo 1\\Introduzione\\e Contesto};
+\node[chapter, right=of cap1] (cap2) {Capitolo 2\\Minacce e\\ASSA-GDO};
+\node[chapter, right=of cap2] (cap3) {Capitolo 3\\Architetture\\GRAF};
+\node[chapter, below=of cap2] (cap4) {Capitolo 4\\Conformità\\MIN};
+\node[chapter, right=of cap4] (cap5) {Capitolo 5\\Framework\\GIST};
+
+\node[framework, below=1cm of cap2] (assa) {ASSA-GDO\\28\%};
+\node[framework, below=1cm of cap3] (graf) {GRAF\\35\%};
+\node[framework, below=1cm of cap4] (min) {MIN\\37\%};
+
+\node[
+    rectangle,
+    draw=gdored,
+    fill=gdored!10,
+    text width=4cm,
+    minimum height=2.5cm,
+    align=center,
+    font=\large\bfseries,
+    drop shadow,
+    below=3.5cm of cap3
+] (gist) {Framework\\GIST\\Score: 0-100};
+
+\draw[arrow] (cap1) -- (cap2);
+\draw[arrow] (cap2) -- (cap3);
+\draw[arrow] (cap3) -- (cap5);
+\draw[arrow] (cap2) -- (cap4);
+\draw[arrow] (cap4) -- (cap5);
+
+\draw[arrow,gdogreen] (cap2) -- (assa);
+\draw[arrow,gdogreen] (cap3) -- (graf);
+\draw[arrow,gdogreen] (cap4) -- (min);
+
+\draw[arrow,gdored] (assa) -- (gist);
+\draw[arrow,gdored] (graf) -- (gist);
+\draw[arrow,gdored] (min) -- (gist);
+
+\draw[feedback] (cap5) to[bend right=30] (cap2);
+\draw[feedback] (cap5) to[bend left=30] (cap3);
+
+\node[
+    text width=3cm,
+    align=center,
+    font=\footnotesize\itshape,
+    above=0.5cm of cap1
+] {Identificazione\\del problema};
+
+\node[
+    text width=3cm,
+    align=center,
+    font=\footnotesize\itshape,
+    right=0.5cm of cap5
+] {Validazione\\empirica};
+
+\node[
+    draw=gdogray,
+    dashed,
+    text width=5cm,
+    align=left,
+    font=\footnotesize,
+    below right=0.5cm and 1cm of gist
+] {
+    Pesi nel GIST Score:\\
+    • ASSA-GDO: 28\%\\
+    • GRAF: 35\%\\
+    • MIN: 37\%
+};
+
+\end{tikzpicture}
+
+\end{document}

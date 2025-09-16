@@ -211,6 +211,10 @@ class GDODigitalTwin:
                 np.random.normal(1.0, 0.05)  # ±5% variazione
             )
             
+            # Formatta i ricavi come intero o valuta
+            month_data['ricavi'] = int(month_data['ricavi'])  # Due decimali per valuta
+            # Se preferisci interi, usa: month_data['ricavi'] = int(month_data['ricavi'])
+            
             # Aggiungi effetti stagionali
             if current_date.month in [11, 12]:  # Black Friday, Natale
                 month_data['transazioni_totali'] *= 1.35
