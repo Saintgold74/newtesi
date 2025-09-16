@@ -238,5 +238,26 @@ __marimo__/
 *.snm
 *.vrb
 
-# LaTeX main output files
-main.*
+# LaTeX main output files (but keep main.tex)
+main.pdf
+main.aux
+main.log
+main.bbl
+main.blg
+main.out
+main.toc
+main.lof
+main.lot
+main.fls
+main.fdb_latexmk
+main.synctex.gz
+main.run.xml
+main.acn
+main.acr
+main.alg
+main.glg
+main.glo
+main.gls
+main.glsdefs
+main.ist
+main.bbl-SAVE-ERROR

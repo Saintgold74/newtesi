@@ -874,6 +874,31 @@ class GISTCalculator:
             self.history.append(result)
         
         return result
+
+    def calcola_aggregato(self, risultati_archetipi: Dict) -> float:
+        """
+        Calcola GIST aggregato per 234 organizzazioni dai 5 archetipi
+        
+        Args:
+            risultati_archetipi: Dict con chiavi archetipi e valori GIST
+            
+        Returns:
+            GIST Score aggregato ponderato
+        """
+        pesi = {
+            'micro': 87/234,
+            'piccola': 73/234,
+            'media': 42/234,
+            'grande': 25/234,
+            'enterprise': 7/234
+        }
+        
+        gist_aggregato = sum(
+            pesi[arch] * risultati_archetipi[arch]
+            for arch in pesi.keys()
+        )
+        
+        return round(gist_aggregato, 2)
     
     def _calculate_sum(self, scores: Dict[str, float]) -> float:
         """Calcola GIST Score con formula sommatoria."""

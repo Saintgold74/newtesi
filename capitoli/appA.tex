@@ -71,6 +71,51 @@ Inclusione finale & 236 & - & 236 \\
 \end{tabular}
 \end{table}
 
+\section{A.1.3 Archetipi Simulati}
+
+Il Digital Twin GDO-Bench simula 5 archetipi organizzativi che 
+rappresentano statisticamente le 234 configurazioni identificate:
+
+\begin{lstlisting}[language=Python]
+ARCHETIPI = {
+    'micro': {
+        'pv_range': (1, 10),
+        'rappresenta': 87,  # organizzazioni
+        'transazioni_giorno': 450,
+        'valore_medio': 18.50,
+        'criticità': 'risorse_limitate'
+    },
+    'piccola': {
+        'pv_range': (10, 50),
+        'rappresenta': 73,
+        'transazioni_giorno': 1200,
+        'valore_medio': 22.30,
+        'criticità': 'scalabilità'
+    },
+    'media': {
+        'pv_range': (50, 150),
+        'rappresenta': 42,
+        'transazioni_giorno': 2800,
+        'valore_medio': 28.75,
+        'criticità': 'integrazione'
+    },
+    'grande': {
+        'pv_range': (150, 500),
+        'rappresenta': 25,
+        'transazioni_giorno': 5500,
+        'valore_medio': 35.20,
+        'criticità': 'complessità'
+    },
+    'enterprise': {
+        'pv_range': (500, 2000),
+        'rappresenta': 7,
+        'transazioni_giorno': 12000,
+        'valore_medio': 42.10,
+        'criticità': 'governance'
+    }
+}
+\end{lstlisting}
+
 \section{\texorpdfstring{Protocollo di Raccolta Dati sul Campo}{A.2 - Protocollo di Raccolta Dati sul Campo}}
 
 \subsection{\texorpdfstring{Selezione delle Organizzazioni Partner}{A.2.1 - Selezione delle Organizzazioni Partner}}
