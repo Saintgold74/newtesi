@@ -10,7 +10,8 @@
       "Bash(tr:*)",
       "Bash(awk:*)",
       "Bash(dir:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(compila.bat)"
     ],
     "deny": [],
     "ask": []

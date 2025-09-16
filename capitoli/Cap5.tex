@@ -70,7 +70,7 @@ ASSA-GDO & 287 & O(V²·E) & r=0.82*** & C.1 \\
 Digital Twin & 1.247 & O(n·m·t) & KS p>0.05 & B \\
 GIST Calculator & 423 & O(1) & 47 org & C.4 \\
 Risk Scorer & 358 & O(n·log n) & AUC=0.89 & C.3 \\
-Propagation Model & 218 & O(t·n²) & R₀=2.34 & C.2 \\
+Propagation Model & 218 & O(t·n²) & R$_0$=2.34 & C.2 \\
 \midrule
 \textbf{Totale} & \textbf{2.533} & - & - & - \\
 \bottomrule
@@ -289,11 +289,12 @@ sono disponibili all'indirizzo:
 \href{https://github.com/[tuo-username]/gist-framework-gdo}{\texttt{github.com/[tuo-username]/gist-framework-gdo}}
 \end{center}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=3cm]{qr_code_github.png}
-\caption{QR Code per accesso rapido al repository}
-\end{figure}
+% QR code commentato fino a quando non viene generato il file
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=3cm]{qr_code_github.png}
+% \caption{QR Code per accesso rapido al repository}
+% \end{figure}
 
 \subsection{\texorpdfstring{Dashboard di Monitoraggio}{5.3.4 - Dashboard di Monitoraggio}}
 
@@ -597,14 +598,16 @@ Il framework GIST è stato completamente implementato in Python
 \subsection{Validazione su Organizzazioni Reali}
 Utilizzando il dataset delle 47 organizzazioni italiane:
 
-\begin{table}
+\begin{table}[htbp]
 \caption{Validazione GIST Score su campione reale}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
+\toprule
 Organizzazione & Physical & Arch & Security & Compliance & GIST Score \\
-\hline
+\midrule
 Org-A (Supermarket) & 72 & 68 & 65 & 78 & 69.8 \\
 Org-B (Discount) & 58 & 45 & 52 & 61 & 52.3 \\
 Org-C (Hypermarket) & 85 & 82 & 79 & 88 & 82.7 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
