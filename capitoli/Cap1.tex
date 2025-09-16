@@ -8,17 +8,17 @@
 \subsection{\texorpdfstring{La Complessità Sistemica della Grande Distribuzione Organizzata}{1.1.1 - La Complessità Sistemica della Grande Distribuzione Organizzata}}
 \label{subsec:complessita_sistemica}
 
-Il settore della \gls{gdo} in Italia costituisce un'infrastruttura tecnologica distribuita di eccezionale complessità. Per i suoi stringenti requisiti di elaborazione in tempo reale, tolleranza ai guasti e scalabilità dinamica, la sua gestione è paragonabile a quella delle reti di telecomunicazioni o dei servizi finanziari globali.
+Il settore della \textbf{\gls{gdo}} in Italia costituisce un'infrastruttura tecnologica distribuita di eccezionale complessità. Per i suoi stringenti requisiti di elaborazione in tempo reale, tolleranza ai guasti e scalabilità dinamica, la sua gestione è paragonabile a quella delle reti di telecomunicazioni o dei servizi finanziari globali.
 
 Con 27.432 punti vendita attivi\footcite{istat2024}, l'ecosistema tecnologico della \gls{gdo} italiana processa quotidianamente oltre 45 milioni di transazioni elettroniche, generando un volume di dati che supera i 2,5 petabyte mensili. Per comprendere questa dimensione, consideriamo che un petabyte equivale a circa 500 miliardi di pagine di testo stampato. Questi sistemi devono garantire una disponibilità superiore al 99,9\%, corrispondente a meno di 9 ore di interruzione annuale, in condizioni operative estremamente eterogenee.
 
-L'infrastruttura tecnologica della \gls{gdo} moderna si articola secondo un modello gerarchico multi-livello che integra paradigmi di elaborazione diversificati. Al livello più basso, ogni punto vendita opera come un nodo di elaborazione periferica autonomo, implementando logiche di calcolo al margine della rete (\gls{edge}) per garantire continuità operativa anche in assenza di connettività verso i sistemi centrali. 
+L'infrastruttura tecnologica della \textbf{\gls{gdo}} moderna si articola secondo un modello gerarchico multi-livello che integra paradigmi di elaborazione diversificati. Al livello più basso, ogni punto vendita opera come un nodo di elaborazione periferica autonomo, implementando logiche di calcolo al margine della rete\textbf{ (\gls{edge})} per garantire continuità operativa anche in assenza di connettività verso i sistemi centrali. 
 
 Questi nodi periferici gestiscono sistemi eterogenei che includono:
 \begin{itemize}
-\item Terminali punto vendita (\gls{pos}) con requisiti di latenza inferiori a 100 millisecondi
-\item Sistemi di identificazione a radiofrequenza (\gls{rfid}) per la gestione inventariale in tempo reale
-\item Reti di sensori \gls{iot} per il monitoraggio ambientale e della catena del freddo
+\item Terminali punto vendita \textbf{(\gls{pos})} con requisiti di latenza inferiori a 100 millisecondi
+\item Sistemi di identificazione a radiofrequenza \textbf{(\gls{rfid})} per la gestione inventariale in tempo reale
+\item Reti di sensori \textbf{\gls{iot}} per il monitoraggio ambientale e della catena del freddo
 \item Sistemi di videosorveglianza intelligente con capacità di analisi comportamentale in tempo reale
 \end{itemize}
 
@@ -93,7 +93,7 @@ Questi scenari richiedono un approccio alla sicurezza che trascende i confini tr
 \small
 \caption{Tipologie di Attacco e Impatti nel Settore \gls{gdo}}
 \label{tab:threat_evolution}
-\begin{tabular}{lcccccccc}
+\begin{tabular}[width=0.8\textwidth]{lcccccccc}
 \toprule
 \textbf{Tipo Attacco} & \textbf{2019} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025*} & \textbf{2026*}\\
 \midrule
@@ -113,9 +113,9 @@ Cyber-Fisici & 25\% & 27\% & 30\% & 33\% & 37\% & 40\% & 42\% & 44\% \\
 La terza dimensione riguarda la crescente complessità del panorama normativo. L'entrata in vigore simultanea di molteplici normative ha creato un ambiente regolatorio la cui gestione, con approcci tradizionali, può assorbire fino al 2-3\% del fatturato annuale\footcite{ponemon2024compliance}:
 
 \begin{itemize}
-\item \textbf{\gls{pci-dss} v4.0}: standard per la sicurezza dei pagamenti elettronici
-\item \textbf{\gls{gdpr}}: normativa europea per la protezione dei dati personali
-\item \textbf{Direttiva \gls{nis2}}: normativa per la sicurezza delle infrastrutture critiche e dei servizi essenziali
+\item \textbf{\glsfirst{pci-dss} v4.0}: standard per la sicurezza dei pagamenti elettronici
+\item \textbf{\glsfirst{gdpr}}: normativa europea per la protezione dei dati personali
+\item \textbf{Direttiva \glsfirst{nis2}}: normativa per la sicurezza delle infrastrutture critiche e dei servizi essenziali
 \end{itemize}
 
 La sfida non è semplicemente quella di soddisfare requisiti normativi individuali, ma di gestire le interazioni e potenziali conflitti tra framework diversi. Ad esempio, i requisiti di segregazione delle reti imposti da \gls{pci-dss} possono entrare in conflitto con i requisiti di portabilità dei dati del \gls{gdpr}, mentre i requisiti di registrazione e monitoraggio della \gls{nis2} possono creare tensioni con i principi di minimizzazione dei dati del \gls{gdpr}.
@@ -228,7 +228,7 @@ Alla luce di queste considerazioni, il problema di ricerca principale può esser
 \subsection{\texorpdfstring{Obiettivo Generale}{1.3.1 - Obiettivo Generale}}
 \label{subsec:obiettivo_generale}
 
-L'obiettivo generale di questa ricerca è la progettazione di un framework integrato, denominato \textbf{\gls{gist}}, per l'analisi e l'evoluzione delle infrastrutture IT nel settore della Grande Distribuzione Organizzata. Il framework fornisce un modello concettuale robusto che integra sicurezza, performance e conformità. All'interno di questo quadro teorico, verrà sviluppato e validato, tramite un approccio basato sulla simulazione, un componente algoritmico specifico per la quantificazione della superficie di attacco.
+L'obiettivo generale di questa ricerca è la progettazione di un framework integrato, denominato \textbf{\gls{{gist}}}, per l'analisi e l'evoluzione delle infrastrutture IT nel settore della Grande Distribuzione Organizzata. Il framework fornisce un modello concettuale robusto che integra sicurezza, performance e conformità. All'interno di questo quadro teorico, verrà sviluppato e validato, tramite un approccio basato sulla simulazione, un componente algoritmico specifico per la quantificazione della superficie di attacco.
 
 Il framework \gls{gist} si distingue per tre caratteristiche fondamentali:
 
