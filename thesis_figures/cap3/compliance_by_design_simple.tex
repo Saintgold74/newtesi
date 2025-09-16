@@ -1,0 +1,88 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.symbols,arrows,positioning}
+\begin{document}
+
+% \begin{figure}[htbp]
+% \centering
+\begin{tikzpicture}[
+    scale=0.9,
+    layer/.style={
+        rectangle, draw=black, 
+        minimum width=10cm, minimum height=1.2cm,
+        font=\footnotesize
+    },
+    component/.style={
+        rectangle, draw=black, rounded corners=3pt,
+        minimum width=2.2cm, minimum height=0.8cm,
+        font=\footnotesize
+    },
+    arrow/.style={->, thick},
+    validate/.style={->, thick, red, dashed}
+]
+
+% Livelli architetturali
+\node[layer, fill=green!15] (app) at (0,4) {};
+\node[component, fill=green!30] at (-3,4) {POS};
+\node[component, fill=green!30] at (0,4) {E-Commerce};
+\node[component, fill=green!30] at (3,4) {Mobile App};
+\node[font=\footnotesize\bfseries] at (-4.8,4) {Applicazioni};
+
+% Policy Layer
+\node[layer, fill=red!15] (policy) at (0,2) {};
+\node[component, fill=red!30] at (-3,2) {GDPR};
+\node[component, fill=red!30] at (0,2) {PCI-DSS};
+\node[component, fill=red!30] at (3,2) {NIS2};
+\node[font=\footnotesize\bfseries] at (-4.8,2) {Policy Engine};
+
+% Security Layer
+\node[layer, fill=orange!15] (security) at (0,0) {};
+\node[component, fill=orange!30] at (-3,0) {Crittografia};
+\node[component, fill=orange!30] at (0,0) {Tokenization};
+\node[component, fill=orange!30] at (3,0) {Audit Log};
+\node[font=\footnotesize\bfseries] at (-4.8,0) {Security};
+
+% Data Layer
+\node[layer, fill=blue!15] (data) at (0,-2) {};
+\node[component, fill=blue!30] at (-3,-2) {Payment};
+\node[component, fill=blue!30] at (0,-2) {Personal};
+\node[component, fill=blue!30] at (3,-2) {Operational};
+\node[font=\footnotesize\bfseries] at (-4.8,-2) {Dati};
+
+% Frecce di validazione
+\draw[validate] (app) -- (policy);
+\draw[validate] (policy) -- (security);
+\draw[arrow] (security) -- (data);
+
+% Validation Gate
+\node[diamond, draw=red, fill=red!20, 
+      minimum width=1.2cm, minimum height=1.2cm] at (0,-3.5) {Check};
+
+\draw[arrow, red] (data) -- (0,-3.5);
+
+% Box compliance score
+\node[rectangle, draw=black, fill=yellow!10,
+      minimum width=2.5cm,  align=left] at (6,1) {
+    \textbf{Compliance:}\\
+    \footnotesize
+    GDPR: 94\%\\
+    PCI: 98\%\\
+    NIS2: 91\%
+};
+
+% Box enforcement
+\node[rectangle, draw=black, fill=gray!10,
+      minimum width=3cm,  align=left] at (-6,1) {
+    \textbf{Enforcement:}\\
+    \footnotesize
+    ✓ Automatico\\
+    ✓ Pre-execution\\
+    ✓ Zero-trust
+};
+
+\end{tikzpicture}
+% \caption{Architettura Compliance-by-Design a 4 livelli. Ogni richiesta attraversa il policy engine che valida la conformità PRIMA dell'esecuzione. Il validation gate finale assicura che solo operazioni conformi accedano ai dati.}
+% \label{fig:compliance_pattern}
+% \end{figure}
+
+\end{document}
