@@ -162,6 +162,7 @@
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{amsthm}
 
 \usepackage{xcolor} % Per i colori
 \usepackage{standalone}
@@ -177,7 +178,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
-\graphicspath{{thesis_figures/}}
+\graphicspath{thesis_figures/}
 
 
 % ===== GLOSSARI E ACRONIMI =====
@@ -331,9 +332,8 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
 \fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\textbf{\textit{\nouppercase{\leftmark}}}}
-\fancyhead[LO]{\textbf{\textit{\nouppercase{\rightmark}}}}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\textbf{\textit{\nouppercase{\rightmark}}}}
 \fancypagestyle{plain}{ %
 \fancyhf{} % remove everything
 \renewcommand{\headrulewidth}{0pt} % remove lines as well

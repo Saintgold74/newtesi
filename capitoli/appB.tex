@@ -119,6 +119,80 @@ e implementa ridondanza multi-path, riducendo ASSA del 39.5\%.}
 \label{fig:network-topology}
 \end{figure}
 
+
+\section{\texorpdfstring{Integrazione GRC via API}{B.1 - Integrazione GRC via API}}
+
+
+\begin{lstlisting}[caption={Integrazione GRC via API},label={lst:grc_integration}]
+# Integrazione ServiceNow GRC con sistemi di sicurezza
+import requests
+from datetime import datetime
+
+class GRCIntegration:
+    def __init__(self, grc_url, api_key):
+        self.grc_url = grc_url
+        self.headers = {'Authorization': f'Bearer {api_key}'}
+    
+    def sync_vulnerability_findings(self, scan_results):
+        """
+        Sincronizza findings da scanner verso GRC
+        """
+        for finding in scan_results:
+            # Mappa finding a controlli di conformità
+            affected_controls = self.map_vuln_to_controls(finding)
+            
+            # Crea elemento di rischio in GRC
+            risk_item = {
+                'title': finding['title'],
+                'severity': finding['severity'],
+                'affected_controls': affected_controls,
+                'standards': self.identify_standards(affected_controls),
+                'remediation_deadline': self.calculate_deadline(finding),
+                'automated_remediation': finding.get('fix_available', False)
+            }
+            
+            # POST to GRC API
+            response = requests.post(
+                f'{self.grc_url}/api/risks',
+                json=risk_item,
+                headers=self.headers
+            )
+            
+            if risk_item['automated_remediation']:
+                self.trigger_automated_fix(finding)
+    
+    def map_vuln_to_controls(self, finding):
+        """
+        Mappa vulnerabilità a controlli PCI/GDPR/NIS2
+        """
+        mapping = {
+            'ENCRYPTION_WEAK': ['PCI-3.5.1', 'GDPR-32.1a', 'NIS2-A.I.2d'],
+            'AUTH_MISSING_MFA': ['PCI-8.3', 'NIS2-A.I.2b'],
+            'LOGGING_DISABLED': ['PCI-10.1', 'GDPR-33', 'NIS2-A.I.4'],
+            'PATCH_MISSING': ['PCI-6.2', 'NIS2-A.I.3a']
+        }
+        return mapping.get(finding['type'], [])
+    
+    def generate_compliance_evidence(self):
+        """
+        Genera evidence automatica per audit
+        """
+        evidence = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'controls_tested': [],
+            'automated_tests': [],
+            'manual_attestations': []
+        }
+        
+        # Raccogli evidence da sistemi multipli
+        evidence['firewall_rules'] = self.collect_firewall_config()
+        evidence['access_logs'] = self.collect_access_logs()
+        evidence['encryption_status'] = self.verify_encryption()
+        evidence['patch_status'] = self.check_patch_compliance()
+        
+        return evidence
+\end{lstlisting}
+
 \subsection{\texorpdfstring{Motivazioni e Obiettivi}{B.1.1 - Motivazioni e Obiettivi}}
 
 L'accesso a dati reali nel settore GDO è severamente limitato da vincoli multipli:

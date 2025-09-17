@@ -12,98 +12,98 @@ Questo capitolo analizza tale panorama attraverso una sintesi critica della lett
 L'analisi si basa sull'aggregazione sistematica di dati provenienti da molteplici fonti autorevoli, includendo 1.847 incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\autocite{enisa2024threat,verizon2024}, l'analisi di 234 varianti uniche di \gls{malware} specificamente progettate per sistemi di punto vendita\autocite{groupib2024}, e report di settore provenienti da organizzazioni specializzate nella sicurezza del commercio al dettaglio. Questa base documentale, integrata da modellazione matematica rigorosa basata su principi di teoria dei grafi e analisi stocastica, ci permetterà di identificare pattern ricorrenti statisticamente significativi e validare quantitativamente l'efficacia delle contromisure proposte.
 
 
-\subsection{\texorpdfstring{Framework di Validazione: Digital Twin GDO}{2.1.1 - Framework di Validazione: Digital Twin GDO}}
+% \subsection{\texorpdfstring{Framework di Validazione: Digital Twin GDO}{2.1.1 - Framework di Validazione: Digital Twin GDO}}
 
-Per validare le ipotesi teoriche presentate in questo capitolo, abbiamo sviluppato 
-un Digital Twin specifico per il settore GDO. Il framework è stato calibrato su:
+% Per validare le ipotesi teoriche presentate in questo capitolo, abbiamo sviluppato 
+% un Digital Twin specifico per il settore GDO. Il framework è stato calibrato su:
 
-\textbf{Dataset di Calibrazione:}
-\begin{itemize}
-    \item \textbf{Parametri strutturali}: 47 organizzazioni GDO italiane
-    \item \textbf{Store profiles}: Distribuzione basata su ISTAT 2023 (27.432 PdV totali)
-    \item \textbf{Payment patterns}: Dati Banca d'Italia 2023 (78\% elettronici)
-    \item \textbf{Security baseline}: 1.847 incidenti analizzati da ENISA
-    \item \textbf{Performance metrics}: Benchmark da 23 audit sul campo
-\end{itemize}
+% \textbf{Dataset di Calibrazione:}
+% \begin{itemize}
+%     \item \textbf{Parametri strutturali}: 47 organizzazioni GDO italiane
+%     \item \textbf{Store profiles}: Distribuzione basata su ISTAT 2023 (27.432 PdV totali)
+%     \item \textbf{Payment patterns}: Dati Banca d'Italia 2023 (78\% elettronici)
+%     \item \textbf{Security baseline}: 1.847 incidenti analizzati da ENISA
+%     \item \textbf{Performance metrics}: Benchmark da 23 audit sul campo
+% \end{itemize}
 
-\textbf{Architetture Simulate:}
-Il sistema ha generato 10 configurazioni architetturali rappresentative:
-\begin{enumerate}
-    \item Legacy monolitica (rappresenta 31\% del mercato)
-    \item Legacy con DR passivo (22\%)
-    \item Hybrid con backup cloud (18\%)
-    \item Cloud-first con edge limitato (12\%)
-    \item Multi-cloud base (8\%)
-    \item Cloud-native completo (5\%)
-    \item Edge-cloud optimized [PROPOSTA] (target)
-    \item Multi-cloud resilient [PROPOSTA] (target)
-    \item Zero-trust integrated [PROPOSTA] (target)
-    \item Full GIST framework [PROPOSTA] (target)
-\end{enumerate}
+% \textbf{Architetture Simulate:}
+% Il sistema ha generato 10 configurazioni architetturali rappresentative:
+% \begin{enumerate}
+%     \item Legacy monolitica (rappresenta 31\% del mercato)
+%     \item Legacy con DR passivo (22\%)
+%     \item Hybrid con backup cloud (18\%)
+%     \item Cloud-first con edge limitato (12\%)
+%     \item Multi-cloud base (8\%)
+%     \item Cloud-native completo (5\%)
+%     \item Edge-cloud optimized [PROPOSTA] (target)
+%     \item Multi-cloud resilient [PROPOSTA] (target)
+%     \item Zero-trust integrated [PROPOSTA] (target)
+%     \item Full GIST framework [PROPOSTA] (target)
+% \end{enumerate}
 
-Per ciascuna architettura, il sistema ha generato:
-\begin{itemize}
-    \item 10.000 iterazioni Monte Carlo
-    \item 3 scenari operativi (normale, picco, guasto)
-    \item 720 ore simulate per iterazione (30 giorni)
-    \item Totale: 216.000 ore simulate per architettura
-\end{itemize}
+% Per ciascuna architettura, il sistema ha generato:
+% \begin{itemize}
+%     \item 10.000 iterazioni Monte Carlo
+%     \item 3 scenari operativi (normale, picco, guasto)
+%     \item 720 ore simulate per iterazione (30 giorni)
+%     \item Totale: 216.000 ore simulate per architettura
+% \end{itemize}
 
-Il sistema ha generato oltre 400.000 record per la validazione, 
-con test statistici che confermano la rappresentatività dei dati 
-(tasso di successo validazione: 83.3\%). I pattern temporali, 
-la distribuzione degli eventi e l'autocorrelazione corrispondono 
-ai valori attesi per sistemi \gls{gdo} reali.\\
-La Figura~\ref{fig:digital_twin_architecture} illustra l'architettura 
-complessiva del Digital Twin, evidenziando il flusso dai parametri reali 
-italiani attraverso il motore di simulazione fino alla validazione statistica. 
-La Figura~\ref{fig:digital_twin_output} mostra l'output effettivo di 
-un'esecuzione del sistema.
-Il fallimento del test di Benford's Law \footnote{Legge statistica che predice 
-la distribuzione non uniforme delle cifre iniziali nei dataset naturali, con 
-prevalenza del digit 1 ($\thicksim 30\%$) rispetto agli altri.} per le transazioni è atteso nei 
-dati sintetici e non compromette la validità, in quanto i pattern temporali e comportamentali sono correttamente replicati come dimostrato dagli altri test statistici.
+% Il sistema ha generato oltre 400.000 record per la validazione, 
+% con test statistici che confermano la rappresentatività dei dati 
+% (tasso di successo validazione: 83.3\%). I pattern temporali, 
+% la distribuzione degli eventi e l'autocorrelazione corrispondono 
+% ai valori attesi per sistemi \gls{gdo} reali.\\
+% La Figura~\ref{fig:digital_twin_architecture} illustra l'architettura 
+% complessiva del Digital Twin, evidenziando il flusso dai parametri reali 
+% italiani attraverso il motore di simulazione fino alla validazione statistica. 
+% La Figura~\ref{fig:digital_twin_output} mostra l'output effettivo di 
+% un'esecuzione del sistema.
+% Il fallimento del test di Benford's Law \footnote{Legge statistica che predice 
+% la distribuzione non uniforme delle cifre iniziali nei dataset naturali, con 
+% prevalenza del digit 1 ($\thicksim 30\%$) rispetto agli altri.} per le transazioni è atteso nei 
+% dati sintetici e non compromette la validità, in quanto i pattern temporali e comportamentali sono correttamente replicati come dimostrato dagli altri test statistici.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.1\textwidth]{thesis_figures/cap2/digital_twin_architecture.pdf}
-\caption{Architettura del Digital Twin \gls{gdo}. Il framework integra parametri 
-reali da fonti italiane (ISTAT, Banca d'Italia, ENISA) per generare dataset 
-sintetici statisticamente rappresentativi attraverso simulazioni Monte Carlo. 
-Il feedback loop dalla validazione permette il raffinamento continuo dei parametri.}
-\label{fig:digital_twin_architecture}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=1.1\textwidth]{thesis_figures/cap2/digital_twin_architecture.pdf}
+% \caption{Architettura del Digital Twin \gls{gdo}. Il framework integra parametri 
+% reali da fonti italiane (ISTAT, Banca d'Italia, ENISA) per generare dataset 
+% sintetici statisticamente rappresentativi attraverso simulazioni Monte Carlo. 
+% Il feedback loop dalla validazione permette il raffinamento continuo dei parametri.}
+% \label{fig:digital_twin_architecture}
+% \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.1\textwidth]{thesis_figures/cap2/gdo-twin-screen.pdf}
-\caption{Output di esecuzione del Digital Twin \gls{gdo}. Il sistema genera 
-215.458 transazioni e 187.500 eventi di sicurezza con validazione 
-statistica integrata. Tasso di successo validazione: 83.3\% 
-(5/6 test Transactions, 5/6 test Security).}
-\label{fig:digital_twin_output}
-\end{figure}
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=1.1\textwidth]{thesis_figures/cap2/gdo-twin-screen.pdf}
+% \caption{Output di esecuzione del Digital Twin \gls{gdo}. Il sistema genera 
+% 215.458 transazioni e 187.500 eventi di sicurezza con validazione 
+% statistica integrata. Tasso di successo validazione: 83.3\% 
+% (5/6 test Transactions, 5/6 test Security).}
+% \label{fig:digital_twin_output}
+% \end{figure}
 
 
-\begin{table}[H]
-\centering
-\caption{Validazione statistica del Digital Twin \gls{gdo}}
-\label{tab:dt_validation}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Test Statistico} & \textbf{Transactions} & \textbf{Security Events} \\
-\midrule
-Benford's Law & \xmark {} (p=0.000) & N/A \\
-Temporal Distribution & \cmark {} (realistic) & \cmark {} (Poisson $\lambda=7812.5$) \\
-Weekend Effect & \cmark {} (ratio=1.00) & N/A \\
-Incident Rate & N/A & \cmark {} (13.05\%) \\
-Autocorrelation & \cmark {} (0.828) & \cmark {} (-0.031) \\
-Data Completeness & \cmark {} (0\% missing) & \cmark {} (37.5\% missing) \\
-\midrule
-\textbf{Success Rate} & 83.3\% & 83.3\% \\
-\bottomrule
-\end{tabular}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \caption{Validazione statistica del Digital Twin \gls{gdo}}
+% \label{tab:dt_validation}
+% \begin{tabular}{lcc}
+% \toprule
+% \textbf{Test Statistico} & \textbf{Transactions} & \textbf{Security Events} \\
+% \midrule
+% Benford's Law & \xmark {} (p=0.000) & N/A \\
+% Temporal Distribution & \cmark {} (realistic) & \cmark {} (Poisson $\lambda=7812.5$) \\
+% Weekend Effect & \cmark {} (ratio=1.00) & N/A \\
+% Incident Rate & N/A & \cmark {} (13.05\%) \\
+% Autocorrelation & \cmark {} (0.828) & \cmark {} (-0.031) \\
+% Data Completeness & \cmark {} (0\% missing) & \cmark {} (37.5\% missing) \\
+% \midrule
+% \textbf{Success Rate} & 83.3\% & 83.3\% \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
 
 \section{\texorpdfstring{Caratterizzazione della Superficie di Attacco nella \gls{gdo}}{2.2 - Caratterizzazione della Superficie di Attacco nella GDO}}
 
@@ -495,17 +495,7 @@ La violazione di anche una sola dimensione compromette l'intero sistema, conferm
 
 \begin{figure}[htbp]
 \centering
-\fbox{\parbox{0.95\textwidth}{
-\centering
-\textbf{[FIGURA: Mappa Mentale Database Supermercato]}\\[0.5em]
-Inserire qui la mappa mentale del database che mostra:
-\begin{itemize}
-\item Al centro: "Database Supermercato"
-\item Rami principali: Vendite, Ordini, Assortimento, Utenze, Dispersioni
-\item Sotto-rami: attributi e relazioni di ciascuna entità
-\item Colori: rosso per elementi critici sicurezza, giallo per compliance, verde per operativi
-\end{itemize}
-}}
+\includegraphics[width=\textwidth]{thesis_figures/cap2/DatabaseSupermercato.pdf}
 \caption{Mappa mentale della struttura del database \gls{gdo}. I colori indicano la criticità dal punto di vista della sicurezza: rosso per componenti ad alto rischio (dati carte, credenziali), giallo per componenti soggetti a normative (fatture, dati personali), verde per componenti operativi standard.}
 \label{fig:database_mindmap}
 \end{figure}
@@ -540,42 +530,6 @@ L'analisi delle performance condotta da Palo Alto Networks\autocite{paloalto2024
 
 La soluzione proposta implementa un sistema di cache distribuita delle decisioni di autorizzazione con validità temporale limitata (TTL di 300 secondi), riducendo l'overhead medio a 4ms mantenendo un livello di sicurezza accettabile.
 
-\subsubsection{\texorpdfstring{Gestione delle Identità Eterogenee}{2.4.1.2 - Gestione delle Identità Eterogenee}}
-
-Un punto vendita tipico deve gestire simultaneamente:
-\begin{itemize}
-    \item 23.4 dipendenti fissi (turnover annuo del 45\%)
-    \item 8.7 lavoratori temporanei (durata media contratto: 3 mesi)
-    \item 4.2 fornitori esterni con accessi periodici
-    \item 67.3 dispositivi \gls{iot} e sistemi automatizzati
-    \item 12.1 applicazioni con identità di servizio
-\end{itemize}
-
-
-
-Il modello di gestione delle identità sviluppato implementa un sistema gerarchico a quattro livelli:
-
-\begin{itemize}
-    \item \textbf{Identità Primarie}: Dipendenti fissi con autenticazione forte multi-fattore
-    \item \textbf{Identità Temporanee}: Lavoratori stagionali con privilegi limitati temporalmente
-    \item \textbf{Identità Federate}: Fornitori autenticati attraverso i loro IdP aziendali
-    \item \textbf{Identità di Servizio}: Sistemi e applicazioni con certificati X.509
-\end{itemize}
-
-La complessità computazionale della gestione cresce come $O(n \log n)$ dove $n$ è il numero totale di identità, risultando gestibile anche per organizzazioni con oltre 10.000 identità attive.
-
-\subsubsection{\texorpdfstring{Continuità Operativa in Modalità Degradata}{2.4.1.3 - Continuità Operativa in Modalità Degradata}}
-
-Il requisito di operatività continua entra potenzialmente in conflitto con i principi \gls{zerotrust}. Durante un'interruzione della connettività (frequenza media: 2.3 volte/mese per 47 minuti secondo i nostri rilevamenti), i punti vendita devono poter continuare a operare. 
-
-La soluzione implementa un meccanismo di "degradazione controllata" con tre livelli:
-\begin{itemize}
-    \item \textbf{Livello Verde} (connettività piena): \gls{zerotrust} completo
-    \item \textbf{Livello Giallo} (connettività intermittente): Cache locale con TTL esteso a 3600 secondi
-    \item \textbf{Livello Rosso} (offline): Modalità sopravvivenza con log differito per audit successivo
-\end{itemize}
-
-Le simulazioni mostrano che questo approccio mantiene il 94\% delle funzionalità operative anche in modalità completamente offline, con una riduzione del rischio di sicurezza contenuta al 18\%.
 
 \subsection{\texorpdfstring{Framework di Implementazione \gls{zerotrust} per la \gls{gdo}}{2.4.2 - Framework di Implementazione Zero Trust per la GDO}}
 
@@ -619,13 +573,13 @@ La rete di ogni punto vendita viene suddivisa dinamicamente in micro-perimetri l
     \item \textbf{Contesto temporale}: Configurazioni diverse per apertura/chiusura/inventario
 \end{itemize}
 
-L'implementazione utilizza Software-Defined Networking (SDN) con controller OpenDaylight per orchestrare dinamicamente le policy. L'algoritmo di segmentazione adattiva opera come segue:
+% L'implementazione utilizza Software-Defined Networking (SDN) con controller OpenDaylight per orchestrare dinamicamente le policy. L'algoritmo di segmentazione adattiva opera come segue:
 
-\begin{equation}
-Policy(t) = BasePolicy \cup ContextPolicy(t) \cup ThreatPolicy(RiskScore(t))
-\end{equation}
+% \begin{equation}
+% Policy(t) = BasePolicy \cup ContextPolicy(t) \\ \cup ThreatPolicy(RiskScore(t))
+% \end{equation}
 
-dove $BasePolicy$ rappresenta le regole fondamentali sempre attive, $ContextPolicy(t)$ le regole dipendenti dal contesto temporale, e $ThreatPolicy$ le regole attivate in base al livello di minaccia rilevato.
+% dove $BasePolicy$ rappresenta le regole fondamentali sempre attive, $ContextPolicy(t)$ le regole dipendenti dal contesto temporale, e $ThreatPolicy$ le regole attivate in base al livello di minaccia rilevato.
 
 I risultati delle simulazioni su topologie reali mostrano:
 \begin{itemize}
@@ -681,31 +635,31 @@ dove $w_i$ sono i pesi calibrati attraverso machine learning e $Indicator_i(t)$ 
 
 Quando il $RiskScore$ supera soglie predefinite (0.3 per warning, 0.6 per alert, 0.8 per blocco), il sistema attiva automaticamente contromisure proporzionate.
 
-\subsubsection{\texorpdfstring{Crittografia Pervasiva Resistente al Calcolo Quantistico}{2.4.2.4 - Crittografia Pervasiva Resistente al Calcolo Quantistico}}
+% \subsubsection{\texorpdfstring{Crittografia Pervasiva Resistente al Calcolo Quantistico}{2.4.2.4 - Crittografia Pervasiva Resistente al Calcolo Quantistico}}
 
-L'implementazione della crittografia segue un approccio stratificato per bilanciare sicurezza e performance:
+% L'implementazione della crittografia segue un approccio stratificato per bilanciare sicurezza e performance:
 
-- \textbf{Livello di trasporto}: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
-- \textbf{Livello di archiviazione}: AES-256-XTS per dati a riposo con key derivation PBKDF2
-- \textbf{Preparazione post-quantistica}: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
+% - \textbf{Livello di trasporto}: TLS 1.3 con suite di cifratura AEAD (AES-256-GCM)
+% - \textbf{Livello di archiviazione}: AES-256-XTS per dati a riposo con key derivation PBKDF2
+% - \textbf{Preparazione post-quantistica}: Implementazione sperimentale di CRYSTALS-Kyber per scambi chiave critici
 
-L'overhead computazionale, misurato su hardware tipico dei \gls{pos} (processori ARM Cortex-A53), risulta:
-- Incremento utilizzo CPU: 7.3\% (da 23\% a 30.3\% medio)
-- Incremento latenza transazioni: 2.1ms (trascurabile per l'esperienza utente)
-- Consumo energetico aggiuntivo: 4.2W (gestibile con alimentatori standard)
+% L'overhead computazionale, misurato su hardware tipico dei \gls{pos} (processori ARM Cortex-A53), risulta:
+% - Incremento utilizzo CPU: 7.3\% (da 23\% a 30.3\% medio)
+% - Incremento latenza transazioni: 2.1ms (trascurabile per l'esperienza utente)
+% - Consumo energetico aggiuntivo: 4.2W (gestibile con alimentatori standard)
 
-\subsubsection{\texorpdfstring{Motore di Policy Centralizzato con Applicazione Distribuita}{2.4.2.5 - Motore di Policy Centralizzato con Applicazione Distribuita}}
+% \subsubsection{\texorpdfstring{Motore di Policy Centralizzato con Applicazione Distribuita}{2.4.2.5 - Motore di Policy Centralizzato con Applicazione Distribuita}}
 
-L'architettura implementa un modello di governance delle policy che bilancia controllo centralizzato e resilienza distribuita:
+% L'architettura implementa un modello di governance delle policy che bilancia controllo centralizzato e resilienza distribuita:
 
-% \begin{figure}[htbp]
-% \centering
-% \includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_3_policy_architecture.pdf}
-% \caption{Architettura del Policy Engine Distribuito. Il diagramma mostra il flusso di propagazione delle policy dal repository centrale verso i punti di applicazione locali, con meccanismi di cache e failover per garantire operatività anche in caso di disconnessione.}
-% \label{fig:policy_architecture}
-% \end{figure}
+% % \begin{figure}[htbp]
+% % \centering
+% % \includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_3_policy_architecture.pdf}
+% % \caption{Architettura del Policy Engine Distribuito. Il diagramma mostra il flusso di propagazione delle policy dal repository centrale verso i punti di applicazione locali, con meccanismi di cache e failover per garantire operatività anche in caso di disconnessione.}
+% % \label{fig:policy_architecture}
+% % \end{figure}
 
-Le policy sono definite utilizzando il linguaggio XACML 3.0, memorizzate in un repository Git centralizzato con versionamento, e distribuite attraverso un meccanismo di pubblicazione-sottoscrizione basato su Apache Kafka. Ogni punto vendita mantiene una cache locale con capacità di operare autonomamente per 72 ore.
+% Le policy sono definite utilizzando il linguaggio XACML 3.0, memorizzate in un repository Git centralizzato con versionamento, e distribuite attraverso un meccanismo di pubblicazione-sottoscrizione basato su Apache Kafka. Ogni punto vendita mantiene una cache locale con capacità di operare autonomamente per 72 ore.
 
 
 \section{\texorpdfstring{L'Algoritmo ASSA-GDO: Quantificazione della Superficie di Attacco}{2.4 - L'Algoritmo ASSA-GDO: Quantificazione della Superficie di Attacco}}
@@ -727,7 +681,7 @@ dove:
     \item $V_i$: vulnerabilità normalizzata del nodo $i$ (CVSS/10)
     \item $E_i$: esposizione del nodo (0-1)
     \item $P_{ij}$: probabilità di propagazione dal nodo $i$ al nodo $j$
-    \item $\alpha = 0.73$: fattore di amplificazione calibrato empiricamente
+    \item $\alpha = 0.73$: fattore di amplificazione calibrato empiricamente, rappresenta l'effetto moltiplicativo delle vulnerabilità connesse
     \item $OF$: fattore organizzativo (turnover, formazione, processi)
     \item $N(i)$: insieme dei nodi vicini a $i$
 \end{itemize}
@@ -846,7 +800,7 @@ Le architetture \gls{zerotrust} dimostrano miglioramenti drammatici nelle metric
 \textbf{Metrica} & \textbf{Pre-ZT} & \textbf{Post-ZT} & \textbf{Riduzione} & \textbf{IC 95\%} & \textbf{Effect Size} \\
 \midrule
 MTTD (ore) & 127 & 24 & -81.1\% & [79.2\%, 83.0\%] & d=2.34 \\
-\gls{mttr} (ore) & 43 & 8 & -81.4\% & [79.8\%, 83.0\%] & d=2.41 \\
+MTTR (ore) & 43 & 8 & -81.4\% & [79.8\%, 83.0\%] & d=2.41 \\
 MTTRC (ore) & 72 & 18 & -75.0\% & [72.3\%, 77.7\%] & d=1.98 \\
 \bottomrule
 \end{tabular}
@@ -854,23 +808,23 @@ MTTRC (ore) & 72 & 18 & -75.0\% & [72.3\%, 77.7\%] & d=1.98 \\
 
 L'analisi causale attraverso grafi aciclici diretti (DAG) mostra che il 73\% del miglioramento nel MTTD è attribuibile direttamente al monitoraggio continuo, mentre il 27\% deriva dall'effetto indiretto attraverso la riduzione dei falsi positivi.
 
-\subsubsection{\texorpdfstring{Analisi del Ritorno sull'Investimento}{2.5.2.3 - Analisi del Ritorno sull'Investimento}}
+% \subsubsection{\texorpdfstring{Analisi del Ritorno sull'Investimento}{2.5.2.3 - Analisi del Ritorno sull'Investimento}}
 
-L'analisi economica, condotta utilizzando il metodo del Valore Attuale Netto (VAN) con tasso di sconto del 8\% annuo, fornisce metriche di ritorno sull'investimento robuste:
+% L'analisi economica, condotta utilizzando il metodo del Valore Attuale Netto (VAN) con tasso di sconto del 8\% annuo, fornisce metriche di ritorno sull'investimento robuste:
 
-\begin{equation}
-ROI = \frac{\sum_{t=1}^{24} \frac{Benefici_t - Costi_t}{(1+r)^t}}{\sum_{t=0}^{6} \frac{Investimento_t}{(1+r)^t}} \times 100\%
-\end{equation}
+% \begin{equation}
+% ROI = \frac{\sum_{t=1}^{24} \frac{Benefici_t - Costi_t}{(1+r)^t}}{\sum_{t=0}^{6} \frac{Investimento_t}{(1+r)^t}} \times 100\%
+% \end{equation}
 
-Il \gls{roi} cumulativo a 24 mesi risulta del 287\% (IC 95\%: 267\%-307\%), rappresentando il potenziale teorico in condizioni ottimali, con la seguente decomposizione temporale:
-\begin{itemize}
-    \item Mesi 1-6: \gls{roi} = -15\% (fase di investimento)
-    \item Mesi 7-12: \gls{roi} = 47\% (break-even raggiunto al mese 9)
-    \item Mesi 13-18: \gls{roi} = 156\% (accelerazione dei benefici)
-    \item Mesi 19-24: \gls{roi} = 287\% (regime stazionario)
+% Il \gls{roi} cumulativo a 24 mesi risulta del 287\% (IC 95\%: 267\%-307\%), rappresentando il potenziale teorico in condizioni ottimali, con la seguente decomposizione temporale:
+% \begin{itemize}
+%     \item Mesi 1-6: \gls{roi} = -15\% (fase di investimento)
+%     \item Mesi 7-12: \gls{roi} = 47\% (break-even raggiunto al mese 9)
+%     \item Mesi 13-18: \gls{roi} = 156\% (accelerazione dei benefici)
+%     \item Mesi 19-24: \gls{roi} = 287\% (regime stazionario)
 
-\end{itemize}
-L'analisi di sensibilità mostra che il \gls{roi} rimane positivo anche negli scenari pessimistici (5° percentile: \gls{roi} = 127\%).
+% \end{itemize}
+% L'analisi di sensibilità mostra che il \gls{roi} rimane positivo anche negli scenari pessimistici (5° percentile: \gls{roi} = 127\%).
 
 % \section{\texorpdfstring{Roadmap Implementativa e Prioritizzazione}{2.6 - Roadmap Implementativa e Prioritizzazione}}
 
@@ -1022,45 +976,45 @@ Il prossimo capitolo tradurrà questi principi in scelte architetturali concrete
 
 La validazione quantitativa dell'ipotesi H2 presentata in questo capitolo costituisce la base empirica su cui costruire le architetture innovative che verranno proposte nei capitoli successivi, dimostrando che sicurezza e innovazione non sono in conflitto ma possono rafforzarsi reciprocamente quando progettate con approccio sistemico e rigoroso.
 
-\begin{tcolorbox}[
-    colback=green!5!white,
-    colframe=green!65!black,
-    title={\textbf{Innovation Box 2.3:} Sistema di Risk Scoring Adattivo Real-Time},
-    fonttitle=\bfseries,
-    boxrule=1.5pt,
-    arc=2mm
-]
-\textbf{Innovazione}: Primo sistema di scoring che integra 17 indicatori con pesi adattivi \gls{ml}-based
+% \begin{tcolorbox}[
+%     colback=green!5!white,
+%     colframe=green!65!black,
+%     title={\textbf{Innovation Box 2.3:} Sistema di Risk Scoring Adattivo Real-Time},
+%     fonttitle=\bfseries,
+%     boxrule=1.5pt,
+%     arc=2mm
+% ]
+% \textbf{Innovazione}: Primo sistema di scoring che integra 17 indicatori con pesi adattivi \gls{ml}-based
 
-\vspace{0.3cm}
-\textbf{Formula del Risk Score Dinamico}:
-\begin{equation*}
-RiskScore(t) = \sigma\left(\sum_{i=1}^{17} w_i(t) \cdot \phi_i(x_t)\right)
-\end{equation*}
+% \vspace{0.3cm}
+% \textbf{Formula del Risk Score Dinamico}:
+% \begin{equation*}
+% RiskScore(t) = \sigma\left(\sum_{i=1}^{17} w_i(t) \cdot \phi_i(x_t)\right)
+% \end{equation*}
 
-dove $w_i(t)$ sono pesi appresi via gradient boosting, $\phi_i$ sono feature transforms
+% dove $w_i(t)$ sono pesi appresi via gradient boosting, $\phi_i$ sono feature transforms
 
-\vspace{0.3cm}
-\textbf{Indicatori Principali e Pesi Medi}:
-\begin{center}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Indicatore} & \textbf{Peso} & \textbf{Contributo} \\
-\midrule
-Anomalia comportamentale & 0.25 & 31.2\% \\
-CVE score dispositivo & 0.20 & 24.8\% \\
-Pattern traffico anomalo & 0.15 & 18.6\% \\
-Contesto spazio-temporale & 0.10 & 12.4\% \\
-Altri 13 indicatori & 0.30 & 13.0\% \\
-\bottomrule
-\end{tabular}
-\end{center}
+% \vspace{0.3cm}
+% \textbf{Indicatori Principali e Pesi Medi}:
+% \begin{center}
+% \begin{tabular}{lcc}
+% \toprule
+% \textbf{Indicatore} & \textbf{Peso} & \textbf{Contributo} \\
+% \midrule
+% Anomalia comportamentale & 0.25 & 31.2\% \\
+% CVE score dispositivo & 0.20 & 24.8\% \\
+% Pattern traffico anomalo & 0.15 & 18.6\% \\
+% Contesto spazio-temporale & 0.10 & 12.4\% \\
+% Altri 13 indicatori & 0.30 & 13.0\% \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
 
-\vspace{0.3cm}
-\textbf{Performance}: Precision 0.94, Recall 0.87, F1-Score 0.90 su 47K eventi
+% \vspace{0.3cm}
+% \textbf{Performance}: Precision 0.94, Recall 0.87, F1-Score 0.90 su 47K eventi
 
-\textit{Implementazione completa XGBoost: Appendice C.3}
-\end{tcolorbox}
+% \textit{Implementazione completa XGBoost: Appendice C.3}
+% \end{tcolorbox}
 
 \subsection*{Disponibilità dei Dati e del Codice}
 
@@ -1087,7 +1041,7 @@ Questo capitolo presenta un'analisi teorica robusta con le seguenti limitazioni:
 
 Nonostante queste limitazioni, l'approccio fornisce insight validi 
 grazie alla triangolazione di fonti autorevoli multiple e alla 
-validazione sistematica attraverso il Digital Twin."
+validazione sistematica attraverso il Digital Twin.
 
 \clearpage
 \printbibliography[

@@ -3,7 +3,7 @@
 \label{cap3_infrastructure_evolution}
 \section{ Introduzione e Framework Teorico}
 L'analisi del threat landscape (Capitolo 2) ha evidenziato come il 78\% degli attacchi alla GDO sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza approfondire \autocite{Anderson2024patel}. Questo dato empirico impone un'analisi sistematica dell'evoluzione infrastrutturale come presupposto indispensabile per una sicurezza efficace.
-Il presente capitolo affronta tale evoluzione attraverso un framework analitico multi-livello che fornisce le evidenze quantitative per la validazione delle ipotesi di ricerca, con particolare focus su \textbf{H1 (SLA ≥99.95\% con riduzione TCO >30\%)} e fornendo supporto critico per \textbf{H2} e\textbf{ H3.}\cite{IDC2024}
+Il presente capitolo affronta tale evoluzione attraverso un framework analitico multi-livello che fornisce le evidenze quantitative per la validazione delle ipotesi di ricerca, con particolare focus su \textbf{H1 (SLA ≥99.95\% con riduzione TCO >30\%)} e fornendo supporto critico per \textbf{H2} e\textbf{ H3.}\autocite{IDC2024}
 L'evoluzione infrastrutturale può essere concettualizzata attraverso una funzione di transizione che modella lo stato di un sistema nel tempo:
 \begin{equation}
 E(t) = \alpha \cdot I(t-1) + \beta \cdot T(t) + \gamma \cdot C(t) + \delta \cdot R(t) + \varepsilon
@@ -22,41 +22,30 @@ L'affidabilità dei sistemi di alimentazione è modellabile matematicamente. L'a
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{thesis_figures/cap3/figura_3_1_power_availability.pdf}
-\caption{[FIGURA 3.1: Correlazione tra Configurazione Power e Availability Sistemica - Curve di affidabilità per configurazioni N+1, 2N e 2N+1 con intervalli di confidenza]}
+\caption[Correlazione tra Configurazione Power e Availability Sistemica]{Correlazione tra Configurazione Power e Availability Sistemica - Curve di affidabilità per configurazioni N+1, 2N e 2N+1 con intervalli di confidenza}
 \label{fig:power_availability}
 \end{figure}
 
 % Inserimento Tabella Comparativa
 \begin{table}[htbp]
 \centering
-\caption{Analisi Comparativa delle Configurazioni di Ridondanza Power}
-\label{tab:power_redundancy_comparison}
-
-\begin{tabular}{lcccccc}
+\caption{Analisi comparativa delle configurazioni di ridondanza: il trade-off tra affidabilità e costo}
+\label{tab:power_configurations}
+\begin{tabular}{lccccc}
 \toprule
-\textbf{Configurazione} & \textbf{MTBF} & \textbf{Availability} & \textbf{Costo} & \textbf{PUE} & \textbf{Payback} & \textbf{Raccomandazione} \\
- & \textbf{(ore)} & \textbf{(\%)} & \textbf{Relativo} & \textbf{Tipico} & \textbf{(mesi)} & \\
+\textbf{Configurazione} & \textbf{MTBF} & \textbf{Disponibilità} & \textbf{Costo} & \textbf{PUE} & \textbf{Payback} \\
+ & (ore) & (\%) & (relativo) & tipico & (mesi) \\
 \midrule
-N+1 & 52.560 & 99.82 & 100 & 1.82 & -- & Minimo per\\
- & (±3.840) & (±0.12) & (baseline) & (±0.12) & & ambienti critici\\
-\midrule
-2N & 175.200 & 99.94 & 143 & 1.65 & 28 & Standard per\\
- & (±12.100) & (±0.04) & (±8) & (±0.09) & (±4) & GDO moderna\\
-\midrule
-2N+1 & 350.400 & 99.97 & 186 & 1.58 & 42 & Solo per\\
- & (±24.300) & (±0.02) & (±12) & (±0.07) & (±6) & ultra-critical\\
-\midrule
-N+1 con ML* & 69.141 & 99.88 & 112 & 1.40 & 14 & Best practice\\
- & (±4.820) & (±0.08) & (±5) & (±0.08) & (±2) & costo-efficacia\\
+N+1 & 52.560 & 99.82 & 100 & 1.82 & -- \\
+ & (±3.840) & (±0.12) & (baseline) & (±0.12) & \\
+2N & 175.200 & 99.94 & 143 & 1.65 & 28 \\
+ & (±12.100) & (±0.04) & (±8) & (±0.09) & (±4) \\
+2N+1 & 350.400 & 99.97 & 186 & 1.58 & 42 \\
+ & (±24.300) & (±0.02) & (±12) & (±0.07) & (±6) \\
+N+1 con ML & 69.141 & 99.88 & 112 & 1.40 & 14 \\
+ & (±4.820) & (±0.08) & (±5) & (±0.08) & (±2) \\
 \bottomrule
 \end{tabular}
-\vspace{0.2cm}
-\begin{flushleft}
-\footnotesize
-*N+1 con Machine Learning predittivo per manutenzione preventiva\\
-IC 95\% mostrati tra parentesi\\
-Fonte: Aggregazione dati da 23 implementazioni GDO (2020-2024)
-\end{flushleft}
 \end{table}
 (Qui inserire la Figura 3.1 e la Tabella 3.1 dalla versione Finale. Sono eccellenti nel visualizzare il trade-off tra costo, ridondanza e availability, supportando l'analisi quantitativa).
 
@@ -194,7 +183,7 @@ La migrazione al cloud è una decisione economica complessa.\autocite{KhajehHoss
     \item \textbf{Replatforming:} Costo intermedio (€24.7k/app), benefici maggiori (riduzione OPEX 41.3\%).
     \item \textbf{Refactoring (Cloud-Native):} Alto costo iniziale (€87.3k/app), massimi benefici a lungo termine (riduzione OPEX 58.9\%).
 \end{itemize}
-La simulazione Monte Carlo mostra che \textbf{una strategia ibrida} e ottimizzata massimizza il Net Present Value (NPV), raggiungendo una riduzione del TCO a 5 anni del \textbf{38.2\%} \autocite{McKinsey2024cloud}. Questo risultato valida pienamente la componente economica dell'\textbf{ipotesi H1}.
+La simulazione Monte Carlo mostra che \textbf{una strategia ibrida} e ottimizzata massimizza il Net Present Value (NPV), raggiungendo una riduzione del TCO a 5 anni del \textbf{38.2\%} \autocite{mckinsey2024cloud}. Questo risultato valida pienamente la componente economica dell'\textbf{ipotesi H1}.
 
 \begin{figure}[htbp]
 \centering
@@ -372,9 +361,9 @@ L'evoluzione infrastrutturale qui analizzata non è fine a sé stessa, ma crea l
 \label{fig:framework_gist}
 \end{figure}
 
-(Qui inserire la Figura 3.9 (Framework GIST) dalla versione Finale, che funge da perfetto "ponte" visivo verso il capitolo successivo).
 
-FINE RISTRUTTURAZIONE CAP 3
+
+
 
 \clearpage
 \printbibliography[

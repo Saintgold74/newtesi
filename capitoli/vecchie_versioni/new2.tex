@@ -12,7 +12,7 @@ L'analisi si basa sull'aggregazione di dati da molteplici fonti, tra cui 1.847 i
 \section{Caratterizzazione della Superficie di Attacco nella GDO}
 
 \subsection{Modellazione della Vulnerabilità Distribuita}
-La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare. Ogni punto vendita non è un'estensione, ma un perimetro di sicurezza a sé stante, interconnesso con centinaia di altri. La ricerca di Chen e Zhang\autocite{chen2024graph} ha formalizzato questa amplificazione con un modello matematico:
+La natura intrinsecamente distribuita della GDO amplifica la superficie di attacco in modo non lineare. Ogni punto vendita non è un'estensione, ma un perimetro di sicurezza a sé stante, interconnesso con centinaia di altri. La ricerca di \textbf{Chen e Zhang}\autocite{chen2024graph} ha formalizzato questa amplificazione con un modello matematico:
 \begin{equation}
 SAD=N\times(C+A+Au)
 \end{equation}
@@ -43,7 +43,11 @@ L'analisi del fattore umano rivela un'amplificazione strutturale del rischio. Il
 \caption{Distribuzione delle tipologie di attacco nel settore GDO (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il ransomware, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
 \label{fig:attack_types}
 \end{figure}
-I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come $FV=TE−TC$ \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni di \textbf{SecureRetail Labs} mostrano un valore medio di $FV=127ms$ \autocite{SecureRetailLabs2024}, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
+I sistemi POS sono il target primario. Durante il processo di pagamento, i dati della carta esistono in chiaro nella memoria del terminale per una breve \textbf{"Finestra di Vulnerabilità" ($FV$)}, quantificabile come
+\begin{equation}
+FV=TE−TC
+\end{equation}
+ovvero \textit{(Tempo di Elaborazione - Tempo di Cifratura)} . Le misurazioni di \textbf{SecureRetail Labs} mostrano un valore medio di $FV=127ms$ \autocite{SecureRetailLabs2024}, durante i quali un malware può agire. Per una catena GDO tipica, si generano \textbf{500.000 finestre di vulnerabilità al giorno}, una ogni 115 millisecondi, rendendo l'automazione degli attacchi una necessità per i criminali .
 Un esempio paradigmatico dell'evoluzione delle tecniche è il malware \textbf{Prilex}. Invece di violare la crittografia, implementa una \textbf{"regressione forzata"}: simula un errore di lettura \textbf{NFC (Near Field Communication)}, forzando il cliente a inserire fisicamente la carta nel lettore chip, dove il malware cattura i dati con un tasso di successo del 94\% \autocite{kaspersky2024} .
 
 
@@ -111,14 +115,13 @@ Da questa analisi emergono quattro principi di progettazione architetturale per 
 
 Questi principi costituiscono il fondamento su cui si baserà l'analisi dell'evoluzione infrastrutturale nel Capitolo 3. Le scelte architetturali che verranno discusse non saranno valutate solo per performance e costo, ma anche e soprattutto per la loro capacità intrinseca di implementare questi principi di sicurezza, realizzando così la trasformazione digitale sicura della GDO.
 
-FINE RIORGANIZZAZIONE CAP 2
+
 \clearpage
 \printbibliography[
     heading=subbibliography, % Usa un titolo standard per bibliografie parziali
     title={Riferimenti Bibliografici del Capitolo 2}, % Titolo personalizzato
     %filter=cited % Assicura che vengano stampate solo le fonti citate
 ]
-
 \endrefsection
 
 

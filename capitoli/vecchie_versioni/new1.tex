@@ -18,14 +18,14 @@ Il settore sta attraversando una trasformazione profonda, guidata da tre forze c
 	\item La prima è \textbf{la trasformazione infrastrutturale}: il 67\% delle organizzazioni GDO europee ha iniziato processi di migrazione da data center tradizionali verso modelli cloud-ibridi\autocite{gartner2024cloud}, una transizione che richiede un ripensamento fondamentale dei modelli operativi e di sicurezza.
 	\item La seconda è \textbf{l'evoluzione delle minacce informatiche}: l'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\autocite{enisa2024retail}e l'emergere di attacchi cyber-fisici (es. compromissione di sistemi di refrigerazione \textbf{HVAC - Heating, Ventilation, and Air Conditioning)} impongono un radicale cambio di strategia difensiva. 
 	\item La terza forza è \textbf{la crescente complessità normativa}: l'entrata in vigore simultanea del \textbf{Payment Card Industry Data Security Standard (PCI-DSS) v4.0}, gli aggiornamenti del \textbf{General Data Protection Regulation (GDPR)} e l'implementazione della \textbf{Direttiva Network and Information Security 2 (NIS2)} creano un panorama che, se affrontato con metodi tradizionali, può costare fino al 2-3\% del fatturato \autocite{ponemon2024compliance}.
-	\item 
+	
 \end{itemize}
 \section{Problema di Ricerca e Gap Scientifico}
 
 L'analisi della letteratura scientifica e tecnica rivela una significativa disconnessione tra la ricerca accademica e le necessità pratiche del settore GDO. Questo gap rappresenta l'opportunità per un contributo originale e si manifesta in tre aree principali:
 \begin{itemize}
 \item \textbf{Mancanza di approcci olistici:} Gli studi esistenti tendono a trattare separatamente l'infrastruttura, la sicurezza cloud e la compliance normativa, ignorando le complesse interdipendenze sistemiche che caratterizzano gli ambienti reali della GDO.
-\item \textbf{Assenza di modelli economici validati:} La letteratura accademica manca di modelli di TCO (Total Cost of Ownership) e ROI (Return on Investment) specificamente calibrati per il settore retail e validati empiricamente, strumenti indispensabili per giustificare le decisioni architetturali al management.
+\item \textbf{Assenza di modelli economici validati:} La letteratura accademica manca di modelli di \textbf{\gls{tco}} e \textbf{\gls{roi}}  specificamente calibrati per il settore retail e validati empiricamente, strumenti indispensabili per giustificare le decisioni architetturali al management.
 \item \textbf{Limitata considerazione dei vincoli operativi: }Le ricerche su paradigmi come Zero Trust o cloud migration sono spesso sviluppate in contesti generici e non considerano vincoli critici della GDO quali la continuità H24, la gestione di personale con limitate competenze tecniche o la necessità di performance transazionali estreme.
 
 \end{itemize}
@@ -40,22 +40,42 @@ L'obiettivo generale di questa ricerca è sviluppare e validare un framework int
 Il framework GIST si propone di colmare il gap identificato nella letteratura, offrendo un modello teorico e pratico che integri le dimensioni di sicurezza, performance, compliance e sostenibilità economica in un'unica visione coerente.
 
 \subsection{Obiettivi Specifici e Misurabili}
-Per raggiungere l'obiettivo generale, la ricerca persegue quattro obiettivi specifici e misurabili:
-\begin{itemize}
-    \item \textbf{(OS1)} Analizzare l'evoluzione delle minacce e l'efficacia delle contromisure, mirando a documentare una riduzione degli incidenti superiore al 40\%.
-    \item \textbf{(OS2)} Modellare l'impatto delle architetture cloud-ibride su performance e costi, sviluppando un modello predittivo con un coefficiente di determinazione R2 superiore a 0.85.
-    \item \textbf{(OS3)} Quantificare i benefici di un approccio compliance-by-design, dimostrando una riduzione dei costi di conformità superiore al 30\%24.
-    \item \textbf{(OS4)} Sviluppare linee guida pratiche per la trasformazione, validate su casi reali per garantirne l'applicabilità ad almeno l'80\% delle organizzazioni target.
+Per raggiungere l'obiettivo generale, la ricerca persegue due obiettivi specifici interconnessi:
 
+\textbf{OS1: Progettare e Formalizzare il Framework Integrato \gls{gist}}
+
+Il primo obiettivo consiste nello sviluppo concettuale del framework \gls{gist} come modello olistico per le infrastrutture della \gls{gdo}. Questo include:
+\begin{itemize}
+\item Una tassonomia delle minacce specifiche per il settore, considerando anche i rischi cyber-fisici
+\item Pattern architetturali di riferimento per ambienti cloud-ibridi ottimizzati per i carichi di lavoro del retail
+\item Un modello di governance e conformità integrata basato sulla \textbf{Matrice di Integrazione Normativa (MIN)}
+\item Il risultato atteso è un framework teorico completo e documentato
+\end{itemize}
+
+\textbf{OS2: Sviluppare e Validare un Modello Quantitativo per l'Analisi del Rischio}
+
+Il secondo obiettivo è rendere operativo un elemento chiave del framework \gls{gist} attraverso:
+\begin{itemize}
+\item Implementazione dell'algoritmo \gls{assa-gdo} per la quantificazione della superficie di attacco
+\item Sviluppo del framework di simulazione Digital Twin GDO-Bench per scenari realistici
+\item Validazione dell'ipotesi che l'applicazione dei principi \gls{gist} riduca lo score di rischio ASSA di almeno il 35\%
 \end{itemize}
 \subsection{Contributi Originali Attesi}
 Il perseguimento di tali obiettivi porterà allo sviluppo di contributi originali sia per la teoria che per la pratica:
 \begin{enumerate}
-    \item \textbf{Framework GIST:} Un modello olistico e multi-livello per la valutazione e progettazione di infrastrutture sicure nella GDO26.
+    \item \textbf{Framework GIST:} Un modello olistico e multi-livello per la valutazione e progettazione di infrastrutture sicure nella GDO.
     \item \textbf{Modello Economico GDO-Cloud:} Un framework quantitativo per l'analisi di TCO e ROI, validato empiricamente e specifico per il settore.
     \item \textbf{Matrice di Integrazione Normativa:} Una mappatura sistematica delle sinergie tra PCI-DSS 4.0, GDPR e NIS2 per un'implementazione unificata.
     \item \textbf{Dataset Simulato Calibrato:} Una raccolta di metriche operative simulate basate su parametri realistici del settore GDO, che costituirà una base metodologica per future ricerche.
 \end{enumerate}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{thesis_figures/cap1/fig_1_1_gist_framework.pdf}
+\caption[Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della GDO.]{Il Framework GIST: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della GDO. Il framework evidenzia le interconnessioni sistemiche tra governance strategica (controllo e direzione), infrastruttura tecnologica (fondamenta operative), sicurezza (protezione e resilienza) e processi di trasformazione (evoluzione continua). Le frecce bidirezionali rappresentano i flussi di informazione e controllo, mentre le connessioni tratteggiate indicano le interdipendenze operative tra le componenti.}
+\label{fig:gist_framework}
+\end{figure}
 
 
 
@@ -88,12 +108,11 @@ La tesi si articola in cinque capitoli che guidano il lettore dalla definizione 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
-\caption{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema (Capitolo 1) attraverso l'analisi delle componenti specifiche (Capitoli 2-4) fino alla sintesi e validazione del framework completo (Capitolo 5). Le frecce indicano le dipendenze principali, mentre le linee tratteggiate rappresentano le interconnessioni tematiche. Le ipotesi di ricerca (H1, H2, H3) sono mappate ai capitoli dove vengono primariamente validate.}
+\caption[Struttura della tesi e interdipendenze tra capitoli.]{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema (Capitolo 1) attraverso l'analisi delle componenti specifiche (Capitoli 2-4) fino alla sintesi e validazione del framework completo (Capitolo 5). Le frecce indicano le dipendenze principali, mentre le linee tratteggiate rappresentano le interconnessioni tematiche. Le ipotesi di ricerca (H1, H2, H3) sono mappate ai capitoli dove vengono primariamente validate.}
 \label{fig:thesis_structure}
 \end{figure}
 
 
-FINE DELLA RIVISITAZIONE PRIMO CAPITOLO 
 \clearpage
 \printbibliography[
     heading=subbibliography, % Usa un titolo standard per bibliografie parziali
