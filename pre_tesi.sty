@@ -52,9 +52,9 @@
 % ===== BIBLATEX - CONFIGURAZIONE AVANZATA =====
 \usepackage[
     backend=biber,              % Backend moderno
-    style=verbose,           % Note abbreviate (autore, anno)
-    citestyle=authoryear-comp,  % Citazioni compatte
-    bibstyle=authoryear,        % Bibliografia autore-anno
+    style=authortitle,          % Stile autore-titolo per citazioni essenziali
+    citestyle=authortitle,      % Citazioni con autore e titolo
+    bibstyle=authoryear,        % Bibliografia in stile autore-anno
     sorting=nyt,                % Ordinamento nome-anno-titolo
     %refsection=chapter,         % Bibliografia per capitolo (disabilitato)
     maxbibnames=99,             % Mostra tutti gli autori
@@ -86,9 +86,9 @@
 \DeclareFieldFormat[book,thesis,report]{title}{\emph{#1}}
 \DeclareFieldFormat[article]{title}{«#1»}
 
-% Formato pagine
-\DeclareFieldFormat{pages}{pp\adddot\space#1}
-\DeclareFieldFormat{page}{p\adddot\space#1}
+% Formato pagine secondo regolamento Cusano
+\DeclareFieldFormat{pages}{pagg\adddot\space#1}
+\DeclareFieldFormat{page}{pag\adddot\space#1}
 
 % Rimuovi "In:" prima del journal
 \renewbibmacro{in:}{%
@@ -102,9 +102,29 @@
 \DeclareFieldFormat{url}{\url{#1}}
 \DeclareFieldFormat{doi}{DOI\addcolon\space\url{https://doi.org/#1}}
 
-% ===== CONFIGURAZIONE NOTE A PIÈ PAGINA ABBREVIATE =====
+% ===== CONFIGURAZIONE CITAZIONI SECONDO REGOLAMENTO CUSANO =====
+% Formato richiesto: AUTORE (maiuscoletto), Titolo, Città, Editore, Anno, pagg. X-Y
+
+% Ridefinisce il formato delle citazioni per seguire il regolamento
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printnames{labelname}%
+   \setunit{\addcomma\space}%
+   \printfield[citetitle]{labeltitle}%
+   \setunit{\addcomma\space}%
+   \printlist{location}%
+   \setunit{\addcomma\space}%
+   \printlist{publisher}%
+   \setunit{\addcomma\space}%
+   \printfield{year}%
+   \setunit{\addcomma\space}%
+   \printfield{pages}}
+  {\addsemicolon\space}
+  {\usebibmacro{postnote}}
+
 % Le citazioni \autocite{} generano automaticamente note a piè di pagina
-% con formato (Autore Anno) grazie al style authoryear con autocite=footnote
+% con formato secondo regolamento Cusano
 
 % DOPO: csquotes (NECESSARIO per BibLaTeX)
 \usepackage{csquotes}  % ← IMPORTANTE!

@@ -1,0 +1,170 @@
+% Proposta di figura aggiuntiva per il Capitolo 1
+% Da inserire dopo la sezione 1.2.2 (L'emergere di nuove minacce)
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=2cm,
+    box/.style={rectangle, rounded corners, draw=black!70, fill=blue!10, 
+                minimum width=3cm, minimum height=1cm, text centered},
+    threat/.style={rectangle, rounded corners, draw=red!70, fill=red!10,
+                   minimum width=2.5cm, minimum height=0.8cm, text centered},
+    arrow/.style={->, >=stealth, thick},
+    doublearrow/.style={<->, >=stealth, thick}
+]
+
+% Nodo centrale
+\node[box, fill=green!20, minimum width=4cm, minimum height=1.5cm] (gdo) {\textbf{Sistema GDO}\\Punto Vendita};
+
+% Livelli di minacce (cerchi concentrici)
+\node[threat, above=2.5cm of gdo] (cyber) {Minacce\\Informatiche};
+\node[threat, below=2.5cm of gdo] (fisiche) {Minacce\\Fisiche};
+\node[threat, left=3cm of gdo] (supply) {Minacce\\Supply Chain};
+\node[threat, right=3cm of gdo] (insider) {Minacce\\Interne};
+
+% Collegamenti
+\draw[arrow, red!60] (cyber) -- node[right, font=\small] {Ransomware\\DDoS} (gdo);
+\draw[arrow, red!60] (fisiche) -- node[right, font=\small] {Sabotaggi\\Furti} (gdo);
+\draw[arrow, red!60] (supply) -- node[above, font=\small] {Fornitori\\compromessi} (gdo);
+\draw[arrow, red!60] (insider) -- node[above, font=\small] {Errori\\Frodi} (gdo);
+
+% Impatti
+\node[box, fill=orange!20, below right=1.5cm and 2cm of gdo, minimum width=3.5cm] (impatti) {
+    \textbf{Impatti}\\
+    \small
+    • Perdite economiche\\
+    • Danni reputazionali\\
+    • Interruzione servizio\\
+    • Sanzioni normative
+};
+
+\draw[arrow, orange!80, dashed] (gdo) -- (impatti);
+
+% Legenda temporale
+\node[below=4cm of gdo, text width=8cm, align=center] {
+    \textbf{Evoluzione temporale:}\\
+    \small 2019-2021: Focus su minacce cyber tradizionali\\
+    2022-2023: Aumento attacchi fisico-digitali integrati\\
+    2024-2025: Minacce sistemiche alla supply chain
+};
+
+\end{tikzpicture}
+\caption{Panorama integrato delle minacce alla GDO: convergenza tra domini fisici e digitali}
+\label{fig:panorama_minacce_integrato}
+\end{figure}
+
+% ============================================
+% Proposta di tabella aggiuntiva per la sezione 1.4
+% Confronto tra approcci tradizionali e framework GIST
+% ============================================
+
+\begin{table}[htbp]
+\centering
+\caption{Confronto tra approccio tradizionale e framework GIST}
+\label{tab:confronto_approcci}
+\begin{tabular}{|p{3.5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Dimensione} & \textbf{Approccio Tradizionale} & \textbf{Framework GIST} \\
+\hline
+\hline
+\textbf{Architettura} & 
+Sistemi monolitici centralizzati, singolo punto di controllo & 
+Architettura distribuita modulare, resilienza intrinseca \\
+\hline
+\textbf{Sicurezza} & 
+Perimetrale, focus su firewall e antivirus & 
+Zero-trust, sicurezza multilivello integrata \\
+\hline
+\textbf{Conformità} & 
+Gestione separata per normativa, ridondanza controlli & 
+Matrice unificata, 156 controlli integrati \\
+\hline
+\textbf{Gestione rischi} & 
+Valutazioni periodiche statiche (annuali/semestrali) & 
+Monitoraggio continuo con ML, previsione proattiva \\
+\hline
+\textbf{Costi IT} & 
+CAPEX elevato, ROI a 5-7 anni & 
+Modello OPEX, ROI in 18-24 mesi \\
+\hline
+\textbf{Agilità} & 
+Modifiche richiedono 6-12 mesi & 
+Deployment continuo, modifiche in giorni \\
+\hline
+\textbf{Competenze} & 
+Team IT generalista interno & 
+Modello ibrido con competenze specializzate \\
+\hline
+\textbf{Scalabilità} & 
+Verticale, costosa e complessa & 
+Orizzontale elastica, pay-per-use \\
+\hline
+\end{tabular}
+\end{table}
+
+% ============================================
+% Schema riassuntivo del Framework GIST
+% Da inserire nella sezione 1.3.1
+% ============================================
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    component/.style={rectangle, rounded corners=10pt, draw=blue!60, 
+                     fill=blue!20, minimum width=3.5cm, minimum height=2cm,
+                     text centered, font=\footnotesize},
+    core/.style={circle, draw=green!60, fill=green!20, minimum size=2.5cm,
+                 text centered, font=\small\bfseries},
+    tool/.style={rectangle, rounded corners=5pt, draw=gray!60, 
+                fill=gray!10, minimum width=2.5cm, minimum height=0.8cm,
+                text centered, font=\scriptsize},
+    flow/.style={->, >=stealth, thick, blue!60},
+    biflow/.style={<->, >=stealth, thick, green!60}
+]
+
+% Core centrale
+\node[core] (gist) at (0,0) {Framework\\GIST};
+
+% Quattro componenti principali
+\node[component] (security) at (-4,3) {\textbf{Sicurezza}\\Algoritmo ASSA\\Scoring rischio\\ML predittivo};
+\node[component] (arch) at (4,3) {\textbf{Architettura}\\Edge-Cloud\\Multi-Cloud\\Compliance-native};
+\node[component] (gov) at (-4,-3) {\textbf{Governance}\\Matrice MIN\\156 controlli\\Audit continuo};
+\node[component] (ops) at (4,-3) {\textbf{Operazioni}\\Digital Twin\\Simulazione\\KPI real-time};
+
+% Collegamenti
+\draw[biflow] (gist) -- (security);
+\draw[biflow] (gist) -- (arch);
+\draw[biflow] (gist) -- (gov);
+\draw[biflow] (gist) -- (ops);
+
+% Interconnessioni tra componenti
+\draw[flow, dashed, orange!60] (security) -- node[above, font=\scriptsize] {Requisiti} (arch);
+\draw[flow, dashed, orange!60] (arch) -- node[right, font=\scriptsize] {Metriche} (ops);
+\draw[flow, dashed, orange!60] (ops) -- node[below, font=\scriptsize] {Conformità} (gov);
+\draw[flow, dashed, orange!60] (gov) -- node[left, font=\scriptsize] {Policy} (security);
+
+% Strumenti di supporto
+\node[tool] at (-6,1) {Calcolatore GIST};
+\node[tool] at (6,1) {GDO-Bench Dataset};
+\node[tool] at (-6,-1) {Dashboard Monitor};
+\node[tool] at (6,-1) {Risk Scorer XGB};
+
+% Output
+\node[below=4.5cm of gist, text width=10cm, align=center] {
+    \colorbox{yellow!20}{
+    \parbox{9.5cm}{
+        \centering
+        \textbf{Output del Framework:}\\
+        \small
+        • Riduzione superficie attacco: -45\%\\
+        • Disponibilità sistema: 99,96\%\\
+        • Tempo conformità: -60\%\\
+        • ROI: 18-24 mesi
+    }
+    }
+};
+
+\end{tikzpicture}
+\caption{Architettura concettuale del Framework GIST con componenti principali e strumenti di supporto}
+\label{fig:gist_framework_overview}
+\end{figure}
