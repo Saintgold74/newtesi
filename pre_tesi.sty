@@ -11,8 +11,9 @@
     ItalicFont = {Arial Italic},
     BoldItalicFont = {Arial Bold Italic}
 ]
-\setlength{\headheight}{27.58636pt} % Correzione dell'altezza dell'intestazione
-\addtolength{\topmargin}{-12.58636pt} % Regolazione del margine superiore
+% Le seguenti righe vanno nel documento principale, non nel pacchetto
+% \setlength{\headheight}{27.58636pt} % Correzione dell'altezza dell'intestazione
+% \addtolength{\topmargin}{-12.58636pt} % Regolazione del margine superiore
 \newcommand{\checkmark}{\textcolor{green}{✓}}
 \newcommand{\crossmark}{\textcolor{red}{✗}}
 
@@ -171,14 +172,14 @@
 \usepackage{pdflscape}
 \usepackage[most]{tcolorbox}
 \usepackage{amsmath}
-\usepackage{hyperref}
 \usepackage{float}
 
 \usepackage{xcolor} % Per i colori
 \usepackage{standalone}
 \usepackage{stackengine}
 %\usepackage{csquotes} % Importante per BibLaTeX
-\usepackage{biblatex}
+% biblatex già caricato sopra, non ricaricare
+%\usepackage{biblatex}
 \usepackage{tocloft} % Per personalizzare l'indice
 % ===== CONFIGURAZIONE TITOLI CAPITOLI E SEZIONI =====
 \usepackage{titlesec}
@@ -455,7 +456,7 @@
   fonttitle=\bfseries,
   title={#2},
   boxrule=1.5pt,
-  arc=2mm
+  arc=2mm,
   #1
 }
 

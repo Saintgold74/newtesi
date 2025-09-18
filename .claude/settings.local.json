@@ -11,7 +11,12 @@
       "Bash(awk:*)",
       "Bash(dir:*)",
       "Bash(sed:*)",
-      "Bash(compila.bat)"
+      "Bash(compila.bat)",
+      "Bash(cmd /c:*)",
+      "Bash(./compila.bat)",
+      "Bash(powershell:*)",
+      "Bash(biber:*)",
+      "Bash(del:*)"
     ],
     "deny": [],
     "ask": []

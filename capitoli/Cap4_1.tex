@@ -23,14 +23,9 @@ Il settore della grande distribuzione organizzata si trova ad affrontare una com
 
 \begin{figure}[h]
 \centering
-% Placeholder per diagramma delle intersezioni normative
-\fbox{\parbox{0.8\textwidth}{
-\centering
-\vspace{2cm}
-[Figura 4.1: Diagramma di Venn mostrante le sovrapposizioni tra PCI-DSS 4.0, GDPR e NIS2]\\
-\small{Fonte: Analisi proprietaria basata su mappatura di 394 controlli comuni}
-\vspace{2cm}
-}}
+
+\includegraphics[width=0.9\textwidth]{thesis_figures/cap4/figura_4_1_venn_premium.pdf}
+
 \caption{Sovrapposizioni tra i principali standard normativi nel settore retail}
 \label{fig:normative_overlap}
 \end{figure}
@@ -119,16 +114,10 @@ L'implementazione pratica del modello richiede un'architettura tecnologica robus
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{0.9\textwidth}{
-\centering
-\vspace{3cm}
-[Figura 4.2: Architettura a tre livelli per il sistema di gestione della conformità integrata]\\
-\small{Livello 1: Raccolta dati e monitoraggio\\
+\includegraphics[width=0.8\textwidth]{thesis_figures/cap4/figura_4_2_architettura_premium.pdf}
+\caption[Architettura a tre livelli per il sistema di gestione della conformità integrata]{Architettura a tre livelli per il sistema di gestione della conformità integrata: Livello 1: Raccolta dati e monitoraggio\\
 Livello 2: Motore di analisi e correlazione\\
 Livello 3: Dashboard e reporting}
-\vspace{3cm}
-}}
-\caption{Architettura del sistema di conformità integrata}
 \label{fig:architettura_sistema}
 \end{figure}
 
@@ -267,14 +256,7 @@ L'implementazione automatizzata dei diritti degli interessati riduce i tempi di 
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{0.9\textwidth}{
-\centering
-\vspace{2.5cm}
-[Figura 4.3: Flusso di processo per la gestione delle richieste degli interessati]\\
-\small{1. Ricezione richiesta → 2. Verifica identità → 3. Identificazione dati →\\
-4. Esecuzione azione → 5. Notifica interessato → 6. Documentazione}
-\vspace{2.5cm}
-}}
+\includegraphics[width=0.8\textwidth]{thesis_figures/cap4/figura_4_3_processo_premium.pdf}
 \caption{Processo automatizzato per i diritti GDPR}
 \label{fig:processo_diritti}
 \end{figure}
@@ -486,14 +468,11 @@ Il Centro di Eccellenza per la Conformità (CEC) traduce la strategia in piani o
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{0.85\textwidth}{
-\centering
-\vspace{2.5cm}
-[Figura 4.4: Struttura organizzativa per la governance della conformità integrata]\\
-\small{Mostra i tre livelli (Strategico, Tattico, Operativo) e le loro interconnessioni}
-\vspace{2.5cm}
-}}
-\caption{Modello organizzativo per la conformità integrata}
+
+
+\includegraphics[width=1\textwidth]{thesis_figures/cap4/organigramma_moderno.pdf
+}
+\caption{Modello organizzativo per la conformità integrata che evidenzia i ruoli e le responsabilità a diversi livelli}
 \label{fig:org_structure}
 \end{figure}
 
@@ -759,16 +738,22 @@ L'esperienza di RetailCo fornisce insights preziosi per altre organizzazioni:
 \subsubsection{Sfide e Come Sono State Superate}
 
 \textbf{Resistenza al cambiamento}: 
-- **Sfida**: I team specializzati temevano la perdita di ruolo e competenze
-- **Soluzione**: Programma di riqualificazione e certificazione cross-standard per tutto il personale
+\begin{itemize}
+    \item Sfida: I team specializzati temevano la perdita di ruolo e competenze
+    \item Soluzione: Programma di riqualificazione e certificazione cross-standard per tutto il personale
+\end{itemize}
 
 \textbf{Complessità tecnica dell'integrazione}:
-- **Sfida**: Sistemi legacy incompatibili con le nuove piattaforme
-- **Soluzione**: Sviluppo di adapter custom e migrazione graduale
+\begin{itemize}
+    \item Sfida: Sistemi legacy incompatibili con le nuove piattaforme
+    \item Soluzione: Sviluppo di adapter custom e migrazione graduale
+\end{itemize}
 
 \textbf{Mantenimento della conformità durante la transizione}:
-- **Sfida**: Rischio di gap temporanei durante la migrazione
-- **Soluzione**: Approccio "blue-green" con sistemi paralleli fino a validazione completa
+\begin{itemize}
+    \item Sfida: Rischio di gap temporanei durante la migrazione
+    \item Soluzione: Approccio "blue-green" con sistemi paralleli fino a validazione completa
+\end{itemize}
 
 \section{Analisi dell'Attacco e Impatto della Non Conformità}
 \label{sec:4.8_analisi_attacco}
@@ -904,19 +889,15 @@ Le divisioni già migrate (60\% dell'infrastruttura) hanno dimostrato resilienza
 Abbiamo condotto una simulazione per stimare l'impatto se l'intera infrastruttura fosse stata conforme:
 
 \begin{figure}[h]
+
 \centering
-\fbox{\parbox{0.9\textwidth}{
-\centering
-\vspace{3cm}
-[Figura 4.5: Confronto scenario reale vs controfattuale con conformità completa]\\
-\small{Grafico a barre che mostra:\\
-- Tempo di detection: 15 giorni (reale) vs 6 ore (conforme)\\
+
+\includegraphics[width=0.8\textwidth]{thesis_figures/cap4/figura_4_5_controfattuale.pdf}
+
+\caption [Analisi controfattuale dell'impatto con conformità integrata completa]{Analisi controfattuale dell'impatto con conformità integrata completa:- Tempo di detection: 15 giorni (reale) vs 6 ore (conforme)\\
 - Sistemi compromessi: 2847 (reale) vs 12 (conforme)\\
 - Downtime: 5 giorni (reale) vs 4 ore (conforme)\\
 - Impatto economico: €8.7M (reale) vs €0.3M (conforme)}
-\vspace{3cm}
-}}
-\caption{Analisi controfattuale dell'impatto con conformità integrata completa}
 \label{fig:controfattuale}
 \end{figure}
 

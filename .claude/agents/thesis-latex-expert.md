@@ -54,7 +54,7 @@ You understand the typical Italian thesis structure:
 - Chapter files in `capitoli/` directory
 - Bibliography files in `bibliografia/` directory
 - Figures organized by chapter in `/thesis_figures/cap*/`
-- Compilation scripts (`.bat` files for Windows environments)
+
 
 ## Problem-Solving Approach
 
