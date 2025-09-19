@@ -1,11 +1,11 @@
-\chapter{Metodologia di Scoring GIST}
+\chapter{\texorpdfstring{Metodologia di Scoring GIST}{Appendice B - Metodologia di Scoring GIST}}
 \label{app:scoring}
 
-\section{Framework di Valutazione}
+\section{\texorpdfstring{Framework di Valutazione}{B.1 - Framework di Valutazione}}
 
 Il presente appendice dettaglia i criteri oggettivi e misurabili utilizzati per il calcolo del GIST Score. Ogni componente è valutata su scala 0-100 attraverso metriche quantificabili e verificabili, calibrate su 234 organizzazioni del settore GDO.
 
-\section{Formula di Calcolo}
+\section{\texorpdfstring{Formula di Calcolo}{B.2 - Formula di Calcolo}}
 
 Il GIST Score è definito attraverso due formulazioni complementari:
 
@@ -21,9 +21,9 @@ GIST_{prod}(\mathbf{S}) = \left(\prod_{i \in \{p,a,s,c\}} S_i^{w_i}\right) \cdot
 
 dove $\mathbf{w} = (0.18, 0.32, 0.28, 0.22)$ sono i pesi calibrati empiricamente e $\gamma = 0.95$ l'esponente di scala.
 
-\section{Rubrica di Valutazione}
+\section{\texorpdfstring{Rubrica di Valutazione}{B.3 - Rubrica di Valutazione}}
 
-\subsection{Componente Fisica (18\%)}
+\subsection{\texorpdfstring{Componente Fisica (18\%)}{B.3.1 - Componente Fisica (18\%)}}
 
 \begin{table}[H]
 \centering
@@ -43,7 +43,7 @@ Hardware & 20\% & Età media apparati (anni) & 3-5 \\
 \end{tabular}
 \end{table}
 
-\subsection{Componente Architetturale (32\%)}
+\subsection{\texorpdfstring{Componente Architetturale (32\%)}{B.3.2 - Componente Architetturale (32\%)}}
 
 \begin{table}[H]
 \centering
@@ -61,7 +61,7 @@ Resilienza & 15\% & RTO (ore) & 1-4 \\
 \end{tabular}
 \end{table}
 
-\subsection{Componente Sicurezza (28\%)}
+\subsection{\texorpdfstring{Componente Sicurezza (28\%)}{B.3.3 - Componente Sicurezza (28\%)}}
 
 \begin{table}[H]
 \centering
@@ -80,7 +80,7 @@ Incident Response & 15\% & MTTR risoluzione (ore) & 4-24 \\
 \end{tabular}
 \end{table}
 
-\subsection{Componente Conformità (22\%)}
+\subsection{\texorpdfstring{Componente Conformità (22\%)}{B.3.4 - Componente Conformità (22\%)}}
 
 \begin{table}[H]
 \centering
@@ -99,7 +99,7 @@ Training & 10\% & Staff certificato (\%) & 20-50\% \\
 \end{tabular}
 \end{table}
 
-\section{Livelli di Maturità}
+\section{\texorpdfstring{Livelli di Maturità}{B.4 - Livelli di Maturità}}
 
 Il GIST Score determina quattro livelli di maturità digitale:
 
@@ -118,7 +118,7 @@ Il GIST Score determina quattro livelli di maturità digitale:
 \end{tabular}
 \end{table}
 
-\section{Validazione Empirica}
+\section{\texorpdfstring{Validazione Empirica}{B.5 - Validazione Empirica}}
 
 La calibrazione dei pesi è stata effettuata attraverso:
 
@@ -130,7 +130,7 @@ La calibrazione dei pesi è stata effettuata attraverso:
 
 I pesi finali $(0.18, 0.32, 0.28, 0.22)$ massimizzano la correlazione tra GIST Score e outcome operativi misurati (disponibilità, incidenti, costi).
 
-\section{Metriche Derivate}
+\section{\texorpdfstring{Metriche Derivate}{B.6 - Metriche Derivate}}
 
 Il GIST Score permette di stimare metriche operative attraverso formule empiriche calibrate:
 
@@ -141,7 +141,7 @@ Il GIST Score permette di stimare metriche operative attraverso formule empirich
 \text{Incidents/year} &= 100 \times e^{-S_{\text{security}}/25}
 \end{align}
 
-\section{Applicazione Pratica}
+\section{\texorpdfstring{Applicazione Pratica}{B.7 - Applicazione Pratica}}
 
 Il framework prevede:
 

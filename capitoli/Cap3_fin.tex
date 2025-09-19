@@ -1,14 +1,14 @@
 %\refsection
-\chapter{Evoluzione dell'Infrastruttura: Dalle Fondamenta Fisiche al Cloud Intelligente}
+\chapter{\texorpdfstring{Evoluzione dell'Infrastruttura: Dalle Fondamenta Fisiche al Cloud Intelligente}{Capitolo 3 - Evoluzione dell'Infrastruttura: Dalle Fondamenta Fisiche al Cloud Intelligente}}
 \label{cap3_infrastructure_evolution}
 
-\section{Introduzione: Il Paradigma della Trasformazione Infrastrutturale}
+\section{\texorpdfstring{Introduzione: Il Paradigma della Trasformazione Infrastrutturale}{3.1 - Introduzione: Il Paradigma della Trasformazione Infrastrutturale}}
 
 L'analisi delle minacce condotta nel capitolo precedente ha rivelato un dato fondamentale: il 78\% degli attacchi informatici nel settore della Grande Distribuzione Organizzata sfrutta vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\autocite{Anderson2024patel}. Questo dato, verificato su 1.247 incidenti documentati nel database ENISA (Agenzia dell'Unione europea per la cibersicurezza) per il periodo 2020-2024\autocite{Verizon2024}, sottolinea come l'architettura infrastrutturale rappresenti la prima e più importante linea di difesa.
 
 Il presente capitolo analizza l'evoluzione dell'infrastruttura tecnologica attraverso un approccio multi-livello che fornisce le evidenze quantitative per validare le nostre ipotesi di ricerca. In particolare, dimostreremo come sia possibile raggiungere livelli di servizio superiori al 99,95\% riducendo contemporaneamente i costi complessivi di oltre il 30\% (\textbf{H1}), fornendo al contempo supporto critico per le ipotesi relative alla sicurezza (\textbf{H2}) e alla conformità normativa (\textbf{H3})\autocite{IDC2024}.
 
-\subsection{Un Modello per Comprendere l'Evoluzione}
+\subsection{\texorpdfstring{Un Modello per Comprendere l'Evoluzione}{3.1.1 - Un Modello per Comprendere l'Evoluzione}}
 
 Per comprendere come le organizzazioni evolvono la propria infrastruttura, abbiamo sviluppato un modello basato sulla teoria dei sistemi adattativi\autocite{Holland2024}. Questo modello considera quattro fattori principali che guidano il cambiamento:
 
@@ -21,9 +21,9 @@ Per comprendere come le organizzazioni evolvono la propria infrastruttura, abbia
 
 L'analisi empirica condotta su 47 organizzazioni europee del settore ha rivelato che l'eredità infrastrutturale esistente rappresenta il fattore più influente (42\% dell'impatto totale), seguita dalla pressione tecnologica (28\%), dai vincoli normativi (18\%) e dalle esigenze di resilienza (12\%)\autocite{Eurostat2024}. Questi dati confermano che la trasformazione infrastrutturale non può essere un processo rivoluzionario, ma deve necessariamente essere evolutivo e graduale.
 
-\section{Le Fondamenta Fisiche: Garanzia di Continuità Operativa}
+\section{\texorpdfstring{Le Fondamenta Fisiche: Garanzia di Continuità Operativa}{3.2 - Le Fondamenta Fisiche: Garanzia di Continuità Operativa}}
 
-\subsection{L'Importanza Critica dell'Alimentazione Elettrica}
+\subsection{\texorpdfstring{L'Importanza Critica dell'Alimentazione Elettrica}{3.2.1 - L'Importanza Critica dell'Alimentazione Elettrica}}
 
 Ogni architettura digitale, indipendentemente dalla sua sofisticazione, dipende fondamentalmente dall'affidabilità dell'alimentazione elettrica. L'analisi di 234 interruzioni di servizio documentate nel settore\autocite{Uptime2024} mostra che il 43\% delle indisponibilità superiori a 4 ore origina proprio da problemi elettrici, con costi che raggiungono i 127.000 euro per ogni ora di interruzione durante i periodi di picco commerciale.
 
@@ -38,13 +38,13 @@ Le organizzazioni più mature adottano invece una configurazione 2N, che duplica
 \label{fig:power_2n}
 \end{figure}
 
-\subsection{Raffreddamento e Gestione Termica}
+\subsection{\texorpdfstring{Raffreddamento e Gestione Termica}{3.2.2 - Raffreddamento e Gestione Termica}}
 
 Il controllo della temperatura rappresenta il secondo pilastro dell'infrastruttura fisica. I moderni data center consumano fino al 40\% dell'energia totale per il raffreddamento\autocite{ASHRAE2024}. Le tecnologie di raffreddamento sono evolute significativamente negli ultimi anni, passando da sistemi tradizionali a pavimento sopraelevato verso soluzioni più efficienti come il raffreddamento in-row e il contenimento dei corridoi.
 
 L'implementazione di corridoi caldi e freddi segregati, combinata con sistemi di raffreddamento modulare, può ridurre il consumo energetico del 35\% mantenendo temperature operative ottimali. Il monitoraggio granulare attraverso sensori distribuiti permette di identificare zone di inefficienza termica e ottimizzare dinamicamente i flussi d'aria.
 
-\subsection{Manutenzione Predittiva attraverso l'Intelligenza Artificiale}
+\subsection{\texorpdfstring{Manutenzione Predittiva attraverso l'Intelligenza Artificiale}{3.2.3 - Manutenzione Predittiva attraverso l'Intelligenza Artificiale}}
 
 Una delle innovazioni più significative introdotte nella gestione dell'infrastruttura fisica è l'utilizzo di algoritmi di apprendimento automatico per la manutenzione predittiva. Abbiamo sviluppato un sistema basato su reti neurali ricorrenti (LSTM - Long Short-Term Memory) che analizza i dati provenienti da sensori di temperatura, vibrazione, corrente e tensione per prevedere guasti con 72 ore di anticipo.
 
@@ -52,7 +52,7 @@ Il sistema raggiunge un'accuratezza del 94,3\% nella predizione dei guasti, ridu
 
 \begin{table}[htbp]
 \centering
-\Large
+
 \caption{Risultati della Manutenzione Predittiva con Intelligenza Artificiale}
 \label{tab:predictive_maintenance}
 \begin{tabular}{lcc}
@@ -68,9 +68,9 @@ Tempo recupero investimento & - & 8 mesi \\
 \end{tabular}
 \end{table}
 
-\section{L'Evoluzione verso il Software-Defined: Flessibilità e Agilità}
+\section{\texorpdfstring{L'Evoluzione verso il Software-Defined: Flessibilità e Agilità}{3.3 - L'Evoluzione verso il Software-Defined: Flessibilità e Agilità}}
 
-\subsection{La Rivoluzione delle Reti Software-Defined}
+\subsection{\texorpdfstring{La Rivoluzione delle Reti Software-Defined}{3.3.1 - La Rivoluzione delle Reti Software-Defined}}
 
 La transizione verso reti definite via software (SDN - Software-Defined Networking) rappresenta un cambio di paradigma fondamentale nella gestione dell'infrastruttura di rete. Invece di configurare manualmente ogni dispositivo di rete, le organizzazioni possono ora gestire l'intera infrastruttura attraverso politiche centralizzate e automatizzate.
 
@@ -85,15 +85,15 @@ L'implementazione pratica di SD-WAN (Software-Defined Wide Area Network) in 127 
     \item \textbf{Aumento della resilienza}: Failover automatico in meno di 3 secondi tra collegamenti primari e secondari
 \end{itemize}
 
-\subsection{Micro-segmentazione e Sicurezza Granulare}
+\subsection{\texorpdfstring{Micro-segmentazione e Sicurezza Granulare}{3.3.2 - Micro-segmentazione e Sicurezza Granulare}}
 
 La micro-segmentazione rappresenta l'evoluzione naturale del concetto di VLAN (Virtual Local Area Network), permettendo di creare zone di sicurezza a livello di singola applicazione o addirittura di singolo processo. Questo approccio limita drasticamente la superficie di attacco e contiene la propagazione laterale delle minacce.
 
 Attraverso l'implementazione di politiche di segmentazione basate sull'identità delle applicazioni piuttosto che sugli indirizzi IP, abbiamo ottenuto una riduzione del 73\% negli incidenti di sicurezza che coinvolgono movimenti laterali. Il sistema utilizza etichette dinamiche che seguono i carichi di lavoro anche quando migrano tra ambienti diversi, mantenendo consistenza nelle politiche di sicurezza.
 
-\section{Il Percorso verso il Cloud: Strategia e Implementazione}
+\section{\texorpdfstring{Il Percorso verso il Cloud: Strategia e Implementazione}{3.4 - Il Percorso verso il Cloud: Strategia e Implementazione}}
 
-\subsection{Modelli di Deployment e Criteri di Selezione}
+\subsection{\texorpdfstring{Modelli di Deployment e Criteri di Selezione}{3.4.1 - Modelli di Deployment e Criteri di Selezione}}
 
 La migrazione verso il cloud non è una decisione binaria ma richiede un'attenta valutazione di quale modello sia più appropriato per ciascun carico di lavoro. Abbiamo sviluppato una matrice decisionale che considera sei dimensioni principali:
 
@@ -111,7 +111,7 @@ L'applicazione sistematica di questa matrice a 234 applicazioni aziendali ha pro
 - 40\% migra verso cloud pubblico per elasticità e riduzione costi
 - 25\% adotta modello ibrido con componenti distribuite
 
-\subsection{Orchestrazione Multi-Cloud e Ottimizzazione dei Costi}
+\subsection{\texorpdfstring{Orchestrazione Multi-Cloud e Ottimizzazione dei Costi}{3.4.2 - Orchestrazione Multi-Cloud e Ottimizzazione dei Costi}}
 
 La gestione efficace di ambienti multi-cloud richiede strumenti di orchestrazione sofisticati. Abbiamo implementato un sistema basato su Kubernetes Federation che permette di gestire cluster distribuiti su AWS, Azure e Google Cloud Platform come un'unica entità logica.
 
@@ -133,9 +133,9 @@ I risultati dopo 12 mesi di operatività mostrano:
 - Miglioramento delle prestazioni del 23\% (misurato su latenza al 95° percentile)
 - Riduzione delle violazioni degli accordi sul livello di servizio del 67\%
 
-\section{Architettura Zero Trust: Ripensare la Sicurezza}
+\section{\texorpdfstring{Architettura Zero Trust: Ripensare la Sicurezza}{3.5 - Architettura Zero Trust: Ripensare la Sicurezza}}
 
-\subsection{Principi Fondamentali e Implementazione}
+\subsection{\texorpdfstring{Principi Fondamentali e Implementazione}{3.5.1 - Principi Fondamentali e Implementazione}}
 
 L'architettura Zero Trust rappresenta un cambio radicale nel paradigma di sicurezza: invece di fidarsi implicitamente di tutto ciò che si trova all'interno del perimetro aziendale, ogni richiesta viene verificata indipendentemente dalla sua origine. Questo approccio risulta particolarmente efficace nel contesto moderno dove il perimetro tradizionale è dissolto dal lavoro remoto e dall'utilizzo di servizi cloud.
 
@@ -153,13 +153,12 @@ I principi cardine implementati includono:
 - Crittografia end-to-end per tutti i dati in transito
 - Monitoraggio comportamentale continuo con analisi delle anomalie
 
-\subsection{Risultati Misurabili dell'Implementazione}
+\subsection{\texorpdfstring{Risultati Misurabili dell'Implementazione}{3.5.2 - Risultati Misurabili dell'Implementazione}}
 
 L'implementazione completa dell'architettura Zero Trust ha richiesto 18 mesi ma ha prodotto miglioramenti significativi nella postura di sicurezza:
 
 \begin{table}[htbp]
 \centering
-\Large
 \caption{Impatto dell'Architettura Zero Trust sulla Sicurezza}
 \label{tab:zerotrust_impact}
 \begin{tabular}{lcc}
@@ -177,9 +176,9 @@ Costo medio per incidente (€) & 127.000 & 23.000 \\
 
 La riduzione del 42,7\% nella superficie di attacco complessiva\autocite{Forrester2024zero} supera significativamente il target iniziale del 35\%, mantenendo al contempo latenze operative inferiori a 100 millisecondi per il 95° percentile delle transazioni.
 
-\section{Edge Computing: Portare l'Intelligenza alla Periferia}
+\section{\texorpdfstring{Edge Computing: Portare l'Intelligenza alla Periferia}{3.6 - Edge Computing: Portare l'Intelligenza alla Periferia}}
 
-\subsection{Motivazioni e Architettura}
+\subsection{\texorpdfstring{Motivazioni e Architettura}{3.6.1 - Motivazioni e Architettura}}
 
 L'edge computing risponde a tre esigenze fondamentali della Grande Distribuzione moderna:
 1. \textbf{Latenza ultra-bassa}: Applicazioni di realtà aumentata per shopping experience richiedono risposte <20ms
@@ -194,7 +193,7 @@ L'architettura implementata prevede tre livelli di edge:
 
 \textbf{Regional Edge}: Data center regionali che servono cluster di punti vendita, fornendo capacità computazionale per analisi più complesse mantenendo la latenza sotto i 10 millisecondi.
 
-\subsection{Casi d'Uso e Benefici Concreti}
+\subsection{\texorpdfstring{Casi d'Uso e Benefici Concreti}{3.6.2 - Casi d'Uso e Benefici Concreti}}
 
 L'implementazione dell'edge computing ha abilitato nuovi casi d'uso precedentemente impossibili:
 
@@ -208,9 +207,9 @@ L'implementazione dell'edge computing ha abilitato nuovi casi d'uso precedenteme
 
 \textbf{Personalizzazione dell'esperienza cliente}: Beacon e sensori di prossimità interagiscono con app mobile per offrire promozioni contestuali con latenza <50ms, aumentando il tasso di conversione del 23\%.
 
-\section{Automazione e Orchestrazione Intelligente}
+\section{\texorpdfstring{Automazione e Orchestrazione Intelligente}{3.7 - Automazione e Orchestrazione Intelligente}}
 
-\subsection{Infrastructure as Code: La Riproducibilità come Standard}
+\subsection{\texorpdfstring{Infrastructure as Code: La Riproducibilità come Standard}{3.7.1 - Infrastructure as Code: La Riproducibilità come Standard}}
 
 L'approccio Infrastructure as Code (IaC) trasforma l'infrastruttura da insieme di configurazioni manuali a codice versionato, testabile e riproducibile. Utilizzando strumenti come Terraform e Ansible, abbiamo codificato l'intera infrastruttura in moduli riutilizzabili.
 
@@ -220,7 +219,7 @@ I benefici tangibili includono:
 - \textbf{Audit trail completo}: Ogni modifica tracciata in Git con approvazioni e rollback immediato
 - \textbf{Riduzione errori}: Diminuzione del 89\% negli errori di configurazione
 
-\subsection{Orchestrazione Basata su Eventi}
+\subsection{\texorpdfstring{Orchestrazione Basata su Eventi}{3.7.2 - Orchestrazione Basata su Eventi}}
 
 L'implementazione di un'architettura event-driven permette all'infrastruttura di reagire automaticamente a cambiamenti e anomalie. Il sistema di orchestrazione risponde a oltre 1.200 tipi di eventi diversi, dalle metriche di performance agli allarmi di sicurezza.
 
@@ -230,9 +229,9 @@ Esempi concreti di automazione implementata:
 - Bilanciamento dinamico dei carichi tra regioni cloud basato su costi e latenza
 - Aggiornamento rolling di certificati di sicurezza senza downtime
 
-\section{Sintesi e Contributi Innovativi}
+\section{\texorpdfstring{Sintesi e Contributi Innovativi}{3.8 - Sintesi e Contributi Innovativi}}
 
-\subsection{Framework GIST: Una Roadmap per la Trasformazione}
+\subsection{\texorpdfstring{Framework GIST: Una Roadmap per la Trasformazione}{3.8.1 - Framework GIST: Una Roadmap per la Trasformazione}}
 
 Il principale contributo metodologico di questo capitolo è il framework GIST (Grande Distribuzione Infrastructure Security Transformation), una roadmap strutturata in cinque livelli che guida le organizzazioni attraverso la trasformazione infrastrutturale:
 
@@ -246,7 +245,7 @@ Il principale contributo metodologico di questo capitolo è il framework GIST (G
 
 Ogni livello include metriche di maturità validate, criteri di successo misurabili e dipendenze chiare con i livelli precedenti.
 
-\subsection{Risultati Quantitativi e Validazione delle Ipotesi}
+\subsection{\texorpdfstring{Risultati Quantitativi e Validazione delle Ipotesi}{3.8.2 - Risultati Quantitativi e Validazione delle Ipotesi}}
 
 L'implementazione completa dell'architettura descritta ha prodotto risultati che validano le ipotesi di ricerca:
 
@@ -265,7 +264,7 @@ L'implementazione completa dell'architettura descritta ha prodotto risultati che
 - Riduzione effort di audit: 27,3\%
 - Completezza audit trail: 99,7\%
 
-\subsection{Roadmap Implementativa}
+\subsection{\texorpdfstring{Roadmap Implementativa}{3.8.3 - Roadmap Implementativa}}
 
 Per le organizzazioni che intendono intraprendere questo percorso, proponiamo una roadmap in tre fasi:
 
@@ -284,7 +283,7 @@ Per le organizzazioni che intendono intraprendere questo percorso, proponiamo un
 - Zero Trust maturo con verifica continua
 - Edge deployment completo con intelligenza artificiale distribuita
 
-\section{Conclusioni e Prospettive Future}
+\section{\texorpdfstring{Conclusioni e Prospettive Future}{3.9 - Conclusioni e Prospettive Future}}
 
 Questo capitolo ha dimostrato come l'evoluzione infrastrutturale non sia semplicemente un aggiornamento tecnologico, ma una trasformazione strategica che abilita nuovi modelli di business e migliora radicalmente sicurezza e efficienza operativa.
 
@@ -303,6 +302,7 @@ Il prossimo capitolo approfondirà come queste fondamenta tecnologiche possano e
 \printbibliography[
     heading=subbibliography,
     title={Riferimenti Bibliografici del Capitolo 3},
+    segment=\therefsegment
 ]
 
 %\endrefsection

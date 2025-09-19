@@ -2,7 +2,7 @@
 \chapter{\texorpdfstring{Panorama delle Minacce e Sicurezza Distribuita nella Grande Distribuzione}{Capitolo 2 - Panorama delle Minacce e Sicurezza Distribuita nella Grande Distribuzione}}
 \label{cap2_minacce_sicurezza}
 
-\section{Introduzione e Obiettivi del Capitolo}
+\section{\texorpdfstring{Introduzione e Obiettivi del Capitolo}{2.1 - Introduzione e Obiettivi del Capitolo}}
 \label{sec:cap2_intro}
 
 La sicurezza informatica nella Grande Distribuzione Organizzata (GDO) presenta sfide uniche che richiedono un approccio specializzato. Il settore del commercio al dettaglio moderno si caratterizza per architetture distribuite che collegano centinaia di punti vendita, sistemi operativi attivi ventiquattro ore su ventiquattro e una convergenza crescente tra sistemi informatici tradizionali e sistemi di controllo operativo\footnote{I sistemi IT (Information Technology) gestiscono i dati aziendali, mentre i sistemi OT (Operational Technology) controllano dispositivi fisici come casse, sensori e impianti.}.
@@ -11,10 +11,10 @@ Questo capitolo analizza il panorama delle minacce specifiche del settore attrav
 
 La nostra analisi si basa su 1.847 incidenti documentati nel periodo 2020-2025\autocite{enisa2024threat,verizon2024} e sull'esame di 234 varianti di programmi malevoli specificamente progettati per i sistemi di vendita al dettaglio\autocite{groupib2024}. Attraverso modelli matematici basati sulla teoria dei grafi, identificheremo schemi ricorrenti e valuteremo quantitativamente l'efficacia delle contromisure proposte.
 
-\section{Caratterizzazione della Superficie di Attacco nella GDO}
+\section{\texorpdfstring{Caratterizzazione della Superficie di Attacco nella GDO}{2.2 - Caratterizzazione della Superficie di Attacco nella GDO}}
 \label{sec:cap2_superficie}
 
-\subsection{La Vulnerabilità dei Sistemi Distribuiti}
+\subsection{\texorpdfstring{La Vulnerabilità dei Sistemi Distribuiti}{2.2.1 - La Vulnerabilità dei Sistemi Distribuiti}}
 \label{subsec:vulnerabilita_distribuita}
 
 La natura distribuita della GDO amplifica le vulnerabilità in modo non lineare. Ogni punto vendita costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi. Secondo il modello matematico di Chen e Zhang\autocite{chen2024graph}, questa amplificazione può essere espressa come:
@@ -28,7 +28,7 @@ dove $SAD$ rappresenta la Superficie di Attacco Distribuita, $N$ il numero di pu
 
 Per una catena con 500 punti vendita interconnessi, la superficie di attacco risulta amplificata di un fattore 1,47 rispetto a un'architettura centralizzata equivalente. Questo dato, derivato dall'analisi di tre grandi catene europee, evidenzia come la distribuzione geografica non sia semplicemente una moltiplicazione lineare dei rischi.
 
-\subsection{Modello ASSA GDO: Un Contributo Originale per la Valutazione del Rischio}
+\subsection{\texorpdfstring{Modello ASSA GDO: Un Contributo Originale per la Valutazione del Rischio}{2.2.2 - Modello ASSA GDO: Un Contributo Originale per la Valutazione del Rischio}}
 \label{subsec:assa_gdo}
 
 Il modello generico di superficie di attacco, seppur valido, non cattura le peculiarità specifiche della Grande Distribuzione Organizzata. Per questo motivo, proponiamo un'estensione denominata **ASSA GDO** (Adjusted Security Surface Area per la GDO), che integra fattori specifici del settore retail.
@@ -78,7 +78,7 @@ L'applicazione del modello ASSA GDO rivela che la superficie di attacco reale ne
 
 Un aspetto particolarmente rilevante emerge durante i periodi di picco commerciale. Nel periodo natalizio (novembre-dicembre), il fattore $T_p$ può raggiungere 0,65, portando l'ASSA GDO fino a 4,2 volte il valore base per le catene premium. Questa amplificazione temporanea richiede strategie di mitigazione dinamiche che si adattino al contesto operativo.
 
-\subsection{Validazione del Modello ASSA GDO}
+\subsection{\texorpdfstring{Validazione del Modello ASSA GDO}{2.2.3 - Validazione del Modello ASSA GDO}}
 \label{subsec:validazione_assa}
 
 Per validare il modello proposto, abbiamo correlato i valori ASSA GDO calcolati con i dati storici di incidenti di 47 organizzazioni del settore nel periodo 2020-2024. La correlazione di Pearson tra ASSA GDO e frequenza di incidenti risulta r = 0,78 (p < 0,001), indicando una forte relazione positiva.
@@ -145,7 +145,7 @@ Enterprise & >500 & Molto Alta (0,8) & 1,68 & +68\% \\
 \label{fig:superficie_attacco}
 \end{figure}
 
-\subsection{Convergenza tra Sistemi Informatici e Operativi}
+\subsection{\texorpdfstring{Convergenza tra Sistemi Informatici e Operativi}{2.2.4 - Convergenza tra Sistemi Informatici e Operativi}}
 \label{subsec:convergenza_it_ot}
 
 La digitalizzazione del commercio al dettaglio ha portato a una convergenza tra i sistemi informatici tradizionali (IT) e i sistemi di controllo operativo (OT). Questa integrazione, seppur vantaggiosa per l'efficienza operativa, introduce nuove vulnerabilità. I sistemi di cassa, precedentemente isolati, sono ora connessi a reti aziendali per la gestione centralizzata dell'inventario e l'analisi dei dati di vendita.
@@ -159,10 +159,10 @@ L'analisi di 312 incidenti nel periodo 2023-2024 rivela che l'8\% ha coinvolto c
 \label{fig:convergenza_it_ot}
 \end{figure}
 
-\section{Tassonomia delle Minacce Specifiche del Settore}
+\section{\texorpdfstring{Tassonomia delle Minacce Specifiche del Settore}{2.3 - Tassonomia delle Minacce Specifiche del Settore}}
 \label{sec:cap2_tassonomia}
 
-\subsection{Classificazione delle Minacce per Vettore di Attacco}
+\subsection{\texorpdfstring{Classificazione delle Minacce per Vettore di Attacco}{2.3.1 - Classificazione delle Minacce per Vettore di Attacco}}
 \label{subsec:vettori_attacco}
 
 Le minacce alla GDO possono essere classificate secondo tre vettori principali, ciascuno con caratteristiche distintive che richiedono contromisure specifiche.
@@ -173,7 +173,7 @@ Il secondo vettore comprende i \textbf{programmi di cifratura per riscatto} (ran
 
 Il terzo vettore include gli \textbf{attacchi alla catena di approvvigionamento digitale}, che rappresentano il 18\% dei casi ma con impatto medio superiore del 240\% rispetto agli altri vettori. Questi attacchi sfruttano la fiducia implicita nei fornitori di software e servizi per infiltrarsi nei sistemi aziendali.
 
-\subsection{Evoluzione Temporale e Pattern di Attacco}
+\subsection{\texorpdfstring{Evoluzione Temporale e Pattern di Attacco}{2.3.2 - Evoluzione Temporale e Pattern di Attacco}}
 \label{subsec:evoluzione_temporale}
 
 L'analisi longitudinale dei dati ENISA\autocite{enisa2024threat} evidenzia un'evoluzione significativa nelle tattiche di attacco. Il periodo 2020-2022 è stato dominato da attacchi opportunistici a bassa sofisticazione, mentre dal 2023 si osserva un incremento del 156\% negli attacchi mirati e persistenti.
@@ -192,10 +192,10 @@ dove $P(t)$ rappresenta la probabilità di attacco al tempo $t$, $P_0$ la probab
 \label{fig:evoluzione_attacchi}
 \end{figure}
 
-\section{Quantificazione dell'Impatto Economico}
+\section{\texorpdfstring{Quantificazione dell'Impatto Economico}{2.4 - Quantificazione dell'Impatto Economico}}
 \label{sec:cap2_impatto}
 
-\subsection{Modello di Costo degli Incidenti}
+\subsection{\texorpdfstring{Modello di Costo degli Incidenti}{2.4.1 - Modello di Costo degli Incidenti}}
 \label{subsec:modello_costo}
 
 Il costo totale di un incidente di sicurezza nella GDO può essere modellato attraverso quattro componenti principali:
@@ -220,10 +220,10 @@ I costi di conformità ($C_{conformita}$) derivano dalle sanzioni amministrative
 \label{fig:costi_incidente}
 \end{figure}
 
-\section{Strategie di Mitigazione e Architetture Difensive}
+\section{\texorpdfstring{Strategie di Mitigazione e Architetture Difensive}{2.5 - Strategie di Mitigazione e Architetture Difensive}}
 \label{sec:cap2_mitigazione}
 
-\subsection{Il Paradigma della Fiducia Zero}
+\subsection{\texorpdfstring{Il Paradigma della Fiducia Zero}{2.5.1 - Il Paradigma della Fiducia Zero}}
 \label{subsec:fiducia_zero}
 
 Il modello tradizionale di sicurezza perimetrale, basato sulla distinzione tra rete "fidata" interna e rete "non fidata" esterna, risulta inadeguato per le architetture distribuite della GDO. Il paradigma della "fiducia zero" (Zero Trust) assume invece che nessun utente, dispositivo o rete sia intrinsecamente affidabile.
@@ -232,7 +232,7 @@ L'implementazione di questo approccio nella GDO richiede quattro elementi fondam
 
 Le simulazioni condotte su un modello rappresentativo di catena GDO con 250 punti vendita mostrano che l'implementazione completa di un'architettura a fiducia zero riduce la superficie di attacco del 42,7\% (intervallo di confidenza 95\%: 39,2\%-46,2\%), mantenendo latenze operative accettabili (sotto i 50 millisecondi per il 95° percentile delle transazioni).
 
-\subsection{Orchestrazione della Risposta agli Incidenti}
+\subsection{\texorpdfstring{Orchestrazione della Risposta agli Incidenti}{2.5.2 - Orchestrazione della Risposta agli Incidenti}}
 \label{subsec:risposta_incidenti}
 
 La velocità di risposta è cruciale nella mitigazione degli incidenti. L'analisi mostra che riducendo il tempo medio di rilevamento (MTTD - Mean Time To Detect) da 127 a 24 ore, si previene il 77\% della propagazione laterale degli attacchi.
@@ -246,17 +246,17 @@ Un sistema di orchestrazione efficace deve integrare tre livelli di risposta. A 
 \label{fig:orchestrazione}
 \end{figure}
 
-\section{Validazione Empirica e Risultati}
+\section{\texorpdfstring{Validazione Empirica e Risultati}{2.6 - Validazione Empirica e Risultati}}
 \label{sec:cap2_validazione}
 
-\subsection{Metodologia di Validazione}
+\subsection{\texorpdfstring{Metodologia di Validazione}{2.6.1 - Metodologia di Validazione}}
 \label{subsec:metodologia}
 
 Per validare le strategie proposte, abbiamo sviluppato un modello di simulazione calibrato su dati reali del settore italiano. Il modello incorpora parametri strutturali da 47 organizzazioni GDO, pattern di pagamento dalla Banca d'Italia (78\% transazioni elettroniche nel 2023) e metriche di sicurezza da 1.847 incidenti documentati.
 
 La simulazione ha generato 10 configurazioni architetturali rappresentative, dalla tradizionale monolitica (31\% del mercato) alle proposte innovative basate su fiducia zero. Per ciascuna configurazione sono state eseguite 10.000 iterazioni Monte Carlo, simulando 30 giorni di operatività per iterazione.
 
-\subsection{Risultati Principali}
+\subsection{\texorpdfstring{Risultati Principali}{2.6.2 - Risultati Principali}}
 \label{subsec:risultati}
 
 I risultati, tutti statisticamente significativi (p < 0,001), confermano l'efficacia delle strategie proposte:
@@ -267,7 +267,7 @@ La convergenza IT-OT introduce vulnerabilità emergenti, con l'8\% degli inciden
 
 L'analisi economica mostra un ritorno sull'investimento (ROI) potenziale del 287\% per l'implementazione completa delle strategie proposte. Applicando fattori di attrito realistici che considerano le difficoltà implementative, il ROI atteso si posiziona nell'intervallo 127\%-187\%, comunque ampiamente positivo.
 
-\section{Principi Emergenti per la Progettazione Sicura}
+\section{\texorpdfstring{Principi Emergenti per la Progettazione Sicura}{2.7 - Principi Emergenti per la Progettazione Sicura}}
 \label{sec:cap2_principi}
 
 Dall'analisi emergono quattro principi fondamentali che dovrebbero guidare l'evoluzione della sicurezza nella GDO.
@@ -280,7 +280,7 @@ Il terzo principio promuove la \textbf{sicurezza adattiva continua}. La sicurezz
 
 Il quarto principio enfatizza il \textbf{bilanciamento contestuale} tra sicurezza e operatività. Le misure di sicurezza devono adattarsi dinamicamente al contesto operativo, mantenendo la soddisfazione degli utenti sopra il livello 4/5 mentre incrementano la protezione del 41\%.
 
-\section{Conclusioni e Direzioni Future}
+\section{\texorpdfstring{Conclusioni e Direzioni Future}{2.8 - Conclusioni e Direzioni Future}}
 \label{sec:cap2_conclusioni}
 
 Questo capitolo ha analizzato il panorama delle minacce specifiche della Grande Distribuzione Organizzata, evidenziando come la natura distribuita e la convergenza IT-OT creino sfide uniche che richiedono approcci innovativi. 
@@ -303,4 +303,6 @@ Nonostante queste limitazioni, l'approccio fornisce indicazioni valide grazie al
 \printbibliography[
     heading=subbibliography,
     title={Riferimenti Bibliografici del Capitolo 2},
+    segment=\therefsegment
+]
 ]
