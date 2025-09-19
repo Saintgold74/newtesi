@@ -9,7 +9,7 @@ La sicurezza informatica nella Grande Distribuzione Organizzata richiede un'anal
 
 Questo capitolo analizza tale panorama attraverso una sintesi critica della letteratura scientifica e l'analisi quantitativa di dati aggregati provenienti da fonti istituzionali e di settore. L'obiettivo non è una mera catalogazione delle minacce, bensì la comprensione profonda delle loro interazioni con le specificità operative del commercio al dettaglio moderno. Da questa analisi deriveremo i principi fondanti per la progettazione di architetture difensive efficaci e valideremo quantitativamente l'ipotesi H2 relativa all'efficacia delle architetture a \gls{zerotrust} nel contesto \gls{gdo}.
 
-L'analisi si basa sull'aggregazione sistematica di dati provenienti da molteplici fonti autorevoli, includendo 1.847 incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\autocite{enisa2024threat,verizon2024}, l'analisi di 234 varianti uniche di \gls{malware} specificamente progettate per sistemi di punto vendita\autocite{groupib2024}, e report di settore provenienti da organizzazioni specializzate nella sicurezza del commercio al dettaglio. Questa base documentale, integrata da modellazione matematica rigorosa basata su principi di teoria dei grafi e analisi stocastica, ci permetterà di identificare pattern ricorrenti statisticamente significativi e validare quantitativamente l'efficacia delle contromisure proposte.
+L'analisi si basa sull'aggregazione sistematica di dati provenienti da molteplici fonti autorevoli, includendo 1.847 incidenti documentati dai Computer Emergency Response Team nazionali ed europei nel periodo 2020-2025\autocite{enisa2024threat,verizon2024}, l'analisi di 234 varianti uniche di \textbf{\gls{malware}} specificamente progettate per sistemi di punto vendita\autocite{groupib2024}, e report di settore provenienti da organizzazioni specializzate nella sicurezza del commercio al dettaglio. Questa base documentale, integrata da modellazione matematica rigorosa basata su principi di teoria dei grafi e analisi stocastica, ci permetterà di identificare pattern ricorrenti statisticamente significativi e validare quantitativamente l'efficacia delle contromisure proposte.
 
 
 % \subsection{\texorpdfstring{Framework di Validazione: Digital Twin GDO}{2.1.1 - Framework di Validazione: Digital Twin GDO}}
@@ -109,7 +109,7 @@ L'analisi si basa sull'aggregazione sistematica di dati provenienti da molteplic
 
 \subsection{\texorpdfstring{Modellazione della Vulnerabilità Distribuita}{2.2.1 - Modellazione della Vulnerabilità Distribuita}}
 
-La natura intrinsecamente distribuita della \gls{gdo} amplifica la \gls{attack-surface} in modo non lineare, seguendo principi di teoria delle reti complesse. Ogni punto vendita non rappresenta semplicemente un'estensione del perimetro aziendale, ma costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi attraverso collegamenti eterogenei. La ricerca di \textbf{Chen e Zhang}\autocite{chen2024graph} ha formalizzato questa amplificazione attraverso un modello matematico basato sulla teoria dei grafi:
+La natura intrinsecamente distribuita della \gls{gdo} amplifica la \textbf{\gls{attack-surface}} in modo non lineare, seguendo principi di teoria delle reti complesse. Ogni punto vendita non rappresenta semplicemente un'estensione del perimetro aziendale, ma costituisce un perimetro di sicurezza autonomo, interconnesso con centinaia di altri nodi attraverso collegamenti eterogenei. La ricerca di \textbf{Chen e Zhang}\autocite{chen2024graph} ha formalizzato questa amplificazione attraverso un modello matematico basato sulla teoria dei grafi:
 
 \begin{equation}
 SAD = N \times (C + A + Au)
@@ -183,7 +183,7 @@ L'analisi di correlazione di Pearson tra turnover e frequenza di incidenti, cond
 
 La formazione in sicurezza informatica risulta strutturalmente insufficiente: l'analisi dei piani formativi di 23 catene \gls{gdo} rivela una media di 3.2 ore annue dedicate alla sicurezza informatica, contro le 12.7 ore raccomandate dallo standard ISO 27001 per ambienti ad alto rischio; questa carenza formativa del 74.8\% si traduce in:
 \begin{itemize}
-    \item Incremento del 43\% negli incidenti di \gls{phishing} riusciti
+    \item Incremento del 43\% negli incidenti di \textbf{\gls{phishing}} riusciti
     \item Aumento del 67\% nelle violazioni di policy di sicurezza
     \item Crescita del 89\% negli errori di configurazione dei sistemi
 \end{itemize}
@@ -195,7 +195,7 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{thesis_figures/cap2/fig_2_1_cyber_evolution.pdf}
-\caption{Evoluzione degli attacchi cyber al settore retail (2020-2025). Il grafico mostra l'incremento esponenziale del 312\% nel periodo 2021-2023, con una correlazione diretta tra numero di incidenti e impatto economico. La proiezione per il 2025 (linea tratteggiata) indica una continuazione del trend crescente. Fonte: aggregazione dati CERT nazionali ed ENISA.}
+\caption[Evoluzione degli attacchi cyber al settore retail (2020-2025)]{Evoluzione degli attacchi cyber al settore retail (2020-2025). Il grafico mostra l'incremento esponenziale del 312\% nel periodo 2021-2023, con una correlazione diretta tra numero di incidenti e impatto economico. La proiezione per il 2025 (linea tratteggiata) indica una continuazione del trend crescente. Fonte: aggregazione dati CERT nazionali ed ENISA.}
 \label{fig:cyber_evolution}
 \end{figure}
 
@@ -204,7 +204,7 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_2_attack_types.pdf}
-\caption{Distribuzione delle tipologie di attacco nel settore \gls{gdo} (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il \gls{ransomware}, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
+\caption[Distribuzione delle tipologie di attacco nel settore GDO]{Distribuzione delle tipologie di attacco nel settore \gls{gdo} (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il \textbf{\gls{ransomware}}, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
 \label{fig:attack_types}
 \end{figure}
 
@@ -225,7 +225,7 @@ dove $TE$ rappresenta il Tempo di Elaborazione totale della transazione (dall'in
     \item $FV$ risultante: 127 millisecondi (IC 95\%: [115ms, 139ms])
 \end{itemize}
 
-Per una catena \gls{gdo} tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di \gls{memory-scraping} automatizzate per catturare i dati durante queste brevissime finestre temporali.
+Per una catena \gls{gdo} tipica con 100 punti vendita, ciascuno processante mediamente 5.000 transazioni giornaliere, si generano complessivamente 500.000 finestre di vulnerabilità al giorno, una ogni 172.8 millisecondi. Questa frequenza rende l'automazione degli attacchi non solo vantaggiosa ma necessaria per i criminali informatici, che utilizzano tecniche di \textbf{\gls{memory-scraping}} automatizzate per catturare i dati durante queste brevissime finestre temporali.
 
 \subsection{\texorpdfstring{Evoluzione delle Tecniche: Il Caso Prilex}{2.3.2 - Evoluzione delle Tecniche: Il Caso Prilex}}
 
@@ -241,7 +241,7 @@ Il funzionamento di Prilex può essere schematizzato in quattro fasi:
 
 L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo \textbf{EMV contactless}, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
 Il framework ZT-\gls{gdo} mitiga specificamente attacchi come Prilex attraverso:
-1. \gls{micro-segmentation} che isola i terminali \gls{pos}, limitando la propagazione 
+1. \textbf{\gls{micro-segmentation}} che isola i terminali \gls{pos}, limitando la propagazione 
    anche in caso di compromissione (riduzione del 87% nella propagazione laterale)
 2. Monitoraggio comportamentale che rileva anomalie nei pattern di fallback 
    (soglia di alert a 3 fallback consecutivi in 60 secondi)
@@ -359,7 +359,7 @@ Per comprendere concretamente le superfici di attacco e le vulnerabilità discus
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/supermark.png}
-\caption{Diagramma Entità-Relazione di un sistema informativo \gls{gdo} di medie dimensioni. Il modello gestisce l'intero ciclo operativo: dall'approvvigionamento (Bolle, Ordini) alla vendita (Scontrini, Transazioni), dalla gestione promozioni al controllo dispersioni. Ogni relazione rappresenta un potenziale vettore di attacco e ogni entità un target di valore per attaccanti con motivazioni diverse.}
+\caption[Diagramma Entità-Relazione di un sistema informativo GDO]{Diagramma Entità-Relazione di un sistema informativo \gls{gdo} di medie dimensioni. Il modello gestisce l'intero ciclo operativo: dall'approvvigionamento (Bolle, Ordini) alla vendita (Scontrini, Transazioni), dalla gestione promozioni al controllo dispersioni. Ogni relazione rappresenta un potenziale vettore di attacco e ogni entità un target di valore per attaccanti con motivazioni diverse.}
 \label{fig:database_er}
 \end{figure}
 
@@ -372,6 +372,7 @@ L'analisi di sicurezza del modello rivela come ogni componente presenti vulnerab
 \centering
 \caption{Matrice di Rischio delle Entità del Database \gls{gdo}}
 \label{tab:risk_matrix_database}
+\small
 \begin{tabularx}{\textwidth}{@{}lXcc@{}}
 \toprule
 \textbf{Entità} & \textbf{Vulnerabilità Principale} & \textbf{Impatto} & \textbf{ASSA Score}\\
@@ -440,6 +441,7 @@ Per il nostro modello:
 Il passaggio dal modello accademico alla realtà produttiva amplifica esponenzialmente le vulnerabilità:
 
 \begin{center}
+\small
 \begin{tabular}{lcc}
 \toprule
 \textbf{Parametro} & \textbf{Modello Accademico} & \textbf{Sistema Produttivo} \\
@@ -590,7 +592,7 @@ I risultati delle simulazioni su topologie reali mostrano:
 
 \subsubsection{\texorpdfstring{Sistema di Gestione delle Identità e degli Accessi Contestuale}{2.4.2.2 - Sistema di Gestione delle Identità e degli Accessi Contestuale}}
 
-Il sistema \gls{iam} implementa autenticazione multi-fattore adattiva che calibra dinamicamente i requisiti di sicurezza:
+Il sistema \textbf{\gls{iam}} implementa autenticazione multi-fattore adattiva che calibra dinamicamente i requisiti di sicurezza:
 
 \begin{table}[htbp]
 \centering
@@ -670,7 +672,7 @@ L'algoritmo ASSA-GDO (Attack Surface Score Aggregated per GDO) rappresenta un co
 
 \subsection{\texorpdfstring{Formulazione Matematica}{2.4.2 - Formulazione Matematica}}
 
-Dato un grafo $G = (V, E)$ rappresentante l'infrastruttura GDO, dove $V$ sono i nodi (POS, server, dispositivi IoT) e $E$ le connessioni, il punteggio ASSA è calcolato come:
+Dato un grafo $G = (V, E)$ rappresentante l'infrastruttura GDO, dove $V$ sono i nodi (\gls{pos}, server, dispositivi \gls{iot}) e $E$ le connessioni, il punteggio ASSA è calcolato come:
 
 \begin{equation}
 ASSA(G) = \sum_{i \in V} V_i \cdot E_i \cdot \prod_{j \in N(i)} (1 + \alpha \cdot P_{ij}) \cdot OF
@@ -697,6 +699,7 @@ L'implementazione completa dell'algoritmo (Appendice C.1) è stata validata su 4
 \centering
 \caption{Validazione ASSA-GDO su architetture reali}
 \label{tab:assa_validation}
+\small
 \begin{tabular}{lccc}
 \toprule
 \textbf{Architettura} & \textbf{ASSA Score} & \textbf{Incidenti/Anno} & \textbf{Correlazione} \\
@@ -771,6 +774,7 @@ L'implementazione completa del framework \gls{zerotrust} produce una riduzione m
 \centering
 \caption{Riduzione della superficie di attacco per componente con analisi di decomposizione}
 \label{tab:assa_reduction_detailed}
+\small
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Componente} & \textbf{Riduzione} & \textbf{IC 95\%} & \textbf{Contributo} & \textbf{p-value} \\
@@ -795,6 +799,7 @@ Le architetture \gls{zerotrust} dimostrano miglioramenti drammatici nelle metric
 \centering
 \caption{Confronto delle metriche temporali pre e post implementazione \gls{zerotrust}}
 \label{tab:temporal_metrics}
+\small
 \begin{tabular}{lccccc}
 \toprule
 \textbf{Metrica} & \textbf{Pre-ZT} & \textbf{Post-ZT} & \textbf{Riduzione} & \textbf{IC 95\%} & \textbf{Effect Size} \\
@@ -851,14 +856,14 @@ L'analisi causale attraverso grafi aciclici diretti (DAG) mostra che il 73\% del
 % \textbf{Mappatura della Conformità}
 % - Assessment dello stato corrente rispetto ai principi \gls{zerotrust}
 % - Identificazione dei gap critici e prioritizzazione degli interventi
-% - Definizione delle metriche di successo e \gls{kpi} di monitoraggio
+% - Definizione delle metriche di successo e \textbf{\gls{kpi}} di monitoraggio
 % - Riduzione dell'effort delle fasi successive del 43\%
 
 % \subsubsection{\texorpdfstring{Fase 2: Trasformazione del Nucleo (6-18 mesi)}{2.6.1.2 - Fase 2: Trasformazione del Nucleo (6-18 mesi)}}
 
 % La seconda fase implementa le componenti fondamentali dell'architettura:
 
-% \textbf{Deployment di Reti Software-Defined (\gls{sd-wan})}
+% \textbf{Deployment di Reti Software-Defined (\textbf{\gls{sd-wan}})}
 % - Migrazione progressiva dei collegamenti da MPLS a \gls{sd-wan} (25% al mese)
 % - Implementazione di policy di routing basate su applicazione e contesto
 % - Integrazione con sistemi di sicurezza per ispezione del traffico cifrato
@@ -882,10 +887,10 @@ L'analisi causale attraverso grafi aciclici diretti (DAG) mostra che il 73\% del
 % La fase finale ottimizza e automatizza l'architettura:
 
 % \textbf{Operazioni di Sicurezza Guidate dall'Intelligenza Artificiale}
-% - Implementazione piattaforma \gls{soar} con orchestrazione automatica
-% - Training di modelli \gls{ml} su dati storici per riduzione falsi positivi
+% - Implementazione piattaforma \textbf{\gls{soar}} con orchestrazione automatica
+% - Training di modelli \textbf{\gls{ml}} su dati storici per riduzione falsi positivi
 % - Automazione della risposta per scenari predefiniti
-% - Riduzione \gls{mttr}: -67\%; Riduzione falsi positivi: -78\%
+% - Riduzione \textbf{\gls{mttr}}: -67\%; Riduzione falsi positivi: -78\%
 
 % \textbf{Accesso di Rete \gls{zerotrust} Completo (ZTNA)}
 % - Eliminazione del concetto di perimetro di rete
@@ -930,7 +935,7 @@ L'analisi causale attraverso grafi aciclici diretti (DAG) mostra che il 73\% del
 
 \subsection{\texorpdfstring{Sintesi dei Risultati Chiave e Validazione delle Ipotesi}{2.7.1 - Sintesi dei Risultati Chiave e Validazione delle Ipotesi}}
 
-L'analisi quantitativa del \gls{threat-landscape} specifico per la \gls{gdo}, validata attraverso 10.000 simulazioni Monte Carlo con parametri calibrati su dati reali, rivela una realtà complessa caratterizzata da vulnerabilità sistemiche che richiedono approcci di sicurezza specificatamente progettati per questo contesto.
+L'analisi quantitativa del \textbf{\gls{threat-landscape}} specifico per la \gls{gdo}, validata attraverso 10.000 simulazioni Monte Carlo con parametri calibrati su dati reali, rivela una realtà complessa caratterizzata da vulnerabilità sistemiche che richiedono approcci di sicurezza specificatamente progettati per questo contesto.
 
 I risultati principali, tutti statisticamente significativi con p < 0.001, includono:
 
@@ -972,7 +977,7 @@ Il bilanciamento dinamico tra sicurezza e operatività basato sul contesto manti
 
 I principi di sicurezza identificati e validati in questo capitolo forniscono il framework concettuale indispensabile per le decisioni architetturali che verranno analizzate nel Capitolo 3. L'evoluzione verso architetture cloud-ibride non può prescindere dalla considerazione sistematica delle implicazioni di sicurezza: ogni scelta infrastrutturale deve essere valutata non solo in termini di performance e costo, ma soprattutto rispetto all'impatto sulla \gls{attack-surface} e sulla capacità di implementare controlli \gls{zerotrust} efficaci.
 
-Il prossimo capitolo tradurrà questi principi in scelte architetturali concrete, analizzando come l'evoluzione dalle infrastrutture fisiche tradizionali verso il paradigma cloud intelligente possa simultaneamente migliorare sicurezza, performance ed efficienza economica. L'integrazione sinergica tra i requisiti di sicurezza qui identificati e le capacità delle moderne architetture \gls{cloud-native} rappresenta l'elemento chiave per realizzare la trasformazione digitale sicura e sostenibile della \gls{gdo}.
+Il prossimo capitolo tradurrà questi principi in scelte architetturali concrete, analizzando come l'evoluzione dalle infrastrutture fisiche tradizionali verso il paradigma cloud intelligente possa simultaneamente migliorare sicurezza, performance ed efficienza economica. L'integrazione sinergica tra i requisiti di sicurezza qui identificati e le capacità delle moderne architetture \textbf{\gls{cloud-native}} rappresenta l'elemento chiave per realizzare la trasformazione digitale sicura e sostenibile della \gls{gdo}.
 
 La validazione quantitativa dell'ipotesi H2 presentata in questo capitolo costituisce la base empirica su cui costruire le architetture innovative che verranno proposte nei capitoli successivi, dimostrando che sicurezza e innovazione non sono in conflitto ma possono rafforzarsi reciprocamente quando progettate con approccio sistemico e rigoroso.
 

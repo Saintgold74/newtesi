@@ -50,7 +50,7 @@ The thesis uses a modular LaTeX architecture with `main.tex` as the master docum
 5. **Capitolo 5** (`capitoli/new5.tex`) - Synthesis and conclusions (following GIST framework)
 
 ### Figure Generation System
-- Python scripts in `figure/thesis_figures/` generate academic-quality plots
+- Python scripts in `thesis_figures/` generate academic-quality plots
 - Figures are organized by chapter (cap1/, cap2/, etc.)
 - Scripts use matplotlib with academic styling and LaTeX font integration
 - Generated figures are saved as both PDF and PNG formats
@@ -76,7 +76,7 @@ Key packages: fontspec, polyglossia, biblatex, csquotes, tikz, pgfplots, listing
 
 ### Bibliography Management
 - Uses BibLaTeX with authoryear style and Italian formatting
-- Bibliography stored in `bibliografia/newtesi_ref.bib`
+- Bibliography stored in `bibliografia/bibliografia.bib`
 - Author names formatted in small caps per Italian academic standards
 - Supports multiple citation styles and automatic URL formatting
 
@@ -92,10 +92,7 @@ When modifying or creating figures:
 ## Development Workflow
 
 1. Make content changes in appropriate `.tex` files
-2. Run `compila_veloce.bat` for quick preview of text changes
-3. Run `compila.bat` for full compilation when adding citations or figures
-4. Use `pulisci.bat` to clean up before commits
-5. Run `verifica_sistema.bat` if encountering compilation issues
+
 
 ## Critical Notes
 

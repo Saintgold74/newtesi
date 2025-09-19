@@ -10,14 +10,14 @@
 
 Il settore della \textbf{\gls{gdo}} in Italia costituisce un'infrastruttura tecnologica distribuita di eccezionale complessità. Per i suoi stringenti requisiti di elaborazione in tempo reale, tolleranza ai guasti e scalabilità dinamica, la sua gestione è paragonabile a quella delle reti di telecomunicazioni o dei servizi finanziari globali.
 
-Con 27.432 punti vendita attivi\footcite{istat2024}, l'ecosistema tecnologico della \gls{gdo} italiana processa quotidianamente oltre 45 milioni di transazioni elettroniche, generando un volume di dati che supera i 2,5 petabyte mensili. Per comprendere questa dimensione, consideriamo che un petabyte equivale a circa 500 miliardi di pagine di testo stampato. Questi sistemi devono garantire una disponibilità superiore al 99,9\%, corrispondente a meno di 9 ore di interruzione annuale, in condizioni operative estremamente eterogenee.
+Con 27.432 punti vendita attivi\autocite{istat2024}, l'ecosistema tecnologico della \gls{gdo} italiana processa quotidianamente oltre 45 milioni di transazioni elettroniche, generando un volume di dati che supera i 2,5 petabyte mensili. Per comprendere questa dimensione, consideriamo che un petabyte equivale a circa 500 miliardi di pagine di testo stampato. Questi sistemi devono garantire una disponibilità superiore al 99,9\%, corrispondente a meno di 9 ore di interruzione annuale, in condizioni operative estremamente eterogenee.
 
-L'infrastruttura tecnologica della \textbf{\gls{gdo}} moderna si articola secondo un modello gerarchico multi-livello che integra paradigmi di elaborazione diversificati. Al livello più basso, ogni punto vendita opera come un nodo di elaborazione periferica autonomo, implementando logiche di calcolo al margine della rete\textbf{ (\gls{edge})} per garantire continuità operativa anche in assenza di connettività verso i sistemi centrali. 
+L'infrastruttura tecnologica della \textbf{\gls{gdo}} moderna si articola secondo un modello gerarchico multi-livello che integra paradigmi di elaborazione diversificati. Al livello più basso, ogni punto vendita opera come un nodo di elaborazione periferica autonomo, implementando logiche di calcolo al margine della rete\textbf{ (\textbf{\gls{edge}})} per garantire continuità operativa anche in assenza di connettività verso i sistemi centrali. 
 
 Questi nodi periferici gestiscono sistemi eterogenei che includono:
 \begin{itemize}
-\item Terminali punto vendita \textbf{(\gls{pos})} con requisiti di latenza inferiori a 100 millisecondi
-\item Sistemi di identificazione a radiofrequenza \textbf{(\gls{rfid})} per la gestione inventariale in tempo reale
+\item Terminali punto vendita \textbf{(\textbf{\gls{pos}})} con requisiti di latenza inferiori a 100 millisecondi
+\item Sistemi di identificazione a radiofrequenza \textbf{(\textbf{\gls{rfid}})} per la gestione inventariale in tempo reale
 \item Reti di sensori \textbf{\gls{iot}} per il monitoraggio ambientale e della catena del freddo
 \item Sistemi di videosorveglianza intelligente con capacità di analisi comportamentale in tempo reale
 \end{itemize}
@@ -36,7 +36,7 @@ L'architettura risultante implementa schemi di progettazione complessi per bilan
 
 \textbf{2. Tolleranza al partizionamento:} La capacità dei sistemi distribuiti di garantire continuità operativa anche quando la rete si divide in sottoreti isolate. Questo permette ai punti vendita di operare autonomamente fino a 4 ore in caso di disconnessione, attraverso cache locali e logiche di riconciliazione differita.
 
-\textbf{3. Elaborazione transazionale distribuita:} Sistema che gestisce picchi di carico del 300-500\% durante eventi promozionali\footcite{Osservatorio2024}, richiedendo meccanismi sofisticati di bilanciamento del carico e scalabilità elastica.
+\textbf{3. Elaborazione transazionale distribuita:} Sistema che gestisce picchi di carico del 300-500\% durante eventi promozionali\autocite{Osservatorio2024}, richiedendo meccanismi sofisticati di bilanciamento del carico e scalabilità elastica.
 
 \subsection{\texorpdfstring{L'Evoluzione del Panorama Tecnologico e delle Minacce}{1.1.2 - L'Evoluzione del Panorama Tecnologico e delle Minacce}}
 \label{subsec:evoluzione_tecnologica}
@@ -46,9 +46,9 @@ Il settore della \gls{gdo} sta attraversando una fase di trasformazione tecnolog
 \subsubsection{\texorpdfstring{La Trasformazione Infrastrutturale: Verso Architetture Ibride Adattive}{1.1.2.1 - La Trasformazione Infrastrutturale: Verso Architetture Ibride Adattive}}
 \label{subsubsec:trasformazione_infrastrutturale}
 
-La prima dimensione riguarda la trasformazione infrastrutturale in corso: il 67\% delle organizzazioni \gls{gdo} europee ha iniziato processi di migrazione da architetture monolitiche centralizzate verso modelli distribuiti basati su servizi\footcite{gartner2024cloud}. Questa transizione non rappresenta semplicemente un cambio di piattaforma tecnologica, ma richiede un ripensamento fondamentale dei modelli operativi, delle competenze organizzative e delle strategie di gestione del rischio.
+La prima dimensione riguarda la trasformazione infrastrutturale in corso: il 67\% delle organizzazioni \gls{gdo} europee ha iniziato processi di migrazione da architetture monolitiche centralizzate verso modelli distribuiti basati su servizi\autocite{Gartner2024cloud}. Questa transizione non rappresenta semplicemente un cambio di piattaforma tecnologica, ma richiede un ripensamento fondamentale dei modelli operativi, delle competenze organizzative e delle strategie di gestione del rischio.
 
-Mentre un sistema monolitico tradizionale garantisce le proprietà ACID attraverso transazioni locali con latenze nell'ordine dei microsecondi, un'architettura a \gls{microservizi} deve orchestrare transazioni distribuite che coinvolgono molteplici servizi autonomi. L'acronimo ACID indica le quattro proprietà fondamentali delle transazioni nei database relazionali:
+Mentre un sistema monolitico tradizionale garantisce le proprietà ACID attraverso transazioni locali con latenze nell'ordine dei microsecondi, un'architettura a \textbf{\gls{microservizi}} deve orchestrare transazioni distribuite che coinvolgono molteplici servizi autonomi. L'acronimo ACID indica le quattro proprietà fondamentali delle transazioni nei database relazionali:
 \begin{itemize}
 \item \textbf{Atomicità:} la transazione è indivisibile, o viene eseguita completamente o non viene eseguita affatto
 \item \textbf{Consistenza:} la transazione porta il database da uno stato valido a un altro stato valido
@@ -70,7 +70,7 @@ La coordinazione di questi servizi richiede l'implementazione di pattern archite
 \subsubsection{\texorpdfstring{L'Evoluzione delle Minacce: Dal Crimine Informatico alla Guerra Ibrida}{1.1.2.2 - L'Evoluzione delle Minacce: Dal Crimine Informatico alla Guerra Ibrida}}
 \label{subsubsec:evoluzione_minacce}
 
-La seconda dimensione riguarda l'evoluzione qualitativa e quantitativa delle minacce. L'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\footcite{enisa2024retail} rappresenta solo la punta dell'iceberg di un fenomeno più profondo. Le organizzazioni \gls{gdo} sono diventate bersagli privilegiati non solo per il crimine informatico tradizionale motivato da profitto economico, ma anche per attori statali e para-statali che vedono nelle infrastrutture di distribuzione alimentare un obiettivo strategico per operazioni di destabilizzazione.
+La seconda dimensione riguarda l'evoluzione qualitativa e quantitativa delle minacce. L'incremento del 312\% negli attacchi ai sistemi retail tra il 2021 e il 2023\autocite{enisa2024retail} rappresenta solo la punta dell'iceberg di un fenomeno più profondo. Le organizzazioni \gls{gdo} sono diventate bersagli privilegiati non solo per il crimine informatico tradizionale motivato da profitto economico, ma anche per attori statali e para-statali che vedono nelle infrastrutture di distribuzione alimentare un obiettivo strategico per operazioni di destabilizzazione.
 
 L'emergere di attacchi informatico-fisici rappresenta una sfida particolarmente insidiosa:
 \begin{itemize}
@@ -84,16 +84,16 @@ Questi scenari richiedono un approccio alla sicurezza che trascende i confini tr
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\textwidth]{thesis_figures/cap1/fig_evoluzione_attacchi.png}
-\caption{Evoluzione della composizione percentuale delle tipologie di attacco nel settore GDO (2019-2026). Il grafico mostra la transizione da attacchi tradizionali focalizzati sul furto di dati (area blu) verso attacchi più sofisticati che mirano alla disruzione operativa (area rossa) e alla compromissione cyber-fisica (area verde). Le curve tratteggiate indicano le proiezioni basate su modelli \gls{arima}.}
+\caption[Evoluzione delle tipologie di attacco nel settore GDO (2019-2026)]{Evoluzione della composizione percentuale delle tipologie di attacco nel settore GDO (2019-2026). Il grafico mostra la transizione da attacchi tradizionali focalizzati sul furto di dati (area blu) verso attacchi più sofisticati che mirano alla disruzione operativa (area rossa) e alla compromissione cyber-fisica (area verde). Le curve tratteggiate indicano le proiezioni basate su modelli \textbf{\gls{arima}}.}
 \label{fig:evoluzione_attacchi}
 \end{figure}
 
 \begin{table}[htbp]
 \centering
 \small
-\caption{Tipologie di Attacco e Impatti nel Settore \gls{gdo}}
+\caption[Tipologie di Attacco e Impatti nel Settore GDO]{Tipologie di Attacco e Impatti nel Settore \gls{gdo}}
 \label{tab:threat_evolution}
-\begin{tabular}[width=0.8\textwidth]{lcccccccc}
+\begin{tabularx}{\textwidth}{@{}l*{8}{X}@{}}
 \toprule
 \textbf{Tipo Attacco} & \textbf{2019} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025*} & \textbf{2026*}\\
 \midrule
@@ -104,13 +104,13 @@ Cyber-Fisici & 25\% & 27\% & 30\% & 33\% & 37\% & 40\% & 42\% & 44\% \\
 \textbf{Totale} & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% \\
 \bottomrule
 \multicolumn{9}{l}{\footnotesize * Valori proiettati con modello \gls{arima}}
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsubsection{\texorpdfstring{La Complessità Normativa: Conformità come Vincolo Sistemico}{1.1.2.3 - La Complessità Normativa: Conformità come Vincolo Sistemico}}
 \label{subsubsec:complessita_normativa}
 
-La terza dimensione riguarda la crescente complessità del panorama normativo. L'entrata in vigore simultanea di molteplici normative ha creato un ambiente regolatorio la cui gestione, con approcci tradizionali, può assorbire fino al 2-3\% del fatturato annuale\footcite{ponemon2024compliance}:
+La terza dimensione riguarda la crescente complessità del panorama normativo. L'entrata in vigore simultanea di molteplici normative ha creato un ambiente regolatorio la cui gestione, con approcci tradizionali, può assorbire fino al 2-3\% del fatturato annuale\autocite{ponemon2024compliance}:
 
 \begin{itemize}
 \item \textbf{\glsfirst{pci-dss} v4.0}: standard per la sicurezza dei pagamenti elettronici
@@ -118,7 +118,7 @@ La terza dimensione riguarda la crescente complessità del panorama normativo. L
 \item \textbf{Direttiva \glsfirst{nis2}}: normativa per la sicurezza delle infrastrutture critiche e dei servizi essenziali
 \end{itemize}
 
-La sfida non è semplicemente quella di soddisfare requisiti normativi individuali, ma di gestire le interazioni e potenziali conflitti tra framework diversi. Ad esempio, i requisiti di segregazione delle reti imposti da \gls{pci-dss} possono entrare in conflitto con i requisiti di portabilità dei dati del \gls{gdpr}, mentre i requisiti di registrazione e monitoraggio della \gls{nis2} possono creare tensioni con i principi di minimizzazione dei dati del \gls{gdpr}.
+La sfida non è semplicemente quella di soddisfare requisiti normativi individuali, ma di gestire le interazioni e potenziali conflitti tra framework diversi. Ad esempio, i requisiti di segregazione delle reti imposti da \textbf{\gls{pci-dss}} possono entrare in conflitto con i requisiti di portabilità dei dati del \textbf{\gls{gdpr}}, mentre i requisiti di registrazione e monitoraggio della \gls{nis2} possono creare tensioni con i principi di minimizzazione dei dati del \gls{gdpr}.
 
 \begin{tcolorbox}[
     colback=blue!5!white,
@@ -164,7 +164,7 @@ La letteratura sull'ingegneria dei sistemi distribuiti propone pattern architett
 \subsection{\texorpdfstring{Assenza di Modelli Economici Validati per il Settore}{1.2.2 - Assenza di Modelli Economici Validati per il Settore}}
 \label{subsec:assenza_modelli}
 
-La seconda area critica riguarda la mancanza di modelli economici specificamente calibrati per il settore retail e validati empiricamente. Mentre esistono framework generali per la valutazione del \gls{tco} e del \gls{roi} delle infrastrutture IT, questi non catturano le peculiarità economiche della GDO:
+La seconda area critica riguarda la mancanza di modelli economici specificamente calibrati per il settore retail e validati empiricamente. Mentre esistono framework generali per la valutazione del \textbf{\gls{tco}} e del \textbf{\gls{roi}} delle infrastrutture IT, questi non catturano le peculiarità economiche della GDO:
 
 \begin{itemize}
 \item Margini operativi estremamente ridotti (tipicamente 2-4\% del fatturato)
@@ -196,7 +196,7 @@ La terza area critica riguarda la scarsa considerazione dei vincoli operativi un
 \begin{table}[htbp]
 \centering
 \small
-\caption{Confronto tra Approcci Esistenti e Framework \gls{gist} Proposto}
+\caption[Confronto tra Approcci Esistenti e Framework GIST]{Confronto tra Approcci Esistenti e Framework \gls{gist} Proposto}
 \label{tab:confronto_approcci}
 \begin{tabularx}{\textwidth}{@{}lXX@{}}
 \toprule
@@ -337,7 +337,7 @@ Il framework \gls{gist} si distingue per tre caratteristiche fondamentali:
 at (0,-6.0) {Metriche Target: Disponibilità > 99,95\% | Score ASSA < 500 | Latenza < 100ms};
 
 \end{tikzpicture}
-\caption{Il Framework \gls{gist}: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
+\caption[Framework GIST: Integrazione delle quattro dimensioni fondamentali]{Il Framework \gls{gist}: Integrazione delle quattro dimensioni fondamentali per la trasformazione sicura della \gls{gdo}. Il framework evidenzia le interconnessioni sistemiche tra governance strategica, infrastruttura tecnologica, sicurezza operativa e processi di trasformazione.}
 \label{fig:gist_framework}
 \end{figure}
 
@@ -360,7 +360,7 @@ Il primo obiettivo consiste nello sviluppo concettuale del framework \gls{gist} 
 
 Il secondo obiettivo è rendere operativo un elemento chiave del framework \gls{gist} attraverso:
 \begin{itemize}
-\item Implementazione dell'algoritmo \gls{assa-gdo} per la quantificazione della superficie di attacco
+\item Implementazione dell'algoritmo \textbf{\gls{assa-gdo}} per la quantificazione della superficie di attacco
 \item Sviluppo del framework di simulazione Digital Twin GDO-Bench per scenari realistici
 \item Validazione dell'ipotesi che l'applicazione dei principi \gls{gist} riduca lo score di rischio ASSA di almeno il 35\%
 \end{itemize}
@@ -419,6 +419,7 @@ Dove:
 \textbf{Esempio di Calcolo - \gls{gdo} Media Italiana:}
 
 \begin{center}
+\small
 \begin{tabular}{lcc}
 \toprule
 \textbf{Componente} & \textbf{Punteggio} & \textbf{Contributo} \\
@@ -523,8 +524,8 @@ rappresentatività statistica e validità esterna:
 L'analisi aggrega dati pubblici da 234 organizzazioni GDO europee attraverso:
 \begin{itemize}
     \item Report annuali e bilanci di sostenibilità (2020-2024)
-    \item Database incidenti ENISA: 1.847 eventi documentati\footcite{enisa2024retail}
-    \item Sanzioni GDPR: 847 casi nel settore retail\footcite{EDPB2024}
+    \item Database incidenti ENISA: 1.847 eventi documentati\autocite{enisa2024retail}
+    \item Sanzioni GDPR: 847 casi nel settore retail\autocite{EDPB2024}
     \item Metriche di settore da Eurostat e osservatori nazionali
 \end{itemize}
 
@@ -616,7 +617,7 @@ L'analisi utilizza tecniche di estrazione automatica del testo e modellazione te
 
 La seconda fase sviluppa modelli matematici e computazionali per ciascuna dimensione del framework GIST:
 
-\textbf{Modello di Propagazione delle Minacce:} Basato su catene di Markov a tempo continuo (\gls{ctmc}) - processi stocastici che modellano sistemi con transizioni di stato in tempi casuali, particolarmente adatti per la propagazione di compromissioni in reti dove il tempo tra eventi è variabile.
+\textbf{Modello di Propagazione delle Minacce:} Basato su catene di Markov a tempo continuo (\textbf{\gls{ctmc}}) - processi stocastici che modellano sistemi con transizioni di stato in tempi casuali, particolarmente adatti per la propagazione di compromissioni in reti dove il tempo tra eventi è variabile.
 
 \textbf{Modello di Performance Cloud-Ibrido:} Utilizza teoria delle code M/M/c/K - sistema con arrivi casuali, tempi di servizio esponenziali, c server paralleli e capacità finita K - esteso per catturare le dinamiche multi-livello dei sistemi cloud-ibridi.
 
@@ -684,7 +685,7 @@ La tesi si articola in cinque capitoli che seguono una progressione logica dal p
 \begin{figure}[H]
 \centering
 \includegraphics [width=1\textwidth]{thesis_figures/cap1/fig_1_4_thesis_structure.pdf}
-\caption{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema attraverso l'analisi delle componenti specifiche fino alla sintesi e validazione del framework completo.Le frecce dovrebbero mostrare come ogni capitolo contribuisce al framework finale.}
+\caption[Struttura della tesi e interdipendenze tra capitoli]{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema attraverso l'analisi delle componenti specifiche fino alla sintesi e validazione del framework completo. Le frecce mostrano come ogni capitolo contribuisce al framework finale.}
 \label{fig:thesis_structure}
 \end{figure}
 
@@ -701,7 +702,7 @@ Il capitolo propone \textbf{tre architetture innovative} per modernizzare l'infr
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap1/on-premise-vs-cloud.png}
-\caption{Confronto tra architetture tradizionali e cloud-ibrido in termini di livelli di servizio e struttura dei costi.}
+\caption[Confronto tra architetture tradizionali e cloud-ibrido]{Confronto tra architetture tradizionali e cloud-ibrido in termini di livelli di servizio e struttura dei costi.}
 \label{fig:on-premise-vs-cloud}
 \end{figure}
 

@@ -1,0 +1,54 @@
+=== ANALISI COMPLETA USO TERMINI GLOSSARIO ===
+
+1. TERMINI CON USO CORRETTO \gls{}: 
+
+✓ gdo: 85 occorrenze
+✓ gist: 37 occorrenze
+✓ ai: 5 occorrenze
+✓ zerotrust: 33 occorrenze
+✓ edge: 3 occorrenze
+✓ pci-dss: 12 occorrenze
+✓ gdpr: 11 occorrenze
+✓ nis2: 9 occorrenze
+✓ tco: 9 occorrenze
+✓ roi: 17 occorrenze
+✓ pos: 10 occorrenze
+✓ iot: 4 occorrenze
+✓ siem: 1 occorrenze
+✓ malware: 4 occorrenze
+✓ ransomware: 2 occorrenze
+✓ phishing: 2 occorrenze
+✓ hvac: 1 occorrenze
+✓ rfid: 1 occorrenze
+✓ microservizi: 1 occorrenze
+
+2. TERMINI MAI USATI CON \gls{}: 
+
+✗ soc: mai usato con \gls{}
+✗ container: mai usato con \gls{}
+✗ kubernetes: mai usato con \gls{}
+
+3. TERMINI USATI COME TESTO NORMALE (ESEMPI):
+
+--- 'Zero Trust' (dovrebbe essere \gls{zerotrust}):
+capitoli/abstract.tex:21:\textbf{Parole chiave:} Grande Distribuzione Organizzata, Sicurezza Informatica, Cloud Ibrido, Zero Trust, Conformità Normativa, GIST Framework
+capitoli/abstract.tex:46:\textbf{Keywords:} Large-Scale Retail, Cybersecurity, Hybrid Cloud, Zero Trust, Regulatory Compliance, GIST Framework
+capitoli/app_scoring.tex:75:Network Security & 20\% & Microsegmentazione & VLAN - Zero Trust \\
+
+--- 'GDO' (dovrebbe essere \gls{gdo}):
+capitoli/abstract.tex:7:La Grande Distribuzione Organizzata (GDO) italiana gestisce un'infrastruttura tecnologica di complessità paragonabile ai sistemi finanziari globali, con oltre 27.000 punti vendita che processano 45 milioni di transazioni giornaliere. Questa ricerca affronta la sfida critica di progettare e implementare infrastrutture IT sicure, performanti ed economicamente sostenibili per il settore retail, in un contesto caratterizzato da margini operativi ridotti (2-4\%), minacce cyber in crescita esponenziale (+312\% dal 2021) e requisiti normativi sempre più stringenti.
+capitoli/abstract.tex:9:La tesi propone GIST (Grande distribuzione - Integrazione Sicurezza e Trasformazione), un framework quantitativo innovativo che integra quattro dimensioni critiche: fisica, architetturale, sicurezza e conformità. Il framework è stato sviluppato attraverso l'analisi di 234 configurazioni organizzative del settore GDO italiano, raggruppate in 5 archetipi 
+capitoli/abstract.tex:10:rappresentativi e \textbf{validate mediante simulazione Monte Carlo con 10.000 iterazioni su un ambiente Digital Twin (GDO-Bench) appositamente sviluppato, calibrato su parametri operativi pubblici del settore italiano}.
+
+--- 'IoT' (dovrebbe essere \gls{iot}):
+capitoli/Cap2.tex:673:Dato un grafo $G = (V, E)$ rappresentante l'infrastruttura GDO, dove $V$ sono i nodi (POS, server, dispositivi IoT) e $E$ le connessioni, il punteggio ASSA è calcolato come:
+capitoli/Cap4_1.tex:947:    \item Valutazione della sicurezza di tutti i dispositivi IoT venduti
+
+--- 'Machine Learning' o 'ML' (dovrebbe essere \gls{ml}):
+capitoli/Cap1.tex:675:\item \textbf{Risk Scorer XGBoost}: Sistema ML adattivo per scoring 
+capitoli/Cap2.tex:662:% Le policy sono definite utilizzando il linguaggio XACML 3.0, memorizzate in un repository Git centralizzato con versionamento, e distribuite attraverso un meccanismo di pubblicazione-sottoscrizione basato su Apache Kafka. Ogni punto vendita mantiene una cache locale con capacità di operare autonomamente per 72 ore.
+capitoli/Cap2.tex:869:% - Deployment di soluzione \gls{iam} enterprise con federazione SAML/OAuth
+
+--- 'Artificial Intelligence' o 'AI' (dovrebbe essere \gls{ai}):
+capitoli/Cap4_1.tex:921:L'AI Act europeo, con applicazione prevista da 2026, introdurrà requisiti specifici per i sistemi di intelligenza artificiale utilizzati nel retail:
+capitoli/Cap5.tex:653:\textbf{Sicurezza} & 82/100 & Zero Trust implementato, SOC 24/7 con AI, patch zero-day automatiche \\

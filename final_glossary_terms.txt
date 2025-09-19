@@ -1,0 +1,120 @@
+ E' un insieme di tecnologie e sistemi integrati progettati per controllare e ottimizzare la qualità dell'aria, la temperatura e l'umidità negli ambienti interni di edifici residenziali, commerciali e industriali.
+Algoritmo che quantifica la superficie di attacco considerando non solo vulnerabilità tecniche ma anche fattori organizzativi e processuali
+anomaly-based-detection
+apifirst
+Architettura di rete che estende i principi della virtualizzazione alle reti geografiche, permettendo controllo centralizzato e ottimizzazione dinamica del traffico.
+attack-surface
+audit-trail
+behavioral-analysis
+bluegreen
+cachecoherency
+Campo nell'header IP utilizzato per la classificazione e gestione della Quality of Service (QoS) nel traffico di rete.
+Catena di Markov a tempo continuo - Modello matematico utilizzato per descrivere sistemi che evolvono nel tempo in modo continuo, spesso utilizzato in contesti di analisi delle prestazioni e dei rischi.
+Centro operativo dedicato al monitoraggio, rilevamento e risposta agli incidenti di sicurezza informatica.
+cloud-native
+Codice univoco utilizzato per la gestione delle scorte.
+compliance
+compliance-by-design
+container
+containment
+Contratto che definisce i livelli di servizio attesi tra fornitore e cliente.
+Costo complessivo sostenuto da un'organizzazione per rispettare normative, regolamenti e standard di settore, includendo spese dirette (personale, sistemi, consulenze) e indirette (tempo, opportunità perse, inefficienze operative).
+Costo medio ponderato del capitale, rappresenta il tasso di rendimento minimo richiesto dagli investitori per finanziare un'azienda.
+cyber-resilience
+Data Protection Officer description.
+data-lifecycle-management
+declarative
+defense-in-depth
+detection-rate
+differential-privacy
+Direttiva (UE) 2022/2555 relativa a misure per un livello comune elevato di cibersicurezza nell'Unione.
+disaster-recovery
+Dispositivo di protezione elettrica che interrompe il flusso di corrente in caso di sovraccarico o cortocircuito.
+Dispositivo elettronico che controlla la velocità di rotazione dei motori elettrici variando la frequenza e la tensione di alimentazione per ottimizzare l'efficienza energetica.
+edge
+EDPB description.
+Estensione di DevOps che integra la sicurezza (Sec) nel processo di sviluppo e deployment software.
+failover
+false-positive
+Framework di processi e tecnologie per gestire identità digitali e controlli di accesso.
+Framework integrato per la misurazione del grado di integrazione 
+freecooling
+governance
+incident-response
+Insieme di strategie e tecnologie per l'analisi dei dati aziendali per supportare decisioni strategiche.
+istio
+kubernetes
+lateral-movement
+malware
+memory-scraping
+Metodologia che integra sviluppo software (Dev) e operazioni IT (Ops) per accelerare il ciclo di vita dello sviluppo software.
+Metodologia di valutazione che considera tutti i costi diretti e indiretti sostenuti durante l'intero ciclo di vita di un sistema informatico.
+Metodologia numerica per l'analisi e la simulazione del comportamento dei fluidi e del trasferimento termico attraverso modelli matematici.
+Metodologia per supportare decisioni complesse che coinvolgono criteri multipli e spesso conflittuali.
+Metrica di efficienza energetica dei data center definita come il rapporto tra energia totale consumata e energia utilizzata dall'equipaggiamento IT.
+Metrica finanziaria utilizzata per valutare l'efficienza di un investimento, calcolata come rapporto tra beneficio netto e costo dell'investimento.
+Metrica utilizzata per valutare l'efficacia nel raggiungimento di obiettivi strategici.
+micro-segmentation
+microservizi
+Modello di cloud computing che fornisce risorse di calcolo virtualizzate attraverso Internet.
+Modello di cloud computing che fornisce una piattaforma di sviluppo e deployment completa attraverso Internet.
+Modello di distribuzione software in cui le applicazioni sono fornite attraverso Internet come servizio.
+Modello statistico per l'analisi e previsione di serie temporali che combina componenti autoregressivi, integrati e di media mobile.
+Monitoraggio e gestione delle prestazioni e disponibilità delle applicazioni software.
+multi-tier
+network-segmentation
+on-premise
+Organizzazione che sviluppa standard per sistemi HVAC e gestione dell'ambiente negli edifici.
+penetration-testing
+phishing
+Piano strategico per garantire la continuità operativa dell'organizzazione durante e dopo eventi disruptivi.
+Piattaforma che combina orchestrazione, automazione e risposta per migliorare l'efficacia delle operazioni di sicurezza.
+playbook
+policy-engine
+Pratica di gestione dell'infrastruttura IT attraverso codice versionato e automatizzato.
+Pratiche di sviluppo software che enfatizzano integrazione frequente del codice e deployment automatizzato.
+privacy-by-design
+Protocollo ISO standard di messaggistica leggero di tipo publish-subscribe posizionato in cima a TCP/IP, progettato per le situazioni in cui è richiesto un basso impatto energetico e dove la banda è limitata.
+Quantità massima accettabile di perdita di dati in caso di interruzione del servizio.
+raft
+ransomware
+Regolamento (UE) 2016/679 sulla protezione dei dati personali e sulla libera circolazione di tali dati nell'Unione Europea.
+Rete di dispositivi fisici interconnessi attraverso Internet, dotati di sensori e capacità di comunicazione.
+Rete geograficamente distribuita di server che fornisce contenuti web agli utenti dalla località più vicina per ridurre latenza.
+risk-assessment
+Scheda plug-in o di dispositivo esterno che salvaguarda e gestisce i segreti (soprattutto le chiavi digitali), esegue funzioni di crittografia per le firme digitali e altre funzioni crittografiche.
+security-framework
+security-orchestration
+security-posture
+selfhealing
+servicemesh
+Settore del commercio al dettaglio caratterizzato da catene di punti vendita con gestione centralizzata e volumi significativi.
+signature-based-detection
+Simulazione di processi di intelligenza umana attraverso sistemi informatici.
+Sistema di alimentazione ininterrotta che fornisce energia temporanea ai dispositivi collegati in caso di interruzione della corrente elettrica.
+Sistema di elaborazione delle transazioni commerciali che gestisce pagamenti, inventario e dati di vendita nei punti vendita al dettaglio.
+Sistema di prevenzione delle intrusioni che oltre al rilevamento può bloccare attivamente traffico o attività identificate come dannose.
+Sistema di rilevamento delle intrusioni che monitora il traffico di rete e le attività di sistema per identificare comportamenti sospetti o malevoli.
+Sistema integrato per il controllo e monitoraggio automatico degli impianti edilizi (HVAC, illuminazione, sicurezza, energia).
+social-engineering
+Soluzione di sicurezza che monitora continuamente endpoint e workstation per rilevare e rispondere a minacce informatiche avanzate.
+Soluzione per la gestione continua della postura di sicurezza in ambienti cloud, identificando misconfigurazione e rischi.
+Soluzione software che aggrega e analizza dati di sicurezza da diverse fonti per identificare minacce e incidenti.
+Sottocampo dell'intelligenza artificiale che utilizza algoritmi per permettere ai sistemi di imparare automaticamente dai dati.
+Standard di sicurezza internazionale per la protezione dei dati delle carte di pagamento, richiesto per tutti gli esercenti che processano transazioni con carte di credito.
+supply-chain-attack
+Tasso interno di rendimento, tasso di sconto che rende il NPV di un investimento uguale a zero, utilizzato per valutare l'attrattività economica di progetti.
+Tecnica di crittografia che utilizza la stessa chiave segreta per cifrare e decifrare i dati.
+Tecnologia di analisi del traffico di rete che esamina il contenuto dei pacchetti dati oltre agli header per classificazione, security e quality of service.
+Tecnologia di crittografia che utilizza una coppia di chiavi, una pubblica e una privata, per garantire la riservatezza e l'integrità delle comunicazioni.
+Tecnologia di identificazione a radiofrequenza.
+Tempo massimo accettabile per il ripristino di un servizio dopo un'interruzione.
+Tempo medio intercorrente tra guasti consecutivi di un sistema, utilizzato come indicatore di affidabilità.
+Tempo medio necessario per ripristinare la piena operatività di un sistema dopo un guasto o un incidente.
+terraform
+threat-intelligence
+threat-landscape
+Valore attuale netto, metrica finanziaria che calcola il valore presente di flussi di cassa futuri scontati al costo del capitale per valutare la redditività di investimenti.
+vectorclock
+vulnerability-assessment
+zerotrust

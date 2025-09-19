@@ -1,0 +1,100 @@
+% RIFERIMENTI AL REPOSITORY DA INSERIRE NEI CAPITOLI APPROPRIATI
+
+% ==================================================
+% CAPITOLO 2 - Dopo sezione threat landscape
+% ==================================================
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Implementazione Disponibile]
+L'algoritmo ASSA-GDO descritto in questa sezione è disponibile come implementazione Python nel repository ufficiale:
+\begin{itemize}
+    \item File: \texttt{assa\_gdo\_calculator.py}
+    \item Documentazione: \url{https://github.com/gist-framework/gdo-security#assa-gdo}
+    \item Esempio: \texttt{python assa\_gdo\_calculator.py --org-factor 1.2}
+\end{itemize}
+\end{tcolorbox}
+
+% ==================================================
+% CAPITOLO 3 - Dopo descrizione Digital Twin
+% ==================================================
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Digital Twin Framework]
+Il framework Digital Twin completo per la generazione di dataset sintetici è disponibile nel repository:
+\begin{itemize}
+    \item File: \texttt{gdo\_digital\_twin.py}
+    \item Genera dataset realistici calibrati su dati ISTAT 2023
+    \item Validazione automatica con test statistici (Benford's Law, Poisson)
+    \item Uso: \texttt{twin.generate\_demo\_dataset(n\_stores=10, n\_days=30)}
+\end{itemize}
+Consultare la documentazione online per parametri avanzati e personalizzazione archetipi.
+\end{tcolorbox}
+
+% ==================================================
+% CAPITOLO 4 - Dopo framework di compliance
+% ==================================================
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Template Operativi]
+I template operativi discussi sono disponibili nel repository nella directory \texttt{templates/}:
+\begin{itemize}
+    \item \textbf{Checklist Migrazione Cloud}: \texttt{cloud\_migration\_checklist.json}
+    \item \textbf{Runbook Ransomware}: \texttt{ransomware\_response\_runbook.sh}
+    \item \textbf{Dashboard Grafana}: \texttt{grafana\_dashboard\_gist.json}
+\end{itemize}
+Questi strumenti sono production-ready e possono essere adattati alle specifiche esigenze organizzative.
+\end{tcolorbox}
+
+% ==================================================
+% CAPITOLO 5 - Dopo presentazione GIST Score
+% ==================================================
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=GIST Calculator - Implementazione Completa]
+Il calcolatore GIST Score è disponibile come tool standalone e libreria Python:
+
+\textbf{Installazione:}
+\begin{lstlisting}[language=bash, basicstyle=\footnotesize\ttfamily]
+pip install gist-framework
+# oppure
+git clone https://github.com/gist-framework/gdo-security.git
+\end{lstlisting}
+
+\textbf{Uso programmatico:}
+\begin{lstlisting}[language=python, basicstyle=\footnotesize\ttfamily]
+from gist_calculator import GISTCalculator
+
+calc = GISTCalculator("Nome Organizzazione")
+scores = {
+    'physical': 65,
+    'architectural': 72,
+    'security': 68,
+    'compliance': 75
+}
+result = calc.calculate_score(scores)
+print(f"GIST Score: {result['score']:.2f}")
+\end{lstlisting}
+
+Il repository include anche esempi di integrazione con sistemi SIEM e piattaforme di monitoring.
+\end{tcolorbox}
+
+% ==================================================
+% NELLE CONCLUSIONI
+% ==================================================
+\section*{Disponibilità del Codice e Riproducibilità}
+
+Per garantire la piena riproducibilità dei risultati presentati in questa tesi e facilitare l'adozione del framework GIST nel settore, tutto il codice sorgente, i dataset di validazione e la documentazione tecnica sono disponibili pubblicamente:
+
+\begin{center}
+\Large
+\textbf{Repository GitHub:} \url{https://github.com/gist-framework/gdo-security}
+\end{center}
+
+Il repository è strutturato per facilitare sia l'uso immediato degli strumenti che l'estensione del framework per esigenze specifiche. Include:
+
+\begin{enumerate}
+    \item \textbf{Codice sorgente}: Implementazioni complete in Python di tutti gli algoritmi
+    \item \textbf{Test suite}: Validazione automatica con coverage >80\%
+    \item \textbf{Docker support}: Container pre-configurati per deployment rapido
+    \item \textbf{API REST}: Endpoint per integrazione con sistemi esistenti
+    \item \textbf{Jupyter notebooks}: Analisi interattive e tutorial
+\end{enumerate}
+
+La scelta di rendere il framework open source risponde a tre obiettivi:
+\begin{itemize}
+    \item \textit{Trasparenza scientifica}: Permettere peer review del codice
+    \item \textit{Impatto pratico}: Facilitare l'adozione nel settore GDO
+    \item \textit{Evoluzione collaborativa}: Abilitare contributi dalla community
+\end{itemize}

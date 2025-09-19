@@ -22,7 +22,8 @@ a tre livelli che garantisce sia validità interna che esterna:
 \centering
 \caption{Struttura dei Dati per la Validazione del Framework GIST}
 \label{tab:validation_data_structure}
-\begin{tabular}{lccc}
+\small
+\begin{tabularx}{\textwidth}{lccc}
 \toprule
 \textbf{Livello} & \textbf{Fonte} & \textbf{N} & \textbf{Utilizzo} \\
 \midrule
@@ -41,7 +42,7 @@ Architetture tipo & Digital Twin & 10 & Confronto performance \\
 Scenari per architettura & Monte Carlo & 30.000 & Robustezza statistica \\
 Ore simulate totali & Simulazione & 2.16M & Significatività risultati \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Questa struttura garantisce:
@@ -74,13 +75,14 @@ Questa struttura garantisce:
 % \midrule
 % \textbf{Totale} & \textbf{2.533} & - & - & - \\
 % \bottomrule
-% \end{tabular}
+% \end{tabularx}
 % \end{table}
 
 \begin{table}[h!]
 \centering
 \caption{Metriche operative derivate dalla simulazione}
-\begin{tabular}{|l|c|c|c|}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|}
 \hline
 \textbf{Metrica} & \textbf{Baseline} & \textbf{Post-Migrazione} & \textbf{$\Delta$} \\
 \hline
@@ -90,7 +92,7 @@ MTTR (ore) & 5.2 & 1.8 & -65.4\% \\
 Incidenti/anno & 2.8 & 0.9 & -67.9\% \\
 TCO (5 anni) & €8.7M & €5.4M & -37.9\% \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 L'analisi quantitativa condotta ha seguito un rigoroso protocollo di validazione basato su tre pilastri metodologici complementari, ciascuno progettato per validare aspetti specifici del framework proposto.
@@ -103,7 +105,7 @@ dove $\theta$ rappresenta il vettore dei parametri da stimare e $f(x_i|\theta)$ 
 
 Il secondo pilastro metodologico si basa sull'analisi empirica di metriche operative raccolte attraverso telemetria diretta da sistemi di produzione. I dati, accuratamente anonimizzati per rispettare la confidenzialità aziendale, coprono 47 punti vendita distribuiti geograficamente in Nord, Centro e Sud Italia, includendo oltre 2,3 milioni di transazioni giornaliere. La granularità temporale delle metriche - con campionamento ogni 5 minuti - ha permesso di catturare sia la variabilità intragiornaliera (picchi nelle ore di punta, cali notturni) sia i pattern stagionali critici per il settore (periodo natalizio, saldi estivi).
 
-Il terzo pilastro consiste nella validazione attraverso esperimenti controllati in un ambiente di laboratorio che replica fedelmente le condizioni operative della GDO. L'infrastruttura di test, basata su tecnologie di virtualizzazione e containerizzazione, ha permesso di simulare scenari di carico realistici - fino a 50.000 transazioni simultanee - mantenendo il controllo completo sulle variabili sperimentali.
+Il terzo pilastro consiste nella validazione attraverso esperimenti controllati in un ambiente di laboratorio che replica fedelmente le condizioni operative della GDO. L'infrastruttura di test, basata su tecnologie di virtualizzazione e \gls{container}, ha permesso di simulare scenari di carico realistici - fino a 50.000 transazioni simultanee - mantenendo il controllo completo sulle variabili sperimentali.
 
 \subsection{Architettura Metodologica della Validazione}
 
@@ -112,7 +114,8 @@ Il framework GIST è stato validato attraverso:
 \begin{table}[h!]
 \centering
 \caption{Struttura della Validazione mediante Archetipi}
-\begin{tabular}{|l|c|c|c|}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|}
 \hline
 \textbf{Archetipo} & \textbf{PV} & \textbf{Organizzazioni} & \textbf{Mesi Simulati} \\
                    &             & \textbf{Rappresentate} & \\
@@ -125,7 +128,7 @@ Enterprise & >500 & 7 & 18 \\
 \hline
 \textbf{Totale} & - & \textbf{234} & \textbf{90} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Ogni archetipo è stato parametrizzato con:
@@ -145,7 +148,8 @@ I risultati dei 5 archetipi simulati vengono aggregati per rappresentare le 234 
 \begin{table}[h!]
 \centering
 \caption{Aggregazione dei risultati GIST per archetipo}
-\begin{tabular}{|l|c|c|c|c|}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
 \hline
 \textbf{Archetipo} & \textbf{n} & \textbf{Peso} & \textbf{GIST} & \textbf{Contributo} \\
  & & $(n/234)$ & \textbf{Simulato} & \textbf{Ponderato} \\
@@ -158,7 +162,7 @@ Enterprise & 7 & 0.030 & 81.4 & 2.44 \\
 \hline
 \textbf{Totale} & \textbf{234} & \textbf{1.000} & - & \textbf{51.28} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Il valore aggregato di 51.28 rappresenta il GIST Score medio ponderato per l'intero settore GDO italiano nel scenario baseline.
@@ -198,7 +202,7 @@ La riduzione osservata si traduce concretamente in 187 potenziali vettori di att
 \small
 \caption{Sintesi della Validazione delle Ipotesi di Ricerca}
 \label{tab:validation_summary}
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
     \hline
 \textbf{Ipotesi} & \textbf{Target} & \textbf{Risultato} & \textbf{IC 95\%} & \textbf{Valore p} \\
 \hline
@@ -207,7 +211,7 @@ H1: Riduzione \gls{tco} & >30\% & 38,2\% & [35,1-41,3] & <0,001 \\
 H2: \gls{zerotrust} & -30\% superficie & -42,7\% & [39,2-46,2] & <0,001 \\
 H3: Conformità & -25\% costi & -39,1\% & [36,4-41,8] & <0,001 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsubsection{Risultati della Simulazione Digital Twin}
@@ -216,9 +220,9 @@ La simulazione dei 5 archetipi rappresentativi ha prodotto i seguenti risultati:
 
 \begin{table}[h!]
 \centering
-\small
 \caption{GIST Score per archetipo e scenario}
-\begin{tabular}[width=\textwidth]{|l|c|c|c|c|}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
 \hline
 \textbf{Archetipo} & \textbf{n} & \textbf{Baseline} & \textbf{Migrazione} & \textbf{Miglioramento} \\
 \hline
@@ -230,7 +234,7 @@ Enterprise (>500 PV) & 7 & 60.60 & 77.59 & +27.9\% \\
 \hline
 \textbf{Aggregato} & \textbf{234} & \textbf{36.7} & \textbf{48.7} & \textbf{+32.8\%} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 La validazione Monte Carlo con 10.000 iterazioni conferma la robustezza dei risultati, 
@@ -301,7 +305,7 @@ L'analisi della varianza - una tecnica statistica che valuta le differenze tra g
 % \end{itemize}
 % Al centro: "Effetto Sistema Totale: +52\%"
 % }}
-\caption{Effetti sinergici tra le componenti del framework GIST. Le percentuali indicano l'amplificazione dei benefici quando le componenti sono implementate congiuntamente rispetto all'implementazione isolata.}
+\caption[Effetti sinergici tra le componenti del framework GIST]{Effetti sinergici tra le componenti del framework GIST. Le percentuali indicano l'amplificazione dei benefici quando le componenti sono implementate congiuntamente rispetto all'implementazione isolata.}
 \label{fig:synergies}
 \end{figure}
 
@@ -484,10 +488,10 @@ Per posizionare il framework \gls{gist} nel panorama delle metodologie esistenti
 
 \begin{table}[htbp]
 \centering
-\caption{Confronto del Framework GIST con Metodologie Consolidate}
+\caption[Confronto Framework GIST con Metodologie Consolidate]{Confronto del Framework GIST con Metodologie Consolidate}
 \label{tab:framework_comparison_revised}
 \small
-\begin{tabular}[width=0.7\textwidth]{l c c c}
+\begin{tabularx}{0.9\textwidth}{l c c X}
 \toprule
 \textbf{Caratteristica} & \textbf{Descrizione} & \textbf{GIST} & \textbf{Framework Tradizionali} \\
 \midrule
@@ -507,7 +511,7 @@ Tempo deployment & Implementazione tipica & 18-24 mesi & 24-48 mesi \\
 Curva apprendimento & Difficoltà adozione & Moderata & Alta/Molto alta \\
 Costo licenze & Modello economico & Open source & Commerciale \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 I principali vantaggi differenziali del framework \gls{gist} rispetto alle metodologie tradizionali includono:
@@ -650,7 +654,7 @@ GIST_{transizione} = 0,18 \times (65)^{0,95} + 0,32 \times (68)^{0,95} + 0,28 \t
 \midrule
 \textbf{Fisica} & 85/100 & Data center Tier III, edge computing nei PV, fibra 95\% + 5G backup \\
 \textbf{Architetturale} & 88/100 & Full cloud-native, multi-cloud orchestrato, Active-active DR \\
-\textbf{Sicurezza} & 82/100 & Zero Trust implementato, SOC 24/7 con AI, patch zero-day automatiche \\
+\textbf{Sicurezza} & 82/100 & \gls{zerotrust} implementato, \gls{soc} 24/7 con \gls{ai}, patch zero-day automatiche \\
 \textbf{Conformità} & 86/100 & Compliance-as-code, continuous monitoring, certificazioni multiple \\
 \bottomrule
 \end{tabularx}
@@ -725,7 +729,8 @@ Utilizzando il dataset delle 47 organizzazioni italiane:
 
 \begin{table}[htbp]
 \caption{Validazione GIST Score su campione reale}
-\begin{tabular}{lccccc}
+\small
+\begin{tabularx}{\textwidth}{Xccccc}
 \toprule
 Organizzazione & Physical & Arch & Security & Compliance & GIST Score \\
 \midrule
@@ -733,7 +738,7 @@ Org-A (Supermarket) & 72 & 68 & 65 & 78 & 69.8 \\
 Org-B (Discount) & 58 & 45 & 52 & 61 & 52.3 \\
 Org-C (Hypermarket) & 85 & 82 & 79 & 88 & 82.7 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{\texorpdfstring{Fasi di Implementazione e Tempistiche}{5.4.1 - Fasi di Implementazione e Tempistiche}}
@@ -743,8 +748,9 @@ La roadmap implementativa del framework \gls{gist} è stata progettata per massi
 
 \begin{table}[htbp]
 \centering
-\caption{Roadmap Implementativa del Framework \gls{gist}}
+\caption[Roadmap Implementativa del Framework GIST]{Roadmap Implementativa del Framework \gls{gist}}
 \label{tab:roadmap_implementation}
+\small
 \begin{tabularx}{\textwidth}{l l X r r}
 \toprule
 \textbf{Fase} & \textbf{Durata} & \textbf{Attività Principali} & \textbf{Investimento} & \textbf{ROI Atteso} \\
@@ -824,15 +830,14 @@ Distribuzione Organizzata.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.1\textwidth]{thesis_figures/cap5/Tab5_1_comparazione .pdf}
-\caption{Analisi Comparativa del Framework GIST con Metodologie
-Esistenti}
+\caption[Analisi Comparativa del Framework GIST con Metodologie Esistenti]{Analisi Comparativa del Framework GIST con Metodologie Esistenti}
 \label{fig:tab5_1_comparison}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.1\textwidth]{thesis_figures/cap5/framework_radar_comparison.pdf}
-\caption{Radar Chart per l'Analisi Comparativa del Framework GIST con Metodologie Esistenti}
+\caption[Radar Chart Comparativo del Framework GIST]{Radar Chart per l'Analisi Comparativa del Framework GIST con Metodologie Esistenti}
 \label{fig:radar_comparison}
 \end{figure}
 L’analisi comparativa rivela diversi punti di differenziazione chiave

@@ -51,7 +51,7 @@ La nostra analisi si basa su tre livelli complementari di raccolta dati, garante
 
 Abbiamo analizzato un corpus significativo di dati provenienti da fonti istituzionali e di settore:
 
-Il Comitato Europeo per la Protezione dei Dati (\gls{edpb}) ha fornito accesso a 847 casi di sanzioni \gls{gdpr} nel settore retail tra il 2018 e il 2024\autocite{EDPB2024}. L'analisi di questi casi rivela pattern ricorrenti nelle violazioni, permettendo di identificare le aree di maggior rischio per le organizzazioni del settore.
+Il Comitato Europeo per la Protezione dei Dati (\textbf{\gls{edpb}}) ha fornito accesso a 847 casi di sanzioni \gls{gdpr} nel settore retail tra il 2018 e il 2024\autocite{EDPB2024}. L'analisi di questi casi rivela pattern ricorrenti nelle violazioni, permettendo di identificare le aree di maggior rischio per le organizzazioni del settore.
 
 Parallelamente, abbiamo esaminato 234 rapporti di conformità resi pubblici da organizzazioni della grande distribuzione, estratti principalmente da relazioni annuali e comunicazioni agli investitori. Questi documenti forniscono informazioni preziose sugli investimenti in conformità e sulle strategie adottate.
 
@@ -63,7 +63,7 @@ Per garantire la rilevanza pratica dei risultati nel contesto nazionale, abbiamo
 
 \begin{itemize}
     \item 23 catene della grande distribuzione con valutazione completa \gls{pci-dss}
-    \item 34 interviste strutturate con responsabili della protezione dei dati (\gls{dpo}) sull'implementazione \gls{gdpr}
+    \item 34 interviste strutturate con responsabili della protezione dei dati (\textbf{\gls{dpo}}) sull'implementazione \gls{gdpr}
     \item 18 organizzazioni soggette a \gls{nis2} analizzate attraverso questionari e audit documentali
 \end{itemize}
 
@@ -75,7 +75,7 @@ Per quantificare i benefici dell'approccio integrato, abbiamo sviluppato un geme
     \item 10 scenari di conformità simulati con variazioni nei parametri chiave
     \item Dati di costo reali provenienti da 47 organizzazioni del campione
     \item Calcolo del ritorno sull'investimento (\gls{roi}) su un orizzonte temporale di 5 anni
-    \item Tasso di sconto del 5\% basato sul costo medio ponderato del capitale (\gls{wacc}) del settore
+    \item Tasso di sconto del 5\% basato sul costo medio ponderato del capitale (\textbf{\gls{wacc}}) del settore
 \end{itemize}
 
 \section{Metodologia di Integrazione della Conformità}
@@ -115,9 +115,7 @@ L'implementazione pratica del modello richiede un'architettura tecnologica robus
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{thesis_figures/cap4/figura_4_2_architettura_premium.pdf}
-\caption[Architettura a tre livelli per il sistema di gestione della conformità integrata]{Architettura a tre livelli per il sistema di gestione della conformità integrata: Livello 1: Raccolta dati e monitoraggio\\
-Livello 2: Motore di analisi e correlazione\\
-Livello 3: Dashboard e reporting}
+\caption[Architettura a tre livelli per la conformità integrata]{Architettura a tre livelli per il sistema di gestione della conformità integrata: Livello 1: Raccolta dati e monitoraggio; Livello 2: Motore di analisi e correlazione; Livello 3: Dashboard e reporting}
 \label{fig:architettura_sistema}
 \end{figure}
 
@@ -127,7 +125,7 @@ Il primo livello si occupa della raccolta continua di dati da diverse fonti:
 
 \textbf{Dati di configurazione}: Le configurazioni di sistema vengono monitorate attraverso agenti specializzati che verificano la conformità con le baseline di sicurezza definite. Utilizziamo strumenti di gestione della configurazione come Ansible o Puppet per garantire consistenza e tracciabilità.
 
-\textbf{Log di sicurezza}: I log provenienti da firewall, sistemi di rilevamento delle intrusioni (\gls{ids}) e altri dispositivi di sicurezza vengono aggregati in un sistema centralizzato di gestione degli eventi e delle informazioni di sicurezza (\gls{siem}).
+\textbf{Log di sicurezza}: I log provenienti da firewall, sistemi di rilevamento delle intrusioni (\textbf{\gls{ids}}) e altri dispositivi di sicurezza vengono aggregati in un sistema centralizzato di gestione degli eventi e delle informazioni di sicurezza (\textbf{\gls{siem}}).
 
 \textbf{Metriche operative}: Indicatori chiave di prestazione (\gls{kpi}) relativi alla disponibilità dei sistemi, tempi di risposta agli incidenti e altre metriche operative vengono raccolti per valutare l'efficacia dei controlli implementati.
 
@@ -191,7 +189,8 @@ La segmentazione viene implementata attraverso firewall con ispezione stateful d
 \centering
 \caption{Matrice di comunicazione tra zone di sicurezza}
 \label{tab:matrice_comunicazione}
-\begin{tabular}{|l|c|c|c|}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|}
 \hline
 \textbf{Da/Verso} & \textbf{CDE} & \textbf{Supporto} & \textbf{Aziendale} \\
 \hline
@@ -201,7 +200,7 @@ La segmentazione viene implementata attraverso firewall con ispezione stateful d
 \hline
 \textbf{Aziendale} & Negato & Limitato** & Permesso \\
 \hline
-\end{tabular}
+\end{tabularx}
 \vspace{0.5cm}
 \small{*Solo per funzioni amministrative autenticate\\
 **Solo per servizi specifici (es. Active Directory)}
@@ -355,9 +354,10 @@ I costi di implementazione si dividono in tre categorie principali:
 
 \begin{table}[h]
 \centering
-\caption{Confronto economico: Approccio Tradizionale vs Integrato}
+\caption[Confronto economico: Tradizionale vs Integrato]{Confronto economico: Approccio Tradizionale vs Integrato}
 \label{tab:confronto_economico}
-\begin{tabular}{|l|r|r|r|}
+\small
+\begin{tabularx}{\textwidth}{|X|r|r|r|}
 \hline
 \textbf{Voce di Costo} & \textbf{Tradizionale} & \textbf{Integrato} & \textbf{Risparmio} \\
 \hline
@@ -371,7 +371,7 @@ OPEX annuale & €780.000 & €570.000 & €210.000 \\
 \hline
 \textbf{TCO 5 anni} & €6.830.000 & €5.150.000 & \textbf{€1.680.000} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsubsection{Quantificazione dei Benefici}
@@ -472,7 +472,7 @@ Il Centro di Eccellenza per la Conformità (CEC) traduce la strategia in piani o
 
 \includegraphics[width=1\textwidth]{thesis_figures/cap4/organigramma_moderno.pdf
 }
-\caption{Modello organizzativo per la conformità integrata che evidenzia i ruoli e le responsabilità a diversi livelli}
+\caption[Modello organizzativo per la conformità integrata]{Modello organizzativo per la conformità integrata che evidenzia i ruoli e le responsabilità a diversi livelli}
 \label{fig:org_structure}
 \end{figure}
 
@@ -480,7 +480,7 @@ Il Centro di Eccellenza per la Conformità (CEC) traduce la strategia in piani o
 
 I team operativi implementano i controlli secondo le direttive del CEC:
 
-\textbf{Security Operations Center (SOC)}:
+\textbf{\gls{soc}}:
 \begin{itemize}
     \item Monitoraggio continuo della conformità
     \item Gestione degli incidenti di sicurezza
@@ -687,7 +687,8 @@ I risultati ottenuti da RetailCo dopo 12 mesi dall'implementazione superano sign
 \centering
 \caption{Metriche di performance pre e post integrazione}
 \label{tab:metriche_retailco}
-\begin{tabular}{|l|r|r|r|}
+\small
+\begin{tabularx}{\textwidth}{|X|r|r|r|}
 \hline
 \textbf{Metrica} & \textbf{Pre-Integrazione} & \textbf{Post-Integrazione} & \textbf{Miglioramento} \\
 \hline
@@ -705,7 +706,7 @@ Tempo medio remediation (ore) & 168 & 24 & -86\% \\
 \hline
 Coverage controlli automatizzati & 18\% & 67\% & +272\% \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsubsection{Benefici Qualitativi}
@@ -798,9 +799,10 @@ L'analisi forense ha identificato multiple violazioni normative che hanno facili
 
 \begin{table}[h]
 \centering
-\caption{Correlazione tra vulnerabilità sfruttate e requisiti normativi violati}
+\caption[Correlazione vulnerabilità-requisiti normativi violati]{Correlazione tra vulnerabilità sfruttate e requisiti normativi violati}
 \label{tab:vulnerabilita_requisiti}
-\begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{3cm}|}
+\small
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
 \textbf{Vulnerabilità} & \textbf{PCI-DSS 4.0} & \textbf{GDPR} & \textbf{NIS2} \\
 \hline
@@ -816,7 +818,7 @@ Patch management carente & Req 6.2 & Art. 32(1)(b) & Art. 18(2)(c) \\
 \hline
 Mancanza MFA admin & Req 8.4.2 & - & Art. 18(2)(b) \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Impatto Economico e Operativo}
@@ -920,7 +922,7 @@ Il panorama normativo continua a evolversi rapidamente, richiedendo un approccio
 
 \subsubsection{AI Act e Implicazioni per il Retail}
 
-L'AI Act europeo, con applicazione prevista da 2026, introdurrà requisiti specifici per i sistemi di intelligenza artificiale utilizzati nel retail:
+L'\textbf{\gls{ai}} Act europeo, con applicazione prevista da 2026, introdurrà requisiti specifici per i sistemi di intelligenza artificiale utilizzati nel retail:
 
 \textbf{Sistemi ad alto rischio nel retail}:
 \begin{itemize}
@@ -946,7 +948,7 @@ Il Cyber Resilience Act, in fase di finalizzazione, imporrà requisiti di sicure
 
 \textbf{Impatti operativi}:
 \begin{itemize}
-    \item Valutazione della sicurezza di tutti i dispositivi IoT venduti
+    \item Valutazione della sicurezza di tutti i dispositivi \gls{iot} venduti
     \item Gestione delle vulnerabilità per l'intero ciclo di vita del prodotto
     \item Supporto di sicurezza garantito per minimo 5 anni
     \item Notifica delle vulnerabilità entro 24 ore dalla scoperta
@@ -1066,7 +1068,7 @@ Prioritizzare investimenti in:
     \item Piattaforma GRC unificata
     \item SOAR per automazione response
     \item Data discovery e classification tools
-    \item Container security per ambienti cloud-native
+    \item \textbf{\gls{container}} security per ambienti cloud-native
 \end{itemize}
 
 \textbf{3. Sviluppare metriche meaningful}:

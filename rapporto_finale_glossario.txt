@@ -1,0 +1,109 @@
+=== RAPPORTO FINALE: ANALISI USO TERMINI GLOSSARIO ===
+
+Data analisi: $(date)
+File analizzati: capitoli/*.tex
+Termini nel glossario: 119
+
+## 1. RIEPILOGO STATISTICHE
+
+✓ TERMINI UTILIZZATI CORRETTAMENTE CON \gls{}:
+- Termini importanti con uso corretto: 19/22 (86%)
+- Totale occorrenze \gls{}: 244+ 
+
+✗ PROBLEMI IDENTIFICATI:
+- Termini mai usati con \gls{}: 3 termini
+- Termini usati come testo normale: 6+ casi significativi
+
+## 2. TERMINI PRINCIPALI CON USO CORRETTO
+
+Eccellente conformità per:
+- gdo: 85 occorrenze ✓
+- gist: 37 occorrenze ✓  
+- zerotrust: 33 occorrenze ✓
+- roi: 17 occorrenze ✓
+- pci-dss: 12 occorrenze ✓
+- gdpr: 11 occorrenze ✓
+- pos: 10 occorrenze ✓
+- nis2: 9 occorrenze ✓
+- tco: 9 occorrenze ✓
+
+## 3. TERMINI MAI USATI CON \gls{} (DA CORREGGERE)
+
+3.1 SOC (Security Operations Center)
+- Definito nel glossario: ✓
+- Occorrenze nei capitoli: 2+ (come testo normale)
+- RACCOMANDAZIONE: Sostituire "SOC" con \gls{soc}
+- File da correggere:
+  * Cap5.tex:653 - "SOC 24/7 con AI" → "\gls{soc} 24/7 con AI"
+  * Cap4_1.tex:481 - "Security Operations Center (SOC)" → "\gls{soc}"
+
+3.2 CONTAINER
+- Definito nel glossario: ✓
+- Occorrenze nei capitoli: 2+ (come testo normale)
+- RACCOMANDAZIONE: Sostituire "container" con \gls{container}
+- File da correggere:
+  * Cap5.tex:106 - "containerizzazione" → "tecnologie \gls{container}"
+  * Cap4_1.tex:1067 - "Container security" → "\gls{container} security"
+
+3.3 KUBERNETES
+- Definito nel glossario: ✓
+- Occorrenze nei capitoli: 0
+- RACCOMANDAZIONE: Considerare di usare \gls{kubernetes} se si aggiunge contenuto su orchestrazione
+
+## 4. TERMINI USATI COME TESTO NORMALE (DA CORREGGERE)
+
+4.1 ZERO TRUST (alta priorità)
+- File: abstract.tex
+  * Linea 21: "Zero Trust" nelle parole chiave → "\gls{zerotrust}"
+  * Linea 46: "Zero Trust" nelle keywords → "\gls{zerotrust}"
+- File: app_scoring.tex  
+  * Linea 75: "Zero Trust" in tabella → "\gls{zerotrust}"
+
+4.2 GDO (media priorità)
+- File: abstract.tex
+  * Multiple occorrenze nelle prime righe dove GDO è introdotto
+  * RACCOMANDAZIONE: Mantenere prima definizione come testo, poi usare \gls{gdo}
+
+4.3 IoT (media priorità)
+- File: Cap2.tex:673 - "dispositivi IoT" → "dispositivi \gls{iot}"
+- File: Cap4_1.tex:947 - "dispositivi IoT" → "dispositivi \gls{iot}"
+
+4.4 AI (bassa priorità) 
+- File: Cap4_1.tex:921 - "AI Act" → "\gls{ai} Act"
+- File: Cap5.tex:653 - "SOC 24/7 con AI" → "\gls{soc} 24/7 con \gls{ai}"
+
+4.5 ML/Machine Learning (bassa priorità)
+- File: Cap1.tex:675 - "Sistema ML" → "Sistema \gls{ml}"
+
+## 5. RACCOMANDAZIONI PRIORITARIE
+
+### ALTA PRIORITÀ (da correggere immediatamente):
+1. Abstract: Sostituire "Zero Trust" con \gls{zerotrust} nelle parole chiave
+2. Cap5.tex: Sostituire "SOC 24/7" con "\gls{soc} 24/7"
+3. Cap4_1.tex: Usare \gls{soc} invece di "Security Operations Center (SOC)"
+
+### MEDIA PRIORITÀ:
+1. Sostituire occorrenze di "container" con \gls{container}
+2. Sostituire "dispositivi IoT" con "dispositivi \gls{iot}"
+3. Verificare uso coerente di \gls{gdo} dopo prima definizione
+
+### BASSA PRIORITÀ:
+1. Sostituire "AI Act" con "\gls{ai} Act"
+2. Sostituire "Sistema ML" con "Sistema \gls{ml}"
+
+## 6. TERMINI DEL GLOSSARIO NON PRESENTI NEI CAPITOLI
+
+Alcuni termini definiti nel glossario non sono mai utilizzati nei capitoli:
+- kubernetes (mai menzionato)
+- Molti termini tecnici specifici potrebbero essere utilizzati in capitoli non ancora analizzati
+
+## 7. CONCLUSIONI
+
+Il glossario è ben utilizzato con 86% di conformità per i termini principali.
+Le correzioni necessarie sono principalmente:
+- 6 sostituzioni di testo normale con \gls{}
+- Coerenza nell'uso dei termini tecnici
+
+Il lavoro di glossario è di buona qualità ma necessita di rifinitura per conformità completa.
+
+===
