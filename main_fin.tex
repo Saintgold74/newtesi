@@ -1,0 +1,125 @@
+% !TEX program = xelatex  % Questa riga può aiutare alcuni editor a scegliere il compilatore giusto
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage{import}
+\usepackage{pre_tesi}
+\setlength{\headheight}{27.58636pt} % Fix for fancyhdr warning
+
+
+
+% ===== INIZIO DOCUMENTO =====
+\begin{document}
+
+\frontmatter
+
+% Frontespizio (senza numerazione)
+\pagenumbering{gobble}
+
+\clearpage
+\input{capitoli/frontespizio}
+\clearpage
+
+% Prefazione (numerazione romana)
+\pagenumbering{Roman}
+\input{capitoli/prefazione}
+\clearpage
+
+% Indice generale
+\tableofcontents
+\clearpage
+
+% Indice delle figure
+\listoffigures
+\clearpage
+
+% Indice delle tabelle
+\listoftables
+\clearpage
+
+\printglossaries
+\clearpage
+
+\mainmatter
+
+% Capitoli (numerazione araba)
+\pagenumbering{arabic}
+
+% ==========================================
+% ABSTRACT ITALIANO
+% ==========================================
+
+\begin{abstract}
+
+La Grande Distribuzione Organizzata (GDO) italiana gestisce un'infrastruttura tecnologica di complessità paragonabile ai sistemi finanziari globali, con oltre 27.000 punti vendita che processano 45 milioni di transazioni giornaliere. Questa ricerca affronta la sfida critica di progettare e implementare infrastrutture IT sicure, performanti ed economicamente sostenibili per il settore retail, in un contesto caratterizzato da margini operativi ridotti (2-4\%), minacce cyber in crescita esponenziale (+312\% dal 2021) e requisiti normativi sempre più stringenti.
+
+La tesi propone GIST (Grande distribuzione - Integrazione Sicurezza e Trasformazione), un framework quantitativo innovativo che integra quattro dimensioni critiche: fisica, architetturale, sicurezza e conformità. Il framework è stato sviluppato attraverso l'analisi di 234 configurazioni organizzative del settore GDO italiano, raggruppate in 5 archetipi 
+rappresentativi e \textbf{validate mediante simulazione Monte Carlo con 10.000 iterazioni su un ambiente Digital Twin (GDO-Bench) appositamente sviluppato, calibrato su parametri operativi pubblici del settore italiano}.
+
+I risultati della \textbf{validazione simulata} dimostrano che l'applicazione del framework GIST permette di conseguire: \begin{itemize}
+    \item una riduzione del 38\% del costo totale di proprietà (TCO) su un orizzonte quinquennale; 
+    \item livelli di disponibilità del 99,96\% anche con carichi transazionali variabili del 500\%; 
+    \item una riduzione del 42,7\% della superficie di attacco misurata attraverso l'algoritmo ASSA-GDO sviluppato; 
+    \item una riduzione del 39\% dei costi di conformità attraverso la Matrice di Integrazione Normativa (MIN) che unifica 847 requisiti individuali in 156 controlli integrati.
+\end{itemize}
+
+Il contributo scientifico include lo sviluppo del framework Digital Twin GDO-Bench per la comunità di ricerca, l'adattamento di algoritmi esistenti al contesto GDO, e una roadmap implementativa teoricamente validata. La ricerca dimostra che sicurezza e performance non sono obiettivi conflittuali ma sinergici quando implementati attraverso un approccio sistemico, con effetti di amplificazione del 52\% rispetto a interventi isolati \textbf{in ambiente simulato}.
+
+\textbf{Parole chiave:} Grande Distribuzione Organizzata, Sicurezza Informatica, Cloud Ibrido, Zero Trust, Conformità Normativa, GIST Framework
+
+\end{abstract}
+
+% ==========================================
+% ABSTRACT INGLESE
+% ==========================================
+
+\begin{otherlanguage}{english}
+\begin{abstract}
+
+The Italian Large-Scale Retail sector (GDO) manages a technological infrastructure of complexity comparable to global financial systems, with over 27,000 points of sale processing 45 million daily transactions. This research addresses the critical challenge of designing and implementing secure, performant, and economically sustainable IT infrastructures for the retail sector, in a context characterized by reduced operating margins (2-4\%), exponentially growing cyber threats (+312\% since 2021), and increasingly stringent regulatory requirements.
+
+The thesis proposes GIST (Large-scale retail - Integration Security and Transformation), an innovative quantitative framework that integrates four critical dimensions: physical, architectural, security, and compliance. The framework was developed through the analysis of 234 organizational configurations of the Italian GDO sector, grouped into 5 representative archetypes and \textbf{validated through Monte Carlo simulation with 10,000 iterations on a specially developed Digital Twin environment (GDO-Bench), calibrated on public operational parameters of the Italian sector}.
+
+The results of the \textbf{simulated validation} demonstrate that the application of the GIST framework enables: 
+\begin{itemize}
+    \item a 38\% reduction in total cost of ownership (TCO) over a five-year horizon; 
+    \item availability levels of 99.96\% even with 500\% variable transactional loads; 
+    \item a 42.7\% reduction in attack surface measured through the developed ASSA-GDO algorithm; 
+    \item a 39\% reduction in compliance costs through the Normative Integration Matrix (MIN) that unifies 847 individual requirements into 156 integrated controls.
+\end{itemize}
+
+The scientific contribution includes the development of the Digital Twin GDO-Bench framework for the research community, the adaptation of existing algorithms to the GDO context, and a theoretically validated implementation roadmap. The research demonstrates that security and performance are not conflicting objectives but synergistic when implemented through a systemic approach, with amplification effects of 52\% compared to isolated interventions \textbf{in a simulated environment}.
+
+\textbf{Keywords:} Large-Scale Retail, Cybersecurity, Hybrid Cloud, Zero Trust, Regulatory Compliance, GIST Framework
+
+\end{abstract}
+\end{otherlanguage}
+\clearpage
+
+\clearpage
+%\include{capitoli/Cap1.tex}
+\include{capitoli/Cap1_fin.tex}
+
+%\include{capitoli/Cap2.tex}
+\include{capitoli/Cap2_fin.tex}
+
+%\include{capitoli/Cap3_def1_2.tex} 
+\include{capitoli/Cap3_fin.tex} 
+%\include{capitoli/Cap4_1.tex}
+\include{capitoli/Cap4_fin.tex}
+%\include{capitoli/Cap5.tex}
+\include{capitoli/Cap5_fin.tex}
+
+\appendix
+
+\include{capitoli/app_metodologia.tex}
+\include{capitoli/app_scoring.tex}
+
+\backmatter
+
+
+% Questa include TUTTE le fonti citate nell'intera tesi
+\printbibliography[
+    heading=bibintoc,
+    title={Bibliografia Generale}
+]
+
+\end{document}
