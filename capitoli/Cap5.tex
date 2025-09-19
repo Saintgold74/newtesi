@@ -195,17 +195,18 @@ La riduzione osservata si traduce concretamente in 187 potenziali vettori di att
 
 \begin{table}[htbp]
 \centering
+\small
 \caption{Sintesi della Validazione delle Ipotesi di Ricerca}
 \label{tab:validation_summary}
-\begin{tabular}{l c c c c}
-\toprule
+\begin{tabular}{|l|c|c|c|c|}
+    \hline
 \textbf{Ipotesi} & \textbf{Target} & \textbf{Risultato} & \textbf{IC 95\%} & \textbf{Valore p} \\
-\midrule
+\hline
 H1: Cloud-Ibrido & >99,9\% uptime & 99,96\% & [99,94-99,97] & <0,001 \\
 H1: Riduzione \gls{tco} & >30\% & 38,2\% & [35,1-41,3] & <0,001 \\
 H2: \gls{zerotrust} & -30\% superficie & -42,7\% & [39,2-46,2] & <0,001 \\
 H3: Conformità & -25\% costi & -39,1\% & [36,4-41,8] & <0,001 \\
-\bottomrule
+\hline
 \end{tabular}
 \end{table}
 
@@ -215,8 +216,9 @@ La simulazione dei 5 archetipi rappresentativi ha prodotto i seguenti risultati:
 
 \begin{table}[h!]
 \centering
+\small
 \caption{GIST Score per archetipo e scenario}
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabular}[width=\textwidth]{|l|c|c|c|c|}
 \hline
 \textbf{Archetipo} & \textbf{n} & \textbf{Baseline} & \textbf{Migrazione} & \textbf{Miglioramento} \\
 \hline
@@ -270,7 +272,7 @@ Un risultato particolarmente significativo emerso dall'analisi riguarda gli effe
 
 Questo fenomeno di amplificazione sistemica è stato quantificato attraverso un modello di regressione che include termini di interazione. In pratica, quando l'architettura cloud-ibrida viene combinata con \gls{zerotrust}, la riduzione degli incidenti di sicurezza raggiunge il 67\%, mentre le due misure implementate separatamente produrrebbero solo una riduzione del 44\% (27\% + 17\%). 
 
-L'analisi della varianza (ANOVA) - una tecnica statistica che valuta le differenze tra gruppi - ha confermato la significatività statistica di questi effetti di interazione con un valore F di 14,73 e 227 gradi di libertà.
+L'analisi della varianza - una tecnica statistica che valuta le differenze tra gruppi - ha confermato la significatività statistica di questi effetti di interazione con un valore F di 14,73 e 227 gradi di libertà.
 
 
 \begin{figure}[htbp]
@@ -1151,11 +1153,3 @@ if __name__ == "__main__":
     create_synergy_diagram()
 \end{comment}
 
-%==========================================================================
-% BIBLIOGRAFIA DEL CAPITOLO
-%==========================================================================
-\clearpage
-\printbibliography[
-    heading=subbibliography,
-    title={Riferimenti Bibliografici del Capitolo 5},
-]
