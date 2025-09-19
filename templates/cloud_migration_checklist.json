@@ -1,0 +1,501 @@
+{
+  "checklist_info": {
+    "name": "Checklist Migrazione Cloud - GDO",
+    "version": "1.0",
+    "description": "Checklist completa per valutazione readiness migrazione cloud nel settore GDO",
+    "last_updated": "2025-01-15",
+    "author": "GIST Framework Research"
+  },
+  "categories": [
+    {
+      "id": "infrastructure",
+      "name": "Infrastruttura Fisica",
+      "weight": 25,
+      "items": [
+        {
+          "id": "bandwidth",
+          "description": "Banda disponibile per sede ≥ 100 Mbps",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Speed test da ogni sede",
+          "target_value": "100",
+          "unit": "Mbps",
+          "notes": ""
+        },
+        {
+          "id": "redundancy",
+          "description": "Connettività ridondante (2+ carrier)",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Verifica contratti carrier",
+          "target_value": "2",
+          "unit": "carrier",
+          "notes": ""
+        },
+        {
+          "id": "latency",
+          "description": "Latenza verso cloud provider < 50ms",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Ping test verso data center provider",
+          "target_value": "50",
+          "unit": "ms",
+          "notes": ""
+        },
+        {
+          "id": "power_backup",
+          "description": "Power backup minimo 4 ore",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Test autonomia UPS",
+          "target_value": "4",
+          "unit": "ore",
+          "notes": ""
+        },
+        {
+          "id": "cooling",
+          "description": "Sistema raffreddamento ridondante",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Verifica configurazione HVAC",
+          "target_value": "N+1",
+          "unit": "configurazione",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "name": "Applicazioni",
+      "weight": 30,
+      "items": [
+        {
+          "id": "app_inventory",
+          "description": "Inventory applicazioni completo",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Documento inventory con dependency mapping",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "dependencies",
+          "description": "Dipendenze applicative mappate",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Diagramma architetturale dettagliato",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "licensing",
+          "description": "Licensing cloud-compatible verificato",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Review contratti software",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "compatibility_tests",
+          "description": "Test di compatibilità cloud eseguiti",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Report test compatibilità",
+          "target_value": "80",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "performance_baseline",
+          "description": "Baseline performance applicazioni documentato",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Report performance attuale",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "name": "Dati",
+      "weight": 25,
+      "items": [
+        {
+          "id": "data_classification",
+          "description": "Classificazione dati completata",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Data catalog con classificazioni",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "data_volume",
+          "description": "Volume dati da migrare quantificato",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Report sizing database e file system",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "rpo_rto",
+          "description": "RPO/RTO definiti per applicazione",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Documento Business Continuity",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "backup_strategy",
+          "description": "Strategia di backup cloud-ready",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Piano backup e disaster recovery",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "data_residency",
+          "description": "Requisiti data residency identificati",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Analisi compliance normativa",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Sicurezza",
+      "weight": 30,
+      "items": [
+        {
+          "id": "access_policies",
+          "description": "Politiche di accesso cloud definite",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Documento security policy cloud",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "mfa",
+          "description": "MFA implementato per admin",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Test accesso con MFA",
+          "target_value": "100",
+          "unit": "% admin",
+          "notes": ""
+        },
+        {
+          "id": "encryption",
+          "description": "Crittografia at-rest configurabile",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Test encryption configuration",
+          "target_value": "AES-256",
+          "unit": "standard",
+          "notes": ""
+        },
+        {
+          "id": "network_segmentation",
+          "description": "Piano network segmentation cloud",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Architettura network cloud",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "monitoring",
+          "description": "Sistema monitoring sicurezza cloud-ready",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Configurazione SIEM per cloud",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "incident_response",
+          "description": "Piano incident response aggiornato per cloud",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Runbook incident response cloud",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "compliance",
+      "name": "Compliance",
+      "weight": 20,
+      "items": [
+        {
+          "id": "regulatory_analysis",
+          "description": "Analisi impatti normativi completata",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Report compliance assessment",
+          "target_value": "100",
+          "unit": "%",
+          "notes": "PCI-DSS, GDPR, NIS2"
+        },
+        {
+          "id": "audit_readiness",
+          "description": "Preparazione per audit cloud",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Checklist audit preparation",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "data_processing",
+          "description": "Data Processing Agreement (DPA) con provider",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Contratto DPA firmato",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "logging_compliance",
+          "description": "Logging conforme a requisiti normativi",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Configurazione log retention",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "name": "Competenze",
+      "weight": 15,
+      "items": [
+        {
+          "id": "certified_team",
+          "description": "Team cloud certificato (min 2 persone)",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Certificati AWS/Azure/GCP",
+          "target_value": "2",
+          "unit": "persone",
+          "notes": ""
+        },
+        {
+          "id": "training_plan",
+          "description": "Piano di formazione definito",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Documento piano formazione",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "vendor_support",
+          "description": "Supporto vendor contrattualizzato",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Contratto supporto tecnico",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "runbooks",
+          "description": "Runbook operativi cloud preparati",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Documentazione operativa",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "change_management",
+          "description": "Processo change management cloud",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Procedura change management",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "financial",
+      "name": "Aspetti Finanziari",
+      "weight": 10,
+      "items": [
+        {
+          "id": "cost_model",
+          "description": "Modello di costo cloud definito",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Business case con TCO analysis",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "budget_approval",
+          "description": "Budget migrazione approvato",
+          "critical": true,
+          "status": "pending",
+          "verification_method": "Approvazione budget formale",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        },
+        {
+          "id": "cost_monitoring",
+          "description": "Sistema monitoring costi implementato",
+          "critical": false,
+          "status": "pending",
+          "verification_method": "Dashboard cost monitoring",
+          "target_value": "100",
+          "unit": "%",
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "assessment_criteria": {
+    "status_values": [
+      {
+        "value": "not_started",
+        "label": "Non Iniziato",
+        "color": "red",
+        "score": 0
+      },
+      {
+        "value": "in_progress",
+        "label": "In Corso",
+        "color": "yellow",
+        "score": 50
+      },
+      {
+        "value": "completed",
+        "label": "Completato",
+        "color": "green",
+        "score": 100
+      },
+      {
+        "value": "not_applicable",
+        "label": "Non Applicabile",
+        "color": "gray",
+        "score": "N/A"
+      }
+    ],
+    "readiness_levels": [
+      {
+        "min_score": 90,
+        "max_score": 100,
+        "level": "Ready",
+        "description": "Pronto per migrazione",
+        "color": "green",
+        "recommendation": "Procedere con migrazione"
+      },
+      {
+        "min_score": 75,
+        "max_score": 89,
+        "level": "Nearly Ready",
+        "description": "Quasi pronto, pochi gap minori",
+        "color": "lightgreen",
+        "recommendation": "Completare elementi critici e procedere"
+      },
+      {
+        "min_score": 60,
+        "max_score": 74,
+        "level": "Needs Work",
+        "description": "Necessario lavoro significativo",
+        "color": "yellow",
+        "recommendation": "Completare gap critici prima di procedere"
+      },
+      {
+        "min_score": 0,
+        "max_score": 59,
+        "level": "Not Ready",
+        "description": "Non pronto per migrazione",
+        "color": "red",
+        "recommendation": "Lavoro estensivo necessario prima di considerare migrazione"
+      }
+    ]
+  },
+  "scoring": {
+    "method": "weighted_average",
+    "critical_items_required": true,
+    "critical_multiplier": 1.5,
+    "formula": "SUM(category_weight * category_score) where category_score = SUM(item_score * critical_multiplier_if_applicable) / items_count"
+  },
+  "migration_phases": [
+    {
+      "phase": 1,
+      "name": "Assessment & Planning",
+      "required_score": 75,
+      "critical_categories": ["infrastructure", "applications", "security"]
+    },
+    {
+      "phase": 2,
+      "name": "Pilot Migration",
+      "required_score": 85,
+      "critical_categories": ["data", "security", "compliance"]
+    },
+    {
+      "phase": 3,
+      "name": "Full Migration",
+      "required_score": 95,
+      "critical_categories": ["all"]
+    }
+  ],
+  "usage_instructions": {
+    "assessment_process": [
+      "1. Review each item in the checklist",
+      "2. Update status field (not_started, in_progress, completed, not_applicable)",
+      "3. Add verification evidence in notes field",
+      "4. Calculate category scores based on weighted items",
+      "5. Determine overall readiness level",
+      "6. Generate action plan for gaps"
+    ],
+    "scoring_calculation": [
+      "1. Each item receives score based on status (0-100)",
+      "2. Critical items receive 1.5x multiplier",
+      "3. Category score = average of item scores in category",
+      "4. Overall score = weighted average of category scores",
+      "5. Readiness level determined by overall score"
+    ],
+    "tools": [
+      "Use provided scripts to automate technical assessments",
+      "Generate reports in JSON/PDF format",
+      "Track progress over time",
+      "Export action plans"
+    ]
+  }
+}

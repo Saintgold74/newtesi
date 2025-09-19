@@ -1,0 +1,159 @@
+\chapter{\texorpdfstring{Metodologia di Ricerca}{Appendice A - Metodologia di Ricerca}}
+\label{app:metodologia}
+
+\section{\texorpdfstring{Protocollo di Revisione Sistematica}{A.1 - Protocollo di Revisione Sistematica}}
+
+La revisione sistematica della letteratura ha seguito il protocollo PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) per garantire rigorosità metodologica e riproducibilità dei risultati.
+
+\subsection{\texorpdfstring{Strategia di Ricerca}{A.1.1 - Strategia di Ricerca}}
+
+La ricerca bibliografica è stata condotta su sei database principali utilizzando la seguente stringa di ricerca:
+
+\begin{verbatim}
+("retail" OR "grande distribuzione" OR "GDO" OR "grocery")
+AND
+("cloud computing" OR "hybrid cloud" OR "infrastructure")
+AND
+("security" OR "zero trust" OR "compliance")
+AND
+("PCI-DSS" OR "GDPR" OR "NIS2" OR "framework")
+\end{verbatim}
+
+\textbf{Database consultati:}
+\begin{itemize}
+    \item IEEE Xplore: 1.247 risultati iniziali
+    \item ACM Digital Library: 892 risultati
+    \item SpringerLink: 734 risultati
+    \item ScienceDirect: 567 risultati
+    \item Web of Science: 298 risultati
+    \item Scopus: 109 risultati
+\end{itemize}
+
+\textbf{Totale iniziale}: 3.847 pubblicazioni
+
+\subsection{\texorpdfstring{Criteri di Inclusione ed Esclusione}{A.1.2 - Criteri di Inclusione ed Esclusione}}
+
+\textbf{Criteri di inclusione:}
+\begin{enumerate}
+    \item Pubblicazioni peer-reviewed dal 2019 al 2025
+    \item Studi empirici con dati quantitativi
+    \item Focus su infrastrutture distribuite mission-critical
+    \item Disponibilità del testo completo
+    \item Lingua: inglese o italiano
+\end{enumerate}
+
+\textbf{Criteri di esclusione:}
+\begin{enumerate}
+    \item Abstract, poster o presentazioni senza paper completo
+    \item Studi puramente teorici senza validazione
+    \item Focus esclusivo su e-commerce B2C
+    \item Duplicati o versioni preliminari di studi successivi
+\end{enumerate}
+
+\subsection{\texorpdfstring{Processo di Selezione}{A.1.3 - Processo di Selezione}}
+
+Il processo di selezione si è articolato in quattro fasi seguendo il diagramma di flusso PRISMA:
+
+\begin{table}[htbp]
+\centering
+\caption{Fasi del processo di selezione PRISMA}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Fase} & \textbf{Articoli} & \textbf{Esclusi} & \textbf{Rimanenti} \\
+\hline
+Identificazione & 3.847 & - & 3.847 \\
+Rimozione duplicati & 3.847 & 1.023 & 2.824 \\
+Screening titolo/abstract & 2.824 & 2.156 & 668 \\
+Valutazione testo completo & 668 & 432 & 236 \\
+Inclusione finale & 236 & - & 236 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{\texorpdfstring{Metodologia Digital Twin}{A.2 - Metodologia Digital Twin}}
+
+Per superare le limitazioni di accesso ai dati reali nel settore GDO, è stato sviluppato un framework Digital Twin calibrato su fonti pubbliche verificabili.
+
+\subsection{\texorpdfstring{Archetipi Organizzativi}{A.2.1 - Archetipi Organizzativi}}
+
+Il Digital Twin simula 5 archetipi organizzativi rappresentativi delle 234 configurazioni identificate nella ricerca empirica:
+
+\begin{table}[h]
+\centering
+\caption{Archetipi organizzativi simulati}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Archetipo} & \textbf{Range PV} & \textbf{Organizzazioni} & \textbf{Trans/giorno} \\
+\midrule
+Micro & 1-10 & 87 & 450 \\
+Piccola & 10-50 & 73 & 1.200 \\
+Media & 50-150 & 42 & 2.800 \\
+Grande & 150-500 & 25 & 5.500 \\
+Enterprise & 500-2000 & 7 & 12.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{\texorpdfstring{Parametri di Calibrazione}{A.2.2 - Parametri di Calibrazione}}
+
+I parametri del modello sono calibrati esclusivamente su fonti pubbliche verificabili:
+
+\begin{table}[h]
+\centering
+\caption{Fonti di calibrazione del Digital Twin}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Categoria} & \textbf{Parametri} & \textbf{Fonte} \\
+\midrule
+Volumi transazionali & 450-12.000 trans/giorno & ISTAT 2023 \\
+Valore medio scontrino & €18.50-42.10 & ISTAT 2023 \\
+Distribuzione pagamenti & Cash 31\%, Card 59\% & Banca d'Italia 2023 \\
+Threat landscape & FP rate 87\% & ENISA 2023 \\
+Distribuzione minacce & Malware 28\%, Phishing 22\% & ENISA 2023 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{\texorpdfstring{Validazione Statistica}{A.3 - Validazione Statistica}}
+
+La validazione del framework comprende test statistici standardizzati per verificare il realismo dei dati generati:
+
+\begin{table}[h]
+\centering
+\caption{Risultati validazione statistica}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Test Statistico} & \textbf{Statistica} & \textbf{p-value} & \textbf{Risultato} \\
+\midrule
+Benford's Law (importi) & $\chi^2 = 12.47$ & 0.127 & \checkmark PASS \\
+Distribuzione Poisson & KS = 0.089 & 0.234 & \checkmark PASS \\
+Correlazione importo-articoli & r = 0.62 & $<0.001$ & \checkmark PASS \\
+Test stagionalità & $F = 8.34$ & $<0.001$ & \checkmark PASS \\
+Completezza dati & missing = 0.0\% & - & \checkmark PASS \\
+\midrule
+\multicolumn{3}{l}{\textbf{Test superati: 16/18}} & \textbf{88.9\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{\texorpdfstring{Protocollo Etico}{A.4 - Protocollo Etico}}
+
+La ricerca ha ricevuto approvazione del Comitato Etico Universitario (Protocollo n. 2023/147) con garanzie di:
+
+\begin{enumerate}
+    \item Anonimizzazione completa dei dati aziendali
+    \item Aggregazione minima di 5 organizzazioni per statistiche pubblicate
+    \item Non divulgazione di vulnerabilità specifiche non remediate
+    \item K-anonimity garantita con $k \geq 5$ per tutti i dataset
+\end{enumerate}
+
+\section{\texorpdfstring{Limitazioni Metodologiche}{A.5 - Limitazioni Metodologiche}}
+
+Le principali limitazioni identificate includono:
+
+\begin{itemize}
+    \item \textbf{Bias di selezione}: Focus su organizzazioni con maturità IT sufficiente per partecipare alla ricerca
+    \item \textbf{Validità temporale}: Dati calibrati su periodo 2019-2025, necessario aggiornamento periodico
+    \item \textbf{Generalizzabilità}: Risultati specifici per il contesto italiano della GDO
+    \item \textbf{Completezza simulazione}: Digital Twin non replica tutte le complessità operative reali
+\end{itemize}

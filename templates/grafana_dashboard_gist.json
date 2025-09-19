@@ -1,0 +1,911 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "GIST Framework - Security Posture Dashboard",
+    "tags": ["gist", "security", "gdo", "compliance"],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "graphTooltip": 1,
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "refresh": "30s",
+    "version": 1,
+    "panels": [
+      {
+        "id": 1,
+        "title": "GIST Score Overview",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "green",
+                  "value": 75
+                }
+              ]
+            },
+            "unit": "short",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center"
+        },
+        "targets": [
+          {
+            "expr": "gist_total_score",
+            "legendFormat": "GIST Score Totale",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Componenti GIST",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 16,
+          "x": 8,
+          "y": 0
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "min": 0,
+            "max": 100,
+            "unit": "short"
+          }
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "right"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "expr": "gist_component_physical",
+            "legendFormat": "Physical ({{peso}}%)",
+            "refId": "A"
+          },
+          {
+            "expr": "gist_component_architectural",
+            "legendFormat": "Architectural ({{peso}}%)",
+            "refId": "B"
+          },
+          {
+            "expr": "gist_component_security",
+            "legendFormat": "Security ({{peso}}%)",
+            "refId": "C"
+          },
+          {
+            "expr": "gist_component_compliance",
+            "legendFormat": "Compliance ({{peso}}%)",
+            "refId": "D"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Attack Surface Score (ASSA)",
+        "type": "gauge",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 8
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 300
+                },
+                {
+                  "color": "orange",
+                  "value": 600
+                },
+                {
+                  "color": "red",
+                  "value": 1000
+                }
+              ]
+            },
+            "unit": "short",
+            "min": 0,
+            "max": 1200
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "showThresholdLabels": true,
+          "showThresholdMarkers": true
+        },
+        "targets": [
+          {
+            "expr": "assa_score_current",
+            "legendFormat": "ASSA Score",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Compliance Status",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 8
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 70
+                },
+                {
+                  "color": "green",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "horizontal",
+          "textMode": "value_and_name",
+          "colorMode": "background"
+        },
+        "targets": [
+          {
+            "expr": "compliance_score_pcidss",
+            "legendFormat": "PCI-DSS",
+            "refId": "A"
+          },
+          {
+            "expr": "compliance_score_gdpr",
+            "legendFormat": "GDPR",
+            "refId": "B"
+          },
+          {
+            "expr": "compliance_score_nis2",
+            "legendFormat": "NIS2",
+            "refId": "C"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Metriche Operative",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 8
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "green",
+                  "value": 80
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "horizontal",
+          "textMode": "value_and_name",
+          "colorMode": "value"
+        },
+        "targets": [
+          {
+            "expr": "infrastructure_availability_percent",
+            "legendFormat": "Availability",
+            "refId": "A"
+          },
+          {
+            "expr": "security_mttr_hours",
+            "legendFormat": "MTTR (hours)",
+            "refId": "B"
+          },
+          {
+            "expr": "incidents_last_30d",
+            "legendFormat": "Incidents (30d)",
+            "refId": "C"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Security Incidents (24h)",
+        "type": "table",
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 1
+                },
+                {
+                  "color": "red",
+                  "value": 3
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "severity"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "color-background"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "options": {
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "time"
+            }
+          ]
+        },
+        "targets": [
+          {
+            "expr": "security_incidents_by_severity",
+            "format": "table",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "time": 0,
+                "severity": 1,
+                "type": 2,
+                "affected_systems": 3,
+                "status": 4,
+                "description": 5
+              },
+              "renameByName": {
+                "time": "Timestamp",
+                "severity": "Severity",
+                "type": "Type",
+                "affected_systems": "Affected Systems",
+                "status": "Status",
+                "description": "Description"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Infrastructure Health by Location",
+        "type": "heatmap",
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "spectrum"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              }
+            }
+          }
+        },
+        "options": {
+          "calculate": false,
+          "cellGap": 2,
+          "cellValues": {},
+          "color": {
+            "exponent": 0.5,
+            "fill": "dark-orange",
+            "mode": "spectrum",
+            "reverse": false,
+            "scale": "exponential",
+            "scheme": "RdYlGn",
+            "steps": 64
+          },
+          "exemplars": {
+            "color": "rgba(255,0,255,0.7)"
+          },
+          "filterValues": {
+            "le": 1e-9
+          },
+          "legend": {
+            "show": true
+          },
+          "rowsFrame": {
+            "layout": "auto"
+          },
+          "tooltip": {
+            "show": true,
+            "yHistogram": false
+          },
+          "yAxis": {
+            "axisPlacement": "left",
+            "reverse": false
+          }
+        },
+        "targets": [
+          {
+            "expr": "infrastructure_health_by_location",
+            "format": "heatmap",
+            "legendFormat": "{{location}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "GIST Trend Analysis",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "Score",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 3,
+              "pointSize": 6,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line"
+              }
+            },
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 25
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "green",
+                  "value": 75
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        },
+        "options": {
+          "legend": {
+            "calcs": [
+              "last",
+              "mean",
+              "max"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "targets": [
+          {
+            "expr": "gist_total_score",
+            "legendFormat": "GIST Total",
+            "refId": "A"
+          },
+          {
+            "expr": "gist_component_physical",
+            "legendFormat": "Physical",
+            "refId": "B"
+          },
+          {
+            "expr": "gist_component_architectural",
+            "legendFormat": "Architectural",
+            "refId": "C"
+          },
+          {
+            "expr": "gist_component_security",
+            "legendFormat": "Security",
+            "refId": "D"
+          },
+          {
+            "expr": "gist_component_compliance",
+            "legendFormat": "Compliance",
+            "refId": "E"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Risk Assessment Matrix",
+        "type": "piechart",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 33
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              }
+            },
+            "mappings": [],
+            "unit": "short"
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "pieType": "pie",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "visible",
+            "placement": "right",
+            "values": [
+              "value",
+              "percent"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "expr": "risk_level_low",
+            "legendFormat": "Low Risk",
+            "refId": "A"
+          },
+          {
+            "expr": "risk_level_medium",
+            "legendFormat": "Medium Risk",
+            "refId": "B"
+          },
+          {
+            "expr": "risk_level_high",
+            "legendFormat": "High Risk",
+            "refId": "C"
+          },
+          {
+            "expr": "risk_level_critical",
+            "legendFormat": "Critical Risk",
+            "refId": "D"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Performance Metrics",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 16,
+          "x": 8,
+          "y": 33
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "expr": "avg(response_time_ms)",
+            "legendFormat": "Avg Response Time (ms)",
+            "refId": "A"
+          },
+          {
+            "expr": "rate(requests_total[5m])",
+            "legendFormat": "Request Rate",
+            "refId": "B"
+          },
+          {
+            "expr": "avg(cpu_usage_percent)",
+            "legendFormat": "CPU Usage %",
+            "refId": "C"
+          },
+          {
+            "expr": "avg(memory_usage_percent)",
+            "legendFormat": "Memory Usage %",
+            "refId": "D"
+          }
+        ]
+      }
+    ],
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        },
+        {
+          "datasource": "prometheus",
+          "enable": true,
+          "expr": "increase(security_incidents_total[1h]) > 0",
+          "iconColor": "red",
+          "name": "Security Incidents",
+          "titleFormat": "Security Incident",
+          "tagKeys": "severity,type"
+        }
+      ]
+    },
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "prometheus",
+          "definition": "label_values(gist_component_physical, location)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Location",
+          "multi": true,
+          "name": "location",
+          "options": [],
+          "query": "label_values(gist_component_physical, location)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "prometheus",
+          "definition": "label_values(gist_component_physical, store_type)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Store Type",
+          "multi": true,
+          "name": "store_type",
+          "options": [],
+          "query": "label_values(gist_component_physical, store_type)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "type": "query"
+        }
+      ]
+    },
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "title": "GIST Framework Documentation",
+        "tooltip": "Open GIST Framework documentation",
+        "type": "link",
+        "url": "https://github.com/gist-framework/docs"
+      },
+      {
+        "asDropdown": false,
+        "icon": "bolt",
+        "includeVars": true,
+        "keepTime": true,
+        "tags": [],
+        "title": "Security Operations Center",
+        "tooltip": "Open SOC Dashboard",
+        "type": "dashboards",
+        "url": "/d/soc-overview/security-operations-center"
+      }
+    ]
+  },
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "slug": "gist-framework-security-posture",
+    "url": "/d/gist-framework/gist-framework-security-posture",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-01-15T00:00:00Z",
+    "updated": "2025-01-15T00:00:00Z",
+    "updatedBy": "admin",
+    "createdBy": "admin",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": ""
+  }
+}
