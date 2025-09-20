@@ -2,7 +2,7 @@
 \documentclass[12pt,a4paper,oneside]{book}
 \usepackage{import}
 \usepackage{pre_tesi}
-\setlength{\headheight}{27.58636pt} % Fix for fancyhdr warning
+\setlength{\headheight}{27pt} % Fix for fancyhdr warning
 
 %\includeonly{capitoli/Cap3, capitoli/Cap3_def1, capitoli/Cap3_def1_2, capitoli/Cap3_def1_reduced} % Per compilare solo alcuni capitoli, commentare per compilare tutto
 %\includeonly{capitoli/Cap3_def1_2, capitoli/Cap3_revisionato} % Per compilare solo alcuni capitoli, commentare per compilare tutto
@@ -15,54 +15,82 @@
 
 % Frontespizio (senza numerazione)
 \pagenumbering{gobble}
-
-
 \input{capitoli/frontespizio}
 \clearpage
 
-
 % Prefazione (numerazione romana)
 \pagenumbering{Roman}
+\pagestyle{plain} % Solo numero pagina per frontmatter
 \input{capitoli/prefazione}
 \clearpage
-
 
 % Indice generale
 \tableofcontents
 \clearpage
 
-
 % Indice delle figure
 \listoffigures
 \clearpage
-
 
 % Indice delle tabelle
 \listoftables
 \clearpage
 
-
 \printglossaries
 \clearpage
-
 
 \mainmatter
 
 % Capitoli (numerazione araba)
 \pagenumbering{arabic}
 
-\include{capitoli/abstract.tex}
+\section*{Sommario}
+La nostra ricerca nasce dalla mia esperienza ventennale nel settore della Grande Distribuzione Organizzata italiana, dove ho affrontato quotidianamente le sfide di gestire infrastrutture IT distribuite su centinaia di punti vendita. Durante questi anni, ho vissuto in prima persona l'evoluzione tecnologica del settore: dalle architetture monolitiche degli anni 2000 alle moderne piattaforme cloud, dagli attacchi informatici rudimentali ai sofisticati ransomware che paralizzano intere catene distributive. Ogni incidente risolto, ogni migrazione completata, ogni audit superato ha contribuito a plasmare la consapevolezza che il settore necessitava di un approccio sistematico e quantificabile alla trasformazione digitale sicura.
+
+Questa tesi propone GIST (\textit{GDO Integrated Security Transformation}), un framework innovativo che rappresenta la sintesi tra conoscenza accademica e esperienza operativa sul campo. A differenza degli approcci esistenti, prevalentemente teorici o importati da altri settori, GIST è stato progettato specificamente per le peculiarità della GDO italiana: margini operativi ridotti (2-4\%), requisiti di disponibilità estremi (99,95\%+), eterogeneità tecnologica derivante da decenni di stratificazioni, e la necessità di bilanciare sicurezza avanzata con semplicità operativa per personale con turnover elevato.
+
+Il contributo principale di questa ricerca è la formulazione matematica del GIST Score, un indice composito che integra quattro dimensioni critiche (fisica, architetturale, sicurezza, conformità) attraverso pesi calibrati empiricamente su 234 organizzazioni del settore. L'innovazione risiede non solo nella quantificazione oggettiva della maturità digitale -- superando valutazioni qualitative soggettive -- ma anche nell'identificazione e modellazione degli effetti sinergici: l'implementazione coordinata delle quattro dimensioni genera benefici superiori del 52\% rispetto alla somma degli interventi isolati.
+
+Ho sviluppato e validato il framework attraverso un \textit{Digital Twin} (GDO-Bench) che simula le condizioni operative reali del settore, calibrato su parametri pubblici verificabili. La validazione mediante simulazione Monte Carlo con 10.000 iterazioni dimostra che l'applicazione del framework GIST permette di conseguire: riduzione del 38\% del TCO quinquennale, disponibilità del 99,96\% anche con carichi variabili del 500\%, riduzione del 42,7\% della superficie di attacco attraverso l'algoritmo ASSA-GDO sviluppato, e diminuzione del 39\% dei costi di conformità mediante la Matrice di Integrazione Normativa (MIN).
+
+La ricerca colma il gap tra teoria accademica e pratica operativa, fornendo alla comunità scientifica e al settore uno strumento concreto, implementato e disponibile come software open source. Il framework GIST non è solo un modello teorico, ma la codifica di oltre vent'anni di esperienza nella risoluzione di problemi reali: dai blackout durante il Black Friday alle integrazioni post-acquisizione, dagli attacchi ransomware alle verifiche PCI-DSS, dalla gestione di sistemi legacy AS/400 all'implementazione di architetture cloud-native.
+
+Questo lavoro dimostra che sicurezza, performance e conformità non sono obiettivi in conflitto ma sinergici quando affrontati con approccio sistemico. La mia esperienza diretta con oltre 15 incidenti maggiori di sicurezza, 8 migrazioni cloud e innumerevoli audit normativi ha guidato ogni scelta progettuale del framework, garantendo che le soluzioni proposte siano non solo teoricamente valide ma praticamente implementabili nel contesto operativo reale della GDO italiana.
+
+\textbf{Parole chiave}: Grande Distribuzione Organizzata, GIST Framework, Sicurezza Informatica, Cloud Ibrido, Zero Trust, Conformità Normativa, Digital Twin, Trasformazione Digitale
+% ==========================================
+% ABSTRACT INGLESE
+% ==========================================
 \clearpage
 
+\begin{otherlanguage}{english}
+\section*{Abstract}
+This research stems from my twenty years of experience in the Italian Large-Scale Retail sector, where I have daily faced the challenges of managing IT infrastructures distributed across hundreds of stores. During these years, I have personally witnessed the technological evolution of the sector: from the monolithic architectures of the 2000s to modern cloud platforms, from rudimentary cyber attacks to sophisticated ransomware that paralyze entire retail chains. Every incident resolved, every migration completed, every audit passed has contributed to shaping the awareness that the sector needed a systematic and quantifiable approach to secure digital transformation.
+
+This thesis proposes GIST (\textit{Large-scale retail - Integration Security and Transformation}), an innovative framework that represents the synthesis between academic knowledge and hands-on operational experience. Unlike existing approaches, which are predominantly theoretical or imported from other sectors, GIST has been specifically designed for the peculiarities of the Italian retail sector: reduced operating margins (2-4\%), extreme availability requirements (99.95\%+), technological heterogeneity resulting from decades of stratification, and the need to balance advanced security with operational simplicity for staff with high turnover.
+
+The main contribution of this research is the mathematical formulation of the GIST Score, a composite index that integrates four critical dimensions (physical, architectural, security, compliance) through weights empirically calibrated on 234 organizations in the sector. The innovation lies not only in the objective quantification of digital maturity -- surpassing subjective qualitative assessments -- but also in the identification and modeling of synergistic effects: the coordinated implementation of the four dimensions generates benefits 52\% higher than the sum of isolated interventions.
+
+I developed and validated the framework through a Digital Twin (GDO-Bench) that simulates the real operating conditions of the sector, calibrated on verifiable public parameters. Validation through Monte Carlo simulation with 10,000 iterations demonstrates that the application of the GIST framework enables: 38\% reduction in five-year TCO, 99.96\% availability even with 500\% variable loads, 42.7\% reduction in attack surface through the developed ASSA-GDO algorithm, and 39\% decrease in compliance costs through the Normative Integration Matrix (MIN).
+
+This research bridges the gap between academic theory and operational practice, providing the scientific community and the industry with a concrete tool, implemented and available as open source software. The GIST framework is not just a theoretical model, but the codification of over twenty years of experience in solving real problems: from blackouts during Black Friday to post-acquisition integrations, from ransomware attacks to PCI-DSS audits, from managing AS/400 legacy systems to implementing cloud-native architectures.
+
+This work demonstrates that security, performance, and compliance are not conflicting objectives but synergistic when approached systematically. My direct experience with over 15 major security incidents, 8 cloud migrations, and countless regulatory audits has guided every design choice of the framework, ensuring that the proposed solutions are not only theoretically valid but practically implementable in the real operational context of Italian retail.
+
+\textbf{Keywords}: Large-Scale Retail, GIST Framework, Cybersecurity, Hybrid Cloud, Zero Trust, Regulatory Compliance, Digital Twin, Digital Transformation
+
+
+\end{otherlanguage}
+
+% ==========================================
 \clearpage
+
+
 \include{capitoli/Cap1.tex}
 %\include{capitoli/Cap1_fin.tex}
 
 \include{capitoli/Cap2.tex}
-%\include{capitoli/Cap2_fin.tex}
-%\include{capitoli/Cap3.tex}
-%\include{capitoli/Cap3_def1.tex} 
-%\include{capitoli/Cap3_def1_2.tex}
+
 \include{capitoli/Cap3_revisionato.tex}
 %\include{capitoli/Cap3_def1_reduced.tex}
 %\include{capitoli/Cap3_fin.tex} 
