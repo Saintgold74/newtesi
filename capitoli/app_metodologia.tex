@@ -58,16 +58,17 @@ Il processo di selezione si è articolato in quattro fasi seguendo il diagramma 
 \centering
 \caption{Fasi del processo di selezione PRISMA}
 \small
-\begin{tabular}{|l|c|c|c|}
-\hline
+\sffamily
+\begin{tabular}{l c c c }
+\toprule
 \textbf{Fase} & \textbf{Articoli} & \textbf{Esclusi} & \textbf{Rimanenti} \\
-\hline
+\midrule
 Identificazione & 3.847 & - & 3.847 \\
 Rimozione duplicati & 3.847 & 1.023 & 2.824 \\
 Screening titolo/abstract & 2.824 & 2.156 & 668 \\
 Valutazione testo completo & 668 & 432 & 236 \\
 Inclusione finale & 236 & - & 236 \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -79,10 +80,11 @@ Per superare le limitazioni di accesso ai dati reali nel settore GDO, è stato s
 
 Il Digital Twin simula 5 archetipi organizzativi rappresentativi delle 234 configurazioni identificate nella ricerca empirica:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Archetipi organizzativi simulati}
 \small
+\sffamily
 \begin{tabular}{@{}lccc@{}}
 \toprule
 \textbf{Archetipo} & \textbf{Range PV} & \textbf{Organizzazioni} & \textbf{Trans/giorno} \\
@@ -100,10 +102,11 @@ Enterprise & 500-2000 & 7 & 12.000 \\
 
 I parametri del modello sono calibrati esclusivamente su fonti pubbliche verificabili:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Fonti di calibrazione del Digital Twin}
 \small
+\sffamily
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Categoria} & \textbf{Parametri} & \textbf{Fonte} \\
@@ -121,10 +124,11 @@ Distribuzione minacce & Malware 28\%, Phishing 22\% & ENISA 2023 \\
 
 La validazione del framework comprende test statistici standardizzati per verificare il realismo dei dati generati:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Risultati validazione statistica}
 \small
+\sffamily
 \begin{tabular}{@{}lccc@{}}
 \toprule
 \textbf{Test Statistico} & \textbf{Statistica} & \textbf{p-value} & \textbf{Risultato} \\
@@ -140,16 +144,6 @@ Completezza dati & missing = 0.0\% & - & \cmark PASS \\
 \end{tabular}
 \end{table}
 
-\section{\texorpdfstring{Protocollo Etico}{A.4 - Protocollo Etico}}
-
-La ricerca ha ricevuto approvazione del Comitato Etico Universitario (Protocollo n. 2023/147) con garanzie di:
-
-\begin{enumerate}
-    \item Anonimizzazione completa dei dati aziendali
-    \item Aggregazione minima di 5 organizzazioni per statistiche pubblicate
-    \item Non divulgazione di vulnerabilità specifiche non remediate
-    \item K-anonimity garantita con $k \geq 5$ per tutti i dataset
-\end{enumerate}
 
 \section{\texorpdfstring{Limitazioni Metodologiche}{A.5 - Limitazioni Metodologiche}}
 

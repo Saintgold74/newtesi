@@ -36,7 +36,7 @@ L'architettura risultante implementa schemi di progettazione complessi per bilan
 
 \textbf{2. Tolleranza al partizionamento:} La capacità dei sistemi distribuiti di garantire continuità operativa anche quando la rete si divide in sottoreti isolate. Questo permette ai punti vendita di operare autonomamente fino a 4 ore in caso di disconnessione, attraverso cache locali e logiche di riconciliazione differita.
 
-\textbf{3. Elaborazione transazionale distribuita:} Sistema che gestisce picchi di carico del 300-500\% durante eventi promozionali\autocite{Osservatorio2024}, richiedendo meccanismi sofisticati di bilanciamento del carico e scalabilità elastica.
+\textbf{3. Architettura elastica per eventi promozionali:} Sistema che gestisce picchi di carico del 300-500\% durante eventi promozionali\autocite{Osservatorio2024}, richiedendo meccanismi sofisticati di bilanciamento del carico e scalabilità elastica.
 
 \subsection{\texorpdfstring{L'Evoluzione del Panorama Tecnologico e delle Minacce}{1.1.2 - L'Evoluzione del Panorama Tecnologico e delle Minacce}}
 \label{subsec:evoluzione_tecnologica}
@@ -91,6 +91,7 @@ Questi scenari richiedono un approccio alla sicurezza che trascende i confini tr
 \begin{table}[htbp]
 \centering
 \small
+\sffamily
 \caption[Tipologie di Attacco e Impatti nel Settore GDO]{Tipologie di Attacco e Impatti nel Settore \gls{gdo}}
 \label{tab:threat_evolution}
 \begin{tabularx}{\textwidth}{@{}l*{8}{X}@{}}
@@ -120,6 +121,23 @@ La terza dimensione riguarda la crescente complessità del panorama normativo. L
 
 La sfida non è semplicemente quella di soddisfare requisiti normativi individuali, ma di gestire le interazioni e potenziali conflitti tra framework diversi. Ad esempio, i requisiti di segregazione delle reti imposti da \textbf{\gls{pci-dss}} possono entrare in conflitto con i requisiti di portabilità dei dati del \textbf{\gls{gdpr}}, mentre i requisiti di registrazione e monitoraggio della \gls{nis2} possono creare tensioni con i principi di minimizzazione dei dati del \gls{gdpr}.
 
+\section{\texorpdfstring{Problema di Ricerca e Gap Scientifico}{1.2 - Problema di Ricerca e Gap Scientifico}}
+\label{sec:problema_ricerca}
+
+L'analisi sistematica della letteratura scientifica e della documentazione tecnica di settore rivela una significativa disconnessione tra i modelli teorici sviluppati in ambito accademico e le esigenze operative concrete delle organizzazioni \gls{gdo}. Questo divario, che rappresenta l'opportunità principale per il contributo originale di questa ricerca, si manifesta in tre aree critiche che richiedono un approccio innovativo e integrato.
+
+\subsection{\texorpdfstring{Mancanza di Approcci Olistici nell'Ingegneria dei Sistemi \gls{gdo}}{1.2.1 - Mancanza di Approcci Olistici nell'Ingegneria dei Sistemi GDO}}
+\label{subsec:mancanza_approcci}
+
+La prima area critica riguarda l'assenza di framework che considerino l'infrastruttura \gls{gdo} come sistema complesso adattivo. Gli studi esistenti tendono a compartimentalizzare l'analisi, trattando separatamente l'infrastruttura fisica, la sicurezza informatica, le architetture software e la conformità normativa, ignorando le interdipendenze sistemiche che caratterizzano gli ambienti reali.
+
+La letteratura sull'ingegneria dei sistemi distribuiti propone pattern architetturali eleganti per la gestione della consistenza e della disponibilità. Tuttavia, tali modelli sono tipicamente sviluppati assumendo condizioni ideali - ambienti omogenei, connettività affidabile, abbondanti risorse computazionali - che non rispecchiano la realtà della \gls{gdo} dove l'eterogeneità è la norma:
+
+\begin{itemize}
+\item Un singolo sistema deve integrare tecnologie che spaziano da terminali \gls{pos} con processori limitati a cluster di elaborazione ad alte prestazioni nei centri dati
+\item La connettività varia da collegamenti in fibra ottica nelle sedi centrali a connessioni ADSL instabili in località periferiche
+\item Le competenze del personale spaziano da specialisti IT altamente qualificati a operatori con formazione tecnica limitata nei punti vendita
+\end{itemize}
 \begin{tcolorbox}[
     colback=blue!5!white,
     colframe=blue!75!black,
@@ -140,26 +158,9 @@ La sfida non è semplicemente quella di soddisfare requisiti normativi individua
 \end{itemize}
 
 \vspace{0.3cm}
-\textbf{Soluzione Proposta}: Il framework \gls{gist} introduce il concetto di "elasticità gerarchica" dove l'autonomia dei nodi varia dinamicamente in funzione dello stato del sistema globale, implementata attraverso politiche di consenso adattive.
+\textbf{Soluzione Proposta}: Il framework \textbf{\gls{gist}} introduce il concetto di \textbf{"elasticità gerarchica"} dove l'autonomia dei nodi varia dinamicamente in funzione dello stato del sistema globale, implementata attraverso politiche di consenso adattive.
 \end{tcolorbox}
 
-\section{\texorpdfstring{Problema di Ricerca e Gap Scientifico}{1.2 - Problema di Ricerca e Gap Scientifico}}
-\label{sec:problema_ricerca}
-
-L'analisi sistematica della letteratura scientifica e della documentazione tecnica di settore rivela una significativa disconnessione tra i modelli teorici sviluppati in ambito accademico e le esigenze operative concrete delle organizzazioni \gls{gdo}. Questo divario, che rappresenta l'opportunità principale per il contributo originale di questa ricerca, si manifesta in tre aree critiche che richiedono un approccio innovativo e integrato.
-
-\subsection{\texorpdfstring{Mancanza di Approcci Olistici nell'Ingegneria dei Sistemi \gls{gdo}}{1.2.1 - Mancanza di Approcci Olistici nell'Ingegneria dei Sistemi GDO}}
-\label{subsec:mancanza_approcci}
-
-La prima area critica riguarda l'assenza di framework che considerino l'infrastruttura \gls{gdo} come sistema complesso adattivo. Gli studi esistenti tendono a compartimentalizzare l'analisi, trattando separatamente l'infrastruttura fisica, la sicurezza informatica, le architetture software e la conformità normativa, ignorando le interdipendenze sistemiche che caratterizzano gli ambienti reali.
-
-La letteratura sull'ingegneria dei sistemi distribuiti propone pattern architetturali eleganti per la gestione della consistenza e della disponibilità. Tuttavia, tali modelli sono tipicamente sviluppati assumendo condizioni ideali - ambienti omogenei, connettività affidabile, abbondanti risorse computazionali - che non rispecchiano la realtà della \gls{gdo} dove l'eterogeneità è la norma:
-
-\begin{itemize}
-\item Un singolo sistema deve integrare tecnologie che spaziano da terminali \gls{pos} con processori limitati a cluster di elaborazione ad alte prestazioni nei centri dati
-\item La connettività varia da collegamenti in fibra ottica nelle sedi centrali a connessioni ADSL instabili in località periferiche
-\item Le competenze del personale spaziano da specialisti IT altamente qualificati a operatori con formazione tecnica limitata nei punti vendita
-\end{itemize}
 
 \subsection{\texorpdfstring{Assenza di Modelli Economici Validati per il Settore}{1.2.2 - Assenza di Modelli Economici Validati per il Settore}}
 \label{subsec:assenza_modelli}
@@ -196,6 +197,7 @@ La terza area critica riguarda la scarsa considerazione dei vincoli operativi un
 \begin{table}[htbp]
 \centering
 \small
+\sffamily
 \caption[Confronto tra Approcci Esistenti e Framework GIST]{Confronto tra Approcci Esistenti e Framework \gls{gist} Proposto}
 \label{tab:confronto_approcci}
 \begin{tabularx}{\textwidth}{@{}lXX@{}}
@@ -420,6 +422,7 @@ Dove:
 
 \begin{center}
 \small
+\sffamily
 \begin{tabular}{lcc}
 \toprule
 \textbf{Componente} & \textbf{Punteggio} & \textbf{Contributo} \\
@@ -459,29 +462,6 @@ Il \gls{gist} integra diversi algoritmi specializzati:
 Ciascun algoritmo contribuisce al calcolo della rispettiva componente, ma è il GIST Score aggregato che fornisce la visione olistica della maturità digitale dell'organizzazione.
 \end{tcolorbox}
 
-\subsection{Metodologia di Aggregazione}
-
-Poiché la validazione avviene su 5 archetipi rappresentativi, il risultato aggregato per le 234 organizzazioni viene calcolato mediante media ponderata:
-
-\begin{equation}
-GIST_{aggregato} = \sum_{j=1}^{5} \frac{n_j}{234} \cdot GIST_j
-\label{eq:gist_aggregato}
-\end{equation}
-
-dove:
-\begin{itemize}
-\item $n_j$ = numero di organizzazioni rappresentate dall'archetipo $j$
-\item $GIST_j$ = punteggio GIST calcolato per l'archetipo $j$
-\item $\sum_{j=1}^{5} n_j = 234$ (totale organizzazioni)
-\end{itemize}
-
-Specificamente:
-\begin{align}
-GIST_{aggregato} &= \frac{87}{234} \cdot GIST_{micro} + \frac{73}{234} \cdot GIST_{piccola} \nonumber \\
-&+ \frac{42}{234} \cdot GIST_{media} + \frac{25}{234} \cdot GIST_{grande} \nonumber \\
-&+ \frac{7}{234} \cdot GIST_{enterprise}
-\label{eq:gist_pesi}
-\end{align}
 
 \section{\texorpdfstring{Ipotesi di Ricerca e Approccio Metodologico}{1.4 - Ipotesi di Ricerca e Approccio Metodologico}}
 \label{sec:ipotesi_ricerca}
@@ -497,7 +477,7 @@ di attacco del 35\% \textit{come valore aggregato pesato sui 5 archetipi}.
 \textit{in media ponderata secondo la distribuzione degli archetipi}.
 
 
-\subsection{Architettura della Validazione}
+\subsection{\texorpdfstring{Architettura della Validazione}{1.4.3 - Architettura della Validazione}}
 
 La metodologia di ricerca si articola in tre fasi:
 
@@ -651,6 +631,7 @@ La fase finale analizza criticamente i risultati delle simulazioni per validare 
 \begin{table}[htbp]
 \centering
 \small
+\sffamily
 \caption{Timeline e Milestone della Ricerca}
 \label{tab:timeline_ricerca}
 \begin{tabularx}{\textwidth}{@{}lXl@{}}
@@ -677,6 +658,31 @@ Fase 4 & • Analisi risultati simulazione\newline• Confronto baseline vs otti
       rischio real-time (AUC 0.89)
 \end{enumerate}
 
+\subsection{\texorpdfstring{Metodologia di Aggregazione}{1.4.2 - Metodologia di Aggregazione}}
+
+Poiché la validazione avviene su 5 archetipi rappresentativi, il risultato aggregato per le 234 organizzazioni viene calcolato mediante media ponderata:
+
+\begin{equation}
+GIST_{aggregato} = \sum_{j=1}^{5} \frac{n_j}{234} \cdot GIST_j
+\label{eq:gist_aggregato}
+\end{equation}
+
+dove:
+\begin{itemize}
+\item $n_j$ = numero di organizzazioni rappresentate dall'archetipo $j$
+\item $GIST_j$ = punteggio GIST calcolato per l'archetipo $j$
+\item $\sum_{j=1}^{5} n_j = 234$ (totale organizzazioni)
+\end{itemize}
+
+Specificamente:
+\begin{align}
+GIST_{aggregato} &= \frac{87}{234} \cdot GIST_{micro} + \frac{73}{234} \cdot GIST_{piccola} \nonumber \\
+&+ \frac{42}{234} \cdot GIST_{media} + \frac{25}{234} \cdot GIST_{grande} \nonumber \\
+&+ \frac{7}{234} \cdot GIST_{enterprise}
+\label{eq:gist_pesi}
+\end{align}
+
+
 \section{\texorpdfstring{Struttura della Tesi}{1.6 - Struttura della Tesi}}
 \label{sec:struttura_tesi}
 
@@ -688,34 +694,35 @@ La tesi si articola in cinque capitoli che seguono una progressione logica dal p
 \caption[Struttura della tesi e interdipendenze tra capitoli]{Struttura della tesi e interdipendenze tra capitoli. Il diagramma mostra il flusso logico dalla definizione del problema attraverso l'analisi delle componenti specifiche fino alla sintesi e validazione del framework completo. Le frecce mostrano come ogni capitolo contribuisce al framework finale.}
 \label{fig:thesis_structure}
 \end{figure}
+\begin{itemize}  
+    \item  \textbf{Capitolo 2: Evoluzione del Panorama delle Minacce} 
+    
+    Il secondo capitolo fornisce un'analisi quantitativa del panorama delle minacce specifico per il settore GDO. Sviluppa una tassonomia originale che distingue 5 categorie principali di minacce, ciascuna con specifici indicatori di compromissione. L'analisi documenta uno spostamento dal focus tradizionale sul furto di dati verso attacchi più sofisticati di disruzione operativa (cresciuti del 450\% dal 2021). Il capitolo introduce l'algoritmo \gls{assa-gdo} per quantificare la superficie di attacco considerando fattori tecnici e organizzativi.
+    
+    \item  \textbf{Capitolo 3: Architetture Cloud-Ibride per la GDO}
+      
+    Il capitolo propone \textbf{tre architetture innovative} per modernizzare l'infrastruttura IT della GDO italiana: \textbf{Edge-Cloud} (riduce latenza a 67ms distribuendo elaborazione su tre livelli), \textbf{Multi-Cloud} (garantisce resilienza con orchestrazione intelligente tra provider) e \textbf{Compliance-by-Design} (integra nativamente GDPR/PCI-DSS). La simulazione \textbf{Digital Twin} calibrata su dati reali italiani valida le soluzioni, dimostrando disponibilità del 99,96\% e riduzione TCO del 38,2\%. 
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{thesis_figures/cap1/on-premise-vs-cloud.png}
+    \caption[Confronto tra architetture tradizionali e cloud-ibrido]{Confronto tra architetture tradizionali e cloud-ibrido in termini di livelli di servizio e struttura dei costi.}
+    \label{fig:on-premise-vs-cloud}
+    \end{figure}
 
-\subsection{\texorpdfstring{Capitolo 2: Evoluzione del Panorama delle Minacce e Contromisure}{1.6.1 - Capitolo 2: Evoluzione del Panorama delle Minacce e Contromisure}}
-\label{subsec:struttura_cap2}
+    \item  \textbf{Capitolo 4: Governance, Conformità e Gestione del Rischio}
+    
+    
+    Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi. Sviluppa la Matrice di Integrazione Normativa (MIN) che mappa requisiti individuali di PCI-DSS, GDPR e NIS2 a 156 controlli unificati. Include un caso studio di attacco cyber-fisico simulato che dimostra le interconnessioni tra sicurezza informatica e fisica.
 
-Il secondo capitolo fornisce un'analisi quantitativa del panorama delle minacce specifico per il settore GDO. Sviluppa una tassonomia originale che distingue 5 categorie principali di minacce, ciascuna con specifici indicatori di compromissione. L'analisi documenta uno spostamento dal focus tradizionale sul furto di dati verso attacchi più sofisticati di disruzione operativa (cresciuti del 450\% dal 2021). Il capitolo introduce l'algoritmo \gls{assa-gdo} per quantificare la superficie di attacco considerando fattori tecnici e organizzativi.
+    \item  \textbf{Capitolo 5: Sintesi, Validazione e Direzioni Future}
 
-\subsection{\texorpdfstring{Capitolo 3: Architetture Cloud-Ibride per la \gls{gdo}}{1.6.2 - Capitolo 3: Architetture Cloud-Ibride per la GDO}}
-\label{subsec:struttura_cap3}
+    Il quinto capitolo presenta una sintesi dei risultati ottenuti, evidenziando le implicazioni pratiche per le organizzazioni del settore GDO. Propone un modello di validazione basato su scenari reali e discute le direzioni future per la ricerca nel campo della sicurezza informatica.
 
-Il capitolo propone \textbf{tre architetture innovative} per modernizzare l'infrastruttura IT della GDO italiana: \textbf{Edge-Cloud} (riduce latenza a 67ms distribuendo elaborazione su tre livelli), \textbf{Multi-Cloud} (garantisce resilienza con orchestrazione intelligente tra provider) e \textbf{Compliance-by-Design} (integra nativamente GDPR/PCI-DSS). La simulazione \textbf{Digital Twin} calibrata su dati reali italiani valida le soluzioni, dimostrando disponibilità del 99,96\% e riduzione TCO del 38,2\%. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{thesis_figures/cap1/on-premise-vs-cloud.png}
-\caption[Confronto tra architetture tradizionali e cloud-ibrido]{Confronto tra architetture tradizionali e cloud-ibrido in termini di livelli di servizio e struttura dei costi.}
-\label{fig:on-premise-vs-cloud}
-\end{figure}
-
-\subsection{\texorpdfstring{Capitolo 4: Governance, Conformità e Gestione del Rischio}{1.6.3 - Capitolo 4: Governance, Conformità e Gestione del Rischio}}
-\label{subsec:struttura_cap4}
-
-Il quarto capitolo affronta la complessità della governance IT in ambienti multi-normativi. Sviluppa la Matrice di Integrazione Normativa (MIN) che mappa requisiti individuali di PCI-DSS, GDPR e NIS2 a 156 controlli unificati. Include un caso studio di attacco cyber-fisico simulato che dimostra le interconnessioni tra sicurezza informatica e fisica.
-
-\subsection{\texorpdfstring{Capitolo 5: Sintesi, Validazione e Direzioni Future}{1.6.4 - Capitolo 5: Sintesi, Validazione e Direzioni Future}}
-\label{subsec:struttura_cap5}
-
-Il capitolo conclusivo integra i risultati presentando il framework GIST completo. Discute i risultati della validazione computazionale tramite Digital Twin, confrontando metriche chiave tra scenari baseline e ottimizzati. Sviluppa una roadmap implementativa in 4 fasi con 23 milestone specifiche. Analizza le limitazioni dello studio basato su simulazione e propone direzioni per future ricerche empiriche.
-
+    
+    Il capitolo conclusivo integra i risultati presentando il framework GIST completo. Discute i risultati della validazione computazionale tramite Digital Twin, confrontando metriche chiave tra scenari baseline e ottimizzati. Sviluppa una roadmap implementativa in 4 fasi con 23 milestone specifiche. Analizza le limitazioni dello studio basato su simulazione e propone direzioni per future ricerche empiriche.
+    
+\end{itemize}
 \section{\texorpdfstring{Sintesi delle Innovazioni Metodologiche}{1.7 - Sintesi delle Innovazioni Metodologiche}}
 \label{sec:sintesi_innovazioni}
 

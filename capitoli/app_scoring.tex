@@ -29,6 +29,7 @@ dove $\mathbf{w} = (0.18, 0.32, 0.28, 0.22)$ sono i pesi calibrati empiricamente
 \centering
 \caption{Criteri di valutazione - Componente Fisica}
 \small
+\sffamily
 \begin{tabular}{l c l c}
 \toprule
 \textbf{Categoria} & \textbf{Peso} & \textbf{Metrica} & \textbf{Range Target} \\
@@ -49,6 +50,7 @@ Hardware & 20\% & Età media apparati (anni) & 3-5 \\
 \centering
 \caption{Criteri di valutazione - Componente Architetturale}
 \small
+\sffamily
 \begin{tabular}{l c l c}
 \toprule
 \textbf{Categoria} & \textbf{Peso} & \textbf{Metrica} & \textbf{Range Target} \\
@@ -67,6 +69,7 @@ Resilienza & 15\% & RTO (ore) & 1-4 \\
 \centering
 \caption{Criteri di valutazione - Componente Sicurezza}
 \small
+\sffamily
 \begin{tabular}{l c l c}
 \toprule
 \textbf{Categoria} & \textbf{Peso} & \textbf{Metrica} & \textbf{Range Target} \\
@@ -86,6 +89,7 @@ Incident Response & 15\% & MTTR risoluzione (ore) & 4-24 \\
 \centering
 \caption{Criteri di valutazione - Componente Conformità}
 \small
+\sffamily
 \begin{tabular}{l c l c}
 \toprule
 \textbf{Categoria} & \textbf{Peso} & \textbf{Metrica} & \textbf{Range Target} \\
@@ -107,6 +111,7 @@ Il GIST Score determina quattro livelli di maturità digitale:
 \centering
 \caption{Livelli di maturità GIST}
 \small
+\sffamily
 \begin{tabular}{c l l}
 \toprule
 \textbf{Score} & \textbf{Livello} & \textbf{Caratteristiche} \\
@@ -124,7 +129,7 @@ Il GIST Score determina quattro livelli di maturità digitale:
 La calibrazione dei pesi è stata effettuata attraverso:
 
 \begin{enumerate}
-    \item \textbf{Analisi Delphi}: 3 round con 23 esperti del settore
+    
     \item \textbf{Regressione multivariata}: su 234 organizzazioni GDO
     \item \textbf{Validazione incrociata}: k-fold con $k=10$, $R^2 = 0.783$
 \end{enumerate}

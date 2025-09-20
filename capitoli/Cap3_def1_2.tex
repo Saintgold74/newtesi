@@ -1,15 +1,15 @@
-\chapter{Architetture Cloud Ibride per la Grande Distribuzione Organizzata}
+\chapter{\texorpdfstring{Architetture Cloud Ibride per la Grande Distribuzione Organizzata}{Capitolo 3 - Architetture Cloud Ibride per la Grande Distribuzione Organizzata}}
 \label{cap:architetture}
 
-\section{Introduzione: L'Evoluzione Necessaria dell'Infrastruttura}
+\section{\texorpdfstring{Introduzione: L'Evoluzione Necessaria dell'Infrastruttura}{3.1 - Introduzione: L'Evoluzione Necessaria dell'Infrastruttura}}
 \label{sec:intro-architetture}
 
 L'analisi delle minacce presentata nel Capitolo precedente ha evidenziato come il 78\% degli attacchi informatici nel settore della \gls{gdo} sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\autocite{Anderson2024patel}. Questo dato, confermato dall'analisi di 1.247 incidenti documentati nel periodo 2020-2024\autocite{enisa2024retail}, sottolinea l'importanza critica della progettazione architettuale come elemento fondamentale di difesa.
 
-\section{Modelli Architetturali Ibridi per la GDO}
+\section{\texorpdfstring{Modelli Architetturali Ibridi per la GDO}{3.2 - Modelli Architetturali Ibridi per la GDO}}
 \label{sec:pattern-architetturali}
 
-\subsection{Modello 1: Continuità Edge-Cloud per Transazioni in Tempo Reale}
+\subsection{\texorpdfstring{Modello 1: Continuità Edge-Cloud per Transazioni in Tempo Reale}{3.2.1 - Modello 1: Continuità Edge-Cloud per Transazioni in Tempo Reale}}
 \label{subsec:edge-cloud}
 
 Il primo modello affronta il vincolo critico della latenza transazionale attraverso un'architettura che distribuisce l'elaborazione tra il margine della rete (\gls{edge}) e il cloud centrale.
@@ -32,7 +32,7 @@ Come mostrato nella Figura~\ref{fig:edge-cloud}, l'implementazione prevede tre l
     \item \textbf{Livello cloud}: Elaborazione analitica e riconciliazione differita
 \end{enumerate}
 
-\subsection{Modello 2: Resilienza Multi-Cloud per Continuità Operativa}
+\subsection{\texorpdfstring{Modello 2: Resilienza Multi-Cloud per Continuità Operativa}{3.2.2 - Modello 2: Resilienza Multi-Cloud per Continuità Operativa}}
 \label{subsec:multi-cloud}
 
 Il secondo modello garantisce la continuità operativa attraverso ridondanza intelligente su più fornitori cloud.
@@ -57,7 +57,7 @@ Il sistema di orchestrazione, illustrato nella Figura~\ref{fig:multi-cloud}, mon
 
 dove i pesi sono stati calibrati empiricamente per bilanciare affidabilità, prestazioni e costo.
 
-\subsection{Modello 3: Conformità Integrata per Progettazione}
+\subsection{\texorpdfstring{Modello 3: Conformità Integrata per Progettazione}{3.2.3 - Modello 3: Conformità Integrata per Progettazione}}
 \label{subsec:compliance-by-design}
 
 Il terzo modello integra i requisiti di conformità normativa direttamente nell'architettura, eliminando la necessità di controlli aggiuntivi.
@@ -77,10 +77,10 @@ La Figura~\ref{fig:compliance-design} mostra i principi di progettazione impleme
     \item \textbf{Gestione del consenso}: Sistema automatizzato per \gls{gdpr}
 \end{enumerate}
 
-\section{Validazione attraverso Simulazione}
+\section{\texorpdfstring{Validazione attraverso Simulazione}{3.3 - Validazione attraverso Simulazione}}
 \label{sec:validazione-digital-twin}
 
-\subsection{Metodologia di Simulazione}
+\subsection{\texorpdfstring{Metodologia di Simulazione}{3.3.1 - Metodologia di Simulazione}}
 \label{subsec:metodologia-simulazione}
 
 Per validare i modelli proposti, abbiamo sviluppato un ambiente di simulazione che replica le caratteristiche operative della \gls{gdo} italiana.
@@ -94,7 +94,7 @@ Per validare i modelli proposti, abbiamo sviluppato un ambiente di simulazione c
 
 Il sistema, rappresentato nella Figura~\ref{fig:simulation-system}, genera transazioni sintetiche seguendo distribuzioni statistiche calibrate su dati reali del settore\autocite{federdistribuzione2024}.
 
-\subsection{Risultati della Validazione}
+\subsection{\texorpdfstring{Risultati della Validazione}{3.3.2 - Risultati della Validazione}}
 \label{subsec:risultati-validazione}
 
 La simulazione ha permesso di confrontare quantitativamente tre configurazioni architetturali su un periodo equivalente di 720 ore operative:
@@ -108,10 +108,10 @@ La simulazione ha permesso di confrontare quantitativamente tre configurazioni a
 
 Come evidenziato nella Figura~\ref{fig:performance-comparison}, l'architettura ibrida proposta raggiunge prestazioni superiori in tutte le metriche chiave, con particolare evidenza nel punteggio di sicurezza complessivo.
 
-\section{Percorso di Implementazione Pratica}
+\section{\texorpdfstring{Percorso di Implementazione Pratica}{3.4 - Percorso di Implementazione Pratica}}
 \label{sec:implementazione}
 
-\subsection{Strategia di Migrazione Graduale}
+\subsection{\texorpdfstring{Strategia di Migrazione Graduale}{3.4.1 - Strategia di Migrazione Graduale}}
 \label{subsec:migrazione-graduale}
 
 La migrazione verso l'architettura ibrida proposta richiede un approccio graduale per minimizzare rischi e interruzioni operative.
@@ -125,7 +125,7 @@ La migrazione verso l'architettura ibrida proposta richiede un approccio gradual
 
 La strategia, visualizzata nella Figura~\ref{fig:migration-timeline}, si articola in quattro fasi con metriche e punti di controllo concreti per garantire il successo dell'implementazione.
 
-\section{Conclusioni del Capitolo}
+\section{\texorpdfstring{Conclusioni del Capitolo}{3.5 - Conclusioni del Capitolo}}
 \label{sec:conclusioni-cap3}
 
 Questo capitolo ha presentato tre contributi concreti per la trasformazione architettuale della \gls{gdo}, validati attraverso simulazione e corredati da un piano di implementazione strutturato. Le figure prodotte illustrano chiaramente:

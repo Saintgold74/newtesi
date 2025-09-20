@@ -52,14 +52,13 @@
 % ===== BIBLATEX - CONFIGURAZIONE AVANZATA =====
 \usepackage[
     backend=biber,              % Backend moderno
-    style=authortitle,          % Stile autore-titolo per citazioni essenziali
-    citestyle=authortitle,      % Citazioni con autore e titolo
-    bibstyle=authoryear,        % Bibliografia in stile autore-anno
+    style=authoryear,           % Stile autore-anno coerente
+    citestyle=verbose-note,     % Citazioni dettagliate a piè di pagina
+    bibstyle=numeric,           % Bibliografia numerata
     sorting=nyt,                % Ordinamento nome-anno-titolo
-    %refsection=chapter,         % Bibliografia per capitolo (disabilitato per bibliografia finale)
-    refsegment=chapter,         % Segmenti di riferimento per capitolo
     maxbibnames=99,             % Mostra tutti gli autori
     giveninits=true,            % Usa iniziali per i nomi
+    uniquename=init,            % Usa iniziali per nomi unici (coerente con giveninits)
     autolang=other,             % Gestione multilingua
     hyperref=true,              % Link cliccabili
     backref=false,              % No back-references
@@ -104,28 +103,37 @@
 \DeclareFieldFormat{doi}{DOI\addcolon\space\url{https://doi.org/#1}}
 
 % ===== CONFIGURAZIONE CITAZIONI SECONDO REGOLAMENTO CUSANO =====
-% Formato richiesto: AUTORE (maiuscoletto), Titolo, Città, Editore, Anno, pagg. X-Y
+% Formato richiesto: AUTORE (maiuscoletto), Titolo, Anno, eventualmente pagg. X-Y
 
-% Ridefinisce il formato delle citazioni per seguire il regolamento
+% Citazioni dettagliate per autocite con autore, titolo e anno sempre visibili
+\DeclareAutoCiteCommand{footnote}{\footcite}{\footcites}
+
+% Configura autocite per usare il formato footnote personalizzato
+\renewcommand{\autocite}{\footcite}
+
+% Ridefinisce il formato delle citazioni a piè di pagina per maggiore completezza
 \DeclareCiteCommand{\footcite}[\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \printnames{labelname}%
    \setunit{\addcomma\space}%
-   \printfield[citetitle]{labeltitle}%
-   \setunit{\addcomma\space}%
-   \printlist{location}%
-   \setunit{\addcomma\space}%
-   \printlist{publisher}%
+   \printfield[citetitle]{title}%
    \setunit{\addcomma\space}%
    \printfield{year}%
-   \setunit{\addcomma\space}%
-   \printfield{pages}}
+   \iffieldundef{pages}{}{\setunit{\addcomma\space}\printfield{pages}}}
   {\addsemicolon\space}
   {\usebibmacro{postnote}}
 
+% Assicura che autocite mostri sempre informazioni complete
+\renewbibmacro*{cite:short}{%
+  \printnames{labelname}%
+  \setunit*{\addcomma\space}%
+  \printfield[citetitle]{title}%
+  \setunit*{\addcomma\space}%
+  \printfield{year}}
+
 % Le citazioni \autocite{} generano automaticamente note a piè di pagina
-% con formato secondo regolamento Cusano
+% con formato completo secondo regolamento Cusano
 
 % DOPO: csquotes (NECESSARIO per BibLaTeX)
 \usepackage{csquotes}  % ← IMPORTANTE!

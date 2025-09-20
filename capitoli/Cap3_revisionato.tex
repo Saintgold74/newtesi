@@ -1,18 +1,18 @@
 %\refsection
-\chapter{Evoluzione dell'Infrastruttura Tecnologica: dalle Fondamenta Fisiche alle Architetture Moderne}
+\chapter{\texorpdfstring{Evoluzione dell'Infrastruttura Tecnologica: dalle Fondamenta Fisiche alle Architetture Moderne}{Capitolo 3 - Evoluzione dell'Infrastruttura Tecnologica: dalle Fondamenta Fisiche alle Architetture Moderne}}
 \label{cap3_infrastructure_evolution}
 
-\section{Introduzione}
+\section{\texorpdfstring{Introduzione}{3.1 - Introduzione}}
 \label{sec:cap3_intro}
 
-L'analisi del panorama delle minacce presentata nel Capitolo 2 ha evidenziato come il 78\% degli attacchi informatici nel settore della Grande Distribuzione Organizzata (\gls{gdo}) sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\autocite{Anderson2024patel}. Questo dato fondamentale, derivato dall'analisi di oltre 1.200 incidenti documentati nel periodo 2020-2024, sottolinea l'importanza critica di un'architettura infrastrutturale robusta come prima linea di difesa\autocite{Verizon2024}.
+L'analisi del panorama delle minacce presentata nel Capitolo 2 ha evidenziato come il 78\% degli attacchi informatici nel settore della Grande Distribuzione Organizzata (\gls{gdo}) sfrutti vulnerabilità architetturali piuttosto che debolezze nei singoli controlli di sicurezza\autocite{Anderson2024patel}. Questo dato fondamentale, derivato dall'analisi di oltre 1.200 incidenti documentati nel periodo 2020-2024, sottolinea l'importanza critica di un'architettura infrastrutturale robusta come prima linea di difesa\autocite{verizon2024}.
 
 Il presente capitolo affronta l'evoluzione dell'infrastruttura tecnologica attraverso un percorso strutturato che parte dalle componenti fisiche fondamentali per arrivare alle moderne architetture distribuite. L'obiettivo principale consiste nel dimostrare come un'evoluzione pianificata dell'infrastruttura possa simultaneamente migliorare le prestazioni operative (con Accordi sul Livello di Servizio - \textbf{\gls{sla}} - superiori al 99,95\%) e ridurre significativamente i costi di gestione (con riduzioni del Costo Totale di Proprietà - \gls{tco} - superiori al 30\%)\autocite{IDC2024}.
 
-\section{Framework di Evoluzione Infrastrutturale}
+\section{\texorpdfstring{Framework di Evoluzione Infrastrutturale}{3.2 - Framework di Evoluzione Infrastrutturale}}
 \label{sec:framework_evoluzione}
 
-\subsection{Modello Teorico di Riferimento}
+\subsection{\texorpdfstring{Modello Teorico di Riferimento}{3.2.1 - Modello Teorico di Riferimento}}
 \label{subsec:modello_teorico}
 
 L'evoluzione delle infrastrutture tecnologiche nelle organizzazioni complesse come la \gls{gdo} segue un percorso che può essere descritto attraverso un modello di maturità a cinque livelli\autocite{Gartner2024hype}:
@@ -22,40 +22,44 @@ L'evoluzione delle infrastrutture tecnologiche nelle organizzazioni complesse co
 \caption{Livelli di Maturità Infrastrutturale nel settore \gls{gdo}}
 \label{tab:maturity_levels}
 \small
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
+\sffamily
+\begin{tabularx}{\textwidth}{c X c c}
+\toprule
 \textbf{Livello} & \textbf{Caratteristiche} & \textbf{Disponibilità} & \textbf{Costi Operativi} \\
-\hline
+\midrule
 1. Tradizionale & Infrastruttura fisica isolata, gestione manuale & 95-97\% & Baseline (100\%) \\
-\hline
 2. Consolidato & Virtualizzazione parziale, primi sistemi di monitoraggio & 97-98,5\% & 85-90\% \\
-\hline
 3. Automatizzato & Orchestrazione dei servizi, gestione centralizzata & 98,5-99,5\% & 70-75\% \\
-\hline
 4. Ottimizzato & Architetture ibride, automazione avanzata & 99,5-99,9\% & 55-60\% \\
-\hline
 5. Adattivo & Infrastruttura intelligente, auto-riparazione & >99,95\% & 45-50\% \\
-\hline
+\bottomrule
 \end{tabularx}
 \end{table}
 
-Il passaggio tra i diversi livelli di maturità non avviene in modo lineare ma richiede investimenti mirati e una strategia di trasformazione graduale. L'analisi empirica condotta su 47 organizzazioni europee del settore\autocite{Eurostat2024} ha evidenziato che il tempo medio per progredire di un livello si attesta sui 14-18 mesi, con investimenti che variano tra il 15\% e il 25\% del budget IT annuale.
+Il passaggio tra i diversi livelli di maturità non avviene in modo lineare ma richiede investimenti mirati e una strategia di trasformazione graduale. L'analisi empirica condotta su 47 organizzazioni europee del settore\autocite{eurostat2024} ha evidenziato che il tempo medio per progredire di un livello si attesta sui 14-18 mesi, con investimenti che variano tra il 15\% e il 25\% del budget IT annuale.
 
-\section{Infrastruttura Fisica: le Fondamenta della Resilienza}
+\section{\texorpdfstring{Infrastruttura Fisica: le Fondamenta della Resilienza}{3.3 - Infrastruttura Fisica: le Fondamenta della Resilienza}}
 \label{sec:infrastruttura_fisica}
 
-\subsection{Sistemi di Alimentazione Elettrica}
+\subsection{\texorpdfstring{Sistemi di Alimentazione Elettrica}{3.3.1 - Sistemi di Alimentazione Elettrica}}
 \label{subsec:alimentazione}
 
 L'affidabilità dell'infrastruttura tecnologica dipende in primo luogo dalla continuità dell'alimentazione elettrica. I dati raccolti dal consorzio Uptime Institute\autocite{Uptime2024} mostrano che il 43\% delle interruzioni di servizio superiori alle 4 ore nel settore della distribuzione organizzata deriva da problemi nell'alimentazione elettrica, con costi medi di 127.000 euro per ogni ora di fermo durante i periodi di picco commerciale.
 
-\subsubsection{Architettura dei Sistemi di Continuità}
+\subsubsection{\texorpdfstring{Architettura dei Sistemi di Continuità}{3.3.1.1 - Architettura dei Sistemi di Continuità}}
 
 I sistemi di continuità elettrica (\textbf{\gls{ups}} - Uninterruptible Power Supply) rappresentano la prima linea di difesa contro le interruzioni. Nella \gls{gdo}, l'architettura standard prevede configurazioni ridondanti che garantiscono la continuità operativa anche in caso di guasti multipli\autocite{IEEE2024}.
 
 La configurazione più diffusa, denominata N+1, prevede l'installazione di unità \gls{ups} aggiuntive rispetto al fabbisogno nominale. Per esempio, per un carico di 300 kW servito da unità da 100 kW ciascuna, si installano 4 unità invece delle 3 strettamente necessarie. Questa ridondanza garantisce una disponibilità teorica del 99,94\%.
 
 Le organizzazioni più mature adottano invece una configurazione 2N, che prevede la duplicazione completa del sistema di alimentazione. Questo approccio, seppur più costoso (con un incremento dell'investimento iniziale del 40-50\%), garantisce la possibilità di effettuare manutenzioni programmate senza alcuna interruzione del servizio e tollera il guasto completo di un'intera catena di alimentazione.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{thesis_figures/cap3/fig1_power_modern.pdf}
+\caption{Architettura ridondante 2N per sistemi di alimentazione critica con metriche di affidabilità e analisi ROI}
+\label{fig:power_architecture}
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -114,23 +118,23 @@ Le organizzazioni più mature adottano invece una configurazione 2N, che prevede
 
 \end{tikzpicture}
 \caption{Architettura ridondante 2N per sistemi di alimentazione critica con metriche di affidabilità}
-\label{fig:power_architecture}
+\label{fig:power_architecture_redundancy}
 \end{figure}
 
-\subsection{Sistemi di Raffreddamento e Controllo Ambientale}
+\subsection{\texorpdfstring{Sistemi di Raffreddamento e Controllo Ambientale}{3.3.2 - Sistemi di Raffreddamento e Controllo Ambientale}}
 \label{subsec:raffreddamento}
 
 Il controllo della temperatura rappresenta il secondo pilastro dell'infrastruttura fisica. I moderni centri di elaborazione dati nella \gls{gdo} generano densità di potenza che possono superare i 15 kW per armadio rack, richiedendo sistemi di raffreddamento sofisticati per mantenere le temperature operative entro i limiti raccomandati (18-27°C secondo le linee guida ASHRAE\autocite{ASHRAE2023}).
 
 L'evoluzione verso sistemi di raffreddamento intelligenti ha permesso di ridurre significativamente i consumi energetici. L'implementazione di tecniche come il contenimento dei corridoi caldi/freddi e l'uso di algoritmi predittivi per la gestione dinamica del raffreddamento ha portato a riduzioni del 35\% nel consumo energetico dedicato al condizionamento, con un miglioramento dell'indicatore \textbf{\gls{pue}} (Power Usage Effectiveness) da valori medi di 2,1 a 1,4.
 
-\section{Evoluzione delle Architetture di Rete}
+\section{\texorpdfstring{Evoluzione delle Architetture di Rete}{3.4 - Evoluzione delle Architetture di Rete}}
 \label{sec:architetture_rete}
 
-\subsection{Dalle Reti Tradizionali alle Reti Definite via Software}
+\subsection{\texorpdfstring{Dalle Reti Tradizionali alle Reti Definite via Software}{3.4.1 - Dalle Reti Tradizionali alle Reti Definite via Software}}
 \label{subsec:sdn}
 
-La transizione dalle architetture di rete tradizionali a quelle definite via software (\gls{sd-wan} - Software-Defined Wide Area Network) rappresenta uno dei cambiamenti più significativi nell'infrastruttura della \gls{gdo}. Questa evoluzione risponde alla necessità di gestire in modo efficiente e sicuro la connettività di centinaia di punti vendita distribuiti geograficamente\autocite{Cisco2024}.
+La transizione dalle architetture di rete tradizionali a quelle definite via software (\gls{sd-wan} - Software-Defined Wide Area Network) rappresenta uno dei cambiamenti più significativi nell'infrastruttura della \gls{gdo}. Questa evoluzione risponde alla necessità di gestire in modo efficiente e sicuro la connettività di centinaia di punti vendita distribuiti geograficamente\autocite{cisco2024}.
 
 Le reti tradizionali, basate su connessioni MPLS (Multiprotocol Label Switching) dedicate, presentano costi elevati (mediamente 450 euro/Mbps/mese) e tempi di attivazione lunghi (30-45 giorni per nuove sedi). L'architettura \gls{sd-wan} permette invece di:
 
@@ -143,10 +147,17 @@ Le reti tradizionali, basate su connessioni MPLS (Multiprotocol Label Switching)
 
 L'implementazione pratica in una catena di 150 punti vendita ha dimostrato una riduzione del Tempo Medio di Riparazione (\gls{mttr}) da 4,2 ore a 1,8 ore, grazie alla capacità di instradamento automatico del traffico su percorsi alternativi in caso di guasti\autocite{NetworkWorld2024}.
 
-\subsection{Segmentazione e Micro-segmentazione della Rete}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{thesis_figures/cap3/fig2_network_modern.pdf}
+\caption{Evoluzione delle architetture di rete: confronto tra MPLS tradizionale e SD-WAN con analisi dei benefici}
+\label{fig:network_evolution}
+\end{figure}
+
+\subsection{\texorpdfstring{Segmentazione e Micro-segmentazione della Rete}{3.4.2 - Segmentazione e Micro-segmentazione della Rete}}
 \label{subsec:segmentazione}
 
-La segmentazione della rete costituisce un elemento fondamentale per la sicurezza dell'infrastruttura. Nella \gls{gdo}, dove coesistono sistemi di pagamento, gestione magazzino, videosorveglianza e reti per gli ospiti, l'isolamento del traffico diventa cruciale per prevenire la propagazione di eventuali compromissioni\autocite{NIST2024}.
+La segmentazione della rete costituisce un elemento fondamentale per la sicurezza dell'infrastruttura. Nella \gls{gdo}, dove coesistono sistemi di pagamento, gestione magazzino, videosorveglianza e reti per gli ospiti, l'isolamento del traffico diventa cruciale per prevenire la propagazione di eventuali compromissioni\autocite{nist2024}.
 
 La micro-segmentazione, evoluzione della segmentazione tradizionale, applica controlli di sicurezza a livello di singola applicazione o servizio. Questo approccio ha dimostrato di ridurre la superficie di attacco del 65\% e di contenere il 92\% degli attacchi di movimento laterale entro il segmento inizialmente compromesso\autocite{Forrester2024zero}.
 
@@ -155,34 +166,29 @@ La micro-segmentazione, evoluzione della segmentazione tradizionale, applica con
 \caption{Confronto tra Segmentazione Tradizionale e Micro-segmentazione}
 \label{tab:segmentation_comparison}
 \small
-\begin{tabularx}{\textwidth}{|X|X|X|}
-\hline
+\sffamily
+\begin{tabularx}{\textwidth}{X X X}
+\toprule
 \textbf{Aspetto} & \textbf{Segmentazione Tradizionale} & \textbf{Micro-segmentazione} \\
-\hline
+\midrule
 Granularità & Livello di subnet/VLAN & Livello di applicazione/workload \\
-\hline
 Implementazione & Firewall perimetrali e ACL & Policy distribuite software-defined \\
-\hline
 Gestione & Configurazione statica manuale & Orchestrazione dinamica automatizzata \\
-\hline
 Scalabilità & Limitata (max 4.094 VLAN) & Virtualmente illimitata \\
-\hline
 Visibilità & Traffico est-ovest limitato & Completa su tutti i flussi \\
-\hline
 Tempo di deployment & 2-4 settimane per modifica & Minuti con automazione \\
-\hline
 Costo operativo & Alto (gestione manuale) & Ridotto del 40\% (automazione) \\
-\hline
+\bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Architetture Cloud e Ibride}
+\section{\texorpdfstring{Architetture Cloud e Ibride}{3.5 - Architetture Cloud e Ibride}}
 \label{sec:cloud_architectures}
 
-\subsection{Il Percorso verso il Cloud}
+\subsection{\texorpdfstring{Il Percorso verso il Cloud}{3.5.1 - Il Percorso verso il Cloud}}
 \label{subsec:cloud_journey}
 
-La migrazione verso architetture cloud rappresenta un passaggio fondamentale nell'evoluzione infrastrutturale della \gls{gdo}. Tuttavia, diversamente da altri settori, la distribuzione organizzata mantiene requisiti specifici che rendono necessario un approccio ibrido\autocite{McKinsey2024}.
+La migrazione verso architetture cloud rappresenta un passaggio fondamentale nell'evoluzione infrastrutturale della \gls{gdo}. Tuttavia, diversamente da altri settori, la distribuzione organizzata mantiene requisiti specifici che rendono necessario un approccio ibrido\autocite{mckinsey2024}.
 
 I sistemi critici per il business, come i \gls{pos} (Point of Sale) e la gestione del magazzino, richiedono latenze inferiori ai 100 millisecondi e devono rimanere operativi anche in caso di interruzione della connettività Internet. Questo vincolo ha portato allo sviluppo di architetture ibride che combinano:
 
@@ -199,7 +205,7 @@ L'analisi economica di questa trasformazione mostra risultati significativi. Una
     \item Riduzione del consumo energetico del 45\% rispetto ai datacenter tradizionali
 \end{itemize}
 
-\subsection{Orchestrazione Multi-Cloud}
+\subsection{\texorpdfstring{Orchestrazione Multi-Cloud}{3.5.2 - Orchestrazione Multi-Cloud}}
 \label{subsec:multicloud}
 
 L'adozione di strategie multi-cloud, che prevedono l'utilizzo simultaneo di più fornitori di servizi cloud, risponde a esigenze di resilienza, conformità normativa e ottimizzazione dei costi\autocite{Flexera2024}. 
@@ -213,12 +219,19 @@ Nel contesto della \gls{gdo}, l'orchestrazione multi-cloud presenta sfide specif
     \item \textbf{Conformità normativa}: garantire la residenza dei dati secondo le normative locali
 \end{enumerate}
 
-L'implementazione di piattaforme di orchestrazione basate su \textbf{\gls{kubernetes}} ha permesso di standardizzare la gestione dei container attraverso diversi fornitori cloud, riducendo la complessità operativa del 40\% e migliorando la portabilità delle applicazioni\autocite{CNCF2024}.
+L'implementazione di piattaforme di orchestrazione basate su \textbf{\gls{kubernetes}} ha permesso di standardizzare la gestione dei container attraverso diversi fornitori cloud, riducendo la complessità operativa del 40\% e migliorando la portabilità delle applicazioni\autocite{cncf2024}.
 
-\section{Edge Computing e Architetture Distribuite}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{thesis_figures/cap3/fig3_cloud_modern.pdf}
+\caption{Architettura cloud ibrida per la GDO: integrazione multi-cloud con orchestrazione Kubernetes}
+\label{fig:cloud_architecture}
+\end{figure}
+
+\section{\texorpdfstring{Edge Computing e Architetture Distribuite}{3.6 - Edge Computing e Architetture Distribuite}}
 \label{sec:edge_computing}
 
-\subsection{L'Edge Computing nella Grande Distribuzione}
+\subsection{\texorpdfstring{L'Edge Computing nella Grande Distribuzione}{3.6.1 - L'Edge Computing nella Grande Distribuzione}}
 \label{subsec:edge_gdo}
 
 L'edge computing rappresenta un paradigma fondamentale per la \gls{gdo}, portando capacità computazionali direttamente nei punti vendita. Questa architettura risponde a requisiti critici del settore\autocite{IDC2024edge}:
@@ -279,8 +292,15 @@ Un caso studio su 200 punti vendita ha dimostrato che l'implementazione di nodi 
 \label{fig:edge_architecture}
 \end{figure}
 
-\subsection{Integrazione IoT e Sensori Intelligenti}
+\subsection{\texorpdfstring{Integrazione IoT e Sensori Intelligenti}{3.6.2 - Integrazione IoT e Sensori Intelligenti}}
 \label{subsec:iot_integration}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{thesis_figures/cap3/fig4_edge_modern.pdf}
+\caption{Architettura Edge Computing distribuita con analisi comparativa delle prestazioni}
+\label{fig:edge_architecture_performance}
+\end{figure}
 
 L'Internet delle Cose (\gls{iot}) sta trasformando radicalmente la gestione operativa nella \gls{gdo}. Sensori intelligenti monitorano in tempo reale temperatura delle celle frigorifere, livelli di inventario, flussi di clienti e consumi energetici\autocite{Gartner2024iot}.
 
@@ -291,25 +311,23 @@ L'integrazione di questi dispositivi nell'architettura edge presenta vantaggi si
 \caption{Impatto dell'integrazione IoT nella \gls{gdo}}
 \label{tab:iot_impact}
 \small
-\begin{tabularx}{\textwidth}{|X|c|c|c|}
-\hline
+\sffamily
+\begin{tabularx}{\textwidth}{X c c c}
+\toprule
 \textbf{Area Applicativa} & \textbf{Sensori/Dispositivi} & \textbf{Riduzione Costi} & \textbf{Miglioramento KPI} \\
-\hline
+\midrule
 Catena del freddo & Termometri wireless & -18\% sprechi & +99.2\% conformità \\
-\hline
 Gestione energia & Smart meter & -24\% consumi & +87\% efficienza \\
-\hline
 Sicurezza & Videocamere AI & -31\% perdite & +94\% detection \\
-\hline
 Customer experience & Beacon/contapersone & -12\% attese & +21\% soddisfazione \\
-\hline
+\bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Sicurezza Zero Trust}
+\section{\texorpdfstring{Sicurezza Zero Trust}{3.7 - Sicurezza Zero Trust}}
 \label{sec:zero_trust}
 
-\subsection{Principi e Implementazione}
+\subsection{\texorpdfstring{Principi e Implementazione}{3.7.1 - Principi e Implementazione}}
 \label{subsec:zero_trust_principles}
 
 Il modello di sicurezza Zero Trust rappresenta un cambio di paradigma fondamentale: invece di fidarsi implicitamente di tutto ciò che si trova all'interno del perimetro aziendale, ogni accesso viene verificato continuamente, indipendentemente dalla posizione dell'utente o del dispositivo\autocite{NIST2024zero}.
@@ -332,7 +350,7 @@ L'implementazione pratica in una catena di distribuzione con 5.000 dipendenti ha
     \item ROI positivo in 14 mesi dall'implementazione
 \end{itemize}
 
-\subsection{Automazione della Sicurezza}
+\subsection{\texorpdfstring{Automazione della Sicurezza}{3.7.2 - Automazione della Sicurezza}}
 \label{subsec:security_automation}
 
 L'automazione rappresenta un elemento cruciale per rendere sostenibile il modello Zero Trust. Sistemi di orchestrazione della sicurezza (\gls{soar} - Security Orchestration, Automation and Response) permettono di\autocite{Gartner2024security}:
@@ -344,10 +362,10 @@ L'automazione rappresenta un elemento cruciale per rendere sostenibile il modell
     \item Standardizzare le procedure di risposta agli incidenti
 \end{itemize}
 
-\section{Manutenzione Predittiva con Intelligenza Artificiale}
+\section{\texorpdfstring{Manutenzione Predittiva con Intelligenza Artificiale}{3.8 - Manutenzione Predittiva con Intelligenza Artificiale}}
 \label{sec:manutenzione_predittiva}
 
-\subsection{Applicazione del Machine Learning all'Infrastruttura}
+\subsection{\texorpdfstring{Applicazione del Machine Learning all'Infrastruttura}{3.8.1 - Applicazione del Machine Learning all'Infrastruttura}}
 \label{subsec:ml_infrastructure}
 
 L'applicazione di tecniche di apprendimento automatico (\gls{ml} - Machine Learning) alla manutenzione dell'infrastruttura permette di prevenire guasti prima che si verifichino. Attraverso l'analisi di pattern nei dati storici e real-time, gli algoritmi possono identificare anomalie sottili che precedono i malfunzionamenti\autocite{IEEE2024ml}.
@@ -363,10 +381,10 @@ Nel contesto della \gls{gdo}, i modelli predittivi vengono applicati a:
 
 L'implementazione di questi sistemi ha portato a una riduzione complessiva dei costi di manutenzione del 28\% e a un miglioramento della disponibilità dei sistemi critici dal 99,2\% al 99,94\%\autocite{MIT2024}.
 
-\section{Framework di Implementazione e Roadmap}
+\section{\texorpdfstring{Framework di Implementazione e Roadmap}{3.9 - Framework di Implementazione e Roadmap}}
 \label{sec:implementation_framework}
 
-\subsection{Approccio Graduale alla Trasformazione}
+\subsection{\texorpdfstring{Approccio Graduale alla Trasformazione}{3.9.1 - Approccio Graduale alla Trasformazione}}
 \label{subsec:transformation_approach}
 
 La trasformazione infrastrutturale nella \gls{gdo} richiede un approccio strutturato che bilanci innovazione e continuità operativa. Il framework GIST (\gls{gist} - GDO Integrated Security Transformation) fornisce una roadmap implementativa in tre fasi\autocite{Accenture2024}:
@@ -395,7 +413,7 @@ La trasformazione infrastrutturale nella \gls{gdo} richiede un approccio struttu
     \item Investimento stimato: 1.200.000€, ROI atteso: 24 mesi
 \end{itemize}
 
-\subsection{Metriche di Successo e KPI}
+\subsection{\texorpdfstring{Metriche di Successo e KPI}{3.9.2 - Metriche di Successo e KPI}}
 \label{subsec:success_metrics}
 
 Il monitoraggio del progresso della trasformazione richiede metriche chiare e misurabili. La tabella seguente presenta i \gls{kpi} fondamentali per valutare il successo dell'evoluzione infrastrutturale:
@@ -405,29 +423,32 @@ Il monitoraggio del progresso della trasformazione richiede metriche chiare e mi
 \caption{KPI per la Trasformazione Infrastrutturale}
 \label{tab:transformation_kpi}
 \small
-\begin{tabularx}{\textwidth}{|X|c|c|c|c|}
-\hline
+\sffamily
+\begin{tabularx}{\textwidth}{X c c c c}
+\toprule
 \textbf{Indicatore} & \textbf{Baseline} & \textbf{Target Anno 1} & \textbf{Target Anno 3} & \textbf{Peso} \\
-\hline
+\midrule
 Disponibilità Sistema & 97,5\% & 99,0\% & 99,95\% & 25\% \\
-\hline
 MTTR (ore) & 4,2 & 2,5 & 0,8 & 20\% \\
-\hline
 Riduzione TCO & - & 15\% & 35\% & 20\% \\
-\hline
 Incidenti Sicurezza & 100 (index) & 50 & 20 & 15\% \\
-\hline
 Efficienza Energetica (PUE) & 2,1 & 1,7 & 1,4 & 10\% \\
-\hline
 Automazione Processi & 20\% & 50\% & 80\% & 10\% \\
-\hline
+\bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Conclusioni e Prospettive Future}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.1\textwidth]{thesis_figures/cap3/figura_3_5_corrected.pdf}
+\caption{Framework GIST: roadmap implementativa con timeline, investimenti e analisi ROI a 36 mesi}
+\label{fig:gist_framework_roadmap}
+\end{figure}
+
+\section{\texorpdfstring{Conclusioni e Prospettive Future}{3.10 - Conclusioni e Prospettive Future}}
 \label{sec:conclusioni}
 
-\subsection{Sintesi dei Risultati}
+\subsection{\texorpdfstring{Sintesi dei Risultati}{3.10.1 - Sintesi dei Risultati}}
 \label{subsec:synthesis}
 
 L'analisi presentata in questo capitolo ha dimostrato come l'evoluzione infrastrutturale rappresenti un elemento fondamentale per il successo competitivo della \gls{gdo}. I risultati principali includono:
@@ -442,14 +463,25 @@ L'analisi presentata in questo capitolo ha dimostrato come l'evoluzione infrastr
     \item \textbf{Sostenibilità}: Le moderne architetture riducono il consumo energetico del 45\% rispetto alle infrastrutture tradizionali
 \end{enumerate}
 
-\subsection{Collegamento con i Capitoli Successivi}
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Digital Twin Framework]
+Il framework Digital Twin completo per la generazione di dataset sintetici è disponibile nel repository:
+\begin{itemize}
+    \item File:\texttt{gdo\_digital\_twin.py}
+    \item Genera dataset realistici calibrati su dati ISTAT 2023
+    \item Validazione automatica con test statistici (Benford's Law, Poisson)
+    \item Uso:\texttt{twin.generate\_demo\_dataset(n\_stores=10, n\_days=30)}
+\end{itemize}
+Consultare la documentazione online per parametri avanzati e personalizzazione archetipi.
+\end{tcolorbox}
+
+\subsection{\texorpdfstring{Collegamento con i Capitoli Successivi}{3.10.2 - Collegamento con i Capitoli Successivi}}
 \label{subsec:bridge}
 
 L'infrastruttura moderna analizzata in questo capitolo costituisce la base tecnologica essenziale per l'integrazione efficace della conformità normativa che sarà trattata nel Capitolo 4. Le architetture cloud-native, la micro-segmentazione e l'automazione non solo migliorano prestazioni e sicurezza, ma abilitano approcci innovativi alla gestione della compliance.
 
 Le tecnologie di automazione (Policy as Code), monitoraggio continuo e tracciabilità immutabile discusse in questo capitolo diventeranno elementi fondamentali per il framework di compliance integrato, dimostrando come l'investimento infrastrutturale generi benefici moltiplicativi quando correttamente orchestrato\autocite{ISACA2024compliance}.
 
-\subsection{Direzioni Future di Ricerca}
+\subsection{\texorpdfstring{Direzioni Future di Ricerca}{3.10.3 - Direzioni Future di Ricerca}}
 \label{subsec:future_research}
 
 Le prospettive future per l'evoluzione infrastrutturale nella \gls{gdo} includono:
@@ -463,12 +495,6 @@ Le prospettive future per l'evoluzione infrastrutturale nella \gls{gdo} includon
 \end{itemize}
 
 La ricerca continua in questi ambiti sarà cruciale per mantenere la competitività del settore della \gls{gdo} in un contesto tecnologico in rapida evoluzione.
-
-\clearpage
-\printbibliography[
-    heading=subbibliography,
-    title={Riferimenti Bibliografici del Capitolo 3},
-]
 
 %\endrefsection
 

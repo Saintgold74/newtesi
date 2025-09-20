@@ -199,11 +199,9 @@ Complessivamente, il fattore umano emerge come causa principale nel 68\% degli i
 \label{fig:cyber_evolution}
 \end{figure}
 
-
-
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{thesis_figures/cap2/fig_2_2_attack_types.pdf}
+\includegraphics[width=0.9\textwidth]{thesis_figures/cap2/fig_2_2_attack_types.pdf}
 \caption[Distribuzione delle tipologie di attacco nel settore GDO]{Distribuzione delle tipologie di attacco nel settore \gls{gdo} (analisi su 1.847 incidenti). Il grafico a sinistra mostra la ripartizione percentuale, mentre il grafico a destra illustra l'impatto economico medio per categoria. Il \textbf{\gls{ransomware}}, pur rappresentando il 31\% degli incidenti, genera il maggiore impatto economico medio (3.2M€ per incidente).}\autocite{CPR2025}
 \label{fig:attack_types}
 \end{figure}
@@ -242,7 +240,7 @@ Il funzionamento di Prilex può essere schematizzato in quattro fasi:
 L'analisi statistica su 1.247 transazioni compromesse mostra che questa tecnica bypassa completamente le protezioni del protocollo \textbf{EMV contactless}, sfruttando la necessità commerciale di mantenere metodi di pagamento alternativi per garantire la continuità del servizio.
 Il framework ZT-\gls{gdo} mitiga specificamente attacchi come Prilex attraverso:
 1. \textbf{\gls{micro-segmentation}} che isola i terminali \gls{pos}, limitando la propagazione 
-   anche in caso di compromissione (riduzione del 87% nella propagazione laterale)
+   anche in caso di compromissione (riduzione del 87\% nella propagazione laterale)
 2. Monitoraggio comportamentale che rileva anomalie nei pattern di fallback 
    (soglia di alert a 3 fallback consecutivi in 60 secondi)
 3. Crittografia end-to-end che persiste anche durante i fallback attraverso 
@@ -321,7 +319,7 @@ dove $\beta(t) = \beta_0(1 + \alpha \sin(2\pi t/T))$ modella la variazione circa
 
 \vspace{0.3cm}
 \textbf{Validazione}: 89\% di accuratezza predittiva su 234 incidenti storici \textit{simulati con distribuzione calibrata su report ENISA}
-\textit{Codice Python completo per simulazione: Appendice C.2}
+%\textit{Codice Python completo per simulazione: Appendice C.2}
 \end{tcolorbox}
 
 
@@ -348,10 +346,10 @@ Questa metodologia, pur non basandosi su dati proprietari,
 fornisce risultati robusti grazie alla triangolazione tra 
 teoria, letteratura e simulazione controllata.
 
-\section{Caso di Studio: Anatomia di un Sistema Informativo \gls{gdo}}
+\section{\texorpdfstring{Caso di Studio: Anatomia di un Sistema Informativo GDO}{2.3.5 - Caso di Studio: Anatomia di un Sistema Informativo GDO}}
 \label{sec:caso_studio_database}
 
-\subsection{Dal Modello Accademico alla Complessità Reale}
+\subsection{\texorpdfstring{Dal Modello Accademico alla Complessità Reale}{2.3.5.1 - Dal Modello Accademico alla Complessità Reale}}
 \label{subsec:modello_database}
 
 Per comprendere concretamente le superfici di attacco e le vulnerabilità discusse nelle sezioni precedenti, presentiamo l'analisi di un database operativo per un supermercato di medie dimensioni, sviluppato durante il corso di Basi di Dati. Questo modello, seppur semplificato rispetto alla realtà produttiva, evidenzia le molteplici interconnessioni che ogni attaccante può sfruttare per compromettere un sistema \gls{gdo}.
@@ -363,7 +361,7 @@ Per comprendere concretamente le superfici di attacco e le vulnerabilità discus
 \label{fig:database_er}
 \end{figure}
 
-\subsection{Analisi delle Vulnerabilità per Entità}
+\subsection{\texorpdfstring{Analisi delle Vulnerabilità per Entità}{2.3.5.2 - Analisi delle Vulnerabilità per Entità}}
 \label{subsec:vulnerabilita_entita}
 
 L'analisi di sicurezza del modello rivela come ogni componente presenti vulnerabilità specifiche che possono essere sfruttate singolarmente o in combinazione per attacchi complessi.
@@ -373,6 +371,7 @@ L'analisi di sicurezza del modello rivela come ogni componente presenti vulnerab
 \caption{Matrice di Rischio delle Entità del Database \gls{gdo}}
 \label{tab:risk_matrix_database}
 \small
+\sffamily
 \begin{tabularx}{\textwidth}{@{}lXcc@{}}
 \toprule
 \textbf{Entità} & \textbf{Vulnerabilità Principale} & \textbf{Impatto} & \textbf{ASSA Score}\\
@@ -413,7 +412,7 @@ Utilizzando questo modello, possiamo tracciare un attacco realistico che sfrutta
 \item \textbf{Fase 5 - Persistence:} Inserisce una backdoor nella stored procedure di generazione ordini per mantenere l'accesso
 \end{enumerate}
 
-\subsection{Complessità Computazionale e Superfici di Attacco}
+\subsection{\texorpdfstring{Complessità Computazionale e Superfici di Attacco}{2.3.5.3 - Complessità Computazionale e Superfici di Attacco}}
 \label{subsec:complessita_computazionale}
 
 Il database presenta una complessità che cresce esponenzialmente con il numero di entità e relazioni. Applicando l'algoritmo ASSA-\gls{gdo} a questo modello:
@@ -442,6 +441,7 @@ Il passaggio dal modello accademico alla realtà produttiva amplifica esponenzia
 
 \begin{center}
 \small
+\sffamily
 \begin{tabular}{lcc}
 \toprule
 \textbf{Parametro} & \textbf{Modello Accademico} & \textbf{Sistema Produttivo} \\
@@ -460,7 +460,7 @@ Percorsi di attacco & 156 & 15.000+ \\
 L'incremento di un ordine di grandezza nelle entità produce un incremento di due ordini di grandezza nelle vulnerabilità potenziali, validando la necessità di approcci automatizzati alla sicurezza.
 \end{tcolorbox}
 
-\subsection{Implicazioni per il Framework GIST}
+\subsection{\texorpdfstring{Implicazioni per il Framework GIST}{2.3.5.4 - Implicazioni per il Framework GIST}}
 \label{subsec:implicazioni_gist}
 
 Questo caso di studio dimostra concretamente perché il framework GIST richiede l'integrazione di tutte e quattro le dimensioni:
@@ -498,11 +498,20 @@ La violazione di anche una sola dimensione compromette l'intero sistema, conferm
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{thesis_figures/cap2/DatabaseSupermercato.pdf}
-\caption{Mappa mentale della struttura del database \gls{gdo}. I colori indicano la criticità dal punto di vista della sicurezza: rosso per componenti ad alto rischio (dati carte, credenziali), giallo per componenti soggetti a normative (fatture, dati personali), verde per componenti operativi standard.}
+\caption [Mappa mentale della struttura del database GDO.]{Mappa mentale della struttura del database \gls{gdo}. I colori indicano la criticità dal punto di vista della sicurezza: rosso per componenti ad alto rischio (dati carte, credenziali), giallo per componenti soggetti a normative (fatture, dati personali), verde per componenti operativi standard.}
 \label{fig:database_mindmap}
 \end{figure}
 
 Questo caso di studio, derivato da un progetto accademico reale, evidenzia come anche un sistema apparentemente semplice nasconda complessità e vulnerabilità che richiedono l'applicazione sistematica del framework GIST per garantire sicurezza, performance e conformità in un contesto produttivo.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Implementazione Disponibile]
+L'algoritmo ASSA-GDO descritto in questa sezione è disponibile come implementazione Python nel repository ufficiale:
+\begin{itemize}
+    \item File: \texttt{assa\_gdo\_calculator.py}
+    \item Documentazione: \url{https://github.com/santoromarco74/gist-framework.git#assa-gdo}
+    \item Esempio: \texttt{python assa\_gdo\_calculator.py --org-factor 1.2}
+\end{itemize}
+\end{tcolorbox}
 
 \section{\texorpdfstring{Architetture Difensive Emergenti: il Paradigma \gls{zerotrust} nel Contesto \gls{gdo}}{2.4 - Architetture Difensive Emergenti: il Paradigma Zero Trust nel Contesto GDO}}
 
@@ -562,7 +571,7 @@ il seguente pseudocodice:
 
 La complessità computazionale è $O(|V| \times |E|)$ dove $|V|$ è il 
 numero di nodi e $|E|$ il numero di archi. L'implementazione completa 
-in Python è disponibile su \href{https://github.com/[tuo-username]/gist-framework-gdo}{GitHub}.
+in Python è disponibile su \href{https://github.com/santoromarco74/gist-framework.git}{GitHub}.
 
 Basandosi sull'analisi delle migliori pratiche internazionali e sui risultati delle simulazioni Monte Carlo, la ricerca propone un framework di implementazione \gls{zerotrust} specificamente ottimizzato per il contesto \gls{gdo}. Il framework, denominato ZT-\gls{gdo} (Zero Trust for Retail), si articola in cinque componenti fondamentali interconnesse.
 
@@ -691,7 +700,7 @@ dove:
 \subsection{\texorpdfstring{Implementazione e Validazione}{2.4.3 - Implementazione e Validazione}}
 
 L'implementazione completa dell'algoritmo (Appendice C.1) è stata validata su 47 organizzazioni GDO italiane. Il sistema identifica automaticamente:
-- Percorsi critici di attacco con probabilità >70%
+- Percorsi critici di attacco con probabilità >70\%
 - Nodi ad alta centralità che richiedono protezione prioritaria
 - Raccomandazioni di mitigazione con ROI quantificato
 
@@ -700,6 +709,7 @@ L'implementazione completa dell'algoritmo (Appendice C.1) è stata validata su 4
 \caption{Validazione ASSA-GDO su architetture reali}
 \label{tab:assa_validation}
 \small
+\sffamily
 \begin{tabular}{lccc}
 \toprule
 \textbf{Architettura} & \textbf{ASSA Score} & \textbf{Incidenti/Anno} & \textbf{Correlazione} \\
@@ -775,6 +785,7 @@ L'implementazione completa del framework \gls{zerotrust} produce una riduzione m
 \caption{Riduzione della superficie di attacco per componente con analisi di decomposizione}
 \label{tab:assa_reduction_detailed}
 \small
+\sffamily
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Componente} & \textbf{Riduzione} & \textbf{IC 95\%} & \textbf{Contributo} & \textbf{p-value} \\
@@ -789,7 +800,7 @@ Physical Security & 23.7\% & [20.2\%, 27.2\%] & 8.9\% & 0.002 \\
 \end{tabular}
 \end{table}
 
-L'analisi delle interazioni tra componenti attraverso modelli di regressione multivariata rivela effetti sinergici significativi: l'implementazione congiunta di \gls{micro-segmentation} e identity management produce una riduzione addizionale del 7.3% oltre alla somma degli effetti individuali.
+L'analisi delle interazioni tra componenti attraverso modelli di regressione multivariata rivela effetti sinergici significativi: l'implementazione congiunta di \gls{micro-segmentation} e identity management produce una riduzione addizionale del 7.3\% oltre alla somma degli effetti individuali.
 
 \subsubsection{\texorpdfstring{Miglioramento delle Metriche Temporali}{2.5.2.2 - Miglioramento delle Metriche Temporali}}
 
@@ -800,6 +811,7 @@ Le architetture \gls{zerotrust} dimostrano miglioramenti drammatici nelle metric
 \caption{Confronto delle metriche temporali pre e post implementazione \gls{zerotrust}}
 \label{tab:temporal_metrics}
 \small
+\sffamily
 \begin{tabular}{lccccc}
 \toprule
 \textbf{Metrica} & \textbf{Pre-ZT} & \textbf{Post-ZT} & \textbf{Riduzione} & \textbf{IC 95\%} & \textbf{Effect Size} \\
@@ -949,9 +961,11 @@ I risultati principali, tutti statisticamente significativi con p < 0.001, inclu
 
 5. \textbf{Sostenibilità economica della trasformazione}: Il \gls{roi} del 287\% deriva da simulazioni Monte Carlo nel Digital Twin 
 con i seguenti parametri:
-- Costo incidente medio: calibrato su Kaspersky Q3 2023 (€47.300)
-- Frequenza attacchi: distribuzione Poisson λ=7812.5 (da ENISA)
-- Efficacia contromisure: riduzione 42.7\% superficie attacco
+\begin{itemize}
+    \item Costo incidente medio: calibrato su Kaspersky Q3 2023 (€47.300)
+    \item Frequenza attacchi: distribuzione Poisson λ=7812.5 (da ENISA)
+    \item Efficacia contromisure: riduzione 42.7\% superficie attacco
+\end{itemize}
 
 Questi valori rappresentano il \textbf{potenziale teorico massimo}. 
 Applicando fattori di attrito realistici (0.6), il \gls{roi} atteso 
@@ -1025,14 +1039,16 @@ La validazione quantitativa dell'ipotesi H2 presentata in questo capitolo costit
 
 Nell'ottica della riproducibilità della ricerca, rendiamo disponibili:
 \begin{itemize}
-    \item \textbf{Codice Digital Twin}: \url{https://github.com/xxx/gdo-digital-twin}
+    \item \textbf{Codice Digital Twin}: \url{https://github.com/santoromarco74/gist-framework/gdo-digital-twin}
     \item \textbf{Dataset sintetici}: Generabili attraverso il Digital Twin
     \item \textbf{Parametri di calibrazione}: Appendice B.1
-    \item \textbf{Notebook di analisi}: \url{https://github.com/xxx/notebooks}
+    \item \textbf{Notebook di analisi}: \url{https://github.com/santoromarco74/gist-framework/notebooks}
 \end{itemize}
 
 Per questioni di riservatezza, i riferimenti specifici alle catene 
 \gls{gdo} (Alpha, Beta, Gamma) rimangono anonimizzati.
+
+
 
 \section{\texorpdfstring{Limitazioni e Validità dello Studio}{2.8 - Limitazioni e Validità dello Studio}}
 

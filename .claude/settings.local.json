@@ -16,7 +16,11 @@
       "Bash(./compila.bat)",
       "Bash(powershell:*)",
       "Bash(biber:*)",
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Bash(grep:*)",
+      "Bash(compila_veloce.bat)",
+      "Bash(rg:*)",
+      "Bash(cut:*)"
     ],
     "deny": [],
     "ask": []
